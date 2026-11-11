@@ -40,7 +40,8 @@ function makeWeights(ctx){
 function generate(start=monday()){
  const ctx=asTopics(),priority=makeWeights(ctx);
  const available=priority.filter(x=>x.active);
- const pool=available.length?available:priority; // sem progresso: rotação provisória, não avanço presumido
+ // Mantém as dificuldades em primeiro lugar, mas distribui outras matérias ao longo da semana.
+ const pool=[...available,...priority.filter(x=>!x.active)]; // sem progresso: rotação provisória, não avanço presumido
  if(!pool.length)throw Error("Nenhuma disciplina disponível no mapa local");
  const week={start,created:new Date().toISOString(),updated:new Date().toISOString(),generator:"v1-prioridade_e_rotacao",provisional:!available.length,days:[]};
  let cursor=0;
