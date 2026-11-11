@@ -167,5 +167,27 @@ function page(){
  '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></div>'+
  '<div class="note">Fundamentação de cartões autorais: estado B, sem homologação humana independente. Gabaritos Cebraspe: verificados como resultado histórico; vigência e justificativa podem exigir nova auditoria. Revisões não são certificação de domínio jurídico.</div>';
 }
-global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,deck:()=>({flashcards:CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+function disciplineMetrics(){
+ const out={};
+ for(const item of ALL){
+  const code=item.code.split('-')[0];
+  if(!out[code])out[code]={attempts:0,correct:0,wrong:0,seen:0,due:0,errors:0,scheduled:0};
+  const st=stat(item.id);
+  if(st.seen){
+   out[code].seen++;
+   out[code].errors+=st.errors||0;
+   if(st.due&&st.due<=today()&&item.status!=='anulada')out[code].due++;
+   if(st.due&&st.due>today()&&item.status!=='anulada')out[code].scheduled++;
+  }
+ }
+ state.attempts.forEach(a=>{
+  const code=String(a.code||'').split('-')[0];
+  if(!out[code])out[code]={attempts:0,correct:0,wrong:0,seen:0,due:0,errors:0,scheduled:0};
+  if(a.kind==='official'&&typeof a.correct==='boolean'){
+   out[code].attempts++;if(a.correct)out[code].correct++;else out[code].wrong++;
+  }
+ });
+ return out;
+}
+global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,deck:()=>({flashcards:CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
 })(window);
