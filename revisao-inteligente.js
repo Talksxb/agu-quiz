@@ -62,6 +62,7 @@ exam(2023,10,'A','CON-44','CNJ','mc'),
 exam(2023,11,'E','CON-35','Terras devolutas','mc'),
 exam(2023,12,'D','CON-53','Ordem econômica','mc')
 ];
+const INLINE_ADAPTED={"of-2015-adv-001":{"year":2015,"n":1,"stem":"A Secretaria-Geral de Contencioso da AGU tem atribuição de subsidiar informações prestadas pelo presidente da República ao STF em mandados de segurança.","reason":"No concurso de 2015, a banca considerou ERRADA a atribuição institucional descrita. Para aplicação atual, verificar a estrutura e as competências da AGU na legislação vigente.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-002":{"year":2015,"n":2,"stem":"Havendo divergência de interpretação de lei entre consultorias jurídicas de dois ministérios, a uniformização deve ser feita pela Secretaria-Geral de Consultoria da AGU.","reason":"O gabarito definitivo julgou ERRADA essa atribuição específica da unidade mencionada. A organização interna da AGU pode mudar e exige atualização antes de utilizar o item como regra vigente.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-003":{"year":2015,"n":3,"stem":"É possível submeter à Câmara de Conciliação e Arbitragem da Administração Federal conflito extrajudicial envolvendo órgão municipal e autarquia federal.","reason":"A banca julgou CERTO o cabimento da via conciliatória na situação descrita. Conferir competências e regras vigentes da Câmara antes de aplicar ao caso atual.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-004":{"year":2015,"n":4,"stem":"Para prevenir litígio de interesse da União, o advogado-geral da União pode autorizar termo de ajustamento de conduta pela Administração federal, incluindo sanção pelo descumprimento.","reason":"A banca julgou CERTO o item de 2015. A autorização e as condições do ajuste precisam ser examinadas conforme a disciplina atualmente aplicável.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-005":{"year":2015,"n":5,"stem":"Um ministro indeferiu pedido administrativo por despacho, com fundamento em nota técnica. O indeferimento deveria necessariamente ter a forma de resolução, e não de despacho.","reason":"ERRADO: a forma 'resolução' não é exigida apenas por se tratar de indeferimento. A motivação por referência à nota técnica é discussão distinta.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-006":{"year":2015,"n":6,"stem":"O despacho que indefere pedido e remete a nota técnica pertinente apresenta vício de forma apenas porque não repete, no próprio texto, toda a fundamentação de fato e de direito.","reason":"ERRADO: a motivação pode ser realizada por remissão expressa a fundamentos de outra peça, conforme o caso (Lei 9.784/1999, art. 50, § 1º).","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-007":{"year":2015,"n":7,"stem":"Se um ministro regulamentar gratificação por portaria e ultrapassar seu poder regulamentar, o Congresso Nacional poderá sustar o ato.","reason":"CERTO, conforme a banca em 2015. A CF, art. 49, V, prevê competência congressual para sustar atos normativos do Executivo que exorbitem do poder regulamentar ou dos limites de delegação legislativa.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-008":{"year":2015,"n":8,"stem":"Portarias ministeriais que regulamentam disposições de normas superiores são atos regulamentares de segundo grau.","reason":"CERTO no gabarito histórico: a portaria constitui ato infralegal subordinado às normas superiores, diferentemente de regulamento com fundamento diretamente em lei.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-009":{"year":2015,"n":9,"stem":"Uma portaria ministerial pode criar gratificação de desempenho para servidores com base apenas no princípio constitucional da eficiência, sem autorização legal.","reason":"ERRADO: gratificação exige suporte legal; a eficiência não substitui reserva de lei para vantagens remuneratórias.","adapted":true,"sourceVerified":"2026-11-11"},"of-2023-adv-003":{"year":2023,"n":3,"stem":"Na classificação tradicional do poder constituinte originário, qual combinação descreve suas características jurídicas?","options":[{"id":"A","label":"Autônomo, limitado e incondicionado."},{"id":"B","label":"Subordinado, limitado e incondicionado."},{"id":"C","label":"Subordinado, ilimitado e condicionado."},{"id":"D","label":"Autônomo, ilimitado e incondicionado."},{"id":"E","label":"Autônomo, ilimitado e condicionado."}],"reason":"Alternativa D: na classificação tradicional, o poder constituinte originário instaura a ordem jurídica, não está juridicamente submetido ao ordenamento anterior e não depende de forma preestabelecida. Trata-se de caracterização jurídica, não de juízo de legitimidade democrática.","adapted":true,"sourceVerified":"2026-11-11"}};
 const ALL=[...CARDS,...OFFICIAL], INDEX=new Map(ALL.map(x=>[x.id,x]));
 const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date().toISOString()});
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
@@ -78,7 +79,7 @@ function urgent(x){
  return (due?100:0)+(st.errors||0)*6+(!st.seen?8:0)+(st.due&&st.due<today()?10:0);
 }
 function candidates(kind,limit){
- return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(!stat(x.id).due||stat(x.id).due<=today()))
+ return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id])&&(!stat(x.id).due||stat(x.id).due<=today()))
  .sort((a,b)=>urgent(b)-urgent(a)||a.id.localeCompare(b.id)).slice(0,limit);
 }
 function summary(){
@@ -100,7 +101,7 @@ function select(id){const q=INDEX.get(id);if(!q)return;active=q;revealed=false;p
 function rating(grade){
  if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
  const prior=stat(active.id),isOfficial=active.kind==='official';
- if(isOfficial&&!pick)return;
+ if(isOfficial&&(!pick||!INLINE_ADAPTED[active.id]))return;
  const correct=isOfficial?pick===active.key:null;
  // A correctness miss overrides self-declared ease.
  const applied=isOfficial&&!correct?'errei':grade;
@@ -115,8 +116,8 @@ function rating(grade){
  state.attempts.push({id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'});
  persist();choose(currentMode);window.render();
 }
-function reveal(){if(!active)return;if(active.kind==='official'&&!pick)return;revealed=true;window.render()}
-function chooseAnswer(v){if(!active||active.kind!=='official'||revealed)return;if(!(/^[CE]$/.test(v)||/^[A-E]$/.test(v)))return;pick=v;window.render()}
+function reveal(){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render()}
+function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id])return;if(!(/^[CE]$/.test(v)||/^[A-E]$/.test(v)))return;pick=v;window.render()}
 function go(mode){choose(mode);window.render()}
 function exportData(){
  const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
@@ -143,14 +144,17 @@ function cardHTML(x){
   return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
    (revealed?'<div class="feedback"><b>Resposta e fundamento</b><p>'+esc(x.back)+'</p><p class="small muted">'+esc(x.source)+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte</a>':'<p>Fonte de caderno; revisão jurídica independente pendente.</p>')+'</div>':'<div class="btnrow"><button class="primary" onclick="AGUReview.reveal()">Mostrar verso</button></div>');
  }
+ const q=INLINE_ADAPTED[x.id];
  const a=x.type==='ce'?['C','E']:['A','B','C','D','E'];
  const examUrl=x.year===2015?links.p15:links.p23,keyUrl=x.year===2015?links.g15:links.g23;
- return '<h2>AGU '+x.year+' · '+esc(x.exam)+' · item '+x.number+'</h2>'+base+
- '<p><b>'+esc(x.theme)+'</b></p><p>Abra o caderno oficial e leia o enunciado original antes de marcar a resposta. O texto não foi reproduzido neste aplicativo.</p>'+
- '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno oficial PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+
+ const prompt=q?'<div class="note"><b>Adaptação autoral de questão oficial:</b> o texto abaixo não é reprodução literal da banca. Gabarito informado refere-se ao item original.</div><h2 class="question-title">'+esc(q.stem)+'</h2>':
+ '<p><b>'+esc(x.theme)+'</b></p><p>Este item ainda não tem versão interna conferida. Consulte o PDF original; não será pontuado no modo automático até que esteja preparado.</p>';
+ return '<h2>AGU '+x.year+' · '+esc(x.exam)+' · item '+x.number+'</h2>'+base+prompt+
+ '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno original PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+
  (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
-  '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(v==='C'?'CERTO':v==='E'&&x.type==='ce'?'ERRADO':v)+'</button>').join('')+'</div>'+
-  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito oficial definitivo: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta conforme gabarito histórico.':'Resposta divergente do gabarito histórico.')+'</p><p>Explicação jurídica específica e atualização normativa: pendentes. O acerto não demonstra domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
+ !q?'<div class="note">Sem resposta neste modo: texto adaptado e conferência editorial pendentes.</div>':
+  '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):v==='C'?'CERTO':v==='E'&&x.type==='ce'?'ERRADO':v)+'</button>').join('')+'</div>'+
+  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p><p>'+esc(q.reason)+'</p><p class="small muted">Comentário pedagógico autoral. Exige auditoria da vigência jurídica antes de ser tratado como prova de domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
 }
 function page(){
  const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
