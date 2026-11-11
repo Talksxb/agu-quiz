@@ -1,0 +1,171 @@
+/* AGU Quiz · Revisão Inteligente v1 — módulo incremental, sem dados pessoais no repositório */
+(function(global){
+'use strict';
+const KEY='agu_quiz_revisao_inteligente_v1';
+const DAYS=[1,7,21,45];
+const links={
+ admin:'https://www2.camara.leg.br/legin/fed/lei/1999/lei-9784-29-janeiro-1999-322239-normaatualizada-pl.html',
+ cpc:'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105compilada.htm',
+ cf:'https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm',
+ p15:'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/187AGU_001_01.pdf',
+ g15:'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_01.pdf',
+ p23:'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF',
+ g23:'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF'
+};
+const card=(id,code,front,back,source,link,origin='autoral_fundamento_identificado')=>({id,kind:'flashcard',code,front,back,source,link,origin,validation:'B_pendente_revisao_independente'});
+const CARDS=[
+card('ri-adm-01','ADM-06','A competência administrativa federal é renunciável?','Não. É irrenunciável; admite delegação e avocação nos casos previstos em lei.','Lei 9.784/1999, art. 11',links.admin),
+card('ri-adm-02','ADM-06','É necessária hierarquia para delegar competência?','Não. O art. 12 admite delegação parcial inclusive a não subordinado, sem impedimento legal.','Lei 9.784/1999, art. 12',links.admin),
+card('ri-adm-03','ADM-06','Pode-se delegar a decisão de recurso administrativo?','Não. A delegação de decisão de recursos administrativos é vedada.','Lei 9.784/1999, art. 13, II',links.admin),
+card('ri-adm-04','ADM-06','Quando é possível avocar competência?','Excepcional e temporariamente, por motivos relevantes justificados, de órgão hierarquicamente inferior.','Lei 9.784/1999, art. 15',links.admin),
+card('ri-adm-05','ADM-23','Motivação escrita basta para sanar desvio de finalidade?','Não. A motivação não afasta eventual vício de finalidade nem torna verdadeiros motivos inexistentes.','Caderno AGU, ADM-02; Lei 9.784/1999, arts. 2º e 50',links.admin,'adaptado_de_dificuldade_da_aula'),
+card('ri-adm-06','ADM-13','Vinculação ministerial equivale a hierarquia?','Não. Supervisão finalística sobre entidade descentralizada não cria subordinação hierárquica geral.','Caderno AGU, ADM-01; distinção organizacional','', 'adaptado_de_dificuldade_da_aula'),
+card('ri-pc-01','PC-01','O juiz pode decidir sobre fundamento de ofício sem ouvir as partes?','Em regra, não. Deve oportunizar manifestação sobre fundamento não debatido.','CPC, art. 10',links.cpc),
+card('ri-pc-02','PC-01','Há exceção ao contraditório prévio para tutela urgente?','Sim. O CPC admite tutela provisória de urgência sem oitiva prévia, com contraditório posterior.','CPC, art. 9º, parágrafo único, I',links.cpc),
+card('ri-pc-03','PC-01','O juiz precisa enfrentar todo argumento da parte?','Deve enfrentar os argumentos capazes, em tese, de infirmar a conclusão adotada.','CPC, art. 489, § 1º, IV',links.cpc),
+card('ri-con-01','CON-02','Constituição rígida pressupõe cláusulas pétreas?','Não. Rigidez é reforma por procedimento mais difícil; cláusulas pétreas são limites materiais.','Caderno CON-01, registro 18; CF, art. 60',links.cf,'adaptado_de_caderno'),
+card('ri-con-02','CON-02','Fatores reais de poder em Lassalle equivalem à decisão constituinte em Schmitt?','Não. Poder social efetivo e decisão política fundamental são categorias diferentes.','Caderno CON-01, registros 10 e 11','', 'adaptado_de_caderno'),
+card('ri-con-03','CON-50','Qual é a função constitucional da AGU?','Representar a União judicial/extrajudicialmente e prestar consultoria/assessoramento ao Executivo nos termos legais.','CF, art. 131, caput',links.cf)
+];
+const exam=(year,number,key,code,theme,kind='ce')=>{
+ const n=String(number).padStart(3,'0'),is15=year===2015;
+ return {id:'of-'+year+'-adv-'+n,kind:'official',type:kind,code,
+  sourceKind:'prova_oficial',organizer:'Cebraspe',career:'Advogado da União',
+  year,exam:is15?'187AGU_001_01':'804_AGU_ADVOGADO_001_01',
+  number,theme,key,status:key==='X'?'anulada':'gabarito_definitivo',
+  validation:'gabarito_oficial_verificado_fundamentacao_atual_pendente',
+  source:is15?'AGU 2015, prova e gabarito definitivo':'AGU 2023, prova e gabarito definitivo',
+  examUrl:is15?links.p15:links.p23,keyUrl:is15?links.g15:links.g23};
+};
+const OFFICIAL=[
+exam(2015,1,'E','CON-50','Estrutura e atribuições da AGU'),
+exam(2015,2,'E','CON-50','Uniformização jurídica na AGU'),
+exam(2015,3,'C','CON-50','Conciliação na administração federal'),
+exam(2015,4,'C','CON-50','Termo de ajustamento e AGU'),
+exam(2015,5,'E','ADM-17','Forma dos atos administrativos'),
+exam(2015,6,'E','ADM-23','Motivação e forma dos atos'),
+exam(2015,7,'C','ADM-27','Sustação de atos regulamentares'),
+exam(2015,8,'C','ADM-27','Portarias e poder regulamentar'),
+exam(2015,9,'E','ADM-27','Princípio da legalidade administrativa'),
+exam(2015,10,'C','ADM-27','Poder regulamentar'),
+exam(2015,15,'X','ADM-06','Item anulado'),
+exam(2023,1,'A','CON-16','ADC','mc'),
+exam(2023,2,'A','CON-15','ADI','mc'),
+exam(2023,3,'D','CON-09','Poder constituinte','mc'),
+exam(2023,4,'C','CON-07','Interpretação constitucional','mc'),
+exam(2023,5,'B','CON-17','ADPF','mc'),
+exam(2023,6,'B','CON-11','Controle difuso','mc'),
+exam(2023,7,'X','CON-20','Item anulado','mc'),
+exam(2023,8,'E','CON-24','Remédios constitucionais','mc'),
+exam(2023,9,'C','CON-03','Constitucionalismo','mc'),
+exam(2023,10,'A','CON-44','CNJ','mc'),
+exam(2023,11,'E','CON-35','Terras devolutas','mc'),
+exam(2023,12,'D','CON-53','Ordem econômica','mc')
+];
+const ALL=[...CARDS,...OFFICIAL], INDEX=new Map(ALL.map(x=>[x.id,x]));
+const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date().toISOString()});
+let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
+let active=null,revealed=false,pick='',currentMode='auto';
+const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>new Date().toLocaleDateString('en-CA');
+const when=(days)=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return d.toLocaleDateString('en-CA')};
+function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
+function stat(id){return state.cards[id]||{stage:0,due:null,errors:0,seen:0,ease:0}}
+function urgent(x){
+ const st=stat(x.id);
+ if(x.status==='anulada')return -1000;
+ const due=!st.due||st.due<=today();
+ return (due?100:0)+(st.errors||0)*6+(!st.seen?8:0)+(st.due&&st.due<today()?10:0);
+}
+function candidates(kind,limit){
+ return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(!stat(x.id).due||stat(x.id).due<=today()))
+ .sort((a,b)=>urgent(b)-urgent(a)||a.id.localeCompare(b.id)).slice(0,limit);
+}
+function summary(){
+ const due=ALL.filter(x=>x.status!=='anulada'&&stat(x.id).due&&stat(x.id).due<=today());
+ const newCards=CARDS.filter(x=>!stat(x.id).seen).length;
+ const repeated=ALL.filter(x=>stat(x.id).errors>=2);
+ const attempts=state.attempts.filter(x=>x.kind==='official'&&typeof x.correct==='boolean');
+ const next=Object.values(state.cards).filter(x=>x.due&&x.due>today()).map(x=>x.due).sort()[0]||'Nenhuma agendada';
+ return {due:due.length,flashDue:due.filter(x=>x.kind==='flashcard').length,officialDue:due.filter(x=>x.kind==='official').length,newCards,repeated:repeated.length,attempts:attempts.length,correct:attempts.filter(x=>x.correct).length,next};
+}
+function plan(){return [...candidates('flashcard',5),...candidates('official',3)]}
+function choose(mode='auto'){
+ currentMode=mode;
+ const pool=mode==='flashcard'?candidates('flashcard',30):mode==='official'?candidates('official',30):plan();
+ active=pool[0]||null;revealed=false;pick='';
+ return active;
+}
+function select(id){const q=INDEX.get(id);if(!q)return;active=q;revealed=false;pick='';window.render()}
+function rating(grade){
+ if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
+ const prior=stat(active.id),isOfficial=active.kind==='official';
+ if(isOfficial&&!pick)return;
+ const correct=isOfficial?pick===active.key:null;
+ // A correctness miss overrides self-declared ease.
+ const applied=isOfficial&&!correct?'errei':grade;
+ let stage=prior.stage||0;
+ if(applied==='errei')stage=0;
+ else if(applied==='dificil')stage=Math.max(0,stage-1);
+ else if(applied==='lembrei')stage=Math.min(3,stage+1);
+ else stage=Math.min(3,stage+2);
+ const days=DAYS[stage];
+ const st={stage,due:when(days),seen:(prior.seen||0)+1,errors:(prior.errors||0)+(applied==='errei'?1:0),ease:applied,last:new Date().toISOString(),lastCorrect:correct};
+ state.cards[active.id]=st;
+ state.attempts.push({id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'});
+ persist();choose(currentMode);window.render();
+}
+function reveal(){if(!active)return;if(active.kind==='official'&&!pick)return;revealed=true;window.render()}
+function chooseAnswer(v){if(!active||active.kind!=='official'||revealed)return;if(!(/^[CE]$/.test(v)||/^[A-E]$/.test(v)))return;pick=v;window.render()}
+function go(mode){choose(mode);window.render()}
+function exportData(){
+ const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AGU_Revisao_Inteligente_backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+function importBackup(input){
+ const file=input.files&&input.files[0];if(!file)return;
+ const reader=new FileReader();reader.onload=()=>{
+ try{
+  const x=JSON.parse(String(reader.result));
+  if(x.schema!=='agu-review-backup-v1'||x.data?.schema!=='agu-review-v1'||!Array.isArray(x.data.attempts)||!x.data.cards)throw Error('Backup incompatível');
+  const newIds=new Set(state.attempts.map(a=>a.id));
+  const extras=x.data.attempts.filter(a=>a&&a.id&&INDEX.has(a.itemId)&&!newIds.has(a.id));
+  if(!confirm('Importar '+extras.length+' tentativas adicionais sem apagar o histórico atual?'))return;
+  // Do not silently replace current spaced states with potentially older backups.
+  state.attempts.push(...extras);persist();window.render();
+  alert('Tentativas importadas. Estados de revisão existentes preservados; reprogramação deve ser conferida manualmente.');
+ }catch(e){alert('Não foi possível importar: '+e.message)}
+ };reader.readAsText(file);
+}
+function cardHTML(x){
+ const st=stat(x.id),base='<div class="note">Tópico <b>'+esc(x.code)+'</b> · '+esc(x.kind==='official'?'Cebraspe · Advogado da União':'Flashcard autoral')+' · '+esc(x.validation)+'</div>';
+ if(x.kind==='flashcard'){
+  return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
+   (revealed?'<div class="feedback"><b>Resposta e fundamento</b><p>'+esc(x.back)+'</p><p class="small muted">'+esc(x.source)+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte</a>':'<p>Fonte de caderno; revisão jurídica independente pendente.</p>')+'</div>':'<div class="btnrow"><button class="primary" onclick="AGUReview.reveal()">Mostrar verso</button></div>');
+ }
+ const a=x.type==='ce'?['C','E']:['A','B','C','D','E'];
+ const examUrl=x.year===2015?links.p15:links.p23,keyUrl=x.year===2015?links.g15:links.g23;
+ return '<h2>AGU '+x.year+' · '+esc(x.exam)+' · item '+x.number+'</h2>'+base+
+ '<p><b>'+esc(x.theme)+'</b></p><p>Abra o caderno oficial e leia o enunciado original antes de marcar a resposta. O texto não foi reproduzido neste aplicativo.</p>'+
+ '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno oficial PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+
+ (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
+  '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(v==='C'?'CERTO':v==='E'&&x.type==='ce'?'ERRADO':v)+'</button>').join('')+'</div>'+
+  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito oficial definitivo: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta conforme gabarito histórico.':'Resposta divergente do gabarito histórico.')+'</p><p>Explicação jurídica específica e atualização normativa: pendentes. O acerto não demonstra domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
+}
+function page(){
+ const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
+ if(active&&!INDEX.has(active.id))active=null;
+ return '<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Revisão Inteligente</h1><div class="muted">Retenção D+1 · D+7 · D+21 · D+45 · 5 a 8 minutos no Foco do Dia</div></div></div>'+
+ '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
+ '<div class="card"><h2>Foco do Dia · revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
+ '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\')">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\')">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\')">Questões oficiais</button></div></div>'+
+ (active?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
+  (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div></div>':'')+
+ '</div>':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
+ '<div class="card"><h2>Histórico e exportação</h2><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
+ '<div class="btnrow"><button class="secondary" onclick="AGUReview.exportData()">Exportar backup JSON</button><button class="secondary" onclick="document.getElementById(\'review-import\').click()">Importar sem substituir</button><input id="review-import" type="file" class="hidden" accept="application/json" onchange="AGUReview.importBackup(this)"></div>'+
+ '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></div>'+
+ '<div class="note">Fundamentação de cartões autorais: estado B, sem homologação humana independente. Gabaritos Cebraspe: verificados como resultado histórico; vigência e justificativa podem exigir nova auditoria. Revisões não são certificação de domínio jurídico.</div>';
+}
+global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,deck:()=>({flashcards:CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+})(window);
