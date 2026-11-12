@@ -86,7 +86,7 @@ function urgent(x){
  const st=stat(x.id);
  if(x.status==='anulada')return -1000;
  const due=!st.due||st.due<=today();
- return (due?100:0)+(st.errors||0)*6+(!st.seen?8:0)+(st.due&&st.due<today()?10:0);
+ return (due?100:0)+(st.errors||0)*6+(!st.seen?8:0)+(st.due&&st.due<today()?10:0)+(x.kind==='flashcard'&&x.checked?14:0);
 }
 function candidates(kind,limit){
  return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id]?.auditVerified===true)&&(!stat(x.id).due||stat(x.id).due<=today()))
