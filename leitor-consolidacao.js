@@ -59,9 +59,9 @@ function searchPanel(){
  return s+'</div>';
 }
 function versionPanel(unitId){
- const x=allClauses().find(x=>x.unit.id===unitId);if(!x)return '';
+ const x=allClauses().find(x=>x.unit.id===unitId);if(!x)return '';const v=root.AGU_LEGAL_VERSIONS?.entries?.find(z=>z.deviceId===unitId);
  return '<div class="agu-notice"><b>Versão da legislação — controle documental</b>'+
- '<p class="agu-muted">Redação apresentada: fonte oficial atualizada indicada no acervo da Sprint 13. Consulta registrada: '+html(x.law.checkedOn)+'.</p>'+
+ '<p class="agu-muted">Versão: '+html(v?.versionId||'não catalogada')+' · Fonte oficial: '+html(v?.sourceLabel||x.law.sourceVersion)+' · consulta '+html(v?.consultedAt||x.law.checkedOn)+' · status: '+html(v?.chainStatus||'pendente')+'.</p>'+
  '<p>O leitor contém a redação incorporada desse dispositivo, mas <b>não dispõe de uma série histórica verificada</b> nem da cadeia completa de alterações. Comparação histórica indisponível até a certificação das versões e dos atos modificadores.</p>'+
  '<p><a href="'+html(x.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir texto oficial e alterações na origem</a></p></div>';
 }
