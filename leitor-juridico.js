@@ -24,15 +24,37 @@ function step(n){const i=articles.findIndex(a=>a.id===state.article);article(art
 function note(){const e=document.getElementById('agu-legal-note');if(!e)return;state.notes[state.unit]=e.value.slice(0,14000);save();root.render?.()}
 function exportData(){const b=new Blob([JSON.stringify({schema:'agu-reader-backup-v1',data:state},null,2)],{type:'application/json'});const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='AGU_Leitor_Comentarios.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)}
 function filter(v){const term=String(v).toLowerCase().trim();document.querySelectorAll('#agu-reader .agu-index-entry').forEach(el=>el.hidden=!el.dataset.search.includes(term))}
+function getRelations(){
+ const raw=root.AGU_LEGAL_RELATIONS?.entries||[];
+ const valid=new Set(byUnit.keys());
+ const unique=new Set();
+ return raw.filter(x=>{
+  if(!x||!valid.has(x.deviceId)||!['norma','jurisprudencia','questao'].includes(x.kind)||!x.url?.startsWith('https://')||!['confirmado','parcial','pendente'].includes(x.sourceStatus))return false;
+  const key=x.deviceId+'|'+x.kind+'|'+x.localizer;
+  if(unique.has(key))return false;unique.add(key);return true;
+ });
+}
+function relationCard(x){
+ const status=x.sourceStatus==='confirmado'?'Confirmado pontualmente':x.sourceStatus==='parcial'?'Parcial · revalidar':'Pendente · não validado';
+ return '<article class="agu-notice"><b>'+esc(x.title)+'</b><p>'+esc(x.summary)+'</p><p class="agu-muted">'+esc(x.localizer)+' · '+esc(x.topic)+'</p>'+
+ (x.tribunal?'<p class="agu-muted">Tribunal: '+esc(x.tribunal)+' · '+esc(x.processo)+' · julgamento: '+esc(x.julgamento||'não informado')+' · publicação: '+esc(x.publicacao||'não verificada')+' · '+esc(x.precedentType||'classe pendente')+'</p>':'')+
+ '<p class="agu-muted">Fonte: '+esc(x.sourceLot)+' · '+status+' · vínculo: '+esc(x.relationship)+' · consulta '+esc(x.verifiedAt)+'</p>'+
+ (x.revalidationNeeded?'<p class="agu-muted">Atenção: requer conferência adicional de inteiro teor, efeitos ou alterações.</p>':'')+
+ '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">Fonte oficial ↗</a></article>';
+}
 function related(a){
-const c=byUnit.get(state.unit)?.clause;const cards=(Array.isArray(root.AGU_AUD03_CARDS)?root.AGU_AUD03_CARDS:[]).filter(x=>x.code===a.topic);
-let s='<p class="agu-muted">Dispositivo: '+esc(c?.label||a.label)+' · '+esc(a.topic)+' · conferência documental parcial.</p>';
-if(state.tab==='juris')s+='<div class="agu-notice">Jurisprudência por dispositivo ainda não integrada. A vinculação auditável será implementada na Sprint 14.</div>';
-if(state.tab==='questoes')s+='<div class="agu-notice">Questões oficiais sem vinculação individual confirmada nesta sprint. Nenhuma questão ou gabarito foi inventado.</div>';
-if(state.tab==='caderno')s+='<div class="agu-notice">O Caderno AGU será relacionado por dispositivo na Sprint 15. Não há registros pessoais sincronizados nesta aba.</div>';
-if(state.tab==='flashcards')s+=cards.length?'<p>'+cards.length+' flashcards autorais do tópico '+esc(a.topic)+' (relação temática, não necessariamente com o parágrafo selecionado).</p>'+cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.source)+' · '+esc(x.audit?.lot)+'</p></div>').join('')+'<button class="agu-primary" onclick="setView(\'review\')">Abrir Revisão Inteligente</button>':'<div class="agu-notice">Nenhum cartão vinculado a este tópico.</div>';
-if(state.tab==='comentarios')s+='<label><b>Comentário pessoal deste dispositivo</b><textarea id="agu-legal-note" placeholder="Anotação privada, hipótese ou dúvida">'+esc(state.notes[state.unit]||'')+'</textarea></label><button class="agu-primary" onclick="AGULegal.note()">Salvar anotação</button><p class="agu-muted">Não há sincronização. Não confundir nota pessoal com texto oficial.</p>';
-return s;
+ const c=byUnit.get(state.unit)?.clause;
+ const matching=getRelations().filter(x=>x.deviceId===state.unit);
+ const norm=matching.filter(x=>x.kind==='norma'),juris=matching.filter(x=>x.kind==='jurisprudencia'),questions=matching.filter(x=>x.kind==='questao');
+ const cards=(Array.isArray(root.AGU_AUD03_CARDS)?root.AGU_AUD03_CARDS:[]).filter(x=>x.code===a.topic);
+ let s='<p class="agu-muted">Dispositivo: '+esc(c?.label||a.label)+' · '+esc(a.topic)+' · relações estritamente vinculadas à unidade selecionada.</p>';
+ if(state.tab==='juris')s+=juris.length?'<p class="agu-muted">'+juris.length+' referência(s) jurisprudencial(is) com proveniência documental.</p>'+juris.map(relationCard).join(''):'<div class="agu-notice">Não há jurisprudência indexada com segurança para esta subdivisão. A ausência de vínculo não significa inexistência de julgados.</div>';
+ if(state.tab==='questoes')s+=questions.length?questions.map(relationCard).join(''):'<div class="agu-notice">Nenhuma questão oficial teve número, gabarito definitivo, pertinência a este dispositivo e fundamentação suficientemente conciliados para publicação nesta sprint. Itens permanecem nos acervos de auditoria e de revisão, sem vinculação automática inventada.</div>';
+ if(state.tab==='caderno')s+='<div class="agu-notice">Caderno AGU contextual por dispositivo previsto para a Sprint 15. Nenhuma anotação externa foi atribuída ao estudante.</div>';
+ if(state.tab==='flashcards')s+=cards.length?'<p>'+cards.length+' cartões autorais relacionados ao tópico '+esc(a.topic)+' (associação temática, não especificamente ao parágrafo).</p>'+cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.source)+' · '+esc(x.audit?.lot||'origem autoral')+'</p></div>').join('')+'<button class="agu-primary" onclick="setView(\'review\')">Abrir Revisão Inteligente</button>':'<div class="agu-notice">Nenhum cartão publicado associado a este tópico.</div>';
+ if(state.tab==='comentarios')s+='<label><b>Comentário pessoal deste dispositivo</b><textarea id="agu-legal-note" placeholder="Anotação privada, hipótese ou dúvida">'+esc(state.notes[state.unit]||'')+'</textarea></label><button class="agu-primary" onclick="AGULegal.note()">Salvar anotação</button><p class="agu-muted">Comentários armazenados somente neste navegador.</p>';
+ if(state.tab==='juris'||state.tab==='questoes')s+='<h4>Complementos normativos</h4>'+(norm.length?norm.map(relationCard).join(''):'<p class="agu-muted">Nenhuma evidência normativa complementar ligada a esta subdivisão.</p>');
+ return s;
 }
 function page(){
 if(!articles.length)return '<div class="card">Corpus normativo indisponível. Consulte a publicação.</div>';
@@ -47,5 +69,5 @@ return '<div id="agu-reader" data-mobile="'+esc(state.mobile)+'"><div class="top
 }
 const css='.agu-columns{display:grid;grid-template-columns:minmax(180px,220px) minmax(300px,1fr) minmax(250px,310px);gap:14px;align-items:start}.agu-pane{background:#fff;border:1px solid #dce4e8;border-radius:12px;padding:17px;min-width:0}.agu-index,.agu-related{position:sticky;top:10px;max-height:80vh;overflow-y:auto}.agu-index input{width:100%;padding:10px;border:1px solid #d3dfe4;border-radius:8px}.agu-index-entry{width:100%;text-align:left;display:block;background:#f6f9fa;border:0;border-radius:7px;padding:9px;margin:4px 0}.agu-unit{border-left:3px solid #d7e3e6;padding:12px;line-height:1.65;margin:9px 0;cursor:pointer}.agu-unit.selected,.agu-index-entry.selected{background:#e5f5f2;border-color:#16747a}.agu-unit p{margin:6px 0}.agu-document h2{font-family:Georgia,serif;font-size:25px}.agu-muted{color:#607985;font-size:13px;line-height:1.5}.agu-notice{background:#f0f6f7;padding:11px;border-left:3px solid #77a5a8;border-radius:6px;margin:10px 0}.agu-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.agu-tabs button,.agu-light,.agu-mobile button{padding:9px;border-radius:7px;border:1px solid #d3e0e4;background:#f4f8f9}.agu-tabs button[aria-pressed=true],.agu-primary{background:#156b70;color:white;padding:10px;border-radius:8px}.agu-related textarea{width:100%;min-height:130px;padding:10px;border:1px solid #ccdadd;border-radius:8px}.agu-mobile{display:none}@media(max-width:850px){.agu-columns{display:block}.agu-pane{margin-bottom:12px}.agu-index,.agu-related{position:static;max-height:none}.agu-mobile{display:flex;gap:7px;margin:12px 0}.agu-mobile button{flex:1}#agu-reader[data-mobile=text] .agu-index,#agu-reader[data-mobile=text] .agu-related,#agu-reader[data-mobile=index] .agu-document,#agu-reader[data-mobile=index] .agu-related,#agu-reader[data-mobile=related] .agu-document,#agu-reader[data-mobile=related] .agu-index{display:none}}';
 if(typeof document!=='undefined'&&!document.getElementById('agu-reader-style')){const e=document.createElement('style');e.id='agu-reader-style';e.textContent=css;document.head.appendChild(e)}
-root.AGULegal={page,article,unit,tab,mobile,step,note,exportData,filter,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size})};
+root.AGULegal={page,article,unit,tab,mobile,step,note,exportData,filter,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
 })(window);
