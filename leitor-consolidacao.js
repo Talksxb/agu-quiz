@@ -44,7 +44,7 @@ function setFilters(queryText,kind,status){state.query=String(queryText||'').sli
 function submit(){const q=document.getElementById('agu-search-q')?.value,k=document.getElementById('agu-search-kind')?.value,st=document.getElementById('agu-search-status')?.value;setFilters(q,k,st);}
 function clear(){setFilters('','todos','todos');}
 function toggle(){state.expanded=!state.expanded;persist();root.render?.();}
-function open(unitId){const valid=allClauses().some(x=>x.unit.id===unitId);if(!valid)return false;root.AGULegal?.unit(unitId);return true;}
+function open(unitId){const valid=allClauses().some(x=>x.unit.id===unitId);if(!valid)return false;root.AGULegal?.unit(unitId);root.AGULegal?.mobile('text');return true;}
 function textSize(size){const n=Number(size);if(![90,100,115,130].includes(n))return;state.size=n;persist();root.render?.();}
 const option=(id,name,current)=>'<option value="'+html(id)+'"'+(current===id?' selected':'')+'>'+html(name)+'</option>';
 function searchPanel(){
