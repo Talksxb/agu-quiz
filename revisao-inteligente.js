@@ -231,7 +231,8 @@ function focusedHTML(){
  return '<section class="agu-notice"><div class="agu-muted">Flashcard '+esc(active.code)+' · '+esc(active.validation||'autoral')+'</div>'+cardHTML(active)+
  (revealed?'<div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="secondary" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div>':'')+'</section>'
 }
+function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,attemptsInfo,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
 })(window);
