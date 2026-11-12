@@ -218,6 +218,7 @@ function disciplineMetrics(){
  });
  return out;
 }
+function searchCards(){return ALL.filter(x=>x.kind==='flashcard').map(x=>({id:x.id,code:x.code,front:x.front,back:x.back,source:x.source||'',validation:x.validation||'',origin:x.origin||'flashcard_autoral'}))}
 function availableForTopic(code){
  return ALL.filter(x=>x.kind==='flashcard'&&x.code===code).map(x=>({id:x.id,code:x.code,front:x.front,origin:x.origin||'flashcard_autoral',validation:x.validation||'revisao_pendente',due:stat(x.id).due,seen:stat(x.id).seen||0}))
 }
@@ -234,5 +235,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,attemptsInfo,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,attemptsInfo,searchCards,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
 })(window);
