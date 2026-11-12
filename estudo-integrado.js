@@ -41,6 +41,35 @@ function onRated(e){
  s.attemptIds.push(e.attemptId);s.stage='revisao';s.updatedAt=now();persist();return true
 }
 function finish(){const s=active();if(!s)return false;s.status='concluida';s.completedAt=now();s.updatedAt=s.completedAt;state.activeId=null;persist();return true}
+function validateSession(x,ids){
+ if(!x||typeof x!=='object'||typeof x.id!=='string'||!/^ags-[a-zA-Z0-9-]+$/.test(x.id)||x.id.length>130||ids.has(x.id)||!clauses().has(x.deviceId))return false;
+ if(!['em_andamento','concluida'].includes(x.status)||!stages.includes(x.stage)||typeof x.topic!=='string'||x.topic!==clauses().get(x.deviceId).article.topic)return false;
+ if(typeof x.createdAt!=='string'||typeof x.updatedAt!=='string'||!Array.isArray(x.notes)||!Array.isArray(x.cardsSeen)||!Array.isArray(x.attemptIds))return false;
+ if(x.notes.length>3000||x.cardsSeen.length>3000||x.attemptIds.length>3000)return false;
+ for(const list of [x.notes,x.cardsSeen,x.attemptIds])if(list.some(z=>typeof z!=='string'||z.length>140)||new Set(list).size!==list.length)return false;
+ ids.add(x.id);return true;
+}
+function exportBackup(){return JSON.stringify({schema:'agu-integrated-backup-v1',exportedAt:now(),data:state},null,2)}
+function importBackup(raw){
+ const object=typeof raw==='string'?JSON.parse(raw):raw;
+ if(object?.schema!=='agu-integrated-backup-v1'||object.data?.schema!==VERSION||!Array.isArray(object.data.sessions)||object.data.sessions.length>3000)throw Error('Formato ou tamanho inválido.');
+ const ids=new Set();for(const session of object.data.sessions)if(!validateSession(session,ids))throw Error('Sessão ou ID inválido no backup.');
+ let added=0,skipped=0;const existing=new Set(state.sessions.map(x=>x.id));
+ for(const x of object.data.sessions){if(existing.has(x.id)){skipped++;continue}state.sessions.push({...x});existing.add(x.id);added++}
+ if(added)persist();return {added,skipped};
+}
+function download(){const blob=new Blob([exportBackup()],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AGU_Sessoes_Integradas_backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function readFile(input){
+ const file=input.files?.[0];if(!file)return;if(file.size>3000000){alert('Backup acima do limite de 3 MB.');return}
+ file.text().then(raw=>{try{const parsed=JSON.parse(raw);if(!confirm('Importar apenas sessões novas, preservando os dados atuais?'))return;const result=importBackup(parsed);alert(result.added+' sessão(ões) importada(s); '+result.skipped+' já existentes.');root.render?.()}catch(e){alert('Backup rejeitado: '+e.message)}}).catch(()=>alert('Falha ao ler o arquivo.'));
+}
+function orphans(session){
+ const notes=new Set((root.AGUCaderno?.peek()?.records||[]).map(x=>x.id));
+ const cards=new Set((root.AGUReview?.availableForTopic(session.topic)||[]).map(x=>x.id));
+ // A tentativa continua no histórico original; não copiar seu corpo para a sessão.
+ return {notes:session.notes.filter(id=>!notes.has(id)),cards:session.cardsSeen.filter(id=>!cards.has(id))};
+}
+
 function html(deviceId){
  const item=clauses().get(deviceId),s=active();
  if(!item)return '<div class="agu-notice">Dispositivo não encontrado.</div>';
@@ -51,6 +80,8 @@ function html(deviceId){
   out+=prior.map(x=>'<div class="agu-notice">'+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+' · '+x.notes.length+' notas · '+x.attemptIds.length+' avaliações'+(x.status==='em_andamento'?'<button class="agu-light" onclick="AGUStudy.open(\''+esc(x.id)+'\')">Retomar sessão</button>':'')+'</div>').join('');
   return out;
  }
+ const missing=orphans(s);
+ if(missing.notes.length||missing.cards.length)out+='<div class="agu-notice">Referências antigas não encontradas: '+missing.notes.length+' nota(s), '+missing.cards.length+' cartão(ões). O histórico da sessão foi preservado, sem conteúdo inventado.</div>';
  out+='<p class="agu-muted">Sessão '+esc(s.createdAt.slice(0,10))+' · '+s.notes.length+' registro(s) associados · '+s.attemptIds.length+' avaliação(ões) · Etapa: '+esc(names[s.stage])+'</p>';
  out+='<div class="agu-tabs">'+stages.map(k=>'<button aria-pressed="'+(s.stage===k)+'" onclick="AGUStudy.goto(\''+k+'\')">'+esc(names[k])+'</button>').join('')+'</div>';
  if(s.stage==='norma')out+='<div class="agu-notice"><b>'+esc(item.label)+'</b><p>'+esc(item.text)+'</p><a href="'+esc(item.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir fonte oficial</a></div><button class="agu-primary" onclick="AGUStudy.goto(\'caderno\')">Continuar para Caderno</button>';
@@ -77,6 +108,7 @@ function html(deviceId){
   out+=cards.map(x=>'<p class="agu-muted">'+esc(x.front)+' · '+esc(x.seen)+' avaliação(ões) · próxima: '+esc(x.due||'não agendada')+'</p>').join('')||'<p class="agu-muted">Nenhum flashcard avaliado nesta sessão.</p>';
   out+='<button class="agu-light" onclick="AGUStudy.goto(\'flashcards\')">Voltar aos flashcards</button>';
  }
+ out+='<div class="agu-ctx-box"><b>Backup de sessões</b><p class="agu-muted">Exportação separada dos dados do Caderno e dos resultados da Revisão Inteligente.</p><button class="agu-light" onclick="AGUStudy.download()">Exportar sessões</button><button class="agu-light" onclick="document.getElementById(\'agu-session-import\').click()">Importar sessões</button><input id="agu-session-import" class="hidden" type="file" accept="application/json,.json" onchange="AGUStudy.readFile(this)"></div>';
  out+='<hr><button class="agu-light" onclick="AGUStudy.close()">Encerrar esta sessão</button><p class="agu-muted">Encerrar não registra horas nem certifica o tema; respostas e Caderno permanecem nos módulos originais.</p>';
  return out
 }
@@ -86,5 +118,5 @@ function goto(v){if(stage(v))root.render?.()}
 function pick(id){if(focus(id))root.render?.()}
 function collect(){syncNotes();root.render?.()}
 function close(){if(finish())root.render?.()}
-root.AGUStudy={html,start,resume,stage,focus,onRated,attachNote,syncNotes,finish,sessionsFor,active,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
+root.AGUStudy={html,start,resume,stage,focus,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
 })(window);
