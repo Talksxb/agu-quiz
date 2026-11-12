@@ -132,7 +132,13 @@ function rating(grade){
  const st={stage,due:when(days),seen:(prior.seen||0)+1,errors:(prior.errors||0)+(applied==='errei'?1:0),ease:applied,last:new Date().toISOString(),lastCorrect:correct};
  state.cards[active.id]=st;
  state.attempts.push({id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'});
- persist();choose(currentMode);window.render();
+ persist();
+ if(currentMode==='integrated'){
+  const completed=state.attempts[state.attempts.length-1];
+  if(global.AGUStudy?.onRated)global.AGUStudy.onRated({itemId:completed.itemId,attemptId:completed.id,due:completed.due,rating:completed.rating,at:completed.at});
+  active=null;revealed=false;pick='';
+ }else choose(currentMode);
+ window.render();
 }
 function reveal(){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render()}
 function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(/^[CE]$/.test(v)||/^[A-E]$/.test(v)))return;pick=v;window.render()}
@@ -212,5 +218,20 @@ function disciplineMetrics(){
  });
  return out;
 }
-global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+function availableForTopic(code){
+ return ALL.filter(x=>x.kind==='flashcard'&&x.code===code).map(x=>({id:x.id,code:x.code,front:x.front,origin:x.origin||'flashcard_autoral',validation:x.validation||'revisao_pendente',due:stat(x.id).due,seen:stat(x.id).seen||0}))
+}
+function focusCard(id){
+ const x=INDEX.get(id);
+ if(!x||x.kind!=='flashcard')return false;
+ currentMode='integrated';active=x;revealed=false;pick='';return true;
+}
+function focusedHTML(){
+ if(!active||currentMode!=='integrated')return '';
+ return '<section class="agu-notice"><div class="agu-muted">Flashcard '+esc(active.code)+' · '+esc(active.validation||'autoral')+'</div>'+cardHTML(active)+
+ (revealed?'<div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="secondary" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div>':'')+'</section>'
+}
+function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
+
+global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
 })(window);
