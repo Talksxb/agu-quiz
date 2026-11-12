@@ -147,10 +147,11 @@ function cardHTML(x){
  const q=INLINE_ADAPTED[x.id];
  const a=x.type==='ce'?['C','E']:['A','B','C','D','E'];
  const examUrl=x.year===2015?links.p15:links.p23,keyUrl=x.year===2015?links.g15:links.g23;
+ const legalLink=q?.auditVerified?'<div class="note"><b>Fundamento verificado:</b> '+esc(q.normRef)+' · <a href="'+esc(q.normUrl)+'" target="_blank" rel="noopener noreferrer">Consultar norma oficial</a></div>':'';
  const prompt=q?.auditVerified?'<div class="note"><b>Adaptação autoral de questão oficial:</b> o texto abaixo não é reprodução literal da banca. Gabarito informado refere-se ao item original.</div><h2 class="question-title">'+esc(q.stem)+'</h2>':
  '<p><b>'+esc(x.theme)+'</b></p><p>Este item ainda não tem versão interna conferida. Consulte o PDF original; não será pontuado no modo automático até que esteja preparado.</p>';
  return '<h2>AGU '+x.year+' · '+esc(x.exam)+' · item '+x.number+'</h2>'+base+prompt+
- '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno original PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+
+ '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno original PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+legalLink+
  (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
  !q?.auditVerified?'<div class="note">Questão em revisão jurídica: não disponível para pontuação automática.</div>':
   '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
