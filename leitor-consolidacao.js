@@ -6,7 +6,7 @@ const html=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 const clean=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const allClauses=()=> (root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles.flatMap(a=>a.clauses.map(u=>({law:l,article:a,unit:u}))));
 const rels=()=>root.AGU_LEGAL_RELATIONS?.entries||[];
-const cards=()=>root.AGU_AUD03_CARDS||[];
+const cards=()=>root.AGUReview?.searchCards?.()||root.AGU_AUD03_CARDS||[];
 const defaults=()=>({query:'',filter:'todos',status:'todos',size:100,expanded:false});
 let state=defaults();
 try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x&&typeof x==='object'){state={...state,...x};}}catch(_){}
@@ -26,7 +26,7 @@ function build(){
  }
  // Relação curricular explícita: não vincular flashcard a inciso sem confirmação individual.
  for(const x of cards()){
-  for(const a of units.filter(u=>u.article.topic===x.code&&u.unit.id.endsWith(':caput'))){
+  for(const a of units.filter(u=>u.article.topic===x.code&&u.unit.id.endsWith(':caput')).slice(0,1)){
    out.push({id:'card:'+x.id+':'+a.unit.id,deviceId:a.unit.id,type:'flashcard',status:'parcial',relation:'tematica_por_topico',title:x.front,description:x.back,verification:'Cartão autoral '+x.id+' · '+x.code+'; associação apenas temática',search:x.source+' '+x.code});
   }
  }
