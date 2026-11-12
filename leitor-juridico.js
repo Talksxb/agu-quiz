@@ -13,7 +13,7 @@ let state=defaults();
 try{const prior=JSON.parse(localStorage.getItem(KEY)||'null');if(prior&&typeof prior==='object'&&prior.notes&&typeof prior.notes==='object')state={...state,...prior}}catch(_){}
 if(!byId.has(state.article)){state=defaults()}
 if(!byId.get(state.article)?.clauses.some(c=>c.id===state.unit))state.unit=byId.get(state.article)?.clauses[0]?.id;
-const tabs=[['juris','Jurisprudência'],['questoes','Questões'],['caderno','Caderno'],['flashcards','Flashcards'],['comentarios','Comentários']];
+const tabs=[['juris','Jurisprudência'],['questoes','Questões'],['caderno','Caderno'],['flashcards','Flashcards'],['comentarios','Comentários'],['estudo','Estudo integrado']];
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
 function current(){return byId.get(state.article)||articles[0]}
 function article(id){const a=byId.get(id);if(!a)return;state.article=id;state.unit=a.clauses[0].id;state.mobile='text';save();root.render?.()}
@@ -51,6 +51,7 @@ function related(a){
  if(state.tab==='juris')s+=juris.length?'<p class="agu-muted">'+juris.length+' referência(s) jurisprudencial(is) com proveniência documental.</p>'+juris.map(relationCard).join(''):'<div class="agu-notice">Não há jurisprudência indexada com segurança para esta subdivisão. A ausência de vínculo não significa inexistência de julgados.</div>';
  if(state.tab==='questoes')s+=questions.length?questions.map(relationCard).join(''):'<div class="agu-notice">Nenhuma questão oficial teve número, gabarito definitivo, pertinência a este dispositivo e fundamentação suficientemente conciliados para publicação nesta sprint. Itens permanecem nos acervos de auditoria e de revisão, sem vinculação automática inventada.</div>';
  if(state.tab==='caderno')s+=root.AGUCaderno?.panel({deviceId:state.unit,topic:a.topic})||'<div class="agu-notice">Caderno contextual indisponível.</div>';
+ if(state.tab==='estudo')s+=root.AGUStudy?.html(state.unit)||'<div class="agu-notice">Módulo Estudo Integrado indisponível.</div>';
  if(state.tab==='flashcards')s+=cards.length?'<p>'+cards.length+' cartões autorais relacionados ao tópico '+esc(a.topic)+' (associação temática, não especificamente ao parágrafo).</p>'+cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.source)+' · '+esc(x.audit?.lot||'origem autoral')+'</p></div>').join('')+'<button class="agu-primary" onclick="setView(\'review\')">Abrir Revisão Inteligente</button>':'<div class="agu-notice">Nenhum cartão publicado associado a este tópico.</div>';
  if(state.tab==='comentarios')s+='<label><b>Comentário pessoal deste dispositivo</b><textarea id="agu-legal-note" placeholder="Anotação privada, hipótese ou dúvida">'+esc(state.notes[state.unit]||'')+'</textarea></label><button class="agu-primary" onclick="AGULegal.note()">Salvar anotação</button><p class="agu-muted">Comentários armazenados somente neste navegador.</p>';
  if(state.tab==='juris'||state.tab==='questoes')s+='<h4>Complementos normativos</h4>'+(norm.length?norm.map(relationCard).join(''):'<p class="agu-muted">Nenhuma evidência normativa complementar ligada a esta subdivisão.</p>');
