@@ -291,7 +291,7 @@ function officialExam(){
  let opts=['A','B','C','D','E'];
  const auditItems=window.AGUQuestions18?.all?.()||[];
  return heading('Questões oficiais','Cadernos e respostas históricas')+
- '<div class="card"><b>Questões auditadas no Leitor Jurídico</b><p>'+auditItems.length+' item(ns) com gabarito histórico e fundamento pontualmente conferidos; nenhuma certificação integral do tópico.</p><div class="btnrow">'+auditItems.map(q=>'<button class="secondary" type="button" onclick="openAudited2015(&quot;'+esc(q.id)+'&quot;)>AGU '+q.year+' · Q'+q.number+' · '+esc(q.primaryCurricularId)+'</button>').join('')+'</div></div>'+
+ '<div class="card"><b>Questões auditadas no Leitor Jurídico</b><p>'+auditItems.length+' item(ns) com gabarito histórico e fundamento pontualmente conferidos; nenhuma certificação integral do tópico.</p><div class="btnrow">'+auditItems.map(q=>'<button class="secondary" type="button" onclick="openAudited2015(&quot;'+esc(q.id)+'&quot;)">AGU '+q.year+' · Q'+q.number+' · '+esc(q.primaryCurricularId)+'</button>').join('')+'</div></div>'+
  '<div class="card"><p>Leia o enunciado e as alternativas diretamente no PDF do Cebraspe. Este módulo referencia a questão sem republicar seu conteúdo e registra somente sua resposta local. Gabarito de 2023 não significa vigência jurídica automaticamente revalidada em 2026.</p>'+
  '<div class="split"><label for="officialselect">Questão</label><select id="officialselect" onchange="chooseOfficial(this.value)">'+OFFICIAL_AGU_2023.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===item.id?'selected':'')+'>Questão '+x.n+' — '+esc(x.topic)+(x.key==='X'?' [ANULADA]':'')+'</option>').join('')+'</select></div>'+
  '<p><b>Identificador:</b> '+esc(item.id)+' · <b>Matriz:</b> '+esc(item.curricular_id)+'</p>'+
