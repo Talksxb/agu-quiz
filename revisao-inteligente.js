@@ -106,8 +106,9 @@ const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date()
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
 let active=null,revealed=false,pick='',currentMode='auto';
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const today=()=>new Date().toLocaleDateString('en-CA');
-const when=(days)=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return d.toLocaleDateString('en-CA')};
+const localISO=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const today=()=>localISO(new Date());
+const when=(days)=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return localISO(d)};
 function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
 function stat(id){return state.cards[id]||{stage:0,due:null,errors:0,seen:0,ease:0}}
 function urgent(x){
