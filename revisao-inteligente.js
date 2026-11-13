@@ -106,6 +106,8 @@ const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date()
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
 let active=null,revealed=false,pick='',currentMode='auto';
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// S33: os três botões comprovadamente substituídos por render() no Chrome.
+function focusAfter(selector,keyboard){if(keyboard)document.querySelector?.(selector)?.focus?.({preventScroll:false})}
 const localISO=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const today=()=>localISO(new Date());
 const when=(days)=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return localISO(d)};
@@ -137,7 +139,7 @@ function choose(mode='auto'){
  return active;
 }
 function select(id){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;active=q;revealed=false;pick='';window.render()}
-function rating(grade){
+function rating(grade,keyboard=false){
  if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
  const prior=stat(active.id),isOfficial=active.kind==='official';
  if(isOfficial&&(!pick||!INLINE_ADAPTED[active.id]?.auditVerified))return;
@@ -160,10 +162,11 @@ function rating(grade){
   active=null;revealed=false;pick='';
  }else choose(currentMode);
  window.render();
+ focusAfter('button[onclick^="AGUReview.reveal("]',keyboard);
 }
-function reveal(){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render()}
+function reveal(keyboard=false){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render();focusAfter('button[onclick^="AGUReview.rate(\'errei\'"]',keyboard)}
 function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render()}
-function go(mode){choose(mode);window.render()}
+function go(mode,keyboard=false){choose(mode);window.render();focusAfter('button[onclick^="AGUReview.go(\''+mode+'\'"]',keyboard)}
 function exportData(){
  const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AGU_Revisao_Inteligente_backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
@@ -231,7 +234,7 @@ function cardHTML(x){
   ].filter(Boolean).join('');
   return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
    (revealed?'<div class="feedback"><b>Resposta</b><p>'+esc(x.back)+'</p></div>'+supplemental:
-   '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal()">Mostrar resposta</button></div>');
+   '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal(event.detail===0)">Mostrar resposta</button></div>');
  }
 
  const q=INLINE_ADAPTED[x.id];
@@ -245,7 +248,7 @@ function cardHTML(x){
  (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
  !q?.auditVerified?'<div class="note">Questão em revisão jurídica: não disponível para pontuação automática.</div>':
   '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
-  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p>'+(q.historicReason?'<details class="agu-card-detail"><summary>Fundamentação histórica · data da prova</summary><p>'+esc(q.historicReason)+'</p></details>':'<p>'+esc(q.reason)+'</p>')+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
+  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p>'+(q.historicReason?'<details class="agu-card-detail"><summary>Fundamentação histórica · data da prova</summary><p>'+esc(q.historicReason)+'</p></details>':'<p>'+esc(q.reason)+'</p>')+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal(event.detail===0)">Conferir resposta</button></div>'));
 }
 function catalog(){
  const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));
@@ -262,10 +265,10 @@ function page(){
  return '<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Recuperação ativa e próximas revisões</div></div></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
  '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
- '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\')">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\')">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\')">Questões oficiais</button></div></div>'+
+ '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\',event.detail===0)">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\',event.detail===0)">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\',event.detail===0)">Questões oficiais</button></div></div>'+
  '<div class="card">'+catalog()+'</div>'+
  (active?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
-  (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div></div>':'')+
+  (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
  '</div>':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
  '<details class="card agu-catalog"><summary>Histórico e exportação</summary><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
  '<div class="btnrow"><button class="secondary" onclick="AGUReview.exportData()">Exportar backup JSON</button><button class="secondary" onclick="document.getElementById(\'review-import\').click()">Importar sem substituir</button><input id="review-import" type="file" class="hidden" accept="application/json" onchange="AGUReview.importBackup(this)"></div>'+
@@ -307,7 +310,7 @@ function focusCard(id){
 function focusedHTML(){
  if(!active||!['integrated','integrated_official'].includes(currentMode))return '';
  return '<section class="agu-notice"><div class="agu-muted">Flashcard '+esc(active.code)+' · '+esc(active.validation||'autoral')+'</div>'+cardHTML(active)+
- (revealed?'<div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="secondary" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div>':'')+'</section>'
+ (revealed?'<div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="secondary" onclick="AGUReview.rate(\''+v+'\',event.detail===0)">'+label+'</button>').join('')+'</div>':'')+'</section>'
 }
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}

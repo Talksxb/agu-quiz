@@ -37,6 +37,8 @@ jobs:
         run: node tests/sprint31-validacao.js
       - name: Sprint 32 — foco nos comentários e filtros do Leitor
         run: node tests/sprint32-validacao.js
+      - name: Sprint 33 — foco dos controles do Caderno, Estudo, Revisão e Plano
+        run: node tests/sprint33-validacao.js
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -71,6 +73,8 @@ jobs:
         run: node tests/sprint31-browser.cjs
       - name: Sprint 32 — foco dos formulários em cinco viewports
         run: node tests/sprint32-browser.cjs
+      - name: Sprint 33 — teclado e foco em quatro módulos e cinco viewports
+        run: node tests/sprint33-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -90,6 +94,8 @@ jobs:
             tests/artifacts-s31/*.png
             tests/artifacts-s32/*.json
             tests/artifacts-s32/*.png
+            tests/artifacts-s33/*.json
+            tests/artifacts-s33/*.png
           if-no-files-found: ignore
           retention-days: 7
 

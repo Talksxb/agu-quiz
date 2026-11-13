@@ -33,7 +33,7 @@ async function main(){
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':['leitor-juridico.js','leitor-consolidacao.js'].includes(script)?'20261113-s32a':'20261112-s20b','versão de cache '+script);
+    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':['leitor-juridico.js','leitor-consolidacao.js'].includes(script)?'20261113-s32a':'20261113-s33a','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
