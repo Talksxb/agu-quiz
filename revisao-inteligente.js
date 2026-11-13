@@ -138,7 +138,7 @@ function choose(mode='auto'){
  active=pool[0]||null;revealed=false;pick='';
  return active;
 }
-function select(id){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;active=q;revealed=false;pick='';window.render()}
+function select(id,keyboard=false){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^="AGUReview.reveal("]',keyboard)}
 function rating(grade,keyboard=false){
  if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
  const prior=stat(active.id),isOfficial=active.kind==='official';
@@ -256,7 +256,7 @@ function catalog(){
  const options=[...groups].map(([code,items])=>'<optgroup label="'+esc(code.split('-')[0]+' · '+code)+'">'+items.map(c=>'<option value="'+esc(c.id)+'" '+(active?.id===c.id?'selected':'')+'>'+esc(c.front.slice(0,82))+'</option>').join('')+'</optgroup>').join('');
  return '<details class="agu-catalog"><summary>Encontrar cartão por disciplina e tópico ('+cards.length+')</summary>'+
  '<label for="agu-card-list">Disciplina / ID curricular / assunto</label><select id="agu-card-list" aria-label="Selecionar flashcard">'+options+'</select>'+
- '<button class="secondary" onclick="AGUReview.select(document.getElementById(\'agu-card-list\').value)">Estudar cartão</button>'+
+ '<button class="secondary" onclick="AGUReview.select(document.getElementById(\'agu-card-list\').value,event.detail===0)">Estudar cartão</button>'+
  '<p class="small muted">Identificadores curriculares preservados. As questões oficiais ficam na função própria, com gabarito histórico separado.</p></details>';
 }
 function page(){

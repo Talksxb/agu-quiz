@@ -118,7 +118,7 @@ function html(deviceId){
   out+='<button class="agu-light" onclick="AGUStudy.goto(\'flashcards\',event.detail===0)">Voltar aos flashcards</button>';
  }
  out+='<div class="agu-ctx-box"><b>Backup de sessões</b><p class="agu-muted">Exportação separada dos dados do Caderno e dos resultados da Revisão Inteligente.</p><button class="agu-light" onclick="AGUStudy.download()">Exportar sessões</button><button class="agu-light" onclick="document.getElementById(\'agu-session-import\').click()">Importar sessões</button><input id="agu-session-import" class="hidden" type="file" accept="application/json,.json" onchange="AGUStudy.readFile(this)"></div>';
- out+='<hr><button class="agu-light" onclick="AGUStudy.close()">Encerrar esta sessão</button><p class="agu-muted">Encerrar não registra horas nem certifica o tema; respostas e Caderno permanecem nos módulos originais.</p>';
+ out+='<hr><button class="agu-light" onclick="AGUStudy.close(event.detail===0)">Encerrar esta sessão</button><p class="agu-muted">Encerrar não registra horas nem certifica o tema; respostas e Caderno permanecem nos módulos originais.</p>';
  return out
 }
 function begin(d,keyboard=false){if(start(d)){root.render?.();focusStage('norma',keyboard)}}
@@ -126,6 +126,6 @@ function open(id){if(resume(id))root.render?.()}
 function goto(v,keyboard=false){if(stage(v)){root.render?.();focusStage(v,keyboard)}}
 function pick(id){if(focus(id))root.render?.()}
 function collect(){syncNotes();root.render?.()}
-function close(){if(finish())root.render?.()}
+function close(keyboard=false){if(finish()){root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUStudy.begin("]')?.focus?.({preventScroll:false})}}
 root.AGUStudy={html,start,resume,stage,focus,trackOfficial,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
 })(window);
