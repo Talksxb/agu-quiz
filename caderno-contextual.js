@@ -9,7 +9,7 @@ const TYPE_LABELS={hipotese:"Hipótese",investigacao:"Investigação socrática"
 const STAGES=["problematizacao","hipotese","investigacao_socratica","confrontacao","sistematizacao","aplicacao_agu","consolidacao"];
 const STAGE_LABELS={problematizacao:"Problematização",hipotese:"Formulação de hipótese",investigacao_socratica:"Investigação socrática",confrontacao:"Confrontação",sistematizacao:"Sistematização",aplicacao_agu:"Aplicação AGU",consolidacao:"Consolidação"};
 const safe=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const normId=id=>/^(CF88:art(?:131|132)|L9784:art(?:11|12|13|14|15)):(?:caput|p[123]|pu|I|II|III)$/.test(id);
+const normId=id=>/^(CF88:art(?:37|49|131|132)|L9784:art(?:11|12|13|14|15|50)):(?:caput|p[123]|pu|I|II|III|V|X)$/.test(id);
 const articleList=()=>root.AGU_LEGAL_CORPUS?.laws?.flatMap(l=>l.articles.map(a=>({...a,lawTitle:l.title})))||[];
 const validIds=()=>new Set(articleList().flatMap(a=>a.clauses.map(c=>c.id)));
 const articleOf=id=>articleList().find(a=>a.clauses.some(c=>c.id===id));
