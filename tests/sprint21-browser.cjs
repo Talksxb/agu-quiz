@@ -111,8 +111,8 @@ async function run(){
   assert.equal(new Set(state.review.attempts.map(x=>x.id)).size,4);
   assert.equal(state.notebook.records.length,4);
   assert.ok(state.escaped&&!state.unsafe,'HTML notes should be text');
-  assert.ok(Object.keys(state.bundle.items).length>=4,'capture includes history, notebook, reviews');
-  if(width===390)bundle=state.bundle;
+  assert.ok(Object.keys(state.bundle.items).length>=3,'capture includes notebook, reviews and legal reader');
+  
   await p.reload({waitUntil:'load'});
   assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1')).attempts.length),4);
   await p.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
@@ -126,6 +126,7 @@ async function run(){
   const answers=await p.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_mvp1_2026')).answers);
   assert.equal(answers.length,1);
   assert.equal(answers[0].selected,'A');
+  if(width===390)bundle=await p.evaluate(()=>window.AGUBackup20.capture()); // agora inclui o histórico principal de 2023
   await p.getByRole('button',{name:'Evolução',exact:true}).click();
   await p.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
   await inspectWidth(p,width,'backup');
