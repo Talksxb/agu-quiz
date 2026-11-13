@@ -27,12 +27,12 @@ async function main(){
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
    if(!markup.includes('backup-local-s20.js?v=20261113-s27a'))throw Error('HTML sem a versão esperada');
-   if(!markup.includes('leitor-juridico.js?v=20261113-s31a'))throw Error('HTML sem a versão nova do Leitor');
+   if(!markup.includes('leitor-juridico.js?v=20261113-s31b'))throw Error('HTML sem a versão nova do Leitor');
    if(sha(remote)!==sha(home))throw Error('HTML remoto difere do checkout main, possível cache/propagação');
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':script==='leitor-juridico.js'?'20261113-s31a':'20261112-s20b','versão de cache '+script);
+    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':script==='leitor-juridico.js'?'20261113-s31b':'20261112-s20b','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);

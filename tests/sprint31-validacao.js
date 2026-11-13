@@ -58,7 +58,8 @@ results.push(action('indice_mobile','Art. 132 · CON-51','heading:CF88:art132'))
 const all=results.every(x=>x.ok);
 console.log(all?'S31_FOCO_RENDER_OK':'S31_FOCO_RENDER_FALHAS',JSON.stringify({results,focusLog:document.focusLog.length}));
 assert.ok(all,'foco em artigo/aba/avanço/painel após rerenderização');
-assert.ok(document.focusLog.every(x=>x.options?.preventScroll===true),'foco sem deslocar scroll');
+assert.ok(document.focusLog.every(x=>x.options?.preventScroll===(x.id.startsWith('step:')||x.id.startsWith('heading:')?false:true)),
+ 'índice e abas mantêm scroll; avanço e título mobile revelam foco');
 assert.equal(env.AGULegal.peek().article,'CF88:art132','troca mobile mantém artigo');
 assert.equal(env.AGULegal.peek().mobile,'text','troca de artigo abre painel de texto no mobile');
 assert.equal(JSON.parse(records.get('agu_leitor_juridico_s13_v1')).article,'CF88:art132','estado local preservado');
