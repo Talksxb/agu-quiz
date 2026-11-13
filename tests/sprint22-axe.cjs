@@ -44,7 +44,10 @@ async function main(){
  }
  const summary={runtime:{node:process.version,browser:browser.version(),axe:axe.version},scans:report.length,
   counts:Object.fromEntries(['critical','serious','moderate','minor'].map(s=>[s,report.reduce((n,r)=>n+r.violations.filter(x=>x.impact===s).length,0)])),
-  uniqueIssues:[...new Map(report.flatMap(r=>r.violations.map(v=>[v.id,{id:v.id,impact:v.impact,help:v.help,docs:v.docs}]))).values()]};
+  uniqueIssues:[...new Map(report.flatMap(r=>r.violations.map(v=>[v.id,{id:v.id,impact:v.impact,help:v.help,docs:v.docs}]))).values()],
+  inconclusiveByRule:Object.fromEntries([...new Set(report.flatMap(r=>r.incomplete.map(x=>x.id)))].map(id=>[
+    id,report.filter(r=>r.incomplete.some(x=>x.id===id)).length
+  ]))};
  fs.writeFileSync(path.join(OUT,'axe-diagnostico.json'),JSON.stringify({summary,routes:report},null,2));
  console.log('AXE_S22_RESUMO',JSON.stringify(summary));
  console.log('AXE_S22_CONCLUIDO: varredura diagnóstica; conferir avisos antes de afirmar conformidade WCAG.');
