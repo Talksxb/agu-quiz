@@ -90,9 +90,9 @@ Para a próxima aula, a opção sem serviço adicional é um roteiro versionado 
 
 Arquivos de produto: `index.html` (home/Estudar/meta configurada) e novo `meu-estudo.js`. O módulo original do Leitor, recuperação, dados jurídicos, matrizes e políticas de correção não foram alterados. Mantidas as quatro áreas de navegação.
 
-Verificadores: `tests/work01-validacao.js`, `tests/work01-browser.cjs`; seletor da ação principal atualizado em S23 para o novo texto; workflow habilitado também em PR, com Pages omitido nas PRs para não comparar uma branch inédita ao deploy de main. Artefatos somente sintéticos.
+Verificadores: `tests/work01-validacao.js`, `tests/work01-browser.cjs`; verificador Pages inclui o novo módulo e seletor da ação principal atualizado em S23 para o novo texto; workflow habilitado também em PR, com Pages omitido nas PRs para não comparar uma branch inédita ao deploy de main. Artefatos somente sintéticos.
 
-Local Node v24.22.1: S19 (26), S20 (41), S25, S26, S27, S29, S30, S31 e WORK01 (12 cenários) passaram. WORK01 verifica ausência de escrita na home, retomada de ID/etapa, simulação isolada, plano manual preservado, fallback sem material e agenda original sem tentativa fantasma.
+Local Node v24.22.1: S19 (26), S20 (41), S25, S26, S27, S29, S30, S31 e WORK01 (13 cenários) passaram. WORK01 verifica ausência de escrita na home, retomada de ID/etapa, simulação isolada, plano manual preservado, fallback sem material e agenda original sem tentativa fantasma.
 
 Limitação local de browser: Playwright sem `chromium_headless_shell-1234`; tentativa adicional com `/usr/bin/chromium` abortou em `socket() failed: Operation not permitted`. Portanto **nenhum E2E local aprovado**. O teste novo de CI exige cinco larguras (320/360/390/430/1280), ação visível, foco após entrada, retomada por Enter/Espaço e uma resposta Q48 preservada após reload. Resultado remoto e limitações serão registrados após execução, sem reutilizar como prova os runs S31.
 
@@ -111,3 +111,11 @@ Limitação local de browser: Playwright sem `chromium_headless_shell-1234`; ten
 Próxima entrega: validar a PR e o percurso no telefone; em seguida implementar o acesso privado por commit e a projeção de Biblioteca, incluindo as propostas ENAP sem alterar os 412 IDs. Depois, roteiro de aula ativa no Caderno. Modo escuro e sincronização vêm após esses fluxos, com contraste e recuperação comprovados.
 
 Teste reproduzível: `python3 -m http.server 8080` na raiz do checkout e abrir `http://localhost:8080`. Em navegador novo/sintético: Início → Continuar estudando → Caderno AGU → recarregar → Continuar estudando. Para regressão Node: executar os scripts `tests/*-validacao.js`; para E2E usar o workflow da PR com Playwright/Chromium. O servidor HTTP local serve apenas os arquivos públicos do Quiz; nunca copiar a auditoria privada para sua raiz.
+
+## 9. Falhas intermediárias tratadas
+
+- Run `43476260726`, SHA `a5b3cfb7`: Node passou; navegador falhou no teste S22 ao procurar o atalho Planejamento retirado da tela Estudar. O atalho foi restaurado, preservando o acesso anterior; não se enfraqueceu o teste.
+- Run `43476628982`, SHA `288d1106`: S20/S21/S22/S23 de jornada passaram; S23 axe apontou `aria-prohibited-attr incomplete` em 10 cenários (Início/Estudar em cinco larguras), alvo `.today-summary`. O artefato foi baixado e o JSON inspecionado: `aria-label` num `div` sem papel válido. Corrigido com região nomeada. As 26 varreduras tinham zero `violations`, mas o aviso semântico **não foi ignorado** nem reclassificado como aprovação; uma nova execução completa é exigida.
+- O verificador de publicação foi estendido para incluir `meu-estudo.js` e sua versão de cache; o job continua omitido nas PRs, porque a versão de produção ainda é main.
+
+O resultado definitivo, SHA testado e link da execução ficam registrados na descrição da PR WORK01. Runs intermediários falhos não constituem aceite.

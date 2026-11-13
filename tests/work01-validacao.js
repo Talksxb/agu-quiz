@@ -31,4 +31,5 @@ check('revisão usa agenda e tentativas originais',()=>{const a=r.AGUReview.atte
 check('interface traz fonte, retomada e backup preservado',()=>{assert.ok(main.innerHTML.includes('agu-reader'));assert.ok(html.includes('backup-local-s20.js?v=20261113-s27a'));assert.ok(html.includes('leitor-juridico.js?v=20261113-s31b'))});
 check('storage indisponível não impede apresentação da home',()=>{const original=e.localStorage.getItem;e.localStorage.getItem=()=>{throw Error('SecurityError')};assert.ok(e.AGUHome.panel().includes('Continuar estudando'));e.localStorage.getItem=original});
 check('meta exibida respeita disponibilidade configurada',()=>{e.AGUPlanner.settings().dailyMinutes=[30,30,30,30,30,0,0];e.setView('dashboard');assert.ok(main.innerHTML.includes('Meta configurada: 2h 30m'))});
+check('resumo de atividade tem região nomeada acessível',()=>assert.ok(e.AGUHome.panel().includes('class="today-summary" role="region" aria-label=')));
 console.log('WORK01_VALIDACAO_OK',n);

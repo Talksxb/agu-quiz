@@ -54,7 +54,7 @@ function panel(){
  return '<section class="daily-mission" aria-labelledby="today-title"><div><span class="muted">'+(ctx.demo?'MISSÃO SIMULADA':'MEU ESTUDO DE HOJE')+'</span><h2 id="today-title">'+esc(item.title)+'</h2>'+
  (item.discipline?'<p class="today-discipline">'+esc(item.discipline)+'</p>':'')+'<p>'+esc(item.activity)+'</p><p class="today-detail">'+esc(item.reason)+'<br>'+esc(minutes)+'</p></div>'+
  '<button id="continue-study" class="primary" onclick="AGUHome.continueStudy()">Continuar estudando</button></section>'+
- '<div class="today-summary" aria-label="Atividade registrada neste navegador"><p><b>'+Number(review.due||0)+'</b> revisões pendentes no motor de revisão</p><p><b>'+Number(ctx.legacyDue||0)+'</b> revisões do treino autoral</p><p><b>'+time+'</b> min confirmados nesta semana</p></div>'+
+ '<div class="today-summary" role="region" aria-label="Atividade registrada neste navegador"><p><b>'+Number(review.due||0)+'</b> revisões pendentes no motor de revisão</p><p><b>'+Number(ctx.legacyDue||0)+'</b> revisões do treino autoral</p><p><b>'+time+'</b> min confirmados nesta semana</p></div>'+
  '<div class="btnrow today-links"><button class="secondary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'legal\')">'+(ctx.readerSaved&&!ctx.demo?'Retomar ponto salvo no leitor':'Consultar fontes jurídicas')+'</button><button class="secondary" onclick="setView(\'planner\')">Ver meu plano</button></div>'+
  '<p class="small muted">'+(ctx.demo?'Simulação isolada do histórico real.':attempts.length+' avaliações no motor de revisão · '+notes.length+' notas contextuais. Atividade registrada não equivale a domínio ou certificação jurídica.')+'</p>';
 }
