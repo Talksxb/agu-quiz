@@ -116,7 +116,7 @@ async function run(){
   await p.reload({waitUntil:'load'});
   assert.equal(await p.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1')).attempts.length),4);
   await p.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
-  await p.getByRole('button',{name:'Questões Cebraspe',exact:true}).click();
+  await p.getByRole('button',{name:'Questões Cebraspe'}).click();
   await p.locator('#officialselect').selectOption('AGU-2023-P1-Q007');
   assert.ok((await p.locator('#main').innerText()).includes('Questão anulada'));
   assert.equal(await p.getByRole('button',{name:'Conferir com gabarito definitivo'}).count(),0);
