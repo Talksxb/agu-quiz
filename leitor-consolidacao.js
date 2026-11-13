@@ -36,7 +36,7 @@ function build(){
    relation:x.relationship,title:'AGU '+x.year+' · Q'+x.number+' · '+x.title,
    description:x.adaptedStem+' · '+x.historicReason,source:x.examUrl,
    verification:x.reference+' · '+x.examLocator+' · gabarito '+x.key+' (pontualmente confirmado)',
-   search:x.code+' '+x.primaryCurricularId+' '+x.exam});
+   search:x.code+' '+x.primaryCurricularId+' '+x.exam+' '+x.id+' '+x.deviceId+' '+x.number});
  }
  for(const n of root.AGUCaderno?.peek()?.records||[]){
   if(!unitIds.has(n.deviceId))continue;
