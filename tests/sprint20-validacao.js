@@ -137,4 +137,40 @@ check('configuração e fontes seguem sem sincronização remota',()=>{
  assert.ok(!read('backup-local-s20.js').includes('fetch('));
  assert.ok(!read('backup-local-s20.js').includes('XMLHttpRequest'));
 });
+
+check('backup principal válido e sem registros pode ser validado',()=>{
+ const main={version:1,created:'2026-11-12T10:00:00.000Z',topic:{},answers:[],sessions:[],reviews:[],notebook:[],seed:false};
+ assert.equal(backup.validateRecord('agu_quiz_mvp1_2026',main),true);
+});
+check('backup principal rejeita sessões incompletas',()=>{
+ const invalid={version:1,topic:{},answers:[],sessions:[{}],reviews:[],notebook:[]};
+ assert.equal(backup.validateRecord('agu_quiz_mvp1_2026',invalid),false);
+});
+check('backup principal rejeita IDs duplicados',()=>{
+ const answer={id:'a1',question:'q1',topic:'ADM/X',date:'2026-11-12T10:00:00.000Z',correct:true};
+ const invalid={version:1,topic:{},answers:[answer,answer],sessions:[],reviews:[],notebook:[]};
+ assert.equal(backup.validateRecord('agu_quiz_mvp1_2026',invalid),false);
+});
+for(const [startStage,grade,days] of [[0,'errei',1],[0,'lembrei',7],[1,'lembrei',21],[2,'lembrei',45]]){
+ check('agendamento D+'+days+' de calendário local',()=>{
+  const key='agu_quiz_revisao_inteligente_v1',source={
+   schema:'agu-review-v1',attempts:[],cards:{
+    'of-2015-adv-007':{stage:startStage,due:null,seen:1,errors:0,ease:'lembrei'}
+   },created:new Date().toISOString()
+  };
+  const map=new Map([[key,JSON.stringify(source)]]);
+  const ls={getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,String(v))};
+  const w={render(){}},ctx={window:w,localStorage:ls,document};
+  for(const p of ['dados/flashcards-aud03-lote01.js','dados/questoes-auditadas-s18.js','dados/questoes-auditadas-s19.js','revisao-inteligente.js'])
+   vm.runInNewContext(read(p),ctx,{filename:p});
+  assert.equal(w.AGUReview.focusOfficial('of-2015-adv-007'),true);
+  w.AGUReview.answer('C');w.AGUReview.reveal();w.AGUReview.rate(grade);
+  const actual=JSON.parse(map.get(key)).cards['of-2015-adv-007'].due;
+  const t=new Date(),expected=new Date(t.getFullYear(),t.getMonth(),t.getDate(),12);
+  expected.setDate(expected.getDate()+days);
+  const fmt=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  assert.equal(actual,fmt(expected));
+ });
+}
+
 console.log('RESULTADO: '+passed+' verificações simuladas concluídas.');
