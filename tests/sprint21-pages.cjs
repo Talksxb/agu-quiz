@@ -26,12 +26,12 @@ async function main(){
   try{
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
-   if(!markup.includes('backup-local-s20.js?v=20261112-s20b'))throw Error('HTML sem a versão esperada');
+   if(!markup.includes('backup-local-s20.js?v=20261112-s21a'))throw Error('HTML sem a versão esperada');
    if(sha(remote)!==sha(home))throw Error('HTML remoto difere do checkout main, possível cache/propagação');
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],'20261112-s20b','versão de cache '+script);
+    assert.equal(m[1],script==='backup-local-s20.js'?'20261112-s21a':'20261112-s20b','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
