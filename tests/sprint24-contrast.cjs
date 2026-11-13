@@ -19,7 +19,7 @@ async function main(){
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
  console.log('S24_RUNTIME',JSON.stringify({node:process.version,chromium:browser.version(),axe:axe.version}));
  const origin='http://127.0.0.1:'+server.address().port+'/';
- const result=[];
+ const result=[],focusRecords=[];
  for(const width of [320,360,390,430,1280]){
   const ctx=await browser.newContext({viewport:{width,height:850},reducedMotion:'reduce'}),page=await ctx.newPage();
   await page.goto(origin,{waitUntil:'load'});await page.addScriptTag({content:axe.source});
@@ -57,11 +57,18 @@ async function main(){
   // Foco por teclado em item inicialmente fora do campo horizontal, quando existente.
   await page.evaluate(()=>window.setView('study'));
   const target=page.getByRole('button',{name:'Plano semanal',exact:true});
-  await target.focus();const focusState=await page.evaluate(()=>{
+  const inspectFocus=()=>page.evaluate(async()=>{
+   await new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
    const e=document.activeElement,n=e.closest('.secondary-nav'),r=e.getBoundingClientRect(),b=n.getBoundingClientRect();
-   return {text:e.textContent.trim(),visible:r.left>=b.left-1&&r.right<=b.right+1,scroll:n.scrollLeft};
+   return {text:e.textContent.trim(),visible:r.left>=b.left-1&&r.right<=b.right+1,scroll:n.scrollLeft,
+    rect:{left:r.left,right:r.right},nav:{left:b.left,right:b.right,scrollWidth:n.scrollWidth,clientWidth:n.clientWidth}};
   });
-  assert.equal(focusState.text,'Plano semanal');assert.equal(focusState.visible,true,'foco deve revelar item '+width);
+  await target.focus();const programmaticFocus=await inspectFocus();
+  await page.getByRole('button',{name:'Explorar temas',exact:true}).focus();
+  await page.keyboard.press('Tab');const keyboardFocus=await inspectFocus();
+  focusRecords.push({width,programmaticFocus,keyboardFocus});
+  console.log('S24_FOCUS',JSON.stringify({width,programmaticFocus,keyboardFocus}));
+  assert.equal(keyboardFocus.text,'Plano semanal');
   await target.press('Enter');
   assert.equal(await page.evaluate(()=>document.activeElement?.tagName),'H1','foco permanece visível após rota '+width);
   await ctx.close();
@@ -87,7 +94,7 @@ async function main(){
  const summary={node:process.version,chromium:browser.version(),axe:axe.version,scans:result.length,
   initiallyIncomplete:result.reduce((n,s)=>n+s.start.incomplete.length,0),
   afterScroll:Object.fromEntries([...new Set(result.flatMap(s=>s.trials.map(t=>t.after)))].map(k=>[k,result.flatMap(s=>s.trials).filter(t=>t.after===k).length])),
-  offscreenBecameVisible:result.flatMap(s=>s.trials).filter(t=>t.post?.fullyVisible).length,touches};
+  offscreenBecameVisible:result.flatMap(s=>s.trials).filter(t=>t.post?.fullyVisible).length,focusRecords,touches};
  fs.writeFileSync(path.join(OUT,'contraste-rolagem-teclado-touch.json'),JSON.stringify({summary,routes:result},null,2));
  console.log('S24_RESUMO',JSON.stringify(summary));
  if(result.some(s=>s.start.violations.length)||result.some(s=>s.trials.some(t=>t.after==='violation')))throw Error('Violação axe concreta; examinar relatório');
