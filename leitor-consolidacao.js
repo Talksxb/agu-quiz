@@ -30,7 +30,7 @@ function build(){
    out.push({id:'card:'+x.id+':'+a.unit.id,deviceId:a.unit.id,type:'flashcard',status:'parcial',relation:'tematica_por_topico',title:x.front,description:x.back,verification:'Cartão autoral '+x.id+' · '+x.code+'; associação apenas temática',search:x.source+' '+x.code});
   }
  }
- for(const x of root.AGU_OFFICIAL_S18?.questions||[]){
+ for(const x of root.AGUQuestions18?.all?.()||[]){
   if(!unitIds.has(x.deviceId)||x.status!=='gabarito_definitivo'||!x.key||!x.historicReason||!x.currentReason)continue;
   out.push({id:'questao:'+x.id,deviceId:x.deviceId,type:'questao',status:'confirmado',
    relation:x.relationship,title:'AGU '+x.year+' · Q'+x.number+' · '+x.title,
