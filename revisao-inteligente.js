@@ -72,7 +72,7 @@ exam(2023,10,'A','CON-44','CNJ','mc'),
 exam(2023,11,'E','CON-35','Terras devolutas','mc'),
 exam(2023,12,'D','CON-53','Ordem econômica','mc')
 ];
-const INLINE_ADAPTED={"of-2015-adv-001":{"year":2015,"n":1,"stem":"A Secretaria-Geral de Contencioso da AGU tem atribuição de subsidiar informações prestadas pelo presidente da República ao STF em mandados de segurança.","reason":"ERRADO. O art. 25, II, do Anexo I do Decreto nº 12.540/2025 exclui expressamente da atuação da Secretaria-Geral de Contencioso as informações do Presidente da República em mandados de segurança e de injunção. O art. 30, II, atribui à Consultoria-Geral da União o subsídio às informações prestadas pelo Presidente da República ao STF. Portanto, o item confunde a atuação da Secretaria-Geral de Contencioso perante o STF com uma atribuição específica da Consultoria-Geral. Gabarito definitivo da questão original de 2015: ERRADO. Revisão normativa pontual em 11/11/2026.","adapted":true,"sourceVerified":"2026-11-11","auditVerified":true,"auditDate":"2026-11-11","normRef":"Decreto nº 12.540/2025, Anexo I, arts. 25, II, e 30, II","normUrl":"https://www2.camara.leg.br/legin/fed/decret/2025/decreto-12540-30-junho-2025-797673-anexo-pe.pdf"},"of-2015-adv-002":{"year":2015,"n":2,"stem":"Havendo divergência de interpretação de lei entre consultorias jurídicas de dois ministérios, a uniformização deve ser feita pela Secretaria-Geral de Consultoria da AGU.","reason":"O gabarito definitivo julgou ERRADA essa atribuição específica da unidade mencionada. A organização interna da AGU pode mudar e exige atualização antes de utilizar o item como regra vigente.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-003":{"year":2015,"n":3,"stem":"É possível submeter à Câmara de Conciliação e Arbitragem da Administração Federal conflito extrajudicial envolvendo órgão municipal e autarquia federal.","reason":"A banca julgou CERTO o cabimento da via conciliatória na situação descrita. Conferir competências e regras vigentes da Câmara antes de aplicar ao caso atual.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-004":{"year":2015,"n":4,"stem":"Para prevenir litígio de interesse da União, o advogado-geral da União pode autorizar termo de ajustamento de conduta pela Administração federal, incluindo sanção pelo descumprimento.","reason":"A banca julgou CERTO o item de 2015. A autorização e as condições do ajuste precisam ser examinadas conforme a disciplina atualmente aplicável.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-005":{"year":2015,"n":5,"stem":"Um ministro indeferiu pedido administrativo por despacho, com fundamento em nota técnica. O indeferimento deveria necessariamente ter a forma de resolução, e não de despacho.","reason":"ERRADO: a forma 'resolução' não é exigida apenas por se tratar de indeferimento. A motivação por referência à nota técnica é discussão distinta.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-006":{"year":2015,"n":6,"stem":"O despacho que indefere pedido e remete a nota técnica pertinente apresenta vício de forma apenas porque não repete, no próprio texto, toda a fundamentação de fato e de direito.","reason":"ERRADO: a motivação pode ser realizada por remissão expressa a fundamentos de outra peça, conforme o caso (Lei 9.784/1999, art. 50, § 1º).","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-007":{"year":2015,"n":7,"stem":"Se um ministro regulamentar gratificação por portaria e ultrapassar seu poder regulamentar, o Congresso Nacional poderá sustar o ato.","reason":"CERTO, conforme a banca em 2015. A CF, art. 49, V, prevê competência congressual para sustar atos normativos do Executivo que exorbitem do poder regulamentar ou dos limites de delegação legislativa.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-008":{"year":2015,"n":8,"stem":"Portarias ministeriais que regulamentam disposições de normas superiores são atos regulamentares de segundo grau.","reason":"CERTO no gabarito histórico: a portaria constitui ato infralegal subordinado às normas superiores, diferentemente de regulamento com fundamento diretamente em lei.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-009":{"year":2015,"n":9,"stem":"Uma portaria ministerial pode criar gratificação de desempenho para servidores com base apenas no princípio constitucional da eficiência, sem autorização legal.","reason":"ERRADO: gratificação exige suporte legal; a eficiência não substitui reserva de lei para vantagens remuneratórias.","adapted":true,"sourceVerified":"2026-11-11"},"of-2023-adv-003":{"year":2023,"n":3,"stem":"Na classificação tradicional do poder constituinte originário, qual combinação descreve suas características jurídicas?","options":[{"id":"A","label":"Autônomo, limitado e incondicionado."},{"id":"B","label":"Subordinado, limitado e incondicionado."},{"id":"C","label":"Subordinado, ilimitado e condicionado."},{"id":"D","label":"Autônomo, ilimitado e incondicionado."},{"id":"E","label":"Autônomo, ilimitado e condicionado."}],"reason":"Alternativa D: na classificação tradicional, o poder constituinte originário instaura a ordem jurídica, não está juridicamente submetido ao ordenamento anterior e não depende de forma preestabelecida. Trata-se de caracterização jurídica, não de juízo de legitimidade democrática.","adapted":true,"sourceVerified":"2026-11-11"}};
+const INLINE_ADAPTED={"of-2015-adv-001":{"year":2015,"n":1,"stem":"A Secretaria-Geral de Contencioso da AGU tem atribuição de subsidiar informações prestadas pelo presidente da República ao STF em mandados de segurança.","reason":"ERRADO. O art. 25, II, do Anexo I do Decreto nº 12.540/2025 exclui expressamente da atuação da Secretaria-Geral de Contencioso as informações do Presidente da República em mandados de segurança e de injunção. O art. 30, II, atribui à Consultoria-Geral da União o subsídio às informações prestadas pelo Presidente da República ao STF. Portanto, o item confunde a atuação da Secretaria-Geral de Contencioso perante o STF com uma atribuição específica da Consultoria-Geral. Gabarito definitivo da questão original de 2015: ERRADO. Revisão normativa pontual em 11/11/2026.","adapted":true,"sourceVerified":"2026-11-11","auditVerified":false,"historicVerification":"pendente_fundamentacao_na_data_da_prova_2015","auditDate":"2026-11-11","normRef":"Decreto nº 12.540/2025, Anexo I, arts. 25, II, e 30, II","normUrl":"https://www2.camara.leg.br/legin/fed/decret/2025/decreto-12540-30-junho-2025-797673-anexo-pe.pdf"},"of-2015-adv-002":{"year":2015,"n":2,"stem":"Havendo divergência de interpretação de lei entre consultorias jurídicas de dois ministérios, a uniformização deve ser feita pela Secretaria-Geral de Consultoria da AGU.","reason":"O gabarito definitivo julgou ERRADA essa atribuição específica da unidade mencionada. A organização interna da AGU pode mudar e exige atualização antes de utilizar o item como regra vigente.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-003":{"year":2015,"n":3,"stem":"É possível submeter à Câmara de Conciliação e Arbitragem da Administração Federal conflito extrajudicial envolvendo órgão municipal e autarquia federal.","reason":"A banca julgou CERTO o cabimento da via conciliatória na situação descrita. Conferir competências e regras vigentes da Câmara antes de aplicar ao caso atual.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-004":{"year":2015,"n":4,"stem":"Para prevenir litígio de interesse da União, o advogado-geral da União pode autorizar termo de ajustamento de conduta pela Administração federal, incluindo sanção pelo descumprimento.","reason":"A banca julgou CERTO o item de 2015. A autorização e as condições do ajuste precisam ser examinadas conforme a disciplina atualmente aplicável.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-005":{"year":2015,"n":5,"stem":"Um ministro indeferiu pedido administrativo por despacho, com fundamento em nota técnica. O indeferimento deveria necessariamente ter a forma de resolução, e não de despacho.","reason":"ERRADO: a forma 'resolução' não é exigida apenas por se tratar de indeferimento. A motivação por referência à nota técnica é discussão distinta.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-006":{"year":2015,"n":6,"stem":"O despacho que indefere pedido e remete a nota técnica pertinente apresenta vício de forma apenas porque não repete, no próprio texto, toda a fundamentação de fato e de direito.","reason":"ERRADO: a motivação pode ser realizada por remissão expressa a fundamentos de outra peça, conforme o caso (Lei 9.784/1999, art. 50, § 1º).","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-007":{"year":2015,"n":7,"stem":"Se um ministro regulamentar gratificação por portaria e ultrapassar seu poder regulamentar, o Congresso Nacional poderá sustar o ato.","reason":"CERTO, conforme a banca em 2015. A CF, art. 49, V, prevê competência congressual para sustar atos normativos do Executivo que exorbitem do poder regulamentar ou dos limites de delegação legislativa.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-008":{"year":2015,"n":8,"stem":"Portarias ministeriais que regulamentam disposições de normas superiores são atos regulamentares de segundo grau.","reason":"CERTO no gabarito histórico: a portaria constitui ato infralegal subordinado às normas superiores, diferentemente de regulamento com fundamento diretamente em lei.","adapted":true,"sourceVerified":"2026-11-11"},"of-2015-adv-009":{"year":2015,"n":9,"stem":"Uma portaria ministerial pode criar gratificação de desempenho para servidores com base apenas no princípio constitucional da eficiência, sem autorização legal.","reason":"ERRADO: gratificação exige suporte legal; a eficiência não substitui reserva de lei para vantagens remuneratórias.","adapted":true,"sourceVerified":"2026-11-11"},"of-2023-adv-003":{"year":2023,"n":3,"stem":"Na classificação tradicional do poder constituinte originário, qual combinação descreve suas características jurídicas?","options":[{"id":"A","label":"Autônomo, limitado e incondicionado."},{"id":"B","label":"Subordinado, limitado e incondicionado."},{"id":"C","label":"Subordinado, ilimitado e condicionado."},{"id":"D","label":"Autônomo, ilimitado e incondicionado."},{"id":"E","label":"Autônomo, ilimitado e condicionado."}],"reason":"Alternativa D: na classificação tradicional, o poder constituinte originário instaura a ordem jurídica, não está juridicamente submetido ao ordenamento anterior e não depende de forma preestabelecida. Trata-se de caracterização jurídica, não de juízo de legitimidade democrática.","adapted":true,"sourceVerified":"2026-11-11"}};
 // Extensão incremental: lote público, carregado antes deste módulo.
 for(const x of global.AGU_OFFICIAL_S18?.questions||[]){
  if(x.id!=='of-2015-adv-048')continue;
@@ -167,20 +167,57 @@ function exportData(){
  const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AGU_Revisao_Inteligente_backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
 }
+/* Sprint 20 — validação de backups de tentativas sem substituir estados de revisão atuais. */
+const BACKUP_LIMIT=3000000;
+const dateIso=x=>typeof x==='string'&&/^\\d{4}-\\d{2}-\\d{2}T/.test(x)&&Number.isFinite(Date.parse(x));
+const dueIso=x=>x===null||x===undefined||(typeof x==='string'&&/^\\d{4}-\\d{2}-\\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+'T12:00:00Z')));
+function validAttempt(x){
+ const card=INDEX.get(x?.itemId);
+ if(!x||!card||typeof x.id!=='string'||!/^rv-[a-zA-Z0-9-]{1,112}$/.test(x.id)||x.kind!==card.kind||!dateIso(x.at))return false;
+ if(!['errei','dificil','lembrei','facil'].includes(x.rating)||!dueIso(x.due)||!Number.isInteger(x.stage)||x.stage<0||x.stage>3)return false;
+ if(typeof x.code!=='string'||x.code.length>80||typeof x.sourceStatus!=='string'||x.sourceStatus.length>180)return false;
+ if(card.kind==='official'){
+  if(!['C','E','A','B','D'].includes(x.selected)||typeof x.correct!=='boolean')return false;
+  if(card.type==='ce'&&!['C','E'].includes(x.selected))return false;
+ }else if(x.selected!==null||x.correct!==null)return false;
+ return true;
+}
+function validateBackupObject(raw){
+ const x=typeof raw==='string'?JSON.parse(raw):raw;
+ if(x?.schema!=='agu-review-backup-v1'||x.data?.schema!=='agu-review-v1'||!Array.isArray(x.data.attempts)||!x.data.cards||typeof x.data.cards!=='object'||Array.isArray(x.data.cards)||x.data.attempts.length>20000)throw Error('Backup de revisão incompatível.');
+ const ids=new Set();
+ for(const attempt of x.data.attempts){
+  if(!validAttempt(attempt)||ids.has(attempt.id))throw Error('Tentativa inválida ou ID repetido no backup.');
+  ids.add(attempt.id);
+ }
+ return x.data.attempts;
+}
+function mergeBackupObject(raw){
+ const imported=validateBackupObject(raw);
+ const known=new Set(state.attempts.map(a=>a.id));
+ const extras=imported.filter(a=>!known.has(a.id));
+ // Não importar 'cards': estágios e agendas atuais não são sobrescritos.
+ if(extras.length){
+  const next={...state,attempts:state.attempts.concat(extras.map(a=>({...a})))};
+  localStorage.setItem(KEY,JSON.stringify(next));state=next;
+ }
+ return {added:extras.length,skipped:imported.length-extras.length,reviewSchedulePreserved:true};
+}
 function importBackup(input){
- const file=input.files&&input.files[0];if(!file)return;
+ const file=input?.files?.[0];if(!file)return;
+ if(file.size>BACKUP_LIMIT){alert('Backup acima do limite de 3 MB.');return}
  const reader=new FileReader();reader.onload=()=>{
- try{
-  const x=JSON.parse(String(reader.result));
-  if(x.schema!=='agu-review-backup-v1'||x.data?.schema!=='agu-review-v1'||!Array.isArray(x.data.attempts)||!x.data.cards)throw Error('Backup incompatível');
-  const newIds=new Set(state.attempts.map(a=>a.id));
-  const extras=x.data.attempts.filter(a=>a&&a.id&&INDEX.has(a.itemId)&&!newIds.has(a.id));
-  if(!confirm('Importar '+extras.length+' tentativas adicionais sem apagar o histórico atual?'))return;
-  // Do not silently replace current spaced states with potentially older backups.
-  state.attempts.push(...extras);persist();window.render();
-  alert('Tentativas importadas. Estados de revisão existentes preservados; reprogramação deve ser conferida manualmente.');
- }catch(e){alert('Não foi possível importar: '+e.message)}
- };reader.readAsText(file);
+  try{
+   const raw=String(reader.result);
+   if(raw.length>BACKUP_LIMIT)throw Error('Backup excede o limite permitido.');
+   const incoming=validateBackupObject(raw);
+   const known=new Set(state.attempts.map(a=>a.id));
+   const add=incoming.filter(a=>!known.has(a.id)).length;
+   if(!confirm('Importar '+add+' tentativa(s) adicional(is), mantendo o histórico e o agendamento existentes?'))return;
+   const result=mergeBackupObject(raw);window.render();
+   alert(result.added+' tentativa(s) importada(s), '+result.skipped+' já existentes. O agendamento atual permanece preservado.');
+  }catch(e){alert('Importação rejeitada: '+e.message)}
+ };reader.onerror=()=>alert('Falha na leitura do backup.');reader.readAsText(file);
 }
 function cardHTML(x){
  const st=stat(x.id),base='<div class="note">Tópico <b>'+esc(x.code)+'</b> · '+esc(x.kind==='official'?'Cebraspe · Advogado da União':'Flashcard autoral')+' · '+esc(x.validation)+'</div>';
@@ -274,5 +311,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,validateBackupObject,mergeBackupObject,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
