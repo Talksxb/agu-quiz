@@ -41,7 +41,7 @@ Também foram lidas as referências pedagógicas anexadas ao projeto, sobretudo 
 
 ## 3. Deploy, autenticação e infraestrutura
 
-O [GitHub Pages existente](https://talksxb.github.io/agu-quiz/) serve o site público. A coleção de Actions confirmou deploy concluído com sucesso sobre `3017a916`; a CI de produto anterior `43472332230`, sobre `e472b9d3`, terminou com sucesso. Esses runs são **baseline**, não teste desta mudança.
+O [GitHub Pages existente](https://talksxb.github.io/agu-quiz/) respondeu HTTP 200; seu HTML foi comparado por SHA-256 e bytes ao baseline de main, com igualdade. Ele serve o site público. A coleção de Actions confirmou deploy concluído com sucesso sobre `3017a916`; a CI de produto anterior `43472332230`, sobre `e472b9d3`, terminou com sucesso. Esses runs são **baseline**, não teste desta mudança.
 
 Não há servidor, banco, autenticação, SDK Supabase, integração de Sheets ativa ou configuração Render no repositório. Nenhuma infraestrutura de outro projeto foi presumida como parte do AGU. O progresso pertence à origem/navegador via `localStorage`. Clonar a auditoria privada via Git local falhou por ausência de credencial CLI; sua inspeção foi possível pelo conector autenticado, sem copiar credenciais para o código.
 
@@ -92,7 +92,7 @@ Arquivos de produto: `index.html` (home/Estudar/meta configurada) e novo `meu-es
 
 Verificadores: `tests/work01-validacao.js`, `tests/work01-browser.cjs`; seletor da ação principal atualizado em S23 para o novo texto; workflow habilitado também em PR, com Pages omitido nas PRs para não comparar uma branch inédita ao deploy de main. Artefatos somente sintéticos.
 
-Local Node v24.22.1: S19 (26), S20 (41), S25, S26, S27, S29, S30, S31 e WORK01 passaram. WORK01 verifica ausência de escrita na home, retomada de ID/etapa, simulação isolada, plano manual preservado, fallback sem material e agenda original sem tentativa fantasma.
+Local Node v24.22.1: S19 (26), S20 (41), S25, S26, S27, S29, S30, S31 e WORK01 (12 cenários) passaram. WORK01 verifica ausência de escrita na home, retomada de ID/etapa, simulação isolada, plano manual preservado, fallback sem material e agenda original sem tentativa fantasma.
 
 Limitação local de browser: Playwright sem `chromium_headless_shell-1234`; tentativa adicional com `/usr/bin/chromium` abortou em `socket() failed: Operation not permitted`. Portanto **nenhum E2E local aprovado**. O teste novo de CI exige cinco larguras (320/360/390/430/1280), ação visível, foco após entrada, retomada por Enter/Espaço e uma resposta Q48 preservada após reload. Resultado remoto e limitações serão registrados após execução, sem reutilizar como prova os runs S31.
 

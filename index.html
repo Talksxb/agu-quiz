@@ -266,7 +266,7 @@ function study(){
  return heading('Estudar','Retome sua atividade ou consulte o roteiro')+window.AGUHome.panel()+
  '<div class="hub-tiles">'+[
  ['explore','Explorar disciplinas','Escolher outro assunto para praticar'],
- ['library','Biblioteca Inteligente','Leitura, questões e Caderno AGU']
+ ['planner','Planejamento','Roteiro de estudo e disponibilidade semanal']
  ].map(([v,t,sub])=>'<button class="hub-entry" onclick="setView(\''+v+'\')"><b>'+t+'</b><span>'+sub+'</span></button>').join('')+'</div>';
 }
 function evolution(){
@@ -419,7 +419,7 @@ function organization(){
 function setOrganizationMode(mode){if(['prioridade','horas','constancia','questoes'].includes(mode)){organizationMode=mode;render()}}
 
 function render(){const pages={dashboard,study,library,evolution,organization,planner:()=>window.AGUPlanner.page(),explore,curriculum,matrix:matrixPage,quiz,officialExam,review:()=>window.AGUReview.page(),legal:()=>window.AGULegal.page(),sessions,notebook,settings};if(!pages[view])view='dashboard';$('#main').innerHTML=navigationInside()+pages[view]();document.querySelectorAll('.nav').forEach(x=>{const active=x.dataset.view===currentGroup();x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
-window.AGUHomeContext=()=>({demo,recommended:recommended(),disciplines:D,practiceTopics:[...new Set(Q.filter(q=>quizMode!=='ce'||q.type==='ce').map(q=>q.topic))],weekMinutes:weekMinutes(),legacyDue:dueReview().length,readerSaved:!!localStorage.getItem('agu_leitor_juridico_s13_v1')});
+window.AGUHomeContext=()=>{let readerSaved=false;try{readerSaved=!!localStorage.getItem('agu_leitor_juridico_s13_v1')}catch{}return {demo,recommended:recommended(),disciplines:D,practiceTopics:[...new Set(Q.filter(q=>quizMode!=='ce'||q.type==='ce').map(q=>q.topic))],weekMinutes:weekMinutes(),legacyDue:dueReview().length,readerSaved}};
 window.AGUPlannerContext=()=>({disciplines:D,sessions:data.sessions,answers:data.answers,reviews:data.reviews,notebook:data.notebook,topic:data.topic});window.setOrganizationMode=setOrganizationMode;window.openAudited2015=openAudited2015;window.chooseOfficial=chooseOfficial;window.chooseOfficialLetter=chooseOfficialLetter;window.gradeOfficial=gradeOfficial;window.nextOfficial=nextOfficial;window.importMatrixPrompt=importMatrixPrompt;window.importCurriculum=importCurriculum;window.saveQuestionMap=saveQuestionMap;window.unmapQuestion=unmapQuestion;window.matrixTopic=matrixTopic;window.setMatrixDisc=setMatrixDisc;window.matrixSearchChanged=matrixSearchChanged;window.exportIntegration=exportIntegration;window.quizSeen=quizSeen;window.setView=setView;window.startQuiz=startQuiz;window.choose=choose;window.submitAnswer=submitAnswer;window.saveJustification=saveJustification;window.saveRubric=saveRubric;window.nextQuestion=nextQuestion;window.toggleTimer=toggleTimer;window.confirmTimer=confirmTimer;window.addManual=addManual;window.makeNotebook=makeNotebook;window.downloadMarkdown=downloadMarkdown;window.switchDemo=switchDemo;window.exportJSON=exportJSON;window.importJSON=importJSON;window.resetReal=resetReal;window.render=render;
 // Um botão parcialmente recortado pode receber Tab sem rolagem automática no Chromium.
 // Revelar apenas o controle focado da faixa horizontal, preservando os demais fluxos.
