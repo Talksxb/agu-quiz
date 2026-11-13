@@ -17,6 +17,8 @@ const entries=[
 const keys=new Set(entries.map(x=>x[0]));
 const isObj=x=>x&&typeof x==='object'&&!Array.isArray(x);
 const capArr=(v,n=20000)=>Array.isArray(v)&&v.length<=n;
+// O limite do arquivo é em bytes UTF-8 (Blob.size), não em unidades UTF-16 de String.length.
+const fileBytes=value=>new Blob([value]).size;
 function validateRecord(key,obj){
  if(!isObj(obj))return false;
  switch(key){
@@ -86,24 +88,25 @@ function capture(){
  for(const [key] of entries){
   const value=localStorage.getItem(key);
   if(value===null)continue;
-  if(value.length>MAX)throw Error('Uma categoria excede o limite de exportação: '+key);
+  if(fileBytes(value)>MAX)throw Error('Categoria excede 12 MB; não apague os dados locais. Verifique o limite do backup específico: '+key);
   let parsed;try{parsed=JSON.parse(value)}catch(_){throw Error('Dados não são JSON válido: '+key)}
   if(!validateRecord(key,parsed))throw Error('Categoria com estrutura inconsistente: '+key+'. Preserve o navegador e faça o backup específico desse módulo.');
   items[key]=value;
  }
  const bundle={schema:'agu-portable-local-s20-v1',version:1,createdAt:new Date().toISOString(),items};
- if(JSON.stringify(bundle).length>MAX)throw Error('Backup completo excede 12 MB; exporte os módulos separadamente.');
+ if(fileBytes(JSON.stringify(bundle))>MAX)throw Error('Backup completo excede 12 MB; preserve os dados e verifique os limites de cada módulo.');
  return bundle;
 }
 function validateBundle(raw){
- if(typeof raw==='string'&&raw.length>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
+ if(typeof raw==='string'&&fileBytes(raw)>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
  const b=typeof raw==='string'?JSON.parse(raw):raw;
  if(!isObj(b)||b.schema!=='agu-portable-local-s20-v1'||b.version!==1||!isObj(b.items)||Object.keys(b.items).length>keys.size)throw Error('Formato de backup local incompatível.');
  for(const [key,value] of Object.entries(b.items)){
-  if(!keys.has(key)||typeof value!=='string'||value.length>MAX)throw Error('Categoria não autorizada ou excedendo limite.');
+  if(!keys.has(key)||typeof value!=='string'||fileBytes(value)>MAX)throw Error('Categoria não autorizada ou excedendo limite.');
   let obj;try{obj=JSON.parse(value)}catch(_){throw Error('JSON inválido na categoria '+key)}
   if(!validateRecord(key,obj))throw Error('Categoria inválida: '+key);
  }
+ if(fileBytes(JSON.stringify(b))>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
  return b;
 }
 function importMissing(raw){
@@ -121,6 +124,8 @@ function importMissing(raw){
 function exportFile(){
  try{
   const str=JSON.stringify(capture(),null,2),blob=new Blob([str],{type:'application/json'});
+  // A formatação do arquivo também aumenta seu tamanho; conferir o JSON final exportado.
+  if(blob.size>MAX)throw Error('Arquivo gerado excede 12 MB; preserve os dados e verifique os limites de cada módulo.');
   const url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download='AGU_Backup_Local_Completo.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
  }catch(e){alert('Não foi possível exportar: '+e.message)}
@@ -148,3 +153,4 @@ function panel(){
 }
 root.AGUBackup20={panel,capture,validateBundle,validateRecord,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};
 })(window);
+

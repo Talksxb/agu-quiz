@@ -43,7 +43,7 @@ const window={
  AGUPlannerContext:()=>({disciplines:[['ADM','Administrativo',['Atos administrativos']]],
  sessions:[],answers:[],reviews:[],notebook:[],topic:{}})
 };
-const context={window,document,localStorage,console,Date,Math};
+const context={window,document,localStorage,console,Date,Math,Blob};
 for(const p of scripts)vm.runInNewContext(read(p),context,{filename:p});
 const review=window.AGUReview,planner=window.AGUPlanner,reader=window.AGULegal,notes=window.AGUCaderno;
 const study=window.AGUStudy,questions=window.AGUQuestions18,backup=window.AGUBackup20;
@@ -174,3 +174,4 @@ for(const [startStage,grade,days] of [[0,'errei',1],[0,'lembrei',7],[1,'lembrei'
 }
 
 console.log('RESULTADO: '+passed+' verificações simuladas concluídas.');
+
