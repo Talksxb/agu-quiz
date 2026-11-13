@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprint 20 (Node + Chromium)
+name: AGU Quiz · Sprints 20–21 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -37,11 +37,26 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Fluxo real no navegador (emulação de viewport, não Android físico)
         run: node tests/sprint20-browser.cjs
+      - name: Sprint 21 — quatro itens, viewport, teclas e restauração real
+        run: node tests/sprint21-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: agu-s20-chromium-viewports
-          path: tests/artifacts-s20/*.png
+          path: |
+            tests/artifacts-s20/*.png
+            tests/artifacts-s21/*.png
           if-no-files-found: ignore
           retention-days: 7
+
+  pages-publicado:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
+        run: node tests/sprint21-pages.cjs
