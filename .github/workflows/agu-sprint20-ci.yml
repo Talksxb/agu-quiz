@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprints 20–21 (Node + Chromium + Pages)
+name: AGU Quiz · Sprints 20–22 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -39,6 +39,8 @@ jobs:
         run: node tests/sprint20-browser.cjs
       - name: Sprint 21 — quatro itens, viewport, teclas e restauração real
         run: node tests/sprint21-browser.cjs
+      - name: Sprint 22 — backup completo de nove categorias e jornada mobile
+        run: node tests/sprint22-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
