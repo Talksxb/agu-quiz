@@ -32,6 +32,12 @@ async function inspectWidth(page,w,phase){
   });
   return {scroll,inner,nav,reduced:window.matchMedia('(prefers-reduced-motion: reduce)').matches};
  });
+ if(m.scroll>m.inner+2){
+  const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>{
+   const r=e.getBoundingClientRect();return {tag:e.tagName,id:e.id,cls:String(e.className).slice(0,90),width:Math.round(r.width),right:Math.round(r.right),scroll:e.scrollWidth,txt:(e.textContent||'').trim().slice(0,45)}
+  }).filter(e=>e.right>innerWidth+2).sort((a,b)=>b.right-a.right).slice(0,18));
+  console.log('OVERFLOW_DIAGNOSTICO',w,phase,JSON.stringify(offenders));
+ }
  assert.ok(m.scroll<=m.inner+2,'overflow '+phase+' '+w+' '+JSON.stringify(m));
  assert.equal(m.nav.length,4);
  if(w<=430)assert.ok(m.nav.every(n=>n.h>=44),'nav target too short '+JSON.stringify(m.nav));
