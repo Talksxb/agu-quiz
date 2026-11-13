@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprints 20–22 (Node + Chromium + Pages)
+name: AGU Quiz · Sprints 20–23 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -43,6 +43,8 @@ jobs:
         run: node tests/sprint22-browser.cjs
       - name: Sprint 22 — axe-core diagnóstico de acessibilidade
         run: node tests/sprint22-axe.cjs
+      - name: Sprint 23 — elementos inconclusivos axe e semântica
+        run: node tests/sprint23-axe.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -52,6 +54,7 @@ jobs:
             tests/artifacts-s20/*.png
             tests/artifacts-s21/*.png
             tests/artifacts-s22/*.json
+            tests/artifacts-s23/*.json
           if-no-files-found: ignore
           retention-days: 7
 
@@ -65,3 +68,4 @@ jobs:
           node-version: '22'
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
+
