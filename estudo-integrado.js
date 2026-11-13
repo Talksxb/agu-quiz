@@ -34,9 +34,16 @@ function focus(cardId){
  if(!s.cardsSeen.includes(cardId))s.cardsSeen.push(cardId);
  s.stage='flashcards';s.updatedAt=now();persist();return true
 }
+function trackOfficial(qid,deviceId){
+ const s=active(),q=(root.AGU_OFFICIAL_S18?.questions||[]).find(x=>x.id===qid);
+ if(!s||!q||q.deviceId!==deviceId||s.deviceId!==deviceId)return false;
+ if(!Array.isArray(s.questionsSeen))s.questionsSeen=[];
+ if(!s.questionsSeen.includes(qid))s.questionsSeen.push(qid);
+ s.stage='questoes';s.updatedAt=now();persist();return true;
+}
 function onRated(e){
  const s=active();
- if(!s||!e?.attemptId||!s.cardsSeen.includes(e.itemId)||s.attemptIds.includes(e.attemptId))return false;
+ if(!s||!e?.attemptId||!(s.cardsSeen.includes(e.itemId)||(s.questionsSeen||[]).includes(e.itemId))||s.attemptIds.includes(e.attemptId))return false;
  if(root.AGUReview?.reviewInfo(e.itemId)?.code!==s.topic)return false;
  s.attemptIds.push(e.attemptId);s.stage='revisao';s.updatedAt=now();persist();return true
 }
@@ -90,8 +97,8 @@ function html(deviceId){
   out+='<p>Crie sua hipótese, objeção ou aplicação na aba Caderno, mantendo este dispositivo selecionado. Depois vincule registros já salvos à sessão.</p><button class="agu-light" onclick="AGULegal.tab(\'caderno\')">Abrir Caderno</button><button class="agu-light" onclick="AGUStudy.collect()">Vincular registros existentes</button><p class="agu-muted">Registros disponíveis: '+notes.length+' · associados: '+s.notes.length+'</p><button class="agu-primary" onclick="AGUStudy.goto(\'questoes\')">Continuar</button>';
  }
  if(s.stage==='questoes'){
-  const questions=(root.AGU_LEGAL_RELATIONS?.entries||[]).filter(x=>x.deviceId===deviceId&&x.kind==='questao'&&x.sourceStatus==='confirmado'&&x.gabaritoDefinitivo&&x.legalReason);
-  out+=questions.length?'<p>'+questions.length+' questão(ões) documentalmente reconciliada(s). Consulte a aba Questões para conferir a fonte.</p><button class="agu-light" onclick="AGULegal.tab(\'questoes\')">Consultar questões</button>':'<div class="agu-notice">Ainda não há questão oficial inteiramente reconciliada com este dispositivo. Não será inventado enunciado nem gabarito.</div>';
+  const questions=(root.AGU_OFFICIAL_S18?.questions||[]).filter(x=>x.deviceId===deviceId&&x.key&&x.historicReason&&x.currentReason&&x.status==='gabarito_definitivo');
+  out+=questions.length?'<p>'+questions.length+' questão(ões) com caderno, gabarito e fundamento verificados pontualmente. Consulte Questões para responder.</p><button class="agu-light" onclick="AGULegal.tab(\'questoes\')">Consultar questões</button>':'<div class="agu-notice">Ainda não há questão oficial inteiramente reconciliada com este dispositivo. Não será inventado enunciado nem gabarito.</div>';
   out+='<button class="agu-primary" onclick="AGUStudy.goto(\'flashcards\')">Continuar para flashcards</button>';
  }
  if(s.stage==='flashcards'){
@@ -118,5 +125,5 @@ function goto(v){if(stage(v))root.render?.()}
 function pick(id){if(focus(id))root.render?.()}
 function collect(){syncNotes();root.render?.()}
 function close(){if(finish())root.render?.()}
-root.AGUStudy={html,start,resume,stage,focus,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
+root.AGUStudy={html,start,resume,stage,focus,trackOfficial,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
 })(window);
