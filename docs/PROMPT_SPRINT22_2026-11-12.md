@@ -11,7 +11,7 @@ Prosseguir a estabilização funcional, com foco no uso diário do AGU Quiz, rec
 
 ### 2. Fontes e reconhecimento obrigatório
 
-- App: `https://github.com/Talksxb/agu-quiz`, branch `main`. Auditoria privada: `https://github.com/Talksxb/agu-auditoria`. Consultar `docs/PROTOCOLO.md`, `checkpoints/estado.json` e checkpoint AUD03 mais recente; no corte da Sprint 21, havia **AUD03-014**, parcial e **zero certificações integrais**. Conferir se progrediu.
+- App: `https://github.com/Talksxb/agu-quiz`, branch `main`. Auditoria privada: `https://github.com/Talksxb/agu-auditoria`. Consultar `docs/PROTOCOLO.md`, `checkpoints/estado.json` e checkpoint AUD03 mais recente; no encerramento da Sprint 21, o estado persistido era **AUD03-015**, status parcial e **zero certificações integrais**, após merge documentado; conferir a situação novamente ao iniciar a Sprint 22.
 - App: começar pelos checkpoints das Sprints 19–21, `index.html`, `revisao-inteligente.js`, `backup-local-s20.js`, `planejamento-semanal.js`, `caderno-contextual.js`, `estudo-integrado.js`, `leitor-juridico.js`, `questoes-leitor-s18.js`, `leitor-consolidacao.js`, dados S18/S19, `docs/GUIA_BACKUP_LOCAL_S21.md`.
 - Testes: `tests/sprint19-validacao.js`, `tests/sprint20-validacao.js`, `tests/sprint20-browser.cjs`, `tests/sprint21-browser.cjs`, `tests/sprint21-pages.cjs`, `.github/workflows/agu-sprint20-ci.yml`.
 - Preservar os **quatro itens auditados** (`of-2015-adv-006`, `-007`, `-009`, `-048`) e 36 flashcards; não equiparar as 24 referências oficiais do catálogo a 24 questões plenamente certificadas. Conservar resposta 2015 C/E e prova 2023 A–E, anuladas excluídas da pontuação.
