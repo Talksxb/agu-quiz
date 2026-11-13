@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprints 20–25 (Node + Chromium + Pages)
+name: AGU Quiz · Sprints 20–26 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -25,6 +25,8 @@ jobs:
         run: node tests/sprint20-validacao.js
       - name: Sprint 25 — limite em bytes e recuperação UTF-8 não destrutiva
         run: node tests/sprint25-validacao.js
+      - name: Sprint 26 — anotações do Leitor devem ser texto válido
+        run: node tests/sprint26-validacao.js
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20

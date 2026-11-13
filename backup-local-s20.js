@@ -71,7 +71,7 @@ function validateRecord(key,obj){
   }))return false;
   return obj.activeId===null||obj.activeId===undefined||ids.has(obj.activeId);
  }
- case 'agu_leitor_juridico_s13_v1':return typeof obj.article==='string'&&typeof obj.unit==='string'&&isObj(obj.notes)&&Object.keys(obj.notes).length<=500;
+ case 'agu_leitor_juridico_s13_v1':return typeof obj.article==='string'&&typeof obj.unit==='string'&&isObj(obj.notes)&&Object.keys(obj.notes).length<=500&&Object.values(obj.notes).every(note=>typeof note==='string'&&note.length<=14000);
  case 'agu_consolidacao_s17_v1':return typeof obj.query==='string'&&obj.query.length<=150&&['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(obj.filter)&&['todos','confirmado','parcial','pendente','pessoal'].includes(obj.status)&&[90,100,115,130].includes(obj.size);
  case 'agu_quiz_curriculo_repo_v1':{
   // A fonte curricular local deve passar nas mesmas regras que a importação normal.

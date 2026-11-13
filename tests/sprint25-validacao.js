@@ -42,13 +42,19 @@ assert.equal(digest(state.get(key)),hashBefore,'exportação rejeitada preserva 
 console.log('S25_UTF8_REJEICAO_OK',JSON.stringify({caracteres:raw.length,bytes:Buffer.byteLength(raw,'utf8'),validos:largeNotes.length}));
 
 // Outra reprodução: backup compacto sob o limite, mas JSON indentado acima de 12 MB.
+// Usar registros válidos do Caderno; uma única nota gigantesca não é válida no Leitor.
 state.clear();
-const legalKey='agu_leitor_juridico_s13_v1',legal={article:article.id,unit:deviceId,notes:{[deviceId]:''}};
-state.set(legalKey,JSON.stringify(legal));
+const nearNotes=Array.from({length:760},(_,i)=>record('perto-'+i,'A'.repeat(14000)));
+assert.ok(nearNotes.every(x=>env.AGUCaderno.valid(x)));
+state.set(key,rawCaderno(nearNotes));
 const base=env.AGUBackup20.capture(),compact=JSON.stringify(base),pretty=JSON.stringify(base,null,2);
-assert.ok(pretty.length>compact.length+2);
-legal.notes[deviceId]='A'.repeat(MAX-compact.length-Math.floor((pretty.length-compact.length)/2));
-state.set(legalKey,JSON.stringify(legal));
+const gap=Buffer.byteLength(pretty,'utf8')-Buffer.byteLength(compact,'utf8');
+const remaining=MAX-Math.floor(gap/2)-Buffer.byteLength(compact,'utf8');
+assert.ok(gap>0&&remaining>0&&remaining<=nearNotes.length*2000,'massa deve alcançar a fronteira de 12 MB');
+let extra=remaining;
+for(const item of nearNotes){const amount=Math.min(2000,extra);item.content+='A'.repeat(amount);extra-=amount;if(!extra)break;}
+assert.ok(nearNotes.every(x=>env.AGUCaderno.valid(x)));
+state.set(key,rawCaderno(nearNotes));
 const compactValid=JSON.stringify(env.AGUBackup20.capture()),prettyOversized=JSON.stringify(env.AGUBackup20.capture(),null,2);
 assert.ok(Buffer.byteLength(compactValid)<MAX&&Buffer.byteLength(prettyOversized)>MAX);
 const before=downloaded;
