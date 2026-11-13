@@ -33,7 +33,9 @@ async function main(){
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port+'/',{waitUntil:'load'});
   await page.evaluate(()=>{
-   localStorage.setItem('agu_quiz_mvp1_2026',JSON.stringify({notebook:[{id:'legado-artificial-s35',topic:'ADM/06',title:'Cópia legado fictícia',hypothesis:'Nota sem dados pessoais'}]}));
+   const key='agu_quiz_mvp1_2026',existing=JSON.parse(localStorage.getItem(key)||'null')||{};
+   const prior={version:1,created:new Date().toISOString(),topic:{},answers:[],sessions:[],reviews:[],notebook:[],seed:false,...existing};
+   localStorage.setItem(key,JSON.stringify({...prior,notebook:[{id:'legado-artificial-s35',topic:'ADM/06',title:'Cópia legado fictícia',hypothesis:'Nota sem dados pessoais'}]}));
    window.AGULegal.unit('L9784:art13:I');window.setView('legal');
   }); // preparação, não prova de navegação com Tab
   if(width<850)await page.locator('#agu-reader .agu-mobile button').nth(2).click();
