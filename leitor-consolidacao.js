@@ -79,9 +79,10 @@ function settings(){
 function metrics(){
  const notes=root.AGUCaderno?.peek()?.records||[],sessions=root.AGUStudy?.peek()?.sessions||[];
  const attempts=root.AGUReview?.attemptsInfo?.()||[];
- const dated=attempts.filter(x=>x.due&&x.due<=new Date().toISOString().slice(0,10));
+ const d=new Date(),localDay=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+ const dated=attempts.filter(x=>x.due&&x.due<=localDay);
  const review=root.AGUReview?.summary?.()||{};
- return {articles:new Set(sessions.map(x=>x.deviceId)).size,sessions:sessions.length,completed:sessions.filter(x=>x.status==='concluida').length,notes:notes.length,attempts:attempts.length,due:review.due||0,scheduled:attempts.filter(x=>x.due&&x.due>new Date().toISOString().slice(0,10)).length,attemptsDue:dated.length};
+ return {articles:new Set(sessions.map(x=>x.deviceId)).size,sessions:sessions.length,completed:sessions.filter(x=>x.status==='concluida').length,notes:notes.length,attempts:attempts.length,due:review.due||0,scheduled:attempts.filter(x=>x.due&&x.due>localDay).length,attemptsDue:dated.length};
 }
 function metricPanel(){const x=metrics();return '<div class="agu-notice"><b>Atividade real registrada</b><p>'+x.articles+' dispositivos com sessão · '+x.sessions+' sessões · '+x.completed+' encerradas · '+x.notes+' notas contextuais · '+x.attempts+' avaliações registradas · '+x.due+' revisões vencidas</p><p class="agu-muted">São contagens de atividade, não certificação de domínio ou cobertura integral do edital.</p></div>';}
 root.AGUConsolidation={build,query,searchPanel,versionPanel,settings,metricPanel,metrics,open,submit,setFilters,clear,toggle,textSize,peek:()=>JSON.parse(JSON.stringify(state))};
