@@ -28,7 +28,8 @@ async function main(){
   assert.equal(topFocus.tag,'BUTTON');assert.notEqual(topFocus.outline,'none');
   await page.getByRole('button',{name:'Estudar',exact:true}).click();
   assert.equal(await page.getByRole('navigation',{name:'Navegação interna de Estudar'}).count(),1);
-  await page.getByRole('button',{name:'Plano semanal',exact:true}).click();
+  // Ativação real por teclado: foco-visível só é exigível após navegação por teclado.
+  await page.getByRole('button',{name:'Plano semanal',exact:true}).press('Enter');
   const focus=await page.evaluate(()=>({tag:document.activeElement?.tagName,text:document.activeElement?.textContent?.trim(),main:document.querySelector('#main h1')?.textContent,outline:getComputedStyle(document.activeElement).outlineStyle}));
   assert.equal(focus.tag,'H1','foco de navegação interna não pode cair no body');
   assert.equal(focus.text,focus.main);assert.notEqual(focus.outline,'none');
