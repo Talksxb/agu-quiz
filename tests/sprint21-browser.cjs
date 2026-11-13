@@ -164,6 +164,37 @@ async function run(){
   const rejected=await dest.evaluate(raw=>{try{window.AGUBackup20.validateBundle(raw);return false}catch(_){return true}},b);
   assert.equal(rejected,true,'backup malformado deve ser rejeitado');
  }
+
+ const extra=await dest.evaluate(b=>{
+  const invalid=[];
+  function refuses(candidate){try{window.AGUBackup20.validateBundle(candidate);return false}catch(_){return true}}
+  const note=JSON.parse(b.items.agu_caderno_contextual_s15_v1);
+  const duplicateNotes={...note,records:[note.records[0],note.records[0]]};
+  invalid.push(['duplicated_notebook_ids',refuses({...b,items:{...b.items,agu_caderno_contextual_s15_v1:JSON.stringify(duplicateNotes)}})]);
+  const nonexistent={...note,records:[{...note.records[0],deviceId:'CF88:art999:caput'}]};
+  invalid.push(['unknown_device_notebook',refuses({...b,items:{...b.items,agu_caderno_contextual_s15_v1:JSON.stringify(nonexistent)}})]);
+  const review=JSON.parse(b.items.agu_quiz_revisao_inteligente_v1);
+  const repeated={...review,attempts:[review.attempts[0],review.attempts[0]]};
+  invalid.push(['duplicated_review_attempts',refuses({...b,items:{...b.items,agu_quiz_revisao_inteligente_v1:JSON.stringify(repeated)}})]);
+  const malformedReview={...review,attempts:[{...review.attempts[0],selected:'Z'}]};
+  invalid.push(['invalid_review_choice',refuses({...b,items:{...b.items,agu_quiz_revisao_inteligente_v1:JSON.stringify(malformedReview)}})]);
+  const missingDevice={schema:'agu-integrated-study-v1',sessions:[{id:'ags-unknown',deviceId:'CF88:art999:caput',topic:'ADM-27',
+     status:'em_andamento',stage:'norma',notes:[],cardsSeen:[],attemptIds:[],createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()}],activeId:null};
+  invalid.push(['unknown_device_session',refuses({...b,items:{...b.items,agu_estudo_integrado_s16_v1:JSON.stringify(missingDevice)}})]);
+  invalid.push(['old_backup_version',refuses({...b,version:0})]);
+  invalid.push(['size_exceeds_limit',refuses(JSON.stringify(b).padEnd(12000001,'x'))]);
+  return invalid;
+ },bundle);
+ for(const [name,rejected] of extra)assert.equal(rejected,true,'rejeitar '+name);
+ const dialogs=[];
+ dest.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
+ await dest.getByRole('button',{name:'Evolução',exact:true}).click();
+ await dest.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
+ await dest.locator('#agu-s20-backup-file').setInputFiles({
+  name:'arquivo-grande.json',mimeType:'application/json',buffer:Buffer.alloc(12000001,32)
+ });
+ assert.ok(dialogs.some(d=>d.includes('12 MB')),'arquivo maior que 12 MB rejeitado na interface');
+ console.log('OK S21 validação aprofundada: IDs, dispositivo, alternativa, versão e 12 MB.');
  const zero=await browser.newContext();const quota=await zero.newPage();await quota.goto(url,{waitUntil:'load'});
  const rollback=await quota.evaluate(b=>{
   const setter=Storage.prototype.setItem;let n=0,out='não_falhou';
