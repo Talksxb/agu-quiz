@@ -104,17 +104,58 @@ function exportJSON(){
  const blob=new Blob([JSON.stringify({schema:"agu-planner-backup-v1",exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"});
  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="AGU_Planejamento_Semanal_backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)
 }
+/* Sprint 20: impedir que semanas malformadas corrompam o planejamento. */
+const ISO_DAY=/^\\d{4}-\\d{2}-\\d{2}$/;
+const validMinutes=n=>Number.isInteger(n)&&n>=0&&n<=780;
+const isDate=x=>typeof x==='string'&&ISO_DAY.test(x)&&!Number.isNaN(Date.parse(x+'T12:00:00Z'));
+function validWeek(key,w){
+ if(!isDate(key)||monday(parseDay(key))!==key||!w||w.start!==key||!Array.isArray(w.days)||w.days.length!==7)return false;
+ const ids=new Set();
+ for(let i=0;i<7;i++){
+  const day=w.days[i];
+  if(!day||day.date!==dateAdd(key,i)||!validMinutes(day.minutes)||!Array.isArray(day.tasks)||day.tasks.length>100)return false;
+  let sum=0;
+  for(const task of day.tasks){
+   if(!task||typeof task.id!=='string'||task.id.length>150||!task.id||ids.has(task.id)||!['aula','revisao','questoes'].includes(task.type))return false;
+   if(typeof task.topic!=='string'||task.topic.length<1||task.topic.length>240||!validMinutes(task.minutes)||typeof task.done!=='boolean'||typeof task.manual!=='boolean')return false;
+   ids.add(task.id);sum+=task.minutes;
+  }
+  if(sum>day.minutes)return false;
+ }
+ return true;
+}
+function validateBackupObject(raw){
+ const b=typeof raw==='string'?JSON.parse(raw):raw;
+ if(b?.schema!=='agu-planner-backup-v1'||b.data?.schema!==VERSION||!b.data.weeks||typeof b.data.weeks!=='object'||Array.isArray(b.data.weeks))throw Error('Backup de planejamento incompatível.');
+ const settings=b.data.settings?.dailyMinutes;
+ if(!Array.isArray(settings)||settings.length!==7||!settings.every(validMinutes))throw Error('Metas semanais inválidas.');
+ const weeks=Object.entries(b.data.weeks);
+ if(weeks.length>520||weeks.some(([key,w])=>!validWeek(key,w)))throw Error('Semana importada inválida; nenhuma modificação realizada.');
+ return weeks;
+}
+function mergeBackupObject(raw){
+ const incoming=validateBackupObject(raw),merged={...state.weeks};
+ let added=0;
+ for(const [key,week] of incoming)if(!Object.hasOwn(merged,key)){merged[key]=week;added++}
+ if(added){
+  const next={...state,weeks:merged};
+  localStorage.setItem(KEY,JSON.stringify(next));state=next;
+ }
+ return {added,skipped:incoming.length-added,preservedSettings:true};
+}
 function importBackup(input){
  const f=input?.files?.[0];if(!f)return;
+ if(f.size>3000000){alert('Backup acima do limite de 3 MB.');return}
  const reader=new FileReader();reader.onload=()=>{
-  try{const v=JSON.parse(String(reader.result));
-   if(v.schema!=="agu-planner-backup-v1"||v.data?.schema!==VERSION||!v.data?.weeks||!Array.isArray(v.data.settings?.dailyMinutes))throw Error("Formato inválido");
-   if(!confirm("Importar semanas do backup? Semanas existentes serão preservadas."))return;
-   let count=0;
-   for(const [key,week] of Object.entries(v.data.weeks)){if(/^\d{4}-\d{2}-\d{2}$/.test(key)&&!state.weeks[key]&&Array.isArray(week?.days)&&week.days.length===7){state.weeks[key]=week;count++}}
-   save();global.render?.();alert(count+" semana(s) adicionada(s); registros existentes preservados.")
-  }catch(e){alert("Importação rejeitada: "+e.message)}
- };reader.readAsText(f)
+  try{
+   const raw=String(reader.result);
+   if(raw.length>3000000)throw Error('Backup acima do limite permitido.');
+   const incoming=validateBackupObject(raw);
+   if(!confirm('Importar até '+incoming.length+' semanas novas? Semanas e metas atuais serão preservadas.'))return;
+   const result=mergeBackupObject(raw);
+   global.render?.();alert(result.added+' semana(s) adicionada(s), '+result.skipped+' já existentes. Metas locais mantidas.');
+  }catch(e){alert('Importação rejeitada: '+e.message)}
+ };reader.onerror=()=>alert('Falha na leitura do backup.');reader.readAsText(f);
 }
 function html(){
  const week=ensure(),s=stats(week),n=next(week),ctx=asTopics(),choices=ctx.topics;
@@ -154,5 +195,5 @@ function regenerate(){
 }
 function edit(i,id,field,value){if(!change(i,id,field,value))alert("Alteração inválida.");global.render?.()}
 function shift(i,id,n){if(!move(i,id,n))alert("O dia de destino não tem capacidade disponível. Ajuste os minutos semanais antes de mover.");global.render?.()}
-global.AGUPlanner={page:html,ensure,current,create,generate,stats,next,change,move,edit,shift,applyHours,regenerate,exportData:exportJSON,importBackup,settings:()=>state.settings,weekKey:monday,peek:()=>state};
+global.AGUPlanner={page:html,ensure,current,create,generate,stats,next,change,move,edit,shift,applyHours,regenerate,exportData:exportJSON,importBackup,validateBackupObject,mergeBackupObject,settings:()=>state.settings,weekKey:monday,peek:()=>state};
 })(window);
