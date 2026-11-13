@@ -232,14 +232,13 @@ async function run(){
   return invalid;
  },bundle);
  for(const [name,rejected] of extra)assert.equal(rejected,true,'rejeitar '+name);
- const dialogs=[];
- dest.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
+ const beforeOversize=restoreDialogs.length;
  await dest.getByRole('button',{name:'Evolução',exact:true}).click();
  await dest.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
  await dest.locator('#agu-s20-backup-file').setInputFiles({
   name:'arquivo-grande.json',mimeType:'application/json',buffer:Buffer.alloc(12000001,32)
  });
- assert.ok(dialogs.some(d=>d.includes('12 MB')),'arquivo maior que 12 MB rejeitado na interface');
+ assert.ok(restoreDialogs.slice(beforeOversize).some(d=>d.includes('12 MB')),'arquivo maior que 12 MB rejeitado na interface');
  console.log('OK S21 validação aprofundada: IDs, dispositivo, alternativa, versão e 12 MB.');
  const zero=await browser.newContext();const quota=await zero.newPage();await quota.goto(url,{waitUntil:'load'});
  const rollback=await quota.evaluate(b=>{
