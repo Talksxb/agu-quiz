@@ -5,7 +5,7 @@
 'use strict';
 const fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path'),assert=require('node:assert/strict');
 const BASE='https://talksxb.github.io/agu-quiz/';
-const scripts=['revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js'];
+const scripts=['revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js','leitor-juridico.js'];
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const delay=n=>new Promise(ok=>setTimeout(ok,n));
 async function get(url){
@@ -27,16 +27,17 @@ async function main(){
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
    if(!markup.includes('backup-local-s20.js?v=20261113-s27a'))throw Error('HTML sem a versão esperada');
+   if(!markup.includes('leitor-juridico.js?v=20261113-s29a'))throw Error('HTML sem a versão nova do Leitor');
    if(sha(remote)!==sha(home))throw Error('HTML remoto difere do checkout main, possível cache/propagação');
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':'20261112-s20b','versão de cache '+script);
+    assert.equal(m[1],script==='backup-local-s20.js'?'20261113-s27a':script==='leitor-juridico.js'?'20261113-s29a':'20261112-s20b','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
    }
-   console.log('PAGES_VERIFICADO: URL HTTPS, HTML e 4 scripts correspondem ao commit do checkout.');
+   console.log('PAGES_VERIFICADO: URL HTTPS, HTML e 5 scripts correspondem ao commit do checkout.');
    return;
   }catch(e){
    console.error('Pages tentativa',attempt,'falhou:',e.message);
