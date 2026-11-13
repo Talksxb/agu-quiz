@@ -43,6 +43,8 @@ jobs:
         run: node tests/sprint22-browser.cjs
       - name: Sprint 22 — axe-core diagnóstico de acessibilidade
         run: node tests/sprint22-axe.cjs
+      - name: Sprint 23 — foco, nove categorias e arquivos adversariais
+        run: node tests/sprint23-browser.cjs
       - name: Sprint 23 — elementos inconclusivos axe e semântica
         run: node tests/sprint23-axe.cjs
       - name: Guardar capturas de viewport sintéticas

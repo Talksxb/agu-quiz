@@ -223,10 +223,16 @@ function currentGroup(){return NAV_GROUPS[view]||'dashboard'}
 function navigationInside(){
  const group=currentGroup(),items=NAV_ITEMS[group];
  if(!items)return '';
- return '<div class="secondary-nav" aria-label="Navegação interna de '+(group==='library'?'Biblioteca Inteligente':group==='study'?'Estudar':'Evolução')+'">'+
- items.map(([id,label])=>'<button type="button" class="secondary-nav-item '+(view===id?'active':'')+'" '+(view===id?'aria-current="page"':'')+' onclick="setView(\''+id+'\')">'+label+'</button>').join('')+(group==='library'?'<details class="secondary-more"><summary>Mais</summary><div class="secondary-more-list">'+[['notebook','Caderno AGU'],['curriculum','Currículo'],['matrix','Matriz 2022']].map(([id,label])=>'<button onclick="setView(\''+id+'\')" '+(view===id?'aria-current="page"':'')+'>'+label+'</button>').join('')+'</div></details>':'')+'</div>';
+ return '<nav class="secondary-nav" aria-label="Navegação interna de '+(group==='library'?'Biblioteca Inteligente':group==='study'?'Estudar':'Evolução')+'">'+
+ items.map(([id,label])=>'<button type="button" class="secondary-nav-item '+(view===id?'active':'')+'" '+(view===id?'aria-current="page"':'')+' onclick="setView(\''+id+'\')">'+label+'</button>').join('')+(group==='library'?'<details class="secondary-more"><summary>Mais</summary><div class="secondary-more-list">'+[['notebook','Caderno AGU'],['curriculum','Currículo'],['matrix','Matriz 2022']].map(([id,label])=>'<button onclick="setView(\''+id+'\')" '+(view===id?'aria-current="page"':'')+'>'+label+'</button>').join('')+'</div></details>':'')+'</nav>';
 }
-function setView(v){if(!NAV_GROUPS[v])return;view=v;feedback=null;selected=null;render()}
+function setView(v){
+ if(!NAV_GROUPS[v])return;
+ // O acionador interno desaparece ao redesenhar a página: não deixar o foco perdido no <body>.
+ const inside=$('#main')?.contains(document.activeElement);
+ view=v;feedback=null;selected=null;render();
+ if(inside){const title=$('#main h1');if(title){title.tabIndex=-1;title.focus({preventScroll:true})}}
+}
 function info(t){return data.topic[t]||{score:0,evidence:0,state:'Não iniciado'}}
 function states(){let x={};for(let d of D)for(let t of d[2]){const s=info(topicId(d[0],t)).state;x[s]=(x[s]||0)+1}return x}
 function allTopics(){return D.flatMap(d=>d[2].map(t=>({id:topicId(d[0],t),disc:d[0],name:t})))}
@@ -410,3 +416,4 @@ function setOrganizationMode(mode){if(['prioridade','horas','constancia','questo
 function render(){const pages={dashboard,study,library,evolution,organization,planner:()=>window.AGUPlanner.page(),explore,curriculum,matrix:matrixPage,quiz,officialExam,review:()=>window.AGUReview.page(),legal:()=>window.AGULegal.page(),sessions,notebook,settings};if(!pages[view])view='dashboard';$('#main').innerHTML=navigationInside()+pages[view]();document.querySelectorAll('.nav').forEach(x=>{const active=x.dataset.view===currentGroup();x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
 window.AGUPlannerContext=()=>({disciplines:D,sessions:data.sessions,answers:data.answers,reviews:data.reviews,notebook:data.notebook,topic:data.topic});window.setOrganizationMode=setOrganizationMode;window.openAudited2015=openAudited2015;window.chooseOfficial=chooseOfficial;window.chooseOfficialLetter=chooseOfficialLetter;window.gradeOfficial=gradeOfficial;window.nextOfficial=nextOfficial;window.importMatrixPrompt=importMatrixPrompt;window.importCurriculum=importCurriculum;window.saveQuestionMap=saveQuestionMap;window.unmapQuestion=unmapQuestion;window.matrixTopic=matrixTopic;window.setMatrixDisc=setMatrixDisc;window.matrixSearchChanged=matrixSearchChanged;window.exportIntegration=exportIntegration;window.quizSeen=quizSeen;window.setView=setView;window.startQuiz=startQuiz;window.choose=choose;window.submitAnswer=submitAnswer;window.saveJustification=saveJustification;window.saveRubric=saveRubric;window.nextQuestion=nextQuestion;window.toggleTimer=toggleTimer;window.confirmTimer=confirmTimer;window.addManual=addManual;window.makeNotebook=makeNotebook;window.downloadMarkdown=downloadMarkdown;window.switchDemo=switchDemo;window.exportJSON=exportJSON;window.importJSON=importJSON;window.resetReal=resetReal;window.render=render;document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else{render()}
 </script></body></html>
+

@@ -29,8 +29,15 @@ async function main(){
     const details=x=>x.nodes.map(n=>({target:n.target,html:n.html.slice(0,320),failureSummary:n.failureSummary,
       any:n.any.map(c=>({id:c.id,data:c.data,message:c.message})),all:n.all.map(c=>({id:c.id,data:c.data,message:c.message})),
       none:n.none.map(c=>({id:c.id,data:c.data,message:c.message}))}));
+    const channel=color=>(color.match(/[\d.]+/g)||[]).slice(0,3).map(Number);
+    const luminance=color=>{const c=channel(color).map(v=>{const x=v/255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722};
+    const contrast=el=>{let bg='rgb(255,255,255)';for(let n=el;n;n=n.parentElement){const s=getComputedStyle(n).backgroundColor;if(s.startsWith('rgb(')){bg=s;break}}
+      const fg=getComputedStyle(el).color,a=luminance(fg),b=luminance(bg);
+      return {text:el.textContent.trim().slice(0,70),fg,bg,ratio:Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(2)),clipped:el.getBoundingClientRect().right>innerWidth};
+    };
     return {violations:out.violations.map(x=>({id:x.id,impact:x.impact,help:x.help,nodes:details(x)})),
       incomplete:out.incomplete.map(x=>({id:x.id,impact:x.impact,help:x.help,nodes:details(x)})),
+      navContrast:[...document.querySelectorAll('.secondary-nav-item,.secondary-more > summary')].map(contrast),
       fileTriggers:[...document.querySelectorAll('input[type="file"]')].map(x=>({id:x.id,display:getComputedStyle(x).display,ariaLabel:x.getAttribute('aria-label')})),
       mainNav:[...document.querySelectorAll('.secondary-nav')].map(x=>({role:x.getAttribute('role'),label:x.getAttribute('aria-label')}))};
    });
@@ -45,6 +52,10 @@ async function main(){
  fs.writeFileSync(path.join(OUT,'axe-elementos-inconclusivos.json'),JSON.stringify({summary,scans},null,2));
  console.log('S23_AXE_RESUMO',JSON.stringify(summary));
  if(summary.violations.length)throw Error('Violações axe-core confirmadas; investigar relatório antes de publicação');
+ const forbidden=scans.filter(s=>s.incomplete.some(r=>r.id==='aria-prohibited-attr'));
+ if(forbidden.length)throw Error('O aviso aria-prohibited-attr continuou inconclusivo em '+forbidden.length+' cenário(s)');
+ const contrastLow=scans.flatMap(s=>s.navContrast.filter(x=>x.ratio<4.5).map(x=>({width:s.width,route:s.route,...x})));
+ if(contrastLow.length)throw Error('Contraste CSS da navegação abaixo de 4.5:1: '+JSON.stringify(contrastLow));
 }
 main().catch(e=>{console.error('FALHA_AXE_S23:',e.stack||e);process.exitCode=1})
  .finally(async()=>{if(browser)await browser.close();if(server.listening)await new Promise(ok=>server.close(ok))});
