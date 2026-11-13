@@ -105,7 +105,7 @@ function exportJSON(){
  const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="AGU_Planejamento_Semanal_backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)
 }
 /* Sprint 20: impedir que semanas malformadas corrompam o planejamento. */
-const ISO_DAY=/^\\d{4}-\\d{2}-\\d{2}$/;
+const ISO_DAY=/^\d{4}-\d{2}-\d{2}$/;
 const validMinutes=n=>Number.isInteger(n)&&n>=0&&n<=780;
 const isDate=x=>typeof x==='string'&&ISO_DAY.test(x)&&!Number.isNaN(Date.parse(x+'T12:00:00Z'));
 function validWeek(key,w){
