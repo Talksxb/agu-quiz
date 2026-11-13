@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprints 20–23 (Node + Chromium + Pages)
+name: AGU Quiz · Sprints 20–24 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -47,6 +47,8 @@ jobs:
         run: node tests/sprint23-browser.cjs
       - name: Sprint 23 — elementos inconclusivos axe e semântica
         run: node tests/sprint23-axe.cjs
+      - name: Sprint 24 — contraste após rolagem, foco e toque emulado
+        run: node tests/sprint24-contrast.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,6 +59,8 @@ jobs:
             tests/artifacts-s21/*.png
             tests/artifacts-s22/*.json
             tests/artifacts-s23/*.json
+            tests/artifacts-s24/*.json
+            tests/artifacts-s24/*.png
           if-no-files-found: ignore
           retention-days: 7
 
