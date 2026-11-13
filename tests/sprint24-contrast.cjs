@@ -69,6 +69,8 @@ async function main(){
   focusRecords.push({width,programmaticFocus,keyboardFocus});
   console.log('S24_FOCUS',JSON.stringify({width,programmaticFocus,keyboardFocus}));
   assert.equal(keyboardFocus.text,'Plano semanal');
+  assert.equal(programmaticFocus.visible,true,'foco direto precisa revelar todo o botão '+width);
+  assert.equal(keyboardFocus.visible,true,'Tab precisa revelar todo o botão '+width);
   await target.press('Enter');
   assert.equal(await page.evaluate(()=>document.activeElement?.tagName),'H1','foco permanece visível após rota '+width);
   await ctx.close();
