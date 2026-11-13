@@ -37,7 +37,16 @@ function linkLegacy(legacyId,deviceId){const src=legacyRecords().find(x=>x.id===
 function resourceList(deviceId){
  const entries=root.AGU_LEGAL_RELATIONS?.entries||[];
  const u=new Set();
- return entries.filter(x=>x.deviceId===deviceId&&typeof x.url==="string"&&x.url.startsWith("https://")&&!u.has(x.id)&&u.add(x.id)).map(x=>({id:x.id,title:x.title,status:x.sourceStatus,source:x.sourceLot,url:x.url}));
+ const out=entries.filter(x=>x.deviceId===deviceId&&typeof x.url==="string"&&x.url.startsWith("https://")&&!u.has(x.id)&&u.add(x.id)).map(x=>({id:x.id,title:x.title,status:x.sourceStatus,source:x.sourceLot,url:x.url}));
+ for(const q of [...(root.AGU_OFFICIAL_S18?.questions||[]),...(root.AGU_OFFICIAL_S19?.questions||[])]){
+  if(q.deviceId!==deviceId||q.annulled||q.status!=='gabarito_definitivo')continue;
+  for(const [suffix,label,url] of [['paper','Caderno oficial',q.examUrl],['key','Gabarito definitivo',q.keyUrl]]){
+   if(typeof url!=='string'||!url.startsWith('https://'))continue;
+   const id='official-'+suffix+'-'+q.id;if(u.has(id))continue;u.add(id);
+   out.push({id,title:label+' · AGU '+q.year+' Q'+q.number,status:'confirmado_pontualmente',source:'Cebraspe / '+(q.sourceLot||q.reference||'AUD02'),url});
+  }
+ }
+ return out;
 }
 function exportJSON(){return JSON.stringify({schema:"agu-context-notebook-backup-v1",exportedAt:now(),data:state},null,2)}
 function importJSON(raw){
