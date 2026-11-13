@@ -165,9 +165,17 @@ function importBackup(input){
 function cardHTML(x){
  const st=stat(x.id),base='<div class="note">Tópico <b>'+esc(x.code)+'</b> · '+esc(x.kind==='official'?'Cebraspe · Advogado da União':'Flashcard autoral')+' · '+esc(x.validation)+'</div>';
  if(x.kind==='flashcard'){
+  const supplemental=[
+   x.caseNote?'<details class="agu-card-detail"><summary>Aplicação AGU</summary><p>'+esc(x.caseNote)+'</p></details>':'',
+   x.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(x.trap)+'</p></details>':'',
+   x.audit?'<details class="agu-card-detail"><summary>Rastreabilidade da evidência</summary><p>'+esc(x.audit.round)+' / '+esc(x.audit.lot)+' · '+esc(x.audit.item_id)+' · '+esc(x.audit.localizer)+' · status: '+esc(x.audit.evidenceStatus)+' (verificação pontual)</p></details>':'',
+   '<details class="agu-card-detail"><summary>Fonte e estado jurídico</summary><p>'+esc(x.source)+(x.checked?' · '+esc(x.checked):'')+(x.reviewedAt?' · '+esc(x.reviewedAt):'')+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte oficial</a>':'<p>Fonte de aula/Caderno; conferência independente pendente.</p>')+'<p>Cartão de recuperação ativa. A verificação pontual não equivale a certificação integral do tema.</p></details>'
+  ].filter(Boolean).join('');
   return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
-   (revealed?'<div class="feedback"><b>Resposta e fundamento</b><p>'+esc(x.back)+'</p>'+(x.caseNote?'<div class="note"><b>Aplicação AGU:</b> '+esc(x.caseNote)+'</div>':'')+(x.trap?'<div class="note"><b>Armadilha Cebraspe:</b> '+esc(x.trap)+'</div>':'')+(x.audit?'<div class="small muted">Origem da evidência: '+esc(x.audit.round)+' / '+esc(x.audit.lot)+' · '+esc(x.audit.item_id)+' · '+esc(x.audit.localizer)+' · status: '+esc(x.audit.evidenceStatus)+' (pontual; sem certificação integral)</div>':'')+'<p class="small muted">'+esc(x.source)+(x.checked?' · conferência normativa '+esc(x.checked):'')+(x.reviewedAt?' · referência da Auditoria 03 consultada '+esc(x.reviewedAt):'')+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte</a>':'<p>Fonte de caderno; revisão jurídica independente pendente.</p>')+((x.notOfficial||x.audit)?'<p class="small muted">Flashcard autoral, não transcrição de prova Cebraspe. Fundamento pontualmente identificado; vigência e jurisprudência integrais não certificadas.</p>':'')+'</div>':'<div class="btnrow"><button class="primary" onclick="AGUReview.reveal()">Mostrar verso</button></div>');
+   (revealed?'<div class="feedback"><b>Resposta</b><p>'+esc(x.back)+'</p></div>'+supplemental:
+   '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal()">Mostrar resposta</button></div>');
  }
+
  const q=INLINE_ADAPTED[x.id];
  const a=x.type==='ce'?['C','E']:['A','B','C','D','E'];
  const examUrl=x.year===2015?links.p15:links.p23,keyUrl=x.year===2015?links.g15:links.g23;
@@ -181,19 +189,29 @@ function cardHTML(x){
   '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
   (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p><p>'+esc(q.reason)+'</p><p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
 }
+function catalog(){
+ const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));
+ const groups=new Map();for(const c of cards){if(!groups.has(c.code))groups.set(c.code,[]);groups.get(c.code).push(c)}
+ const options=[...groups].map(([code,items])=>'<optgroup label="'+esc(code.split('-')[0]+' · '+code)+'">'+items.map(c=>'<option value="'+esc(c.id)+'" '+(active?.id===c.id?'selected':'')+'>'+esc(c.front.slice(0,82))+'</option>').join('')+'</optgroup>').join('');
+ return '<details class="agu-catalog"><summary>Encontrar cartão por disciplina e tópico ('+cards.length+')</summary>'+
+ '<label for="agu-card-list">Disciplina / ID curricular / assunto</label><select id="agu-card-list" aria-label="Selecionar flashcard">'+options+'</select>'+
+ '<button class="secondary" onclick="AGUReview.select(document.getElementById(\'agu-card-list\').value)">Estudar cartão</button>'+
+ '<p class="small muted">Identificadores curriculares preservados. As questões oficiais ficam na função própria, com gabarito histórico separado.</p></details>';
+}
 function page(){
  const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
  if(active&&!INDEX.has(active.id))active=null;
- return '<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Revisão Inteligente</h1><div class="muted">Retenção D+1 · D+7 · D+21 · D+45 · 5 a 8 minutos no Foco do Dia</div></div></div>'+
+ return '<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Recuperação ativa e próximas revisões</div></div></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
- '<div class="card"><h2>Foco do Dia · revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
+ '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
  '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\')">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\')">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\')">Questões oficiais</button></div></div>'+
+ '<div class="card">'+catalog()+'</div>'+
  (active?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
   (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\')">'+label+'</button>').join('')+'</div></div>':'')+
  '</div>':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
- '<div class="card"><h2>Histórico e exportação</h2><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
+ '<details class="card agu-catalog"><summary>Histórico e exportação</summary><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
  '<div class="btnrow"><button class="secondary" onclick="AGUReview.exportData()">Exportar backup JSON</button><button class="secondary" onclick="document.getElementById(\'review-import\').click()">Importar sem substituir</button><input id="review-import" type="file" class="hidden" accept="application/json" onchange="AGUReview.importBackup(this)"></div>'+
- '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></div>'+
+ '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></details>'+
  '<div class="note">Fundamentação de cartões autorais: estado B, sem homologação humana independente. Gabaritos Cebraspe: verificados como resultado histórico; vigência e justificativa podem exigir nova auditoria. Revisões não são certificação de domínio jurídico.</div>';
 }
 function disciplineMetrics(){
@@ -235,5 +253,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,attemptsInfo,searchCards,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusedHTML,reviewInfo,attemptsInfo,searchCards,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length,annulled:OFFICIAL.filter(x=>x.status==='anulada').length})};
 })(window);
