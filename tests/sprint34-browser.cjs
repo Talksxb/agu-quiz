@@ -60,7 +60,7 @@ async function main(){
   assert.equal(await page.evaluate(()=>window.AGUStudy.peek().sessions.length),1,'sessão fictícia única '+width);
 
   await page.evaluate(()=>window.setView('review'));
-  await page.locator('.agu-catalog summary').press('Enter');
+  await page.locator('summary').filter({hasText:'Encontrar cartão por disciplina e tópico'}).press('Enter');
   await page.getByRole('button',{name:'Estudar cartão'}).press('Enter');
   const cardAfter=await page.evaluate(focus);
   assert.equal(cardAfter.text,'Mostrar resposta','catálogo aponta primeiro controle do cartão '+width);
