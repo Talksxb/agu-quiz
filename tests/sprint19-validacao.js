@@ -90,6 +90,7 @@ check('Caderno guarda nota pessoal, ID e fontes',()=>{
  assert.equal(n.origin,'manual');assert.equal(n.deviceId,'L9784:art50:p1');
  assert.ok(n.content.includes('of-2015-adv-006'));assert.ok(n.content.includes('Minha dúvida pessoal'));
  assert.ok(n.content.includes('Gabarito definitivo: https://'));
+ assert.equal(n.sources.length,2);assert.ok(n.sources[0].startsWith('https://cdn.cebraspe.org.br/'));
  assert.ok(!n.content.includes('Em 11/10/2015, o art. 50')); // não copiar fundamento
 });
 check('links Caderno ↔ sessão preservados',()=>assert.equal(study.peek().sessions[0].notes.length,1));
