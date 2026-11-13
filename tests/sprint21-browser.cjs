@@ -152,9 +152,20 @@ async function run(){
   const answers=await p.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_mvp1_2026')).answers);
   assert.equal(answers.length,1);
   assert.equal(answers[0].selected,'A');
-  if(width===390)bundle=await p.evaluate(()=>window.AGUBackup20.capture()); // agora inclui o histórico principal de 2023
+
   await p.getByRole('button',{name:'Evolução',exact:true}).click();
   await p.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
+  if(width===390){
+   const event=p.waitForEvent('download');
+   await p.getByRole('button',{name:'Exportar cópia completa'}).click();
+   const download=await event;
+   assert.equal(download.suggestedFilename(),'AGU_Backup_Local_Completo.json');
+   const file=path.join(screenshots,'agu-s21-copia-sintetica.json');
+   await download.saveAs(file);
+   bundle=JSON.parse(fs.readFileSync(file,'utf8'));
+   assert.equal(bundle.schema,'agu-portable-local-s20-v1');
+   assert.ok(Object.keys(bundle.items).length>=4,'arquivo exportado contém quatro categorias já utilizadas');
+  }
   await inspectWidth(p,width,'backup');
   await p.screenshot({path:path.join(screenshots,'s21-'+width+'.png'),fullPage:true});
   assert.deepEqual(errors,[]);
@@ -165,10 +176,19 @@ async function run(){
  // Simulação de perfil NOVO de navegador: sem acesso ao storage do primeiro perfil.
  const clean=await browser.newContext({viewport:{width:390,height:860}});
  const dest=await clean.newPage();await dest.goto(url,{waitUntil:'load'});
+ const restoreDialogs=[];
+ dest.on('dialog',async d=>{restoreDialogs.push(d.message());await d.accept()});
+ await dest.getByRole('button',{name:'Evolução',exact:true}).click();
+ await dest.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
+ await dest.locator('#agu-s20-backup-file').setInputFiles({
+  name:'agu-s21-copia-sintetica.json',mimeType:'application/json',
+  buffer:Buffer.from(JSON.stringify(bundle))
+ });
+ await dest.waitForFunction(()=>localStorage.getItem('agu_caderno_contextual_s15_v1')!==null);
+ assert.ok(restoreDialogs.some(m=>m.includes('Restaurar')),'confirmação de restauração exibida');
+ assert.ok(restoreDialogs.some(m=>m.includes('restaurada')),'resultado de restauração exibido');
  let result=await dest.evaluate(b=>window.AGUBackup20.importMissing(b),bundle);
- assert.ok(result.added>=4,'restauração de categorias ausentes');
- result=await dest.evaluate(b=>window.AGUBackup20.importMissing(b),bundle);
- assert.equal(result.added,0,'importação repetida idempotente');
+ assert.equal(result.added,0,'arquivo reimportado é idempotente');
  await dest.reload({waitUntil:'load'});
  const restored=await dest.evaluate(()=>({
   attempts:JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1')).attempts.length,
