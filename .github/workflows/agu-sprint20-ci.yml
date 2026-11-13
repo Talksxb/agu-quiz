@@ -1,4 +1,4 @@
-name: AGU Quiz · Sprints 20–29 (Node + Chromium + Pages)
+name: AGU Quiz · Sprints 20–30 (Node + Chromium + Pages)
 on:
   push:
     branches: [main]
@@ -31,6 +31,8 @@ jobs:
         run: node tests/sprint27-validacao.js
       - name: Sprint 29 — Espaço e Enter em unidades do Leitor
         run: node tests/sprint29-validacao.js
+      - name: Sprint 30 — preservação do foco após seleção no Leitor
+        run: node tests/sprint30-validacao.js
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -59,6 +61,8 @@ jobs:
         run: node tests/sprint24-contrast.cjs
       - name: Sprint 29 — teclado real nas unidades do Leitor em cinco viewports
         run: node tests/sprint29-browser.cjs
+      - name: Sprint 30 — foco pós-ativação em cinco viewports
+        run: node tests/sprint30-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -72,6 +76,8 @@ jobs:
             tests/artifacts-s24/*.json
             tests/artifacts-s24/*.png
             tests/artifacts-s29/*.json
+            tests/artifacts-s30/*.json
+            tests/artifacts-s30/*.png
           if-no-files-found: ignore
           retention-days: 7
 
