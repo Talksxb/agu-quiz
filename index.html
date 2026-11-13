@@ -291,9 +291,7 @@ function exportJSON(){download('agu_quiz_backup.json',JSON.stringify({schema:'ag
 function validateMainBackup(raw){
  const obj=typeof raw==='string'?JSON.parse(raw):raw,st=obj?.data;
  if(obj?.schema!=='agu-quiz-v1'||!st||st.version!==1||!st.topic||typeof st.topic!=='object'||Array.isArray(st.topic))throw Error('Versão ou estrutura principal incompatível.');
- for(const k of ['answers','sessions','reviews','notebook']){
-  if(!Array.isArray(st[k])||st[k].length>20000||st[k].some(x=>!x||typeof x!=='object'||Array.isArray(x)))throw Error('Registros principais inválidos: '+k);
- }
+ if(!window.AGUBackup20?.validateRecord?.('agu_quiz_mvp1_2026',st))throw Error('Histórico contém campos inválidos ou IDs repetidos. Nenhum dado foi substituído.');
  return st;
 }
 async function importJSON(e){
