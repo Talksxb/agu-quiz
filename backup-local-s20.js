@@ -20,7 +20,17 @@ const capArr=(v,n=20000)=>Array.isArray(v)&&v.length<=n;
 function validateRecord(key,obj){
  if(!isObj(obj))return false;
  switch(key){
- case 'agu_quiz_mvp1_2026':return obj.version===1&&isObj(obj.topic)&&capArr(obj.answers)&&capArr(obj.sessions)&&capArr(obj.reviews)&&capArr(obj.notebook);
+ case 'agu_quiz_mvp1_2026':{
+  if(obj.version!==1||!isObj(obj.topic)||!capArr(obj.answers)||!capArr(obj.sessions)||!capArr(obj.reviews)||!capArr(obj.notebook))return false;
+  const hasUniqueIds=arr=>new Set(arr.map(x=>x.id)).size===arr.length;
+  const date=x=>typeof x==='string'&&Number.isFinite(Date.parse(x));
+  if(!hasUniqueIds(obj.answers)||!hasUniqueIds(obj.sessions)||!hasUniqueIds(obj.notebook))return false;
+  if(obj.answers.some(x=>!isObj(x)||typeof x.id!=='string'||!x.id||typeof x.question!=='string'||typeof x.topic!=='string'||!date(x.date)||![true,false,null].includes(x.correct)))return false;
+  if(obj.sessions.some(x=>!isObj(x)||typeof x.id!=='string'||!x.id||typeof x.topic!=='string'||!date(x.started)||!Number.isInteger(x.minutes)||x.minutes<0||x.minutes>780||typeof x.mode!=='string'))return false;
+  if(obj.reviews.some(x=>!isObj(x)||typeof x.topic!=='string'||!date(x.due)||!Number.isInteger(x.stage)||x.stage<0||x.stage>4))return false;
+  if(obj.notebook.some(x=>!isObj(x)||typeof x.id!=='string'||!x.id||typeof x.title!=='string'||typeof x.topic!=='string'||!date(x.date)||typeof x.summary!=='string'||!Array.isArray(x.revisions)))return false;
+  return Object.values(obj.topic).every(v=>isObj(v)&&(!v.state||typeof v.state==='string'));
+ }
  case 'agu_quiz_revisao_inteligente_v1':return obj.schema==='agu-review-v1'&&capArr(obj.attempts)&&isObj(obj.cards);
  case 'agu_quiz_planejamento_semanal_v1':{
   if(obj.schema!==1||!isObj(obj.weeks)||!Array.isArray(obj.settings?.dailyMinutes)||obj.settings.dailyMinutes.length!==7||!obj.settings.dailyMinutes.every(v=>Number.isInteger(v)&&v>=0&&v<=780))return false;
@@ -99,5 +109,5 @@ function panel(){
  '<button class="secondary" type="button" onclick="document.getElementById(\'agu-s20-backup-file\').click()">Restaurar categorias ausentes</button>'+
  '<input class="hidden" type="file" id="agu-s20-backup-file" accept="application/json" onchange="AGUBackup20.readFile(this)"></div></div>';
 }
-root.AGUBackup20={panel,capture,validateBundle,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};
+root.AGUBackup20={panel,capture,validateBundle,validateRecord,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};
 })(window);
