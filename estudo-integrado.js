@@ -35,7 +35,7 @@ function focus(cardId){
  s.stage='flashcards';s.updatedAt=now();persist();return true
 }
 function trackOfficial(qid,deviceId){
- const s=active(),q=(root.AGU_OFFICIAL_S18?.questions||[]).find(x=>x.id===qid);
+ const s=active(),q=root.AGUQuestions18?.all?.().find(x=>x.id===qid)||[...(root.AGU_OFFICIAL_S18?.questions||[]),...(root.AGU_OFFICIAL_S19?.questions||[])].find(x=>x.id===qid);
  if(!s||!q||q.deviceId!==deviceId||s.deviceId!==deviceId)return false;
  if(!Array.isArray(s.questionsSeen))s.questionsSeen=[];
  if(!s.questionsSeen.includes(qid))s.questionsSeen.push(qid);
