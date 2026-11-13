@@ -50,7 +50,7 @@ async function main(){
  const ctx=await browser.newContext({viewport:{width:390,height:860}}),p=await ctx.newPage(),dialogs=[];
  p.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
  await p.goto(origin,{waitUntil:'load'});
- await p.getByRole('button',{name:'Começar agora'}).click();
+ await p.getByRole('button',{name:'Continuar estudando',exact:true}).click();
  const count=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1')||'{"attempts":[]}').attempts.length);
  const before=await count();
  await p.reload({waitUntil:'load'});
