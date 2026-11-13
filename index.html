@@ -16,7 +16,7 @@
 @media(max-width:530px){.hub-tiles{grid-template-columns:1fr}.hub-entry{min-height:76px;padding:13px}.top .chip{font-size:10px}.card{padding:14px}.secondary-nav-item{padding:9px 10px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 :focus-visible{outline:2px solid #267e83;outline-offset:2px}
-.daily-mission{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:19px 22px;border:1px solid #cddfdf;border-radius:14px;background:#fbfefe;margin:14px 0 18px}.daily-mission h2{font-size:22px;margin:7px 0}.daily-mission p{margin:0}.daily-mission .primary{white-space:nowrap;min-height:46px}.daily-mission .muted{letter-spacing:.7px;font-size:11px}@media(max-width:530px){.daily-mission{display:block;padding:17px}.daily-mission .primary{width:100%;margin-top:14px}}.agu-catalog{padding:12px 0}.agu-catalog summary,.agu-card-detail summary{cursor:pointer;font-weight:600;color:#284f60}.agu-catalog label{display:block;margin-top:12px}.agu-catalog select{display:block;width:100%;margin:8px 0 10px}.agu-card-detail{padding:10px 0;border-bottom:1px solid #e0e8eb}.agu-card-detail p{margin:9px 0}.agu-catalog .small{margin-top:10px}</style></head><body><div class="app"><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
+.daily-mission{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:19px 22px;border:1px solid #cddfdf;border-radius:14px;background:#fbfefe;margin:14px 0 18px}.daily-mission h2{font-size:22px;margin:7px 0}.daily-mission p{margin:0}.daily-mission .primary{white-space:nowrap;min-height:46px}.daily-mission .muted{letter-spacing:.7px;font-size:11px}@media(max-width:530px){.daily-mission{display:block;padding:17px}.daily-mission .primary{width:100%;margin-top:14px}}.agu-catalog{padding:12px 0}.agu-catalog summary,.agu-card-detail summary{cursor:pointer;font-weight:600;color:#284f60}.agu-catalog label{display:block;margin-top:12px}.agu-catalog select{display:block;width:100%;margin:8px 0 10px}.agu-card-detail{padding:10px 0;border-bottom:1px solid #e0e8eb}.agu-card-detail p{margin:9px 0}.agu-catalog .small{margin-top:10px}.secondary-more{position:relative;flex:0 0 auto}.secondary-more summary{cursor:pointer;list-style:none;min-height:43px;display:flex;align-items:center;padding:0 12px;font-size:13px;color:#496270}.secondary-more-list{position:fixed;z-index:60;background:white;border:1px solid #dce5e8;box-shadow:0 12px 20px #132d3c14;border-radius:10px;padding:8px;min-width:165px;display:grid}.secondary-more-list button{padding:11px;text-align:left;border-radius:7px;background:transparent;color:#284655}.secondary-more-list button:hover{background:#e8f1f2}@media(max-width:530px){.secondary-more summary{padding:0 9px}}</style></head><body><div class="app"><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
 <button class="nav active" data-view="dashboard">Início</button>
 <button class="nav" data-view="study">Estudar</button>
 <button class="nav" data-view="library">Biblioteca Inteligente</button>
@@ -193,7 +193,7 @@ const NAV_GROUPS={
 };
 const NAV_ITEMS={
  study:[['study','Visão de estudo'],['quiz','Praticar'],['explore','Explorar temas'],['planner','Plano semanal']],
- library:[['library','Acervo'],['review','Flashcards e revisões'],['officialExam','Questões oficiais'],['legal','Legislação e materiais'],['notebook','Caderno AGU'],['curriculum','Currículo'],['matrix','Matriz 2022']],
+ library:[['library','Acervo'],['review','Flashcards e revisões'],['officialExam','Questões'],['legal','Materiais']],
  evolution:[['evolution','Panorama'],['organization','Disciplinas'],['sessions','Sessões'],['settings','Dados e backup']]
 };
 function currentGroup(){return NAV_GROUPS[view]||'dashboard'}
@@ -201,7 +201,7 @@ function navigationInside(){
  const group=currentGroup(),items=NAV_ITEMS[group];
  if(!items)return '';
  return '<div class="secondary-nav" aria-label="Navegação interna de '+(group==='library'?'Biblioteca Inteligente':group==='study'?'Estudar':'Evolução')+'">'+
- items.map(([id,label])=>'<button type="button" class="secondary-nav-item '+(view===id?'active':'')+'" '+(view===id?'aria-current="page"':'')+' onclick="setView(\''+id+'\')">'+label+'</button>').join('')+'</div>';
+ items.map(([id,label])=>'<button type="button" class="secondary-nav-item '+(view===id?'active':'')+'" '+(view===id?'aria-current="page"':'')+' onclick="setView(\''+id+'\')">'+label+'</button>').join('')+(group==='library'?'<details class="secondary-more"><summary>Mais</summary><div class="secondary-more-list">'+[['notebook','Caderno AGU'],['curriculum','Currículo'],['matrix','Matriz 2022']].map(([id,label])=>'<button onclick="setView(\''+id+'\')" '+(view===id?'aria-current="page"':'')+'>'+label+'</button>').join('')+'</div></details>':'')+'</div>';
 }
 function setView(v){if(!NAV_GROUPS[v])return;view=v;feedback=null;selected=null;render()}
 function info(t){return data.topic[t]||{score:0,evidence:0,state:'Não iniciado'}}
