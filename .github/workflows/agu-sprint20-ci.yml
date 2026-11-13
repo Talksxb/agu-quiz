@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '22'
       - name: Instalar Playwright
-        run: npm install --no-save playwright
+        run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
       - name: Fluxo real no navegador (emulação de viewport, não Android físico)
@@ -41,6 +41,8 @@ jobs:
         run: node tests/sprint21-browser.cjs
       - name: Sprint 22 — backup completo de nove categorias e jornada mobile
         run: node tests/sprint22-browser.cjs
+      - name: Sprint 22 — axe-core diagnóstico de acessibilidade
+        run: node tests/sprint22-axe.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,6 +51,7 @@ jobs:
           path: |
             tests/artifacts-s20/*.png
             tests/artifacts-s21/*.png
+            tests/artifacts-s22/*.json
           if-no-files-found: ignore
           retention-days: 7
 
