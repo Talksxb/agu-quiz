@@ -31,7 +31,7 @@ function validateRecord(key,obj){
  case 'agu_leitor_juridico_s13_v1':return typeof obj.article==='string'&&typeof obj.unit==='string'&&isObj(obj.notes)&&Object.keys(obj.notes).length<=500;
  case 'agu_consolidacao_s17_v1':return typeof obj.query==='string'&&obj.query.length<=150&&['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(obj.filter)&&['todos','confirmado','parcial','pendente','pessoal'].includes(obj.status)&&[90,100,115,130].includes(obj.size);
  case 'agu_quiz_curriculo_repo_v1':return capArr(obj.itens,412)&&obj.itens.length===412&&capArr(obj.disciplinas,14)&&obj.disciplinas.length===14&&new Set(obj.itens.map(x=>x.id)).size===412;
- case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)?-\\d{2,3}$/.test(v));
+ case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)?-\d{2,3}$/.test(v));
  default:return false;
  }
 }
