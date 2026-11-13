@@ -40,7 +40,7 @@ function note(){
   const record=root.AGUCaderno?.create({deviceId:x.deviceId,title:'Dificuldade · AGU '+x.year+' Q'+x.number,
    content:'Questão oficial '+x.year+'/'+x.number+' · '+x.id+' · variante '+x.exam+
     '\nCaderno oficial: '+x.examUrl+'\nGabarito definitivo: '+x.keyUrl+'\nMinha dificuldade:\n'+content.slice(0,15000),
-   type:'dificuldade',stage:'confrontacao',origin:'manual',sources:[]});
+   type:'dificuldade',stage:'confrontacao',origin:'manual',sources:[x.examUrl,x.keyUrl]});
   if(!record)return false;
   root.AGUStudy?.syncNotes?.();root.render?.();return true;
  }catch(err){if(typeof alert==='function')alert('Não foi possível salvar: '+err.message);return false}
