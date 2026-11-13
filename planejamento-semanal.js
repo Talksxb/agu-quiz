@@ -4,6 +4,8 @@
 const KEY="agu_quiz_planejamento_semanal_v1", VERSION=1;
 const DEFAULT_MINUTES=[130,130,130,130,130,130,0]; // 13h/semana, configurável
 const WEEKDAYS=["Segunda","Terça","Quarta","Quinta","Sexta","Sábado","Domingo"];
+// S33: foco dos controles existentes após salvar disponibilidade e trocar matéria.
+function focusAfter(selector,keyboard){if(keyboard)document.querySelector?.(selector)?.focus?.({preventScroll:false})}
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const pad=x=>String(x).padStart(2,"0");
 const isoLocal=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
@@ -166,18 +168,18 @@ function html(){
  '<div class="card"><div class="muted">Próxima atividade</div><b>'+esc(n?n.topic.replace("/"," · "):"Nenhuma pendência")+'</b><div class="small muted">'+esc(n?n.type+" · "+n.date:"Cronograma concluído")+'</div></div></div>'+
  '<div class="card"><h2>Disponibilidade semanal</h2><p class="small muted">Configuração inicial: 13h distribuídas de segunda a sábado. Ajuste conforme sua disponibilidade real. O planejamento não modifica sessões nem revisões já registradas.</p>'+
  '<div class="grid">'+WEEKDAYS.map((day,i)=>'<label>'+day+'<input aria-label="Minutos de '+day+'" type="number" min="0" max="780" step="5" id="planner-min-'+i+'" value="'+state.settings.dailyMinutes[i]+'"></label>').join("")+'</div>'+
- '<div class="btnrow"><button class="secondary" onclick="AGUPlanner.applyHours()">Salvar disponibilidade</button><button class="primary" onclick="AGUPlanner.regenerate()">Gerar novamente esta semana</button></div></div>'+
+ '<div class="btnrow"><button class="secondary" onclick="AGUPlanner.applyHours(event.detail===0)">Salvar disponibilidade</button><button class="primary" onclick="AGUPlanner.regenerate()">Gerar novamente esta semana</button></div></div>'+
  (week.provisional?'<div class="note"><b>Planejamento provisório:</b> não há progresso local suficiente para ordenar as matérias por dificuldade. A sequência inicial é uma rotação e não indica aulas concluídas.</div>':'')+
  '<div class="card"><h2>Semana de '+esc(week.start)+'</h2><p class="small muted">Alocação: aulas e continuidade, revisão ativa (até 8 minutos/dia) e questões. As tarefas são propostas, nunca registradas como horas estudadas automaticamente.</p>'+
  week.days.map((d,i)=>'<div class="history"><div class="split"><b>'+WEEKDAYS[i]+' · '+esc(d.date)+'</b><span class="chip">'+minutesText(d.minutes)+'</span></div>'+
  (d.tasks.length?d.tasks.map(task=>'<div class="section"><div class="split"><label><input type="checkbox" '+(task.done?'checked':'')+' onchange="AGUPlanner.edit('+i+',\''+esc(task.id)+'\',\'done\',this.checked)"> '+(task.type==='aula'?'Aula / continuidade':task.type==='revisao'?'Recuperação ativa':'Questões oficiais')+'</label><span class="small muted">'+minutesText(task.minutes)+'</span></div>'+
- '<select aria-label="Matéria da atividade" onchange="AGUPlanner.edit('+i+',\''+esc(task.id)+'\',\'topic\',this.value)">'+choices.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===task.topic?'selected':'')+'>'+esc(x.full+" · "+x.name)+'</option>').join("")+'</select>'+
+ '<select aria-label="Matéria da atividade" data-planner-task="'+esc(task.id)+'" data-planner-field="topic" onchange="AGUPlanner.edit('+i+',\''+esc(task.id)+'\',\'topic\',this.value,true)">'+choices.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===task.topic?'selected':'')+'>'+esc(x.full+" · "+x.name)+'</option>').join("")+'</select>'+
  '<div class="btnrow"><button class="secondary" '+(i===0?'disabled':'')+' onclick="AGUPlanner.shift('+i+',\''+esc(task.id)+'\',-1)">Dia anterior</button><button class="secondary" '+(i===6?'disabled':'')+' onclick="AGUPlanner.shift('+i+',\''+esc(task.id)+'\',1)">Próximo dia</button></div></div>').join(""):'<div class="small muted">Dia sem estudo planejado</div>')+'</div>').join("")+'</div>'+
  '<div class="card"><h2>Continuar o estudo</h2><div class="btnrow"><button class="primary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'sessions\')">Registrar horas reais</button><button class="secondary" onclick="setView(\'organization\')">Organização por matérias</button></div>'+
  '<p class="small muted">Não há sincronização com lembretes do ChatGPT. As tarefas marcadas são planejamento local, distinto do tempo líquido registrado nas sessões.</p>'+
  '<div class="btnrow"><button class="secondary" onclick="AGUPlanner.exportData()">Exportar plano JSON</button><button class="secondary" onclick="document.getElementById(\'planner-import\').click()">Importar backup</button><input id="planner-import" class="hidden" type="file" accept="application/json" onchange="AGUPlanner.importBackup(this)"></div></div>';
 }
-function applyHours(){
+function applyHours(keyboard=false){
  const inputs=DEFAULT_MINUTES.map((_,i)=>document.getElementById("planner-min-"+i));
  const values=inputs.map(el=>Number(el?.value));
  if(values.some(n=>!Number.isInteger(n)||n<0||n>780)){alert("Use minutos inteiros entre 0 e 780 por dia.");return}
@@ -186,14 +188,14 @@ function applyHours(){
  if(conflicts&&!confirm("As horas novas são menores que as tarefas de alguns dias. Salvar a disponibilidade e manter o cronograma atual até você regenerá-lo?"))return;
  state.settings.dailyMinutes=values;save();
  if(w&&!conflicts){w.days.forEach((d,i)=>d.minutes=values[i]);w.updated=new Date().toISOString();save()}
- global.render?.()
+ global.render?.();focusAfter('button[onclick^="AGUPlanner.applyHours("]',keyboard)
 }
 function regenerate(){
  const w=current(),hasEdits=w?.days?.some(d=>d.tasks.some(t=>t.manual||t.done));
  if(w&&hasEdits&&!confirm("O novo cronograma substituirá as marcações e alterações manuais desta semana. O histórico de respostas/sessões/revisões será preservado. Continuar?"))return;
  create(monday(),true);global.render?.()
 }
-function edit(i,id,field,value){if(!change(i,id,field,value))alert("Alteração inválida.");global.render?.()}
+function edit(i,id,field,value,restoreFocus=false){if(!change(i,id,field,value))alert("Alteração inválida.");global.render?.();if(field==='topic')focusAfter('[data-planner-task="'+id+'"][data-planner-field="topic"]',restoreFocus)}
 function shift(i,id,n){if(!move(i,id,n))alert("O dia de destino não tem capacidade disponível. Ajuste os minutos semanais antes de mover.");global.render?.()}
 global.AGUPlanner={page:html,ensure,current,create,generate,stats,next,change,move,edit,shift,applyHours,regenerate,exportData:exportJSON,importBackup,validateBackupObject,mergeBackupObject,settings:()=>state.settings,weekKey:monday,peek:()=>state};
 })(window);

@@ -5,6 +5,8 @@ const KEY='agu_estudo_integrado_s16_v1',VERSION='agu-integrated-study-v1';
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names={norma:'Leitura normativa',caderno:'Caderno AGU',questoes:'Questões verificadas',flashcards:'Flashcards',revisao:'Avaliação e revisão'};
 const stages=Object.keys(names),now=()=>new Date().toISOString();
+// S33: após a substituição do painel, revelar a etapa efetivamente selecionada.
+function focusStage(key,keyboard){if(keyboard)document.querySelector?.('[data-agu-study-stage="'+key+'"]')?.focus?.({preventScroll:false})}
 const clauses=()=>new Map((root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles.flatMap(a=>a.clauses.map(c=>[c.id,{...c,article:a,law:l}]))));
 const blank=()=>({schema:VERSION,createdAt:now(),sessions:[],activeId:null});
 let state=blank();
@@ -83,23 +85,23 @@ function html(deviceId){
  const prior=sessionsFor(deviceId);
  let out='<div class="agu-notice"><b>Estudo integrado · '+esc(item.article.label)+' / '+esc(item.label)+'</b><p class="agu-muted">Somente atividades efetivamente registradas contam como realizadas; abrir uma etapa não registra horas ou domínio.</p></div>';
  if(!s||s.deviceId!==deviceId||s.status!=='em_andamento'){
-  out+='<button class="agu-primary" onclick="AGUStudy.begin(\''+esc(deviceId)+'\')">Iniciar / retomar estudo deste dispositivo</button>';
+  out+='<button class="agu-primary" onclick="AGUStudy.begin(\''+esc(deviceId)+'\',event.detail===0)">Iniciar / retomar estudo deste dispositivo</button>';
   out+=prior.map(x=>'<div class="agu-notice">'+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+' · '+x.notes.length+' notas · '+x.attemptIds.length+' avaliações'+(x.status==='em_andamento'?'<button class="agu-light" onclick="AGUStudy.open(\''+esc(x.id)+'\')">Retomar sessão</button>':'')+'</div>').join('');
   return out;
  }
  const missing=orphans(s);
  if(missing.notes.length||missing.cards.length)out+='<div class="agu-notice">Referências antigas não encontradas: '+missing.notes.length+' nota(s), '+missing.cards.length+' cartão(ões). O histórico da sessão foi preservado, sem conteúdo inventado.</div>';
  out+='<p class="agu-muted">Sessão '+esc(s.createdAt.slice(0,10))+' · '+s.notes.length+' registro(s) associados · '+s.attemptIds.length+' avaliação(ões) · Etapa: '+esc(names[s.stage])+'</p>';
- out+='<div class="agu-tabs">'+stages.map(k=>'<button aria-pressed="'+(s.stage===k)+'" onclick="AGUStudy.goto(\''+k+'\')">'+esc(names[k])+'</button>').join('')+'</div>';
- if(s.stage==='norma')out+='<div class="agu-notice"><b>'+esc(item.label)+'</b><p>'+esc(item.text)+'</p><a href="'+esc(item.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir fonte oficial</a></div><button class="agu-primary" onclick="AGUStudy.goto(\'caderno\')">Continuar para Caderno</button>';
+ out+='<div class="agu-tabs">'+stages.map(k=>'<button data-agu-study-stage="'+k+'" aria-pressed="'+(s.stage===k)+'" onclick="AGUStudy.goto(\''+k+'\',event.detail===0)">'+esc(names[k])+'</button>').join('')+'</div>';
+ if(s.stage==='norma')out+='<div class="agu-notice"><b>'+esc(item.label)+'</b><p>'+esc(item.text)+'</p><a href="'+esc(item.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir fonte oficial</a></div><button class="agu-primary" onclick="AGUStudy.goto(\'caderno\',event.detail===0)">Continuar para Caderno</button>';
  if(s.stage==='caderno'){
   const notes=root.AGUCaderno?.list(deviceId)||[];
-  out+='<p>Crie sua hipótese, objeção ou aplicação na aba Caderno, mantendo este dispositivo selecionado. Depois vincule registros já salvos à sessão.</p><button class="agu-light" onclick="AGULegal.tab(\'caderno\')">Abrir Caderno</button><button class="agu-light" onclick="AGUStudy.collect()">Vincular registros existentes</button><p class="agu-muted">Registros disponíveis: '+notes.length+' · associados: '+s.notes.length+'</p><button class="agu-primary" onclick="AGUStudy.goto(\'questoes\')">Continuar</button>';
+  out+='<p>Crie sua hipótese, objeção ou aplicação na aba Caderno, mantendo este dispositivo selecionado. Depois vincule registros já salvos à sessão.</p><button class="agu-light" onclick="AGULegal.tab(\'caderno\')">Abrir Caderno</button><button class="agu-light" onclick="AGUStudy.collect()">Vincular registros existentes</button><p class="agu-muted">Registros disponíveis: '+notes.length+' · associados: '+s.notes.length+'</p><button class="agu-primary" onclick="AGUStudy.goto(\'questoes\',event.detail===0)">Continuar</button>';
  }
  if(s.stage==='questoes'){
   const questions=(root.AGU_OFFICIAL_S18?.questions||[]).filter(x=>x.deviceId===deviceId&&x.key&&x.historicReason&&x.currentReason&&x.status==='gabarito_definitivo');
   out+=questions.length?'<p>'+questions.length+' questão(ões) com caderno, gabarito e fundamento verificados pontualmente. Consulte Questões para responder.</p><button class="agu-light" onclick="AGULegal.tab(\'questoes\')">Consultar questões</button>':'<div class="agu-notice">Ainda não há questão oficial inteiramente reconciliada com este dispositivo. Não será inventado enunciado nem gabarito.</div>';
-  out+='<button class="agu-primary" onclick="AGUStudy.goto(\'flashcards\')">Continuar para flashcards</button>';
+  out+='<button class="agu-primary" onclick="AGUStudy.goto(\'flashcards\',event.detail===0)">Continuar para flashcards</button>';
  }
  if(s.stage==='flashcards'){
   const cards=root.AGUReview?.availableForTopic(s.topic)||[];
@@ -107,21 +109,21 @@ function html(deviceId){
   const focused=root.AGUReview?.focusedHTML?.()||'';
   if(focused)out+=focused;
   else out+=cards.length?cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.validation)+' · revisão '+esc(x.due||'inédito')+'</p><button class="agu-light" onclick="AGUStudy.pick(\''+esc(x.id)+'\')">Estudar cartão</button></div>').join(''):'<div class="agu-notice">Nenhum cartão encontrado para este tópico.</div>';
-  out+='<button class="agu-light" onclick="AGUStudy.goto(\'revisao\')">Consultar revisões</button>';
+  out+='<button class="agu-light" onclick="AGUStudy.goto(\'revisao\',event.detail===0)">Consultar revisões</button>';
  }
  if(s.stage==='revisao'){
   const cards=(root.AGUReview?.availableForTopic(s.topic)||[]).filter(x=>s.cardsSeen.includes(x.id));
   out+='<div class="agu-notice"><b>Avaliações efetivas: '+s.attemptIds.length+'</b><p>Revisões são agendadas pelo mecanismo original; não criamos agendamentos paralelos.</p></div>';
   out+=cards.map(x=>'<p class="agu-muted">'+esc(x.front)+' · '+esc(x.seen)+' avaliação(ões) · próxima: '+esc(x.due||'não agendada')+'</p>').join('')||'<p class="agu-muted">Nenhum flashcard avaliado nesta sessão.</p>';
-  out+='<button class="agu-light" onclick="AGUStudy.goto(\'flashcards\')">Voltar aos flashcards</button>';
+  out+='<button class="agu-light" onclick="AGUStudy.goto(\'flashcards\',event.detail===0)">Voltar aos flashcards</button>';
  }
  out+='<div class="agu-ctx-box"><b>Backup de sessões</b><p class="agu-muted">Exportação separada dos dados do Caderno e dos resultados da Revisão Inteligente.</p><button class="agu-light" onclick="AGUStudy.download()">Exportar sessões</button><button class="agu-light" onclick="document.getElementById(\'agu-session-import\').click()">Importar sessões</button><input id="agu-session-import" class="hidden" type="file" accept="application/json,.json" onchange="AGUStudy.readFile(this)"></div>';
  out+='<hr><button class="agu-light" onclick="AGUStudy.close()">Encerrar esta sessão</button><p class="agu-muted">Encerrar não registra horas nem certifica o tema; respostas e Caderno permanecem nos módulos originais.</p>';
  return out
 }
-function begin(d){if(start(d))root.render?.()}
+function begin(d,keyboard=false){if(start(d)){root.render?.();focusStage('norma',keyboard)}}
 function open(id){if(resume(id))root.render?.()}
-function goto(v){if(stage(v))root.render?.()}
+function goto(v,keyboard=false){if(stage(v)){root.render?.();focusStage(v,keyboard)}}
 function pick(id){if(focus(id))root.render?.()}
 function collect(){syncNotes();root.render?.()}
 function close(){if(finish())root.render?.()}

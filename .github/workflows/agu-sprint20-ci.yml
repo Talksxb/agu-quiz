@@ -37,6 +37,10 @@ jobs:
         run: node tests/sprint30-validacao.js
       - name: Sprint 31 — foco ao trocar artigo, aba e painel
         run: node tests/sprint31-validacao.js
+      - name: Sprint 32 — foco nos comentários e filtros do Leitor
+        run: node tests/sprint32-validacao.js
+      - name: Sprint 33 — foco dos controles do Caderno, Estudo, Revisão e Plano
+        run: node tests/sprint33-validacao.js
       - name: WORK 01 — continuidade nos motores originais
         run: node tests/work01-validacao.js
   navegador-chromium:
@@ -71,6 +75,10 @@ jobs:
         run: node tests/sprint30-browser.cjs
       - name: Sprint 31 — continuidade de foco em cinco viewports
         run: node tests/sprint31-browser.cjs
+      - name: Sprint 32 — foco dos formulários em cinco viewports
+        run: node tests/sprint32-browser.cjs
+      - name: Sprint 33 — teclado e foco em quatro módulos e cinco viewports
+        run: node tests/sprint33-browser.cjs
       - name: WORK 01 — continuar estudo, responder e retomar em cinco viewports
         run: node tests/work01-browser.cjs
       - name: Guardar capturas de viewport sintéticas
@@ -90,6 +98,10 @@ jobs:
             tests/artifacts-s30/*.png
             tests/artifacts-s31/*.json
             tests/artifacts-s31/*.png
+            tests/artifacts-s32/*.json
+            tests/artifacts-s32/*.png
+            tests/artifacts-s33/*.json
+            tests/artifacts-s33/*.png
             tests/artifacts-work01/*.json
             tests/artifacts-work01/*.png
           if-no-files-found: ignore
@@ -98,7 +110,7 @@ jobs:
   pages-publicado:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -106,4 +118,18 @@ jobs:
           node-version: '22'
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
+      - name: Instalar navegador para validar a URL publicada
+        run: npm install --no-save playwright && npx playwright install --with-deps chromium
+      - name: Jornada real no GitHub Pages publicado
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/work01-browser.cjs
+      - name: Guardar evidências sintéticas da URL publicada
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agu-work01-publicado
+          path: tests/artifacts-work01/
+          if-no-files-found: ignore
+          retention-days: 7
 

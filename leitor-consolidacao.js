@@ -48,22 +48,23 @@ function query(q=state.query,kind=state.filter,status=state.status){
  const s=clean(q).trim();
  return build().filter(x=>(kind==='todos'||x.type===kind)&&(status==='todos'||x.status===status)&&(!s||clean([x.title,x.description,x.verification,x.deviceId,x.search].join(' ')).includes(s))).slice(0,100);
 }
-function setFilters(queryText,kind,status){state.query=String(queryText||'').slice(0,150);state.filter=['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(kind)?kind:'todos';state.status=['todos','confirmado','parcial','pendente','pessoal'].includes(status)?status:'todos';state.expanded=true;persist();root.render?.();}
-function submit(){const q=document.getElementById('agu-search-q')?.value,k=document.getElementById('agu-search-kind')?.value,st=document.getElementById('agu-search-status')?.value;setFilters(q,k,st);}
-function clear(){setFilters('','todos','todos');}
-function toggle(){state.expanded=!state.expanded;persist();root.render?.();}
-function open(unitId){const valid=allClauses().some(x=>x.unit.id===unitId);if(!valid)return false;root.AGULegal?.unit(unitId);root.AGULegal?.mobile('text');return true;}
-function textSize(size){const n=Number(size);if(![90,100,115,130].includes(n))return;state.size=n;persist();root.render?.();}
+function focusControl(key){const selectors={toggle:'#agu-reader .agu-s17-search > button',input:'#agu-search-q',submit:'#agu-reader .agu-s17-fields button.agu-primary',clear:'#agu-reader .agu-s17-fields button.agu-light',size:'#agu-reader .agu-s17-settings select',result:'#agu-reader .agu-unit.selected'};if(key&&typeof document!=='undefined')document.querySelector?.(selectors[key])?.focus?.({preventScroll:false})}
+function setFilters(queryText,kind,status,focusTarget=''){state.query=String(queryText||'').slice(0,150);state.filter=['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(kind)?kind:'todos';state.status=['todos','confirmado','parcial','pendente','pessoal'].includes(status)?status:'todos';state.expanded=true;persist();root.render?.();focusControl(focusTarget)}
+function submit(focusTarget=''){const q=document.getElementById('agu-search-q')?.value,k=document.getElementById('agu-search-kind')?.value,st=document.getElementById('agu-search-status')?.value;setFilters(q,k,st,focusTarget)}
+function clear(focusTarget=''){setFilters('','todos','todos',focusTarget)}
+function toggle(restoreKeyboardFocus=false){state.expanded=!state.expanded;persist();root.render?.();if(restoreKeyboardFocus)focusControl('toggle')}
+function open(unitId,restoreKeyboardFocus=false){const valid=allClauses().some(x=>x.unit.id===unitId);if(!valid)return false;root.AGULegal?.unit(unitId);root.AGULegal?.mobile('text');if(restoreKeyboardFocus)focusControl('result');return true}
+function textSize(size,restoreKeyboardFocus=false){const n=Number(size);if(![90,100,115,130].includes(n))return;state.size=n;persist();root.render?.();if(restoreKeyboardFocus)focusControl('size')}
 const option=(id,name,current)=>'<option value="'+html(id)+'"'+(current===id?' selected':'')+'>'+html(name)+'</option>';
 function searchPanel(){
  const types=[['todos','Todos'],['norma','Normas'],['jurisprudencia','Jurisprudência'],['questao','Questões oficiais'],['flashcard','Flashcards'],['caderno','Caderno']];
  const statuses=[['todos','Todos os estados'],['confirmado','Confirmado pontualmente'],['parcial','Parcial'],['pendente','Pendente'],['pessoal','Pessoal']];
  const matches=query();
- let s='<div class="agu-s17-search"><button class="agu-light" aria-expanded="'+state.expanded+'" onclick="AGUConsolidation.toggle()">⌕ Pesquisa jurídica e filtros '+(state.expanded?'−':'+')+'</button>';
+ let s='<div class="agu-s17-search"><button class="agu-light" aria-expanded="'+state.expanded+'" onclick="AGUConsolidation.toggle(true)">⌕ Pesquisa jurídica e filtros '+(state.expanded?'−':'+')+'</button>';
  if(!state.expanded)return s+'</div>';
- s+='<div class="agu-s17-fields"><label>Pesquisar texto, artigo, dispositivo, tópico e anotações<input id="agu-search-q" type="search" maxlength="150" value="'+html(state.query)+'" placeholder="Ex.: art. 13, delegação, PGFN" onkeydown="if(event.key===\'Enter\'){AGUConsolidation.submit()}"></label><label>Tipo<select id="agu-search-kind">'+types.map(x=>option(x[0],x[1],state.filter)).join('')+'</select></label><label>Confiabilidade<select id="agu-search-status">'+statuses.map(x=>option(x[0],x[1],state.status)).join('')+'</select></label><div><button class="agu-primary" onclick="AGUConsolidation.submit()">Buscar</button><button class="agu-light" onclick="AGUConsolidation.clear()">Limpar</button></div></div>';
+ s+='<div class="agu-s17-fields"><label>Pesquisar texto, artigo, dispositivo, tópico e anotações<input id="agu-search-q" type="search" maxlength="150" value="'+html(state.query)+'" placeholder="Ex.: art. 13, delegação, PGFN" onkeydown="if(event.key===\'Enter\'){event.preventDefault();AGUConsolidation.submit(\'input\')}"></label><label>Tipo<select id="agu-search-kind">'+types.map(x=>option(x[0],x[1],state.filter)).join('')+'</select></label><label>Confiabilidade<select id="agu-search-status">'+statuses.map(x=>option(x[0],x[1],state.status)).join('')+'</select></label><div><button class="agu-primary" onclick="AGUConsolidation.submit(\'submit\')">Buscar</button><button class="agu-light" onclick="AGUConsolidation.clear(\'clear\')">Limpar</button></div></div>';
  s+='<p class="agu-muted">'+matches.length+' resultado(s) até o limite de 100. Resultados de flashcards têm associação temática; notas são pessoais. Confirmado pontualmente não significa certificado integralmente.</p>';
- if(state.query||state.filter!=='todos'||state.status!=='todos')s+='<div class="agu-s17-results" role="region" aria-label="Resultados de pesquisa">'+matches.map(x=>'<button type="button" class="agu-s17-result" onclick="AGUConsolidation.open(\''+html(x.deviceId)+'\')"><b>'+html(x.title)+'</b><small>'+html(x.type)+' · '+html(x.status)+' · '+html(x.relation)+' · '+html(x.deviceId)+'</small></button>').join('')+'</div>';
+ if(state.query||state.filter!=='todos'||state.status!=='todos')s+='<div class="agu-s17-results" role="region" aria-label="Resultados de pesquisa">'+matches.map(x=>'<button type="button" class="agu-s17-result" onclick="AGUConsolidation.open(\''+html(x.deviceId)+'\',true)"><b>'+html(x.title)+'</b><small>'+html(x.type)+' · '+html(x.status)+' · '+html(x.relation)+' · '+html(x.deviceId)+'</small></button>').join('')+'</div>';
  return s+'</div>';
 }
 function versionPanel(unitId){
@@ -74,7 +75,7 @@ function versionPanel(unitId){
  '<p><a href="'+html(x.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir texto oficial e alterações na origem</a></p></div>';
 }
 function settings(){
- return '<div class="agu-s17-settings"><label>Tamanho do texto jurídico <select onchange="AGUConsolidation.textSize(this.value)">'+[[90,'Compacto'],[100,'Padrão'],[115,'Ampliado'],[130,'Extra amplo']].map(x=>option(x[0],x[1],state.size)).join('')+'</select></label></div>';
+ return '<div class="agu-s17-settings"><label>Tamanho do texto jurídico <select onchange="AGUConsolidation.textSize(this.value,true)">'+[[90,'Compacto'],[100,'Padrão'],[115,'Ampliado'],[130,'Extra amplo']].map(x=>option(x[0],x[1],state.size)).join('')+'</select></label></div>';
 }
 function metrics(){
  const notes=root.AGUCaderno?.peek()?.records||[],sessions=root.AGUStudy?.peek()?.sessions||[];
