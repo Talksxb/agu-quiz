@@ -31,13 +31,44 @@ function validateRecord(key,obj){
   if(obj.notebook.some(x=>!isObj(x)||typeof x.id!=='string'||!x.id||typeof x.title!=='string'||typeof x.topic!=='string'||!date(x.date)||typeof x.summary!=='string'||!Array.isArray(x.revisions)))return false;
   return Object.values(obj.topic).every(v=>isObj(v)&&(!v.state||typeof v.state==='string'));
  }
- case 'agu_quiz_revisao_inteligente_v1':return obj.schema==='agu-review-v1'&&capArr(obj.attempts)&&isObj(obj.cards);
+ case 'agu_quiz_revisao_inteligente_v1':{
+  if(obj.schema!=='agu-review-v1'||!capArr(obj.attempts)||!isObj(obj.cards))return false;
+  const ids=new Set();
+  return obj.attempts.every(a=>{
+   if(!isObj(a)||typeof a.id!=='string'||!/^rv-[a-zA-Z0-9-]+$/.test(a.id)||a.id.length>140||ids.has(a.id)||typeof a.itemId!=='string'||a.itemId.length>140)return false;
+   if(a.selected!==undefined&&!['C','E','A','B','D',null].includes(a.selected))return false;
+   if(a.correct!==undefined&&![true,false,null].includes(a.correct))return false;
+   if(a.rating!==undefined&&!['errei','dificil','lembrei','facil'].includes(a.rating))return false;
+   ids.add(a.id);return true;
+  });
+ }
  case 'agu_quiz_planejamento_semanal_v1':{
   if(obj.schema!==1||!isObj(obj.weeks)||!Array.isArray(obj.settings?.dailyMinutes)||obj.settings.dailyMinutes.length!==7||!obj.settings.dailyMinutes.every(v=>Number.isInteger(v)&&v>=0&&v<=780))return false;
   try{return !!root.AGUPlanner?.validateBackupObject({schema:'agu-planner-backup-v1',data:obj})}catch(_){return false}
  }
- case 'agu_caderno_contextual_s15_v1':return obj.schema==='agu-context-notebook-v1'&&capArr(obj.records,3000)&&obj.records.every(x=>root.AGUCaderno?.valid?.(x));
- case 'agu_estudo_integrado_s16_v1':return obj.schema==='agu-integrated-study-v1'&&capArr(obj.sessions,3000)&&obj.sessions.every(x=>typeof x.id==='string'&&typeof x.deviceId==='string'&&Array.isArray(x.notes)&&Array.isArray(x.cardsSeen)&&Array.isArray(x.attemptIds));
+ case 'agu_caderno_contextual_s15_v1':{
+  if(obj.schema!=='agu-context-notebook-v1'||!capArr(obj.records,3000))return false;
+  const ids=new Set(),legacyIds=new Set();
+  return obj.records.every(x=>{
+   if(!root.AGUCaderno?.valid?.(x)||ids.has(x.id)||(x.legacyId&&legacyIds.has(x.legacyId)))return false;
+   ids.add(x.id);if(x.legacyId)legacyIds.add(x.legacyId);return true;
+  });
+ }
+ case 'agu_estudo_integrado_s16_v1':{
+  if(obj.schema!=='agu-integrated-study-v1'||!capArr(obj.sessions,3000))return false;
+  const units=new Map((root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles.flatMap(a=>a.clauses.map(c=>[c.id,a.topic]))));
+  const ids=new Set();
+  if(obj.sessions.some(x=>{
+   if(!isObj(x)||typeof x.id!=='string'||!/^ags-[a-zA-Z0-9-]+$/.test(x.id)||x.id.length>130||ids.has(x.id)||!units.has(x.deviceId)||x.topic!==units.get(x.deviceId))return true;
+   if(!['em_andamento','concluida'].includes(x.status)||!['norma','caderno','questoes','flashcards','revisao'].includes(x.stage))return true;
+   if(typeof x.createdAt!=='string'||typeof x.updatedAt!=='string')return true;
+   for(const list of [x.notes,x.cardsSeen,x.attemptIds,...(x.questionsSeen?[x.questionsSeen]:[])]){
+    if(!Array.isArray(list)||list.length>3000||list.some(z=>typeof z!=='string'||z.length>140)||new Set(list).size!==list.length)return true;
+   }
+   ids.add(x.id);return false;
+  }))return false;
+  return obj.activeId===null||obj.activeId===undefined||ids.has(obj.activeId);
+ }
  case 'agu_leitor_juridico_s13_v1':return typeof obj.article==='string'&&typeof obj.unit==='string'&&isObj(obj.notes)&&Object.keys(obj.notes).length<=500;
  case 'agu_consolidacao_s17_v1':return typeof obj.query==='string'&&obj.query.length<=150&&['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(obj.filter)&&['todos','confirmado','parcial','pendente','pessoal'].includes(obj.status)&&[90,100,115,130].includes(obj.size);
  case 'agu_quiz_curriculo_repo_v1':return capArr(obj.itens,412)&&obj.itens.length===412&&capArr(obj.disciplinas,14)&&obj.disciplinas.length===14&&new Set(obj.itens.map(x=>x.id)).size===412;
@@ -60,6 +91,7 @@ function capture(){
  return bundle;
 }
 function validateBundle(raw){
+ if(typeof raw==='string'&&raw.length>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
  const b=typeof raw==='string'?JSON.parse(raw):raw;
  if(!isObj(b)||b.schema!=='agu-portable-local-s20-v1'||b.version!==1||!isObj(b.items)||Object.keys(b.items).length>keys.size)throw Error('Formato de backup local incompatível.');
  for(const [key,value] of Object.entries(b.items)){
