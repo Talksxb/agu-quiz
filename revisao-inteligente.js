@@ -165,7 +165,7 @@ function rating(grade,keyboard=false){
  focusAfter('button[onclick^="AGUReview.reveal("]',keyboard);
 }
 function reveal(keyboard=false){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render();focusAfter('button[onclick^="AGUReview.rate(\'errei\'"]',keyboard)}
-function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render()}
+function chooseAnswer(v,keyboard=false){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render();focusAfter('button.option.selected',keyboard)}
 function go(mode,keyboard=false){choose(mode);window.render();focusAfter('button[onclick^="AGUReview.go(\''+mode+'\'"]',keyboard)}
 function exportData(){
  const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
@@ -247,7 +247,7 @@ function cardHTML(x){
  '<div class="btnrow"><a target="_blank" rel="noopener noreferrer" href="'+examUrl+'">Caderno original PDF</a><a target="_blank" rel="noopener noreferrer" href="'+keyUrl+'">Gabarito definitivo PDF</a></div>'+legalLink+
  (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
  !q?.auditVerified?'<div class="note">Questão em revisão jurídica: não disponível para pontuação automática.</div>':
-  '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
+  '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\',event.detail===0)">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
   (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p>'+(q.historicReason?'<details class="agu-card-detail"><summary>Fundamentação histórica · data da prova</summary><p>'+esc(q.historicReason)+'</p></details>':'<p>'+esc(q.reason)+'</p>')+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal(event.detail===0)">Conferir resposta</button></div>'));
 }
 function catalog(){

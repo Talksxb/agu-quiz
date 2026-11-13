@@ -86,7 +86,7 @@ function html(deviceId){
  let out='<div class="agu-notice"><b>Estudo integrado · '+esc(item.article.label)+' / '+esc(item.label)+'</b><p class="agu-muted">Somente atividades efetivamente registradas contam como realizadas; abrir uma etapa não registra horas ou domínio.</p></div>';
  if(!s||s.deviceId!==deviceId||s.status!=='em_andamento'){
   out+='<button class="agu-primary" onclick="AGUStudy.begin(\''+esc(deviceId)+'\',event.detail===0)">Iniciar / retomar estudo deste dispositivo</button>';
-  out+=prior.map(x=>'<div class="agu-notice">'+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+' · '+x.notes.length+' notas · '+x.attemptIds.length+' avaliações'+(x.status==='em_andamento'?'<button class="agu-light" onclick="AGUStudy.open(\''+esc(x.id)+'\')">Retomar sessão</button>':'')+'</div>').join('');
+  out+=prior.map(x=>'<div class="agu-notice">'+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+' · '+x.notes.length+' notas · '+x.attemptIds.length+' avaliações'+(x.status==='em_andamento'?'<button class="agu-light" onclick="AGUStudy.open(\''+esc(x.id)+'\',event.detail===0)">Retomar sessão</button>':'')+'</div>').join('');
   return out;
  }
  const missing=orphans(s);
@@ -96,7 +96,7 @@ function html(deviceId){
  if(s.stage==='norma')out+='<div class="agu-notice"><b>'+esc(item.label)+'</b><p>'+esc(item.text)+'</p><a href="'+esc(item.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir fonte oficial</a></div><button class="agu-primary" onclick="AGUStudy.goto(\'caderno\',event.detail===0)">Continuar para Caderno</button>';
  if(s.stage==='caderno'){
   const notes=root.AGUCaderno?.list(deviceId)||[];
-  out+='<p>Crie sua hipótese, objeção ou aplicação na aba Caderno, mantendo este dispositivo selecionado. Depois vincule registros já salvos à sessão.</p><button class="agu-light" onclick="AGULegal.tab(\'caderno\')">Abrir Caderno</button><button class="agu-light" onclick="AGUStudy.collect()">Vincular registros existentes</button><p class="agu-muted">Registros disponíveis: '+notes.length+' · associados: '+s.notes.length+'</p><button class="agu-primary" onclick="AGUStudy.goto(\'questoes\',event.detail===0)">Continuar</button>';
+  out+='<p>Crie sua hipótese, objeção ou aplicação na aba Caderno, mantendo este dispositivo selecionado. Depois vincule registros já salvos à sessão.</p><button class="agu-light" onclick="AGULegal.tab(\'caderno\')">Abrir Caderno</button><button class="agu-light" onclick="AGUStudy.collect(event.detail===0)">Vincular registros existentes</button><p class="agu-muted">Registros disponíveis: '+notes.length+' · associados: '+s.notes.length+'</p><button class="agu-primary" onclick="AGUStudy.goto(\'questoes\',event.detail===0)">Continuar</button>';
  }
  if(s.stage==='questoes'){
   const questions=(root.AGU_OFFICIAL_S18?.questions||[]).filter(x=>x.deviceId===deviceId&&x.key&&x.historicReason&&x.currentReason&&x.status==='gabarito_definitivo');
@@ -108,7 +108,7 @@ function html(deviceId){
   out+='<p class="agu-muted">Cartões do tópico '+esc(s.topic)+' — associação temática, não necessariamente ao inciso.</p>';
   const focused=root.AGUReview?.focusedHTML?.()||'';
   if(focused)out+=focused;
-  else out+=cards.length?cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.validation)+' · revisão '+esc(x.due||'inédito')+'</p><button class="agu-light" onclick="AGUStudy.pick(\''+esc(x.id)+'\')">Estudar cartão</button></div>').join(''):'<div class="agu-notice">Nenhum cartão encontrado para este tópico.</div>';
+  else out+=cards.length?cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.validation)+' · revisão '+esc(x.due||'inédito')+'</p><button class="agu-light" onclick="AGUStudy.pick(\''+esc(x.id)+'\',event.detail===0)">Estudar cartão</button></div>').join(''):'<div class="agu-notice">Nenhum cartão encontrado para este tópico.</div>';
   out+='<button class="agu-light" onclick="AGUStudy.goto(\'revisao\',event.detail===0)">Consultar revisões</button>';
  }
  if(s.stage==='revisao'){
@@ -122,10 +122,10 @@ function html(deviceId){
  return out
 }
 function begin(d,keyboard=false){if(start(d)){root.render?.();focusStage('norma',keyboard)}}
-function open(id){if(resume(id))root.render?.()}
+function open(id,keyboard=false){if(resume(id)){root.render?.();focusStage(active().stage,keyboard)}}
 function goto(v,keyboard=false){if(stage(v)){root.render?.();focusStage(v,keyboard)}}
-function pick(id){if(focus(id))root.render?.()}
-function collect(){syncNotes();root.render?.()}
+function pick(id,keyboard=false){if(focus(id)){root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUReview.reveal("]')?.focus?.({preventScroll:false})}}
+function collect(keyboard=false){syncNotes();root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUStudy.collect("]')?.focus?.({preventScroll:false})}
 function close(keyboard=false){if(finish()){root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUStudy.begin("]')?.focus?.({preventScroll:false})}}
 root.AGUStudy={html,start,resume,stage,focus,trackOfficial,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
 })(window);
