@@ -1,0 +1,47 @@
+name: AGU Quiz · Sprint 20 (Node + Chromium)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - '*.js'
+      - 'dados/**'
+      - 'tests/**'
+      - '.github/workflows/agu-sprint20-ci.yml'
+  workflow_dispatch:
+jobs:
+  integridade-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Node.js runtime
+        run: node --version
+      - name: Regressão Sprint 19
+        run: node tests/sprint19-validacao.js
+      - name: Regressão Sprint 20
+        run: node tests/sprint20-validacao.js
+  navegador-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar Playwright
+        run: npm install --no-save playwright
+      - name: Instalar Chromium e dependências
+        run: npx playwright install --with-deps chromium
+      - name: Fluxo real no navegador (emulação de viewport, não Android físico)
+        run: node tests/sprint20-browser.cjs
+      - name: Guardar capturas de viewport sintéticas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agu-s20-chromium-viewports
+          path: tests/artifacts-s20/*.png
+          if-no-files-found: ignore
+          retention-days: 7
