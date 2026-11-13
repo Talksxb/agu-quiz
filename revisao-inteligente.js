@@ -169,8 +169,8 @@ function exportData(){
 }
 /* Sprint 20 — validação de backups de tentativas sem substituir estados de revisão atuais. */
 const BACKUP_LIMIT=3000000;
-const dateIso=x=>typeof x==='string'&&/^\\d{4}-\\d{2}-\\d{2}T/.test(x)&&Number.isFinite(Date.parse(x));
-const dueIso=x=>x===null||x===undefined||(typeof x==='string'&&/^\\d{4}-\\d{2}-\\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+'T12:00:00Z')));
+const dateIso=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}T/.test(x)&&Number.isFinite(Date.parse(x));
+const dueIso=x=>x===null||x===undefined||(typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+'T12:00:00Z')));
 function validAttempt(x){
  const card=INDEX.get(x?.itemId);
  if(!x||!card||typeof x.id!=='string'||!/^rv-[a-zA-Z0-9-]{1,112}$/.test(x.id)||x.kind!==card.kind||!dateIso(x.at))return false;
