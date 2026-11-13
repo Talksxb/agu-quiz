@@ -24,6 +24,7 @@ async function run(){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const port=server.address().port,origin='http://127.0.0.1:'+port+'/';
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ console.log('Chromium real: '+browser.version());
  let scenarios=0;
  const evidence=path.join(ROOT,'tests','artifacts-s20');
  fs.mkdirSync(evidence,{recursive:true});
@@ -65,7 +66,7 @@ async function run(){
   const after=await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1')).attempts.length);
   assert.equal(after,1,'histórico preservado no reload');
   await page.getByRole('button',{name:'Evolução',exact:true}).click();
-  await page.getByRole('button',{name:'Dados e backup'}).click();
+  await page.locator('.secondary-nav-item').filter({hasText:'Dados e backup'}).click();
   assert.ok((await page.locator('body').innerText()).includes('Backup local completo'),'backup acessível');
   const widths=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,innerWidth:innerWidth}));
   assert.ok(widths.scrollWidth<=widths.innerWidth+2,'overflow horizontal '+JSON.stringify(widths));
