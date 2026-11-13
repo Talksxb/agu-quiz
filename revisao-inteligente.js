@@ -78,6 +78,21 @@ for(const x of global.AGU_OFFICIAL_S18?.questions||[]){
  if(x.id!=='of-2015-adv-048')continue;
  INLINE_ADAPTED[x.id]={year:2015,n:48,stem:x.adaptedStem,reason:x.historicReason,currentReason:x.currentReason,historicReason:x.historicReason,trap:x.trap,adapted:true,sourceVerified:x.sourceVerified,auditVerified:true,auditDate:x.sourceVerified,normRef:x.legalReason,normUrl:x.lawUrl,stfUrl:x.stfUrl,sourceId:x.reference,deviceId:x.deviceId,examLocator:x.examLocator,keyLocator:x.keyLocator};
 }
+
+/* Sprint 19: promover apenas itens C/E conferidos, reutilizando IDs e histórico de revisão legados. */
+for(const x of global.AGU_OFFICIAL_S19?.questions||[]){
+ if(!/^of-2015-adv-\d{3}$/.test(x.id)||x.exam!=='187AGU_001_07'||x.year!==2015||x.type!=='ce'||!['C','E'].includes(x.key)||x.annulled||!x.historicReason||!x.currentReason||!x.deviceId)continue;
+ const existing=OFFICIAL.find(y=>y.id===x.id&&y.year===x.year&&y.number===x.number);
+ if(!existing)continue;
+ Object.assign(existing,{code:x.code,exam:x.exam,examUrl:x.examUrl,keyUrl:x.keyUrl,key:x.key,theme:x.title,
+  deviceId:x.deviceId,validation:'gabarito_historico_e_fundamento_pontualmente_confirmados',
+  source:'AGU 2015, caderno 187AGU_001_07 e gabarito definitivo'});
+ INLINE_ADAPTED[x.id]={year:x.year,n:x.number,stem:x.adaptedStem,reason:x.historicReason,
+  historicReason:x.historicReason,currentReason:x.currentReason,trap:x.trap,adapted:true,
+  auditVerified:true,auditDate:x.sourceVerified,sourceVerified:x.sourceVerified,sourceId:x.reference,
+  deviceId:x.deviceId,examLocator:x.examLocator,keyLocator:x.keyLocator,
+  normRef:x.legalReason,normUrl:x.lawUrl,legalScope:x.legalScope};
+}
 const AUD03_CARDS=Array.isArray(global.AGU_AUD03_CARDS)?global.AGU_AUD03_CARDS.filter(x=>x&&x.kind==='flashcard'&&/^aud03-flc-\d{3}$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.link==='string'&&/^https:\/\//.test(x.link)):[];
 // Conserva ID e state de revisão: apenas corrige classificação curricular de cartões legados.
 const CURRICULAR_CORRECTIONS={'ri-pc-01':'PC-03','ri-pc-02':'PC-03','ri-pc-03':'PC-03'};
@@ -146,7 +161,7 @@ function rating(grade){
  window.render();
 }
 function reveal(){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render()}
-function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(/^[CE]$/.test(v)||/^[A-E]$/.test(v)))return;pick=v;window.render()}
+function chooseAnswer(v){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render()}
 function go(mode){choose(mode);window.render()}
 function exportData(){
  const blob=new Blob([JSON.stringify({schema:'agu-review-backup-v1',exported:new Date().toISOString(),data:state},null,2)],{type:'application/json'});
@@ -192,7 +207,7 @@ function cardHTML(x){
  (x.status==='anulada'?'<p class="note">Item anulado: não há pontuação nem revisão avaliativa.</p>':
  !q?.auditVerified?'<div class="note">Questão em revisão jurídica: não disponível para pontuação automática.</div>':
   '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\')">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
-  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p><p>'+esc(q.reason)+'</p>'+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
+  (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p>(q.historicReason?'<details class="agu-card-detail"><summary>Fundamentação histórica · data da prova</summary><p>'+esc(q.historicReason)+'</p></details>':'<p>'+esc(q.reason)+'</p>')+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal()">Conferir resposta</button></div>'));
 }
 function catalog(){
  const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));
