@@ -40,7 +40,7 @@ async function inspectWidth(page,w,phase){
 }
 async function goQuestions(page){
  await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
- await page.getByRole('button',{name:'Questões Cebraspe',exact:true}).click();
+ await page.getByRole('button',{name:'Questões Cebraspe'}).click();
 }
 async function run(){
  await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
