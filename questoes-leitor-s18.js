@@ -39,7 +39,7 @@ function note(){
  try{
   const record=root.AGUCaderno?.create({deviceId:x.deviceId,title:'Dificuldade · AGU '+x.year+' Q'+x.number,
    content:'Questão oficial '+x.year+'/'+x.number+' · '+x.id+' · variante '+x.exam+
-    '\nCaderno oficial: '+x.examUrl+'\nGabarito definitivo: '+x.keyUrl+'\nMinha dificuldade:\n'+content,
+    '\nCaderno oficial: '+x.examUrl+'\nGabarito definitivo: '+x.keyUrl+'\nMinha dificuldade:\n'+content.slice(0,15000),
    type:'dificuldade',stage:'confrontacao',origin:'manual',sources:[]});
   if(!record)return false;
   root.AGUStudy?.syncNotes?.();root.render?.();return true;
