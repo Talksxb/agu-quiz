@@ -13,6 +13,39 @@
       "auditStatus": "parcial_nao_certificado",
       "articles": [
         {
+          "id": "CF88:art37",
+          "label": "Art. 37 (excerto: caput e inciso X)",
+          "topic": "ADM-27",
+          "excerpt": true,
+          "excerptNote": "Recorte: somente caput e inciso X; os demais incisos e parágrafos devem ser lidos na fonte oficial.",
+          "clauses": [
+            {
+              "id": "CF88:art37:caput",
+              "label": "Caput (excerto)",
+              "text": "A administração pública direta e indireta de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte:"
+            },
+            {
+              "id": "CF88:art37:X",
+              "label": "Inciso X",
+              "text": "A remuneração dos servidores públicos e o subsídio de que trata o § 4º do art. 39 somente poderão ser fixados ou alterados por lei específica, observada a iniciativa privativa em cada caso, assegurada revisão geral anual, sempre na mesma data e sem distinção de índices."
+            }
+          ]
+        },
+        {
+          "id": "CF88:art49",
+          "label": "Art. 49 (excerto: inciso V)",
+          "topic": "ADM-27",
+          "excerpt": true,
+          "excerptNote": "Recorte: apenas inciso V do art. 49. Outros incisos não foram incorporados ao corpus.",
+          "clauses": [
+            {
+              "id": "CF88:art49:V",
+              "label": "Inciso V",
+              "text": "É da competência exclusiva do Congresso Nacional sustar os atos normativos do Poder Executivo que exorbitem do poder regulamentar ou dos limites de delegação legislativa."
+            }
+          ]
+        },
+        {
           "id": "CF88:art131",
           "label": "Art. 131",
           "topic": "CON-50",
@@ -159,6 +192,30 @@
               "id": "L9784:art15:caput",
               "label": "Art. 15",
               "text": "Será permitida, em caráter excepcional e por motivos relevantes devidamente justificados, a avocação temporária de competência atribuída a órgão hierarquicamente inferior."
+            }
+          ]
+        },
+        {
+          "id": "L9784:art50",
+          "label": "Art. 50 (excerto: caput, I e §1º)",
+          "topic": "ADM-17",
+          "excerpt": true,
+          "excerptNote": "Recorte: caput, inciso I e §1º. Não representa reprodução completa do art. 50.",
+          "clauses": [
+            {
+              "id": "L9784:art50:caput",
+              "label": "Caput (excerto)",
+              "text": "Os atos administrativos deverão ser motivados, com indicação dos fatos e dos fundamentos jurídicos, quando:"
+            },
+            {
+              "id": "L9784:art50:I",
+              "label": "Inciso I",
+              "text": "Neguem, limitem ou afetem direitos ou interesses."
+            },
+            {
+              "id": "L9784:art50:p1",
+              "label": "§1º",
+              "text": "A motivação deve ser explícita, clara e congruente, podendo consistir em declaração de concordância com fundamentos de anteriores pareceres, informações, decisões ou propostas, que, neste caso, serão parte integrante do ato."
             }
           ]
         }
