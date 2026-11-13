@@ -31,6 +31,7 @@ async function main(){
   await page.goto('http://127.0.0.1:'+server.address().port+'/',{waitUntil:'load'});
   await page.evaluate(()=>window.setView('legal')); // preparação, não prova de Tab
   const beforeAttempts=await page.evaluate(()=>window.AGUReview?.getStats?.()?.attempts??0);
+  if(width<850)await page.locator('#agu-reader .agu-mobile button').nth(2).click(); // revelar abas no painel Relacionados
   await page.locator('#agu-reader .agu-tabs button').filter({hasText:'Comentários'}).click();
   const synthetic='Nota exclusivamente sintética S32 — foco e persistência '+width;
   await page.locator('#agu-legal-note').fill(synthetic);
