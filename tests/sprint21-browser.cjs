@@ -44,6 +44,28 @@ async function inspectWidth(page,w,phase){
  assert.equal(m.reduced,true);
  return m;
 }
+
+async function contrastSamples(page,selectors){
+ const findings=await page.evaluate(selectors=>{
+  const rgb=str=>(str.match(/[\d.]+/g)||[]).slice(0,3).map(Number);
+  const lum=v=>{
+   const c=v.map(z=>{const n=z/255;return n<=0.04045?n/12.92:((n+0.055)/1.055)**2.4});
+   return c[0]*0.2126+c[1]*0.7152+c[2]*0.0722;
+  };
+  const background=el=>{
+   for(let n=el;n;n=n.parentElement){const v=getComputedStyle(n).backgroundColor;if(v.startsWith('rgb('))return rgb(v)}
+   return [255,255,255];
+  };
+  return selectors.map(selector=>{
+   const e=document.querySelector(selector);if(!e)return {selector,missing:true};
+   const fg=rgb(getComputedStyle(e).color),bg=background(e);
+   const a=lum(fg),b=lum(bg);
+   return {selector,ratio:Number(((Math.max(a,b)+0.05)/(Math.min(a,b)+0.05)).toFixed(2)),foreground:fg,background:bg};
+  });
+ },selectors);
+ for(const f of findings){assert.ok(!f.missing,'missing contrast sample '+f.selector);assert.ok(f.ratio>=4.5,'contrast below 4.5:1 '+JSON.stringify(f))}
+ return findings;
+}
 async function goQuestions(page){
  await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
  await page.getByRole('button',{name:'Questões Cebraspe'}).click();
@@ -67,7 +89,10 @@ async function run(){
   assert.notEqual(focus.outline,'none','keyboard focus lacks outline');
   await p.getByRole('button',{name:'Estudar',exact:true}).click();
   assert.ok((await p.locator('#main').innerText()).includes('Estudar'));
-  await goQuestions(p);
+  await p.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
+  await contrastSamples(p,['#main .hub-lead .muted','#main .hub-entry span']);
+  await p.getByRole('button',{name:'Questões Cebraspe'}).click();
+  await contrastSamples(p,['#main .note','#main .muted']);
   await inspectWidth(p,width,'lista');
   for(const q of cases){
    // Retorna a lista de questões antes de cada teste.
@@ -76,6 +101,7 @@ async function run(){
    assert.ok(!(await p.locator('#main').innerText()).includes('Gabarito definitivo da questão original: '+q.key),
      'gabarito prévio visível Q'+q.n);
    await inspectWidth(p,width,'leitor Q'+q.n);
+   await contrastSamples(p,['#main .agu-muted']);
    await p.getByRole('button',{name:q.choose==='C'?'CERTO':'ERRADO',exact:true}).click();
    await p.getByRole('button',{name:'Conferir resposta',exact:true}).click();
    assert.ok((await p.locator('#main').innerText()).includes('Gabarito definitivo da questão original: '+q.key));
