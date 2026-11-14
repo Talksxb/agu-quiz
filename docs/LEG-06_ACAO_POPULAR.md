@@ -21,8 +21,14 @@ As verificações de LEG06 incluem importação/reextração offline, reconstru�
 
 Workflow inclui LEG06 em Node, Chromium e validação da URL publicada, cinco viewports 320/360/390/430/1280 e axe separado em `violations`, `incomplete` e `passed` (com rechecagem após rolagem). Evidências sintéticas ficam em `tests/artifacts-leg06/` na CI, não versionadas. Nenhum Android físico, TalkBack, perfil pessoal ou backup pessoal foi testado.
 
-## Fechamento remoto
+## Fechamento remoto confirmado — 14/11/2026
 
-Base local inicial: `main` em `18a4f76e430ed8846d131dfe1900ecc3fa1a3cee`, nenhuma PR aberta; branch `leg/leg06-acao-popular-integral`. **Atualizar esta seção conforme commits, PR, CI, Pages e hashes publicados realmente confirmados.** A versão em branch não deve ser apresentada como produção até o deploy e a conferência HTTP efetivos.
+Base inicial `main=18a4f76e430ed8846d131dfe1900ecc3fa1a3cee`, nenhuma PR aberta; branch `leg/leg06-acao-popular-integral`. PR [#11](https://github.com/Talksxb/agu-quiz/pull/11), **incorporada** em `2f86ca39419dd6bef95c80df50185abe32cfbf13`. Commit de implementação remoto `0d25b36ae309096876c05b3df306915970873731`; correções estritamente de teste `608fe371ccf195cbf6b657470c1436776a436fdb`, `faa64110a97a8f4b60ffefc5a558c76d0ed1b983` e HEAD final da PR `9fe9aeeaf0b34c606434d6ca700cefb5fc2adb74`. Nenhuma mudança adicional no produto durante os ajustes de CI.
+
+CI da PR [43634382122](https://github.com/Talksxb/agu-quiz/actions/runs/43634382122) **aprovada**: 19 suítes Node e Chromium 159.0.8154.6 em cinco larguras, com LEG01–06 e regressões WORK/Sprint preservadas; evidências sintéticas no artefato `agu-s20-chromium-viewports`, ID `14129930524`. Axe 4.14.0: em 390/1280, zero violações; em 390, um inconclusivo de contraste por sobreposição (`.secondary-more > summary`) foi reavaliado após rolagem e **aprovado**; em 1280, nenhum inconclusivo. Capturas 390/1280 inspecionadas. Chromium local indisponível por restrição de socket do ambiente gerenciado; a execução remota real foi bem-sucedida.
+
+Deploy [43634719318](https://github.com/Talksxb/agu-quiz/actions/runs/43634719318) **aprovado**. CI `main` [43634719904](https://github.com/Talksxb/agu-quiz/actions/runs/43634719904) **inteiramente aprovada**: Node, Chromium e `pages-publicado`, este último testando LEG06/05/04/03 e WORK01 diretamente em HTTPS. Artefatos da `main`: `agu-work01-publicado` ID `14129347124`, `agu-s20-chromium-viewports` ID `14128883880`.
+
+Publicação **utilizável e confirmada**: https://talksxb.github.io/agu-quiz/?abrir=lei&norma=L4717 . HTTP 200; HTML e os oito scripts idênticos por SHA-256 ao checkout integrado, conferidos fora da CI por `node tests/sprint21-pages.cjs`. SHA-256 HTML `cf9f876b48d892ce163293846ed69d01093ee438771c02c07866dcbeec723ce6`; corpus `c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a`; leitor **inalterado** `955df3f7269730fb8fd429912dd82c7c6f1e861f640e1596fc75230383a0ec00`; backup **inalterado** `d9f7705b490d041dd445701b0b619e39c6b2bb4d204cb5a966b27b98ca4d0d78`. Sem bloqueio conhecido ao uso; não testados Android físico/TalkBack ou backup pessoal.
 
 Handoff: `docs/PROMPT_LEG-07.md` descreve exclusivamente a futura funcionalidade opcional “Para meu caderno”. **LEG-07 não foi executada na LEG-06.**
