@@ -18,7 +18,9 @@ function statusOf(r){return r.sourceStatus==='confirmado'?'confirmado':r.sourceS
 function build(){
  const out=[],units=allClauses(),unitIds=new Set(units.map(x=>x.unit.id));
  for(const x of units){
-  out.push({id:'norm:'+x.unit.id,deviceId:x.unit.id,type:'norma',status:'confirmado',relation:'literal_do_dispositivo',title:x.law.title+' · '+x.article.label+' · '+x.unit.label,description:x.unit.text,source:x.law.source,verification:'Texto publicado na fonte oficial; cadeia de alterações não certificada',search:x.unit.id+' '+x.article.topic+' '+x.article.label+' '+x.law.title});
+  const textual=x.unit.textVerification?.status||x.article.textVerification?.status||x.law.textVerification?.status;
+  const textStatus=textual==='pending'?'pendente':textual&&textual!=='compared'&&textual!=='legacy_point_check'?'parcial':'confirmado';
+  out.push({id:'norm:'+x.unit.id,deviceId:x.unit.id,type:'norma',status:textStatus,relation:'literal_do_dispositivo',title:x.law.title+' · '+x.article.label+' · '+x.unit.label,description:x.unit.text,source:x.law.source,verification:textStatus==='pendente'?'Cotejo textual pendente; fonte oficial não equivale a conferência ou certificação':'Conferência textual pontual; cadeia de alterações não certificada',search:x.unit.id+' '+x.article.topic+' '+x.article.label+' '+x.law.title});
  }
  for(const r of rels()){
   if(!unitIds.has(r.deviceId)||!['norma','jurisprudencia','questao'].includes(r.kind))continue;
