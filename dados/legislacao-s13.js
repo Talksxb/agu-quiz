@@ -1,7 +1,7 @@
-/* Corpus público S13 — normas integrais LEG02/LEG03 e seleção CF, com IDs preservados. */
+/* Corpus público S13 — normas integrais LEG02–04 e seleção CF; IDs anteriores preservados. */
 (function(root){'use strict';root.AGU_LEGAL_CORPUS={
   "schema": "agu-legal-reader-v1",
-  "cutoff": "2026-11-13",
+  "cutoff": "2026-11-14",
   "laws": [
     {
       "id": "CF88",
@@ -9854,6 +9854,2962 @@
         ],
         "checkedOn": "2026-11-13",
         "sourceDigest": "sha256:9e178a491fd3ba44c4956316bc9ef602a5d544b2fa5d8a52abaa2e6bac3de691",
+        "annexes": "not_applicable"
+      }
+    },
+    {
+      "id": "LC73",
+      "title": "Lei Complementar 73/1993 — Lei Orgânica da AGU",
+      "kind": "complementary_law",
+      "number": "73",
+      "year": 1993,
+      "section": "Texto integral · títulos, capítulos e seções",
+      "source": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html",
+      "sourceAuthority": "Câmara dos Deputados — Centro de Documentação e Informação",
+      "sourceVersion": "Texto atualizado da Câmara; captura de 14/11/2026",
+      "checkedOn": "2026-11-14",
+      "auditStatus": "parcial_nao_certificado",
+      "textVersionId": "LC73@2026-11-14-camara-148726cf",
+      "contentCoverage": "integral",
+      "textVerification": {
+        "status": "compared",
+        "checkedOn": "2026-11-14",
+        "scope": "full_norm",
+        "note": "Cotejo integral da captura oficial; não certifica vigência, remissões ou alcance jurisprudencial."
+      },
+      "structure": [
+        {
+          "id": "LC73:titleI",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO I — DAS FUNÇÕES INSTITUCIONAIS E DA COMPOSIÇÃO"
+        },
+        {
+          "id": "LC73:titleI:chapterI",
+          "kind": "chapter",
+          "parentId": "LC73:titleI",
+          "label": "CAPÍTULO I — DAS FUNÇÕES INSTITUCIONAIS"
+        },
+        {
+          "id": "LC73:titleI:chapterII",
+          "kind": "chapter",
+          "parentId": "LC73:titleI",
+          "label": "CAPÍTULO II — DA COMPOSIÇÃO"
+        },
+        {
+          "id": "LC73:titleII",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO II — DOS ÓRGÃOS DA ADVOCACIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterI",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO I — DO ADVOGADO-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterII",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO II — DA CORREGEDORIA-GERAL DA ADVOCACIA DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterIII",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO III — DO CONSELHO SUPERIOR DA ADVOCACIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterIV",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO IV — DA PROCURADORIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterV",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO V — DA CONSULTORIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleII:chapterVI",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO VI — DAS CONSULTORIAS JURÍDICAS"
+        },
+        {
+          "id": "LC73:titleII:chapterVII",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO VII — DA PROCURADORIA-GERAL DA FAZENDA NACIONAL"
+        },
+        {
+          "id": "LC73:titleII:chapterVIII",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO VIII — DO GABINETE DO ADVOGADO-GERAL DA UNIÃO E DA SECRETARIA DE CONTROLE INTERNO"
+        },
+        {
+          "id": "LC73:titleII:chapterIX",
+          "kind": "chapter",
+          "parentId": "LC73:titleII",
+          "label": "CAPÍTULO IX — DOS ÓRGÃOS VINCULADOS"
+        },
+        {
+          "id": "LC73:titleIII",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO III — DOS MEMBROS EFETIVOS DA ADVOCACIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleIII:chapterI",
+          "kind": "chapter",
+          "parentId": "LC73:titleIII",
+          "label": "CAPÍTULO I — DAS CARREIRAS"
+        },
+        {
+          "id": "LC73:titleIII:chapterII",
+          "kind": "chapter",
+          "parentId": "LC73:titleIII",
+          "label": "CAPÍTULO II — DA LOTAÇÃO E DA DISTRIBUIÇÃO"
+        },
+        {
+          "id": "LC73:titleIII:chapterIII",
+          "kind": "chapter",
+          "parentId": "LC73:titleIII",
+          "label": "CAPÍTULO III — DA PROMOÇÃO"
+        },
+        {
+          "id": "LC73:titleIII:chapterIV",
+          "kind": "chapter",
+          "parentId": "LC73:titleIII",
+          "label": "CAPÍTULO IV — DOS DIREITOS, DOS DEVERES, DAS PROIBIÇÕES, DOS IMPEDIMENTOS E DAS CORREIÇÕES"
+        },
+        {
+          "id": "LC73:titleIII:chapterIV:sectionI",
+          "kind": "section",
+          "parentId": "LC73:titleIII:chapterIV",
+          "label": "Seção I — Dos Direitos"
+        },
+        {
+          "id": "LC73:titleIII:chapterIV:sectionII",
+          "kind": "section",
+          "parentId": "LC73:titleIII:chapterIV",
+          "label": "Seção II — Dos Deveres, das Proibições e dos Impedimentos"
+        },
+        {
+          "id": "LC73:titleIII:chapterIV:sectionIII",
+          "kind": "section",
+          "parentId": "LC73:titleIII:chapterIV",
+          "label": "Seção III — Das Correições"
+        },
+        {
+          "id": "LC73:titleIV",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO IV — DAS CITAÇÕES, DAS INTIMAÇÕES E DAS NOTIFICAÇÕES"
+        },
+        {
+          "id": "LC73:titleV",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO V — DOS PARECERES E DA SÚMULA DA ADVOCACIA-GERAL DA UNIÃO"
+        },
+        {
+          "id": "LC73:titleVI",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO VI — DAS DISPOSIÇÕES GERAIS E FINAIS"
+        },
+        {
+          "id": "LC73:titleVII",
+          "kind": "title",
+          "parentId": null,
+          "label": "TÍTULO VII — DAS DISPOSIÇÕES TRANSITÓRIAS"
+        }
+      ],
+      "articles": [
+        {
+          "id": "LC73:art1",
+          "label": "Art. 1",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleI",
+            "LC73:titleI:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art1:caput",
+              "label": "Caput",
+              "text": "A Advocacia-Geral da União é a instituição que representa a União judicial e extrajudicialmente.",
+              "kind": "caput",
+              "parentId": "LC73:art1",
+              "sourceOrdinal": 10
+            },
+            {
+              "id": "LC73:art1:pu",
+              "label": "Parágrafo único",
+              "text": "À Advocacia-Geral da União cabem as atividades de consultoria e assessoramento jurídicos ao Poder Executivo, nos termos desta Lei Complementar.",
+              "kind": "paragraph",
+              "parentId": "LC73:art1",
+              "sourceOrdinal": 11
+            }
+          ]
+        },
+        {
+          "id": "LC73:art2",
+          "label": "Art. 2",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleI",
+            "LC73:titleI:chapterII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art2:caput",
+              "label": "Caput",
+              "text": "A Advocacia-Geral da União compreende:",
+              "kind": "caput",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 14
+            },
+            {
+              "id": "LC73:art2:I",
+              "label": "Inciso I",
+              "text": "órgãos de direção superior:",
+              "kind": "item",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 15
+            },
+            {
+              "id": "LC73:art2:I:a",
+              "label": "Alínea a",
+              "text": "o Advogado-Geral da União;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:I",
+              "sourceOrdinal": 16
+            },
+            {
+              "id": "LC73:art2:I:b",
+              "label": "Alínea b",
+              "text": "a Procuradoria-Geral da União e a da Fazenda Nacional;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:I",
+              "sourceOrdinal": 17
+            },
+            {
+              "id": "LC73:art2:I:c",
+              "label": "Alínea c",
+              "text": "Consultoria-Geral da União;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:I",
+              "sourceOrdinal": 18
+            },
+            {
+              "id": "LC73:art2:I:d",
+              "label": "Alínea d",
+              "text": "o Conselho Superior da Advocacia-Geral da União; e",
+              "kind": "subitem",
+              "parentId": "LC73:art2:I",
+              "sourceOrdinal": 19
+            },
+            {
+              "id": "LC73:art2:I:e",
+              "label": "Alínea e",
+              "text": "a Corregedoria-Geral da Advocacia da União;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:I",
+              "sourceOrdinal": 20
+            },
+            {
+              "id": "LC73:art2:II",
+              "label": "Inciso II",
+              "text": "órgãos de execução:",
+              "kind": "item",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 21
+            },
+            {
+              "id": "LC73:art2:II:a",
+              "label": "Alínea a",
+              "text": "as Procuradorias Regionais da União e as da Fazenda Nacional e as Procuradorias da União e as da Fazenda Nacional nos Estados e no Distrito Federal e as Procuradorias Seccionais destas;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:II",
+              "sourceOrdinal": 22
+            },
+            {
+              "id": "LC73:art2:II:b",
+              "label": "Alínea b",
+              "text": "a Consultoria da União, as Consultorias Jurídicas dos Ministérios, da Secretaria-Geral e das demais Secretarias da Presidência da República e do Estado-Maior das Forças Armadas;",
+              "kind": "subitem",
+              "parentId": "LC73:art2:II",
+              "sourceOrdinal": 23
+            },
+            {
+              "id": "LC73:art2:III",
+              "label": "Inciso III",
+              "text": "órgão de assistência direta e imediata ao Advogado-Geral da União: o Gabinete do Advogado-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 24
+            },
+            {
+              "id": "LC73:art2:IV",
+              "label": "Inciso IV",
+              "text": "(VETADO)",
+              "kind": "item",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 25,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "LC73:art2:p1",
+              "label": "§ 1º",
+              "text": "Subordinam-se diretamente ao Advogado-Geral da União, além do seu gabinete, a Procuradoria-Geral da União, a Consultoria-Geral da União, a Corregedoria-Geral da Advocacia-Geral da União, a Secretaria de Controle Interno e, técnica e juridicamente, a Procuradoria-Geral da Fazenda Nacional.",
+              "kind": "paragraph",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 26
+            },
+            {
+              "id": "LC73:art2:p2",
+              "label": "§ 2º",
+              "text": "As Procuradorias Seccionais, subordinadas às Procuradorias da União e da Fazenda Nacional nos Estados e no Distrito Federal, serão criadas, no interesse do serviço, por proposta do Advogado-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 27
+            },
+            {
+              "id": "LC73:art2:p3",
+              "label": "§ 3º",
+              "text": "As Procuradorias e Departamentos Jurídicos das autarquias e fundações públicas são órgãos vinculados à Advocacia-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 28
+            },
+            {
+              "id": "LC73:art2:p4",
+              "label": "§ 4º",
+              "text": "O Advogado-Geral da União é auxiliado por dois Secretários-Gerais: o de Contencioso e o de Consultoria.",
+              "kind": "paragraph",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 29
+            },
+            {
+              "id": "LC73:art2:p5",
+              "label": "§ 5º",
+              "text": "São membros da Advocacia-Geral da União: o Advogado-Geral da União, o Procurador-Geral da União, o Procurador-Geral da Fazenda Nacional, o Consultor-Geral da União, o Corregedor-Geral da Advocacia da União, os Secretários-Gerais de Contencioso e de Consultoria, os Procuradores Regionais, os Consultores da União, os Corregedores-Auxiliares, os Procuradores-Chefes, os Consultores Jurídicos, os Procuradores Seccionais, os Advogados da União, os Procuradores da Fazenda Nacional e os Assistentes Jurídicos.",
+              "kind": "paragraph",
+              "parentId": "LC73:art2",
+              "sourceOrdinal": 30
+            }
+          ]
+        },
+        {
+          "id": "LC73:art3",
+          "label": "Art. 3",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art3:caput",
+              "label": "Caput",
+              "text": "A Advocacia-Geral da União tem por chefe o Advogado-Geral da União, de livre nomeação pelo Presidente da República, dentre cidadãos maiores de trinta e cinco anos, de notável saber jurídico e reputação ilibada.",
+              "kind": "caput",
+              "parentId": "LC73:art3",
+              "sourceOrdinal": 35
+            },
+            {
+              "id": "LC73:art3:p1",
+              "label": "§ 1º",
+              "text": "O Advogado-Geral da União é o mais elevado órgão de assessoramento jurídico do Poder Executivo, submetido à direta, pessoal e imediata supervisão do Presidente da República.",
+              "kind": "paragraph",
+              "parentId": "LC73:art3",
+              "sourceOrdinal": 36
+            },
+            {
+              "id": "LC73:art3:p2",
+              "label": "§ 2º",
+              "text": "O Advogado-Geral da União terá substituto eventual nomeado pelo Presidente da República, atendidas as condições deste artigo.",
+              "kind": "paragraph",
+              "parentId": "LC73:art3",
+              "sourceOrdinal": 37
+            }
+          ]
+        },
+        {
+          "id": "LC73:art4",
+          "label": "Art. 4",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art4:caput",
+              "label": "Caput",
+              "text": "São atribuições do Advogado-Geral da União:",
+              "kind": "caput",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 38
+            },
+            {
+              "id": "LC73:art4:I",
+              "label": "Inciso I",
+              "text": "dirigir a Advocacia-Geral da União, superintender e coordenar suas atividades e orientar-lhe a atuação;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 39
+            },
+            {
+              "id": "LC73:art4:II",
+              "label": "Inciso II",
+              "text": "despachar com o Presidente da República;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 40
+            },
+            {
+              "id": "LC73:art4:III",
+              "label": "Inciso III",
+              "text": "representar a União junto ao Supremo Tribunal Federal;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 41
+            },
+            {
+              "id": "LC73:art4:IV",
+              "label": "Inciso IV",
+              "text": "defender, nas ações diretas de inconstitucionalidade, a norma legal ou ato normativo, objeto de impugnação;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 42
+            },
+            {
+              "id": "LC73:art4:V",
+              "label": "Inciso V",
+              "text": "apresentar as informações a serem prestadas pelo Presidente da República, relativas a medidas impugnadoras de ato ou omissão presidencial;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 43
+            },
+            {
+              "id": "LC73:art4:VI",
+              "label": "Inciso VI",
+              "text": "desistir, transigir, acordar e firmar compromisso nas ações de interesse da União, nos termos da legislação vigente;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 44
+            },
+            {
+              "id": "LC73:art4:VII",
+              "label": "Inciso VII",
+              "text": "assessorar o Presidente da República em assuntos de natureza jurídica, elaborando pareceres e estudos ou propondo normas, medidas e diretrizes;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 45
+            },
+            {
+              "id": "LC73:art4:VIII",
+              "label": "Inciso VIII",
+              "text": "assistir o Presidente da República no controle interno da legalidade dos atos da Administração;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 46
+            },
+            {
+              "id": "LC73:art4:IX",
+              "label": "Inciso IX",
+              "text": "sugerir ao Presidente da República medidas de caráter jurídico reclamadas pelo interesse público;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 47
+            },
+            {
+              "id": "LC73:art4:X",
+              "label": "Inciso X",
+              "text": "fixar a interpretação da Constituição, das leis, dos tratados e demais atos normativos, a ser uniformemente seguida pelos órgãos e entidades da Administração Federal;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 48
+            },
+            {
+              "id": "LC73:art4:XI",
+              "label": "Inciso XI",
+              "text": "unificar a jurisprudência administrativa, garantir a correta aplicação das leis, prevenir e dirimir as controvérsias entre os órgãos jurídicos da Administração Federal;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 49
+            },
+            {
+              "id": "LC73:art4:XII",
+              "label": "Inciso XII",
+              "text": "editar enunciados de súmula administrativa, resultantes de jurisprudência iterativa dos Tribunais;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 50
+            },
+            {
+              "id": "LC73:art4:XIII",
+              "label": "Inciso XIII",
+              "text": "exercer orientação normativa e supervisão técnica quanto aos órgãos jurídicos das entidades a que alude o Capítulo IX do Título II desta Lei Complementar;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 51
+            },
+            {
+              "id": "LC73:art4:XIV",
+              "label": "Inciso XIV",
+              "text": "baixar o Regimento Interno da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 52
+            },
+            {
+              "id": "LC73:art4:XV",
+              "label": "Inciso XV",
+              "text": "proferir decisão nas sindicâncias e nos processos administrativos disciplinares promovidos pela Corregedoria-Geral e aplicar penalidades, salvo a de demissão;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 53
+            },
+            {
+              "id": "LC73:art4:XVI",
+              "label": "Inciso XVI",
+              "text": "homologar os concursos públicos de ingresso nas Carreiras da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 54
+            },
+            {
+              "id": "LC73:art4:XVII",
+              "label": "Inciso XVII",
+              "text": "promover a lotação e a distribuição dos Membros e servidores, no âmbito da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 55
+            },
+            {
+              "id": "LC73:art4:XVIII",
+              "label": "Inciso XVIII",
+              "text": "editar e praticar os atos normativos ou não, inerentes a suas atribuições;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 56
+            },
+            {
+              "id": "LC73:art4:XIX",
+              "label": "Inciso XIX",
+              "text": "propor, ao Presidente da República, as alterações a esta Lei Complementar;",
+              "kind": "item",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 57
+            },
+            {
+              "id": "LC73:art4:p1",
+              "label": "§ 1º",
+              "text": "O Advogado-Geral da União pode representá-la junto a qualquer juízo ou Tribunal.",
+              "kind": "paragraph",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 58
+            },
+            {
+              "id": "LC73:art4:p2",
+              "label": "§ 2º",
+              "text": "O Advogado-Geral da União pode avocar quaisquer matérias jurídicas de interesse desta, inclusive no que concerne a sua representação extrajudicial.",
+              "kind": "paragraph",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 59
+            },
+            {
+              "id": "LC73:art4:p3",
+              "label": "§ 3º",
+              "text": "É permitida a delegação das atribuições previstas no inciso VI ao Procurador-Geral da União, bem como a daquelas objeto do inciso XVII deste artigo, relativamente a servidores.",
+              "kind": "paragraph",
+              "parentId": "LC73:art4",
+              "sourceOrdinal": 60
+            }
+          ]
+        },
+        {
+          "id": "LC73:art5",
+          "label": "Art. 5",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art5:caput",
+              "label": "Caput",
+              "text": "A Corregedoria-Geral da Advocacia da União tem como atribuições:",
+              "kind": "caput",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 63
+            },
+            {
+              "id": "LC73:art5:I",
+              "label": "Inciso I",
+              "text": "fiscalizar as atividades funcionais dos Membros da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 64
+            },
+            {
+              "id": "LC73:art5:II",
+              "label": "Inciso II",
+              "text": "promover correição nos órgãos jurídicos da Advocacia-Geral da União, visando à verificação da regularidade e eficácia dos serviços, e à proposição de medidas, bem como à sugestão de providências necessárias ao seu aprimoramento;",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 65
+            },
+            {
+              "id": "LC73:art5:III",
+              "label": "Inciso III",
+              "text": "apreciar as representações relativas à atuação dos Membros da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 66
+            },
+            {
+              "id": "LC73:art5:IV",
+              "label": "Inciso IV",
+              "text": "coordenar o estágio confirmatório dos integrantes das Carreiras da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 67
+            },
+            {
+              "id": "LC73:art5:V",
+              "label": "Inciso V",
+              "text": "emitir parecer sobre o desempenho dos integrantes das Carreiras da Advocacia-Geral da União submetidos ao estágio confirmatório, opinando, fundamentadamente, por sua confirmação no cargo ou exoneração;",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 68
+            },
+            {
+              "id": "LC73:art5:VI",
+              "label": "Inciso VI",
+              "text": "instaurar, de ofício ou por determinação superior, sindicâncias e processos administrativos contra os Membros da Advocacia-Geral da União.",
+              "kind": "item",
+              "parentId": "LC73:art5",
+              "sourceOrdinal": 69
+            }
+          ]
+        },
+        {
+          "id": "LC73:art6",
+          "label": "Art. 6",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art6:caput",
+              "label": "Caput",
+              "text": "Compete, ainda, à Corregedoria-Geral supervisionar e promover correições nos órgãos vinculados à Advocacia-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art6",
+              "sourceOrdinal": 70
+            }
+          ]
+        },
+        {
+          "id": "LC73:art7",
+          "label": "Art. 7",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art7:caput",
+              "label": "Caput",
+              "text": "O Conselho Superior da Advocacia-Geral da União tem as seguintes atribuições:",
+              "kind": "caput",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 73
+            },
+            {
+              "id": "LC73:art7:I",
+              "label": "Inciso I",
+              "text": "propor, organizar e dirigir os concursos de ingresso nas Carreiras da Advocacia-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 74
+            },
+            {
+              "id": "LC73:art7:II",
+              "label": "Inciso II",
+              "text": "organizar as listas de promoção e de remoção, julgar reclamações e recursos contra a inclusão, exclusão e classificação em tais listas, e encaminhá-las ao Advogado-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 75
+            },
+            {
+              "id": "LC73:art7:III",
+              "label": "Inciso III",
+              "text": "decidir, com base no parecer previsto no art. 5º, inciso V desta Lei Complementar, sobre a confirmação no cargo ou exoneração dos Membros das Carreiras da Advocacia-Geral da União submetidos à estágio confirmatório;",
+              "kind": "item",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 76
+            },
+            {
+              "id": "LC73:art7:IV",
+              "label": "Inciso IV",
+              "text": "editar o respectivo Regimento Interno.",
+              "kind": "item",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 77
+            },
+            {
+              "id": "LC73:art7:pu",
+              "label": "Parágrafo único",
+              "text": "Os critérios disciplinadores dos concursos a que se refere o inciso I deste artigo são integralmente fixados pelo Conselho Superior da Advocacia-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art7",
+              "sourceOrdinal": 78
+            }
+          ]
+        },
+        {
+          "id": "LC73:art8",
+          "label": "Art. 8",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art8:caput",
+              "label": "Caput",
+              "text": "Integram o Conselho Superior da Advocacia-Geral da União:",
+              "kind": "caput",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 79
+            },
+            {
+              "id": "LC73:art8:I",
+              "label": "Inciso I",
+              "text": "o Advogado-Geral da União, que o preside;",
+              "kind": "item",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 80
+            },
+            {
+              "id": "LC73:art8:II",
+              "label": "Inciso II",
+              "text": "o Procurador-Geral da União, o Procurador-Geral da Fazenda Nacional, o Consultor-Geral da União, e o Corregedor-Geral da Advocacia da União;",
+              "kind": "item",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 81
+            },
+            {
+              "id": "LC73:art8:III",
+              "label": "Inciso III",
+              "text": "um representante, eleito, de cada carreira da Advocacia-Geral da União, e respectivo suplente.",
+              "kind": "item",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 82
+            },
+            {
+              "id": "LC73:art8:p1",
+              "label": "§ 1º",
+              "text": "Todos os membros do Conselho Superior da Advocacia-Geral da União têm direito a voto, cabendo ao presidente o de desempate.",
+              "kind": "paragraph",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 83
+            },
+            {
+              "id": "LC73:art8:p2",
+              "label": "§ 2º",
+              "text": "O mandato dos membros eleitos do Conselho Superior da Advocacia-Geral da União é de dois anos, vedada a recondução.",
+              "kind": "paragraph",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 84
+            },
+            {
+              "id": "LC73:art8:p3",
+              "label": "§ 3º",
+              "text": "Os membros do Conselho são substituídos, em suas faltas e impedimentos, na forma estabelecida no respectivo Regimento Interno.",
+              "kind": "paragraph",
+              "parentId": "LC73:art8",
+              "sourceOrdinal": 85
+            }
+          ]
+        },
+        {
+          "id": "LC73:art9",
+          "label": "Art. 9",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art9:caput",
+              "label": "Caput",
+              "text": "À Procuradoria-Geral da União, subordinada direta e imediatamente ao Advogado-Geral da União, incumbe representá-la, judicialmente, nos termos e limites desta Lei Complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art9",
+              "sourceOrdinal": 88
+            },
+            {
+              "id": "LC73:art9:p1",
+              "label": "§ 1º",
+              "text": "Ao Procurador-Geral da União compete representá-la junto aos tribunais superiores.",
+              "kind": "paragraph",
+              "parentId": "LC73:art9",
+              "sourceOrdinal": 89
+            },
+            {
+              "id": "LC73:art9:p2",
+              "label": "§ 2º",
+              "text": "Às Procuradorias-Regionais da União cabe sua representação perante os demais tribunais.",
+              "kind": "paragraph",
+              "parentId": "LC73:art9",
+              "sourceOrdinal": 90
+            },
+            {
+              "id": "LC73:art9:p3",
+              "label": "§ 3º",
+              "text": "Às Procuradorias da União organizadas em cada Estado e no Distrito Federal, incumbe representá-la junto à primeira instância da Justiça Federal, comum e especializada.",
+              "kind": "paragraph",
+              "parentId": "LC73:art9",
+              "sourceOrdinal": 91
+            },
+            {
+              "id": "LC73:art9:p4",
+              "label": "§ 4º",
+              "text": "O Procurador-Geral da União pode atuar perante os órgãos judiciários referidos nos §§ 2º e 3º, e os Procuradores Regionais da União junto aos mencionados no § 3º deste artigo.",
+              "kind": "paragraph",
+              "parentId": "LC73:art9",
+              "sourceOrdinal": 92
+            }
+          ]
+        },
+        {
+          "id": "LC73:art10",
+          "label": "Art. 10",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art10:caput",
+              "label": "Caput",
+              "text": "À Consultoria-Geral da União, direta e imediatamente subordinada ao Advogado-Geral da União, incumbe, principalmente, colaborar com este em seu assessoramento jurídico ao Presidente da República produzindo pareceres, informações e demais trabalhos jurídicos que lhes sejam atribuídos pelo chefe da instituição.",
+              "kind": "caput",
+              "parentId": "LC73:art10",
+              "sourceOrdinal": 95
+            },
+            {
+              "id": "LC73:art10:pu",
+              "label": "Parágrafo único",
+              "text": "Compõem a Consultoria-Geral da União o Consultor-Geral da União e a Consultoria da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art10",
+              "sourceOrdinal": 96
+            }
+          ]
+        },
+        {
+          "id": "LC73:art11",
+          "label": "Art. 11",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art11:caput",
+              "label": "Caput",
+              "text": "Às Consultorias Jurídicas, órgãos administrativamente subordinados aos Ministros de Estado, ao Secretário-Geral e aos demais titulares de Secretarias da Presidência da República e ao Chefe do Estado-Maior das Forças Armadas, compete, especialmente:",
+              "kind": "caput",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 99
+            },
+            {
+              "id": "LC73:art11:I",
+              "label": "Inciso I",
+              "text": "assessorar as autoridades indicadas no caput deste artigo;",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 100
+            },
+            {
+              "id": "LC73:art11:II",
+              "label": "Inciso II",
+              "text": "exercer a coordenação dos órgãos jurídicos dos respectivos órgãos autônomos e entidades vinculadas;",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 101
+            },
+            {
+              "id": "LC73:art11:III",
+              "label": "Inciso III",
+              "text": "fixar a interpretação da Constituição, das leis, dos tratados e dos demais atos normativos a ser uniformemente seguida em suas áreas de atuação e coordenação quando não houver orientação normativa do Advogado-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 102
+            },
+            {
+              "id": "LC73:art11:IV",
+              "label": "Inciso IV",
+              "text": "elaborar estudos e preparar informações, por solicitação de autoridade indicada no caput deste artigo;",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 103
+            },
+            {
+              "id": "LC73:art11:V",
+              "label": "Inciso V",
+              "text": "assistir a autoridade assessorada no controle interno da legalidade administrativa dos atos a serem por ela praticados ou já efetivados, e daqueles oriundos de órgão ou entidade sob sua coordenação jurídica;",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 104
+            },
+            {
+              "id": "LC73:art11:VI",
+              "label": "Inciso VI",
+              "text": "examinar, prévia e conclusivamente, no âmbito do Ministério, Secretaria e Estado-Maior das Forças Armadas:",
+              "kind": "item",
+              "parentId": "LC73:art11",
+              "sourceOrdinal": 105
+            },
+            {
+              "id": "LC73:art11:VI:a",
+              "label": "Alínea a",
+              "text": "os textos de edital de licitação, como os dos respectivos contratos ou instrumentos congêneres, a serem publicados e celebrados;",
+              "kind": "subitem",
+              "parentId": "LC73:art11:VI",
+              "sourceOrdinal": 106
+            },
+            {
+              "id": "LC73:art11:VI:b",
+              "label": "Alínea b",
+              "text": "os atos pelos quais se vá reconhecer a inexigibilidade, ou decidir a dispensa, de licitação.",
+              "kind": "subitem",
+              "parentId": "LC73:art11:VI",
+              "sourceOrdinal": 107
+            }
+          ]
+        },
+        {
+          "id": "LC73:art12",
+          "label": "Art. 12",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art12:caput",
+              "label": "Caput",
+              "text": "À Procuradoria-Geral da Fazenda Nacional, órgão administrativamente subordinado ao titular do Ministério da Fazenda, compete especialmente:",
+              "kind": "caput",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 110
+            },
+            {
+              "id": "LC73:art12:I",
+              "label": "Inciso I",
+              "text": "apurar a liquidez e certeza da dívida ativa da União de natureza tributária, inscrevendo-a para fins de cobrança, amigável ou judicial;",
+              "kind": "item",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 111
+            },
+            {
+              "id": "LC73:art12:II",
+              "label": "Inciso II",
+              "text": "representar privativamente a União, na execução de sua dívida ativa de caráter tributário;",
+              "kind": "item",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 112
+            },
+            {
+              "id": "LC73:art12:III",
+              "label": "Inciso III",
+              "text": "(VETADO)",
+              "kind": "item",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 113,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "LC73:art12:IV",
+              "label": "Inciso IV",
+              "text": "examinar previamente a legalidade dos contratos, acordos, ajustes e convênios que interessem ao Ministério da Fazenda, inclusive os referentes à dívida pública externa, e promover a respectiva rescisão por via administrativa ou judicial;",
+              "kind": "item",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 114
+            },
+            {
+              "id": "LC73:art12:V",
+              "label": "Inciso V",
+              "text": "representar a União nas causas de natureza fiscal.",
+              "kind": "item",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 115
+            },
+            {
+              "id": "LC73:art12:pu",
+              "label": "Parágrafo único",
+              "text": "São consideradas causas de natureza fiscal as relativas a:",
+              "kind": "paragraph",
+              "parentId": "LC73:art12",
+              "sourceOrdinal": 116
+            },
+            {
+              "id": "LC73:art12:pu:I",
+              "label": "Inciso I",
+              "text": "tributos de competência da União, inclusive infrações à legislação tributária;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 117
+            },
+            {
+              "id": "LC73:art12:pu:II",
+              "label": "Inciso II",
+              "text": "empréstimos compulsórios;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 118
+            },
+            {
+              "id": "LC73:art12:pu:III",
+              "label": "Inciso III",
+              "text": "apreensão de mercadorias, nacionais ou estrangeiras;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 119
+            },
+            {
+              "id": "LC73:art12:pu:IV",
+              "label": "Inciso IV",
+              "text": "decisões de órgãos do contencioso administrativo fiscal;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 120
+            },
+            {
+              "id": "LC73:art12:pu:V",
+              "label": "Inciso V",
+              "text": "benefícios e isenções fiscais;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 121
+            },
+            {
+              "id": "LC73:art12:pu:VI",
+              "label": "Inciso VI",
+              "text": "créditos e estímulos fiscais à exportação;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 122
+            },
+            {
+              "id": "LC73:art12:pu:VII",
+              "label": "Inciso VII",
+              "text": "responsabilidade tributária de transportadores e agentes marítimos;",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 123
+            },
+            {
+              "id": "LC73:art12:pu:VIII",
+              "label": "Inciso VIII",
+              "text": "incidentes processuais suscitados em ações de natureza fiscal.",
+              "kind": "item",
+              "parentId": "LC73:art12:pu",
+              "sourceOrdinal": 124
+            }
+          ]
+        },
+        {
+          "id": "LC73:art13",
+          "label": "Art. 13",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art13:caput",
+              "label": "Caput",
+              "text": "A Procuradoria-Geral da Fazenda Nacional desempenha as atividades de consultoria e assessoramento jurídicos no âmbito do Ministério da Fazenda e seus órgãos autônomos e entes tutelados.",
+              "kind": "caput",
+              "parentId": "LC73:art13",
+              "sourceOrdinal": 125
+            },
+            {
+              "id": "LC73:art13:pu",
+              "label": "Parágrafo único",
+              "text": "No desempenho das atividades de consultoria e assessoramento jurídicos, a Procuradoria-Geral da Fazenda Nacional rege-se pela presente Lei Complementar.",
+              "kind": "paragraph",
+              "parentId": "LC73:art13",
+              "sourceOrdinal": 126
+            }
+          ]
+        },
+        {
+          "id": "LC73:art14",
+          "label": "Art. 14",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art14:caput",
+              "label": "Caput",
+              "text": "(VETADO)",
+              "kind": "caput",
+              "parentId": "LC73:art14",
+              "sourceOrdinal": 127,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art15",
+          "label": "Art. 15",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art15:caput",
+              "label": "Caput",
+              "text": "O Gabinete do Advogado-Geral da União tem sua competência e estrutura fixadas no Regimento Interno da Advocacia-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art15",
+              "sourceOrdinal": 130
+            }
+          ]
+        },
+        {
+          "id": "LC73:art16",
+          "label": "Art. 16",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterVIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art16:caput",
+              "label": "Caput",
+              "text": "A Secretaria de Controle Interno rege-se, quanto às suas competências e estrutura básica, pela legislação específica.",
+              "kind": "caput",
+              "parentId": "LC73:art16",
+              "sourceOrdinal": 131
+            }
+          ]
+        },
+        {
+          "id": "LC73:art17",
+          "label": "Art. 17",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIX"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art17:caput",
+              "label": "Caput",
+              "text": "Aos órgãos jurídicos das autarquias e das fundações públicas compete:",
+              "kind": "caput",
+              "parentId": "LC73:art17",
+              "sourceOrdinal": 134
+            },
+            {
+              "id": "LC73:art17:I",
+              "label": "Inciso I",
+              "text": "a sua representação judicial e extrajudicial;",
+              "kind": "item",
+              "parentId": "LC73:art17",
+              "sourceOrdinal": 135
+            },
+            {
+              "id": "LC73:art17:II",
+              "label": "Inciso II",
+              "text": "as respectivas atividades de consultoria e assessoramento jurídicos;",
+              "kind": "item",
+              "parentId": "LC73:art17",
+              "sourceOrdinal": 136
+            },
+            {
+              "id": "LC73:art17:III",
+              "label": "Inciso III",
+              "text": "a apuração da liquidez e certeza dos créditos, de qualquer natureza, inerentes às suas atividades, inscrevendo-os em dívida ativa, para fins de cobrança amigável ou judicial.",
+              "kind": "item",
+              "parentId": "LC73:art17",
+              "sourceOrdinal": 137
+            }
+          ]
+        },
+        {
+          "id": "LC73:art18",
+          "label": "Art. 18",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIX"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art18:caput",
+              "label": "Caput",
+              "text": "No desempenho das atividades de consultoria e assessoramento aos órgãos jurídicos das autarquias e das fundações públicas aplica-se, no que couber, o disposto no art. 11 desta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art18",
+              "sourceOrdinal": 138
+            }
+          ]
+        },
+        {
+          "id": "LC73:art19",
+          "label": "Art. 19",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleII",
+            "LC73:titleII:chapterIX"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art19:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art19",
+              "sourceOrdinal": 139,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art20",
+          "label": "Art. 20",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art20:caput",
+              "label": "Caput",
+              "text": "As carreiras de Advogado da União, de Procurador da Fazenda Nacional e de Assistente Jurídico compõem-se dos seguintes cargos efetivos:",
+              "kind": "caput",
+              "parentId": "LC73:art20",
+              "sourceOrdinal": 144
+            },
+            {
+              "id": "LC73:art20:I",
+              "label": "Inciso I",
+              "text": "carreira de Advogado da União:",
+              "kind": "item",
+              "parentId": "LC73:art20",
+              "sourceOrdinal": 145
+            },
+            {
+              "id": "LC73:art20:I:a",
+              "label": "Alínea a",
+              "text": "Advogado da União da 2ª Categoria (inicial);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:I",
+              "sourceOrdinal": 146
+            },
+            {
+              "id": "LC73:art20:I:b",
+              "label": "Alínea b",
+              "text": "Advogado da União de 1ª Categoria (intermediária);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:I",
+              "sourceOrdinal": 147
+            },
+            {
+              "id": "LC73:art20:I:c",
+              "label": "Alínea c",
+              "text": "Advogado da União de Categoria Especial (final);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:I",
+              "sourceOrdinal": 148
+            },
+            {
+              "id": "LC73:art20:II",
+              "label": "Inciso II",
+              "text": "carreira de Procurador da Fazenda Nacional:",
+              "kind": "item",
+              "parentId": "LC73:art20",
+              "sourceOrdinal": 149
+            },
+            {
+              "id": "LC73:art20:II:a",
+              "label": "Alínea a",
+              "text": "Procurador da Fazenda Nacional de 2ª Categoria (inicial);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:II",
+              "sourceOrdinal": 150
+            },
+            {
+              "id": "LC73:art20:II:b",
+              "label": "Alínea b",
+              "text": "Procurador da Fazenda Nacional de 1ª Categoria (intermediária);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:II",
+              "sourceOrdinal": 151
+            },
+            {
+              "id": "LC73:art20:II:c",
+              "label": "Alínea c",
+              "text": "Procurador da Fazenda Nacional de Categoria Especial (final);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:II",
+              "sourceOrdinal": 152
+            },
+            {
+              "id": "LC73:art20:III",
+              "label": "Inciso III",
+              "text": "carreira de Assistente Jurídico:",
+              "kind": "item",
+              "parentId": "LC73:art20",
+              "sourceOrdinal": 153
+            },
+            {
+              "id": "LC73:art20:III:a",
+              "label": "Alínea a",
+              "text": "Assistente Jurídico de 2ª Categoria (inicial);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:III",
+              "sourceOrdinal": 154
+            },
+            {
+              "id": "LC73:art20:III:b",
+              "label": "Alínea b",
+              "text": "Assistente Jurídico de 1ª Categoria (intermediária);",
+              "kind": "subitem",
+              "parentId": "LC73:art20:III",
+              "sourceOrdinal": 155
+            },
+            {
+              "id": "LC73:art20:III:c",
+              "label": "Alínea c",
+              "text": "Assistente Jurídico de Categoria Especial (final).",
+              "kind": "subitem",
+              "parentId": "LC73:art20:III",
+              "sourceOrdinal": 156
+            }
+          ]
+        },
+        {
+          "id": "LC73:art21",
+          "label": "Art. 21",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art21:caput",
+              "label": "Caput",
+              "text": "O ingresso nas carreiras da Advocacia-Geral da União ocorre nas categorias iniciais, mediante nomeação, em caráter efetivo, de candidatos habilitados em concursos públicos, de provas e títulos, obedecida a ordem de classificação.",
+              "kind": "caput",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 157
+            },
+            {
+              "id": "LC73:art21:p1",
+              "label": "§ 1º",
+              "text": "Os concursos públicos devem ser realizados na hipótese em que o número de vagas da carreira exceda a dez por cento dos respectivos cargos, ou, com menor número, observado o interesse da Administração e a critério do Advogado-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 158
+            },
+            {
+              "id": "LC73:art21:p2",
+              "label": "§ 2º",
+              "text": "O candidato, no momento da inscrição, há de comprovar um mínimo de dois anos de prática forense.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 159
+            },
+            {
+              "id": "LC73:art21:p3",
+              "label": "§ 3º",
+              "text": "Considera-se título, para o fim previsto neste artigo, além de outros regularmente admitidos em direito, o exercício profissional de consultoria, assessoria e diretoria, bem como o desempenho de cargo, emprego ou função de nível superior, com atividades eminentemente jurídicas.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 160
+            },
+            {
+              "id": "LC73:art21:p4",
+              "label": "§ 4º",
+              "text": "A Ordem dos Advogados do Brasil é representada na banca examinadora dos concursos de ingresso nas carreiras da Advocacia-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 161
+            },
+            {
+              "id": "LC73:art21:p5",
+              "label": "§ 5º",
+              "text": "Nos dez dias seguintes à nomeação, o Conselho Superior da Advocacia-Geral da União deve convocar os nomeados para escolha de vagas, fixando-lhes prazo improrrogável.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 162
+            },
+            {
+              "id": "LC73:art21:p6",
+              "label": "§ 6º",
+              "text": "Perde o direito à escolha de vaga o nomeado que não atender à convocação a que se refere o parágrafo anterior.",
+              "kind": "paragraph",
+              "parentId": "LC73:art21",
+              "sourceOrdinal": 163
+            }
+          ]
+        },
+        {
+          "id": "LC73:art22",
+          "label": "Art. 22",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art22:caput",
+              "label": "Caput",
+              "text": "Os dois primeiros anos de exercício em cargo inicial das carreiras da Advocacia-Geral da União correspondem a estágio confirmatório.",
+              "kind": "caput",
+              "parentId": "LC73:art22",
+              "sourceOrdinal": 164
+            },
+            {
+              "id": "LC73:art22:pu",
+              "label": "Parágrafo único",
+              "text": "São requisitos da confirmação no cargo a observância dos respectivos deveres, proibições e impedimentos, a eficiência, a disciplina e a assiduidade.",
+              "kind": "paragraph",
+              "parentId": "LC73:art22",
+              "sourceOrdinal": 165
+            }
+          ]
+        },
+        {
+          "id": "LC73:art23",
+          "label": "Art. 23",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art23:caput",
+              "label": "Caput",
+              "text": "Os membros efetivos da Advocacia-Geral da União são lotados e distribuídos pelo Advogado-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art23",
+              "sourceOrdinal": 168
+            },
+            {
+              "id": "LC73:art23:pu",
+              "label": "Parágrafo único",
+              "text": "A lotação de Assistente Jurídico nos Ministérios, na Secretaria-Geral e nas demais Secretarias da Presidência da República e no Estado-Maior das Forças Armadas é proposta por seus titulares, e a lotação e distribuição de Procuradores da Fazenda Nacional, pelo respectivo titular.",
+              "kind": "paragraph",
+              "parentId": "LC73:art23",
+              "sourceOrdinal": 169
+            }
+          ]
+        },
+        {
+          "id": "LC73:art24",
+          "label": "Art. 24",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art24:caput",
+              "label": "Caput",
+              "text": "A promoção de membro efetivo da Advocacia-Geral da União consiste em seu acesso à categoria imediatamente superior àquela em que se encontra.",
+              "kind": "caput",
+              "parentId": "LC73:art24",
+              "sourceOrdinal": 172
+            },
+            {
+              "id": "LC73:art24:pu",
+              "label": "Parágrafo único",
+              "text": "As promoções serão processadas semestralmente pelo Conselho Superior da Advocacia-Geral da União, para vagas ocorridas até 30 de junho e até 31 de dezembro de cada ano, obedecidos, alternadamente, os critérios de antigüidade e merecimento.",
+              "kind": "paragraph",
+              "parentId": "LC73:art24",
+              "sourceOrdinal": 173
+            }
+          ]
+        },
+        {
+          "id": "LC73:art25",
+          "label": "Art. 25",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art25:caput",
+              "label": "Caput",
+              "text": "A promoção por merecimento deve obedecer a critérios objetivos, fixados pelo Conselho Superior da Advocacia-Geral da União, dentre os quais a presteza e a segurança no desempenho da função, bem como a freqüência e o aproveitamento em cursos de aperfeiçoamento reconhecidos por órgãos oficiais.",
+              "kind": "caput",
+              "parentId": "LC73:art25",
+              "sourceOrdinal": 174
+            },
+            {
+              "id": "LC73:art25:pu",
+              "label": "Parágrafo único",
+              "text": "(Vetado)",
+              "kind": "paragraph",
+              "parentId": "LC73:art25",
+              "sourceOrdinal": 175,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art26",
+          "label": "Art. 26",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art26:caput",
+              "label": "Caput",
+              "text": "Os membros efetivos da Advocacia-Geral da União têm os direitos assegurados pela Lei nº 8.112, de 11 de dezembro de 1990; e nesta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art26",
+              "sourceOrdinal": 180
+            },
+            {
+              "id": "LC73:art26:pu",
+              "label": "Parágrafo único",
+              "text": "Os cargos das carreiras da Advocacia-Geral da União têm o vencimento e remuneração estabelecidos em lei própria.",
+              "kind": "paragraph",
+              "parentId": "LC73:art26",
+              "sourceOrdinal": 181
+            }
+          ]
+        },
+        {
+          "id": "LC73:art27",
+          "label": "Art. 27",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art27:caput",
+              "label": "Caput",
+              "text": "Os membros efetivos da Advocacia-Geral da União têm os deveres previstos na Lei nº 8.112, de 11 de dezembro de 1990, sujeitando-se ainda às proibições e impedimentos estabelecidos nesta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art27",
+              "sourceOrdinal": 184
+            }
+          ]
+        },
+        {
+          "id": "LC73:art28",
+          "label": "Art. 28",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art28:caput",
+              "label": "Caput",
+              "text": "Além das proibições decorrentes do exercício de cargo público, aos membros efetivos da Advocacia-Geral da União é vedado:",
+              "kind": "caput",
+              "parentId": "LC73:art28",
+              "sourceOrdinal": 185
+            },
+            {
+              "id": "LC73:art28:I",
+              "label": "Inciso I",
+              "text": "exercer advocacia fora das atribuições institucionais;",
+              "kind": "item",
+              "parentId": "LC73:art28",
+              "sourceOrdinal": 186
+            },
+            {
+              "id": "LC73:art28:II",
+              "label": "Inciso II",
+              "text": "contrariar súmula, parecer normativo ou orientação técnica adotada pelo Advogado-Geral da União;",
+              "kind": "item",
+              "parentId": "LC73:art28",
+              "sourceOrdinal": 187
+            },
+            {
+              "id": "LC73:art28:III",
+              "label": "Inciso III",
+              "text": "manifestar-se, por qualquer meio de divulgação, sobre assunto pertinente às suas funções, salvo ordem, ou autorização expressa do Advogado-Geral da União.",
+              "kind": "item",
+              "parentId": "LC73:art28",
+              "sourceOrdinal": 188,
+              "editorialNotes": [
+                {
+                  "text": "(Vide ADI nº 4.652/2011)",
+                  "sourceLinks": [
+                    "https://portal.stf.jus.br/processos/detalhe.asp?incidente=4137212"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "https://portal.stf.jus.br/processos/detalhe.asp?incidente=4137212"
+              ]
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "A nota da Câmara remete à ADI 4.652/2011 no inciso III. A reprodução literal não substitui a consulta à decisão e ao alcance da interpretação constitucional. Não houve revalidação jurisprudencial nesta sprint.",
+              "url": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art29",
+          "label": "Art. 29",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art29:caput",
+              "label": "Caput",
+              "text": "É defeso aos membros efetivos da Advocacia-Geral da União exercer suas funções em processo judicial ou administrativo:",
+              "kind": "caput",
+              "parentId": "LC73:art29",
+              "sourceOrdinal": 189
+            },
+            {
+              "id": "LC73:art29:I",
+              "label": "Inciso I",
+              "text": "em que sejam parte;",
+              "kind": "item",
+              "parentId": "LC73:art29",
+              "sourceOrdinal": 190
+            },
+            {
+              "id": "LC73:art29:II",
+              "label": "Inciso II",
+              "text": "em que hajam atuado como advogado de qualquer das partes;",
+              "kind": "item",
+              "parentId": "LC73:art29",
+              "sourceOrdinal": 191
+            },
+            {
+              "id": "LC73:art29:III",
+              "label": "Inciso III",
+              "text": "em que seja interessado parente consangüíneo ou afim, em linha reta ou colateral, até o segundo grau, bem como cônjuge ou companheiro;",
+              "kind": "item",
+              "parentId": "LC73:art29",
+              "sourceOrdinal": 192
+            },
+            {
+              "id": "LC73:art29:IV",
+              "label": "Inciso IV",
+              "text": "nas hipóteses da legislação processual.",
+              "kind": "item",
+              "parentId": "LC73:art29",
+              "sourceOrdinal": 193
+            }
+          ]
+        },
+        {
+          "id": "LC73:art30",
+          "label": "Art. 30",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art30:caput",
+              "label": "Caput",
+              "text": "Os membros efetivos da Advocacia-Geral da União devem dar-se por impedidos:",
+              "kind": "caput",
+              "parentId": "LC73:art30",
+              "sourceOrdinal": 194
+            },
+            {
+              "id": "LC73:art30:I",
+              "label": "Inciso I",
+              "text": "quando hajam proferido parecer favorável à pretensão deduzida em juízo pela parte adversa;",
+              "kind": "item",
+              "parentId": "LC73:art30",
+              "sourceOrdinal": 195
+            },
+            {
+              "id": "LC73:art30:II",
+              "label": "Inciso II",
+              "text": "nas hipóteses da legislação processual.",
+              "kind": "item",
+              "parentId": "LC73:art30",
+              "sourceOrdinal": 196
+            },
+            {
+              "id": "LC73:art30:pu",
+              "label": "Parágrafo único",
+              "text": "Nas situações previstas neste artigo, cumpre seja dada ciência, ao superior hierárquico imediato, em expediente reservado, dos motivos do impedimento, objetivando a designação de substituto.",
+              "kind": "paragraph",
+              "parentId": "LC73:art30",
+              "sourceOrdinal": 197
+            }
+          ]
+        },
+        {
+          "id": "LC73:art31",
+          "label": "Art. 31",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art31:caput",
+              "label": "Caput",
+              "text": "Os membros efetivos da Advocacia-Geral da União não podem participar de comissão ou banca de concurso, intervir no seu julgamento e votar sobre organização de lista para promoção ou remoção, quando concorrer parente consangüíneo ou afim, em linha reta ou colateral, até o segundo grau, bem como cônjuge ou companheiro.",
+              "kind": "caput",
+              "parentId": "LC73:art31",
+              "sourceOrdinal": 198
+            }
+          ]
+        },
+        {
+          "id": "LC73:art32",
+          "label": "Art. 32",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art32:caput",
+              "label": "Caput",
+              "text": "A atividade funcional dos membros efetivos da Advocacia-Geral da União está sujeita a:",
+              "kind": "caput",
+              "parentId": "LC73:art32",
+              "sourceOrdinal": 201
+            },
+            {
+              "id": "LC73:art32:I",
+              "label": "Inciso I",
+              "text": "correição ordinária, realizada anualmente pelo Corregedor-Geral e respectivos auxiliares;",
+              "kind": "item",
+              "parentId": "LC73:art32",
+              "sourceOrdinal": 202
+            },
+            {
+              "id": "LC73:art32:II",
+              "label": "Inciso II",
+              "text": "correição extraordinária, também realizada pelo Corregedor-Geral e por seus auxiliares, de ofício ou por determinação do Advogado-Geral da União.",
+              "kind": "item",
+              "parentId": "LC73:art32",
+              "sourceOrdinal": 203
+            }
+          ]
+        },
+        {
+          "id": "LC73:art33",
+          "label": "Art. 33",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art33:caput",
+              "label": "Caput",
+              "text": "Concluída a correição, o Corregedor-Geral deve apresentar ao Advogado-Geral da União relatório, propondo-lhe as medidas e providências a seu juízo cabíveis.",
+              "kind": "caput",
+              "parentId": "LC73:art33",
+              "sourceOrdinal": 204
+            }
+          ]
+        },
+        {
+          "id": "LC73:art34",
+          "label": "Art. 34",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIII",
+            "LC73:titleIII:chapterIV",
+            "LC73:titleIII:chapterIV:sectionIII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art34:caput",
+              "label": "Caput",
+              "text": "Qualquer pessoa pode representar ao Corregedor-Geral da Advocacia da União contra abuso, erro grosseiro, omissão ou qualquer outra irregularidade funcional dos membros da Advocacia-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art34",
+              "sourceOrdinal": 205
+            }
+          ]
+        },
+        {
+          "id": "LC73:art35",
+          "label": "Art. 35",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art35:caput",
+              "label": "Caput",
+              "text": "A União é citada nas causas em que seja interessada, na condição de autora, ré, assistente, oponente, recorrente ou recorrida, na pessoa:",
+              "kind": "caput",
+              "parentId": "LC73:art35",
+              "sourceOrdinal": 208
+            },
+            {
+              "id": "LC73:art35:I",
+              "label": "Inciso I",
+              "text": "do Advogado-Geral da União, privativamente, nas hipóteses de competência do Supremo Tribunal Federal;",
+              "kind": "item",
+              "parentId": "LC73:art35",
+              "sourceOrdinal": 209
+            },
+            {
+              "id": "LC73:art35:II",
+              "label": "Inciso II",
+              "text": "do Procurador-Geral da União, nas hipóteses de competência dos tribunais superiores;",
+              "kind": "item",
+              "parentId": "LC73:art35",
+              "sourceOrdinal": 210
+            },
+            {
+              "id": "LC73:art35:III",
+              "label": "Inciso III",
+              "text": "do Procurador-Regional da União, nas hipóteses de competência dos demais tribunais;",
+              "kind": "item",
+              "parentId": "LC73:art35",
+              "sourceOrdinal": 211
+            },
+            {
+              "id": "LC73:art35:IV",
+              "label": "Inciso IV",
+              "text": "do Procurador-Chefe ou do Procurador-Seccional da União, nas hipóteses de competência dos juízos de primeiro grau.",
+              "kind": "item",
+              "parentId": "LC73:art35",
+              "sourceOrdinal": 212
+            }
+          ]
+        },
+        {
+          "id": "LC73:art36",
+          "label": "Art. 36",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art36:caput",
+              "label": "Caput",
+              "text": "Nas causas de que trata o art. 12, a União será citada na pessoa:",
+              "kind": "caput",
+              "parentId": "LC73:art36",
+              "sourceOrdinal": 213
+            },
+            {
+              "id": "LC73:art36:I",
+              "label": "Inciso I",
+              "text": "(Vetado);",
+              "kind": "item",
+              "parentId": "LC73:art36",
+              "sourceOrdinal": 214,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "LC73:art36:II",
+              "label": "Inciso II",
+              "text": "do Procurador-Regional da Fazenda Nacional, nas hipóteses de competência dos demais tribunais;",
+              "kind": "item",
+              "parentId": "LC73:art36",
+              "sourceOrdinal": 215
+            },
+            {
+              "id": "LC73:art36:III",
+              "label": "Inciso III",
+              "text": "do Procurador-Chefe ou do Procurador-Seccional da Fazenda Nacional nas hipóteses de competência dos juízos de primeiro grau.",
+              "kind": "item",
+              "parentId": "LC73:art36",
+              "sourceOrdinal": 216
+            }
+          ]
+        },
+        {
+          "id": "LC73:art37",
+          "label": "Art. 37",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art37:caput",
+              "label": "Caput",
+              "text": "Em caso de ausência das autoridades referidas nos arts. 35 e 36, a citação se dará na pessoa do substituto eventual.",
+              "kind": "caput",
+              "parentId": "LC73:art37",
+              "sourceOrdinal": 217
+            }
+          ]
+        },
+        {
+          "id": "LC73:art38",
+          "label": "Art. 38",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleIV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art38:caput",
+              "label": "Caput",
+              "text": "As intimações e notificações são feitas nas pessoas do Advogado da União ou do Procurador da Fazenda Nacional que oficie nos respectivos autos.",
+              "kind": "caput",
+              "parentId": "LC73:art38",
+              "sourceOrdinal": 218
+            }
+          ]
+        },
+        {
+          "id": "LC73:art39",
+          "label": "Art. 39",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art39:caput",
+              "label": "Caput",
+              "text": "É privativo do Presidente da República submeter assuntos ao exame do Advogado-Geral da União, inclusive para seu parecer.",
+              "kind": "caput",
+              "parentId": "LC73:art39",
+              "sourceOrdinal": 221
+            }
+          ]
+        },
+        {
+          "id": "LC73:art40",
+          "label": "Art. 40",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art40:caput",
+              "label": "Caput",
+              "text": "Os pareceres do Advogado-Geral da União são por este submetidos à aprovação do Presidente da República.",
+              "kind": "caput",
+              "parentId": "LC73:art40",
+              "sourceOrdinal": 222
+            },
+            {
+              "id": "LC73:art40:p1",
+              "label": "§ 1º",
+              "text": "O parecer aprovado e publicado juntamente com o despacho presidencial vincula a Administração Federal, cujos órgãos e entidades ficam obrigados a lhe dar fiel cumprimento.",
+              "kind": "paragraph",
+              "parentId": "LC73:art40",
+              "sourceOrdinal": 223
+            },
+            {
+              "id": "LC73:art40:p2",
+              "label": "§ 2º",
+              "text": "O parecer aprovado, mas não publicado, obriga apenas as repartições interessadas, a partir do momento em que dele tenham ciência.",
+              "kind": "paragraph",
+              "parentId": "LC73:art40",
+              "sourceOrdinal": 224
+            }
+          ]
+        },
+        {
+          "id": "LC73:art41",
+          "label": "Art. 41",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art41:caput",
+              "label": "Caput",
+              "text": "Consideram-se, igualmente, pareceres do Advogado-Geral da União, para os efeitos do artigo anterior, aqueles que, emitidos pela Consultoria-Geral da União, sejam por ele aprovados e submetidos ao Presidente da República.",
+              "kind": "caput",
+              "parentId": "LC73:art41",
+              "sourceOrdinal": 225
+            }
+          ]
+        },
+        {
+          "id": "LC73:art42",
+          "label": "Art. 42",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art42:caput",
+              "label": "Caput",
+              "text": "Os pareceres das Consultorias Jurídicas, aprovados pelo Ministro de Estado, pelo Secretário-Geral e pelos titulares das demais Secretarias da Presidência da República ou pelo Chefe do Estado-Maior das Forças Armadas, obrigam, também, os respectivos órgãos autônomos e entidades vinculadas.",
+              "kind": "caput",
+              "parentId": "LC73:art42",
+              "sourceOrdinal": 226
+            }
+          ]
+        },
+        {
+          "id": "LC73:art43",
+          "label": "Art. 43",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art43:caput",
+              "label": "Caput",
+              "text": "A Súmula da Advocacia-Geral da União tem caráter obrigatório quanto a todos os órgãos jurídicos enumerados nos arts. 2º e 17 desta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art43",
+              "sourceOrdinal": 227
+            },
+            {
+              "id": "LC73:art43:p1",
+              "label": "§ 1º",
+              "text": "O enunciado da Súmula editado pelo Advogado-Geral da União há de ser publicado no Diário Oficial da União, por três dias consecutivos.",
+              "kind": "paragraph",
+              "parentId": "LC73:art43",
+              "sourceOrdinal": 228
+            },
+            {
+              "id": "LC73:art43:p2",
+              "label": "§ 2º",
+              "text": "No início de cada ano, os enunciados existentes devem ser consolidados e publicados no Diário Oficial da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art43",
+              "sourceOrdinal": 229
+            }
+          ]
+        },
+        {
+          "id": "LC73:art44",
+          "label": "Art. 44",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleV"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art44:caput",
+              "label": "Caput",
+              "text": "Os pareceres aprovados do Advogado-Geral da União inserem-se em coletânea denominada \"Pareceres da Advocacia-Geral da União\", a ser editada pela Imprensa Nacional.",
+              "kind": "caput",
+              "parentId": "LC73:art44",
+              "sourceOrdinal": 230
+            }
+          ]
+        },
+        {
+          "id": "LC73:art45",
+          "label": "Art. 45",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art45:caput",
+              "label": "Caput",
+              "text": "O Regimento Interno da Advocacia-Geral da União é editado pelo Advogado-Geral da União, observada a presente lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art45",
+              "sourceOrdinal": 233
+            },
+            {
+              "id": "LC73:art45:p1",
+              "label": "§ 1º",
+              "text": "O Regimento Interno deve dispor sobre a competência, a estrutura e o funcionamento da Corregedoria-Geral da Advocacia da União, da Procuradoria-Geral da União, da Consultoria-Geral da União, das Consultorias Jurídicas, do Gabinete do Advogado-Geral da União e dos Gabinetes dos Secretários-Gerais, do Centro de Estudos, da Diretoria-Geral de Administração e da Secretaria de Controle Interno, bem como sobre as atribuições de seus titulares e demais integrantes.",
+              "kind": "paragraph",
+              "parentId": "LC73:art45",
+              "sourceOrdinal": 234
+            },
+            {
+              "id": "LC73:art45:p2",
+              "label": "§ 2º",
+              "text": "O Advogado-Geral da União pode conferir, no Regimento Interno, ao Procurador-Geral da União e ao Consultor-Geral da União, atribuições conexas às que lhe prevê o art. 4º desta lei complementar.",
+              "kind": "paragraph",
+              "parentId": "LC73:art45",
+              "sourceOrdinal": 235
+            },
+            {
+              "id": "LC73:art45:p3",
+              "label": "§ 3º",
+              "text": "No Regimento Interno são disciplinados os procedimentos administrativos concernentes aos trabalhos jurídicos da Advocacia-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art45",
+              "sourceOrdinal": 236
+            }
+          ]
+        },
+        {
+          "id": "LC73:art46",
+          "label": "Art. 46",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art46:caput",
+              "label": "Caput",
+              "text": "É facultado ao Advogado-Geral da União convocar quaisquer dos integrantes dos órgãos jurídicos que compõem a Advocacia-Geral da União, para instruções e esclarecimentos.",
+              "kind": "caput",
+              "parentId": "LC73:art46",
+              "sourceOrdinal": 237
+            }
+          ]
+        },
+        {
+          "id": "LC73:art47",
+          "label": "Art. 47",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art47:caput",
+              "label": "Caput",
+              "text": "O Advogado-Geral da União pode requisitar servidores dos órgãos ou entidades da Administração Federal, para o desempenho de cargo em comissão ou atividade outra na Advocacia-Geral da União, assegurados ao servidor todos os direitos e vantagens a que faz jus no órgão ou entidade de origem, inclusive promoção.",
+              "kind": "caput",
+              "parentId": "LC73:art47",
+              "sourceOrdinal": 238
+            }
+          ]
+        },
+        {
+          "id": "LC73:art48",
+          "label": "Art. 48",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art48:caput",
+              "label": "Caput",
+              "text": "Os cargos da Advocacia-Geral da União integram quadro próprio.",
+              "kind": "caput",
+              "parentId": "LC73:art48",
+              "sourceOrdinal": 239
+            }
+          ]
+        },
+        {
+          "id": "LC73:art49",
+          "label": "Art. 49",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art49:caput",
+              "label": "Caput",
+              "text": "São nomeados pelo Presidente da República:",
+              "kind": "caput",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 240
+            },
+            {
+              "id": "LC73:art49:I",
+              "label": "Inciso I",
+              "text": "mediante indicação do Advogado-Geral da União, os titulares dos cargos de natureza especial de Corregedor-Geral da Advocacia da União, de Procurador-Geral da União, de Consultor-Geral da União, de Secretário-Geral de Contencioso e de Secretário-Geral de Consultoria, como os titulares dos cargos em comissão de Corregedor-Auxiliar, de Procurador Regional, de Consultor da União, de Procurador-Chefe e de Diretor-Geral de Administração;",
+              "kind": "item",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 241
+            },
+            {
+              "id": "LC73:art49:II",
+              "label": "Inciso II",
+              "text": "mediante indicação do Ministro de Estado, do Secretário-Geral ou titular de Secretaria da Presidência da República, ou do Chefe do Estado-Maior das Forças Armadas, os titulares dos cargos em comissão de Consultor Jurídico;",
+              "kind": "item",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 242
+            },
+            {
+              "id": "LC73:art49:III",
+              "label": "Inciso III",
+              "text": "mediante indicação do Ministro de Estado da Fazenda, o titular do cargo de natureza especial de Procurador-Geral da Fazenda Nacional.",
+              "kind": "item",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 243
+            },
+            {
+              "id": "LC73:art49:p1",
+              "label": "§ 1º",
+              "text": "São escolhidos dentre os membros efetivos da Advocacia-Geral da União o Corregedor-Geral, os Corregedores-Auxiliares, os Procuradores Regionais e os Procuradores-Chefes.",
+              "kind": "paragraph",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 244
+            },
+            {
+              "id": "LC73:art49:p2",
+              "label": "§ 2º",
+              "text": "O Presidente da República pode delegar ao Advogado-Geral da União competência para prover, nos termos da lei, os demais cargos, efetivos e em comissão, da instituição.",
+              "kind": "paragraph",
+              "parentId": "LC73:art49",
+              "sourceOrdinal": 245
+            }
+          ]
+        },
+        {
+          "id": "LC73:art50",
+          "label": "Art. 50",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art50:caput",
+              "label": "Caput",
+              "text": "Aplica-se ao Advogado-Geral da União, ao Procurador-Geral da União, ao Consultor-Geral da União, aos Consultores da União e aos Consultores Jurídicos, no que couber, o Capítulo IV do Título III desta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art50",
+              "sourceOrdinal": 246
+            }
+          ]
+        },
+        {
+          "id": "LC73:art51",
+          "label": "Art. 51",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art51:caput",
+              "label": "Caput",
+              "text": "Aos titulares de cargos de confiança, sejam de natureza especial ou em comissão, da Advocacia-Geral da União, assim como aos membros efetivos desta é vedado manter, sob sua chefia imediata, parente consangüíneo ou afim, em linha reta ou colateral, até o segundo grau, bem assim como cônjuge ou companheiro.",
+              "kind": "caput",
+              "parentId": "LC73:art51",
+              "sourceOrdinal": 247
+            }
+          ]
+        },
+        {
+          "id": "LC73:art52",
+          "label": "Art. 52",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVI"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art52:caput",
+              "label": "Caput",
+              "text": "Os membros e servidores da Advocacia-Geral da União detêm identificação funcional específica, conforme modelos previstos em seu Regimento Interno.",
+              "kind": "caput",
+              "parentId": "LC73:art52",
+              "sourceOrdinal": 248
+            }
+          ]
+        },
+        {
+          "id": "LC73:art53",
+          "label": "Art. 53",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art53:caput",
+              "label": "Caput",
+              "text": "É extinto o cargo de Consultor-Geral da República, de natureza especial.",
+              "kind": "caput",
+              "parentId": "LC73:art53",
+              "sourceOrdinal": 251
+            }
+          ]
+        },
+        {
+          "id": "LC73:art54",
+          "label": "Art. 54",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art54:caput",
+              "label": "Caput",
+              "text": "É criado, com natureza especial, o cargo de Advogado-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art54",
+              "sourceOrdinal": 252
+            }
+          ]
+        },
+        {
+          "id": "LC73:art55",
+          "label": "Art. 55",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art55:caput",
+              "label": "Caput",
+              "text": "São criados, com natureza especial, os cargos de Procurador-Geral da União, Procurador-Geral da Fazenda Nacional, Consultor-Geral da União e de Corregedor-Geral da Advocacia da União, privativos de Bacharel em Direito, de elevado saber jurídico e reconhecida idoneidade, com dez anos de prática forense e maior de trinta e cinco anos.",
+              "kind": "caput",
+              "parentId": "LC73:art55",
+              "sourceOrdinal": 253
+            }
+          ]
+        },
+        {
+          "id": "LC73:art56",
+          "label": "Art. 56",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art56:caput",
+              "label": "Caput",
+              "text": "São extintos os cargos em comissão de Procurador-Geral da Fazenda Nacional e de Secretário-Geral da Consultoria-Geral da República.",
+              "kind": "caput",
+              "parentId": "LC73:art56",
+              "sourceOrdinal": 254
+            }
+          ]
+        },
+        {
+          "id": "LC73:art57",
+          "label": "Art. 57",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art57:caput",
+              "label": "Caput",
+              "text": "São criados os cargos de Secretário-Geral de Contencioso e de Secretário-Geral de Consultoria, de natureza especial, privativos de Bacharel em Direito que reúna as condições estabelecidas no art. 55 desta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art57",
+              "sourceOrdinal": 255
+            }
+          ]
+        },
+        {
+          "id": "LC73:art58",
+          "label": "Art. 58",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art58:caput",
+              "label": "Caput",
+              "text": "Os cargos de Consultor Jurídico são privativos de Bacharel em Direito de provada capacidade e experiência, e reconhecida idoneidade, que tenham cinco anos de prática forense.",
+              "kind": "caput",
+              "parentId": "LC73:art58",
+              "sourceOrdinal": 256
+            }
+          ]
+        },
+        {
+          "id": "LC73:art59",
+          "label": "Art. 59",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art59:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art59",
+              "sourceOrdinal": 257,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art60",
+          "label": "Art. 60",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art60:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art60",
+              "sourceOrdinal": 258,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art61",
+          "label": "Art. 61",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art61:caput",
+              "label": "Caput",
+              "text": "A opção, facultada pelo § 2º do art. 29 do Ato das Disposições Constitucionais Transitórias da Constituição Federal, aos Procuradores da República, deve ser manifestada, ao Advogado-Geral da União, no prazo improrrogável de quinze dias, contado da publicação da lei prevista no parágrafo único do art. 26 desta lei complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art61",
+              "sourceOrdinal": 259
+            }
+          ]
+        },
+        {
+          "id": "LC73:art62",
+          "label": "Art. 62",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art62:caput",
+              "label": "Caput",
+              "text": "São criados, no Quadro da Advocacia-Geral da União, seiscentos cargos de Advogado da União, providos mediante aprovação em concurso público, de provas e títulos, distribuídos entre as categorias, na forma estabelecida no Regimento Interno da Advocacia-Geral da União.",
+              "kind": "caput",
+              "parentId": "LC73:art62",
+              "sourceOrdinal": 260
+            },
+            {
+              "id": "LC73:art62:p1",
+              "label": "§ 1º",
+              "text": "Cabe ao Advogado-Geral da União disciplinar, em ato próprio, o primeiro concurso público de provas e títulos, destinado ao provimento de cargos de Advogado da União de 2ª Categoria.",
+              "kind": "paragraph",
+              "parentId": "LC73:art62",
+              "sourceOrdinal": 261
+            },
+            {
+              "id": "LC73:art62:p2",
+              "label": "§ 2º",
+              "text": "O concurso público a que se refere o parágrafo anterior deve ter o respectivo edital publicado nos sessenta dias seguintes à posse do Advogado-Geral da União.",
+              "kind": "paragraph",
+              "parentId": "LC73:art62",
+              "sourceOrdinal": 262
+            }
+          ]
+        },
+        {
+          "id": "LC73:art63",
+          "label": "Art. 63",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art63:caput",
+              "label": "Caput",
+              "text": "Passam a integrar o Quadro da Advocacia-Geral da União os cargos efetivos das atividades-meio da Consultoria-Geral da República e seus titulares.",
+              "kind": "caput",
+              "parentId": "LC73:art63",
+              "sourceOrdinal": 263
+            }
+          ]
+        },
+        {
+          "id": "LC73:art64",
+          "label": "Art. 64",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art64:caput",
+              "label": "Caput",
+              "text": "Até que seja promulgada a lei prevista no art. 26 desta Lei complementar, ficam assegurados aos titulares dos cargos efetivos e em comissão, privativos de Bacharel em Direito, dos atuais órgãos da Advocacia Consultiva da União, os vencimentos e vantagens a que fazem jus.",
+              "kind": "caput",
+              "parentId": "LC73:art64",
+              "sourceOrdinal": 264
+            }
+          ]
+        },
+        {
+          "id": "LC73:art65",
+          "label": "Art. 65",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art65:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art65",
+              "sourceOrdinal": 265,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art66",
+          "label": "Art. 66",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art66:caput",
+              "label": "Caput",
+              "text": "Nos primeiros dezoito meses de vigência desta lei complementar, os cargos de confiança referidos no § 1º do art. 49 podem ser exercidos por Bacharel em Direito não integrante das carreiras de Advogado da União e de Procurador da Fazenda Nacional, observados os requisitos impostos pelos arts. 55 e 58, bem como o disposto no Capítulo IV do Título III desta Lei Complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art66",
+              "sourceOrdinal": 266,
+              "editorialNotes": [
+                {
+                  "text": "(Vide art. 20 da Lei nº 9.028, de 12/4/1995) (Vide art. 6º da Lei nº 9366, de 16/12/1996) (Vide art. 26 da Lei nº 9.651, de 1/1/1998)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9028-12-abril-1995-372105-norma-pl.html",
+                    "http://www2.camara.leg.br/legin/fed/lei/1996/lei-9366-16-dezembro-1996-349419-norma-pl.html",
+                    "http://www2.camara.leg.br/legin/fed/lei/1998/lei-9651-27-maio-1998-372107-publicacaooriginal-1-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9028-12-abril-1995-372105-norma-pl.html",
+                "http://www2.camara.leg.br/legin/fed/lei/1996/lei-9366-16-dezembro-1996-349419-norma-pl.html",
+                "http://www2.camara.leg.br/legin/fed/lei/1998/lei-9651-27-maio-1998-372107-publicacaooriginal-1-pl.html"
+              ]
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "Disposição transitória com prazo contado da vigência/publicação da lei de 1993. A reprodução não reinicia esse prazo. Confira o texto e as remissões oficiais; seus efeitos atuais não foram certificados.",
+              "url": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art67",
+          "label": "Art. 67",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art67:caput",
+              "label": "Caput",
+              "text": "São interrompidos, por trinta dias, os prazos em favor da União, a partir da vigência desta Lei Complementar.",
+              "kind": "caput",
+              "parentId": "LC73:art67",
+              "sourceOrdinal": 267
+            },
+            {
+              "id": "LC73:art67:pu",
+              "label": "Parágrafo único",
+              "text": "A interrupção prevista no caput deste artigo não se aplica às causas em que as autarquias e as fundações públicas sejam autoras, rés, assistentes, oponentes, recorrentes e recorridas, e àquelas de competência da Procuradoria-Geral da Fazenda Nacional.",
+              "kind": "paragraph",
+              "parentId": "LC73:art67",
+              "sourceOrdinal": 268
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "Disposição transitória com prazo contado da vigência/publicação da lei de 1993. A reprodução não reinicia esse prazo. Confira o texto e as remissões oficiais; seus efeitos atuais não foram certificados.",
+              "url": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art68",
+          "label": "Art. 68",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art68:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art68",
+              "sourceOrdinal": 269,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art69",
+          "label": "Art. 69",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art69:caput",
+              "label": "Caput",
+              "text": "O Advogado-Geral da União poderá, tendo em vista a necessidade do serviço, designar, excepcional e provisoriamente, como representantes judiciais da União, titulares de cargos de Procurador da Fazenda Nacional e de Assistente Jurídico.",
+              "kind": "caput",
+              "parentId": "LC73:art69",
+              "sourceOrdinal": 270
+            },
+            {
+              "id": "LC73:art69:pu",
+              "label": "Parágrafo único",
+              "text": "No prazo de dois anos, contado da publicação desta Lei Complementar, cessará a faculdade prevista neste artigo.",
+              "kind": "paragraph",
+              "parentId": "LC73:art69",
+              "sourceOrdinal": 271,
+              "editorialNotes": [
+                {
+                  "text": "(Vide art. 20 da Lei nº 9.028, de 12/4/1995) (Vide art. 6º da Lei nº 9366, de 16/12/1996) (Vide art. 26 da Lei nº 9.651, de 1/1/1998)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9028-12-abril-1995-372105-norma-pl.html",
+                    "http://www2.camara.leg.br/legin/fed/lei/1996/lei-9366-16-dezembro-1996-349419-norma-pl.html",
+                    "http://www2.camara.leg.br/legin/fed/lei/1998/lei-9651-27-maio-1998-372107-publicacaooriginal-1-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9028-12-abril-1995-372105-norma-pl.html",
+                "http://www2.camara.leg.br/legin/fed/lei/1996/lei-9366-16-dezembro-1996-349419-norma-pl.html",
+                "http://www2.camara.leg.br/legin/fed/lei/1998/lei-9651-27-maio-1998-372107-publicacaooriginal-1-pl.html"
+              ]
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "Disposição transitória com prazo contado da vigência/publicação da lei de 1993. A reprodução não reinicia esse prazo. Confira o texto e as remissões oficiais; seus efeitos atuais não foram certificados.",
+              "url": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art70",
+          "label": "Art. 70",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art70:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art70",
+              "sourceOrdinal": 272,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art71",
+          "label": "Art. 71",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art71:caput",
+              "label": "Caput",
+              "text": "(Vetado).",
+              "kind": "caput",
+              "parentId": "LC73:art71",
+              "sourceOrdinal": 273,
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "LC73:art72",
+          "label": "Art. 72",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art72:caput",
+              "label": "Caput",
+              "text": "Esta Lei Complementar entra em vigor na data de sua publicação.",
+              "kind": "caput",
+              "parentId": "LC73:art72",
+              "sourceOrdinal": 274
+            }
+          ]
+        },
+        {
+          "id": "LC73:art73",
+          "label": "Art. 73",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "LC73:titleVII"
+          ],
+          "clauses": [
+            {
+              "id": "LC73:art73:caput",
+              "label": "Caput",
+              "text": "Revogam-se as disposições em contrário.",
+              "kind": "caput",
+              "parentId": "LC73:art73",
+              "sourceOrdinal": 275
+            }
+          ]
+        }
+      ],
+      "frontMatter": [
+        "LEI COMPLEMENTAR Nº 73, DE 10 DE FEVEREIRO DE 1993",
+        "Institui a Lei Orgânica da Advocacia-Geral da União e dá outras providências.",
+        "O PRESIDENTE DA REPÚBLICA",
+        "Faço saber que o Congresso Nacional decreta e eu sanciono a seguinte lei complementar:"
+      ],
+      "closingMatter": [
+        "Brasília, 10 de fevereiro de 1993, 172º da Independência e 105º da República.",
+        "ITAMAR FRANCO",
+        "Maurício Corrêa"
+      ],
+      "sourceCapture": {
+        "path": "fontes/lc73/camara-20261114.html.txt",
+        "finalUrl": "https://www2.camara.leg.br/legin/fed/leicom/1993/leicomplementar-73-10-fevereiro-1993-354947-normaatualizada-pl.html",
+        "bytes": 99345,
+        "digest": "sha256:148726cf24d3704d3c89894ed0be64b2092c60a826dfbfedfbb45245e05966e7",
+        "normalization": "Entidades HTML decodificadas e espaços/quebras colapsados; p e h1..h6 capturados, incluindo Capítulo IX em h2; rótulos separados do corpo, grafia/pontuação preservadas; notas de remissão segregadas."
+      },
+      "completeness": {
+        "expectedArticleIds": [
+          "LC73:art1",
+          "LC73:art2",
+          "LC73:art3",
+          "LC73:art4",
+          "LC73:art5",
+          "LC73:art6",
+          "LC73:art7",
+          "LC73:art8",
+          "LC73:art9",
+          "LC73:art10",
+          "LC73:art11",
+          "LC73:art12",
+          "LC73:art13",
+          "LC73:art14",
+          "LC73:art15",
+          "LC73:art16",
+          "LC73:art17",
+          "LC73:art18",
+          "LC73:art19",
+          "LC73:art20",
+          "LC73:art21",
+          "LC73:art22",
+          "LC73:art23",
+          "LC73:art24",
+          "LC73:art25",
+          "LC73:art26",
+          "LC73:art27",
+          "LC73:art28",
+          "LC73:art29",
+          "LC73:art30",
+          "LC73:art31",
+          "LC73:art32",
+          "LC73:art33",
+          "LC73:art34",
+          "LC73:art35",
+          "LC73:art36",
+          "LC73:art37",
+          "LC73:art38",
+          "LC73:art39",
+          "LC73:art40",
+          "LC73:art41",
+          "LC73:art42",
+          "LC73:art43",
+          "LC73:art44",
+          "LC73:art45",
+          "LC73:art46",
+          "LC73:art47",
+          "LC73:art48",
+          "LC73:art49",
+          "LC73:art50",
+          "LC73:art51",
+          "LC73:art52",
+          "LC73:art53",
+          "LC73:art54",
+          "LC73:art55",
+          "LC73:art56",
+          "LC73:art57",
+          "LC73:art58",
+          "LC73:art59",
+          "LC73:art60",
+          "LC73:art61",
+          "LC73:art62",
+          "LC73:art63",
+          "LC73:art64",
+          "LC73:art65",
+          "LC73:art66",
+          "LC73:art67",
+          "LC73:art68",
+          "LC73:art69",
+          "LC73:art70",
+          "LC73:art71",
+          "LC73:art72",
+          "LC73:art73"
+        ],
+        "checkedOn": "2026-11-14",
+        "sourceDigest": "sha256:148726cf24d3704d3c89894ed0be64b2092c60a826dfbfedfbb45245e05966e7",
         "annexes": "not_applicable"
       }
     }
