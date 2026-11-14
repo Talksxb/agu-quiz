@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main]
+    branches: [main, leg/leg02-lei9784-integral]
     paths:
       - 'index.html'
       - '*.js'
@@ -64,6 +64,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEG-02 — lei integral, cinco viewports e restauração sintética
+        run: node tests/leg02-browser.cjs
       - name: Fluxo real no navegador (emulação de viewport, não Android físico)
         run: node tests/sprint20-browser.cjs
       - name: Sprint 21 — quatro itens, viewport, teclas e restauração real
@@ -96,8 +98,6 @@ jobs:
         run: node tests/sprint35-browser.cjs
       - name: LEG-01 — leitor legado e expansão sintética
         run: node tests/leg01-browser.cjs
-      - name: LEG-02 — lei integral, cinco viewports e restauração sintética
-        run: node tests/leg02-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -133,7 +133,7 @@ jobs:
           retention-days: 7
 
   pages-publicado:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
