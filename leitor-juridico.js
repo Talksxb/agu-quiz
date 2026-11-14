@@ -52,7 +52,7 @@ function related(a){
  const matching=getRelations().filter(x=>x.deviceId===state.unit);
  const norm=matching.filter(x=>x.kind==='norma'),juris=matching.filter(x=>x.kind==='jurisprudencia'),questions=matching.filter(x=>x.kind==='questao');
  const cards=(Array.isArray(root.AGU_AUD03_CARDS)?root.AGU_AUD03_CARDS:[]).filter(x=>x.code===a.topic);
- let s='<p class="agu-muted">Dispositivo: '+esc(c?.label||a.label)+' · '+esc(a.topic)+' · relações estritamente vinculadas à unidade selecionada.</p>';
+ let s='<p class="agu-muted">Dispositivo: '+esc(c?.label||a.label)+' · '+esc(a.topic||'Leitura livre, sem vínculo curricular')+' · relações estritamente vinculadas à unidade selecionada.</p>';
  if(state.tab==='juris')s+=juris.length?'<p class="agu-muted">'+juris.length+' referência(s) jurisprudencial(is) com proveniência documental.</p>'+juris.map(relationCard).join(''):'<div class="agu-notice">Não há jurisprudência indexada com segurança para esta subdivisão. A ausência de vínculo não significa inexistência de julgados.</div>';
  if(state.tab==='questoes')s+=(root.AGUQuestions18?.panel(state.unit)||'<div class="agu-notice">Acervo de questões indisponível.</div>')+(questions.length?questions.map(relationCard).join(''):'');
  if(state.tab==='caderno')s+=a.topic?(root.AGUCaderno?.panel({deviceId:state.unit,topic:a.topic})||'<div class="agu-notice">Caderno contextual indisponível.</div>'):'<div class="agu-notice">Vínculo curricular ainda não documentado. Use Comentários para anotar este dispositivo durante a leitura.</div>';

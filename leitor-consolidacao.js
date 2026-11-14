@@ -71,10 +71,10 @@ function searchPanel(){
 }
 function versionPanel(unitId){
  const x=allClauses().find(x=>x.unit.id===unitId);if(!x)return '';const v=root.AGU_LEGAL_VERSIONS?.entries?.find(z=>z.deviceId===unitId),full=x.law.textVerification?.status==='compared'&&x.law.textVerification?.scope==='full_norm';
- return '<div class="agu-notice"><b>Versão da legislação — controle documental</b>'+
- '<p class="agu-muted">Versão: '+html((full?x.law.textVersionId:v?.versionId)||x.law.textVersionId||'não catalogada')+' · Fonte oficial: '+html(full?x.law.sourceVersion:(v?.sourceLabel||x.law.sourceVersion))+' · consulta '+html(full?x.law.checkedOn:(v?.consultedAt||x.law.checkedOn))+' · status: '+html(v?.chainStatus||'pendente')+'.</p>'+
+ return '<details class="agu-notice"><summary><b>Versão e histórico da legislação</b></summary>'+
+ '<p class="agu-muted">Versão: '+html((full?x.law.textVersionId:v?.versionId)||x.law.textVersionId||'não catalogada')+' · Fonte oficial: '+html(full?x.law.sourceVersion:(v?.sourceLabel||x.law.sourceVersion))+' · consulta '+html(full?x.law.checkedOn:(v?.consultedAt||x.law.checkedOn))+' · cadeia histórica: '+html(v?.chainStatus==='historico_e_vigencia_integral_nao_verificados'?'histórico e vigência integral não verificados':v?.chainStatus||'não verificada')+'.</p>'+
  '<p>O leitor contém a redação incorporada desse dispositivo, mas <b>não dispõe de uma série histórica verificada</b> nem da cadeia completa de alterações. Comparação histórica indisponível até a certificação das versões e dos atos modificadores.</p>'+
- '<p><a href="'+html(x.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir texto oficial e alterações na origem</a></p></div>';
+ '<p><a href="'+html(x.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir texto oficial e alterações na origem</a></p></details>';
 }
 function settings(){
  return '<div class="agu-s17-settings"><label>Tamanho do texto jurídico <select onchange="AGUConsolidation.textSize(this.value,true)">'+[[90,'Compacto'],[100,'Padrão'],[115,'Ampliado'],[130,'Extra amplo']].map(x=>option(x[0],x[1],state.size)).join('')+'</select></label></div>';
