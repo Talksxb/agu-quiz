@@ -46,6 +46,8 @@ jobs:
         run: node tests/sprint33-validacao.js
       - name: LEG-01 — catálogo, IDs e compatibilidade de notas
         run: node tests/leg01-validacao.js
+      - name: LEG-07 — Para meu caderno, IDs, origem, backup e contratos
+        run: node tests/leg07-validacao.js
       - name: LEG-06 — Ação Popular integral, fonte e persistência
         run: node tests/leg06-validacao.js
       - name: LEG-05 — LINDB integral, fonte e persistência
@@ -74,6 +76,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEG-07 — caderno físico, cinco viewports e backup sintético
+        run: node tests/leg07-browser.cjs
       - name: LEG-06 — Ação Popular, cinco viewports e recuperação
         run: node tests/leg06-browser.cjs
       - name: LEG-05 — LINDB, cinco viewports e recuperação
@@ -158,6 +162,8 @@ jobs:
             tests/artifacts-leg05/*.png
             tests/artifacts-leg06/*.json
             tests/artifacts-leg06/*.png
+            tests/artifacts-leg07/*.json
+            tests/artifacts-leg07/*.png
             tests/artifacts-work01/*.json
             tests/artifacts-work01/*.png
           if-no-files-found: ignore
@@ -176,6 +182,10 @@ jobs:
         run: node tests/sprint21-pages.cjs
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: LEG-07 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leg07-browser.cjs
       - name: LEG-06 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -207,6 +217,7 @@ jobs:
             tests/artifacts-leg04/
             tests/artifacts-leg05/
             tests/artifacts-leg06/
+            tests/artifacts-leg07/
           if-no-files-found: ignore
           retention-days: 7
 

@@ -13,8 +13,60 @@ let state=defaults();
 try{const prior=JSON.parse(localStorage.getItem(KEY)||'null');if(prior&&typeof prior==='object'&&prior.notes&&typeof prior.notes==='object')state={...state,...prior}}catch(_){}
 if(!byId.has(state.article)){state=defaults()}
 if(!byId.get(state.article)?.clauses.some(c=>c.id===state.unit))state.unit=byId.get(state.article)?.clauses[0]?.id;
-const tabs=[['juris','Jurisprudência'],['questoes','Questões'],['caderno','Caderno'],['flashcards','Flashcards'],['comentarios','Comentários'],['estudo','Estudo integrado']];
+const tabs=[['juris','Jurisprudência'],['questoes','Questões'],['caderno','Caderno'],['flashcards','Flashcards'],['comentarios','Comentários'],['estudo','Estudo integrado'],['para_caderno','Para meu caderno']];
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+// LEG07: campo opcional na categoria legada, sem migrar ou reescrever perfis anteriores.
+const NOTEBOOK_MAX=300,NOTEBOOK_TEXT_MAX=450;
+let notebookTopic='todos',notebookStatus='pendente',editingNotebook=null,notebookMessage='';
+function notebookItems(){return Array.isArray(state.forNotebook)?state.forNotebook:[]}
+function notebookValid(items){
+ if(!Array.isArray(items)||items.length>NOTEBOOK_MAX)return false;
+ const ids=new Set();
+ return items.every(x=>{
+  const ref=byUnit.get(x?.unitId),date=typeof x?.createdAt==='string'&&Number.isFinite(Date.parse(x.createdAt));
+  if(!ref||!x||!/^pc-[a-zA-Z0-9-]{8,130}$/.test(x.id||'')||ids.has(x.id)||x.lawId!==ref.article.law.id||x.articleId!==ref.article.id||x.topic!==(ref.article.topic||null)||x.origin!=='leitor'||!date||!['pendente','anotado','dispensado'].includes(x.status)||typeof x.prompt!=='string'||!x.prompt.trim()||x.prompt.length>NOTEBOOK_TEXT_MAX)return false;
+  ids.add(x.id);return true;
+ });
+}
+function notebookCommit(items,confirmation){
+ if(!notebookValid(items)){notebookMessage='Dados inconsistentes. Preserve seu backup e não altere as marcações.';root.render?.();return false}
+ const next={...state,forNotebook:items};
+ try{localStorage.setItem(KEY,JSON.stringify(next))}catch(_){notebookMessage='Não foi possível salvar neste navegador. Os dados anteriores foram preservados.';root.render?.();return false}
+ state=next;notebookMessage=confirmation;root.render?.();return true;
+}
+function notebookId(){
+ const id=root.crypto?.randomUUID?.();
+ return 'pc-'+(id||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,13));
+}
+function notebookSave(){
+ const field=document.getElementById('agu-caderno-brief'),prompt=field?.value.trim()||'';
+ if(!prompt||prompt.length>NOTEBOOK_TEXT_MAX){notebookMessage='Escreva uma pergunta ou ponto breve (até 450 caracteres).';root.render?.();focusAfter('#agu-caderno-brief',true);return false}
+ const old=notebookItems();
+ if(!notebookValid(old)){notebookMessage='Marcações existentes inconsistentes. Preserve o backup antes de continuar.';root.render?.();return false}
+ const edited=old.find(x=>x.id===editingNotebook);
+ const ref=byUnit.get(state.unit);
+ if(!ref&&!edited)return false;
+ if(!edited&&old.length>=NOTEBOOK_MAX){notebookMessage='Limite de 300 marcações atingido. Nenhum dado foi substituído.';root.render?.();return false}
+ const item=edited?{...edited,prompt}:{id:notebookId(),lawId:ref.article.law.id,articleId:ref.article.id,unitId:state.unit,topic:ref.article.topic||null,origin:'leitor',prompt,createdAt:new Date().toISOString(),status:'pendente'};
+ if(notebookCommit(edited?old.map(x=>x.id===edited.id?item:x):[...old,item],edited?'Marcação atualizada.':'Pendente registrada para seu caderno físico.')){editingNotebook=null;focusAfter('#agu-caderno-brief',true);return true}
+ return false;
+}
+function notebookFilter(kind,value){if(kind==='tema')notebookTopic=value;else if(kind==='estado')notebookStatus=value;else return;root.render?.();focusAfter(kind==='tema'?'#agu-caderno-filter-topic':'#agu-caderno-filter-status')}
+function notebookEdit(id){if(!notebookItems().some(x=>x.id===id))return;editingNotebook=id;state.tab='para_caderno';state.mobile='related';root.render?.();focusAfter('#agu-caderno-brief',true)}
+function notebookCancel(){editingNotebook=null;root.render?.();focusAfter('#agu-caderno-brief',true)}
+function notebookSetStatus(id,status){
+ if(!['pendente','anotado','dispensado'].includes(status))return false;
+ const old=notebookItems();if(!old.some(x=>x.id===id))return false;
+ if(notebookCommit(old.map(x=>x.id===id?{...x,status}:x),'Estado alterado manualmente para '+status+'.')){focusAfter('#agu-caderno-list',true);return true}
+ return false;
+}
+function notebookOrigin(id){
+ const x=notebookItems().find(y=>y.id===id),ref=byUnit.get(x?.unitId);
+ if(!x||!ref||ref.article.law.id!==x.lawId||ref.article.id!==x.articleId)return false;
+ state.article=x.articleId;state.unit=x.unitId;state.mobile='text';save();
+ if(root.history?.replaceState)root.history.replaceState(null,'','?abrir=lei&norma='+encodeURIComponent(x.lawId)+'&dispositivo='+encodeURIComponent(x.unitId));
+ root.render?.();focusAfter('#agu-reader .agu-unit.selected',true);return true;
+}
 function current(){return byId.get(state.article)||articles[0]}
 function structureLabel(a){return (a.structurePath||[]).map(id=>a.law.structure?.find(n=>n.id===id)?.label).filter(Boolean).join(' › ')||a.law.section}
 function focusAfter(selector,reveal=false){if(typeof document!=='undefined')document.querySelector?.(selector)?.focus?.({preventScroll:!reveal})}
@@ -47,6 +99,33 @@ function relationCard(x){
  (x.revalidationNeeded?'<p class="agu-muted">Atenção: requer conferência adicional de inteiro teor, efeitos ou alterações.</p>':'')+
  '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">Fonte oficial ↗</a></article>';
 }
+function notebookPanel(){
+ const items=notebookItems(),valid=notebookValid(items),editing=items.find(x=>x.id===editingNotebook);
+ if(!valid)return '<div class="agu-notice" role="alert">Os dados de “Para meu caderno” precisam de conferência. Preserve seu backup. Não haverá gravação ou descarte automático.</div>';
+ const topics=[...new Set(articles.map(a=>a.topic).filter(Boolean))].sort();
+ const option=(value,label,current)=>'<option value="'+esc(value)+'"'+(value===current?' selected':'')+'>'+esc(label)+'</option>';
+ const selected=byUnit.get(state.unit),target=editing?byUnit.get(editing.unitId):selected;
+ let s='<div class="agu-ctx-box agu-paper-notebook"><h4>Para meu caderno físico</h4><p class="agu-muted">Marque só o que deseja recuperar e escrever à mão depois. Não altera sessões, revisões nem agenda.</p>'+
+ '<p class="agu-muted">Origem: '+esc(target?.article.law.title||'')+' · '+esc(target?.article.label||'')+' · '+esc(target?.clause.label||'')+' · '+esc(target?.article.topic||'Sem tema curricular comprovado')+'</p>'+
+ '<label for="agu-caderno-brief">'+(editing?'Editar pergunta ou ponto para anotar':'Dúvida, distinção ou pergunta breve')+'</label><textarea id="agu-caderno-brief" maxlength="450" rows="4" placeholder="O que preciso distinguir, resolver ou memorizar?">'+esc(editing?.prompt||'')+'</textarea>'+
+ '<button type="button" class="agu-primary" id="agu-caderno-save" onclick="AGULegal.notebookSave()">'+(editing?'Salvar edição':'Guardar para meu caderno')+'</button>'+
+ (editing?'<button type="button" class="agu-light" onclick="AGULegal.notebookCancel()">Cancelar edição</button>':'')+
+ '<p class="agu-muted" role="status" aria-live="polite">'+esc(notebookMessage)+'</p></div>'+
+ '<section class="agu-ctx-box" aria-label="Lista de marcações para o caderno"><h4 id="agu-caderno-list" tabindex="-1">Marcações salvas ('+items.length+'/'+NOTEBOOK_MAX+')</h4>'+
+ '<label for="agu-caderno-filter-topic">Filtrar por tema curricular</label><select id="agu-caderno-filter-topic" onchange="AGULegal.notebookFilter(\'tema\',this.value)">'+option('todos','Todos os temas',notebookTopic)+option('sem_tema','Sem tema documentado',notebookTopic)+topics.map(t=>option(t,t,notebookTopic)).join('')+'</select>'+
+ '<label for="agu-caderno-filter-status">Filtrar por estado</label><select id="agu-caderno-filter-status" onchange="AGULegal.notebookFilter(\'estado\',this.value)">'+[['pendente','Pendentes'],['anotado','Anotadas'],['dispensado','Dispensadas'],['todos','Todos os estados']].map(([id,label])=>option(id,label,notebookStatus)).join('')+'</select>';
+ const shown=items.filter(x=>(notebookStatus==='todos'||x.status===notebookStatus)&&(notebookTopic==='todos'||(notebookTopic==='sem_tema'?x.topic===null:x.topic===notebookTopic))).slice().reverse();
+ if(!shown.length)s+='<p class="agu-muted">Nenhuma marcação encontrada para estes filtros.</p>';
+ for(const x of shown){
+  const ref=byUnit.get(x.unitId),id=esc(x.id);
+  s+='<article class="agu-notice agu-paper-item"><p><b>'+esc(x.prompt)+'</b></p><p class="agu-muted">'+esc(ref?.article.law.title)+' · '+esc(ref?.article.label)+' · '+esc(ref?.clause.label)+'<br>'+esc(x.topic||'Sem tema documentado')+' · '+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+'</p>'+
+  '<div class="agu-paper-actions"><button type="button" class="agu-light" onclick="AGULegal.notebookOrigin(\''+id+'\')">Abrir origem</button><button type="button" class="agu-light" onclick="AGULegal.notebookEdit(\''+id+'\')">Editar</button>'+
+  (x.status!=='anotado'?'<button type="button" class="agu-light" onclick="AGULegal.notebookSetStatus(\''+id+'\',\'anotado\')">Marcar como anotado</button>':'')+
+  (x.status!=='dispensado'?'<button type="button" class="agu-light" onclick="AGULegal.notebookSetStatus(\''+id+'\',\'dispensado\')">Dispensar</button>':'')+
+  (x.status!=='pendente'?'<button type="button" class="agu-light" onclick="AGULegal.notebookSetStatus(\''+id+'\',\'pendente\')">Manter pendente</button>':'')+'</div></article>';
+ }
+ return s+'</section>';
+}
 function related(a){
  const c=byUnit.get(state.unit)?.clause;
  const matching=getRelations().filter(x=>x.deviceId===state.unit);
@@ -59,6 +138,7 @@ function related(a){
  if(state.tab==='estudo')s+=root.AGUStudy?.html(state.unit)||'<div class="agu-notice">Módulo Estudo Integrado indisponível.</div>';
  if(state.tab==='flashcards')s+=cards.length?'<p>'+cards.length+' cartões autorais relacionados ao tópico '+esc(a.topic)+' (associação temática, não especificamente ao parágrafo).</p>'+cards.map(x=>'<div class="agu-notice"><b>'+esc(x.front)+'</b><p class="agu-muted">'+esc(x.source)+' · '+esc(x.audit?.lot||'origem autoral')+'</p></div>').join('')+'<button class="agu-primary" onclick="setView(\'review\')">Abrir Revisão Inteligente</button>':'<div class="agu-notice">Nenhum cartão publicado associado a este tópico.</div>';
  if(state.tab==='comentarios')s+='<label><b>Comentário pessoal deste dispositivo</b><textarea id="agu-legal-note" placeholder="Anotação privada, hipótese ou dúvida">'+esc(state.notes[state.unit]||'')+'</textarea></label><button id="agu-save-note" class="agu-primary" onclick="AGULegal.note(true)">Salvar anotação</button><p class="agu-muted">Comentários armazenados somente neste navegador.</p>';
+ if(state.tab==='para_caderno')s+=notebookPanel();
  if(state.tab==='juris'||state.tab==='questoes')s+='<h4>Complementos normativos</h4>'+(norm.length?norm.map(relationCard).join(''):'<p class="agu-muted">Nenhuma evidência normativa complementar ligada a esta subdivisão.</p>');
  return s;
 }
@@ -76,14 +156,15 @@ if(a.law.contentCoverage==='integral')mid+='<p class="agu-notice"><b>Texto integ
 if(a.id===a.law.articles[0].id&&a.law.frontMatter)mid+='<details><summary>Ementa e preâmbulo</summary>'+a.law.frontMatter.map(t=>'<p>'+esc(t)+'</p>').join('')+(a.law.frontMatterEditorialNotes||[]).map(n=>'<p class="agu-muted">Nota editorial da ementa: '+esc(n.text)+'</p>').join('')+'</details>';
 for(const note of a.sourceNotices||[])mid+='<div class="agu-notice"><b>Ressalva da fonte</b><p>'+esc(note.text)+'</p><a href="'+esc(note.url)+'" target="_blank" rel="noopener noreferrer">Conferir ressalva na fonte oficial</a></div>';
 if(a.excerpt)mid+='<div class="agu-notice"><b>Recorte normativo:</b> '+esc(a.excerptNote||'O artigo está parcialmente reproduzido; consulte a íntegra na fonte oficial.')+'</div>';
+mid+='<div class="agu-paper-context"><span>Dispositivo selecionado: <b>'+esc(byUnit.get(state.unit)?.clause.label||a.label)+'</b></span><button class="agu-primary" type="button" onclick="AGULegal.tab(\'para_caderno\',true)">Para meu caderno</button></div>';
 for(const c of a.clauses)mid+='<div class="agu-unit '+(state.unit===c.id?'selected':'')+'" role="button" tabindex="0" onclick="AGULegal.unit(\''+esc(c.id)+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();AGULegal.unit(\''+esc(c.id)+'\',true)}"><b>'+esc(c.label)+'</b>'+(c.textStatus==='declared_unconstitutional_in_source'?'<p class="agu-notice"><b>Declarado inconstitucional segundo a fonte.</b> Texto preservado para consulta documental; não apresentado como comando vigente. Alcance da decisão não auditado nesta sprint.</p>':c.textStatus==='revoked_in_source'?'<p class="agu-notice"><b>Revogado segundo a fonte.</b> Texto histórico, não apresentado como comando vigente.</p>':'')+'<p>'+esc(c.text)+'</p>'+(c.textStatus==='veto_placeholder'?'<small>Marcador de veto da fonte; não é comando normativo.</small>':'')+(c.editorialNotes||[]).map(n=>'<p class="agu-muted">Nota editorial da fonte: '+esc(n.text)+'</p>').join('')+'</div>';
 if(a.id===a.law.articles.at(-1).id&&a.law.closingMatter)mid+='<div class="agu-notice"><b>Fecho da norma</b>'+a.law.closingMatter.map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>';
 mid+='<div><button class="agu-light" '+(pos===0?'disabled':'')+' onclick="AGULegal.step(-1,true)">← Artigo anterior</button><button class="agu-light" '+(pos===articles.length-1?'disabled':'')+' onclick="AGULegal.step(1,true)">Próximo artigo →</button></div></section>';
 let aside='<section class="agu-pane agu-related">'+(root.AGUConsolidation?.metricPanel()||'')+'<h3>Relacionados ao dispositivo</h3><div class="agu-tabs">'+tabs.map(([key,label])=>'<button aria-pressed="'+(state.tab===key)+'" onclick="AGULegal.tab(\''+key+'\',true)">'+label+'</button>').join('')+'</div>'+related(a)+'<p class="agu-muted">Origem das normas: fonte oficial. Relações individuais com jurisprudência e provas exigem revisão da Auditoria 03.</p><button class="agu-light" onclick="AGULegal.exportData()">Exportar comentários</button></section>';
 return '<div id="agu-reader" style="--agu-legal-font:'+(root.AGUConsolidation?.peek()?.size||100)+'%" data-mobile="'+esc(state.mobile)+'"><div class="top"><div><div class="eyebrow">AGU · LEITOR JURÍDICO · SPRINT 17</div><h1>Legislação contextualizada</h1><div class="muted">Texto oficial · navegação granular · contexto auditável</div></div></div><div class="agu-mobile"><button onclick="AGULegal.mobile(\'index\',true)">Índice</button><button onclick="AGULegal.mobile(\'text\',true)">Texto legal</button><button onclick="AGULegal.mobile(\'related\',true)">Relacionados</button></div><div class="agu-columns">'+nav+mid+aside+'</div></div>';
 }
-const css='.agu-s17-search{margin:8px 0 14px}.agu-s17-fields{display:grid;gap:8px;padding:10px 0}.agu-s17-fields label,.agu-s17-settings label{display:block;font-size:12px;color:#425c64}.agu-s17-fields input,.agu-s17-fields select,.agu-s17-settings select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-s17-results{overflow:auto;max-height:350px}.agu-s17-result{display:block;text-align:left;width:100%;padding:10px;margin:5px 0;border:1px solid #d3e3e6;border-radius:8px;background:#f6fafb;color:#223840}.agu-s17-result small{display:block;color:#425c64;margin-top:3px;line-height:1.4}.agu-document .agu-unit p{font-size:var(--agu-legal-font,100%)}.agu-document .agu-unit{overflow-wrap:anywhere}.agu-related .agu-ctx-box input[type=file]{display:none}.agu-index-entry[hidden]{display:none}.agu-law-navigation{display:grid;gap:10px;margin-bottom:14px}.agu-law-navigation label{display:block;font-size:12px;color:#425c64}.agu-law-navigation select{max-width:100%;width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-law-navigation button{margin:3px 0;min-height:44px}.agu-index input{box-sizing:border-box}@media(max-width:850px){.agu-s17-result{min-height:48px}.agu-mobile button{min-height:46px}.agu-tabs button{min-height:42px}}.agu-ctx-box{border-top:1px solid #e0e9eb;padding:12px 0;margin-top:12px}.agu-ctx-box input,.agu-ctx-box select,.agu-ctx-box textarea{width:100%;box-sizing:border-box;padding:10px;margin:5px 0 10px;border:1px solid #c9d6da;border-radius:8px;background:#fff;color:#203942}.agu-ctx-box label{display:block;font-size:13px;font-weight:600;margin:6px 0}.agu-ctx-body{white-space:pre-wrap;overflow-wrap:anywhere}.agu-related a{overflow-wrap:anywhere}.agu-ctx-box button{margin:4px 5px 5px 0}.agu-ctx-box .hidden{display:none}.agu-columns{display:grid;grid-template-columns:minmax(180px,220px) minmax(300px,1fr) minmax(250px,310px);gap:14px;align-items:start}.agu-pane{background:#fff;border:1px solid #dce4e8;border-radius:12px;padding:17px;min-width:0}.agu-index,.agu-related{position:sticky;top:10px;max-height:80vh;overflow-y:auto}.agu-index input{width:100%;padding:10px;border:1px solid #d3dfe4;border-radius:8px}.agu-index-entry{width:100%;text-align:left;display:block;background:#f6f9fa;border:0;border-radius:7px;padding:9px;margin:4px 0}.agu-unit{border-left:3px solid #d7e3e6;padding:12px;line-height:1.65;margin:9px 0;cursor:pointer}.agu-unit.selected,.agu-index-entry.selected{background:#e5f5f2;border-color:#16747a}.agu-unit p{margin:6px 0}.agu-document h2{font-family:Georgia,serif;font-size:25px}.agu-muted{color:#607985;font-size:13px;line-height:1.5}.agu-notice{background:#f0f6f7;padding:11px;border-left:3px solid #77a5a8;border-radius:6px;margin:10px 0}.agu-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.agu-tabs button,.agu-light,.agu-mobile button{padding:9px;border-radius:7px;border:1px solid #d3e0e4;background:#f4f8f9}.agu-tabs button[aria-pressed=true],.agu-primary{background:#156b70;color:white;padding:10px;border-radius:8px}.agu-related textarea{width:100%;min-height:130px;padding:10px;border:1px solid #ccdadd;border-radius:8px}.agu-mobile{display:none}@media(max-width:850px){.agu-columns{display:block}.agu-pane{margin-bottom:12px}.agu-index,.agu-related{position:static;max-height:none}.agu-mobile{display:flex;gap:7px;margin:12px 0}.agu-mobile button{flex:1}#agu-reader[data-mobile=text] .agu-index,#agu-reader[data-mobile=text] .agu-related,#agu-reader[data-mobile=index] .agu-document,#agu-reader[data-mobile=index] .agu-related,#agu-reader[data-mobile=related] .agu-document,#agu-reader[data-mobile=related] .agu-index{display:none}}';
+const css='.agu-s17-search{margin:8px 0 14px}.agu-s17-fields{display:grid;gap:8px;padding:10px 0}.agu-s17-fields label,.agu-s17-settings label{display:block;font-size:12px;color:#425c64}.agu-s17-fields input,.agu-s17-fields select,.agu-s17-settings select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-s17-results{overflow:auto;max-height:350px}.agu-s17-result{display:block;text-align:left;width:100%;padding:10px;margin:5px 0;border:1px solid #d3e3e6;border-radius:8px;background:#f6fafb;color:#223840}.agu-s17-result small{display:block;color:#425c64;margin-top:3px;line-height:1.4}.agu-document .agu-unit p{font-size:var(--agu-legal-font,100%)}.agu-document .agu-unit{overflow-wrap:anywhere}.agu-related .agu-ctx-box input[type=file]{display:none}.agu-index-entry[hidden]{display:none}.agu-law-navigation{display:grid;gap:10px;margin-bottom:14px}.agu-law-navigation label{display:block;font-size:12px;color:#425c64}.agu-law-navigation select{max-width:100%;width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-law-navigation button{margin:3px 0;min-height:44px}.agu-index input{box-sizing:border-box}@media(max-width:850px){.agu-s17-result{min-height:48px}.agu-mobile button{min-height:46px}.agu-tabs button{min-height:42px}}.agu-ctx-box{border-top:1px solid #e0e9eb;padding:12px 0;margin-top:12px}.agu-ctx-box input,.agu-ctx-box select,.agu-ctx-box textarea{width:100%;box-sizing:border-box;padding:10px;margin:5px 0 10px;border:1px solid #c9d6da;border-radius:8px;background:#fff;color:#203942}.agu-ctx-box label{display:block;font-size:13px;font-weight:600;margin:6px 0}.agu-ctx-body{white-space:pre-wrap;overflow-wrap:anywhere}.agu-related a{overflow-wrap:anywhere}.agu-ctx-box button{margin:4px 5px 5px 0}.agu-ctx-box .hidden{display:none}.agu-columns{display:grid;grid-template-columns:minmax(180px,220px) minmax(300px,1fr) minmax(250px,310px);gap:14px;align-items:start}.agu-pane{background:#fff;border:1px solid #dce4e8;border-radius:12px;padding:17px;min-width:0}.agu-index,.agu-related{position:sticky;top:10px;max-height:80vh;overflow-y:auto}.agu-index input{width:100%;padding:10px;border:1px solid #d3dfe4;border-radius:8px}.agu-index-entry{width:100%;text-align:left;display:block;background:#f6f9fa;border:0;border-radius:7px;padding:9px;margin:4px 0}.agu-unit{border-left:3px solid #d7e3e6;padding:12px;line-height:1.65;margin:9px 0;cursor:pointer}.agu-unit.selected,.agu-index-entry.selected{background:#e5f5f2;border-color:#16747a}.agu-unit p{margin:6px 0}.agu-document h2{font-family:Georgia,serif;font-size:25px}.agu-muted{color:#607985;font-size:13px;line-height:1.5}.agu-notice{background:#f0f6f7;padding:11px;border-left:3px solid #77a5a8;border-radius:6px;margin:10px 0}.agu-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.agu-tabs button,.agu-light,.agu-mobile button{padding:9px;border-radius:7px;border:1px solid #d3e0e4;background:#f4f8f9}.agu-tabs button[aria-pressed=true],.agu-primary{background:#156b70;color:white;padding:10px;border-radius:8px}.agu-related textarea{width:100%;min-height:130px;padding:10px;border:1px solid #ccdadd;border-radius:8px}.agu-mobile{display:none}.agu-paper-context{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px;background:#f0f6f7;border-radius:8px}.agu-paper-context button,.agu-paper-actions button{min-height:44px;cursor:pointer}.agu-paper-notebook textarea,.agu-paper-notebook select{max-width:100%;box-sizing:border-box}.agu-paper-actions{display:flex;flex-wrap:wrap;gap:4px}.agu-paper-item{overflow-wrap:anywhere}.agu-paper-item button{white-space:normal}.agu-paper-notebook .agu-primary{min-height:44px;cursor:pointer}@media(max-width:850px){.agu-columns{display:block}.agu-pane{margin-bottom:12px}.agu-index,.agu-related{position:static;max-height:none}.agu-mobile{display:flex;gap:7px;margin:12px 0}.agu-mobile button{flex:1}#agu-reader[data-mobile=text] .agu-index,#agu-reader[data-mobile=text] .agu-related,#agu-reader[data-mobile=index] .agu-document,#agu-reader[data-mobile=index] .agu-related,#agu-reader[data-mobile=related] .agu-document,#agu-reader[data-mobile=related] .agu-index{display:none}}';
 if(typeof document!=='undefined'&&!document.getElementById('agu-reader-style')){const e=document.createElement('style');e.id='agu-reader-style';e.textContent=css;document.head.appendChild(e)}
-root.AGULegal={page,article,openLaw,chapter,boundary,unit,tab,mobile,step,note,exportData,filter,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
+root.AGULegal={page,article,openLaw,chapter,boundary,unit,tab,mobile,step,note,exportData,filter,notebookSave,notebookFilter,notebookEdit,notebookCancel,notebookSetStatus,notebookOrigin,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
 })(window);
 

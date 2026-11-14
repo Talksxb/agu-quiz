@@ -58,8 +58,8 @@ select,input{max-width:100%}
 <script src="questoes-leitor-s18.js?v=20261112-s19a"></script>
 <script src="dados/versoes-normativas-s17.js?v=20261112-s17a"></script>
 <script src="leitor-consolidacao.js?v=20261113-leg02"></script>
-<script src="leitor-juridico.js?v=20261114-leg05"></script>
-<script src="backup-local-s20.js?v=20261113-s27a"></script>
+<script src="leitor-juridico.js?v=20261114-leg07"></script>
+<script src="backup-local-s20.js?v=20261114-leg07"></script>
 <script src="meu-estudo.js?v=20261113-work01b"></script>
 <script>
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -430,6 +430,6 @@ document.addEventListener('focusin',event=>{
  const r=el.getBoundingClientRect(),n=nav.getBoundingClientRect();
  if(r.left<n.left+3||r.right>n.right-3)el.scrollIntoView({block:'nearest',inline:'center'});
 });
-document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){view='legal';AGULegal.openLaw(new URLSearchParams(window.location.search).get('norma')||'L9784',false);render()}else{render()}
+document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){const p=new URLSearchParams(window.location.search),law=p.get('norma')||'L9784',device=p.get('dispositivo');view='legal';AGULegal.openLaw(law,false);if(device&&device.startsWith(law+':'))AGULegal.unit(device);render()}else{render()}
 </script></body></html>
 

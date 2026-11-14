@@ -1,0 +1,8 @@
+{
+  "sprint": "LEG-07",
+  "readerBeforeSha256": "955df3f7269730fb8fd429912dd82c7c6f1e861f640e1596fc75230383a0ec00",
+  "readerAfterSha256": "34768817511009ed069c9bab512165092036f6ed90ed3d2b3247f6932a8608bb",
+  "backupBeforeSha256": "d9f7705b490d041dd445701b0b619e39c6b2bb4d204cb5a966b27b98ca4d0d78",
+  "backupAfterSha256": "11993873b63fb9df591eb43ddc8dbec9ba2923d1c8f76b029c91568ec3bace10",
+  "reason": "Aditivo no leitor: marcações seletivas Para meu caderno com ID e referência granular, filtros e origem; validador opcional no backup preexistente; sem alterar corpus nem as nove categorias legadas."
+}
