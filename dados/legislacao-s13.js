@@ -1,4 +1,4 @@
-/* Corpus público S13 — normas integrais LEG02–04 e seleção CF; IDs anteriores preservados. */
+/* Corpus público S13 — normas integrais LEG02–05 e seleção CF; IDs anteriores preservados. */
 (function(root){'use strict';root.AGU_LEGAL_CORPUS={
   "schema": "agu-legal-reader-v1",
   "cutoff": "2026-11-14",
@@ -12810,6 +12810,1388 @@
         ],
         "checkedOn": "2026-11-14",
         "sourceDigest": "sha256:148726cf24d3704d3c89894ed0be64b2092c60a826dfbfedfbb45245e05966e7",
+        "annexes": "not_applicable"
+      }
+    },
+    {
+      "id": "DL4657",
+      "title": "Decreto-Lei 4.657/1942 — LINDB",
+      "kind": "decree_law",
+      "number": "4657",
+      "year": 1942,
+      "section": "Texto integral · sem divisões formais",
+      "source": "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-normaatualizada-pe.html",
+      "sourceAuthority": "Câmara dos Deputados — Centro de Documentação e Informação",
+      "sourceVersion": "Texto atualizado da Câmara; captura de 14/11/2026",
+      "checkedOn": "2026-11-14",
+      "auditStatus": "parcial_nao_certificado",
+      "textVersionId": "DL4657@2026-11-14-camara-e2aa961b",
+      "contentCoverage": "integral",
+      "textVerification": {
+        "status": "compared",
+        "checkedOn": "2026-11-14",
+        "scope": "full_norm",
+        "note": "Cotejo integral da captura oficial; não certifica vigência, competência judicial ou alcance das remissões."
+      },
+      "structure": [],
+      "articles": [
+        {
+          "id": "DL4657:art1",
+          "label": "Art. 1",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art1:caput",
+              "label": "Caput",
+              "text": "Salvo disposição contrária, a lei começa a vigorar em todo o país quarenta e cinco dias depois de oficialmente publicada.",
+              "kind": "caput",
+              "parentId": "DL4657:art1",
+              "sourceOrdinal": 5
+            },
+            {
+              "id": "DL4657:art1:p1",
+              "label": "§ 1º",
+              "text": "Nos Estados estrangeiros, a obrigatoriedade da lei brasileira, quando admitida, se inicia três meses depois de oficialmente publicada.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art1",
+              "sourceOrdinal": 6,
+              "editorialNotes": [
+                {
+                  "text": "(Vide Lei nº 5.338, de 16/10/1967)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-5338-16-outubro-1967-375981-publicacaooriginal-1-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-5338-16-outubro-1967-375981-publicacaooriginal-1-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art1:p2",
+              "label": "§ 2º",
+              "text": "(Revogado pela Lei nº 12.036, de 1/10/2009)",
+              "kind": "paragraph",
+              "parentId": "DL4657:art1",
+              "sourceOrdinal": 7,
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2009/lei-12036-1-outubro-2009-591434-norma-pl.html"
+              ],
+              "textStatus": "revoked_in_source"
+            },
+            {
+              "id": "DL4657:art1:p3",
+              "label": "§ 3º",
+              "text": "Se, antes de entrar a lei em vigor, ocorrer nova publicação de seu texto, destinada a correção, o prazo deste artigo e dos parágrafos anteriores começará a correr da nova publicação.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art1",
+              "sourceOrdinal": 8
+            },
+            {
+              "id": "DL4657:art1:p4",
+              "label": "§ 4º",
+              "text": "As correções a texto de lei já em vigor consideram-se lei nova.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art1",
+              "sourceOrdinal": 9
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art2",
+          "label": "Art. 2",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art2:caput",
+              "label": "Caput",
+              "text": "Não se destinando à vigência temporária, a lei terá vigor até que outra a modifique ou revogue.",
+              "kind": "caput",
+              "parentId": "DL4657:art2",
+              "sourceOrdinal": 10
+            },
+            {
+              "id": "DL4657:art2:p1",
+              "label": "§ 1º",
+              "text": "A lei posterior revoga a anterior quando expressamente o declare, quando seja com ela incompatível ou quando regule inteiramente a matéria de que tratava a lei anterior.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art2",
+              "sourceOrdinal": 11
+            },
+            {
+              "id": "DL4657:art2:p2",
+              "label": "§ 2º",
+              "text": "A lei nova, que estabeleça disposições gerais ou especiais a par das já existentes, não revoga nem modifica a lei anterior.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art2",
+              "sourceOrdinal": 12
+            },
+            {
+              "id": "DL4657:art2:p3",
+              "label": "§ 3º",
+              "text": "Salvo disposição em contrário, a lei revogada não se restaura por ter a lei revogadora perdido a vigência.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art2",
+              "sourceOrdinal": 13
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art3",
+          "label": "Art. 3",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art3:caput",
+              "label": "Caput",
+              "text": "Ninguém se escusa de cumprir a lei, alegando que não a conhece.",
+              "kind": "caput",
+              "parentId": "DL4657:art3",
+              "sourceOrdinal": 14
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art4",
+          "label": "Art. 4",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art4:caput",
+              "label": "Caput",
+              "text": "Quando a lei for omissa, o juiz decidirá o caso de acordo com a analogia, os costumes e os princípios gerais de direito.",
+              "kind": "caput",
+              "parentId": "DL4657:art4",
+              "sourceOrdinal": 15
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art5",
+          "label": "Art. 5",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art5:caput",
+              "label": "Caput",
+              "text": "Na aplicação da lei, o juiz atenderá aos fins sociais a que ela se dirige e às exigências do bem comum.",
+              "kind": "caput",
+              "parentId": "DL4657:art5",
+              "sourceOrdinal": 16
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art6",
+          "label": "Art. 6",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art6:caput",
+              "label": "Caput",
+              "text": "A Lei em vigor terá efeito imediato e geral, respeitados o ato jurídico perfeito, o direito adquirido e a coisa julgada.",
+              "kind": "caput",
+              "parentId": "DL4657:art6",
+              "sourceOrdinal": 17,
+              "editorialNotes": [
+                {
+                  "text": "(“Caput” do artigo com redação dada pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art6:p1",
+              "label": "§ 1º",
+              "text": "Reputa-se ato jurídico perfeito o já consumado segundo a lei vigente ao tempo em que se efetuou.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art6",
+              "sourceOrdinal": 18,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art6:p2",
+              "label": "§ 2º",
+              "text": "Consideram-se adquiridos assim os direitos que o seu titular, ou alguém por ele, possa exercer, como aqueles cujo começo do exercício tenha termo prefixo, ou condição pre-estabelecida inalterável, a arbítrio de outrem.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art6",
+              "sourceOrdinal": 19,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art6:p3",
+              "label": "§ 3º",
+              "text": "Chama-se coisa julgada ou caso julgado a decisão judicial de que já não caiba recurso.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art6",
+              "sourceOrdinal": 20,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art7",
+          "label": "Art. 7",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art7:caput",
+              "label": "Caput",
+              "text": "A lei do país em que for domiciliada a pessoa determina as regras sobre o começo e o fim da personalidade, o nome, a capacidade e os direitos de família.",
+              "kind": "caput",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 21
+            },
+            {
+              "id": "DL4657:art7:p1",
+              "label": "§ 1º",
+              "text": "Realizando-se o casamento no Brasil, será aplicada a lei brasileira quanto aos impedimentos dirimentes e às formalidades da celebração.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 22
+            },
+            {
+              "id": "DL4657:art7:p2",
+              "label": "§ 2º",
+              "text": "O casamento de estrangeiros poderá celebrar-se perante autoridades diplomáticas ou consulares do país de ambos os nubentes.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 23,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo com redação dada pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art7:p3",
+              "label": "§ 3º",
+              "text": "Tendo os nubentes domicílio diverso, regerá os casos de invalidade do matrimônio a lei do primeiro domicílio conjugal.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 24
+            },
+            {
+              "id": "DL4657:art7:p4",
+              "label": "§ 4º",
+              "text": "O regime de bens, legal ou convencional, obedece à lei do país em que tiverem os nubentes domicílio, e, se este for diverso, à do primeiro domicílio conjugal.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 25,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo retificado no DOU de 17/6/1943)",
+                  "sourceLinks": [
+                    "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-retificacao-68800-pe.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-retificacao-68800-pe.html"
+              ]
+            },
+            {
+              "id": "DL4657:art7:p5",
+              "label": "§ 5º",
+              "text": "O estrangeiro casado, que se naturalizar brasileiro, pode, mediante expressa anuência de seu cônjuge, requerer ao juiz, no ato de entrega do decreto de naturalização, se apostile ao mesmo a adoção do regime de comunhão parcial de bens, respeitados os direitos de terceiros e dada esta adoção ao competente registro.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 26,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo com redação dada pela Lei nº 6.515, de 26/12/1977)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6515-26-dezembro-1977-366540-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6515-26-dezembro-1977-366540-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art7:p6",
+              "label": "§ 6º",
+              "text": "O divórcio realizado no estrangeiro, se um ou ambos os cônjuges forem brasileiros, só será reconhecido no Brasil depois de 1 (um) ano da data da sentença, salvo se houver sido antecedida de separação judicial por igual prazo, caso em que a homologação produzirá efeito imediato, obedecidas as condições estabelecidas para a eficácia das sentenças estrangeiras no país. O Superior Tribunal de Justiça, na forma de seu regimento interno, poderá reexaminar, a requerimento do interessado, decisões já proferidas em pedidos de homologação de sentenças estrangeiras de divórcio de brasileiros, a fim de que passem a produzir todos os efeitos legais.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 27,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo com redação dada pela Lei nº 12.036, de 1/10/2009)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2009/lei-12036-1-outubro-2009-591434-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2009/lei-12036-1-outubro-2009-591434-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art7:p7",
+              "label": "§ 7º",
+              "text": "Salvo o caso de abandono, o domicílio do chefe da família estende-se ao outro cônjuge e aos filhos não emancipados, e o do tutor ou curador aos incapazes sob sua guarda.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 28
+            },
+            {
+              "id": "DL4657:art7:p8",
+              "label": "§ 8º",
+              "text": "Quando a pessoa não tiver domicílio, considerar-se-á domiciliada no lugar de sua residência ou naquele em que se encontre.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art7",
+              "sourceOrdinal": 29
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art8",
+          "label": "Art. 8",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art8:caput",
+              "label": "Caput",
+              "text": "Para qualificar os bens e regular as relações a eles concernentes, aplicar-se-á a lei do país em que estiverem situados.",
+              "kind": "caput",
+              "parentId": "DL4657:art8",
+              "sourceOrdinal": 30
+            },
+            {
+              "id": "DL4657:art8:p1",
+              "label": "§ 1º",
+              "text": "Aplicar-se-á a lei do país em que for domiciliado o proprietário, quanto aos bens moveis que ele trouxer ou se destinarem a transporte para outros lugares.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art8",
+              "sourceOrdinal": 31
+            },
+            {
+              "id": "DL4657:art8:p2",
+              "label": "§ 2º",
+              "text": "O penhor regula-se pela lei do domicílio que tiver a pessoa, em cuja posse se encontre a coisa apenhada.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art8",
+              "sourceOrdinal": 32
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art9",
+          "label": "Art. 9",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art9:caput",
+              "label": "Caput",
+              "text": "Para qualificar e reger as obrigações, aplicar-se-á a lei do país em que se constituírem.",
+              "kind": "caput",
+              "parentId": "DL4657:art9",
+              "sourceOrdinal": 33
+            },
+            {
+              "id": "DL4657:art9:p1",
+              "label": "§ 1º",
+              "text": "Destinando-se a obrigação a ser executada no Brasil e dependendo de forma essencial, será esta observada, admitidas as peculiaridades da lei estrangeira quanto aos requisitos extrínsecos do ato.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art9",
+              "sourceOrdinal": 34
+            },
+            {
+              "id": "DL4657:art9:p2",
+              "label": "§ 2º",
+              "text": "A obrigação resultante do contrato reputa-se constituida no lugar em que residir o proponente.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art9",
+              "sourceOrdinal": 35
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art10",
+          "label": "Art. 10",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art10:caput",
+              "label": "Caput",
+              "text": "A sucessão por morte ou por ausência obedece à lei do país em que domiciliado o defunto ou o desaparecido, qualquer que seja a natureza e a situação dos bens.",
+              "kind": "caput",
+              "parentId": "DL4657:art10",
+              "sourceOrdinal": 36
+            },
+            {
+              "id": "DL4657:art10:p1",
+              "label": "§ 1º",
+              "text": "A sucessão de bens de estrangeiros, situados no País, será regulada pela lei brasileira em benefício do cônjuge ou dos filhos brasileiros, ou de quem os represente, sempre que não lhes seja mais favorável a lei pessoal do de cujus.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art10",
+              "sourceOrdinal": 37,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo com redação dada pela Lei nº 9.047, de 18/5/1995)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9047-18-maio-1995-349831-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1995/lei-9047-18-maio-1995-349831-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art10:p2",
+              "label": "§ 2º",
+              "text": "A lei do domicílio do herdeiro ou legatário regula a capacidade para suceder.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art10",
+              "sourceOrdinal": 38
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art11",
+          "label": "Art. 11",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art11:caput",
+              "label": "Caput",
+              "text": "As organizações destinadas a fins de interesse coletivo, como as sociedades e as fundações, obedecem à lei do Estado em que se constituirem.",
+              "kind": "caput",
+              "parentId": "DL4657:art11",
+              "sourceOrdinal": 39
+            },
+            {
+              "id": "DL4657:art11:p1",
+              "label": "§ 1º",
+              "text": "Não poderão, entretanto, ter no Brasil filiais, agências ou estabelecimentos antes de serem os atos constitutivos aprovados pelo Governo brasileiro, ficando sujeitas à lei brasileira.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art11",
+              "sourceOrdinal": 40
+            },
+            {
+              "id": "DL4657:art11:p2",
+              "label": "§ 2º",
+              "text": "Os Governos estrangeiros, bem como as organizações de qualquer natureza, que eles tenham constituido, dirijam ou hajam investido de funções públicas, não poderão adquirir no Brasil bens imóveis ou susceptiveis de desapropriação.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art11",
+              "sourceOrdinal": 41
+            },
+            {
+              "id": "DL4657:art11:p3",
+              "label": "§ 3º",
+              "text": "Os Governos estrangeiros podem adquirir a propriedade dos prédios necessários à sede dos representantes diplomáticos ou dos agentes consulares.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art11",
+              "sourceOrdinal": 42
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art12",
+          "label": "Art. 12",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art12:caput",
+              "label": "Caput",
+              "text": "É competente a autoridade judiciária brasileira, quando for o réu domiciliado no Brasil ou aqui tiver de ser cumprida a obrigação.",
+              "kind": "caput",
+              "parentId": "DL4657:art12",
+              "sourceOrdinal": 43
+            },
+            {
+              "id": "DL4657:art12:p1",
+              "label": "§ 1º",
+              "text": "Só à autoridade judiciária brasileira compete conhecer das ações relativas a imóveis situados no Brasil.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art12",
+              "sourceOrdinal": 44
+            },
+            {
+              "id": "DL4657:art12:p2",
+              "label": "§ 2º",
+              "text": "A autoridade judiciária brasileira cumprirá, concedido o exequatur e segundo a forma estabelecida pele lei brasileira, as diligências deprecadas por autoridade estrangeira competente, observando a lei desta, quanto ao objeto das diligências.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art12",
+              "sourceOrdinal": 45
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art13",
+          "label": "Art. 13",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art13:caput",
+              "label": "Caput",
+              "text": "A prova dos fatos ocorridos em país estrangeiro rege-se pela lei que nele vigorar, quanto ao ônus e aos meios de produzir-se, não admitindo os tribunais brasileiros provas que a lei brasileira desconheça.",
+              "kind": "caput",
+              "parentId": "DL4657:art13",
+              "sourceOrdinal": 46
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art14",
+          "label": "Art. 14",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art14:caput",
+              "label": "Caput",
+              "text": "Não conhecendo a lei estrangeira, poderá o juiz exigir de quem a invoca prova do texto e da vigência.",
+              "kind": "caput",
+              "parentId": "DL4657:art14",
+              "sourceOrdinal": 47
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art15",
+          "label": "Art. 15",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art15:caput",
+              "label": "Caput",
+              "text": "Será executada no Brasil a sentença proferida no estrangeiro, que reuna os seguintes requisitos:",
+              "kind": "caput",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 48
+            },
+            {
+              "id": "DL4657:art15:a",
+              "label": "Alínea a",
+              "text": "haver sido proferida por juiz competente;",
+              "kind": "subitem",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 49
+            },
+            {
+              "id": "DL4657:art15:b",
+              "label": "Alínea b",
+              "text": "terem sido as partes citadas ou haver-se legalmente verificado à revelia;",
+              "kind": "subitem",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 50
+            },
+            {
+              "id": "DL4657:art15:c",
+              "label": "Alínea c",
+              "text": "ter passado em julgado e estar revestida das formalidades necessárias para a execução no lugar em que foi proferida;",
+              "kind": "subitem",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 51
+            },
+            {
+              "id": "DL4657:art15:d",
+              "label": "Alínea d",
+              "text": "estar traduzida por intérprete autorizado;",
+              "kind": "subitem",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 52
+            },
+            {
+              "id": "DL4657:art15:e",
+              "label": "Alínea e",
+              "text": "ter sido homologada pelo Supremo Tribunal Federal.",
+              "kind": "subitem",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 53,
+              "editorialNotes": [
+                {
+                  "text": "(Vide art. 105, I, i, da Constituição Federal, com redação dada pela Emenda Constitucional nº 45, de 2004)",
+                  "sourceLinks": [
+                    "https://www2.camara.leg.br/legin/fed/emecon/2004/emendaconstitucional-45-8-dezembro-2004-535274-publicacaooriginal-22987-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "https://www2.camara.leg.br/legin/fed/emecon/2004/emendaconstitucional-45-8-dezembro-2004-535274-publicacaooriginal-22987-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art15:pu",
+              "label": "Parágrafo único",
+              "text": "(Revogado pela Lei nº 12.036, de 1/10/2009)",
+              "kind": "paragraph",
+              "parentId": "DL4657:art15",
+              "sourceOrdinal": 54,
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2009/lei-12036-1-outubro-2009-591434-norma-pl.html"
+              ],
+              "textStatus": "revoked_in_source"
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "Na alínea e, a própria fonte remete ao art. 105, I, i, da Constituição, com redação da EC 45/2004. A reprodução do corpo não reafirma a competência ali mencionada; confira a remissão oficial antes da aplicação.",
+              "url": "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-normaatualizada-pe.html"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art16",
+          "label": "Art. 16",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art16:caput",
+              "label": "Caput",
+              "text": "Quando, nos termos dos artigos precedentes, se houver de aplicar a lei estrangeira, ter-se-á em vista a disposição desta, sem considerar-se qualquer remissão por ela feita a outra lei.",
+              "kind": "caput",
+              "parentId": "DL4657:art16",
+              "sourceOrdinal": 55
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art17",
+          "label": "Art. 17",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art17:caput",
+              "label": "Caput",
+              "text": "As leis, atos e sentenças de outro país, bem como quaisquer declarações de vontade, não terão eficácia no Brasil, quando ofenderem a soberania nacional, a ordem pública e os bons costumes.",
+              "kind": "caput",
+              "parentId": "DL4657:art17",
+              "sourceOrdinal": 56
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art18",
+          "label": "Art. 18",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art18:caput",
+              "label": "Caput",
+              "text": "Tratando-se de brasileiros, são competentes as autoridades consulares brasileiras para lhes celebrar o casamento e os mais atos de Registro Civil e de tabelionato, inclusive o registro de nascimento e de óbito dos filhos de brasileiro ou brasileira nascido no país da sede do Consulado.",
+              "kind": "caput",
+              "parentId": "DL4657:art18",
+              "sourceOrdinal": 57,
+              "editorialNotes": [
+                {
+                  "text": "(“Caput” do artigo com redação dada pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art18:p1",
+              "label": "§ 1º",
+              "text": "As autoridades consulares brasileiras também poderão celebrar a separação consensual e o divórcio consensual de brasileiros, não havendo filhos menores ou incapazes do casal e observados os requisitos legais quanto aos prazos, devendo constar da respectiva escritura pública as disposições relativas à descrição e à partilha dos bens comuns e à pensão alimentícia e, ainda, ao acordo quanto à retomada pelo cônjuge de seu nome de solteiro ou à manutenção do nome adotado quando se deu o casamento.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art18",
+              "sourceOrdinal": 58,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 12.874, de 29/10/2013, publicada no DOU de 30/10/2013, em vigor 120 dias após a publicação)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2013/lei-12874-29-outubro-2013-777329-publicacaooriginal-141603-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2013/lei-12874-29-outubro-2013-777329-publicacaooriginal-141603-pl.html"
+              ]
+            },
+            {
+              "id": "DL4657:art18:p2",
+              "label": "§ 2º",
+              "text": "É indispensável a assistência de advogado, devidamente constituído, que se dará mediante a subscrição de petição, juntamente com ambas as partes, ou com apenas uma delas, caso a outra constitua advogado próprio, não se fazendo necessário que a assinatura do advogado conste da escritura pública.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art18",
+              "sourceOrdinal": 59,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 12.874, de 29/10/2013, publicada no DOU de 30/10/2013, em vigor 120 dias após a publicação)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2013/lei-12874-29-outubro-2013-777329-publicacaooriginal-141603-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2013/lei-12874-29-outubro-2013-777329-publicacaooriginal-141603-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art19",
+          "label": "Art. 19",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art19:caput",
+              "label": "Caput",
+              "text": "Reputam-se válidos todos os atos indicados no artigo anterior e celebrados pelos cônsules brasileiros na vigência do Decreto-Lei nº 4.657, de 4 de setembro de 1942, desde que satisfaçam todos os requisitos legais.",
+              "kind": "caput",
+              "parentId": "DL4657:art19",
+              "sourceOrdinal": 60
+            },
+            {
+              "id": "DL4657:art19:pu",
+              "label": "Parágrafo único",
+              "text": "No caso em que a celebração desses atos tiver sido recusada pelas autoridades consulares, com fundamento no artigo 18 do mesmo Decreto-Lei, ao interessado é facultado renovar o pedido dentro em 90 (noventa) dias contados da data da publicação desta Lei.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art19",
+              "sourceOrdinal": 61,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 3.238, de 1/8/1957)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1950-1959/lei-3238-1-agosto-1957-354576-norma-pl.html"
+              ]
+            }
+          ],
+          "sourceNotices": [
+            {
+              "text": "O parágrafo único contém prazo transitório vinculado à publicação da lei que acresceu o artigo. A reprodução não reinicia esse prazo; confira a nota oficial.",
+              "url": "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-normaatualizada-pe.html"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art20",
+          "label": "Art. 20",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art20:caput",
+              "label": "Caput",
+              "text": "Nas esferas administrativa, controladora e judicial, não se decidirá com base em valores jurídicos abstratos sem que sejam consideradas as consequências práticas da decisão.",
+              "kind": "caput",
+              "parentId": "DL4657:art20",
+              "sourceOrdinal": 62
+            },
+            {
+              "id": "DL4657:art20:pu",
+              "label": "Parágrafo único",
+              "text": "A motivação demonstrará a necessidade e a adequação da medida imposta ou da invalidação de ato, contrato, ajuste, processo ou norma administrativa, inclusive em face das possíveis alternativas.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art20",
+              "sourceOrdinal": 63,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art21",
+          "label": "Art. 21",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art21:caput",
+              "label": "Caput",
+              "text": "A decisão que, nas esferas administrativa, controladora ou judicial, decretar a invalidação de ato, contrato, ajuste, processo ou norma administrativa deverá indicar de modo expresso suas consequências jurídicas e administrativas.",
+              "kind": "caput",
+              "parentId": "DL4657:art21",
+              "sourceOrdinal": 64
+            },
+            {
+              "id": "DL4657:art21:pu",
+              "label": "Parágrafo único",
+              "text": "A decisão a que se refere o caput deste artigo deverá, quando for o caso, indicar as condições para que a regularização ocorra de modo proporcional e equânime e sem prejuízo aos interesses gerais, não se podendo impor aos sujeitos atingidos ônus ou perdas que, em função das peculiaridades do caso, sejam anormais ou excessivos.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art21",
+              "sourceOrdinal": 65,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art22",
+          "label": "Art. 22",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art22:caput",
+              "label": "Caput",
+              "text": "Na interpretação de normas sobre gestão pública, serão considerados os obstáculos e as dificuldades reais do gestor e as exigências das políticas públicas a seu cargo, sem prejuízo dos direitos dos administrados.",
+              "kind": "caput",
+              "parentId": "DL4657:art22",
+              "sourceOrdinal": 66
+            },
+            {
+              "id": "DL4657:art22:p1",
+              "label": "§ 1º",
+              "text": "Em decisão sobre regularidade de conduta ou validade de ato, contrato, ajuste, processo ou norma administrativa, serão consideradas as circunstâncias práticas que houverem imposto, limitado ou condicionado a ação do agente.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art22",
+              "sourceOrdinal": 67
+            },
+            {
+              "id": "DL4657:art22:p2",
+              "label": "§ 2º",
+              "text": "Na aplicação de sanções, serão consideradas a natureza e a gravidade da infração cometida, os danos que dela provierem para a administração pública, as circunstâncias agravantes ou atenuantes e os antecedentes do agente.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art22",
+              "sourceOrdinal": 68
+            },
+            {
+              "id": "DL4657:art22:p3",
+              "label": "§ 3º",
+              "text": "As sanções aplicadas ao agente serão levadas em conta na dosimetria das demais sanções de mesma natureza e relativas ao mesmo fato.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art22",
+              "sourceOrdinal": 69,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art23",
+          "label": "Art. 23",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art23:caput",
+              "label": "Caput",
+              "text": "A decisão administrativa, controladora ou judicial que estabelecer interpretação ou orientação nova sobre norma de conteúdo indeterminado, impondo novo dever ou novo condicionamento de direito, deverá prever regime de transição quando indispensável para que o novo dever ou condicionamento de direito seja cumprido de modo proporcional, equânime e eficiente e sem prejuízo aos interesses gerais.",
+              "kind": "caput",
+              "parentId": "DL4657:art23",
+              "sourceOrdinal": 70
+            },
+            {
+              "id": "DL4657:art23:pu",
+              "label": "Parágrafo único",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art23",
+              "sourceOrdinal": 71,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ],
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art24",
+          "label": "Art. 24",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art24:caput",
+              "label": "Caput",
+              "text": "A revisão, nas esferas administrativa, controladora ou judicial, quanto à validade de ato, contrato, ajuste, processo ou norma administrativa cuja produção já se houver completado levará em conta as orientações gerais da época, sendo vedado que, com base em mudança posterior de orientação geral, se declarem inválidas situações plenamente constituídas.",
+              "kind": "caput",
+              "parentId": "DL4657:art24",
+              "sourceOrdinal": 72
+            },
+            {
+              "id": "DL4657:art24:pu",
+              "label": "Parágrafo único",
+              "text": "Consideram-se orientações gerais as interpretações e especificações contidas em atos públicos de caráter geral ou em jurisprudência judicial ou administrativa majoritária, e ainda as adotadas por prática administrativa reiterada e de amplo conhecimento público.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art24",
+              "sourceOrdinal": 73,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art25",
+          "label": "Art. 25",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art25:caput",
+              "label": "Caput",
+              "text": "(VETADO na Lei nº 13.655, de 25/4/2018)",
+              "kind": "caput",
+              "parentId": "DL4657:art25",
+              "sourceOrdinal": 74,
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-veto-155431-pl.html"
+              ],
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art26",
+          "label": "Art. 26",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art26:caput",
+              "label": "Caput",
+              "text": "Para eliminar irregularidade, incerteza jurídica ou situação contenciosa na aplicação do direito público, inclusive no caso de expedição de licença, a autoridade administrativa poderá, após oitiva do órgão jurídico e, quando for o caso, após realização de consulta pública, e presentes razões de relevante interesse geral, celebrar compromisso com os interessados, observada a legislação aplicável, o qual só produzirá efeitos a partir de sua publicação oficial.",
+              "kind": "caput",
+              "parentId": "DL4657:art26",
+              "sourceOrdinal": 75
+            },
+            {
+              "id": "DL4657:art26:p1",
+              "label": "§ 1º",
+              "text": "O compromisso referido no caput deste artigo:",
+              "kind": "paragraph",
+              "parentId": "DL4657:art26",
+              "sourceOrdinal": 76
+            },
+            {
+              "id": "DL4657:art26:p1:I",
+              "label": "Inciso I",
+              "text": "buscará solução jurídica proporcional, equânime, eficiente e compatível com os interesses gerais;",
+              "kind": "item",
+              "parentId": "DL4657:art26:p1",
+              "sourceOrdinal": 77
+            },
+            {
+              "id": "DL4657:art26:p1:II",
+              "label": "Inciso II",
+              "text": "(VETADO);",
+              "kind": "item",
+              "parentId": "DL4657:art26:p1",
+              "sourceOrdinal": 78,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "DL4657:art26:p1:III",
+              "label": "Inciso III",
+              "text": "não poderá conferir desoneração permanente de dever ou condicionamento de direito reconhecidos por orientação geral;",
+              "kind": "item",
+              "parentId": "DL4657:art26:p1",
+              "sourceOrdinal": 79
+            },
+            {
+              "id": "DL4657:art26:p1:IV",
+              "label": "Inciso IV",
+              "text": "deverá prever com clareza as obrigações das partes, o prazo para seu cumprimento e as sanções aplicáveis em caso de descumprimento.",
+              "kind": "item",
+              "parentId": "DL4657:art26:p1",
+              "sourceOrdinal": 80
+            },
+            {
+              "id": "DL4657:art26:p2",
+              "label": "§ 2º",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art26",
+              "sourceOrdinal": 81,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ],
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art27",
+          "label": "Art. 27",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art27:caput",
+              "label": "Caput",
+              "text": "A decisão do processo, nas esferas administrativa, controladora ou judicial, poderá impor compensação por benefícios indevidos ou prejuízos anormais ou injustos resultantes do processo ou da conduta dos envolvidos.",
+              "kind": "caput",
+              "parentId": "DL4657:art27",
+              "sourceOrdinal": 82
+            },
+            {
+              "id": "DL4657:art27:p1",
+              "label": "§ 1º",
+              "text": "A decisão sobre a compensação será motivada, ouvidas previamente as partes sobre seu cabimento, sua forma e, se for o caso, seu valor.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art27",
+              "sourceOrdinal": 83
+            },
+            {
+              "id": "DL4657:art27:p2",
+              "label": "§ 2º",
+              "text": "Para prevenir ou regular a compensação, poderá ser celebrado compromisso processual entre os envolvidos.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art27",
+              "sourceOrdinal": 84,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art28",
+          "label": "Art. 28",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art28:caput",
+              "label": "Caput",
+              "text": "O agente público responderá pessoalmente por suas decisões ou opiniões técnicas em caso de dolo ou erro grosseiro.",
+              "kind": "caput",
+              "parentId": "DL4657:art28",
+              "sourceOrdinal": 85
+            },
+            {
+              "id": "DL4657:art28:p1",
+              "label": "§ 1º",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art28",
+              "sourceOrdinal": 86,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "DL4657:art28:p2",
+              "label": "§ 2º",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art28",
+              "sourceOrdinal": 87,
+              "textStatus": "veto_placeholder"
+            },
+            {
+              "id": "DL4657:art28:p3",
+              "label": "§ 3º",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art28",
+              "sourceOrdinal": 88,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ],
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art29",
+          "label": "Art. 29",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art29:caput",
+              "label": "Caput",
+              "text": "Em qualquer órgão ou Poder, a edição de atos normativos por autoridade administrativa, salvo os de mera organização interna, poderá ser precedida de consulta pública para manifestação de interessados, preferencialmente por meio eletrônico, a qual será considerada na decisão.",
+              "kind": "caput",
+              "parentId": "DL4657:art29",
+              "sourceOrdinal": 89
+            },
+            {
+              "id": "DL4657:art29:p1",
+              "label": "§ 1º",
+              "text": "A convocação conterá a minuta do ato normativo e fixará o prazo e demais condições da consulta pública, observadas as normas legais e regulamentares específicas, se houver.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art29",
+              "sourceOrdinal": 90
+            },
+            {
+              "id": "DL4657:art29:p2",
+              "label": "§ 2º",
+              "text": "(VETADO).",
+              "kind": "paragraph",
+              "parentId": "DL4657:art29",
+              "sourceOrdinal": 91,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018, publicada no DOU de 26/4/2018, em vigor 180 dias após a publicação)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ],
+              "textStatus": "veto_placeholder"
+            }
+          ]
+        },
+        {
+          "id": "DL4657:art30",
+          "label": "Art. 30",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [],
+          "clauses": [
+            {
+              "id": "DL4657:art30:caput",
+              "label": "Caput",
+              "text": "As autoridades públicas devem atuar para aumentar a segurança jurídica na aplicação das normas, inclusive por meio de regulamentos, súmulas administrativas e respostas a consultas.",
+              "kind": "caput",
+              "parentId": "DL4657:art30",
+              "sourceOrdinal": 92
+            },
+            {
+              "id": "DL4657:art30:pu",
+              "label": "Parágrafo único",
+              "text": "Os instrumentos previstos no caput deste artigo terão caráter vinculante em relação ao órgão ou entidade a que se destinam, até ulterior revisão.",
+              "kind": "paragraph",
+              "parentId": "DL4657:art30",
+              "sourceOrdinal": 93,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo acrescido pela Lei nº 13.655, de 25/4/2018)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/2018/lei-13655-25-abril-2018-786606-publicacaooriginal-155430-pl.html"
+              ]
+            }
+          ]
+        }
+      ],
+      "frontMatter": [
+        "DECRETO-LEI Nº 4.657, DE 4 DE SETEMBRO DE 1942",
+        "Lei de Introdução às normas do Direito Brasileiro.",
+        "O PRESIDENTE DA REPÚBLICA, usando da atribuição que lhe confere o artigo 180 da Constituição, decreta:"
+      ],
+      "frontMatterEditorialNotes": [
+        {
+          "text": "(Ementa com redação dada pela Lei nº 12.376, de 30/12/2010)",
+          "sourceLinks": [
+            "http://www2.camara.leg.br/legin/fed/lei/2010/lei-12376-30-dezembro-2010-609898-norma-pl.html"
+          ]
+        }
+      ],
+      "closingMatter": [
+        "Rio de Janeiro, 4 de setembro de 1942, 121º da Independência e 54º da República.",
+        "GETÚLIO VARGAS",
+        "Alexandre Marcondes Filho",
+        "A. de Souza Costa",
+        "Eurico G. Dutra",
+        "Henrique A. Guilhem",
+        "João Mendonça Lima",
+        "Oswaldo Aranha",
+        "Apolonio Salles",
+        "Gustavo Capanema",
+        "J. P. Salgado Filho"
+      ],
+      "sourceCapture": {
+        "path": "fontes/lindb/camara-20261114.html.txt",
+        "finalUrl": "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-4657-4-setembro-1942-414605-normaatualizada-pe.html",
+        "bytes": 73523,
+        "digest": "sha256:e2aa961baf8e36b8583c7b0a2b41b57b36f3ec02091ddbed571e4c41adbefca6",
+        "normalization": "Entidades HTML e espaços/quebras normalizados; marcadores separados dos corpos, grafia/pontuação preservadas; notas de alteração/remissão segregadas. Vetos/revogações mantidos como marcadores editoriais sinalizados. Ementa e assinaturas em h1/h2/h3 capturadas."
+      },
+      "completeness": {
+        "expectedArticleIds": [
+          "DL4657:art1",
+          "DL4657:art2",
+          "DL4657:art3",
+          "DL4657:art4",
+          "DL4657:art5",
+          "DL4657:art6",
+          "DL4657:art7",
+          "DL4657:art8",
+          "DL4657:art9",
+          "DL4657:art10",
+          "DL4657:art11",
+          "DL4657:art12",
+          "DL4657:art13",
+          "DL4657:art14",
+          "DL4657:art15",
+          "DL4657:art16",
+          "DL4657:art17",
+          "DL4657:art18",
+          "DL4657:art19",
+          "DL4657:art20",
+          "DL4657:art21",
+          "DL4657:art22",
+          "DL4657:art23",
+          "DL4657:art24",
+          "DL4657:art25",
+          "DL4657:art26",
+          "DL4657:art27",
+          "DL4657:art28",
+          "DL4657:art29",
+          "DL4657:art30"
+        ],
+        "checkedOn": "2026-11-14",
+        "sourceDigest": "sha256:e2aa961baf8e36b8583c7b0a2b41b57b36f3ec02091ddbed571e4c41adbefca6",
         "annexes": "not_applicable"
       }
     }

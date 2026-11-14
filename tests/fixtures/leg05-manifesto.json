@@ -1,0 +1,630 @@
+{
+  "sourceDigest": "sha256:e2aa961baf8e36b8583c7b0a2b41b57b36f3ec02091ddbed571e4c41adbefca6",
+  "articles": [
+    {
+      "id": "DL4657:art1",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art1:caput",
+          "parentId": "DL4657:art1",
+          "textSha256": "a56c8bd36f3e61e620fbd4f2907342494663682e77bab0594e867e6ecdba2af0"
+        },
+        {
+          "id": "DL4657:art1:p1",
+          "parentId": "DL4657:art1",
+          "textSha256": "e3549b515b6e76dbad82bb2d7ee573afd660179f0bc53a8659f81c73e40eabe3"
+        },
+        {
+          "id": "DL4657:art1:p2",
+          "parentId": "DL4657:art1",
+          "textSha256": "7dfab45429629454714155c51fc49f9705d80569ecd3c6bd19e12a71ad1b6793"
+        },
+        {
+          "id": "DL4657:art1:p3",
+          "parentId": "DL4657:art1",
+          "textSha256": "3d7d004a2b349ba82d93d6007dbd75764b8ef55332a2765930b992bda3956e69"
+        },
+        {
+          "id": "DL4657:art1:p4",
+          "parentId": "DL4657:art1",
+          "textSha256": "f1b717080a2598125d6f608c8f596c66da7fe2e14e5dcfcf7fa609dd7dbe50a4"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art2",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art2:caput",
+          "parentId": "DL4657:art2",
+          "textSha256": "267fb4a03bf1910d93de3d108a9e35795e300ef2c588c68d9d7a64122ea932d8"
+        },
+        {
+          "id": "DL4657:art2:p1",
+          "parentId": "DL4657:art2",
+          "textSha256": "aa81b749e7b1b4401f5066da2de9e02c0ce1788663307609906377ef7dab9259"
+        },
+        {
+          "id": "DL4657:art2:p2",
+          "parentId": "DL4657:art2",
+          "textSha256": "b6cc1e075735870d97e728324c8e69dd8a65486acf5805e82635e4de67fbe42c"
+        },
+        {
+          "id": "DL4657:art2:p3",
+          "parentId": "DL4657:art2",
+          "textSha256": "348953a7e5044f71b60883d60ee3ea1323621b5f6f8ce880dc6ac43c6e4aac19"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art3",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art3:caput",
+          "parentId": "DL4657:art3",
+          "textSha256": "eafb98b4ad460a9ad75d9a962bfb35073674c6373e8007b5034a616019df53bb"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art4",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art4:caput",
+          "parentId": "DL4657:art4",
+          "textSha256": "e8d27a8dfcbcbf3edecfbf7e63c94aa936858fca522c2720ad5686ebe769c618"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art5",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art5:caput",
+          "parentId": "DL4657:art5",
+          "textSha256": "814f0a1129ac470fd3809d70d874427a6c68943b3db1ab50bf05f33dcade4899"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art6",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art6:caput",
+          "parentId": "DL4657:art6",
+          "textSha256": "cc8a6224481d9cd8fa6d168e890fe41516e6f29d9fa98f9855f7b8c8ee095dcf"
+        },
+        {
+          "id": "DL4657:art6:p1",
+          "parentId": "DL4657:art6",
+          "textSha256": "4260b6710dc34ce2bdaa07978d3d95beb593f405ed7ced23d9fdab3253d4d8f1"
+        },
+        {
+          "id": "DL4657:art6:p2",
+          "parentId": "DL4657:art6",
+          "textSha256": "23f9210b2dac6bd0a2d3102e4d17efe97fd4008c8622db565c803df57ffb55a9"
+        },
+        {
+          "id": "DL4657:art6:p3",
+          "parentId": "DL4657:art6",
+          "textSha256": "4cf96a01a2870ce8a463071c0901d3253fd188c9a348fc9ac7a85197b436e94f"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art7",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art7:caput",
+          "parentId": "DL4657:art7",
+          "textSha256": "572af0784c325961a1df9b187632edefba63f2db97b44e1bd1eaeaeb611fe39d"
+        },
+        {
+          "id": "DL4657:art7:p1",
+          "parentId": "DL4657:art7",
+          "textSha256": "ba0b5793c63ea9079cbe1c8b53cafe7e2f7707a6c149c3d1ef9cfdc6565a02a2"
+        },
+        {
+          "id": "DL4657:art7:p2",
+          "parentId": "DL4657:art7",
+          "textSha256": "1c89b1292363189e9cfe1d4939e08e1a9264bdb51a4821f9e7d47271eda89bdb"
+        },
+        {
+          "id": "DL4657:art7:p3",
+          "parentId": "DL4657:art7",
+          "textSha256": "e4b0448efd8f6db7655c5dd97ad687f7ac46411877af88acd86b7852cb93240e"
+        },
+        {
+          "id": "DL4657:art7:p4",
+          "parentId": "DL4657:art7",
+          "textSha256": "c27b9cf7fb0f5f6f1e5f195d9a1e7953423cb0b6d9fb3f46c206ff63fed6886a"
+        },
+        {
+          "id": "DL4657:art7:p5",
+          "parentId": "DL4657:art7",
+          "textSha256": "edc04805d936a4444c72a175de9da986973f72e78bf217c91086933f9167c67d"
+        },
+        {
+          "id": "DL4657:art7:p6",
+          "parentId": "DL4657:art7",
+          "textSha256": "234ebb8b3ed11bfaa71d303fa746ca11d12ff9a546c2acb73715ac3dc630f2f0"
+        },
+        {
+          "id": "DL4657:art7:p7",
+          "parentId": "DL4657:art7",
+          "textSha256": "4596315aed38f4c501eade25d531ed5e3916eb142767b50e7916de95ed7634c8"
+        },
+        {
+          "id": "DL4657:art7:p8",
+          "parentId": "DL4657:art7",
+          "textSha256": "7ee31950a323407c0a1cb3760b4f3a63f85c631e8b49fd768159f52021c5db85"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art8",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art8:caput",
+          "parentId": "DL4657:art8",
+          "textSha256": "331f1cccd5ccfc2e175f3868f8b3e96908d3fd83c67bf5d0cb1d28fc26371239"
+        },
+        {
+          "id": "DL4657:art8:p1",
+          "parentId": "DL4657:art8",
+          "textSha256": "f28accf89d69cef70bc5eab413f283a9b02748c914f102c76807cb6cc035b417"
+        },
+        {
+          "id": "DL4657:art8:p2",
+          "parentId": "DL4657:art8",
+          "textSha256": "e2f40cc7dbac2da47833cb131c8cb377bf9da7428b2f52c08c4a76bcbc34661b"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art9",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art9:caput",
+          "parentId": "DL4657:art9",
+          "textSha256": "4bb93322b1da62ee0bb8a9e3160ff395c52966ed1548f7b98bc52ffa7650cfe5"
+        },
+        {
+          "id": "DL4657:art9:p1",
+          "parentId": "DL4657:art9",
+          "textSha256": "556efe24c5cce31ac51527f5c33cf0b8abd06c4f5732f11ab2d35f81c6d74219"
+        },
+        {
+          "id": "DL4657:art9:p2",
+          "parentId": "DL4657:art9",
+          "textSha256": "b2df731136d4da239d60ba97dd672fed3b4745d00d61af8dbcc0957a546d9cef"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art10",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art10:caput",
+          "parentId": "DL4657:art10",
+          "textSha256": "708b6b4a6e1307b087423550cf4a9f7a5b7ea6ee33624dda0b4b996f59456884"
+        },
+        {
+          "id": "DL4657:art10:p1",
+          "parentId": "DL4657:art10",
+          "textSha256": "b91813f37fe3129166be74276ec35f6c205711593e9fd62720e5ed36c0984b1a"
+        },
+        {
+          "id": "DL4657:art10:p2",
+          "parentId": "DL4657:art10",
+          "textSha256": "40e926d7fcacaa1c64fe3515848109ce5ed48c18547656d851e81f16fb81e3d0"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art11",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art11:caput",
+          "parentId": "DL4657:art11",
+          "textSha256": "cda9c942e80e5913c9b51edc94db8627b4723393643495def060904511e7bf72"
+        },
+        {
+          "id": "DL4657:art11:p1",
+          "parentId": "DL4657:art11",
+          "textSha256": "d2f6720b0545ff988a8e37b607f30a099652517916f52270f548de7c05fc8347"
+        },
+        {
+          "id": "DL4657:art11:p2",
+          "parentId": "DL4657:art11",
+          "textSha256": "8b8b2dd98d518ffaf2dd661e239a8e46dc5199ed4d01b3681e94bd8659889d81"
+        },
+        {
+          "id": "DL4657:art11:p3",
+          "parentId": "DL4657:art11",
+          "textSha256": "b616c859c339cff1c17cfac12adcade58761e90dd9d38f077d0949f2da5cb8de"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art12",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art12:caput",
+          "parentId": "DL4657:art12",
+          "textSha256": "632398acb535a8bec0af1fa10019ca2ea1315161fc878cb678ba5457c531e3f2"
+        },
+        {
+          "id": "DL4657:art12:p1",
+          "parentId": "DL4657:art12",
+          "textSha256": "4ff611565ff4c1cdf67b7198b1749268e10c1950946ec65bc16d03b44eb544d9"
+        },
+        {
+          "id": "DL4657:art12:p2",
+          "parentId": "DL4657:art12",
+          "textSha256": "58d9cd377ab8334fb20623cd543705349471f415a2cddde1e889f100ab739e8e"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art13",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art13:caput",
+          "parentId": "DL4657:art13",
+          "textSha256": "1ea93eb32d491eca1935861d9cf557322039155bbae2546a97b3ebe36b49848e"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art14",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art14:caput",
+          "parentId": "DL4657:art14",
+          "textSha256": "fd8b256662be321bd0ce88d1b421ddf3c1c29ee33efe613d9e6cd7fbee2a0205"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art15",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art15:caput",
+          "parentId": "DL4657:art15",
+          "textSha256": "bb974c95e3953597662f75e7d3665e07457f23a46f53543d58d6fb48f40a7cae"
+        },
+        {
+          "id": "DL4657:art15:a",
+          "parentId": "DL4657:art15",
+          "textSha256": "dc4b699ad36212ff6eafac2cca073a825c3049725ef038f7663263bb1d7063d5"
+        },
+        {
+          "id": "DL4657:art15:b",
+          "parentId": "DL4657:art15",
+          "textSha256": "5553b881e933982da44d274eb8075daea35c7a4a559988a0e78e3e57e65bff30"
+        },
+        {
+          "id": "DL4657:art15:c",
+          "parentId": "DL4657:art15",
+          "textSha256": "7310bf3c17a5ba065ce35bb67a77e8e08907f5b397cd751fc847ccca1b84fafd"
+        },
+        {
+          "id": "DL4657:art15:d",
+          "parentId": "DL4657:art15",
+          "textSha256": "3d8aa5ec1af9bf7b8c1019b3f7a1eb778c424eab5a1ccc577ad1a80fc5800467"
+        },
+        {
+          "id": "DL4657:art15:e",
+          "parentId": "DL4657:art15",
+          "textSha256": "1b23c782f2eb286f23e13599fc66138d41b0265c8c568bec5bc35d37cde8b2a2"
+        },
+        {
+          "id": "DL4657:art15:pu",
+          "parentId": "DL4657:art15",
+          "textSha256": "7dfab45429629454714155c51fc49f9705d80569ecd3c6bd19e12a71ad1b6793"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art16",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art16:caput",
+          "parentId": "DL4657:art16",
+          "textSha256": "69cbf20d0cc56583f03e8a7e0adac5e01b99804a8a6d941bc794a90410496676"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art17",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art17:caput",
+          "parentId": "DL4657:art17",
+          "textSha256": "115ff80273fbff2fbfec5d9c2bcb1d404411fd1707843be6c44ffcdbe0b6c019"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art18",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art18:caput",
+          "parentId": "DL4657:art18",
+          "textSha256": "bdb93072fe145a9d3b12d18945de0ebf98a2af75c31973fc1c4a81d2c7a23287"
+        },
+        {
+          "id": "DL4657:art18:p1",
+          "parentId": "DL4657:art18",
+          "textSha256": "e98ba041b5883e7c13a557fd54571ba057f0ee9196549509f9c7763addc43586"
+        },
+        {
+          "id": "DL4657:art18:p2",
+          "parentId": "DL4657:art18",
+          "textSha256": "c42109df19b7ea4284778045e72586f7b1dd26bd9a9f856706ae813b778b2b5a"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art19",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art19:caput",
+          "parentId": "DL4657:art19",
+          "textSha256": "3aadec98b66f42614441c131751d88fca0ad194fd1875931d4e269f2f3513edd"
+        },
+        {
+          "id": "DL4657:art19:pu",
+          "parentId": "DL4657:art19",
+          "textSha256": "52f731ed7f5e427ca483dfff0187899151d3d37f14d324b5ef025f04ea9346d3"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art20",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art20:caput",
+          "parentId": "DL4657:art20",
+          "textSha256": "f6fe7b05a06cf7a1ce478750753efb9d3c7b37ccae9a126f5d9ff0d912a32e22"
+        },
+        {
+          "id": "DL4657:art20:pu",
+          "parentId": "DL4657:art20",
+          "textSha256": "b4da4d6c30009a3b4d59a4533b9e05e46a5ce4e0436f3590c3a9b667d08544de"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art21",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art21:caput",
+          "parentId": "DL4657:art21",
+          "textSha256": "26fc53f019dee8525e77a86cdf7ab69dadfd6a9046232e57c2316b9794c1c44d"
+        },
+        {
+          "id": "DL4657:art21:pu",
+          "parentId": "DL4657:art21",
+          "textSha256": "c64c05cdff4c8677b1b8c51ffc00f02cee2e96206ae310b9d15b4e99e9ef13fe"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art22",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art22:caput",
+          "parentId": "DL4657:art22",
+          "textSha256": "dc37dccb45c8eb1f6fb90cb811fe8b2d270b7727aa37041e1ee0ace8cb9e30a3"
+        },
+        {
+          "id": "DL4657:art22:p1",
+          "parentId": "DL4657:art22",
+          "textSha256": "5f2e01ae103dea5a6213a7edbb72ee53aea242d0afc545b030595885ffcb94c3"
+        },
+        {
+          "id": "DL4657:art22:p2",
+          "parentId": "DL4657:art22",
+          "textSha256": "2bc0adaca4301c7f9fff7bc98cd749faa4c07702ae8bdc2928f75d3d7cfde949"
+        },
+        {
+          "id": "DL4657:art22:p3",
+          "parentId": "DL4657:art22",
+          "textSha256": "721ed37153e16f9f8703dead6e69e1d15d64c8f998f57a3ae308af7dbad2e2a4"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art23",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art23:caput",
+          "parentId": "DL4657:art23",
+          "textSha256": "33772f181b72a64b8cb930d91159b21207cb5ea0c20e993d500a41ea1ac28327"
+        },
+        {
+          "id": "DL4657:art23:pu",
+          "parentId": "DL4657:art23",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art24",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art24:caput",
+          "parentId": "DL4657:art24",
+          "textSha256": "078b87c1b00fe544e15944c11e6a92749b56add50c438d64f15eb62716e0da1f"
+        },
+        {
+          "id": "DL4657:art24:pu",
+          "parentId": "DL4657:art24",
+          "textSha256": "c676364d4a04bfc76b40485f574b01c7b6c251da94b27ff88079b08fb7739d5b"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art25",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art25:caput",
+          "parentId": "DL4657:art25",
+          "textSha256": "9627d56dc61a8899520cea0f9b2056a67502a6631c06e7717f41b8c1c43b90c4"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art26",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art26:caput",
+          "parentId": "DL4657:art26",
+          "textSha256": "3a9cb298af5a80f6ea79fcfebe3c7d97d5c16b5959e7c31df50cff8a11ff22f7"
+        },
+        {
+          "id": "DL4657:art26:p1",
+          "parentId": "DL4657:art26",
+          "textSha256": "2ec3ed816965df66298e8c46625075309fdd9fc0c6b30f410024237520f4d99f"
+        },
+        {
+          "id": "DL4657:art26:p1:I",
+          "parentId": "DL4657:art26:p1",
+          "textSha256": "311edd29d7c8b31baa9e0ed568b0cff6f0af74edb4e76e09ea46f5b4735ab1de"
+        },
+        {
+          "id": "DL4657:art26:p1:II",
+          "parentId": "DL4657:art26:p1",
+          "textSha256": "cbf34c69127913184b219bebcc488557a4ce0af8a29e29754140c5d7bb067384"
+        },
+        {
+          "id": "DL4657:art26:p1:III",
+          "parentId": "DL4657:art26:p1",
+          "textSha256": "d9c277d673ca9e3adbbf695c08fe27d583aebe0cb5e7b5816cd5ccdcd61285f8"
+        },
+        {
+          "id": "DL4657:art26:p1:IV",
+          "parentId": "DL4657:art26:p1",
+          "textSha256": "7a65d0d3f79463efe2b26dcbeb0deec53769fa9b32217782e5501182afd38a99"
+        },
+        {
+          "id": "DL4657:art26:p2",
+          "parentId": "DL4657:art26",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art27",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art27:caput",
+          "parentId": "DL4657:art27",
+          "textSha256": "929d3a35445d09bde2de0b22cf1c0f8d3f1461409a2b44db177f156549586a07"
+        },
+        {
+          "id": "DL4657:art27:p1",
+          "parentId": "DL4657:art27",
+          "textSha256": "8fe147a92648d4d15bbdcea60b8e1be753a3470ba60e6ffb7ea1679d51fcf50c"
+        },
+        {
+          "id": "DL4657:art27:p2",
+          "parentId": "DL4657:art27",
+          "textSha256": "1b76f7a527f8a752c28ea3148196a2a6e018fdc03940260e81e525da1361dc08"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art28",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art28:caput",
+          "parentId": "DL4657:art28",
+          "textSha256": "045c99c2e3327b0eabbeef1657c948ab84e98ff0e0b13c1b9e3946759acb67ee"
+        },
+        {
+          "id": "DL4657:art28:p1",
+          "parentId": "DL4657:art28",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        },
+        {
+          "id": "DL4657:art28:p2",
+          "parentId": "DL4657:art28",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        },
+        {
+          "id": "DL4657:art28:p3",
+          "parentId": "DL4657:art28",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art29",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art29:caput",
+          "parentId": "DL4657:art29",
+          "textSha256": "6291596b427082e83ffb72f45d13f4ffb7da3f2b1d470e191e32e0ddba44f5cd"
+        },
+        {
+          "id": "DL4657:art29:p1",
+          "parentId": "DL4657:art29",
+          "textSha256": "286a7379d55c72298d65b292f6f7613f727d8aba4860d1ca21740d166ec95e9b"
+        },
+        {
+          "id": "DL4657:art29:p2",
+          "parentId": "DL4657:art29",
+          "textSha256": "6190ea2a648e006a5fd586019e897193d320344defc1f9539240ee07fa517604"
+        }
+      ]
+    },
+    {
+      "id": "DL4657:art30",
+      "path": [],
+      "units": [
+        {
+          "id": "DL4657:art30:caput",
+          "parentId": "DL4657:art30",
+          "textSha256": "8b402a54b76cfb6fdce6718f72a96824ad389fcee13ba787421854a505fe1961"
+        },
+        {
+          "id": "DL4657:art30:pu",
+          "parentId": "DL4657:art30",
+          "textSha256": "e4934902338d474e1fe2d49e6b09486c74d07a0d0971e7a75efb75ccf5d82288"
+        }
+      ]
+    }
+  ]
+}

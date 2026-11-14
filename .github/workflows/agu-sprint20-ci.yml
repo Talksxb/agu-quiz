@@ -46,6 +46,8 @@ jobs:
         run: node tests/sprint33-validacao.js
       - name: LEG-01 — catálogo, IDs e compatibilidade de notas
         run: node tests/leg01-validacao.js
+      - name: LEG-05 — LINDB integral, fonte e persistência
+        run: node tests/leg05-validacao.js
       - name: LEG-04 — LC73 integral, fonte, hierarquia e preservação
         run: node tests/leg04-validacao.js
       - name: LEG-03 — LRF integral, fonte, estrutura e persistência
@@ -70,6 +72,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEG-05 — LINDB, cinco viewports e recuperação
+        run: node tests/leg05-browser.cjs
       - name: LEG-04 — LC73, cinco viewports e recuperação
         run: node tests/leg04-browser.cjs
       - name: LEG-03 — LRF, cinco viewports e recuperação de dados anteriores
@@ -114,13 +118,18 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-s20/*.json
             tests/artifacts-s20/*.png
+            tests/artifacts-s21/*.json
             tests/artifacts-s21/*.png
             tests/artifacts-s22/*.json
+            tests/artifacts-s22/*.png
             tests/artifacts-s23/*.json
+            tests/artifacts-s23/*.png
             tests/artifacts-s24/*.json
             tests/artifacts-s24/*.png
             tests/artifacts-s29/*.json
+            tests/artifacts-s29/*.png
             tests/artifacts-s30/*.json
             tests/artifacts-s30/*.png
             tests/artifacts-s31/*.json
@@ -129,22 +138,22 @@ jobs:
             tests/artifacts-s32/*.png
             tests/artifacts-s33/*.json
             tests/artifacts-s33/*.png
-            tests/artifacts-leg04/*.json
-            tests/artifacts-leg04/*.png
-            tests/artifacts-leg03/
-            tests/artifacts-leg04/*.json
-            tests/artifacts-leg03/
-            tests/artifacts-leg04/*.png
-            tests/artifacts-leg02/*.json
-            tests/artifacts-leg02/*.png
-            tests/artifacts-leg01/*.json
-            tests/artifacts-leg01/*.png
-            tests/artifacts-work01/*.json
-            tests/artifacts-work01/*.png
             tests/artifacts-s34/*.json
             tests/artifacts-s34/*.png
             tests/artifacts-s35/*.json
             tests/artifacts-s35/*.png
+            tests/artifacts-leg01/*.json
+            tests/artifacts-leg01/*.png
+            tests/artifacts-leg02/*.json
+            tests/artifacts-leg02/*.png
+            tests/artifacts-leg03/*.json
+            tests/artifacts-leg03/*.png
+            tests/artifacts-leg04/*.json
+            tests/artifacts-leg04/*.png
+            tests/artifacts-leg05/*.json
+            tests/artifacts-leg05/*.png
+            tests/artifacts-work01/*.json
+            tests/artifacts-work01/*.png
           if-no-files-found: ignore
           retention-days: 7
 
@@ -161,6 +170,10 @@ jobs:
         run: node tests/sprint21-pages.cjs
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: LEG-05 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leg05-browser.cjs
       - name: LEG-04 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -182,6 +195,7 @@ jobs:
             tests/artifacts-work01/
             tests/artifacts-leg03/
             tests/artifacts-leg04/
+            tests/artifacts-leg05/
           if-no-files-found: ignore
           retention-days: 7
 

@@ -1,0 +1,5 @@
+{
+  "beforeSha256": "35f69959d4d7f7cf01d14d7dac13409a1cd666bd7e639fa49bb0de9d6902072e",
+  "afterSha256": "955df3f7269730fb8fd429912dd82c7c6f1e861f640e1596fc75230383a0ec00",
+  "reason": "LEG05: ocultar seletor vazio em norma sem divisões; apresentar nota editorial da ementa em metadados separados. Mesmas APIs, IDs, chaves e formatos de persistência."
+}
