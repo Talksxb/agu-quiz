@@ -1,0 +1,23 @@
+{
+  "base": "0dec2670527f29f212f4aeb7bd4c24971e1790ce",
+  "laws": [
+    {
+      "id": "CF88",
+      "sha256": "c4551e03e6b022801cd75bec326999c2631b77b584bdcdab3bf93f7b16eda86d"
+    },
+    {
+      "id": "L9784",
+      "sha256": "c0d5911deb195a518ed320f03c82399a4c7c13f5e22ff05c70ebd701270be717"
+    },
+    {
+      "id": "LC101",
+      "sha256": "4b80ee9417f6c392b528272d9850f5016dd8817cd50cd902253c975297c9b592"
+    },
+    {
+      "id": "LC73",
+      "sha256": "8651bb6fdbb386d8016e0a093bf05084ebea893286a9a6bc364e92c531506c74"
+    }
+  ],
+  "backupFileSha256": "d9f7705b490d041dd445701b0b619e39c6b2bb4d204cb5a966b27b98ca4d0d78",
+  "readerBeforeSha256": "35f69959d4d7f7cf01d14d7dac13409a1cd666bd7e639fa49bb0de9d6902072e"
+}

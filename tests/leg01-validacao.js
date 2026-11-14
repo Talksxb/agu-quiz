@@ -7,12 +7,12 @@ const base={};base.window=base;vm.runInNewContext(read('dados/legislacao-s13.js'
 const corpus=copy(base.AGU_LEGAL_CORPUS),identity=JSON.parse(read('tests/fixtures/leg01-identidade-s36.json'));
 const deltas=JSON.parse(read('tests/fixtures/leg02-correcao-legados.json')).changes,counts=validate(corpus);
 let n=0;const check=(name,f)=>{f();n++;console.log('OK LEG01',name)};
-check('catálogo expandido LEG04 mantém quatro normas e distinção de cobertura',()=>assert.deepEqual(counts,{laws:4,articles:240,units:996,integral:3}));
+check('catálogo expandido LEG05 mantém cinco normas e distinção de cobertura',()=>assert.deepEqual(counts,{laws:5,articles:270,units:1085,integral:4}));
 check('IDs e vínculos S36 conservados; única correção textual é explícita',()=>{
  const units=corpus.laws.flatMap(l=>l.articles.flatMap(a=>a.clauses.map(u=>({id:u.id,article:a.id,law:l.id,topic:a.topic,textSha256:hash(u.text)}))));for(const old of identity.units){const next=units.find(u=>u.id===old.id),delta=deltas.find(d=>d.id===old.id);assert.ok(next);assert.deepEqual({...next,textSha256:old.textSha256},old);assert.equal(next.textSha256,delta?delta.afterSha256:old.textSha256);if(delta)assert.equal(delta.beforeSha256,old.textSha256)}
 });
 check('artigos completos e excertos com cobertura da norma separada',()=>{
- const arts=corpus.laws.flatMap(l=>l.articles);assert.equal(arts.filter(a=>a.contentKind==='isolated_article').length,238);assert.equal(arts.filter(a=>a.contentKind==='excerpt').length,2);assert.equal(corpus.laws[0].contentCoverage,'partial');assert.equal(corpus.laws[1].contentCoverage,'integral');
+ const arts=corpus.laws.flatMap(l=>l.articles);assert.equal(arts.filter(a=>a.contentKind==='isolated_article').length,268);assert.equal(arts.filter(a=>a.contentKind==='excerpt').length,2);assert.equal(corpus.laws[0].contentCoverage,'partial');assert.equal(corpus.laws[1].contentCoverage,'integral');
 });
 check('verificação textual não eleva auditoria jurídica',()=>{assert.ok(corpus.laws.every(l=>l.auditStatus==='parcial_nao_certificado'));assert.equal(corpus.laws[0].textVerification.status,'legacy_point_check');assert.equal(corpus.laws[1].textVerification.status,'compared')});
 const bad=(name,change)=>check(name,()=>{const c=copy(corpus);change(c);assert.throws(()=>validate(c))});
