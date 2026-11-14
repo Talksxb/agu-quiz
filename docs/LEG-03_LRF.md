@@ -1,6 +1,6 @@
 # LEG-03 — LRF integral no leitor existente
 
-Base conferida: main `04314fe8103fd858d9b08cd949fbb3bf84d67064`; PRs #2–4 mescladas, nenhuma aberta na retomada. Branch própria `leg/leg03-lrf-integral`. Sem repetir inventários anteriores ou acessar conteúdo da auditoria privada.
+Base conferida: main `04314fe8103fd858d9b08cd949fbb3bf84d67064`; PRs #2–4 mescladas, nenhuma aberta na retomada. Branch própria `leg/leg03-lrf-integral`; [PR #5](https://github.com/Talksxb/agu-quiz/pull/5) integrada em `964a22490c42ab1498747ddf47dad0e1ce30f9c5`. Código validado `8b2732ad76cd7e852c1f6c15b23c8005644d5f69`. Sem repetir inventários anteriores ou acessar conteúdo da auditoria privada.
 
 ## Corpus e fonte
 
@@ -25,4 +25,8 @@ Arquivo de backup, nove chaves, formatos, limite de 12 MB UTF-8 e política de c
 
 Node local: S19/S20/S25–27/S29–35, WORK01, LEG01/02 aprovados; LEG03 tem 15 verificações de fonte, manifesto, pais, sufixos, vetos/ressalvas, compatibilidade, notas/reload/restauração e limite legado. Chromium e axe em CI: cinco larguras, artigos extensos, seleção de inciso/alínea/item, busca, ressalvas, notas antigas/novas, sessão anterior, download/restauração em contexto novo, teclado/foco e regressões completas. Sem Android físico/TalkBack.
 
-CI incluirá LEG03 tanto em servidor estático isolado como no job Pages com `AGU_TEST_URL`. Cache alterado somente em corpus e leitor (`20261113-leg03`); Consolidação continua `leg02`. O fechamento da PR registra os resultados efetivos, commits e deploy. Enquanto a branch não for integrada e verificada, produção continua LEG02 em https://talksxb.github.io/agu-quiz/ ; a URL da LRF só deve ser anunciada após confirmação: `?abrir=lei&norma=LC101`. Nenhum novo serviço, banco, framework ou leitor.
+CI executou LEG03 tanto em servidor estático isolado como no job Pages com `AGU_TEST_URL`. Cache alterado somente em corpus e leitor (`20261113-leg03`); Consolidação continua `leg02`. Publicada: https://talksxb.github.io/agu-quiz/?abrir=lei&norma=LC101 . Deploy Pages [43542372931](https://github.com/Talksxb/agu-quiz/actions/runs/43542372931) aprovado. HTTP 200; HTML e oito scripts conferidos byte a byte pelo verificador S21. HTML SHA-256 `5d7364158eed1ab55849069a78fc063b2798039ce0c831e01ca178536c568470`; corpus `807c2a7241611ae3d71b9cce096394b6ac25094ad925660c137949c8a7b710b8`. Nenhum novo serviço, banco, framework ou leitor.
+
+CI da PR [43542072254](https://github.com/Talksxb/agu-quiz/actions/runs/43542072254): Node e Chromium aprovados com regressões completas. Publicação [CI 43542373872](https://github.com/Talksxb/agu-quiz/actions/runs/43542373872), job `pages-publicado` aprovado: LEG03 e WORK01 na URL HTTPS real, cinco contextos/larguras sintéticos. Artefato publicado `agu-work01-publicado`, ID 14091614896, confirma alvo https://talksxb.github.io/agu-quiz/ e preservação de notas/sessão/backup em todas as larguras. Chromium 159.0.8154.6, axe 4.14.0: zero violations em 390/1280; um incomplete no menu em 390 passou após rolagem; nenhum em 1280. Capturas mobile/desktop inspecionadas. Nenhum teste do perfil ou backup pessoal do usuário, Android físico ou TalkBack.
+
+Pendências impeditivas de uso: nenhuma. Handoff autossuficiente em `docs/PROMPT_LEG-04.md`, exclusivamente para LC 73/1993. LEG04 não executada.
