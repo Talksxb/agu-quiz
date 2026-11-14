@@ -1,0 +1,14 @@
+{
+  "base": "04314fe8103fd858d9b08cd949fbb3bf84d67064",
+  "laws": [
+    {
+      "id": "CF88",
+      "sha256": "c4551e03e6b022801cd75bec326999c2631b77b584bdcdab3bf93f7b16eda86d"
+    },
+    {
+      "id": "L9784",
+      "sha256": "c0d5911deb195a518ed320f03c82399a4c7c13f5e22ff05c70ebd701270be717"
+    }
+  ],
+  "storageFileSha256": "d9f7705b490d041dd445701b0b619e39c6b2bb4d204cb5a966b27b98ca4d0d78"
+}
