@@ -118,13 +118,18 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-s20/*.json
             tests/artifacts-s20/*.png
+            tests/artifacts-s21/*.json
             tests/artifacts-s21/*.png
             tests/artifacts-s22/*.json
+            tests/artifacts-s22/*.png
             tests/artifacts-s23/*.json
+            tests/artifacts-s23/*.png
             tests/artifacts-s24/*.json
             tests/artifacts-s24/*.png
             tests/artifacts-s29/*.json
+            tests/artifacts-s29/*.png
             tests/artifacts-s30/*.json
             tests/artifacts-s30/*.png
             tests/artifacts-s31/*.json
@@ -133,30 +138,22 @@ jobs:
             tests/artifacts-s32/*.png
             tests/artifacts-s33/*.json
             tests/artifacts-s33/*.png
-            tests/artifacts-leg05/*.json
-            tests/artifacts-leg05/*.png
-            tests/artifacts-leg04/
-            tests/artifacts-leg05/*.json
-            tests/artifacts-leg04/
-            tests/artifacts-leg05/*.png
-            tests/artifacts-leg03/
-            tests/artifacts-leg05/*.json
-            tests/artifacts-leg05/*.png
-            tests/artifacts-leg04/
-            tests/artifacts-leg05/*.json
-            tests/artifacts-leg03/
-            tests/artifacts-leg04/
-            tests/artifacts-leg05/*.png
-            tests/artifacts-leg02/*.json
-            tests/artifacts-leg02/*.png
-            tests/artifacts-leg01/*.json
-            tests/artifacts-leg01/*.png
-            tests/artifacts-work01/*.json
-            tests/artifacts-work01/*.png
             tests/artifacts-s34/*.json
             tests/artifacts-s34/*.png
             tests/artifacts-s35/*.json
             tests/artifacts-s35/*.png
+            tests/artifacts-leg01/*.json
+            tests/artifacts-leg01/*.png
+            tests/artifacts-leg02/*.json
+            tests/artifacts-leg02/*.png
+            tests/artifacts-leg03/*.json
+            tests/artifacts-leg03/*.png
+            tests/artifacts-leg04/*.json
+            tests/artifacts-leg04/*.png
+            tests/artifacts-leg05/*.json
+            tests/artifacts-leg05/*.png
+            tests/artifacts-work01/*.json
+            tests/artifacts-work01/*.png
           if-no-files-found: ignore
           retention-days: 7
 
