@@ -1,6 +1,6 @@
 # LEG-04 — Lei Orgânica da AGU integral
 
-Retomada: main `d072128a9d79fbe6c5bc555de6023479bd334c9e`, PR #5 mesclada, CI 43542373872 aprovado; nenhuma PR aberta. Branch própria `leg/leg04-lc73-integral`. Sem diagnóstico geral, reimportação das outras normas ou acesso à auditoria privada.
+Retomada: main `d072128a9d79fbe6c5bc555de6023479bd334c9e`, PR #5 mesclada, CI 43542373872 aprovado; nenhuma PR aberta. Branch própria `leg/leg04-lc73-integral`; [PR #7](https://github.com/Talksxb/agu-quiz/pull/7), código `f65808ba32033f8c2e738da59045207170ce769b`, merge `db92b3e53a6abb97260e83a5b0394edfc2603aa1`. Sem diagnóstico geral, reimportação das outras normas ou acesso à auditoria privada.
 
 ## Fonte e cobertura
 
@@ -24,4 +24,8 @@ O corte global avança para 14/11/2026; versões/datas específicas das normas a
 
 Node local: S19/S20/S25–27/S29–35, WORK01, LEG01/02/03 e 15 verificações LEG04 aprovados. Chromium configurado em cinco larguras (320/360/390/430/1280), com títulos/capítulos/seções, artigo extenso, inciso/alínea, vetos/remissões/prazos, busca, notas antigas/novas, sessão anterior, reload, exportação/restauração e teclado/foco. Axe distingue violations/incomplete/passed e reavalia após rolagem. Perfis descartáveis; sem Android físico/TalkBack ou backup pessoal.
 
-CI mantém todas as regressões e acrescenta LEG04 no servidor isolado e na URL real via `AGU_TEST_URL`. Cache mudou apenas no corpus (`20261114-leg04`); arquivos não alterados mantêm suas versões. Produção antes da integração: LEG03 em https://talksxb.github.io/agu-quiz/ . A URL `?abrir=lei&norma=LC73` só deve ser anunciada como publicada após deploy, hashes e jornada verificados. O fechamento registra os resultados reais. Handoff LEG05 será gerado; não executar a próxima sprint.
+CI mantém todas as regressões e acrescenta LEG04 no servidor isolado e na URL real via `AGU_TEST_URL`. Cache mudou apenas no corpus (`20261114-leg04`); arquivos não alterados mantêm suas versões. Publicada e verificada: https://talksxb.github.io/agu-quiz/?abrir=lei&norma=LC73 . Deploy Pages [43598512331](https://github.com/Talksxb/agu-quiz/actions/runs/43598512331) aprovado. HTTP 200, HTML e oito scripts conferidos byte a byte pelo verificador S21. HTML SHA-256 `273d95dc31e4e8d9715e09375d135125d76e631fab368e88651bc38fc268af77`; corpus `8693159363fa61b69e257aec4617ac3e603d4b69d8881b9360c9d081fb0e96a4`.
+
+CI da PR [43598166961](https://github.com/Talksxb/agu-quiz/actions/runs/43598166961) aprovado: 17 suítes Node e regressões Chromium completas. [CI de publicação 43598512973](https://github.com/Talksxb/agu-quiz/actions/runs/43598512973), job `pages-publicado` aprovado: LEG04, LEG03 e WORK01 na URL real. Artefato `agu-work01-publicado` 14115079721 confirma alvo HTTPS, cinco larguras, notas de CF/L9784/LRF/LC73, sessão anterior e backup restaurado em contexto novo. Chromium 159.0.8154.6, axe 4.14.0: zero violations em 390/1280; um incomplete por sobreposição do menu em 390 passou após rolagem; nenhum em 1280. Capturas mobile/desktop inspecionadas. Sem Android físico/TalkBack ou teste do perfil/backup pessoal.
+
+Pendências impeditivas de uso: nenhuma. Limite legado de 500 comentários preservado e documentado. `docs/PROMPT_LEG-05.md` completo, exclusivamente para LINDB. LEG05 não executada.
