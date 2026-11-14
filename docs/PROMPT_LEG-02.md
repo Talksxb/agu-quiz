@@ -10,7 +10,7 @@ Incorporar ou validar o texto integral da Lei 9.784/1999, em fonte oficial conso
 - Aplicação: https://github.com/Talksxb/agu-quiz
 - Fonte documental privada, somente leitura: https://github.com/Talksxb/agu-auditoria
 - URL real de produção: https://talksxb.github.io/agu-quiz/
-- Branch LEG-01: `leg/leg01-inventario`; localizar a PR dessa branch e verificar seu estado real antes de começar. Referências finais de commit/CI/PR estão na descrição dessa PR.
+- Branch LEG-01: `leg/leg01-inventario`; PR https://github.com/Talksxb/agu-quiz/pull/2, aberta e não mesclada no fechamento. Commit de implementação `4df6dc25d3b2613efa598a12286bb4168ae5f230`. Conferir estado atual e eventuais commits documentais posteriores; o resultado final de CI está registrado na descrição da PR.
 - Base da LEG-01: `32d580b4a37c4d21cde2afde69cecdb6bbe8c88f`, fechamento documental S36. Código anterior S35: `af5d820dd83abdf594284371f053cfd64e133011`. WORK01/PR #1 integrada em `4fa4d2955be60e8acf5e2d134e9d5b241f84f6c3`; preservá-la.
 
 ### 2. Retomada obrigatória e estado encontrado

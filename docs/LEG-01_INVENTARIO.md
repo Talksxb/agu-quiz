@@ -1,6 +1,6 @@
 # LEG-01 — inventário e infraestrutura mínima
 
-13/11/2026, America/Sao_Paulo. Corte: `main` `32d580b4a37c4d21cde2afde69cecdb6bbe8c88f` (S36 documental, código S35). Branch própria `leg/leg01-inventario`. LEG-02 não executada.
+13/11/2026, America/Sao_Paulo. Corte: `main` `32d580b4a37c4d21cde2afde69cecdb6bbe8c88f` (S36 documental, código S35). Branch própria `leg/leg01-inventario`; [PR #2](https://github.com/Talksxb/agu-quiz/pull/2), implementação `4df6dc25d3b2613efa598a12286bb4168ae5f230`. LEG-02 não executada.
 
 ## Estado e recuperação histórica
 
