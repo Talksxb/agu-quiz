@@ -39,7 +39,7 @@ async function main(){
    window.AGULegal.unit('L9784:art13:I');window.setView('legal');
   }); // preparação, não prova de navegação com Tab
   if(width<850)await page.locator('#agu-reader .agu-mobile button').nth(2).click();
-  await page.locator('#agu-reader .agu-tabs button').filter({hasText:'Caderno'}).click();
+  await page.locator('#agu-reader .agu-tabs').getByRole('button',{name:'Caderno',exact:true}).click();
   await page.locator('#ctx-title').fill('Nota para exclusão S35 '+width);
   await page.locator('#ctx-content').fill('Exclusivamente cenário sintético e descartável.');
   await page.getByRole('button',{name:'Adicionar ao Caderno'}).press('Enter');

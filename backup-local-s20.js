@@ -72,12 +72,23 @@ function validateRecord(key,obj){
   return obj.activeId===null||obj.activeId===undefined||ids.has(obj.activeId);
  }
  case 'agu_leitor_juridico_s13_v1':{
-  const articles=(root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles);
+  const articles=(root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles.map(a=>({...a,lawId:l.id})));
   const article=articles.find(a=>a.id===obj.article);
   const units=new Set(articles.flatMap(a=>a.clauses.map(c=>c.id)));
+  const lookup=new Map(articles.flatMap(a=>a.clauses.map(c=>[c.id,a])));
+  const marks=obj.forNotebook;
+  if(marks!==undefined){
+   if(!Array.isArray(marks)||marks.length>300)return false;
+   const ids=new Set();
+   for(const m of marks){
+    const ref=lookup.get(m?.unitId);
+    if(!isObj(m)||typeof m.id!=='string'||!/^pc-[a-zA-Z0-9-]{8,130}$/.test(m.id)||ids.has(m.id)||!ref||m.articleId!==ref.id||m.lawId!==ref.lawId||m.topic!==(ref.topic||null)||m.origin!=='leitor'||typeof m.prompt!=='string'||!m.prompt.trim()||m.prompt.length>450||typeof m.createdAt!=='string'||!Number.isFinite(Date.parse(m.createdAt))||!['pendente','anotado','dispensado'].includes(m.status))return false;
+    ids.add(m.id);
+   }
+  }
   return !!article&&article.clauses.some(c=>c.id===obj.unit)&&isObj(obj.notes)&&Object.keys(obj.notes).length<=500&&
    Object.entries(obj.notes).every(([unit,note])=>units.has(unit)&&typeof note==='string'&&note.length<=14000)&&
-   (obj.tab===undefined||['juris','questoes','caderno','flashcards','comentarios','estudo'].includes(obj.tab))&&
+   (obj.tab===undefined||['juris','questoes','caderno','flashcards','comentarios','estudo','para_caderno'].includes(obj.tab))&&
    (obj.mobile===undefined||['text','index','related'].includes(obj.mobile));
  }
  case 'agu_consolidacao_s17_v1':return typeof obj.query==='string'&&obj.query.length<=150&&['todos','norma','jurisprudencia','questao','flashcard','caderno'].includes(obj.filter)&&['todos','confirmado','parcial','pendente','pessoal'].includes(obj.status)&&[90,100,115,130].includes(obj.size);

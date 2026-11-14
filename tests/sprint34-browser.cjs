@@ -32,7 +32,7 @@ async function main(){
   const originalAttempts=await page.evaluate(()=>window.AGUReview.attemptsInfo().length);
   await page.evaluate(()=>window.setView('legal')); // montagem isolada; ações seguintes usam teclado real
   if(width<850)await page.locator('#agu-reader .agu-mobile button').nth(2).click();
-  await page.locator('#agu-reader .agu-tabs button').filter({hasText:'Caderno'}).click();
+  await page.locator('#agu-reader .agu-tabs').getByRole('button',{name:'Caderno',exact:true}).click();
   await page.locator('#ctx-title').fill('Nota sintética S34 '+width);
   await page.locator('#ctx-content').fill('Registro artificial sem dados privados.');
   await page.getByRole('button',{name:'Adicionar ao Caderno'}).press('Enter');

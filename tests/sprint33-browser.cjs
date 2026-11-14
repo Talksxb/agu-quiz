@@ -31,7 +31,7 @@ async function main(){
   const before=await page.evaluate(()=>window.AGUReview.attemptsInfo().length);
   await page.evaluate(()=>window.setView('legal')); // montagem isolada, não prova de navegação por Tab
   if(width<850)await page.locator('#agu-reader .agu-mobile button').nth(2).click();
-  await page.locator('#agu-reader .agu-tabs button').filter({hasText:'Caderno'}).click();
+  await page.locator('#agu-reader .agu-tabs').getByRole('button',{name:'Caderno',exact:true}).click();
   await page.locator('#ctx-title').fill('Hipótese artificial S33 '+width);
   await page.locator('#ctx-content').fill('Registro sintético sem informação pessoal.');
   await page.locator('#ctx-content').press('Tab');
