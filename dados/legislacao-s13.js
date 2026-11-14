@@ -1,4 +1,4 @@
-/* Corpus público S13 — normas integrais LEG02–05 e seleção CF; IDs anteriores preservados. */
+/* Corpus público S13 — normas integrais LEG02–06 e seleção CF; IDs anteriores preservados. */
 (function(root){'use strict';root.AGU_LEGAL_CORPUS={
   "schema": "agu-legal-reader-v1",
   "cutoff": "2026-11-14",
@@ -14192,6 +14192,1113 @@
         ],
         "checkedOn": "2026-11-14",
         "sourceDigest": "sha256:e2aa961baf8e36b8583c7b0a2b41b57b36f3ec02091ddbed571e4c41adbefca6",
+        "annexes": "not_applicable"
+      }
+    },
+    {
+      "id": "L4717",
+      "title": "Lei 4.717/1965 — Ação Popular",
+      "kind": "law",
+      "number": "4717",
+      "year": 1965,
+      "section": "Texto integral · cinco divisões da fonte",
+      "source": "https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-4717-29-junho-1965-377818-normaatualizada-pl.html",
+      "sourceAuthority": "Câmara dos Deputados — Centro de Documentação e Informação",
+      "sourceVersion": "Texto atualizado da Câmara; captura de 14/11/2026",
+      "checkedOn": "2026-11-14",
+      "auditStatus": "parcial_nao_certificado",
+      "textVersionId": "L4717@2026-11-14-camara-d8a1fc60",
+      "contentCoverage": "integral",
+      "textVerification": {
+        "status": "compared",
+        "checkedOn": "2026-11-14",
+        "scope": "full_norm",
+        "note": "Cotejo textual integral da Câmara; não certifica vigência, recepção constitucional, aplicabilidade de regras processuais ou competência."
+      },
+      "structure": [
+        {
+          "id": "L4717:section-acao-popular",
+          "kind": "section",
+          "parentId": null,
+          "label": "DA AÇÃO POPULAR"
+        },
+        {
+          "id": "L4717:section-competencia",
+          "kind": "section",
+          "parentId": null,
+          "label": "DA COMPETÊNCIA"
+        },
+        {
+          "id": "L4717:section-sujeitos",
+          "kind": "section",
+          "parentId": null,
+          "label": "DOS SUJEITOS PASSIVOS DA AÇÃO E DOS ASSISTENTES"
+        },
+        {
+          "id": "L4717:section-processo",
+          "kind": "section",
+          "parentId": null,
+          "label": "DO PROCESSO"
+        },
+        {
+          "id": "L4717:section-gerais",
+          "kind": "section",
+          "parentId": null,
+          "label": "DISPOSIÇÕES GERAIS"
+        }
+      ],
+      "articles": [
+        {
+          "id": "L4717:art1",
+          "label": "Art. 1",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-acao-popular"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art1:caput",
+              "label": "Caput",
+              "text": "Qualquer cidadão será parte legítima para pleitear a anulação ou a declaração de nulidade de atos lesivos ao patrimônio da União, do Distrito Federal, dos Estados, dos Municípios, de entidades autárquicas, de sociedades de economia mista (Constituição, art. 141, § 38), de sociedades mútuas de seguro nas quais a União represente os segurados ausentes, de empresas públicas, de serviços sociais autônomos, de instituições ou fundações para cuja criação ou custeio o tesouro público haja concorrido ou concorra com mais de cinqüenta por cento do patrimônio ou da receita anual de empresas incorporadas ao patrimônio da União, do Distrito Federal, dos Estados e dos Municípios, e de quaisquer pessoas jurídicas ou entidades subvencionadas pelos cofres públicos.",
+              "kind": "caput",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 7
+            },
+            {
+              "id": "L4717:art1:p1",
+              "label": "§ 1º",
+              "text": "Consideram-se patrimônio público para os fins referidos neste artigo, os bens e direitos de valor econômico, artístico, estético, histórico ou turístico.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 8,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo com redação dada pela Lei nº 6.513, de 20/12/1977)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"
+              ]
+            },
+            {
+              "id": "L4717:art1:p2",
+              "label": "§ 2º",
+              "text": "Em se tratando de instituições ou fundações, para cuja criação ou custeio o tesouro público concorra com menos de cinqüenta por cento do patrimônio ou da receita anual, bem como de pessoas jurídicas ou entidades subvencionadas, as conseqüências patrimoniais da invalidez dos atos lesivos terão por limite a repercussão deles sobre a contribuição dos cofres públicos.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 9
+            },
+            {
+              "id": "L4717:art1:p3",
+              "label": "§ 3º",
+              "text": "A prova da cidadania, para ingresso em juízo, será feita com o título eleitoral, ou com documento que a ele corresponda.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 10
+            },
+            {
+              "id": "L4717:art1:p4",
+              "label": "§ 4º",
+              "text": "Para instruir a inicial, o cidadão poderá requerer às entidades, a que se refere este artigo, as certidões e informações que julgar necessárias, bastando para isso indicar a finalidade das mesmas.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 11
+            },
+            {
+              "id": "L4717:art1:p5",
+              "label": "§ 5º",
+              "text": "As certidões e informações, a que se refere o parágrafo anterior, deverão ser fornecidas dentro de 15 (quinze) dias da entrega, sob recibo, dos respectivos requerimentos, e só poderão ser utilizadas para a instrução de ação popular.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 12
+            },
+            {
+              "id": "L4717:art1:p6",
+              "label": "§ 6º",
+              "text": "Somente nos casos em que o interesse público, devidamente justificado, impuser sigilo, poderá ser negada certidão ou informação.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 13
+            },
+            {
+              "id": "L4717:art1:p7",
+              "label": "§ 7º",
+              "text": "Ocorrendo a hipótese do parágrafo anterior, a ação poderá ser proposta desacompanhada das certidões ou informações negadas, cabendo ao juiz, após apreciar os motivos do indeferimento e salvo em se tratando de razão de segurança nacional, requisitar umas e outras; feita a requisição, o processo correrá em segredo de justiça, que cessará com o trânsito em julgado de sentença condenatória.",
+              "kind": "paragraph",
+              "parentId": "L4717:art1",
+              "sourceOrdinal": 14
+            }
+          ]
+        },
+        {
+          "id": "L4717:art2",
+          "label": "Art. 2",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-acao-popular"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art2:caput",
+              "label": "Caput",
+              "text": "São nulos os atos lesivos ao patrimônio das entidades mencionadas no artigo anterior, nos casos de:",
+              "kind": "caput",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 15
+            },
+            {
+              "id": "L4717:art2:a",
+              "label": "Alínea a",
+              "text": "incompetência;",
+              "kind": "subitem",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 16
+            },
+            {
+              "id": "L4717:art2:b",
+              "label": "Alínea b",
+              "text": "vício de forma;",
+              "kind": "subitem",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 17
+            },
+            {
+              "id": "L4717:art2:c",
+              "label": "Alínea c",
+              "text": "ilegalidade do objeto;",
+              "kind": "subitem",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 18
+            },
+            {
+              "id": "L4717:art2:d",
+              "label": "Alínea d",
+              "text": "inexistência dos motivos;",
+              "kind": "subitem",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 19
+            },
+            {
+              "id": "L4717:art2:e",
+              "label": "Alínea e",
+              "text": "desvio de finalidade.",
+              "kind": "subitem",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 20
+            },
+            {
+              "id": "L4717:art2:pu",
+              "label": "Parágrafo único",
+              "text": "Para a conceituação dos casos de nulidade observar-se-ão as seguintes normas:",
+              "kind": "paragraph",
+              "parentId": "L4717:art2",
+              "sourceOrdinal": 21
+            },
+            {
+              "id": "L4717:art2:pu:a",
+              "label": "Alínea a",
+              "text": "a incompetência fica caracterizada quando o ato não se incluir nas atribuições legais do agente que o praticou;",
+              "kind": "subitem",
+              "parentId": "L4717:art2:pu",
+              "sourceOrdinal": 22
+            },
+            {
+              "id": "L4717:art2:pu:b",
+              "label": "Alínea b",
+              "text": "o vício de forma consiste na omissão ou na observância incompleta ou irregular de formalidades indispensáveis à existência ou seriedade do ato;",
+              "kind": "subitem",
+              "parentId": "L4717:art2:pu",
+              "sourceOrdinal": 23
+            },
+            {
+              "id": "L4717:art2:pu:c",
+              "label": "Alínea c",
+              "text": "a ilegalidade do objeto ocorre quando o resultado do ato importa em violação de lei, regulamento ou outro ato normativo;",
+              "kind": "subitem",
+              "parentId": "L4717:art2:pu",
+              "sourceOrdinal": 24
+            },
+            {
+              "id": "L4717:art2:pu:d",
+              "label": "Alínea d",
+              "text": "a inexistência dos motivos se verifica quando a matéria de fato ou de direito, em que se fundamenta o ato, é materialmente inexistente ou juridicamente inadequada ao resultado obtido;",
+              "kind": "subitem",
+              "parentId": "L4717:art2:pu",
+              "sourceOrdinal": 25
+            },
+            {
+              "id": "L4717:art2:pu:e",
+              "label": "Alínea e",
+              "text": "o desvio de finalidade se verifica quando o agente pratica o ato visando a fim diverso daquele previsto, explícita ou implicitamente, na regra de competência.",
+              "kind": "subitem",
+              "parentId": "L4717:art2:pu",
+              "sourceOrdinal": 26
+            }
+          ]
+        },
+        {
+          "id": "L4717:art3",
+          "label": "Art. 3",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-acao-popular"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art3:caput",
+              "label": "Caput",
+              "text": "Os atos lesivos ao patrimônio das pessoas de direito público ou privado, ou das entidades mencionadas no art. 1º, cujos vícios não se compreendam nas especificações do artigo anterior, serão anuláveis, segundo as prescrições legais, enquanto compatíveis com a natureza deles.",
+              "kind": "caput",
+              "parentId": "L4717:art3",
+              "sourceOrdinal": 27
+            }
+          ]
+        },
+        {
+          "id": "L4717:art4",
+          "label": "Art. 4",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-acao-popular"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art4:caput",
+              "label": "Caput",
+              "text": "São também nulos os seguintes atos ou contratos, praticados ou celebrados por quaisquer das pessoas ou entidades referidas no artigo 1º:",
+              "kind": "caput",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 28
+            },
+            {
+              "id": "L4717:art4:I",
+              "label": "Inciso I",
+              "text": "a admissão ao serviço público remunerado, com desobediência, quanto às condições de habilitação, das normas legais, regulamentares ou constantes de instruções gerais.",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 29
+            },
+            {
+              "id": "L4717:art4:II",
+              "label": "Inciso II",
+              "text": "a operação bancária ou de crédito real, quando:",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 30
+            },
+            {
+              "id": "L4717:art4:II:a",
+              "label": "Alínea a",
+              "text": "for realizada com desobediência a normas legais, regulamentares, estatutárias, regimentais ou internas;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:II",
+              "sourceOrdinal": 31
+            },
+            {
+              "id": "L4717:art4:II:b",
+              "label": "Alínea b",
+              "text": "o valor real do bem dado em hipoteca ou penhor for inferior ao constante de escritura, contrato ou avaliação.",
+              "kind": "subitem",
+              "parentId": "L4717:art4:II",
+              "sourceOrdinal": 32
+            },
+            {
+              "id": "L4717:art4:III",
+              "label": "Inciso III",
+              "text": "a empreitada, a tarefa e a concessão do serviço público, quando:",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 33
+            },
+            {
+              "id": "L4717:art4:III:a",
+              "label": "Alínea a",
+              "text": "o respectivo contrato houver sido celebrado sem prévia concorrência pública ou administrativa, sem que essa condição seja estabelecida em lei, regulamento ou norma geral;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:III",
+              "sourceOrdinal": 34
+            },
+            {
+              "id": "L4717:art4:III:b",
+              "label": "Alínea b",
+              "text": "no edital de concorrência forem incluídas cláusulas ou condições, que comprometam o seu caráter competitivo;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:III",
+              "sourceOrdinal": 35
+            },
+            {
+              "id": "L4717:art4:III:c",
+              "label": "Alínea c",
+              "text": "a concorrência administrativa for processada em condições que impliquem na limitação das possibilidades normais de competição.",
+              "kind": "subitem",
+              "parentId": "L4717:art4:III",
+              "sourceOrdinal": 36
+            },
+            {
+              "id": "L4717:art4:IV",
+              "label": "Inciso IV",
+              "text": "As modificações ou vantagens, inclusive prorrogações, que forem admitidas, em favor do adjudicatário, durante a execução dos contratos de empreitada, tarefa e concessão de serviço público, sem que estejam previstas em lei ou nos respectivos instrumentos.",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 37
+            },
+            {
+              "id": "L4717:art4:V",
+              "label": "Inciso V",
+              "text": "a compra e venda de bens móveis ou imóveis, nos casos em que não for cabível concorrência pública ou administrativa, quando:",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 38
+            },
+            {
+              "id": "L4717:art4:V:a",
+              "label": "Alínea a",
+              "text": "for realizada com desobediência a normas legais, regulamentares, ou constantes de instruções gerais;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:V",
+              "sourceOrdinal": 39
+            },
+            {
+              "id": "L4717:art4:V:b",
+              "label": "Alínea b",
+              "text": "o preço de compra dos bens for superior ao corrente no mercado, na época da operação;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:V",
+              "sourceOrdinal": 40
+            },
+            {
+              "id": "L4717:art4:V:c",
+              "label": "Alínea c",
+              "text": "o preço de venda dos bens for inferior ao corrente no mercado, na época da operação.",
+              "kind": "subitem",
+              "parentId": "L4717:art4:V",
+              "sourceOrdinal": 41
+            },
+            {
+              "id": "L4717:art4:VI",
+              "label": "Inciso VI",
+              "text": "A concessão de licença de exportação ou importação, qualquer que seja a sua modalidade, quando:",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 42
+            },
+            {
+              "id": "L4717:art4:VI:a",
+              "label": "Alínea a",
+              "text": "houver sido praticada com violação das normas legais e regulamentares ou de instruções e ordens de serviço;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:VI",
+              "sourceOrdinal": 43
+            },
+            {
+              "id": "L4717:art4:VI:b",
+              "label": "Alínea b",
+              "text": "resultar em exceção ou privilégio, em favor de exportador ou importador.",
+              "kind": "subitem",
+              "parentId": "L4717:art4:VI",
+              "sourceOrdinal": 44
+            },
+            {
+              "id": "L4717:art4:VII",
+              "label": "Inciso VII",
+              "text": "a operação de redesconto quando, sob qualquer aspecto, inclusive o limite de valor, desobedecer a normas legais, regulamentares ou constantes de instruções gerais.",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 45
+            },
+            {
+              "id": "L4717:art4:VIII",
+              "label": "Inciso VIII",
+              "text": "o empréstimo concedido pelo Banco Central da República, quando:",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 46
+            },
+            {
+              "id": "L4717:art4:VIII:a",
+              "label": "Alínea a",
+              "text": "concedido com desobediência de quaisquer normas legais, regulamentares, regimentais ou constantes de instruções gerais;",
+              "kind": "subitem",
+              "parentId": "L4717:art4:VIII",
+              "sourceOrdinal": 47
+            },
+            {
+              "id": "L4717:art4:VIII:b",
+              "label": "Alínea b",
+              "text": "o valor dos bens dados em garantia, na época da operação, for inferior ao da avaliação.",
+              "kind": "subitem",
+              "parentId": "L4717:art4:VIII",
+              "sourceOrdinal": 48
+            },
+            {
+              "id": "L4717:art4:IX",
+              "label": "Inciso IX",
+              "text": "a emissão quando efetuada sem observância das normas constitucionais, legais e regulamentadoras que regem a espécie.",
+              "kind": "item",
+              "parentId": "L4717:art4",
+              "sourceOrdinal": 49
+            }
+          ]
+        },
+        {
+          "id": "L4717:art5",
+          "label": "Art. 5",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-competencia"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art5:caput",
+              "label": "Caput",
+              "text": "Conforme a origem do ato impugnado, é competente para conhecer da ação, processá-la e julgá-la, o juiz que, de acordo com a organização judiciária de cada Estado, o for para as causas que interessem à União, ao Distrito Federal, ao Estado ou ao Município.",
+              "kind": "caput",
+              "parentId": "L4717:art5",
+              "sourceOrdinal": 51
+            },
+            {
+              "id": "L4717:art5:p1",
+              "label": "§ 1º",
+              "text": "Para fins de competência, equiparam-se a atos da União, do Distrito Federal, do Estado ou dos Municípios, os atos das pessoas criadas ou mantidas por essas pessoas jurídicas de direito público, bem como os atos das sociedades de que elas sejam acionistas e os das pessoas ou entidades por elas subvencionadas ou em relação às quais tenham interesse patrimonial.",
+              "kind": "paragraph",
+              "parentId": "L4717:art5",
+              "sourceOrdinal": 52
+            },
+            {
+              "id": "L4717:art5:p2",
+              "label": "§ 2º",
+              "text": "Quando o pleito interessar simultaneamente à União e a qualquer outra pessoa ou entidade, será competente o juiz das causas da União, se houver; quando interessar simultaneamente ao Estado e ao Município, será competente o juiz das causas do Estado, se houver.",
+              "kind": "paragraph",
+              "parentId": "L4717:art5",
+              "sourceOrdinal": 53
+            },
+            {
+              "id": "L4717:art5:p3",
+              "label": "§ 3º",
+              "text": "A propositura da ação prevenirá a jurisdição do juízo para todas as ações, que forem posteriormente intentadas contra as mesmas partes e sob os mesmos fundamentos.",
+              "kind": "paragraph",
+              "parentId": "L4717:art5",
+              "sourceOrdinal": 54
+            },
+            {
+              "id": "L4717:art5:p4",
+              "label": "§ 4º",
+              "text": "Na defesa do patrimônio público caberá a suspensão liminar do ato lesivo impugnado.",
+              "kind": "paragraph",
+              "parentId": "L4717:art5",
+              "sourceOrdinal": 55,
+              "editorialNotes": [
+                {
+                  "text": "(Parágrafo acrescido pela Lei nº 6.513, de 20/12/1977)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "L4717:art6",
+          "label": "Art. 6",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-sujeitos"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art6:caput",
+              "label": "Caput",
+              "text": "A ação será proposta contra as pessoas públicas ou privadas e as entidades referidas no art. 1º, contra as autoridades, funcionários ou administradores que houverem autorizado, aprovado, ratificado ou praticado o ato impugnado, ou que, por omissão, tiverem dado oportunidade à lesão, e contra os beneficiários diretos do mesmo.",
+              "kind": "caput",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 57
+            },
+            {
+              "id": "L4717:art6:p1",
+              "label": "§ 1º",
+              "text": "Se não houver beneficiário direto do ato lesivo, ou se for ele indeterminado ou desconhecido, a ação será proposta somente contra as outras pessoas indicadas neste artigo.",
+              "kind": "paragraph",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 58
+            },
+            {
+              "id": "L4717:art6:p2",
+              "label": "§ 2º",
+              "text": "No caso de que trata o inciso II, item \"b\" , do art. 4º, quando o valor real do bem for inferior ao da avaliação, citar-se-ão como réus, além das pessoas públicas ou privadas e entidades referidas no art. 1º, apenas os responsáveis pela avaliação inexata e os beneficiários da mesma.",
+              "kind": "paragraph",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 59
+            },
+            {
+              "id": "L4717:art6:p3",
+              "label": "§ 3º",
+              "text": "A pessoa jurídica de direito público ou de direito privado, cujo ato seja objeto de impugnação, poderá abster-se de contestar o pedido, ou poderá atuar ao lado do autor, desde que isso se afigure útil ao interesse público, a juízo do respectivo representante legal ou dirigente.",
+              "kind": "paragraph",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 60
+            },
+            {
+              "id": "L4717:art6:p4",
+              "label": "§ 4º",
+              "text": "O Ministério Público acompanhará a ação, cabendo-lhe apressar a produção da prova e promover a responsabilidade, civil ou criminal, dos que nela incidirem, sendo-lhe vedado, em qualquer hipótese, assumir a defesa do ato impugnado ou dos seus autores.",
+              "kind": "paragraph",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 61
+            },
+            {
+              "id": "L4717:art6:p5",
+              "label": "§ 5º",
+              "text": "É facultado a qualquer cidadão habilitar-se como litisconsorte ou assistente do autor da ação popular.",
+              "kind": "paragraph",
+              "parentId": "L4717:art6",
+              "sourceOrdinal": 62
+            }
+          ]
+        },
+        {
+          "id": "L4717:art7",
+          "label": "Art. 7",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art7:caput",
+              "label": "Caput",
+              "text": "A ação obedecerá ao procedimento ordinário, previsto no Código de Processo Civil, observadas as seguintes normas modificativas:",
+              "kind": "caput",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 64
+            },
+            {
+              "id": "L4717:art7:I",
+              "label": "Inciso I",
+              "text": "Ao despachar a inicial o juiz ordenará:",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 65
+            },
+            {
+              "id": "L4717:art7:I:a",
+              "label": "Alínea a",
+              "text": "além da citação dos réus, a intimação do representante do Ministério Público;",
+              "kind": "subitem",
+              "parentId": "L4717:art7:I",
+              "sourceOrdinal": 66
+            },
+            {
+              "id": "L4717:art7:I:b",
+              "label": "Alínea b",
+              "text": "a requisição, às entidades indicadas na petição inicial, dos documentos que tiverem sido referidos pelo autor (art. 1º, § 6º), bem como a de outros que se lhe afigurem necessários ao esclarecimento dos fatos, fixando prazos de 15 (quinze) a 30 (trinta) dias para o atendimento.",
+              "kind": "subitem",
+              "parentId": "L4717:art7:I",
+              "sourceOrdinal": 67
+            },
+            {
+              "id": "L4717:art7:p1",
+              "label": "§ 1º",
+              "text": "O representante do Ministério Público providenciará para que as requisições a que se refere o inciso anterior, sejam atendidas dentro dos prazos fixados pelo juiz.",
+              "kind": "paragraph",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 68
+            },
+            {
+              "id": "L4717:art7:p2",
+              "label": "§ 2º",
+              "text": "Se os documentos e informações não puderem ser oferecidos nos prazos assinalados, o juiz poderá autorizar prorrogação dos mesmos, por prazo razoável.",
+              "kind": "paragraph",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 69
+            },
+            {
+              "id": "L4717:art7:II",
+              "label": "Inciso II",
+              "text": "Quando o autor o preferir a citação dos beneficiários far-se-á por edital com o prazo de 30 (trinta) dias, afixado na sede do juízo e publicado três vezes no jornal oficial do Distrito Federal ou da Capital do Estado ou Território em que seja ajuizada a ação. A publicação será gratuita e deverá iniciar-se no máximo 3 (três) dias após a entrega na repartição competente, sob protocolo de uma via autenticada do mandado.",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 70
+            },
+            {
+              "id": "L4717:art7:III",
+              "label": "Inciso III",
+              "text": "Qualquer pessoa, beneficiada ou responsável pelo ato impugnado, cuja existência ou identidade se torne conhecida no curso do processo e antes de proferida a sentença final de primeira instância, deverá ser citada para a integração do contraditório, sendo-lhe restituído o prazo para contestação e produção de provas. Salvo quanto a beneficiário, se a citação se houver feito na forma do inciso anterior.",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 71
+            },
+            {
+              "id": "L4717:art7:IV",
+              "label": "Inciso IV",
+              "text": "O prazo de contestação é de 20 (vinte) dias prorrogáveis por mais 20 (vinte), a requerimento do interessado, se particularmente difícil a produção de prova documental, e será comum a todos os interessados, correndo da entrega em cartório do mandado cumprido, ou, quando for o caso, do decurso do prazo assinado em edital.",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 72
+            },
+            {
+              "id": "L4717:art7:V",
+              "label": "Inciso V",
+              "text": "Caso não requerida, até o despacho saneador, a produção de prova testemunhal ou pericial, o juiz ordenará vista às partes por 10 (dez) dias, para alegações, sendo-lhe os autos conclusos, para sentença, 48 (quarenta e oito) horas após a expiração desse prazo; havendo requerimento de prova, o processo tomará o rito ordinário.",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 73
+            },
+            {
+              "id": "L4717:art7:VI",
+              "label": "Inciso VI",
+              "text": "A sentença quando não prolatada em audiência de instrução e julgamento, deverá ser proferida dentro de 15 (quinze) dias do recebimento dos autos pelo juiz.",
+              "kind": "item",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 74
+            },
+            {
+              "id": "L4717:art7:pu",
+              "label": "Parágrafo único",
+              "text": "O proferimento da sentença além do prazo estabelecido, privará o juiz da inclusão em lista de merecimento para promoção, durante 2 (dois) anos, e acarretará a perda, para efeito de promoção por antigüidade, de tantos dias, quantos forem os do retardamento, salvo motivo justo, declinado nos autos e comprovado perante o órgão disciplinar competente.",
+              "kind": "paragraph",
+              "parentId": "L4717:art7",
+              "sourceOrdinal": 75
+            }
+          ]
+        },
+        {
+          "id": "L4717:art8",
+          "label": "Art. 8",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art8:caput",
+              "label": "Caput",
+              "text": "Ficará sujeita à pena de desobediência, salvo motivo justo devidamente comprovado, a autoridade, o administrador ou o dirigente, que deixar de fornecer, no prazo fixado no art. 1º, § 5º, ou naquele que tiver sido estipulado pelo juiz (art. 7º, nº I, letra \"b\" ), informações e certidão ou fotocópia de documentos necessários à instrução da causa.",
+              "kind": "caput",
+              "parentId": "L4717:art8",
+              "sourceOrdinal": 76
+            },
+            {
+              "id": "L4717:art8:pu",
+              "label": "Parágrafo único",
+              "text": "O prazo contar-se-á do dia em que entregue, sob recibo, o requerimento do interessado ou o ofício de requisição (artigo 1º, § 5º, e art. 7º, I, \"b\").",
+              "kind": "paragraph",
+              "parentId": "L4717:art8",
+              "sourceOrdinal": 77
+            }
+          ]
+        },
+        {
+          "id": "L4717:art9",
+          "label": "Art. 9",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art9:caput",
+              "label": "Caput",
+              "text": "Se o autor desistir da ação ou der motivo à absolvição da instância, serão publicados editais nos prazos e condições previstos no art. 7º, inciso II, ficando assegurado a qualquer cidadão, bem como ao representante do Ministério Público, dentro do prazo de 90 (noventa) dias da última publicação feita, promover o prosseguimento da ação.",
+              "kind": "caput",
+              "parentId": "L4717:art9",
+              "sourceOrdinal": 78
+            }
+          ]
+        },
+        {
+          "id": "L4717:art10",
+          "label": "Art. 10",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art10:caput",
+              "label": "Caput",
+              "text": "As partes só pagarão custas e preparo a final.",
+              "kind": "caput",
+              "parentId": "L4717:art10",
+              "sourceOrdinal": 79
+            }
+          ]
+        },
+        {
+          "id": "L4717:art11",
+          "label": "Art. 11",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art11:caput",
+              "label": "Caput",
+              "text": "A sentença que, julgando procedente a ação popular, decretar a invalidade do ato impugnado, condenará ao pagamento de perdas e danos os responsáveis pela sua prática e os beneficiários dele, ressalvada a ação regressiva contra os funcionários causadores de dano, quando incorrerem em culpa.",
+              "kind": "caput",
+              "parentId": "L4717:art11",
+              "sourceOrdinal": 80
+            }
+          ]
+        },
+        {
+          "id": "L4717:art12",
+          "label": "Art. 12",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art12:caput",
+              "label": "Caput",
+              "text": "A sentença incluirá sempre, na condenação dos réus, o pagamento, ao autor, das custas e demais despesas, judiciais e extrajudiciais, diretamente relacionadas com a ação e comprovadas, bem como o dos honorários de advogado.",
+              "kind": "caput",
+              "parentId": "L4717:art12",
+              "sourceOrdinal": 81
+            }
+          ]
+        },
+        {
+          "id": "L4717:art13",
+          "label": "Art. 13",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art13:caput",
+              "label": "Caput",
+              "text": "A sentença que, apreciando o fundamento de direito do pedido, julgar a lide manifestamente temerária, condenará o autor ao pagamento do décuplo das custas.",
+              "kind": "caput",
+              "parentId": "L4717:art13",
+              "sourceOrdinal": 82
+            }
+          ]
+        },
+        {
+          "id": "L4717:art14",
+          "label": "Art. 14",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art14:caput",
+              "label": "Caput",
+              "text": "Se o valor da lesão ficar provado no curso da causa, será indicado na sentença; se depender de avaliação ou perícia, será apurado na execução.",
+              "kind": "caput",
+              "parentId": "L4717:art14",
+              "sourceOrdinal": 83
+            },
+            {
+              "id": "L4717:art14:p1",
+              "label": "§ 1º",
+              "text": "Quando a lesão resultar da falta ou isenção de qualquer pagamento, a condenação imporá o pagamento devido, com acréscimo de juros de mora e multa legal ou contratual, se houver.",
+              "kind": "paragraph",
+              "parentId": "L4717:art14",
+              "sourceOrdinal": 84
+            },
+            {
+              "id": "L4717:art14:p2",
+              "label": "§ 2º",
+              "text": "Quando a lesão resultar da execução fraudulenta, simulada ou irreal de contratos, a condenação versará sobre a reposição do débito, com juros de mora.",
+              "kind": "paragraph",
+              "parentId": "L4717:art14",
+              "sourceOrdinal": 85
+            },
+            {
+              "id": "L4717:art14:p3",
+              "label": "§ 3º",
+              "text": "Quando o réu condenado perceber dos cofres públicos, a execução far-se-á por desconto em folha até o integral ressarcimento do dano causado, se assim mais convier ao interesse público.",
+              "kind": "paragraph",
+              "parentId": "L4717:art14",
+              "sourceOrdinal": 86
+            },
+            {
+              "id": "L4717:art14:p4",
+              "label": "§ 4º",
+              "text": "A parte condenada a restituir bens ou valores, ficará sujeita a seqüestro e penhora, desde a prolação da sentença condenatória.",
+              "kind": "paragraph",
+              "parentId": "L4717:art14",
+              "sourceOrdinal": 87
+            }
+          ]
+        },
+        {
+          "id": "L4717:art15",
+          "label": "Art. 15",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art15:caput",
+              "label": "Caput",
+              "text": "Se, no curso da ação, ficar provada a infrigência da lei penal ou a prática de falta disciplinar a que a lei comine a pena de demissão ou a de rescisão de contrato de trabalho, o juiz, ex officio , determinará a remessa de cópia autenticada das peças necessárias às autoridades ou aos administradores a quem competir aplicar a sanção.",
+              "kind": "caput",
+              "parentId": "L4717:art15",
+              "sourceOrdinal": 88
+            }
+          ]
+        },
+        {
+          "id": "L4717:art16",
+          "label": "Art. 16",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art16:caput",
+              "label": "Caput",
+              "text": "Caso decorridos 60 (sessenta) dias de publicação da sentença condenatória de segunda instância, sem que o autor ou terceiro promova a respectiva execução, o representante do Ministério Público a promoverá nos 30 (trinta) dias seguintes, sob pena de falta grave.",
+              "kind": "caput",
+              "parentId": "L4717:art16",
+              "sourceOrdinal": 89
+            }
+          ]
+        },
+        {
+          "id": "L4717:art17",
+          "label": "Art. 17",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art17:caput",
+              "label": "Caput",
+              "text": "É sempre permitido às pessoas ou entidades referidas no art. 1º, ainda que hajam contestado a ação, promover, em qualquer tempo, e no que as beneficiar, a execução da sentença contra os demais réus.",
+              "kind": "caput",
+              "parentId": "L4717:art17",
+              "sourceOrdinal": 90
+            }
+          ]
+        },
+        {
+          "id": "L4717:art18",
+          "label": "Art. 18",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art18:caput",
+              "label": "Caput",
+              "text": "A sentença terá eficácia de coisa julgada oponível erga omnes, exceto no caso de haver sido a ação julgada improcedente por deficiência de prova; neste caso, qualquer cidadão poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova.",
+              "kind": "caput",
+              "parentId": "L4717:art18",
+              "sourceOrdinal": 91
+            }
+          ]
+        },
+        {
+          "id": "L4717:art19",
+          "label": "Art. 19",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-processo"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art19:caput",
+              "label": "Caput",
+              "text": "A sentença que concluir pela carência ou pela improcedência da ação está sujeita ao duplo grau de jurisdição, não produzindo efeito senão depois de confirmada pelo tribunal; da que julgar a ação procedente, caberá apelação, com efeito suspensivo.",
+              "kind": "caput",
+              "parentId": "L4717:art19",
+              "sourceOrdinal": 92
+            },
+            {
+              "id": "L4717:art19:p1",
+              "label": "§ 1º",
+              "text": "Das decisões interlocutórias, cabe agravo de instrumento.",
+              "kind": "paragraph",
+              "parentId": "L4717:art19",
+              "sourceOrdinal": 93
+            },
+            {
+              "id": "L4717:art19:p2",
+              "label": "§ 2º",
+              "text": "Das sentenças e decisões proferidas contra o autor da ação e suscetíveis de recurso, poderá recorrer qualquer cidadão e também o Ministério Público.",
+              "kind": "paragraph",
+              "parentId": "L4717:art19",
+              "sourceOrdinal": 94,
+              "editorialNotes": [
+                {
+                  "text": "(Artigo com redação dada pela Lei nº 6.014, de 27/12/1973)",
+                  "sourceLinks": [
+                    "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6014-27-dezembro-1973-357596-norma-pl.html"
+                  ]
+                }
+              ],
+              "sourceLinks": [
+                "http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6014-27-dezembro-1973-357596-norma-pl.html"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "L4717:art20",
+          "label": "Art. 20",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-gerais"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art20:caput",
+              "label": "Caput",
+              "text": "Para os fins desta Lei, consideram-se entidades autárquicas:",
+              "kind": "caput",
+              "parentId": "L4717:art20",
+              "sourceOrdinal": 96
+            },
+            {
+              "id": "L4717:art20:a",
+              "label": "Alínea a",
+              "text": "o serviço estatal descentralizado com personalidade jurídica, custeado mediante orçamento próprio, independente do orçamento geral;",
+              "kind": "subitem",
+              "parentId": "L4717:art20",
+              "sourceOrdinal": 97
+            },
+            {
+              "id": "L4717:art20:b",
+              "label": "Alínea b",
+              "text": "as pessoas jurídicas especialmente instituídas por lei, para a execução de serviços de interesse público ou social, custeados por tributos de qualquer natureza ou por outros recursos oriundos do Tesouro Público;",
+              "kind": "subitem",
+              "parentId": "L4717:art20",
+              "sourceOrdinal": 98
+            },
+            {
+              "id": "L4717:art20:c",
+              "label": "Alínea c",
+              "text": "as entidades de direito público ou privado a que a lei tiver atribuído competência para receber e aplicar contribuições parafiscais.",
+              "kind": "subitem",
+              "parentId": "L4717:art20",
+              "sourceOrdinal": 99
+            }
+          ]
+        },
+        {
+          "id": "L4717:art21",
+          "label": "Art. 21",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-gerais"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art21:caput",
+              "label": "Caput",
+              "text": "A ação prevista nesta Lei prescreve em 5 (cinco) anos.",
+              "kind": "caput",
+              "parentId": "L4717:art21",
+              "sourceOrdinal": 100
+            }
+          ]
+        },
+        {
+          "id": "L4717:art22",
+          "label": "Art. 22",
+          "topic": null,
+          "contentKind": "isolated_article",
+          "structurePath": [
+            "L4717:section-gerais"
+          ],
+          "clauses": [
+            {
+              "id": "L4717:art22:caput",
+              "label": "Caput",
+              "text": "Aplicam-se à ação popular as regras do Código de Processo Civil, naquilo em que não contrariem os dispositivos desta Lei, nem a natureza específica da ação.",
+              "kind": "caput",
+              "parentId": "L4717:art22",
+              "sourceOrdinal": 101
+            }
+          ]
+        }
+      ],
+      "frontMatter": [
+        "CÂMARA DOS DEPUTADOS",
+        "Centro de Documentação e Informação",
+        "LEI Nº 4.717, DE 29 DE JUNHO DE 1965",
+        "Regula a Ação Popular.",
+        "O PRESIDENTE DA REPÚBLICA",
+        "Faço saber que o CONGRESSO NACIONAL decreta e eu sanciono a seguinte Lei:"
+      ],
+      "closingMatter": [
+        "Brasília, 29 de junho de 1965; 144º da Independência e 77º da República.",
+        "H. CASTELLO BRANCO",
+        "Milton Soares Campos"
+      ],
+      "sourceCapture": {
+        "path": "fontes/acao-popular/camara-20261114.html.txt",
+        "finalUrl": "https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-4717-29-junho-1965-377818-normaatualizada-pl.html",
+        "bytes": 59036,
+        "digest": "sha256:d8a1fc6018aef37449d62119277fcaeab9ea779d084b44c0a9cd620a59268234",
+        "normalization": "Entidades HTML e espaços/quebras normalizados; rótulos separados; grafia, pontuação e remissões históricas preservadas; três notas editoriais apartadas do texto. Cinco cabeçalhos de divisão e fecho conservados. Sem inferência de vigência."
+      },
+      "completeness": {
+        "expectedArticleIds": [
+          "L4717:art1",
+          "L4717:art2",
+          "L4717:art3",
+          "L4717:art4",
+          "L4717:art5",
+          "L4717:art6",
+          "L4717:art7",
+          "L4717:art8",
+          "L4717:art9",
+          "L4717:art10",
+          "L4717:art11",
+          "L4717:art12",
+          "L4717:art13",
+          "L4717:art14",
+          "L4717:art15",
+          "L4717:art16",
+          "L4717:art17",
+          "L4717:art18",
+          "L4717:art19",
+          "L4717:art20",
+          "L4717:art21",
+          "L4717:art22"
+        ],
+        "checkedOn": "2026-11-14",
+        "sourceDigest": "sha256:d8a1fc6018aef37449d62119277fcaeab9ea779d084b44c0a9cd620a59268234",
         "annexes": "not_applicable"
       }
     }
