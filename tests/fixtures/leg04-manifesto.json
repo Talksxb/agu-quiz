@@ -1,0 +1,1732 @@
+{
+  "sourceDigest": "sha256:148726cf24d3704d3c89894ed0be64b2092c60a826dfbfedfbb45245e05966e7",
+  "articles": [
+    {
+      "id": "LC73:art1",
+      "path": [
+        "LC73:titleI",
+        "LC73:titleI:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art1:caput",
+          "parentId": "LC73:art1",
+          "textSha256": "95f47ffba58557503d32742d42e32211cb3ba367144eaae7b016b3c8174daf2a"
+        },
+        {
+          "id": "LC73:art1:pu",
+          "parentId": "LC73:art1",
+          "textSha256": "34534333f1af65649b647ff6a3dd47baac6692037e65f97b2dfc72a2c04739f1"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art2",
+      "path": [
+        "LC73:titleI",
+        "LC73:titleI:chapterII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art2:caput",
+          "parentId": "LC73:art2",
+          "textSha256": "be48b4a966471f4ec0fbda4e66d1188ca438c7aa80a3be1758d91f351e28383a"
+        },
+        {
+          "id": "LC73:art2:I",
+          "parentId": "LC73:art2",
+          "textSha256": "26dcd220e491a509718cb5c26395cbab2883dfa6f10ed742f818190c7eb992bb"
+        },
+        {
+          "id": "LC73:art2:I:a",
+          "parentId": "LC73:art2:I",
+          "textSha256": "c65129798cfa8245e1390e6f6b39521e3cdadf50171f87db453478b79c0ad689"
+        },
+        {
+          "id": "LC73:art2:I:b",
+          "parentId": "LC73:art2:I",
+          "textSha256": "b9799bd804b81309c1681735fd9e687b8ed954a94981bce8da24f32cb1244920"
+        },
+        {
+          "id": "LC73:art2:I:c",
+          "parentId": "LC73:art2:I",
+          "textSha256": "1a5c586b2b6cd247b69ca07f9f8b56e763da896ff4ae099a10aaa97967376c37"
+        },
+        {
+          "id": "LC73:art2:I:d",
+          "parentId": "LC73:art2:I",
+          "textSha256": "fe3d8909ce11b0ac9f653a6692e1a7778592090e2732bd8df33c76cec749f1b8"
+        },
+        {
+          "id": "LC73:art2:I:e",
+          "parentId": "LC73:art2:I",
+          "textSha256": "ebc3a84bc5351ac021afcfb82b2758e3020af4c0de111682323d2b9e098bb5d9"
+        },
+        {
+          "id": "LC73:art2:II",
+          "parentId": "LC73:art2",
+          "textSha256": "ef56c0555cc25b29844023962d5330d6968e636196315c1580bc65ab598cf031"
+        },
+        {
+          "id": "LC73:art2:II:a",
+          "parentId": "LC73:art2:II",
+          "textSha256": "a7933544bd1437b6b5b4ac371da81b0d0dd2567d5b75fc5021284886e19d06e0"
+        },
+        {
+          "id": "LC73:art2:II:b",
+          "parentId": "LC73:art2:II",
+          "textSha256": "0278450ba9c8faa15ca661ae14b2d8eca4d59527287d30005182ce07d9b07803"
+        },
+        {
+          "id": "LC73:art2:III",
+          "parentId": "LC73:art2",
+          "textSha256": "b8800177b81c194ad0a5fae912f96cc8d24fa45bec94b8b3baa974859e825775"
+        },
+        {
+          "id": "LC73:art2:IV",
+          "parentId": "LC73:art2",
+          "textSha256": "dfc231a0813baf496dcecfb562d6c4b844c45ba97c67b07f997b5c6331871e20"
+        },
+        {
+          "id": "LC73:art2:p1",
+          "parentId": "LC73:art2",
+          "textSha256": "93585f211351194b0f8066c695075cb0dadcd45e237e70f02d2ee02fa0b0b50f"
+        },
+        {
+          "id": "LC73:art2:p2",
+          "parentId": "LC73:art2",
+          "textSha256": "bc702402a0a894e06da2ac3171f8aa56cd75ab48cd5895af0031c3dafcef1faf"
+        },
+        {
+          "id": "LC73:art2:p3",
+          "parentId": "LC73:art2",
+          "textSha256": "0e40e02f183b90ac43cdfa9f7df2e2564af6b254d0edf56393ba1ba88d79483d"
+        },
+        {
+          "id": "LC73:art2:p4",
+          "parentId": "LC73:art2",
+          "textSha256": "4f78d2d56c496ebb373377e3716cf66c092c906e327f3b73806bef7c48e0480e"
+        },
+        {
+          "id": "LC73:art2:p5",
+          "parentId": "LC73:art2",
+          "textSha256": "62d8bc5e41b6994d2db4153068bef99a551273c5c48e32e4104c0dda7d0575b0"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art3",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art3:caput",
+          "parentId": "LC73:art3",
+          "textSha256": "6e0a764634c4e2e910337f91f9d19362344548be738327474ad416c554c20172"
+        },
+        {
+          "id": "LC73:art3:p1",
+          "parentId": "LC73:art3",
+          "textSha256": "c20dcd9b2693664cd21983085df745e7da64f8993cdd25cd5cf90e6791785679"
+        },
+        {
+          "id": "LC73:art3:p2",
+          "parentId": "LC73:art3",
+          "textSha256": "d231c90eecbc7fd2115e19f9714b21dbce4231be420c939a453b6a0a4782249f"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art4",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art4:caput",
+          "parentId": "LC73:art4",
+          "textSha256": "d39fd90148ca0c07d5f1bf98554b1346698fc6750867c7d90149721a76993a1f"
+        },
+        {
+          "id": "LC73:art4:I",
+          "parentId": "LC73:art4",
+          "textSha256": "8a4a68a923b3f4265fc5020f247349d04a6167e54967ec8a6e4d3d373e69f6cf"
+        },
+        {
+          "id": "LC73:art4:II",
+          "parentId": "LC73:art4",
+          "textSha256": "e9fecd45f607216feaf35c2a17becef802635f167febc8e25192446d5d69ad40"
+        },
+        {
+          "id": "LC73:art4:III",
+          "parentId": "LC73:art4",
+          "textSha256": "6c486b89bd7d6dfbc890b7677fff1402532b0a64cccbe5d31d444d887e54a044"
+        },
+        {
+          "id": "LC73:art4:IV",
+          "parentId": "LC73:art4",
+          "textSha256": "2811d3333b8ca9dae5e0d8b83e981c97d011acbf3ad32cc93aeefb851b96cfab"
+        },
+        {
+          "id": "LC73:art4:V",
+          "parentId": "LC73:art4",
+          "textSha256": "8574aa3a831d8e7280435604f3d2766cd7ed0ba0a3750e1a74f06d9d57205a0a"
+        },
+        {
+          "id": "LC73:art4:VI",
+          "parentId": "LC73:art4",
+          "textSha256": "7f416ad09a72f7c36b1db8e8edacfe0aa41a0fa5c7f852f0eb3660108d4072b0"
+        },
+        {
+          "id": "LC73:art4:VII",
+          "parentId": "LC73:art4",
+          "textSha256": "d7116a16dbd30ea3ea4feabbbc3c38eea8bbbdf3604d63dbdc37e700f63e8166"
+        },
+        {
+          "id": "LC73:art4:VIII",
+          "parentId": "LC73:art4",
+          "textSha256": "55b0b258adcf59b47bd03c62648bfed0729352cf9b535019ca6b34a99447597f"
+        },
+        {
+          "id": "LC73:art4:IX",
+          "parentId": "LC73:art4",
+          "textSha256": "9c88cc7fcc64722b3a8b0a7f8736d79de0e3ce5c866a7f44cd84290e0f1dcb32"
+        },
+        {
+          "id": "LC73:art4:X",
+          "parentId": "LC73:art4",
+          "textSha256": "1eb8fecc49102dc60beadd06f99ae5c4d617d782ec727baba3533b449c5edf2a"
+        },
+        {
+          "id": "LC73:art4:XI",
+          "parentId": "LC73:art4",
+          "textSha256": "015b7c317559431e1879df9a78040b64b712228a0e508f82a33c27bf49771e35"
+        },
+        {
+          "id": "LC73:art4:XII",
+          "parentId": "LC73:art4",
+          "textSha256": "93850a263002bd51ff566f4732f0c3eb5dc3917ce15ee84a126b43c99248fba9"
+        },
+        {
+          "id": "LC73:art4:XIII",
+          "parentId": "LC73:art4",
+          "textSha256": "41f0d17a3eae478d71ff1db9c84b4fd247470662776711790a9350ee8ec0479f"
+        },
+        {
+          "id": "LC73:art4:XIV",
+          "parentId": "LC73:art4",
+          "textSha256": "2dca0261595cf5fa11d22cdc58b6ee734792f086110b839f09f153772c27457a"
+        },
+        {
+          "id": "LC73:art4:XV",
+          "parentId": "LC73:art4",
+          "textSha256": "88bb097e15580238b6d6af7d3e68c83b4b9508c2330002e2d939abf95366f824"
+        },
+        {
+          "id": "LC73:art4:XVI",
+          "parentId": "LC73:art4",
+          "textSha256": "a840ada59ec2418fb8833413fe9a3c93c53d2fbbcf68586cae7731bf8bb7795b"
+        },
+        {
+          "id": "LC73:art4:XVII",
+          "parentId": "LC73:art4",
+          "textSha256": "95e0b0da94c67a3506a3dbd4162af0d01793b3def400bbdac6fa3ff56e149517"
+        },
+        {
+          "id": "LC73:art4:XVIII",
+          "parentId": "LC73:art4",
+          "textSha256": "60e02709bf0a86c0ca09df6165b5389a286acdaa1a297699bc3d7fb9ba5f7bdd"
+        },
+        {
+          "id": "LC73:art4:XIX",
+          "parentId": "LC73:art4",
+          "textSha256": "0387d1e31a7c031923ab1798b438b94a8ab30c0c07f1bb3de335401af1e5fee6"
+        },
+        {
+          "id": "LC73:art4:p1",
+          "parentId": "LC73:art4",
+          "textSha256": "38066a438ef988be8e5219ef99b0ee51b1b023e86992d61efc02d63eed2581bc"
+        },
+        {
+          "id": "LC73:art4:p2",
+          "parentId": "LC73:art4",
+          "textSha256": "26f867ee155e30181b6ed02e3811dd08e6745bc836fe5ba98479f7e7036132d3"
+        },
+        {
+          "id": "LC73:art4:p3",
+          "parentId": "LC73:art4",
+          "textSha256": "265a77bffd2c1ca90b2c7d6e3f76cb328aa2a618ffe7632a189d33bc3a1b006e"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art5",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art5:caput",
+          "parentId": "LC73:art5",
+          "textSha256": "dc17586482b274b83b66c429eb0d9632e476bb60ff745a7e125187ad73d11863"
+        },
+        {
+          "id": "LC73:art5:I",
+          "parentId": "LC73:art5",
+          "textSha256": "76075df66880496e94f4e1496d8769f8bb031e5ceab212f9d8cb9b4ead1cd9c9"
+        },
+        {
+          "id": "LC73:art5:II",
+          "parentId": "LC73:art5",
+          "textSha256": "efa733607f5d82d3a0ad5ac63b81baf0fa632009130bc05d4f88fccc9a4d10b6"
+        },
+        {
+          "id": "LC73:art5:III",
+          "parentId": "LC73:art5",
+          "textSha256": "8ff238655e9870ebde4b58bfeb70735dd8f9cea350bb68ef23cf73960995d96f"
+        },
+        {
+          "id": "LC73:art5:IV",
+          "parentId": "LC73:art5",
+          "textSha256": "abf260e4ccda1ad708f03a49d53035257365e2e2c3ac541910cc2b4aa6ce1fbe"
+        },
+        {
+          "id": "LC73:art5:V",
+          "parentId": "LC73:art5",
+          "textSha256": "cf82cbc2a3822b7b042abef525009918463aa85e0f7cc4b4f9dc40a3d31ff255"
+        },
+        {
+          "id": "LC73:art5:VI",
+          "parentId": "LC73:art5",
+          "textSha256": "ff1ba0ac658d62bfb209c95802ec58956eea63d6a92603f71c91b4a2373d3aca"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art6",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art6:caput",
+          "parentId": "LC73:art6",
+          "textSha256": "5454da4765fe071aa9770116001e8b524e4ee1d1a712f8658cfa0d646343643b"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art7",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art7:caput",
+          "parentId": "LC73:art7",
+          "textSha256": "396fdc92231bf13766be5185f7e1ccf46b9d49365d2457ea46ffc1d9f0c9a172"
+        },
+        {
+          "id": "LC73:art7:I",
+          "parentId": "LC73:art7",
+          "textSha256": "91f9af98438ca16b5bc403f8ad40ca0ba783e9d87837ddf5374acf9be1602e3a"
+        },
+        {
+          "id": "LC73:art7:II",
+          "parentId": "LC73:art7",
+          "textSha256": "33051473ec8631f945404aa611199b8d1f7bd7e2163b2edae0dcf386f9fbb26c"
+        },
+        {
+          "id": "LC73:art7:III",
+          "parentId": "LC73:art7",
+          "textSha256": "2c910012ea8a809bbf5a757adcf0b79735f6258596117a44a0c3bd939fdf7669"
+        },
+        {
+          "id": "LC73:art7:IV",
+          "parentId": "LC73:art7",
+          "textSha256": "fb7aea5dcfaf872555ace93598bc524e9ac2b0c883bdee5eef0968abca83ff89"
+        },
+        {
+          "id": "LC73:art7:pu",
+          "parentId": "LC73:art7",
+          "textSha256": "fdc1c4cf7b04ce36c957ba4092c21b179eb647e1122818f0a8b7de79135c414e"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art8",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art8:caput",
+          "parentId": "LC73:art8",
+          "textSha256": "4f3d177d37245995367a0f1801a6a6dd2c8764f2ace570d518c0bed48351d3b2"
+        },
+        {
+          "id": "LC73:art8:I",
+          "parentId": "LC73:art8",
+          "textSha256": "803cbf4f667f35c4ff380004a20558d175137ed4291f84e0a12b4f5f28847015"
+        },
+        {
+          "id": "LC73:art8:II",
+          "parentId": "LC73:art8",
+          "textSha256": "c63b8ca5e4ea9eeeec901722e2be6966bfb1876c0a2c4b92053987ce01c40811"
+        },
+        {
+          "id": "LC73:art8:III",
+          "parentId": "LC73:art8",
+          "textSha256": "5574eeb9585fb20c6da9f239b164a09d98311952d2e8f23f15e6b2d414bb3df0"
+        },
+        {
+          "id": "LC73:art8:p1",
+          "parentId": "LC73:art8",
+          "textSha256": "6d33dbb5c377ccc62e2b90cfa635e6f758293f2ae31e601bc388d3e952615310"
+        },
+        {
+          "id": "LC73:art8:p2",
+          "parentId": "LC73:art8",
+          "textSha256": "075c2ec81b0b5e76ecfc578bcde9b5dcb82afce1e231f5454c61a7c480905064"
+        },
+        {
+          "id": "LC73:art8:p3",
+          "parentId": "LC73:art8",
+          "textSha256": "a32d4124497e3343fb79895942d98e4b64e8614ef6805a99330fe62fc4448cda"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art9",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art9:caput",
+          "parentId": "LC73:art9",
+          "textSha256": "a85191a0332a5a447498dfd8846564c521586c19aa98f2f49b3978aad6a7dfc2"
+        },
+        {
+          "id": "LC73:art9:p1",
+          "parentId": "LC73:art9",
+          "textSha256": "21a01fe99b10ef34bbe10a470a8b4fe649fd502580b63ea4216312140c890ece"
+        },
+        {
+          "id": "LC73:art9:p2",
+          "parentId": "LC73:art9",
+          "textSha256": "f576fa1eb8330a3f5b0c42d1bbfb6595b6d56fc35f6cce20800121f4d9728dbd"
+        },
+        {
+          "id": "LC73:art9:p3",
+          "parentId": "LC73:art9",
+          "textSha256": "a3ee1f223e7c41628327c8de45aa99ddf550b743b9b61314081c3d0dca26d1d2"
+        },
+        {
+          "id": "LC73:art9:p4",
+          "parentId": "LC73:art9",
+          "textSha256": "2347f3997b41bd44eb2b5528e2f5988627653a4826fa7a0d299bbf855a261a1d"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art10",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art10:caput",
+          "parentId": "LC73:art10",
+          "textSha256": "f1ce99fdeca2c33ff2a6239977552b2be6956a5b8fef448eb56c2293f0ddd669"
+        },
+        {
+          "id": "LC73:art10:pu",
+          "parentId": "LC73:art10",
+          "textSha256": "4d9ae552819d91ddcb340b676fdf7835dfc1a1c21b8b7eeea0859e1cfb2b7f09"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art11",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art11:caput",
+          "parentId": "LC73:art11",
+          "textSha256": "d1ed5feec4777acb62646bb63120550d0d4af01da85bcc4001184fb3b9beee61"
+        },
+        {
+          "id": "LC73:art11:I",
+          "parentId": "LC73:art11",
+          "textSha256": "cf548b8b3019e835b3bd8699f4a19820b34dd33a3c07912bfbb9bbb0a4f1d6c8"
+        },
+        {
+          "id": "LC73:art11:II",
+          "parentId": "LC73:art11",
+          "textSha256": "c2e6214896664ac7c857c0280808dcbff70f0ab4ebeae60d422245222f30292b"
+        },
+        {
+          "id": "LC73:art11:III",
+          "parentId": "LC73:art11",
+          "textSha256": "f15ea1a67a0226648733ab2638a4a17fe4780ab7dd854afc1723a1976366c9c6"
+        },
+        {
+          "id": "LC73:art11:IV",
+          "parentId": "LC73:art11",
+          "textSha256": "80494f09f0bd4fa1d6af34f77b6283defe7661a3729ccb023420abf70cd2a3e9"
+        },
+        {
+          "id": "LC73:art11:V",
+          "parentId": "LC73:art11",
+          "textSha256": "121ce52d971119a3bead90100d73fd8ae94361db469faa663c79f2fe9b5d902a"
+        },
+        {
+          "id": "LC73:art11:VI",
+          "parentId": "LC73:art11",
+          "textSha256": "520567d8d07593c5efeb21a8569ac8a38538847e047425514a6ff4a9d9609b8a"
+        },
+        {
+          "id": "LC73:art11:VI:a",
+          "parentId": "LC73:art11:VI",
+          "textSha256": "760376d85738c3e7d2352c0a711e60e61098cf183164f0fdc10e1a79df4e3cf7"
+        },
+        {
+          "id": "LC73:art11:VI:b",
+          "parentId": "LC73:art11:VI",
+          "textSha256": "fc9e7e8a19fed25ecbc7e28545e1437e815a5bcb986a3f83cd80f4b61870a25b"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art12",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art12:caput",
+          "parentId": "LC73:art12",
+          "textSha256": "38b5470e4ac16b351e184eb87ff42aa2f0ee32a25e9949f2797ac1a24fa9efb4"
+        },
+        {
+          "id": "LC73:art12:I",
+          "parentId": "LC73:art12",
+          "textSha256": "b416f21ecc78c1d9000f51c357e745354344b235392a4ed096cffdd5bd7a7a6b"
+        },
+        {
+          "id": "LC73:art12:II",
+          "parentId": "LC73:art12",
+          "textSha256": "70ab83db187b5b3097b9623cecb9c3eac50f07b985a2d9f6db09b935f2a0040a"
+        },
+        {
+          "id": "LC73:art12:III",
+          "parentId": "LC73:art12",
+          "textSha256": "dfc231a0813baf496dcecfb562d6c4b844c45ba97c67b07f997b5c6331871e20"
+        },
+        {
+          "id": "LC73:art12:IV",
+          "parentId": "LC73:art12",
+          "textSha256": "06027ec2b1fb6bf259bf487d12ea998987aad466131b1d16ef43200d7a0fa3f8"
+        },
+        {
+          "id": "LC73:art12:V",
+          "parentId": "LC73:art12",
+          "textSha256": "acc7bc92c9f3ef3f989c0e2ce80d3c2bf49fdeb4c7f3b855875efaca3b0db9d5"
+        },
+        {
+          "id": "LC73:art12:pu",
+          "parentId": "LC73:art12",
+          "textSha256": "21a30053467d9ed2eb28dbccbf69f039351d58eb6c3871d05e327441cf128789"
+        },
+        {
+          "id": "LC73:art12:pu:I",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "54c7556164d1ccef167079ac8799abb6b4f3150c6cb0be22a6c914b7d7e062f3"
+        },
+        {
+          "id": "LC73:art12:pu:II",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "2ee22f801a2fba9c5c26396faff65066106c71a384ec7a0bcb4387f8dd518e88"
+        },
+        {
+          "id": "LC73:art12:pu:III",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "e84efc39e257b1701adea7ab0286a4056906ec0126ef02025768f9a2309eb67e"
+        },
+        {
+          "id": "LC73:art12:pu:IV",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "5f08dd1fdd2f637f188aaf9d7ccd580eb9ff54b66c544f119ac4244d2fd99f78"
+        },
+        {
+          "id": "LC73:art12:pu:V",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "9774a581a54ac2b0bf8d0020dffc68f06d07af695e2dc22c4e30ea140ecf0876"
+        },
+        {
+          "id": "LC73:art12:pu:VI",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "8879942d607f2aa4f3567f718f046bd5e3ee9f01a6d6f35dc770e39295622b9c"
+        },
+        {
+          "id": "LC73:art12:pu:VII",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "76f431df99134c124c3b8f918b58c74d15c86bfc3c228700a8a303358b78bd7e"
+        },
+        {
+          "id": "LC73:art12:pu:VIII",
+          "parentId": "LC73:art12:pu",
+          "textSha256": "52c44d40a75047ea7b6ff467dc2802dc6191efb06c8caff2e0cb9de65fc50301"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art13",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art13:caput",
+          "parentId": "LC73:art13",
+          "textSha256": "2ad37cfb99d98f83d761a6e7fbcced5187d63291f895bea6f632173e8fd53fa7"
+        },
+        {
+          "id": "LC73:art13:pu",
+          "parentId": "LC73:art13",
+          "textSha256": "609e98816d6c1198e1db506278f5871820284e9fcbf2e91db0e9b49c5e1a45a9"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art14",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art14:caput",
+          "parentId": "LC73:art14",
+          "textSha256": "dfc231a0813baf496dcecfb562d6c4b844c45ba97c67b07f997b5c6331871e20"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art15",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art15:caput",
+          "parentId": "LC73:art15",
+          "textSha256": "68f5bb119f981b03f577cba90a538ea6a72be345739fafc4f731dea8f7c4ba79"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art16",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterVIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art16:caput",
+          "parentId": "LC73:art16",
+          "textSha256": "d0fdf76684073223257c98d788d458a2d1da53e2d78a20042bffb0db9bb24be5"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art17",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIX"
+      ],
+      "units": [
+        {
+          "id": "LC73:art17:caput",
+          "parentId": "LC73:art17",
+          "textSha256": "c0f15d74632a24d019d802573dc7b48e7a1768a69141b5c220e882c0821c2a57"
+        },
+        {
+          "id": "LC73:art17:I",
+          "parentId": "LC73:art17",
+          "textSha256": "c86e9f4b61aeb359bbeae6608dcc899c1f5e16ba7e257e2818ec7ea54e394ef9"
+        },
+        {
+          "id": "LC73:art17:II",
+          "parentId": "LC73:art17",
+          "textSha256": "024379bc0710f87d277540e45cf49b68d8b13a1847ba95fb8d93de12430c671e"
+        },
+        {
+          "id": "LC73:art17:III",
+          "parentId": "LC73:art17",
+          "textSha256": "eec2e9b03bb0e8efc9335d75fe3f0378c2c2d974ba8f634e197a2a908934ecc2"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art18",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIX"
+      ],
+      "units": [
+        {
+          "id": "LC73:art18:caput",
+          "parentId": "LC73:art18",
+          "textSha256": "8a402a2204f98d6d5abf011ef8d26e02855f3cfc2d1db08f286e2f1e9fb96bc3"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art19",
+      "path": [
+        "LC73:titleII",
+        "LC73:titleII:chapterIX"
+      ],
+      "units": [
+        {
+          "id": "LC73:art19:caput",
+          "parentId": "LC73:art19",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art20",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art20:caput",
+          "parentId": "LC73:art20",
+          "textSha256": "660b1371524dab1d951d9730dd8954508c8e16a4ce567880e3446f0b690aafc9"
+        },
+        {
+          "id": "LC73:art20:I",
+          "parentId": "LC73:art20",
+          "textSha256": "ba783d810a0a80788ffe3a3bb8ee7fcc95fabdf2a8f23dc4c269e6125a97fcca"
+        },
+        {
+          "id": "LC73:art20:I:a",
+          "parentId": "LC73:art20:I",
+          "textSha256": "f74d5ca22dc5b69712b720e4c83fd94cfcf06cd0bf679808eb1c95641fcc899f"
+        },
+        {
+          "id": "LC73:art20:I:b",
+          "parentId": "LC73:art20:I",
+          "textSha256": "c314f1b12d3f06052d08e95399dfbbbd1ab207229ba6e15513796cc21d74f9e9"
+        },
+        {
+          "id": "LC73:art20:I:c",
+          "parentId": "LC73:art20:I",
+          "textSha256": "03756cade8fd43c4b6616b96ed0b8bbfa6b0d981f44e95ea9a073ed7d4c21423"
+        },
+        {
+          "id": "LC73:art20:II",
+          "parentId": "LC73:art20",
+          "textSha256": "32048dad577186b48a8b8b9e116738ccc0019c7cadc70181e8f225a3618a6ae4"
+        },
+        {
+          "id": "LC73:art20:II:a",
+          "parentId": "LC73:art20:II",
+          "textSha256": "460a01ec2f4a7e6f9ba5c5cc97858ae0c2b2106507dd45e526294c2114621cb8"
+        },
+        {
+          "id": "LC73:art20:II:b",
+          "parentId": "LC73:art20:II",
+          "textSha256": "86f61bdc35314414bf6b7a258653883f4b1b56a92c5a51d0fd77e2f6ae48e73c"
+        },
+        {
+          "id": "LC73:art20:II:c",
+          "parentId": "LC73:art20:II",
+          "textSha256": "50cff414bda621bdc846d1690423a8a6654b82568f76e793ce9e605fe3389723"
+        },
+        {
+          "id": "LC73:art20:III",
+          "parentId": "LC73:art20",
+          "textSha256": "6142a4d493568a2f95bca29b2f615a3ac1365014997331daa2e4fca756117bb6"
+        },
+        {
+          "id": "LC73:art20:III:a",
+          "parentId": "LC73:art20:III",
+          "textSha256": "cee2a93d90707976c640c87b9bf5f59f702a3972211dee74e03e4a6d9bf00097"
+        },
+        {
+          "id": "LC73:art20:III:b",
+          "parentId": "LC73:art20:III",
+          "textSha256": "e8b3eba4fefb9926c7f26acfbbebf03fd39d52fd705ad8b3c33ad8385b6435f5"
+        },
+        {
+          "id": "LC73:art20:III:c",
+          "parentId": "LC73:art20:III",
+          "textSha256": "7b7df81a473b3f7542386253045ad31cc7d6fe56e249ea009da24b9b61c37377"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art21",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art21:caput",
+          "parentId": "LC73:art21",
+          "textSha256": "9dfe5770a34c2a96d77182786742dcf7be75bb8ad1a8a849201fdbd2285df9a1"
+        },
+        {
+          "id": "LC73:art21:p1",
+          "parentId": "LC73:art21",
+          "textSha256": "001daa376b49e38f7e9336799fa6423ca651479737fb09322bd92c0224daf334"
+        },
+        {
+          "id": "LC73:art21:p2",
+          "parentId": "LC73:art21",
+          "textSha256": "97fca77e08d02af663185f778ae63e8af930b32ee771096a054504d6b57559af"
+        },
+        {
+          "id": "LC73:art21:p3",
+          "parentId": "LC73:art21",
+          "textSha256": "920abe57e9ca5f45a84122e20ea4fea7d52d16fe848a936cd5c9939033d68163"
+        },
+        {
+          "id": "LC73:art21:p4",
+          "parentId": "LC73:art21",
+          "textSha256": "8c5dadaf9ece1d8e00c9e77277f07f219ad601bf143513523172db4302f7b4c5"
+        },
+        {
+          "id": "LC73:art21:p5",
+          "parentId": "LC73:art21",
+          "textSha256": "9bbdb06b4e764be3a255bf0deb91b499f1e1fa2da65664247629c9fc2cf8548b"
+        },
+        {
+          "id": "LC73:art21:p6",
+          "parentId": "LC73:art21",
+          "textSha256": "6862188d3eab38c19e8b5ca26d579bdebf480e81666513cb672df472fc9515b9"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art22",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art22:caput",
+          "parentId": "LC73:art22",
+          "textSha256": "8caa60dde322125d1211b2a433754b95a5a997b8c0f6c1abf4e12ee3a8e4f789"
+        },
+        {
+          "id": "LC73:art22:pu",
+          "parentId": "LC73:art22",
+          "textSha256": "99a38f7ca396a02ad30eebad6e15c1b670790e4e8ebdf88ec8e09a6dd5da049c"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art23",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art23:caput",
+          "parentId": "LC73:art23",
+          "textSha256": "f45b4a3976b3b47ba770ddff5abf1ce0d8b306a29832fb8aca21d5bc31e34cd7"
+        },
+        {
+          "id": "LC73:art23:pu",
+          "parentId": "LC73:art23",
+          "textSha256": "99e547ead88e617e55e9f57ac0178d2550d966b54dd2e77a38c4d014a848cacf"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art24",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art24:caput",
+          "parentId": "LC73:art24",
+          "textSha256": "6f22af62018bd2840f9d72232b665fba572f5e1813571ff18e3d7683f98da04c"
+        },
+        {
+          "id": "LC73:art24:pu",
+          "parentId": "LC73:art24",
+          "textSha256": "ac6470f94f13f6d71776d2cc30fa1daa67bbb6712d8e3748a7974d107068223c"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art25",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art25:caput",
+          "parentId": "LC73:art25",
+          "textSha256": "90dc7c652614de5c48e940a8ad904d512e52a7a2bb0db0e4050809b212d615fc"
+        },
+        {
+          "id": "LC73:art25:pu",
+          "parentId": "LC73:art25",
+          "textSha256": "a5543e02cbb29c5c6ca26ada717cf1cb683773357d636ca0e2fcc9b4b96c30e2"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art26",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art26:caput",
+          "parentId": "LC73:art26",
+          "textSha256": "043ea98689797438dd5d034e256efadd4a551c6fc352444a1294c46a4ac5bffb"
+        },
+        {
+          "id": "LC73:art26:pu",
+          "parentId": "LC73:art26",
+          "textSha256": "bdb3518b323f38f0db70b84a504f2fa519abe5d366a818664ad0f154a514e941"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art27",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art27:caput",
+          "parentId": "LC73:art27",
+          "textSha256": "c7162f4e93ea0b61b229ae00c0ac87c85bd2081e64038d3e7c184c899c2fbc26"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art28",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art28:caput",
+          "parentId": "LC73:art28",
+          "textSha256": "8abe101c4db3bc71f003ebf0d53d6e3cf1d98a66d8399000e8e43bb3cc4dbe73"
+        },
+        {
+          "id": "LC73:art28:I",
+          "parentId": "LC73:art28",
+          "textSha256": "9c88d1adeb100308317e180bc24a64053d239fa12d59a0441d5aae3913ba6355"
+        },
+        {
+          "id": "LC73:art28:II",
+          "parentId": "LC73:art28",
+          "textSha256": "3b5758eb40ab9adfd6b0cb32bdc5adf3c04d95a7a3cb080edd07a7f081ded161"
+        },
+        {
+          "id": "LC73:art28:III",
+          "parentId": "LC73:art28",
+          "textSha256": "f106722612dc6ddeee27be58259352d3b14be586368b271104bde5856742ea42"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art29",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art29:caput",
+          "parentId": "LC73:art29",
+          "textSha256": "4e064bef8bef6c24fca2a96b3b7815e3c7ee9ff453b3681e386df92f968d60ae"
+        },
+        {
+          "id": "LC73:art29:I",
+          "parentId": "LC73:art29",
+          "textSha256": "499b743bebe4f1d33a78cca4820d228fdacef0c283f58c0d281279ba165ef998"
+        },
+        {
+          "id": "LC73:art29:II",
+          "parentId": "LC73:art29",
+          "textSha256": "9b18fd7cd8853ba8556ea94c14b65eda9d498c4e4ce7337d731b0fa124b1641e"
+        },
+        {
+          "id": "LC73:art29:III",
+          "parentId": "LC73:art29",
+          "textSha256": "8c8c1b9c64458c9d6b168dff60cb7efd9ca972d9bd282e6bb811d907f890a59b"
+        },
+        {
+          "id": "LC73:art29:IV",
+          "parentId": "LC73:art29",
+          "textSha256": "34503f97cced8a209da2d30faf75dfba003f4c47b5d61522e869e56a502334a2"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art30",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art30:caput",
+          "parentId": "LC73:art30",
+          "textSha256": "fdf0d60ece88a20fb7e7d1e60421bcfed6eb6f5f967bc8f5f7881ecd735ddb38"
+        },
+        {
+          "id": "LC73:art30:I",
+          "parentId": "LC73:art30",
+          "textSha256": "73d954ef0cdbb858aa1ca2c0d8f2f745b08d5e32ca4645b04c909c9a5861ca09"
+        },
+        {
+          "id": "LC73:art30:II",
+          "parentId": "LC73:art30",
+          "textSha256": "34503f97cced8a209da2d30faf75dfba003f4c47b5d61522e869e56a502334a2"
+        },
+        {
+          "id": "LC73:art30:pu",
+          "parentId": "LC73:art30",
+          "textSha256": "ab1b774c412f01cb32f45884b3434b912078aa32422271d2c4168b30ddd061bc"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art31",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art31:caput",
+          "parentId": "LC73:art31",
+          "textSha256": "50494cf35b2069aab54b1c6c5f94173161251cce13d1c22c1e78e74e2b9ab0fc"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art32",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art32:caput",
+          "parentId": "LC73:art32",
+          "textSha256": "1006e94447f59a141a19acd164f1a764abdc1b8b545e163ea5dc0bc80f48317a"
+        },
+        {
+          "id": "LC73:art32:I",
+          "parentId": "LC73:art32",
+          "textSha256": "6e0d76a4f9adab1baf080da4027f7fb9503b3466bef95b0e97e7bdd1897cd48b"
+        },
+        {
+          "id": "LC73:art32:II",
+          "parentId": "LC73:art32",
+          "textSha256": "19fb7d46a2b2ce8578e662bf4f4cd0c5e7685d21c44dfd92b2485c6bc746fa37"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art33",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art33:caput",
+          "parentId": "LC73:art33",
+          "textSha256": "e5551de9df7784fd581acb9ea60ca30b1378507dab66f87579e13a168dd546de"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art34",
+      "path": [
+        "LC73:titleIII",
+        "LC73:titleIII:chapterIV",
+        "LC73:titleIII:chapterIV:sectionIII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art34:caput",
+          "parentId": "LC73:art34",
+          "textSha256": "fe8f7482393fa59102804b6a3f90994b647a3075fb7415af3de20d7b0b1d0488"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art35",
+      "path": [
+        "LC73:titleIV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art35:caput",
+          "parentId": "LC73:art35",
+          "textSha256": "e2b8b4a909436a9bd708d87c358a044ff922ccf8b09458183e7dbdf6741f5381"
+        },
+        {
+          "id": "LC73:art35:I",
+          "parentId": "LC73:art35",
+          "textSha256": "898d7283396ec0171f86b19247584322c28a706085ddbd7c60fbebea05c9c6c1"
+        },
+        {
+          "id": "LC73:art35:II",
+          "parentId": "LC73:art35",
+          "textSha256": "c23e9c28c38a3a8d321f4ffba8ecbbb24534d6da7d9892ec96a1fafda015607d"
+        },
+        {
+          "id": "LC73:art35:III",
+          "parentId": "LC73:art35",
+          "textSha256": "aa810e3c69033a3995a66fd6ad4c3029c3ad61eb0f7e6760ecbdd351a34e8a5f"
+        },
+        {
+          "id": "LC73:art35:IV",
+          "parentId": "LC73:art35",
+          "textSha256": "2c68a5041b12479db44e4394633371bcd8a02203dcb76afbad4d9dffb8b9c00d"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art36",
+      "path": [
+        "LC73:titleIV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art36:caput",
+          "parentId": "LC73:art36",
+          "textSha256": "6da6e3c701c91b0f9f58b7a9b68ae98f0f23e53c8e216c0bea3c769db72a8a65"
+        },
+        {
+          "id": "LC73:art36:I",
+          "parentId": "LC73:art36",
+          "textSha256": "8c4bf6fcb098ac7927e77d929359d02ccc5b80d449b00c2dfcb80d14ac44beb3"
+        },
+        {
+          "id": "LC73:art36:II",
+          "parentId": "LC73:art36",
+          "textSha256": "e185cab0d1670aa3989e8f19ca0d4017592408c45e06c968fb7719182f2b056c"
+        },
+        {
+          "id": "LC73:art36:III",
+          "parentId": "LC73:art36",
+          "textSha256": "7b92553c9ca7722331d0e2a3924ba3fc8255739575de5bb94a61b573c4dadc46"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art37",
+      "path": [
+        "LC73:titleIV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art37:caput",
+          "parentId": "LC73:art37",
+          "textSha256": "ab6c532b21d1cf3856bda5942e4fced31e2c70f9edf1484e92db3eb5bac92c73"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art38",
+      "path": [
+        "LC73:titleIV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art38:caput",
+          "parentId": "LC73:art38",
+          "textSha256": "e53809126c4880bed69fba9ab691715575cd50853ed880df00e3688e948d9106"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art39",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art39:caput",
+          "parentId": "LC73:art39",
+          "textSha256": "dd77acdc1f4351675f73eb2319983f06cd687ffe4bb70f7f252b4b2fc831de96"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art40",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art40:caput",
+          "parentId": "LC73:art40",
+          "textSha256": "ef5f76f070e85ed0a608c6a29f64d298a27ffb08bb79b68c0009ff3ae3a587e4"
+        },
+        {
+          "id": "LC73:art40:p1",
+          "parentId": "LC73:art40",
+          "textSha256": "1bff209eedc3640c888284052538efd0efb8bd2987a355c49d76facaf065353b"
+        },
+        {
+          "id": "LC73:art40:p2",
+          "parentId": "LC73:art40",
+          "textSha256": "6021c77dc5cdb6bfe3f7bd9cbf9aa00041ce00e5720ff9b686dcc90757edfd8e"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art41",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art41:caput",
+          "parentId": "LC73:art41",
+          "textSha256": "7962c22360234ce160fe3b7c1f2b23abd1aa56e39d03803de6fe8d2620e23c01"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art42",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art42:caput",
+          "parentId": "LC73:art42",
+          "textSha256": "1e7b340229d78dfd6304e4e5d17bba0c81eaf06fd738741a7080c2f0022ce2ab"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art43",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art43:caput",
+          "parentId": "LC73:art43",
+          "textSha256": "c12cb11f6b7ac21b712ae1e4ec151aea0f52558c47dcb23a3f4684bf03120e08"
+        },
+        {
+          "id": "LC73:art43:p1",
+          "parentId": "LC73:art43",
+          "textSha256": "d6a5295cd14bc346b1ea2cab381b737b2fe498abe2bc4ef5d62330cd14490b72"
+        },
+        {
+          "id": "LC73:art43:p2",
+          "parentId": "LC73:art43",
+          "textSha256": "89f9b961d71f178ba2aae2c246432a0321f75bb622d254d56441495b20de3838"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art44",
+      "path": [
+        "LC73:titleV"
+      ],
+      "units": [
+        {
+          "id": "LC73:art44:caput",
+          "parentId": "LC73:art44",
+          "textSha256": "82735bead8f45efec354ee5781da2685a7c5ca76577d2b26227a61a8fe332091"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art45",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art45:caput",
+          "parentId": "LC73:art45",
+          "textSha256": "43bc03ca8b837b490afe4b57edc80d708c7615c37732d079e33557f5cee59166"
+        },
+        {
+          "id": "LC73:art45:p1",
+          "parentId": "LC73:art45",
+          "textSha256": "7bc960085bda2d6f0e22b39747f4d767ac3828c8e597a0d269d021bb68ed7ac4"
+        },
+        {
+          "id": "LC73:art45:p2",
+          "parentId": "LC73:art45",
+          "textSha256": "3116553006e234ea65ae7c5bbd655dacf50bf4c133049e1dc27d03473048cb47"
+        },
+        {
+          "id": "LC73:art45:p3",
+          "parentId": "LC73:art45",
+          "textSha256": "846569ed5c3bff22c39d365a2327c519c25cb57c79d6e0b0be9f3b03e065fbe1"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art46",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art46:caput",
+          "parentId": "LC73:art46",
+          "textSha256": "922a6e03d946aa51af57e0cad90239d7f18321f0965e90884efea8ec6ca3ee02"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art47",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art47:caput",
+          "parentId": "LC73:art47",
+          "textSha256": "3076fe0dfde60fcc85226746f0960b4469e0840eebbacb7f794257cc6b3981ca"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art48",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art48:caput",
+          "parentId": "LC73:art48",
+          "textSha256": "3259425d81f9d6a56464ac0891acd5c95a2b94007ed0a128b122ebc3ec55510d"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art49",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art49:caput",
+          "parentId": "LC73:art49",
+          "textSha256": "96cf8ef92b8057f231acf7a18b767c933fa37c3e3e2ef8dc35405589bba9f17c"
+        },
+        {
+          "id": "LC73:art49:I",
+          "parentId": "LC73:art49",
+          "textSha256": "5254b942391cec1df4dd168ea9b48489311e3a2e61dcb225c2ceae0920056682"
+        },
+        {
+          "id": "LC73:art49:II",
+          "parentId": "LC73:art49",
+          "textSha256": "777fb30b6248d9b69359eb93fe731dbf145c2311e5c6bf55ae8e3c744f1e54fc"
+        },
+        {
+          "id": "LC73:art49:III",
+          "parentId": "LC73:art49",
+          "textSha256": "ce492b2f01465dbcd3761c876d0d6722dd1c178d81667b32cfefaa6b4407483a"
+        },
+        {
+          "id": "LC73:art49:p1",
+          "parentId": "LC73:art49",
+          "textSha256": "339a8fc65b7cbba308fef4c7566b8473d7a01e1caff49af976b6e95d11ed976d"
+        },
+        {
+          "id": "LC73:art49:p2",
+          "parentId": "LC73:art49",
+          "textSha256": "bdbc8be87357474605867e7848a003417aae44246d2d7ec89870b5f818fef750"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art50",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art50:caput",
+          "parentId": "LC73:art50",
+          "textSha256": "21558ca2678b5932ce8de979e88823028e9b8a92d8a45400b0bdb916bd8a6c18"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art51",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art51:caput",
+          "parentId": "LC73:art51",
+          "textSha256": "8867097836f792fe35a5fb84186640787abadb073edc0e2e8098ecf0035b19e2"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art52",
+      "path": [
+        "LC73:titleVI"
+      ],
+      "units": [
+        {
+          "id": "LC73:art52:caput",
+          "parentId": "LC73:art52",
+          "textSha256": "1bf2a703a6f641aa838a73d73a3428af00d770a601b3fc617c1ddebfceed78ad"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art53",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art53:caput",
+          "parentId": "LC73:art53",
+          "textSha256": "6d942bc6a2bac0fed46cd2274079d840efa14bf7bf7e6f5ee7fbe74b3ac1542b"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art54",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art54:caput",
+          "parentId": "LC73:art54",
+          "textSha256": "345288377d8ff699862ca15cbf701601ff37834f45cccad3b158ffe88293a899"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art55",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art55:caput",
+          "parentId": "LC73:art55",
+          "textSha256": "1df7f12946ba28e7cbf663428b61b164047d25d171280db52306308e9056192b"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art56",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art56:caput",
+          "parentId": "LC73:art56",
+          "textSha256": "70a907ea521f06036024d8c32560b8479cee38673d89123054898501ea486e59"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art57",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art57:caput",
+          "parentId": "LC73:art57",
+          "textSha256": "075b1078d1d43b3154f1c66284397e660b90fa43a243cdaf87354d933525aa6d"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art58",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art58:caput",
+          "parentId": "LC73:art58",
+          "textSha256": "f2ba9ed9d33415a2d3fff4b9b9a52cbab6a13ddfc34ab4a66e913008a89eea24"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art59",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art59:caput",
+          "parentId": "LC73:art59",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art60",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art60:caput",
+          "parentId": "LC73:art60",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art61",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art61:caput",
+          "parentId": "LC73:art61",
+          "textSha256": "3575078cd89136fbe389ab28ed48033f4d8a0adfcb12c3ac8e68b24fe803151e"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art62",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art62:caput",
+          "parentId": "LC73:art62",
+          "textSha256": "506050acb255f9e0988f46b3e3679fb1967f9105df80daa85800258659471b69"
+        },
+        {
+          "id": "LC73:art62:p1",
+          "parentId": "LC73:art62",
+          "textSha256": "f6353c754be1c41fa972061d2dbf592090daca25b983651b4e7e216272e41aa0"
+        },
+        {
+          "id": "LC73:art62:p2",
+          "parentId": "LC73:art62",
+          "textSha256": "551fcd11aabeaca7501273a74fe5b4cbd7d4065d2627057ed3199937d510d340"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art63",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art63:caput",
+          "parentId": "LC73:art63",
+          "textSha256": "64d0b16376fa35df998513f7c0873ad8e28bbd1ae4af93cda2e5a571e301070a"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art64",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art64:caput",
+          "parentId": "LC73:art64",
+          "textSha256": "655ea26dfcbd8bbab352ecf7dfc4f07cb02ae58be642a970a955aa197fc20765"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art65",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art65:caput",
+          "parentId": "LC73:art65",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art66",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art66:caput",
+          "parentId": "LC73:art66",
+          "textSha256": "aec5180a1f4dc346f789dfeef94b5ffa037627e9f8ea437c147faea780e88860"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art67",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art67:caput",
+          "parentId": "LC73:art67",
+          "textSha256": "0b4a5fa2cdb2ee29bcc5e5fc68dad9392642b6e298c9a6551ea867c6b059651d"
+        },
+        {
+          "id": "LC73:art67:pu",
+          "parentId": "LC73:art67",
+          "textSha256": "05af4ac8024ef2bfa355a00725c6db05838d1844f408d1d9fe0d466a3fbde730"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art68",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art68:caput",
+          "parentId": "LC73:art68",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art69",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art69:caput",
+          "parentId": "LC73:art69",
+          "textSha256": "3b9442626a8c8c330073cc9437faaf11523d14d89641615a8faac337144b497f"
+        },
+        {
+          "id": "LC73:art69:pu",
+          "parentId": "LC73:art69",
+          "textSha256": "cdc12c5b93184f3a85e32326697fe3bea53d0786d031141800e20addb60d5e44"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art70",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art70:caput",
+          "parentId": "LC73:art70",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art71",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art71:caput",
+          "parentId": "LC73:art71",
+          "textSha256": "26824100034b7466a62a92d9123d1feda7fcca11fa18a424dab68ed543389675"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art72",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art72:caput",
+          "parentId": "LC73:art72",
+          "textSha256": "c0dac86d4cf20ce3e2dfcadc4b6127b48f6fbc33e87e580ef469381040540ff6"
+        }
+      ]
+    },
+    {
+      "id": "LC73:art73",
+      "path": [
+        "LC73:titleVII"
+      ],
+      "units": [
+        {
+          "id": "LC73:art73:caput",
+          "parentId": "LC73:art73",
+          "textSha256": "52d1439d712b77ed0c75f9034e5dbc35ebcfb44d73285866c51c793a2334c5b6"
+        }
+      ]
+    }
+  ]
+}
