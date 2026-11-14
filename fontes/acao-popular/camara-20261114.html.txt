@@ -1,0 +1,657 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.4.7.2 (Linux)"/>
+	<meta name="author" content="P_6140"/>
+	<meta name="created" content="2008-11-28T09:36:00"/>
+	<meta name="changedby" content="Thiago Gomes Eirão"/>
+	<meta name="changed" content="2018-08-10T15:52:00"/>
+	<style type="text/css">
+		@page { size: 21.59cm 27.94cm; margin-right: 2cm; margin-top: 2.5cm; margin-bottom: 2.5cm }
+		p { direction: ltr; color: #000000; orphans: 2; widows: 2; background: transparent }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: pt-BR }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 10pt; so-language: ar-SA }
+		a:link { color: #0000ff; text-decoration: underline }
+		a:visited { color: #800080; text-decoration: underline }
+	</style>
+</head>
+<body lang="pt-BR" text="#000000" link="#0000ff" vlink="#800080" dir="ltr"><p align="center">
+<img src="data:image/png;base64,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" name="Object1" align="left" hspace="12" width="67" height="64"/>
+<br/>
+
+</p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><font size="2" style="font-size: 10pt"><b>CÂMARA
+DOS DEPUTADOS</b></font></p>
+<p align="center"><font size="2" style="font-size: 10pt">Centro de
+Documentação e Informação</font></p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><font size="4" style="font-size: 14pt"><b>LEI Nº
+4.717, DE 29 DE JUNHO DE 1965</b></font></p>
+<p align="center"><br/>
+
+</p>
+<p align="center"><br/>
+
+</p>
+<p align="justify" style="margin-left: 8cm"><font size="3" style="font-size: 12pt">Regula
+a Ação Popular. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p style="text-indent: 2cm"><font size="3" style="font-size: 12pt">O
+PRESIDENTE DA REPÚBLICA</font></p>
+<p style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Faço
+saber que o CONGRESSO NACIONAL decreta e eu sanciono a seguinte Lei: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="center"><font size="3" style="font-size: 12pt">DA AÇÃO
+POPULAR</font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+1º Qualquer cidadão será parte legítima para pleitear a anulação
+ou a declaração de nulidade de atos lesivos ao patrimônio da
+União, do Distrito Federal, dos Estados, dos Municípios, de
+entidades autárquicas, de sociedades de economia mista
+(Constituição, art. 141, § 38), de sociedades mútuas de seguro
+nas quais a União represente os segurados ausentes, de empresas
+públicas, de serviços sociais autônomos, de instituições ou
+fundações para cuja criação ou custeio o tesouro público haja
+concorrido ou concorra com mais de cinqüenta por cento do patrimônio
+ou da receita anual de empresas incorporadas ao patrimônio da União,
+do Distrito Federal, dos Estados e dos Municípios, e de quaisquer
+pessoas jurídicas ou entidades subvencionadas pelos cofres públicos.
+</font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">§
+1º Consideram-se patrimônio público para os fins referidos neste
+artigo, os bens e direitos de valor econômico, artístico, estético,
+histórico ou turístico. </font><font color="#0000ff"><u><a href="http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"><font size="3" style="font-size: 12pt"><i>(Parágrafo
+com redação dada pela Lei nº 6.513, de 20/12/1977)</i></font></a></u></font></font></p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">§
+2º Em se tratando de instituições ou fundações, para cuja
+criação ou custeio o tesouro público concorra com menos de
+cinqüenta por cento do patrimônio ou da receita anual, bem como de
+pessoas jurídicas ou entidades subvencionadas, as conseqüências
+patrimoniais da invalidez dos atos lesivos terão por limite a
+repercussão deles sobre a contribuição dos cofres públicos. </font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+3º A prova da cidadania, para ingresso em juízo, será feita com o
+título eleitoral, ou com documento que a ele corresponda. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+4º Para instruir a inicial, o cidadão poderá requerer às
+entidades, a que se refere este artigo, as certidões e informações
+que julgar necessárias, bastando para isso indicar a finalidade das
+mesmas. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+5º As certidões e informações, a que se refere o parágrafo
+anterior, deverão ser fornecidas dentro de 15 (quinze) dias da
+entrega, sob recibo, dos respectivos requerimentos, e só poderão
+ser utilizadas para a instrução de ação popular. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+6º Somente nos casos em que o interesse público, devidamente
+justificado, impuser sigilo, poderá ser negada certidão ou
+informação. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+7º Ocorrendo a hipótese do parágrafo anterior, a ação poderá
+ser proposta desacompanhada das certidões ou informações negadas,
+cabendo ao juiz, após apreciar os motivos do indeferimento e salvo
+em se tratando de razão de segurança nacional, requisitar umas e
+outras; feita a requisição, o processo correrá em segredo de
+justiça, que cessará com o trânsito em julgado de sentença
+condenatória. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+2º São nulos os atos lesivos ao patrimônio das entidades
+mencionadas no artigo anterior, nos casos de:  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+incompetência;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+vício de forma;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">c)
+ilegalidade do objeto;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">d)
+inexistência dos motivos;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">e)
+desvio de finalidade.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Parágrafo
+único. Para a conceituação dos casos de nulidade observar-se-ão
+as seguintes normas:  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+a incompetência fica caracterizada quando o ato não se incluir nas
+atribuições legais do agente que o praticou;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+o vício de forma consiste na omissão ou na observância incompleta
+ou irregular de formalidades indispensáveis à existência ou
+seriedade do ato;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">c)
+a ilegalidade do objeto ocorre quando o resultado do ato importa em
+violação de lei, regulamento ou outro ato normativo;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">d)
+a inexistência dos motivos se verifica quando a matéria de fato ou
+de direito, em que se fundamenta o ato, é materialmente inexistente
+ou juridicamente inadequada ao resultado obtido;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">e)
+o desvio de finalidade se verifica quando o agente pratica o ato
+visando a fim diverso daquele previsto, explícita ou implicitamente,
+na regra de competência.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+3º Os atos lesivos ao patrimônio das pessoas de direito público ou
+privado, ou das entidades mencionadas no art. 1º, cujos vícios não
+se compreendam nas especificações do artigo anterior, serão
+anuláveis, segundo as prescrições legais, enquanto compatíveis
+com a natureza deles. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+4º São também nulos os seguintes atos ou contratos, praticados ou
+celebrados por quaisquer das pessoas ou entidades referidas no artigo
+1º: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">I
+- a admissão ao serviço público remunerado, com desobediência,
+quanto às condições de habilitação, das normas legais,
+regulamentares ou constantes de instruções gerais. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">II
+- a operação bancária ou de crédito real, quando: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+for realizada com desobediência a normas legais, regulamentares,
+estatutárias, regimentais ou internas;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+o valor real do bem dado em hipoteca ou penhor for inferior ao
+constante de escritura, contrato ou avaliação.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">III
+- a empreitada, a tarefa e a concessão do serviço público, quando:
+</font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+o respectivo contrato houver sido celebrado sem prévia concorrência
+pública ou administrativa, sem que essa condição seja estabelecida
+em lei, regulamento ou norma geral;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+no edital de concorrência forem incluídas cláusulas ou condições,
+que comprometam o seu caráter competitivo;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">c)
+a concorrência administrativa for processada em condições que
+impliquem na limitação das possibilidades normais de competição. 
+</font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">IV
+- As modificações ou vantagens, inclusive prorrogações, que forem
+admitidas, em favor do adjudicatário, durante a execução dos
+contratos de empreitada, tarefa e concessão de serviço público,
+sem que estejam previstas em lei ou nos respectivos instrumentos. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">V
+- a compra e venda de bens móveis ou imóveis, nos casos em que não
+for cabível concorrência pública ou administrativa, quando: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+for realizada com desobediência a normas legais, regulamentares, ou
+constantes de instruções gerais;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+o preço de compra dos bens for superior ao corrente no mercado, na
+época da operação;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">c)
+o preço de venda dos bens for inferior ao corrente no mercado, na
+época da operação.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">VI
+- A concessão de licença de exportação ou importação, qualquer
+que seja a sua modalidade, quando: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+houver sido praticada com violação das normas legais e
+regulamentares ou de instruções e ordens de serviço;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+resultar em exceção ou privilégio, em favor de exportador ou
+importador.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">VII
+- a operação de redesconto quando, sob qualquer aspecto, inclusive
+o limite de valor, desobedecer a normas legais, regulamentares ou
+constantes de instruções gerais. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">VIII
+- o empréstimo concedido pelo Banco Central da República, quando: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+concedido com desobediência de quaisquer normas legais,
+regulamentares, regimentais ou constantes de instruções gerais;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+o valor dos bens dados em garantia, na época da operação, for
+inferior ao da avaliação.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">IX
+- a emissão quando efetuada sem observância das normas
+constitucionais, legais e regulamentadoras que regem a espécie. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="center"><font size="3" style="font-size: 12pt">DA
+COMPETÊNCIA</font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+5º Conforme a origem do ato impugnado, é competente para conhecer
+da ação, processá-la e julgá-la, o juiz que, de acordo com a
+organização judiciária de cada Estado, o for para as causas que
+interessem à União, ao Distrito Federal, ao Estado ou ao Município.
+</font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+1º Para fins de competência, equiparam-se a atos da União, do
+Distrito Federal, do Estado ou dos Municípios, os atos das pessoas
+criadas ou mantidas por essas pessoas jurídicas de direito público,
+bem como os atos das sociedades de que elas sejam acionistas e os das
+pessoas ou entidades por elas subvencionadas ou em relação às
+quais tenham interesse patrimonial. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+2º Quando o pleito interessar simultaneamente à União e a qualquer
+outra pessoa ou entidade, será competente o juiz das causas da
+União, se houver; quando interessar simultaneamente ao Estado e ao
+Município, será competente o juiz das causas do Estado, se houver. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+3º A propositura da ação prevenirá a jurisdição do juízo para
+todas as ações, que forem posteriormente intentadas contra as
+mesmas partes e sob os mesmos fundamentos. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">§
+4º Na defesa do patrimônio público caberá a suspensão liminar do
+ato lesivo impugnado. </font><font color="#0000ff"><u><a href="http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6513-20-dezembro-1977-366517-norma-pl.html"><font size="3" style="font-size: 12pt"><i>(Parágrafo
+acrescido pela Lei nº 6.513, de 20/12/1977)</i></font></a></u></font></font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="center"><font size="3" style="font-size: 12pt">DOS SUJEITOS
+PASSIVOS DA AÇÃO E DOS ASSISTENTES</font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+6º A ação será proposta contra as pessoas públicas ou privadas e
+as entidades referidas no art. 1º, contra as autoridades,
+funcionários ou administradores que houverem autorizado, aprovado,
+ratificado ou praticado o ato impugnado, ou que, por omissão,
+tiverem dado oportunidade à lesão, e contra os beneficiários
+diretos do mesmo. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+1º Se não houver beneficiário direto do ato lesivo, ou se for ele
+indeterminado ou desconhecido, a ação será proposta somente contra
+as outras pessoas indicadas neste artigo. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">§
+2º No caso de que trata o inciso II, item &quot;</font><font size="3" style="font-size: 12pt"><i>b</i></font><font size="3" style="font-size: 12pt">&quot;
+, do art. 4º, quando o valor real do bem for inferior ao da
+avaliação, citar-se-ão como réus, além das pessoas públicas ou
+privadas e entidades referidas no art. 1º, apenas os responsáveis
+pela avaliação inexata e os beneficiários da mesma. </font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+3º A pessoa jurídica de direito público ou de direito privado,
+cujo ato seja objeto de impugnação, poderá abster-se de contestar
+o pedido, ou poderá atuar ao lado do autor, desde que isso se
+afigure útil ao interesse público, a juízo do respectivo
+representante legal ou dirigente. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+4º O Ministério Público acompanhará a ação, cabendo-lhe
+apressar a produção da prova e promover a responsabilidade, civil
+ou criminal, dos que nela incidirem, sendo-lhe vedado, em qualquer
+hipótese, assumir a defesa do ato impugnado ou dos seus autores. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+5º É facultado a qualquer cidadão habilitar-se como litisconsorte
+ou assistente do autor da ação popular. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="center"><font size="3" style="font-size: 12pt">DO PROCESSO</font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+7º A ação obedecerá ao procedimento ordinário, previsto no
+Código de Processo Civil, observadas as seguintes normas
+modificativas: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">I
+- Ao despachar a inicial o juiz ordenará: </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+além da citação dos réus, a intimação do representante do
+Ministério Público;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+a requisição, às entidades indicadas na petição inicial, dos
+documentos que tiverem sido referidos pelo autor (art. 1º, § 6º),
+bem como a de outros que se lhe afigurem necessários ao
+esclarecimento dos fatos, fixando prazos de 15 (quinze) a 30 (trinta)
+dias para o atendimento.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+1º O representante do Ministério Público providenciará para que
+as requisições a que se refere o inciso anterior, sejam atendidas
+dentro dos prazos fixados pelo juiz. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+2º Se os documentos e informações não puderem ser oferecidos nos
+prazos assinalados, o juiz poderá autorizar prorrogação dos
+mesmos, por prazo razoável. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">II
+- Quando o autor o preferir a citação dos beneficiários far-se-á
+por edital com o prazo de 30 (trinta) dias, afixado na sede do juízo
+e publicado três vezes no jornal oficial do Distrito Federal ou da
+Capital do Estado ou Território em que seja ajuizada a ação. A
+publicação será gratuita e deverá iniciar-se no máximo 3 (três)
+dias após a entrega na repartição competente, sob protocolo de uma
+via autenticada do mandado. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">III
+- Qualquer pessoa, beneficiada ou responsável pelo ato impugnado,
+cuja existência ou identidade se torne conhecida no curso do
+processo e antes de proferida a sentença final de primeira
+instância, deverá ser citada para a integração do contraditório,
+sendo-lhe restituído o prazo para contestação e produção de
+provas. Salvo quanto a beneficiário, se a citação se houver feito
+na forma do inciso anterior. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">IV
+- O prazo de contestação é de 20 (vinte) dias prorrogáveis por
+mais 20 (vinte), a requerimento do interessado, se particularmente
+difícil a produção de prova documental, e será comum a todos os
+interessados, correndo da entrega em cartório do mandado cumprido,
+ou, quando for o caso, do decurso do prazo assinado em edital. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">V
+- Caso não requerida, até o despacho saneador, a produção de
+prova testemunhal ou pericial, o juiz ordenará vista às partes por
+10 (dez) dias, para alegações, sendo-lhe os autos conclusos, para
+sentença, 48 (quarenta e oito) horas após a expiração desse
+prazo; havendo requerimento de prova, o processo tomará o rito
+ordinário. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">VI
+- A sentença quando não prolatada em audiência de instrução e
+julgamento, deverá ser proferida dentro de 15 (quinze) dias do
+recebimento dos autos pelo juiz. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Parágrafo
+único. O proferimento da sentença além do prazo estabelecido,
+privará o juiz da inclusão em lista de merecimento para promoção,
+durante 2 (dois) anos, e acarretará a perda, para efeito de promoção
+por antigüidade, de tantos dias, quantos forem os do retardamento,
+salvo motivo justo, declinado nos autos e comprovado perante o órgão
+disciplinar competente. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">Art.
+8º Ficará sujeita à pena de desobediência, salvo motivo justo
+devidamente comprovado, a autoridade, o administrador ou o dirigente,
+que deixar de fornecer, no prazo fixado no art. 1º, § 5º, ou
+naquele que tiver sido estipulado pelo juiz (art. 7º, nº I, letra
+&quot;</font><font size="3" style="font-size: 12pt"><i>b</i></font><font size="3" style="font-size: 12pt">&quot;
+), informações e certidão ou fotocópia de documentos necessários
+à instrução da causa. </font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">Parágrafo
+único. O prazo contar-se-á do dia em que entregue, sob recibo, o
+requerimento do interessado ou o ofício de requisição (artigo 1º,
+§ 5º, e art. 7º, I, &quot;</font><font size="3" style="font-size: 12pt"><i>b</i></font><font size="3" style="font-size: 12pt">&quot;).
+</font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+9º Se o autor desistir da ação ou der motivo à absolvição da
+instância, serão publicados editais nos prazos e condições
+previstos no art. 7º, inciso II, ficando assegurado a qualquer
+cidadão, bem como ao representante do Ministério Público, dentro
+do prazo de 90 (noventa) dias da última publicação feita, promover
+o prosseguimento da ação. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+10. As partes só pagarão custas e preparo a final. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+11. A sentença que, julgando procedente a ação popular, decretar a
+invalidade do ato impugnado, condenará ao pagamento de perdas e
+danos os responsáveis pela sua prática e os beneficiários dele,
+ressalvada a ação regressiva contra os funcionários causadores de
+dano, quando incorrerem em culpa. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+12. A sentença incluirá sempre, na condenação dos réus, o
+pagamento, ao autor, das custas e demais despesas, judiciais e
+extrajudiciais, diretamente relacionadas com a ação e comprovadas,
+bem como o dos honorários de advogado. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+13. A sentença que, apreciando o fundamento de direito do pedido,
+julgar a lide manifestamente temerária, condenará o autor ao
+pagamento do décuplo das custas. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+14. Se o valor da lesão ficar provado no curso da causa, será
+indicado na sentença; se depender de avaliação ou perícia, será
+apurado na execução. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+1º Quando a lesão resultar da falta ou isenção de qualquer
+pagamento, a condenação imporá o pagamento devido, com acréscimo
+de juros de mora e multa legal ou contratual, se houver. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+2º Quando a lesão resultar da execução fraudulenta, simulada ou
+irreal de contratos, a condenação versará sobre a reposição do
+débito, com juros de mora. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+3º Quando o réu condenado perceber dos cofres públicos, a execução
+far-se-á por desconto em folha até o integral ressarcimento do dano
+causado, se assim mais convier ao interesse público. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+4º A parte condenada a restituir bens ou valores, ficará sujeita a
+seqüestro e penhora, desde a prolação da sentença condenatória. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">Art.
+15. Se, no curso da ação, ficar provada a infrigência da lei penal
+ou a prática de falta disciplinar a que a lei comine a pena de
+demissão ou a de rescisão de contrato de trabalho, o juiz, </font><font size="3" style="font-size: 12pt"><i>ex
+officio</i></font><font size="3" style="font-size: 12pt"> ,
+determinará a remessa de cópia autenticada das peças necessárias
+às autoridades ou aos administradores a quem competir aplicar a
+sanção. </font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+16. Caso decorridos 60 (sessenta) dias de publicação da sentença
+condenatória de segunda instância, sem que o autor ou terceiro
+promova a respectiva execução, o representante do Ministério
+Público a promoverá nos 30 (trinta) dias seguintes, sob pena de
+falta grave. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+17. É sempre permitido às pessoas ou entidades referidas no art.
+1º, ainda que hajam contestado a ação, promover, em qualquer
+tempo, e no que as beneficiar, a execução da sentença contra os
+demais réus. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">Art.
+18. A sentença terá eficácia de coisa julgada oponível </font><font size="3" style="font-size: 12pt"><i>erga
+omnes</i></font><font size="3" style="font-size: 12pt">, exceto no
+caso de haver sido a ação julgada improcedente por deficiência de
+prova; neste caso, qualquer cidadão poderá intentar outra ação
+com idêntico fundamento, valendo-se de nova prova. </font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+19. A sentença que concluir pela carência ou pela improcedência da
+ação está sujeita ao duplo grau de jurisdição, não produzindo
+efeito senão depois de confirmada pelo tribunal; da que julgar a
+ação procedente, caberá apelação, com efeito suspensivo. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">§
+1º Das decisões interlocutórias, cabe agravo de instrumento. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="2" style="font-size: 10pt"><font size="3" style="font-size: 12pt">§
+2º Das sentenças e decisões proferidas contra o autor da ação e
+suscetíveis de recurso, poderá recorrer qualquer cidadão e também
+o Ministério Público. </font><font color="#0000ff"><u><a href="http://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-6014-27-dezembro-1973-357596-norma-pl.html"><font size="3" style="font-size: 12pt"><i>(Artigo
+com redação dada pela Lei nº 6.014, de 27/12/1973) </i></font></a></u></font></font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="center"><font size="3" style="font-size: 12pt">DISPOSIÇÕES
+GERAIS</font></p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+20. Para os fins desta Lei, consideram-se entidades autárquicas:  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">a)
+o serviço estatal descentralizado com personalidade jurídica,
+custeado mediante orçamento próprio, independente do orçamento
+geral;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">b)
+as pessoas jurídicas especialmente instituídas por lei, para a
+execução de serviços de interesse público ou social, custeados
+por tributos de qualquer natureza ou por outros recursos oriundos do
+Tesouro Público;  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">c)
+as entidades de direito público ou privado a que a lei tiver
+atribuído competência para receber e aplicar contribuições
+parafiscais.  </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+21. A ação prevista nesta Lei prescreve em 5 (cinco) anos. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Art.
+22. Aplicam-se à ação popular as regras do Código de Processo
+Civil, naquilo em que não contrariem os dispositivos desta Lei, nem
+a natureza específica da ação. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Brasília,
+29 de junho de 1965; 144º da Independência e 77º da República. </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><br/>
+
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">H.
+CASTELLO BRANCO </font>
+</p>
+<p align="justify" style="text-indent: 2cm"><font size="3" style="font-size: 12pt">Milton
+Soares Campos</font></p>
+</body>
+</html>
