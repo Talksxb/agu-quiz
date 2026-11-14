@@ -16,7 +16,7 @@ function id(){return 'ags-'+(typeof crypto!=='undefined'&&crypto.randomUUID?cryp
 function active(){return state.sessions.find(s=>s.id===state.activeId)||null}
 function sessionsFor(deviceId){return state.sessions.filter(s=>s.deviceId===deviceId).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))}
 function start(deviceId){
- const target=clauses().get(deviceId);if(!target)return false;
+ const target=clauses().get(deviceId);if(!target||typeof target.article.topic!=='string'||!target.article.topic)return false;
  let s=state.sessions.find(x=>x.deviceId===deviceId&&x.status==='em_andamento');
  if(!s){s={id:id(),deviceId,topic:target.article.topic,status:'em_andamento',stage:'norma',createdAt:now(),updatedAt:now(),notes:[],attemptIds:[],cardsSeen:[],completedAt:null};state.sessions.push(s)}
  state.activeId=s.id;persist();return s
@@ -82,6 +82,7 @@ function orphans(session){
 function html(deviceId){
  const item=clauses().get(deviceId),s=active();
  if(!item)return '<div class="agu-notice">Dispositivo não encontrado.</div>';
+ if(!item.article.topic)return '<div class="agu-notice">Este dispositivo ainda não tem vínculo curricular. A leitura e os comentários pessoais continuam disponíveis; a sessão integrada depende de um vínculo documentado.</div>';
  const prior=sessionsFor(deviceId);
  let out='<div class="agu-notice"><b>Estudo integrado · '+esc(item.article.label)+' / '+esc(item.label)+'</b><p class="agu-muted">Somente atividades efetivamente registradas contam como realizadas; abrir uma etapa não registra horas ou domínio.</p></div>';
  if(!s||s.deviceId!==deviceId||s.status!=='em_andamento'){

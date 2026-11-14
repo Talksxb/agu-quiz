@@ -5,7 +5,7 @@
 'use strict';
 const fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path'),assert=require('node:assert/strict');
 const BASE='https://talksxb.github.io/agu-quiz/';
-const scripts=['revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js','leitor-juridico.js','meu-estudo.js'];
+const scripts=['revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js','leitor-juridico.js','meu-estudo.js','dados/legislacao-s13.js','estudo-integrado.js'];
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const delay=n=>new Promise(ok=>setTimeout(ok,n));
 async function get(url){
@@ -27,18 +27,18 @@ async function main(){
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
    if(!markup.includes('backup-local-s20.js?v=20261113-s27a'))throw Error('HTML sem a versão esperada');
-   if(!markup.includes('leitor-juridico.js?v=20261113-s32a'))throw Error('HTML sem a versão nova do Leitor');
-   if(!markup.includes('leitor-consolidacao.js?v=20261113-s32a'))throw Error('HTML sem a versão nova de Consolidação');
+   if(!markup.includes('leitor-juridico.js?v=20261113-leg02'))throw Error('HTML sem a versão nova do Leitor');
+   if(!markup.includes('leitor-consolidacao.js?v=20261113-leg02'))throw Error('HTML sem a versão nova de Consolidação');
    if(sha(remote)!==sha(home))throw Error('HTML remoto difere do checkout main, possível cache/propagação');
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='meu-estudo.js'?'20261113-work01b':script==='backup-local-s20.js'?'20261113-s27a':['leitor-juridico.js','leitor-consolidacao.js'].includes(script)?'20261113-s32a':'20261113-s35a','versão de cache '+script);
+    assert.equal(m[1],script==='meu-estudo.js'?'20261113-work01b':script==='backup-local-s20.js'?'20261113-s27a':script==='estudo-integrado.js'?'20261113-leg01':['leitor-juridico.js','leitor-consolidacao.js','dados/legislacao-s13.js'].includes(script)?'20261113-leg02':'20261113-s35a','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
    }
-   console.log('PAGES_VERIFICADO: URL HTTPS, HTML e 6 scripts correspondem ao commit do checkout.');
+   console.log('PAGES_VERIFICADO: URL HTTPS, HTML e 8 scripts correspondem ao commit do checkout.');
    return;
   }catch(e){
    console.error('Pages tentativa',attempt,'falhou:',e.message);

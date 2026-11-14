@@ -51,14 +51,14 @@ select,input{max-width:100%}
 <script src="dados/questoes-auditadas-s19.js?v=20261112-s19a"></script>
 <script src="revisao-inteligente.js?v=20261113-s35a"></script>
 <script src="planejamento-semanal.js?v=20261113-s35a"></script>
-<script src="dados/legislacao-s13.js?v=20261112-s19a"></script>
+<script src="dados/legislacao-s13.js?v=20261113-leg02"></script>
 <script src="dados/relacoes-juridicas-s14.js?v=20261112-s14a"></script>
 <script src="caderno-contextual.js?v=20261113-s35a"></script>
-<script src="estudo-integrado.js?v=20261113-s35a"></script>
+<script src="estudo-integrado.js?v=20261113-leg01"></script>
 <script src="questoes-leitor-s18.js?v=20261112-s19a"></script>
 <script src="dados/versoes-normativas-s17.js?v=20261112-s17a"></script>
-<script src="leitor-consolidacao.js?v=20261113-s32a"></script>
-<script src="leitor-juridico.js?v=20261113-s32a"></script>
+<script src="leitor-consolidacao.js?v=20261113-leg02"></script>
+<script src="leitor-juridico.js?v=20261113-leg02"></script>
 <script src="backup-local-s20.js?v=20261113-s27a"></script>
 <script src="meu-estudo.js?v=20261113-work01b"></script>
 <script>
@@ -430,6 +430,6 @@ document.addEventListener('focusin',event=>{
  const r=el.getBoundingClientRect(),n=nav.getBoundingClientRect();
  if(r.left<n.left+3||r.right>n.right-3)el.scrollIntoView({block:'nearest',inline:'center'});
 });
-document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else{render()}
+document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){view='legal';AGULegal.openLaw(new URLSearchParams(window.location.search).get('norma')||'L9784',false);render()}else{render()}
 </script></body></html>
 

@@ -1,0 +1,46 @@
+/* LEG-02: Chromium isolado, cinco viewports. Não representa Android físico/TalkBack. */
+'use strict';
+const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests/artifacts-leg02');
+const server=http.createServer((req,res)=>{const f=path.resolve(ROOT,decodeURIComponent((req.url||'/').split('?')[0]).replace(/^[/\\]+/,'')||'index.html');if(!f.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end()}fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'content-type':f.endsWith('.html')?'text/html;charset=utf-8':'application/javascript;charset=utf-8','cache-control':'no-store'});res.end(e?'missing':b)})});
+let browser;
+async function main(){
+ await new Promise(ok=>server.listen(0,'127.0.0.1',ok));browser=await chromium.launch({headless:true,args:['--no-sandbox']});fs.mkdirSync(OUT,{recursive:true});const origin=process.env.AGU_TEST_URL||'http://127.0.0.1:'+server.address().port+'/',results=[];
+ for(const width of [320,360,390,430,1280]){
+  const ctx=await browser.newContext({viewport:{width,height:850},reducedMotion:'reduce'}),p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());
+  await p.goto(origin+'?abrir=lei&norma=L9784');assert.equal(await p.locator('.agu-document h2').innerText(),'Art. 1');
+  assert.equal(await p.locator('.agu-unit').count(),6);assert.match(await p.locator('.agu-document').innerText(),/Texto integral incorporado/);
+  const related=async()=>{if(width<=850)await p.getByRole('button',{name:'Relacionados',exact:true}).click()};
+  const index=async()=>{if(width<=850)await p.getByRole('button',{name:'Índice',exact:true}).click()};
+  await index();await p.locator('#agu-chapter-select').selectOption('L9784:chapterXI-A');assert.equal(await p.locator('.agu-document h2').innerText(),'Art. 49-A');
+  assert.equal(await p.evaluate(()=>AGULegal.peek().unit),'L9784:art49-A:caput');
+  for(const suffix of ['B','C','D','E','F','G']){await p.getByRole('button',{name:'Próximo artigo →',exact:true}).press('Enter');assert.equal(await p.locator('.agu-document h2').innerText(),'Art. 49-'+suffix)}
+  await p.getByRole('button',{name:'Próximo artigo →',exact:true}).press('Enter');assert.equal(await p.locator('.agu-document h2').innerText(),'Art. 50');
+  await index();await p.locator('#agu-chapter-select').selectOption('L9784:chapterXII');assert.equal(await p.locator('.agu-unit').count(),12);
+  const oldUnit=p.locator('.agu-unit').filter({has:p.getByText('neguem, limitem ou afetem direitos ou interesses;',{exact:true})});
+  await oldUnit.press('Space');assert.equal(await p.evaluate(()=>document.activeElement===document.querySelector('.agu-unit.selected')),true);
+  await related();await p.getByRole('button',{name:'Comentários',exact:true}).click();await p.locator('#agu-legal-note').fill('Nota sintética no ID legado art50 I');await p.locator('#agu-save-note').press('Enter');
+  await index();await p.getByRole('button',{name:'Último artigo da norma',exact:true}).press('Enter');assert.equal(await p.locator('.agu-document h2').innerText(),'Art. 70');assert.match(await p.locator('.agu-document').innerText(),/Paulo Paiva/);
+  await related();await p.getByRole('button',{name:'Comentários',exact:true}).click();await p.locator('#agu-legal-note').fill('Nota sintética no último artigo novo');await p.locator('#agu-save-note').press('Enter');
+  const raw=await p.evaluate(()=>localStorage.getItem('agu_leitor_juridico_s13_v1'));await p.reload();assert.equal(await p.evaluate(()=>localStorage.getItem('agu_leitor_juridico_s13_v1')),raw);assert.equal(await p.locator('#agu-legal-note').inputValue(),'Nota sintética no último artigo novo');
+  await index();await p.getByRole('button',{name:/Pesquisa jurídica e filtros/}).click();await p.locator('#agu-search-q').fill('L9784:art49-A:p6:III');await p.locator('#agu-search-q').press('Enter');await p.locator('.agu-s17-result').press('Enter');assert.equal(await p.evaluate(()=>AGULegal.peek().unit),'L9784:art49-A:p6:III');assert.equal(await p.evaluate(()=>document.activeElement===document.querySelector('.agu-unit.selected')),true);
+  // Um artigo sem vínculo não cria sessão. Comentários permanecem disponíveis.
+  await related();await p.getByRole('button',{name:'Estudo integrado',exact:true}).click();assert.match(await p.locator('.agu-related').innerText(),/ainda não tem vínculo curricular/);assert.equal(await p.evaluate(()=>AGUStudy.peek().sessions.length),0);
+  await p.getByRole('button',{name:'Início',exact:true}).click();await p.getByRole('button',{name:'Continuar estudando',exact:true}).press('Enter');assert.equal(await p.evaluate(()=>AGUStudy.active().deviceId),'L9784:art11:caput');
+  await p.getByRole('button',{name:'Início',exact:true}).click();const before=await p.evaluate(()=>JSON.stringify({...localStorage}));
+  // Retirar apenas o parâmetro de entrada da URL via navegação; o teste não limpa dados.
+  await p.goto(origin);assert.equal(await p.evaluate(()=>JSON.stringify({...localStorage})),before);await p.getByRole('button',{name:'Continuar estudando',exact:true}).click();assert.equal(await p.evaluate(()=>AGUStudy.peek().sessions.length),1);
+  await p.getByRole('button',{name:'Evolução',exact:true}).click();await p.getByRole('button',{name:'Dados e backup',exact:true}).click();const pending=p.waitForEvent('download');await p.getByRole('button',{name:'Exportar cópia completa',exact:true}).click();const dl=await pending,bytes=fs.readFileSync(await dl.path()),bundle=JSON.parse(bytes.toString());assert.ok(bundle.items.agu_leitor_juridico_s13_v1);
+  const destCtx=await browser.newContext({viewport:{width,height:850}}),dest=await destCtx.newPage();dest.on('dialog',d=>d.accept());await dest.goto(origin);await dest.getByRole('button',{name:'Evolução',exact:true}).click();await dest.getByRole('button',{name:'Dados e backup',exact:true}).click();await dest.locator('#agu-s20-backup-file').setInputFiles({name:'leg02-sintetico.json',mimeType:'application/json',buffer:bytes});await dest.waitForFunction(()=>!!localStorage.getItem('agu_leitor_juridico_s13_v1'));
+  for(const [k,v] of Object.entries(bundle.items))assert.equal(await dest.evaluate(k=>localStorage.getItem(k),k),v,'restauração exata '+k);
+  await dest.reload();assert.equal(await dest.evaluate(()=>JSON.parse(localStorage.getItem('agu_leitor_juridico_s13_v1')).notes['L9784:art50:I']),'Nota sintética no ID legado art50 I');assert.equal(await dest.evaluate(()=>JSON.parse(localStorage.getItem('agu_leitor_juridico_s13_v1')).notes['L9784:art70:caput']),'Nota sintética no último artigo novo');await destCtx.close();
+  await p.goto(origin+'?abrir=lei&norma=L9784');await index();await p.getByRole('button',{name:'Primeiro artigo da norma',exact:true}).click();
+  const a11y={};if(width===390||width===1280){await p.addScriptTag({content:axe.source});a11y.initial=await p.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,reason:n.any.map(a=>a.data)}))})),passed:r.passes.map(v=>v.id)}});fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify(a11y.initial,null,2));assert.deepEqual(a11y.initial.violations,[]);
+   // Reavaliar elementos inconclusivos após revelá-los, sem contar incomplete como passed.
+   a11y.afterScroll=[];for(const v of a11y.initial.incomplete)for(const n of v.nodes){const selector=n.target[0];if(typeof selector!=='string')continue;const loc=p.locator(selector);if(!await loc.count())continue;await loc.first().scrollIntoViewIfNeeded();a11y.afterScroll.push(await p.evaluate(async({selector,id})=>{const r=await axe.run(document.querySelector(selector),{runOnly:{type:'rule',values:[id]}});return {selector,rule:id,violations:r.violations.length,incomplete:r.incomplete.length,passed:r.passes.map(p=>p.id)}},{selector,id:v.id}))}
+  }
+  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow '+width);assert.deepEqual(errors,[]);if(width===390||width===1280)await p.screenshot({path:path.join(OUT,'lei9784-'+width+'.png')});results.push({width,wholeLaw:true,chapters:true,search:true,focus:true,notesReload:true,backupRestored:true,homeResume:true,a11y});await ctx.close();
+ }
+ fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify({target:origin,browser:browser.version(),axe:axe.version,results},null,2));console.log('LEG02_BROWSER_OK',JSON.stringify({target:origin,browser:browser.version(),viewports:results.map(x=>x.width)}));
+}
+main().catch(e=>{console.error(e.stack);process.exitCode=1}).finally(async()=>{await browser?.close();server.close()});

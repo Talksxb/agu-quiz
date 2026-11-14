@@ -1,0 +1,173 @@
+{
+  "baseline": "32d580b4a37c4d21cde2afde69cecdb6bbe8c88f",
+  "units": [
+    {
+      "id": "CF88:art37:caput",
+      "article": "CF88:art37",
+      "law": "CF88",
+      "topic": "ADM-27",
+      "textSha256": "d94a5b2fd49fd6cf266d4db5573b46e7cb4f6f00f15e8947aad0a239298e3ef6"
+    },
+    {
+      "id": "CF88:art37:X",
+      "article": "CF88:art37",
+      "law": "CF88",
+      "topic": "ADM-27",
+      "textSha256": "2d6d875f76bf7b8fa6cd84210ff92d7d2b375787778466bd5e9a9e8a461a004e"
+    },
+    {
+      "id": "CF88:art49:V",
+      "article": "CF88:art49",
+      "law": "CF88",
+      "topic": "ADM-27",
+      "textSha256": "cffabd87e65d3da595e4a6d764b13f7eb85944efdebd86dbca94897bf399f3f2"
+    },
+    {
+      "id": "CF88:art131:caput",
+      "article": "CF88:art131",
+      "law": "CF88",
+      "topic": "CON-50",
+      "textSha256": "852587c0531a0ac8c2b0faaa6bdf2793d6d36e2551a8a69623e5f0cad726139c"
+    },
+    {
+      "id": "CF88:art131:p1",
+      "article": "CF88:art131",
+      "law": "CF88",
+      "topic": "CON-50",
+      "textSha256": "8a6aa91c43e0d78b1de1bdfd58cf88accd6017249258ef2b1a5ef842020a5a63"
+    },
+    {
+      "id": "CF88:art131:p2",
+      "article": "CF88:art131",
+      "law": "CF88",
+      "topic": "CON-50",
+      "textSha256": "076c07192c64becc6f40b59be25687ce7764cb1bd855ea638b09ec5f84f421b0"
+    },
+    {
+      "id": "CF88:art131:p3",
+      "article": "CF88:art131",
+      "law": "CF88",
+      "topic": "CON-50",
+      "textSha256": "29acfa1391c55aede2d5b1f127232d6a15c689be11105b3829867a2efee3f590"
+    },
+    {
+      "id": "CF88:art132:caput",
+      "article": "CF88:art132",
+      "law": "CF88",
+      "topic": "CON-51",
+      "textSha256": "45572369510d9e4dff5558e6cc8e41c5dc6ec975298c7d1381bbc9f198d9ed8f"
+    },
+    {
+      "id": "CF88:art132:pu",
+      "article": "CF88:art132",
+      "law": "CF88",
+      "topic": "CON-51",
+      "textSha256": "9c09c9b57bf53077d1bbc13410050b7b3e3458a36992e9071f45d94178a22715"
+    },
+    {
+      "id": "L9784:art11:caput",
+      "article": "L9784:art11",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "dea85fe74aa997df5527e40d704a7da38bc342ccae70f962605c6e7dd615e95f"
+    },
+    {
+      "id": "L9784:art12:caput",
+      "article": "L9784:art12",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "26a272aa664380303956cc224c80fa8ec616bc35a697d964580efde49d2907a7"
+    },
+    {
+      "id": "L9784:art12:pu",
+      "article": "L9784:art12",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "e9d2d17fe4a6b230e38d88446ad661be2439f9ff6685533c53122cd488b6e7d9"
+    },
+    {
+      "id": "L9784:art13:caput",
+      "article": "L9784:art13",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "323aed964799ccb2699b8ea37548e0c67e93be8a355f390ec414dcd52adbab71"
+    },
+    {
+      "id": "L9784:art13:I",
+      "article": "L9784:art13",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "25937d3769278514e7e4395baaeb1b4d1eabef2b0d87557a103d0634e4efdd5b"
+    },
+    {
+      "id": "L9784:art13:II",
+      "article": "L9784:art13",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "dce86ad46ba440fa8eaec6d630c885ce8f251f8a2931378f021dab78eb11a3b3"
+    },
+    {
+      "id": "L9784:art13:III",
+      "article": "L9784:art13",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "8e422bd447bf75722c7a6cf042d4d141ded60d438cd0714da3a5dec3d9afc5e8"
+    },
+    {
+      "id": "L9784:art14:caput",
+      "article": "L9784:art14",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "7b61fa4ac9b887c39723d503694d8c11492e8f8b7a7fdd41ad2162df2fbbb3a0"
+    },
+    {
+      "id": "L9784:art14:p1",
+      "article": "L9784:art14",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "8cf8d1799835a7403325eed513f176233b787fb5a1cf76a4812da642a26ec338"
+    },
+    {
+      "id": "L9784:art14:p2",
+      "article": "L9784:art14",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "34eecfcb0787303282f0ab8f5c1b06eba1d1e6d00667b5b7f4a50349749920ef"
+    },
+    {
+      "id": "L9784:art14:p3",
+      "article": "L9784:art14",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "fdcb47e9029e9e442225d4d05afd2dbd9a838c63955d2b3f1e8eb309f2a8f0e3"
+    },
+    {
+      "id": "L9784:art15:caput",
+      "article": "L9784:art15",
+      "law": "L9784",
+      "topic": "ADM-06",
+      "textSha256": "ce0b9dcf69083bf075bbf5329e48f9c2a56d3f9503a8d64d9e358ee4cdb8207b"
+    },
+    {
+      "id": "L9784:art50:caput",
+      "article": "L9784:art50",
+      "law": "L9784",
+      "topic": "ADM-17",
+      "textSha256": "da2317fdeab1dd8608474230b08de45d434c3221790faa258ab750fb27a2ee4d"
+    },
+    {
+      "id": "L9784:art50:I",
+      "article": "L9784:art50",
+      "law": "L9784",
+      "topic": "ADM-17",
+      "textSha256": "7f8e75abbbcd592f1517dc13af8e59ef747dc3edda0f817ddf4bf4dd8fe8c678"
+    },
+    {
+      "id": "L9784:art50:p1",
+      "article": "L9784:art50",
+      "law": "L9784",
+      "topic": "ADM-17",
+      "textSha256": "b6e5be7869da5bf16e0c78c9cd9ea8744396dade9b5e01937f7bf7ce052eef26"
+    }
+  ]
+}
