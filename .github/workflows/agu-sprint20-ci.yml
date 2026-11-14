@@ -44,6 +44,8 @@ jobs:
         run: node tests/sprint33-validacao.js
       - name: LEG-01 — catálogo, IDs e compatibilidade de notas
         run: node tests/leg01-validacao.js
+      - name: LEG-02 — Lei 9.784 integral, fonte e recuperação
+        run: node tests/leg02-validacao.js
       - name: WORK 01 — continuidade nos motores originais
         run: node tests/work01-validacao.js
       - name: Sprint 34 — retorno de foco após edição, encerramento, catálogo e tarefa
@@ -94,6 +96,8 @@ jobs:
         run: node tests/sprint35-browser.cjs
       - name: LEG-01 — leitor legado e expansão sintética
         run: node tests/leg01-browser.cjs
+      - name: LEG-02 — lei integral, cinco viewports e restauração sintética
+        run: node tests/leg02-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -115,6 +119,8 @@ jobs:
             tests/artifacts-s32/*.png
             tests/artifacts-s33/*.json
             tests/artifacts-s33/*.png
+            tests/artifacts-leg02/*.json
+            tests/artifacts-leg02/*.png
             tests/artifacts-leg01/*.json
             tests/artifacts-leg01/*.png
             tests/artifacts-work01/*.json

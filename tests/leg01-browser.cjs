@@ -15,11 +15,11 @@ async function main(){
   assert.equal(await p.evaluate(()=>localStorage.getItem('agu_leitor_juridico_s13_v1')),before,'recarregar não reescreve notas '+width);
   assert.equal(await p.locator('#agu-legal-note').inputValue(),'Anotação sintética LEG01: preservar o inciso II.');
   if(width<=850)await p.getByRole('button',{name:'Texto legal',exact:true}).click();
-  assert.ok((await p.locator('.agu-document').innerText()).includes('Norma parcialmente incorporada'));
+  assert.ok((await p.locator('.agu-document').innerText()).includes('Texto integral incorporado'));
   assert.equal(await p.getByRole('link',{name:'Abrir texto oficial completo da norma',exact:true}).count(),1);
-  assert.deepEqual(await p.evaluate(()=>AGULegal.stats()),{laws:2,articles:10,units:24,relations:18});
+  assert.deepEqual(await p.evaluate(()=>AGULegal.stats()),{laws:2,articles:84,units:231,relations:18});
   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
-  assert.deepEqual(errors,[]);results.push({width,legacyNotes:true,partialLabel:true});await ctx.close();
+  assert.deepEqual(errors,[]);results.push({width,legacyNotes:true,integralLabel:true});await ctx.close();
  }
  // Segundo corpus só intercepta uma resposta no contexto descartável, sem alterar o repo.
  const e={};e.window=e;vm.runInNewContext(fs.readFileSync(path.join(ROOT,'dados/legislacao-s13.js'),'utf8'),e);

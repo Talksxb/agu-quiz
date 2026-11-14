@@ -20,7 +20,7 @@ function build(){
  for(const x of units){
   const textual=x.unit.textVerification?.status||x.article.textVerification?.status||x.law.textVerification?.status;
   const textStatus=textual==='pending'?'pendente':textual&&textual!=='compared'&&textual!=='legacy_point_check'?'parcial':'confirmado';
-  out.push({id:'norm:'+x.unit.id,deviceId:x.unit.id,type:'norma',status:textStatus,relation:'literal_do_dispositivo',title:x.law.title+' · '+x.article.label+' · '+x.unit.label,description:x.unit.text,source:x.law.source,verification:textStatus==='pendente'?'Cotejo textual pendente; fonte oficial não equivale a conferência ou certificação':'Conferência textual pontual; cadeia de alterações não certificada',search:x.unit.id+' '+x.article.topic+' '+x.article.label+' '+x.law.title});
+  out.push({id:'norm:'+x.unit.id,deviceId:x.unit.id,type:'norma',status:textStatus,relation:'literal_do_dispositivo',title:x.law.title+' · '+x.article.label+' · '+x.unit.label,description:x.unit.text,source:x.law.source,verification:textStatus==='pendente'?'Cotejo textual pendente; fonte oficial não equivale a conferência ou certificação':textual==='compared'?'Cotejo textual da captura oficial; cadeia de alterações não certificada':'Conferência textual pontual; cadeia de alterações não certificada',search:x.unit.id+' '+x.article.topic+' '+x.article.label+' '+x.law.title});
  }
  for(const r of rels()){
   if(!unitIds.has(r.deviceId)||!['norma','jurisprudencia','questao'].includes(r.kind))continue;
@@ -70,9 +70,9 @@ function searchPanel(){
  return s+'</div>';
 }
 function versionPanel(unitId){
- const x=allClauses().find(x=>x.unit.id===unitId);if(!x)return '';const v=root.AGU_LEGAL_VERSIONS?.entries?.find(z=>z.deviceId===unitId);
+ const x=allClauses().find(x=>x.unit.id===unitId);if(!x)return '';const v=root.AGU_LEGAL_VERSIONS?.entries?.find(z=>z.deviceId===unitId),full=x.law.textVerification?.status==='compared'&&x.law.textVerification?.scope==='full_norm';
  return '<div class="agu-notice"><b>Versão da legislação — controle documental</b>'+
- '<p class="agu-muted">Versão: '+html(v?.versionId||'não catalogada')+' · Fonte oficial: '+html(v?.sourceLabel||x.law.sourceVersion)+' · consulta '+html(v?.consultedAt||x.law.checkedOn)+' · status: '+html(v?.chainStatus||'pendente')+'.</p>'+
+ '<p class="agu-muted">Versão: '+html((full?x.law.textVersionId:v?.versionId)||x.law.textVersionId||'não catalogada')+' · Fonte oficial: '+html(full?x.law.sourceVersion:(v?.sourceLabel||x.law.sourceVersion))+' · consulta '+html(full?x.law.checkedOn:(v?.consultedAt||x.law.checkedOn))+' · status: '+html(v?.chainStatus||'pendente')+'.</p>'+
  '<p>O leitor contém a redação incorporada desse dispositivo, mas <b>não dispõe de uma série histórica verificada</b> nem da cadeia completa de alterações. Comparação histórica indisponível até a certificação das versões e dos atos modificadores.</p>'+
  '<p><a href="'+html(x.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir texto oficial e alterações na origem</a></p></div>';
 }

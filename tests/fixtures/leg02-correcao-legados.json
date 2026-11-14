@@ -1,0 +1,14 @@
+{
+  "previousVersion": "L9784@2026-11-12-selected",
+  "currentVersion": "L9784@2026-11-13-camara-87cd4730",
+  "changes": [
+    {
+      "id": "L9784:art50:I",
+      "before": "Neguem, limitem ou afetem direitos ou interesses.",
+      "after": "neguem, limitem ou afetem direitos ou interesses;",
+      "beforeSha256": "7f8e75abbbcd592f1517dc13af8e59ef747dc3edda0f817ddf4bf4dd8fe8c678",
+      "afterSha256": "40a65d49e9047ddb87c199b131c4be9f057d4511e41db38ba87fe442d4aecf2d",
+      "reason": "Cotejo literal com Câmara: capitalização e pontuação da fonte, sem mudar ID ou vínculo."
+    }
+  ]
+}
