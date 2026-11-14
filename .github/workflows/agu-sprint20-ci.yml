@@ -3,12 +3,14 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main, leg/leg02-lei9784-integral]
+    branches: [main]
     paths:
       - 'index.html'
       - '*.js'
       - 'dados/**'
       - 'lib/**'
+      - 'scripts/**'
+      - 'fontes/**'
       - 'tests/**'
       - '.github/workflows/agu-sprint20-ci.yml'
   workflow_dispatch:
@@ -44,6 +46,8 @@ jobs:
         run: node tests/sprint33-validacao.js
       - name: LEG-01 — catálogo, IDs e compatibilidade de notas
         run: node tests/leg01-validacao.js
+      - name: LEG-03 — LRF integral, fonte, estrutura e persistência
+        run: node tests/leg03-validacao.js
       - name: LEG-02 — Lei 9.784 integral, fonte e recuperação
         run: node tests/leg02-validacao.js
       - name: WORK 01 — continuidade nos motores originais
@@ -64,6 +68,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEG-03 — LRF, cinco viewports e recuperação de dados anteriores
+        run: node tests/leg03-browser.cjs
       - name: LEG-02 — lei integral, cinco viewports e restauração sintética
         run: node tests/leg02-browser.cjs
       - name: Fluxo real no navegador (emulação de viewport, não Android físico)
@@ -119,6 +125,8 @@ jobs:
             tests/artifacts-s32/*.png
             tests/artifacts-s33/*.json
             tests/artifacts-s33/*.png
+            tests/artifacts-leg03/*.json
+            tests/artifacts-leg03/*.png
             tests/artifacts-leg02/*.json
             tests/artifacts-leg02/*.png
             tests/artifacts-leg01/*.json
@@ -144,7 +152,11 @@ jobs:
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
       - name: Instalar navegador para validar a URL publicada
-        run: npm install --no-save playwright && npx playwright install --with-deps chromium
+        run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: LEG-03 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leg03-browser.cjs
       - name: Jornada real no GitHub Pages publicado
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -154,7 +166,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: agu-work01-publicado
-          path: tests/artifacts-work01/
+          path: |
+            tests/artifacts-work01/
+            tests/artifacts-leg03/
           if-no-files-found: ignore
           retention-days: 7
 
