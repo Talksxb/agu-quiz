@@ -57,7 +57,8 @@ async function main(){
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),REVIEW),reviewBeforeMark);
   assert.deepEqual(await page.evaluate(()=>AGULegal.peek().forNotebook.map(x=>x.origin)),['leitor','flashcard_existente']);
   assert.equal(await page.evaluate(()=>AGULegal.peek().forNotebook.at(-1).cardId),'ri-con-01');
-  assert.equal(await page.evaluate(()=>AGULegal.peek().forNotebook.at(-1).topic),'CON-02');
+  // CON-02 não possui vínculo temático granular autorizado na LEG11: ausência preservada.
+  assert.equal(await page.evaluate(()=>AGULegal.peek().forNotebook.at(-1).topic),null);
   await page.getByRole('button',{name:'Lembrei',exact:true}).click();
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),2);
   assert.equal(await page.evaluate(()=>AGUReview.reviewInfo('ri-con-01').seen),1);
