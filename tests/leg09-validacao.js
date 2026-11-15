@@ -13,14 +13,15 @@ function boot(seed=new Map([[READER,JSON.stringify({...legacy,forNotebook:[markR
  return {z,records,fields};
 }
 check('cadeia de deltas LEG07/08/09→UX01→LEG10→UX02→LEG11→UX03',()=>{
- const n=JSON.parse(read('tests/fixtures/leg09-deltas.json')),p=JSON.parse(read('tests/fixtures/leg08-preservacao.json')),u=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json')),y=JSON.parse(read('tests/fixtures/ux-baralhos-03-delta.json'));
+ const n=JSON.parse(read('tests/fixtures/leg09-deltas.json')),p=JSON.parse(read('tests/fixtures/leg08-preservacao.json')),u=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json')),y=JSON.parse(read('tests/fixtures/ux-baralhos-03-delta.json')),z=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  for(const k of ['reader','backup'])assert.equal(n[k+'AfterSha256'],t[k+'BeforeSha256']);
  for(const k of ['review','html']){assert.equal(n[k+'AfterSha256'],u[k+'BeforeSha256']);assert.equal(u[k+'AfterSha256'],t[k+'BeforeSha256']);assert.equal(t[k+'AfterSha256'],v[k+'BeforeSha256'])}
  for(const k of ['review','html'])assert.equal(v[k+'AfterSha256'],w[k+'BeforeSha256']);
  for(const k of ['reader','backup'])assert.equal(t[k+'AfterSha256'],w[k+'BeforeSha256']);
  for(const [f,k] of [['estudo-integrado.js','studySha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),w[k]);
  for(const k of ['review','html'])assert.equal(w[k+'AfterSha256'],y[k+'BeforeSha256']);
- for(const [f,k] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(f)),y[k]);
+ for(const k of ['review','html'])assert.equal(y[k+'AfterSha256'],z[k+'BeforeSha256']);
+ for(const [f,k] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(f)),z[k]);
  assert.equal(n.readerBeforeSha256,p.readerSha256);assert.equal(n.backupBeforeSha256,p.backupSha256);assert.equal(n.reviewBeforeSha256,p.reviewAfterSha256);assert.equal(n.htmlBeforeSha256,p.htmlAfterSha256);
  const {validate}=require('../lib/catalogo-legislativo'),b=boot();assert.deepEqual(copy(validate(b.z.AGU_LEGAL_CORPUS)),{laws:6,articles:292,units:1176,integral:5});assert.equal(b.z.AGUBackup20.keys().length,9);
 });
