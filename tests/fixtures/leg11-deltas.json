@@ -1,0 +1,21 @@
+{
+  "sprint": "LEG-11",
+  "baseCommit": "a1fb2ca",
+  "baseFullCommit": "a1fb2ca82f2985bda1a29d690dc52267fa3f994a",
+  "reviewBeforeSha256": "1bd913fb205bcce518bdbbb97f242baf980e69a471e4a11069090a6ed8744366",
+  "readerBeforeSha256": "74af85f5eb6160ecd5e07b00beb2043a882de288e87f6615d6c8b32deb6e86d3",
+  "backupBeforeSha256": "e2c0e6af69dd8c9c7bc8a35c511a2960a339e8935a51c2fb9be98725893c633e",
+  "htmlBeforeSha256": "04f611a4389014b1472b51b5c7c51ece78e54e0480ea660c9be9bf22b8ae2c0d",
+  "reviewAfterSha256": "b12417eb7062a672e9236b600eaff01a361cdb68d8a8655ffcbbdee8ffd49419",
+  "readerAfterSha256": "1f119fb84c092b00a994943a1f0f09d85dcc6efabb6b85df536a3b3189a48c04",
+  "backupAfterSha256": "8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9",
+  "htmlAfterSha256": "8181f7c7fed7a83ee73736546a0088c7226ee9c26ce3e969bf704749fc27b446",
+  "corpusSha256": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+  "plannerSha256": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+  "studySha256": "82fafd24b164c5d5f4a9fc37ad2bcad90c81d1755bdb9b53ea853f23fd724fc9",
+  "questionSha256": "f4095116ca5bf0b31bd76ca323a88a7b8a1e0b079d100da9981d1f8f6d943c3f",
+  "aud03Sha256": "1b6634c8f8112688e0a3259d6bcf909f1c5ae39a552dd8b47ae1ea5657ec6f5b",
+  "archivedFlashcards": 36,
+  "documentedTopics": ["ADM-06", "CON-50"],
+  "reason": "Origem flashcard_existente, somente lista forNotebook e arquivo histórico fechado para tolerar retirada. Formulário discreto na sessão UX02 e no cartão existente, sem alteração de avaliações, agenda, conteúdo, matriz ou estrutura de backup. Baselines LEG01-10/UX01-02 intocados."
+}

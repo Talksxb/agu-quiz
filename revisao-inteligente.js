@@ -103,6 +103,22 @@ const ALL=[...CARDS,...AUD03_CARDS,...OFFICIAL,...S18_ITEMS];
 const IDS=ALL.map(x=>x.id);
 if(new Set(IDS).size!==IDS.length)throw Error('IDs duplicados no acervo AGU');
 const INDEX=new Map(ALL.map(x=>[x.id,x]));
+// LEG11: identidade histórica fechada dos flashcards já existentes. Não cria cartões.
+// Código granular só entra como topic quando também documentado no corpus público.
+// A referência arquivada sobrevive à indisponibilidade posterior de um cartão na interface.
+const NOTEBOOK_CARD_HISTORY=Object.freeze(Object.fromEntries([
+ ['ADM-06','ri-adm-01 ri-adm-02 ri-adm-03 ri-adm-04 ri26-adm-01 ri26-adm-02 ri26-adm-03 ri26-adm-04 ri26-adm-05 aud03-flc-001 aud03-flc-002 aud03-flc-003','ADM-06'],
+ ['ADM-13','ri-adm-06 aud03-flc-004 aud03-flc-005 aud03-flc-006',null],
+ ['ADM-23','ri-adm-05 aud03-flc-007 aud03-flc-008 aud03-flc-009',null],
+ ['PC-03','ri-pc-01 ri-pc-02 ri-pc-03 ri26-pc-01 ri26-pc-02 ri26-pc-03 ri26-pc-04 aud03-flc-010 aud03-flc-011 aud03-flc-012',null],
+ ['CON-02','ri-con-01 ri-con-02',null],
+ ['CON-50','ri-con-03 ri26-con-01 aud03-flc-013 aud03-flc-014','CON-50']
+].flatMap(([code,ids,topic])=>ids.split(' ').map(id=>[id,Object.freeze({id,code,topic,label:'Flashcard '+id+' · '+code})]))));
+function notebookHistoricCard(id){return typeof id==='string'&&Object.hasOwn(NOTEBOOK_CARD_HISTORY,id)?NOTEBOOK_CARD_HISTORY[id]:null}
+function notebookEligibleCard(id){
+ const ref=notebookHistoricCard(id),x=INDEX.get(id);
+ return ref&&x?.kind==='flashcard'&&x.code===ref.code&&x.notebookUnavailable!==true?x:null;
+}
 const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date().toISOString()});
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
 let active=null,revealed=false,pick='',currentMode='auto';
@@ -248,11 +264,39 @@ function deckClearFilters(keyboard=false){
  global.render?.();focusAfter('#agu-deck-filter-discipline',keyboard);return true;
 }
 function deckNotebook(keyboard=false){
- // LEG07 só autoriza marcas ligadas a um dispositivo granular documentado.
- // Os flashcards não trazem deviceId validado: abrir a API/tela existente
- // do leitor e exigir escolha manual da unidade (sem associação inferida).
+ // Caminho legado mantido: permite consultar a lista geral sem interferir na sessão.
  if(currentMode!=='deck'||typeof global.setView!=='function'||!global.AGULegal?.tab)return false;
  global.setView('legal');global.AGULegal.tab('para_caderno',keyboard);return true;
+}
+function flashNotebookForm(x,prefix){
+ if(!notebookEligibleCard(x?.id))return '';
+ return '<details class="agu-ctx-box agu-flash-notebook"><summary>Para meu caderno · flashcard</summary>'+
+ '<p class="small muted">Anote apenas uma dúvida ou distinção para escrever depois à mão. Isto não revela a resposta nem altera a revisão.</p>'+
+ '<label for="'+prefix+'-input">Minha pergunta para o caderno físico</label>'+
+ '<textarea id="'+prefix+'-input" rows="3" maxlength="450" placeholder="O que preciso distinguir ou recuperar?"></textarea>'+
+ '<button type="button" class="secondary" id="'+prefix+'-save" onclick="AGUReview.notebookSaveCard(\''+esc(x.id)+'\',\''+prefix+'\',event.detail===0)">Guardar para meu caderno</button>'+
+ '<p class="small muted" tabindex="-1" role="status" aria-live="polite" id="'+prefix+'-status"></p></details>';
+}
+function notebookSaveCard(id,prefix,keyboard=false){
+ const session=currentMode==='deck'?savedSession():null;
+ if(!notebookEligibleCard(id)||(currentMode==='deck'?
+  !(session?.status==='em_andamento'&&session.order[session.index]===id):
+  !(active?.kind==='flashcard'&&active.id===id)))return false;
+ if(!['agu-deck-notebook','agu-flash-notebook'].includes(prefix))return false;
+ const field=document.getElementById(prefix+'-input'),status=document.getElementById(prefix+'-status'),prompt=field?.value||'';
+ if(!field||!status)return false;
+ const ok=global.AGULegal?.notebookSaveCard?.(id,prompt)===true;
+ status.textContent=ok?'Marcação guardada para seu caderno físico.':'Não foi possível guardar. Confira o texto e o limite de 300 marcações; seus dados anteriores foram preservados.';
+ if(ok)field.value='';
+ if(keyboard)status.focus?.({preventScroll:false});
+ return ok;
+}
+function notebookOpenCard(id,keyboard=false){
+ if(!notebookEligibleCard(id)||typeof global.setView!=='function'||!focusCard(id))return false;
+ // Apenas a seleção visual muda; não grava tentativas, sessão, estágio ou revisão.
+ global.setView?.('review');
+ focusAfter('.agu-flash-notebook > summary',keyboard);
+ return true;
 }
 function urgent(x){
  const st=stat(x.id);
@@ -292,8 +336,8 @@ function notebookPanel(){
  if(!list.length)return '';
  const s=readerState(),orphan=(s?.forNotebook||[]).filter(x=>x.status==='pendente'&&x.topic===null).length;
  return '<section class="card agu-review-notebook" aria-label="Para meu caderno durante esta revisão"><h3 id="agu-review-notebook-heading" tabindex="-1">Para meu caderno · '+esc(scheduledTopic())+'</h3><p class="small muted">Perguntas que você marcou para anotar à mão. Terminar esta revisão não muda o estado delas.</p>'+
- list.map(x=>'<article class="agu-notice agu-review-notebook-item"><p><b>'+esc(x.prompt)+'</b></p><p class="agu-muted">'+(x.origin==='questao_verificada'?'Questão oficial · '+esc(x.questionLabel):x.origin==='estudo_integrado'?'Estudo integrado · '+esc(x.deviceId)+' · sessão '+esc(x.sessionId):esc(x.lawId)+' · '+esc(x.unitId))+' · '+esc(x.createdAt.slice(0,10))+'</p><div class="btnrow">'+
- (global.AGULegal?.notebookCanOpenOrigin?.(x.id)?'<button type="button" class="secondary" id="agu-review-notebook-origin-'+esc(x.id)+'" onclick="AGUReview.notebookOrigin(\''+esc(x.id)+'\',event.detail===0)">'+(x.origin==='questao_verificada'?'Abrir questão de origem':x.origin==='estudo_integrado'?'Retomar sessão de estudo':'Abrir dispositivo legal')+'</button>':'<span class="small muted">'+(x.origin==='questao_verificada'?'Questão não disponível nesta versão.':'Sessão original indisponível para retomada.')+'</span>')+
+ list.map(x=>'<article class="agu-notice agu-review-notebook-item"><p><b>'+esc(x.prompt)+'</b></p><p class="agu-muted">'+(x.origin==='flashcard_existente'?'Flashcard · '+esc(x.cardLabel):x.origin==='questao_verificada'?'Questão oficial · '+esc(x.questionLabel):x.origin==='estudo_integrado'?'Estudo integrado · '+esc(x.deviceId)+' · sessão '+esc(x.sessionId):esc(x.lawId)+' · '+esc(x.unitId))+' · '+esc(x.createdAt.slice(0,10))+'</p><div class="btnrow">'+
+ (global.AGULegal?.notebookCanOpenOrigin?.(x.id)?'<button type="button" class="secondary" id="agu-review-notebook-origin-'+esc(x.id)+'" onclick="AGUReview.notebookOrigin(\''+esc(x.id)+'\',event.detail===0)">'+(x.origin==='flashcard_existente'?'Abrir flashcard de origem':x.origin==='questao_verificada'?'Abrir questão de origem':x.origin==='estudo_integrado'?'Retomar sessão de estudo':'Abrir dispositivo legal')+'</button>':'<span class="small muted">'+(x.origin==='flashcard_existente'?'Flashcard não disponível nesta versão.':x.origin==='questao_verificada'?'Questão não disponível nesta versão.':'Sessão original indisponível para retomada.')+'</span>')+
  '<button type="button" class="secondary" onclick="AGUReview.notebookStatus(\''+esc(x.id)+'\',\'anotado\',event.detail===0)">Anotei no meu caderno</button>'+
  '<button type="button" class="secondary" onclick="AGUReview.notebookStatus(\''+esc(x.id)+'\',\'dispensado\',event.detail===0)">Dispensar</button></div></article>').join('')+
  (orphan?'<p class="small muted">Há também '+orphan+' marcação(ões) sem tópico curricular comprovado, consultáveis na lista geral do leitor. Elas não entram automaticamente nesta revisão.</p>':'')+
@@ -313,18 +357,24 @@ function notebookOrigin(id,keyboard=false){
  // A navegação interna não atualiza a URL. Não restaurar um ?abrir=lei antigo ao voltar da revisão.
  const q=new URLSearchParams(global.location?.search||'');
  const path=(global.location?.pathname||'/')+(q.get('abrir')==='questao'?'?abrir=questao':'');
- notebookReturn={id,path,keyboard};
- global.setView('legal');
+ const mark=readerState()?.forNotebook?.find(x=>x.id===id),flash=mark?.origin==='flashcard_existente';
+ notebookReturn={id,path,keyboard,source:flash?'flashcard':'legal',
+  ...(flash?{mode:currentMode,activeId:active?.id||null,revealed,pick}:{})};
+ if(!flash)global.setView('legal');
  if(global.AGULegal?.notebookOrigin?.(id)===true)return true;
  notebookReturn=null;global.setView('review');return false;
 }
 function notebookReturnPanel(){
  if(!notebookReturn)return '';
- return '<div class="card agu-review-back"><button type="button" class="secondary" id="agu-review-return" onclick="AGUReview.returnFromNotebook()">← Voltar à revisão programada</button><p class="small muted">A revisão e sua resposta permanecem como estavam. O dispositivo foi aberto apenas para consulta.</p></div>';
+ return '<div class="card agu-review-back"><button type="button" class="secondary" id="agu-review-return" onclick="AGUReview.returnFromNotebook()">← Voltar à revisão programada</button><p class="small muted">A revisão e sua resposta permanecem como estavam. A origem foi aberta apenas para consulta.</p></div>';
 }
 function returnFromNotebook(){
  if(!notebookReturn)return false;
  const previous=notebookReturn;notebookReturn=null;
+ if(previous.source==='flashcard'){
+  currentMode=previous.mode;active=INDEX.get(previous.activeId)||null;
+  revealed=previous.revealed;pick=previous.pick;
+ }
  if(global.history?.replaceState&&previous.path)global.history.replaceState(null,'',previous.path);
  global.setView?.('review');
  focusAfter('#agu-review-notebook-origin-'+previous.id,true);
@@ -458,7 +508,8 @@ function cardHTML(x){
  if(x.kind==='flashcard'){
   return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
    (revealed?'<div class="feedback"><b>Resposta</b><p>'+esc(x.back)+'</p></div>'+flashDetails(x):
-   '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal(event.detail===0)">Mostrar resposta</button></div>');
+   '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal(event.detail===0)">Mostrar resposta</button></div>')+
+   flashNotebookForm(x,'agu-flash-notebook');
  }
 
  const q=INLINE_ADAPTED[x.id];
@@ -523,7 +574,8 @@ function sessionHTML(){
   '<button type="button" id="agu-deck-face" class="agu-deck-surface agu-deck-front" onclick="AGUReview.reveal(event.detail===0)"><span class="agu-deck-stage">Frente · pense antes de revelar</span><h3 class="question-title">'+esc(x.front)+'</h3><span class="agu-deck-flip-tip">Toque ou pressione Enter / Espaço para revelar a resposta →</span></button>')+
  (rated?'<div class="agu-deck-rated" role="status">Você já avaliou este cartão nesta sessão. A avaliação não será registrada novamente.</div>':shown?'<div><p>Como foi recuperar a resposta?</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([value,label])=>'<button id="agu-deck-rating-'+value+'" type="button" class="'+(value==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+value+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
  '<div class="btnrow"><button class="secondary" type="button" '+(s.index===0?'disabled':'')+' onclick="AGUReview.deckMove(-1,event.detail===0)">← Anterior</button><button id="agu-deck-next" class="secondary" type="button" '+(s.index===s.order.length-1?'disabled':'')+' onclick="AGUReview.deckMove(1,event.detail===0)">Próximo →</button></div>'+
- '<div class="section"><button type="button" class="secondary" onclick="AGUReview.deckNotebook(event.detail===0)">Para meu caderno · abrir leitor</button><p class="agu-deck-help">A LEG-07 salva pendências somente em dispositivos jurídicos identificados. Os cartões ainda não têm ligação granular comprovada: escolha o dispositivo no leitor antes de guardar uma pergunta. Sem novo caderno ou vinculação automática.</p></div>'+notebookPanel()+'</section>';
+ flashNotebookForm(x,'agu-deck-notebook')+
+ '<div class="section"><button type="button" class="secondary" onclick="AGUReview.deckNotebook(event.detail===0)">Para meu caderno · abrir leitor</button><p class="agu-deck-help">A marcação do flashcard é opcional e fica na mesma lista do leitor. Para anotar um dispositivo jurídico específico, escolha-o manualmente no leitor; não há vínculo normativo presumido.</p></div>'+notebookPanel()+'</section>';
 }
 function catalog(){
  const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));
@@ -538,8 +590,8 @@ function page(){
  const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
  if(active&&!INDEX.has(active.id))active=null;
  const header='<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Biblioteca de assuntos · respostas comentadas · revisão espaçada</div></div></div>';
- if(currentMode==='deck'&&savedSession())return header+libraryHTML();
- return header+libraryHTML()+
+ if(currentMode==='deck'&&savedSession())return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML();
+ return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML()+
  '<div class="agu-deck-legacy"><h2>Revisão inteligente · fila sugerida</h2><p class="small muted">Os caminhos anteriores de revisão e questões oficiais continuam disponíveis.</p></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
  '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
@@ -594,5 +646,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);

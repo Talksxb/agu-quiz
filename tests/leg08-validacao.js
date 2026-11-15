@@ -18,15 +18,17 @@ function boot(source=reader,rev=review,restrict=false){
  vm.createContext(z);for(const file of ['dados/legislacao-s13.js','revisao-inteligente.js','estudo-integrado.js','leitor-consolidacao.js','leitor-juridico.js','backup-local-s20.js','planejamento-semanal.js'])vm.runInContext(read(file),z);
  return {z,records,fields};
 }
-check('baselines LEG08→LEG09→UX01→LEG10→UX02 encadeados; leitor e corpus intactos',()=>{
- const f=JSON.parse(read('tests/fixtures/leg08-preservacao.json')),n=JSON.parse(read('tests/fixtures/leg09-deltas.json')),u=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json'));
+check('baselines LEG08→LEG09→UX01→LEG10→UX02→LEG11 encadeados; leitor e corpus intactos',()=>{
+ const f=JSON.parse(read('tests/fixtures/leg08-preservacao.json')),n=JSON.parse(read('tests/fixtures/leg09-deltas.json')),u=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json'));
  for(const [key,previous] of [['reviewBeforeSha256','reviewAfterSha256'],['htmlBeforeSha256','htmlAfterSha256'],['readerBeforeSha256','readerSha256'],['backupBeforeSha256','backupSha256']])assert.equal(n[key],f[previous]);
  for(const k of ['review','html']){assert.equal(u[k+'BeforeSha256'],n[k+'AfterSha256']);assert.equal(t[k+'BeforeSha256'],u[k+'AfterSha256']);assert.equal(v[k+'BeforeSha256'],t[k+'AfterSha256'])}
  for(const k of ['reader','backup'])assert.equal(t[k+'BeforeSha256'],n[k+'AfterSha256']);
- for(const [file,key] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(file)),v[key]);
- for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256']])assert.equal(sha(read(file)),t[key]);
+ for(const k of ['review','html'])assert.equal(v[k+'AfterSha256'],w[k+'BeforeSha256']);
+ for(const k of ['reader','backup'])assert.equal(t[k+'AfterSha256'],w[k+'BeforeSha256']);
+ for(const [file,key] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(file)),w[key]);
+ for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256']])assert.equal(sha(read(file)),w[key]);
  for(const [file,key] of [['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(file)),t[key]);
- assert.match(read('index.html'),/revisao-inteligente\.js\?v=20261115-ux02/);
+ assert.match(read('index.html'),/revisao-inteligente\.js\?v=20261115-leg11/);
 });
 check('apenas pendência ADM-06 em cartão efetivamente agendado',()=>{const {z}=boot();z.AGUReview.go('auto');const list=copy(z.AGUReview.notebookDue());assert.equal(list.length,1);assert.equal(list[0].id,dueMark.id);assert.match(z.AGUReview.page(),/Quando a delegação exige hierarquia/);assert.doesNotMatch(z.AGUReview.page(),/Distinguir motivo e finalidade/);assert.match(z.AGUReview.page(),/sem tópico curricular comprovado/);assert.match(z.AGUReview.page(),/Anotei no meu caderno/)});
 check('sem cartão previamente agendado não introduz nenhuma recuperação automática',()=>{const b=boot(reader,{...review,cards:{}});b.z.AGUReview.go('auto');assert.deepEqual(copy(b.z.AGUReview.notebookDue()),[]);assert.doesNotMatch(b.z.AGUReview.page(),/agu-review-notebook-item/);const future=boot(reader,{...review,cards:{'ri-adm-01':{stage:1,due:'2999-01-01',seen:1}}});future.z.AGUReview.select('ri-adm-01');assert.deepEqual(copy(future.z.AGUReview.notebookDue()),[])});
