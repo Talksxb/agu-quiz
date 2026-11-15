@@ -87,6 +87,7 @@ async function main(){
   const zoom=await p.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,excessPx:document.documentElement.scrollWidth-innerWidth,button:(()=>{const r=document.querySelector('#agu-home-notebook-open').getBoundingClientRect();return {left:r.left,right:r.right,viewport:innerWidth}})(),
    offenders:[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.right>innerWidth+2&&!e.closest('.secondary-nav')}).slice(0,12).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,id:e.id,className:typeof e.className==='string'?e.className.slice(0,65):'',right:Math.round(r.right),text:e.textContent?.trim().slice(0,45)}})}));
   assert.ok(zoom.button.left>=-1&&zoom.button.right<=width+2,'atalho fora do viewport após ampliação de fonte');
+  assert.equal(zoom.overflow,false,'rolagem horizontal após ampliação da fonte na Home '+width+'px; excedente '+zoom.excessPx+'px');
   await p.screenshot({path:path.join(OUT,'home-zoom-'+width+'.png')});
   await p.evaluate(()=>{document.documentElement.style.fontSize=''});
   await p.reload();assert.match(await p.locator('#agu-home-notebook-count').innerText(),/2 marcações pendentes/);
