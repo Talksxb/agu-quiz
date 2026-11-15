@@ -76,7 +76,7 @@ async function main(){
   await page.getByRole('button',{name:'Voltar à biblioteca'}).click();
   await page.locator('#agu-deck-filter-topic').fill('algo inexistente');await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
-  assert.ok(await page.getByText('Nenhum baralho corresponde aos filtros').isVisible());
+  assert.ok(await page.getByText('Nenhum cartão corresponde à combinação de filtros').isVisible());
   await page.locator('#agu-deck-filter-topic').fill('');await page.locator('#agu-deck-filter-topic').press('Tab');
   if(width===390||width===1280){
    await page.locator('#agu-deck-library').screenshot({path:path.join(OUT,'biblioteca-'+width+'.png')});
