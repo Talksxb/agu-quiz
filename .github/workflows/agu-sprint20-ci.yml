@@ -303,7 +303,8 @@ jobs:
             tests/artifacts-leg09/
             tests/artifacts-leg10/
             tests/artifacts-leg11/
-            tests/artifacts-leg12/
+            tests/artifacts-leg12/*.json
+            tests/artifacts-leg12/*.png
             tests/artifacts-ux-baralhos-01/
             tests/artifacts-ux-baralhos-02/
             tests/artifacts-ux-baralhos-03/
