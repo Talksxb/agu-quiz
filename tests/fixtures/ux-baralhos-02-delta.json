@@ -1,0 +1,21 @@
+{
+  "sprint": "UX-BARALHOS-02",
+  "baseCommit": "ac19569af131b4196b25229c6a0318148c18016e",
+  "reviewBeforeSha256": "0c7a3b3f2809942b160f5811aaadd9e71b5eba726a212f72157ffd669cab6d03",
+  "htmlBeforeSha256": "c6207bb60d4ef7b895a42738609b09c8c7a7827c63260ab0935417a05e469eab",
+  "reviewAfterSha256": "dd00f5edb47e9c91a866f9f48d98b2861227d89e0cd0537f644d6f225941b8cc",
+  "htmlAfterSha256": "e2248d0a4ef73507ec2cb8cf983cea63885f6edd8f98881d41485dcc7569813c",
+  "cssBeforeSha256": "0ea120f61cb1ee4d0e4bb711369c23aa2e4cbc8ffa1b56076211f25a51452a4c",
+  "cssAfterSha256": "4946db95cc84a7b387231a36c8c32405b3ffe0404cc623eadd51287172e57e27",
+  "unchanged": [
+    "catalogo-disciplinas.js",
+    "planejamento-semanal.js",
+    "meu-estudo.js",
+    "estudo-integrado.js",
+    "leitor-juridico.js",
+    "backup-local-s20.js",
+    "dados/legislacao-s13.js",
+    "dados/flashcards-aud03-lote01.js"
+  ],
+  "reason": "Filtros de estado documentado e decisão explícita de substituir sessão, sem alterar tentativas, agenda, corpus, matriz, caderno nem cronograma. Baselines LEG08/LEG09/UX01 preservados."
+}
