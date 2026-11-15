@@ -2,6 +2,7 @@
 (function(global){
 'use strict';
 const KEY='agu_quiz_revisao_inteligente_v1';
+const READER_KEY='agu_leitor_juridico_s13_v1';
 const DAYS=[1,7,21,45];
 const links={
  admin:'https://www2.camara.leg.br/legin/fed/lei/1999/lei-9784-29-janeiro-1999-322239-normaatualizada-pl.html',
@@ -105,6 +106,7 @@ const INDEX=new Map(ALL.map(x=>[x.id,x]));
 const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date().toISOString()});
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
 let active=null,revealed=false,pick='',currentMode='auto';
+let notebookReturn=null;
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // S33: os três botões comprovadamente substituídos por render() no Chrome.
 function focusAfter(selector,keyboard){if(keyboard)document.querySelector?.(selector)?.focus?.({preventScroll:false})}
@@ -130,6 +132,64 @@ function summary(){
  const attempts=state.attempts.filter(x=>x.kind==='official'&&typeof x.correct==='boolean');
  const next=Object.values(state.cards).filter(x=>x.due&&x.due>today()).map(x=>x.due).sort()[0]||'Nenhuma agendada';
  return {due:due.length,flashDue:due.filter(x=>x.kind==='flashcard').length,officialDue:due.filter(x=>x.kind==='official').length,newCards,repeated:repeated.length,attempts:attempts.length,correct:attempts.filter(x=>x.correct).length,next};
+}
+/* LEG08: somente revisão já agendada pelo motor de cartões; nenhuma agenda nova. */
+function scheduledTopic(){
+ if(!active||!active.code)return null;
+ const s=stat(active.id);
+ return typeof s.due==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s.due)&&s.due<=today()?active.code:null;
+}
+function readerState(){
+ const s=global.AGULegal?.peek?.();
+ return s&&global.AGUBackup20?.validateRecord?.(READER_KEY,s)?s:null;
+}
+function notebookDue(){
+ const topic=scheduledTopic(),s=readerState();
+ if(!topic||!s)return [];
+ return (s.forNotebook||[]).filter(x=>x.status==='pendente'&&x.topic===topic);
+}
+function notebookPanel(){
+ const list=notebookDue();
+ if(!list.length)return '';
+ const s=readerState(),orphan=(s?.forNotebook||[]).filter(x=>x.status==='pendente'&&x.topic===null).length;
+ return '<section class="card agu-review-notebook" aria-label="Para meu caderno durante esta revisão"><h3 id="agu-review-notebook-heading" tabindex="-1">Para meu caderno · '+esc(scheduledTopic())+'</h3><p class="small muted">Perguntas que você marcou para anotar à mão. Terminar esta revisão não muda o estado delas.</p>'+
+ list.map(x=>'<article class="agu-notice agu-review-notebook-item"><p><b>'+esc(x.prompt)+'</b></p><p class="agu-muted">'+esc(x.lawId)+' · '+esc(x.unitId)+' · '+esc(x.createdAt.slice(0,10))+'</p><div class="btnrow">'+
+ '<button type="button" class="secondary" id="agu-review-notebook-origin-'+esc(x.id)+'" onclick="AGUReview.notebookOrigin(\''+esc(x.id)+'\',event.detail===0)">Abrir dispositivo legal</button>'+
+ '<button type="button" class="secondary" onclick="AGUReview.notebookStatus(\''+esc(x.id)+'\',\'anotado\',event.detail===0)">Anotei no meu caderno</button>'+
+ '<button type="button" class="secondary" onclick="AGUReview.notebookStatus(\''+esc(x.id)+'\',\'dispensado\',event.detail===0)">Dispensar</button></div></article>').join('')+
+ (orphan?'<p class="small muted">Há também '+orphan+' marcação(ões) sem tópico curricular comprovado, consultáveis na lista geral do leitor. Elas não entram automaticamente nesta revisão.</p>':'')+
+ '<p class="small muted">Se não escolher uma ação, a marcação permanecerá pendente.</p></section>';
+}
+function notebookStatus(id,status,keyboard=false){
+ if(!['anotado','dispensado'].includes(status)||!notebookDue().some(x=>x.id===id))return false;
+ const done=global.AGULegal?.notebookSetStatus?.(id,status)===true;
+ if(done&&keyboard){
+  const next=document.querySelector?.('#agu-review-notebook-heading')||document.querySelector?.('#main .question-title')||document.querySelector?.('#main h1');
+  if(next){next.tabIndex=-1;next.focus?.({preventScroll:false})}
+ }
+ return done;
+}
+function notebookOrigin(id,keyboard=false){
+ if(!notebookDue().some(x=>x.id===id)||typeof global.setView!=='function')return false;
+ // A navegação interna não atualiza a URL. Não restaurar um ?abrir=lei antigo ao voltar da revisão.
+ const q=new URLSearchParams(global.location?.search||'');
+ const path=(global.location?.pathname||'/')+(q.get('abrir')==='questao'?'?abrir=questao':'');
+ notebookReturn={id,path,keyboard};
+ global.setView('legal');
+ if(global.AGULegal?.notebookOrigin?.(id)===true)return true;
+ notebookReturn=null;global.setView('review');return false;
+}
+function notebookReturnPanel(){
+ if(!notebookReturn)return '';
+ return '<div class="card agu-review-back"><button type="button" class="secondary" id="agu-review-return" onclick="AGUReview.returnFromNotebook()">← Voltar à revisão programada</button><p class="small muted">A revisão e sua resposta permanecem como estavam. O dispositivo foi aberto apenas para consulta.</p></div>';
+}
+function returnFromNotebook(){
+ if(!notebookReturn)return false;
+ const previous=notebookReturn;notebookReturn=null;
+ if(global.history?.replaceState&&previous.path)global.history.replaceState(null,'',previous.path);
+ global.setView?.('review');
+ focusAfter('#agu-review-notebook-origin-'+previous.id,true);
+ return true;
 }
 function plan(){return [...candidates('flashcard',5),...candidates('official',3)]}
 function choose(mode='auto'){
@@ -270,6 +330,7 @@ function page(){
  (active?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
   (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
  '</div>':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
+ notebookPanel()+
  '<details class="card agu-catalog"><summary>Histórico e exportação</summary><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
  '<div class="btnrow"><button class="secondary" onclick="AGUReview.exportData()">Exportar backup JSON</button><button class="secondary" onclick="document.getElementById(\'review-import\').click()">Importar sem substituir</button><input id="review-import" type="file" class="hidden" accept="application/json" onchange="AGUReview.importBackup(this)"></div>'+
  '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></details>'+
@@ -315,5 +376,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,validateBackupObject,mergeBackupObject,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,validateBackupObject,mergeBackupObject,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
