@@ -90,6 +90,11 @@ function validateRecord(key,obj){
      // Validar o dispositivo e o tópico oficiais, sem exigir que a sessão já exista no navegador.
      const ref=lookup.get(m.deviceId);
      if(!ref?.topic||m.topic!==ref.topic||m.lawId!==null||m.articleId!==null||m.unitId!==null||typeof m.sessionId!=='string'||!/^ags-[a-zA-Z0-9-]+$/.test(m.sessionId)||m.sessionId.length>130)return false;
+    }else if(m.origin==='questao_verificada'){
+     // Lista fechada de referências públicas já conferidas: a questão pode ter sido retirada da interface,
+     // mas seu ID e rótulo históricos persistem sem exigir um estado de resposta ou revisão.
+     const ref=root.AGUQuestions18?.notebookHistoricReference?.(m.questionId);
+     if(!ref||m.questionLabel!==ref.label||m.topic!==ref.topic||m.lawId!==null||m.articleId!==null||m.unitId!==null)return false;
     }else return false;
     ids.add(m.id);
    }
