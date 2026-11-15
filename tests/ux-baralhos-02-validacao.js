@@ -136,10 +136,10 @@ check('baralho com um cartão conclui sem coleção artificial',()=>{
  assert.match(root.AGUReview.page(),/1 de 1 cartões avaliados/);
 });
 check('cronograma e leitura não recebem vínculo curricular presumido',()=>{
- const f=JSON.parse(read('tests/fixtures/leg09-deltas.json'));
+ const f=JSON.parse(read('tests/fixtures/leg10-deltas.json'));
  assert.equal(sha('planejamento-semanal.js'),f.plannerSha256);
  assert.equal(sha('leitor-juridico.js'),f.readerAfterSha256);
- assert.equal(sha('estudo-integrado.js'),f.studyAfterSha256);
+ assert.equal(sha('estudo-integrado.js'),f.studySha256);
  assert.equal(sha('dados/legislacao-s13.js'),f.corpusSha256);
  const {root}=boot();root.AGUPlannerContext=()=>({disciplines:[['ADM','Direito Administrativo',['Atos administrativos']]],sessions:[],answers:[],reviews:[],notebook:[],topic:{}});
  const topic=root.AGUPlanner?.generate?.().days.flatMap(x=>x.tasks).find(x=>x.topic);

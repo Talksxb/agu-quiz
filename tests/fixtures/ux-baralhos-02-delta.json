@@ -1,10 +1,10 @@
 {
   "sprint": "UX-BARALHOS-02",
-  "baseCommit": "ac19569af131b4196b25229c6a0318148c18016e",
-  "reviewBeforeSha256": "0c7a3b3f2809942b160f5811aaadd9e71b5eba726a212f72157ffd669cab6d03",
-  "htmlBeforeSha256": "c6207bb60d4ef7b895a42738609b09c8c7a7827c63260ab0935417a05e469eab",
-  "reviewAfterSha256": "dd00f5edb47e9c91a866f9f48d98b2861227d89e0cd0537f644d6f225941b8cc",
-  "htmlAfterSha256": "e2248d0a4ef73507ec2cb8cf983cea63885f6edd8f98881d41485dcc7569813c",
+  "baseCommit": "e324734088d6fdfbfa99c7159bcfcffcfa5ef713",
+  "reviewBeforeSha256": "f65f6ece47eaaf70d9ee46e0b3304358e260d81f94e40569669ff0fe196c826d",
+  "htmlBeforeSha256": "534474118576b91ac6e21ec43ead2138b4e4f7feb751fc006d38b0198929aca0",
+  "reviewAfterSha256": "1bd913fb205bcce518bdbbb97f242baf980e69a471e4a11069090a6ed8744366",
+  "htmlAfterSha256": "04f611a4389014b1472b51b5c7c51ece78e54e0480ea660c9be9bf22b8ae2c0d",
   "cssBeforeSha256": "0ea120f61cb1ee4d0e4bb711369c23aa2e4cbc8ffa1b56076211f25a51452a4c",
   "cssAfterSha256": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
   "unchanged": [
@@ -17,5 +17,5 @@
     "dados/legislacao-s13.js",
     "dados/flashcards-aud03-lote01.js"
   ],
-  "reason": "Filtros de estado documentado e decisão explícita de substituir sessão, sem alterar tentativas, agenda, corpus, matriz, caderno nem cronograma. Baselines LEG08/LEG09/UX01 preservados."
+  "reason": "Filtros de estado documentado e decisão explícita de substituir sessão, após integração concorrente da LEG10. Sem alterar tentativas, agenda, corpus, matriz, caderno nem cronograma. Baselines LEG08/LEG09/UX01/LEG10 preservados."
 }

@@ -32,6 +32,10 @@ function notebookValid(items){
    // LEG09: referência à sessão existente, não uma nova referência normativa presumida.
    const ref=byUnit.get(x.deviceId);
    if(!ref||!ref.article.topic||x.topic!==ref.article.topic||x.lawId!==null||x.articleId!==null||x.unitId!==null||typeof x.sessionId!=='string'||!/^ags-[a-zA-Z0-9-]+$/.test(x.sessionId)||x.sessionId.length>130)return false;
+  }else if(x.origin==='questao_verificada'){
+   // Referência histórica de questão realmente auditada, sem pressupor dispositivo jurídico específico.
+   const ref=root.AGUQuestions18?.notebookHistoricReference?.(x.questionId);
+   if(!ref||x.questionLabel!==ref.label||x.topic!==ref.topic||x.lawId!==null||x.articleId!==null||x.unitId!==null)return false;
   }else return false;
   ids.add(x.id);return true;
  });
@@ -67,6 +71,14 @@ function notebookSaveStudy(prompt){
  const item={id:notebookId(),lawId:null,articleId:null,unitId:null,deviceId:session.deviceId,sessionId:session.id,topic:session.topic,origin:'estudo_integrado',prompt:prompt.trim(),createdAt:new Date().toISOString(),status:'pendente'};
  return notebookCommit([...old,item],'Pendente de estudo registrada para o caderno físico.',false);
 }
+function notebookSaveQuestion(id,prompt){
+ const q=root.AGUQuestions18?.notebookEligible?.(id),ref=root.AGUQuestions18?.notebookHistoricReference?.(id);
+ if(!q||!ref||typeof prompt!=='string'||!prompt.trim()||prompt.trim().length>NOTEBOOK_TEXT_MAX)return false;
+ const old=notebookItems();if(!notebookValid(old)||old.length>=NOTEBOOK_MAX)return false;
+ const item={id:notebookId(),lawId:null,articleId:null,unitId:null,questionId:id,questionLabel:ref.label,
+  topic:ref.topic,origin:'questao_verificada',prompt:prompt.trim(),createdAt:new Date().toISOString(),status:'pendente'};
+ return notebookCommit([...old,item],'Pendente de questão verificada registrada.',false);
+}
 function notebookFilter(kind,value){if(kind==='tema')notebookTopic=value;else if(kind==='estado')notebookStatus=value;else return;root.render?.();focusAfter(kind==='tema'?'#agu-caderno-filter-topic':'#agu-caderno-filter-status')}
 function notebookEdit(id){if(!notebookItems().some(x=>x.id===id))return;editingNotebook=id;state.tab='para_caderno';state.mobile='related';root.render?.();focusAfter('#agu-caderno-brief',true)}
 function notebookCancel(){editingNotebook=null;root.render?.();focusAfter('#agu-caderno-brief',true)}
@@ -85,11 +97,21 @@ function notebookStudySession(x){
 function notebookCanOpenOrigin(id){
  const x=notebookItems().find(y=>y.id===id);
  if(x?.origin==='estudo_integrado')return !!notebookStudySession(x);
+ if(x?.origin==='questao_verificada')return !!root.AGUQuestions18?.notebookEligible?.(x.questionId);
  const ref=byUnit.get(x?.unitId);
  return !!(x&&ref&&ref.article.law.id===x.lawId&&ref.article.id===x.articleId);
 }
 function notebookOrigin(id){
  const mark=notebookItems().find(y=>y.id===id);
+ if(mark?.origin==='questao_verificada'){
+  if(!notebookCanOpenOrigin(id)||!root.AGUQuestions18?.openFromNotebook?.(mark.questionId))return false;
+  const q=root.AGUQuestions18.notebookEligible(mark.questionId),ref=byUnit.get(q.deviceId);
+  if(!ref)return false;
+  state.article=ref.article.id;state.unit=q.deviceId;state.tab='questoes';state.mobile='related';save();
+  if(root.history?.replaceState)root.history.replaceState(null,'','?abrir=lei&norma='+encodeURIComponent(ref.article.law.id)+'&dispositivo='+encodeURIComponent(q.deviceId));
+  if(typeof root.setView==='function')root.setView('legal');else root.render?.();
+  focusAfter('#agu-question-context',true);return true;
+ }
  if(mark?.origin==='estudo_integrado'){
   if(!notebookStudySession(mark)||!root.AGUStudy?.resume?.(mark.sessionId))return false;
   const ref=byUnit.get(mark.deviceId);
@@ -141,8 +163,9 @@ function notebookPanel(){
  const topics=[...new Set(articles.map(a=>a.topic).filter(Boolean))].sort();
  const option=(value,label,current)=>'<option value="'+esc(value)+'"'+(value===current?' selected':'')+'>'+esc(label)+'</option>';
  const selected=byUnit.get(state.unit),target=editing&&editing.origin==='leitor'?byUnit.get(editing.unitId):selected;
+ const editingOrigin=editing?.origin==='estudo_integrado'?'Estudo integrado · sessão '+esc(editing.sessionId)+' · '+esc(editing.topic):editing?.origin==='questao_verificada'?'Questão oficial verificada · '+esc(editing.questionLabel)+' · '+esc(editing.topic||'Sem tema curricular comprovado'):esc(target?.article.law.title||'')+' · '+esc(target?.article.label||'')+' · '+esc(target?.clause.label||'')+' · '+esc(target?.article.topic||'Sem tema curricular comprovado');
  let s='<div class="agu-ctx-box agu-paper-notebook"><h4>Para meu caderno físico</h4><p class="agu-muted">Marque só o que deseja recuperar e escrever à mão depois. Não altera sessões, revisões nem agenda.</p>'+
- '<p class="agu-muted">Origem: '+(editing?.origin==='estudo_integrado'?'Estudo integrado · sessão '+esc(editing.sessionId)+' · '+esc(editing.topic):esc(target?.article.law.title||'')+' · '+esc(target?.article.label||'')+' · '+esc(target?.clause.label||'')+' · '+esc(target?.article.topic||'Sem tema curricular comprovado'))+'</p>'+
+ '<p class="agu-muted">Origem: '+editingOrigin+'</p>'+
  '<label for="agu-caderno-brief">'+(editing?'Editar pergunta ou ponto para anotar':'Dúvida, distinção ou pergunta breve')+'</label><textarea id="agu-caderno-brief" maxlength="450" rows="4" placeholder="O que preciso distinguir, resolver ou memorizar?">'+esc(editing?.prompt||'')+'</textarea>'+
  '<button type="button" class="agu-primary" id="agu-caderno-save" onclick="AGULegal.notebookSave()">'+(editing?'Salvar edição':'Guardar para meu caderno')+'</button>'+
  (editing?'<button type="button" class="agu-light" onclick="AGULegal.notebookCancel()">Cancelar edição</button>':'')+
@@ -153,10 +176,10 @@ function notebookPanel(){
  const shown=items.filter(x=>(notebookStatus==='todos'||x.status===notebookStatus)&&(notebookTopic==='todos'||(notebookTopic==='sem_tema'?x.topic===null:x.topic===notebookTopic))).slice().reverse();
  if(!shown.length)s+='<p class="agu-muted">Nenhuma marcação encontrada para estes filtros.</p>';
  for(const x of shown){
-  const ref=byUnit.get(x.origin==='estudo_integrado'?x.deviceId:x.unitId),id=esc(x.id),study=x.origin==='estudo_integrado';
-  const originLabel=study?'Estudo integrado · '+esc(x.deviceId)+' · sessão '+esc(x.sessionId):esc(ref?.article.law.title)+' · '+esc(ref?.article.label)+' · '+esc(ref?.clause.label);
+  const ref=byUnit.get(x.origin==='estudo_integrado'?x.deviceId:x.unitId),id=esc(x.id),study=x.origin==='estudo_integrado',question=x.origin==='questao_verificada';
+  const originLabel=question?'Questão oficial verificada · '+esc(x.questionLabel):study?'Estudo integrado · '+esc(x.deviceId)+' · sessão '+esc(x.sessionId):esc(ref?.article.law.title)+' · '+esc(ref?.article.label)+' · '+esc(ref?.clause.label);
   s+='<article class="agu-notice agu-paper-item"><p><b>'+esc(x.prompt)+'</b></p><p class="agu-muted">'+originLabel+'<br>'+esc(x.topic||'Sem tema documentado')+' · '+esc(x.status)+' · '+esc(x.createdAt.slice(0,10))+'</p>'+
-  (notebookCanOpenOrigin(x.id)?'<div class="agu-paper-actions"><button type="button" class="agu-light" onclick="AGULegal.notebookOrigin(\''+id+'\')">'+(study?'Retomar sessão de origem':'Abrir origem')+'</button>':'<p class="agu-muted">Sessão de origem não disponível para retomada; referência preservada.</p><div class="agu-paper-actions">')+
+  (notebookCanOpenOrigin(x.id)?'<div class="agu-paper-actions"><button type="button" class="agu-light" onclick="AGULegal.notebookOrigin(\''+id+'\')">'+(question?'Abrir questão de origem':study?'Retomar sessão de origem':'Abrir origem')+'</button>':'<p class="agu-muted">'+(question?'Questão indisponível nesta versão; referência preservada.':'Sessão de origem não disponível para retomada; referência preservada.')+'</p><div class="agu-paper-actions">')+
   '<button type="button" class="agu-light" onclick="AGULegal.notebookEdit(\''+id+'\')">Editar</button>'+
   (x.status!=='anotado'?'<button type="button" class="agu-light" onclick="AGULegal.notebookSetStatus(\''+id+'\',\'anotado\')">Marcar como anotado</button>':'')+
   (x.status!=='dispensado'?'<button type="button" class="agu-light" onclick="AGULegal.notebookSetStatus(\''+id+'\',\'dispensado\')">Dispensar</button>':'')+
@@ -203,6 +226,6 @@ return '<div id="agu-reader" style="--agu-legal-font:'+(root.AGUConsolidation?.p
 }
 const css='.agu-s17-search{margin:8px 0 14px}.agu-s17-fields{display:grid;gap:8px;padding:10px 0}.agu-s17-fields label,.agu-s17-settings label{display:block;font-size:12px;color:#425c64}.agu-s17-fields input,.agu-s17-fields select,.agu-s17-settings select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-s17-results{overflow:auto;max-height:350px}.agu-s17-result{display:block;text-align:left;width:100%;padding:10px;margin:5px 0;border:1px solid #d3e3e6;border-radius:8px;background:#f6fafb;color:#223840}.agu-s17-result small{display:block;color:#425c64;margin-top:3px;line-height:1.4}.agu-document .agu-unit p{font-size:var(--agu-legal-font,100%)}.agu-document .agu-unit{overflow-wrap:anywhere}.agu-related .agu-ctx-box input[type=file]{display:none}.agu-index-entry[hidden]{display:none}.agu-law-navigation{display:grid;gap:10px;margin-bottom:14px}.agu-law-navigation label{display:block;font-size:12px;color:#425c64}.agu-law-navigation select{max-width:100%;width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8d8dd;border-radius:8px;background:#fff;color:#223840;margin-top:4px}.agu-law-navigation button{margin:3px 0;min-height:44px}.agu-index input{box-sizing:border-box}@media(max-width:850px){.agu-s17-result{min-height:48px}.agu-mobile button{min-height:46px}.agu-tabs button{min-height:42px}}.agu-ctx-box{border-top:1px solid #e0e9eb;padding:12px 0;margin-top:12px}.agu-ctx-box input,.agu-ctx-box select,.agu-ctx-box textarea{width:100%;box-sizing:border-box;padding:10px;margin:5px 0 10px;border:1px solid #c9d6da;border-radius:8px;background:#fff;color:#203942}.agu-ctx-box label{display:block;font-size:13px;font-weight:600;margin:6px 0}.agu-ctx-body{white-space:pre-wrap;overflow-wrap:anywhere}.agu-related a{overflow-wrap:anywhere}.agu-ctx-box button{margin:4px 5px 5px 0}.agu-ctx-box .hidden{display:none}.agu-columns{display:grid;grid-template-columns:minmax(180px,220px) minmax(300px,1fr) minmax(250px,310px);gap:14px;align-items:start}.agu-pane{background:#fff;border:1px solid #dce4e8;border-radius:12px;padding:17px;min-width:0}.agu-index,.agu-related{position:sticky;top:10px;max-height:80vh;overflow-y:auto}.agu-index input{width:100%;padding:10px;border:1px solid #d3dfe4;border-radius:8px}.agu-index-entry{width:100%;text-align:left;display:block;background:#f6f9fa;border:0;border-radius:7px;padding:9px;margin:4px 0}.agu-unit{border-left:3px solid #d7e3e6;padding:12px;line-height:1.65;margin:9px 0;cursor:pointer}.agu-unit.selected,.agu-index-entry.selected{background:#e5f5f2;border-color:#16747a}.agu-unit p{margin:6px 0}.agu-document h2{font-family:Georgia,serif;font-size:25px}.agu-muted{color:#607985;font-size:13px;line-height:1.5}.agu-notice{background:#f0f6f7;padding:11px;border-left:3px solid #77a5a8;border-radius:6px;margin:10px 0}.agu-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.agu-tabs button,.agu-light,.agu-mobile button{padding:9px;border-radius:7px;border:1px solid #d3e0e4;background:#f4f8f9}.agu-tabs button[aria-pressed=true],.agu-primary{background:#156b70;color:white;padding:10px;border-radius:8px}.agu-related textarea{width:100%;min-height:130px;padding:10px;border:1px solid #ccdadd;border-radius:8px}.agu-mobile{display:none}.agu-paper-context{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px;background:#f0f6f7;border-radius:8px}.agu-paper-context button,.agu-paper-actions button{min-height:44px;cursor:pointer}.agu-paper-notebook textarea,.agu-paper-notebook select{max-width:100%;box-sizing:border-box}.agu-paper-actions{display:flex;flex-wrap:wrap;gap:4px}.agu-paper-item{overflow-wrap:anywhere}.agu-paper-item button{white-space:normal}.agu-paper-notebook .agu-primary{min-height:44px;cursor:pointer}@media(max-width:850px){.agu-columns{display:block}.agu-pane{margin-bottom:12px}.agu-index,.agu-related{position:static;max-height:none}.agu-mobile{display:flex;gap:7px;margin:12px 0}.agu-mobile button{flex:1}#agu-reader[data-mobile=text] .agu-index,#agu-reader[data-mobile=text] .agu-related,#agu-reader[data-mobile=index] .agu-document,#agu-reader[data-mobile=index] .agu-related,#agu-reader[data-mobile=related] .agu-document,#agu-reader[data-mobile=related] .agu-index{display:none}}';
 if(typeof document!=='undefined'&&!document.getElementById('agu-reader-style')){const e=document.createElement('style');e.id='agu-reader-style';e.textContent=css;document.head.appendChild(e)}
-root.AGULegal={page,article,openLaw,chapter,boundary,unit,tab,mobile,step,note,exportData,filter,notebookSave,notebookSaveStudy,notebookFilter,notebookEdit,notebookCancel,notebookSetStatus,notebookCanOpenOrigin,notebookOrigin,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
+root.AGULegal={page,article,openLaw,chapter,boundary,unit,tab,mobile,step,note,exportData,filter,notebookSave,notebookSaveStudy,notebookSaveQuestion,notebookFilter,notebookEdit,notebookCancel,notebookSetStatus,notebookCanOpenOrigin,notebookOrigin,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
 })(window);
 

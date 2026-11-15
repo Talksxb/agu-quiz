@@ -1,0 +1,18 @@
+{
+  "sprint": "LEG-10",
+  "baseCommit": "ac19569af131b4196b25229c6a0318148c18016e",
+  "questionBeforeSha256": "407fea3783a7779c74783bbb6bb8f975d5038e22308b3672283160d5f51f0263",
+  "questionAfterSha256": "f4095116ca5bf0b31bd76ca323a88a7b8a1e0b079d100da9981d1f8f6d943c3f",
+  "readerBeforeSha256": "b6482d6087d03e55d7406beb18c1a2fc5c58f1cd2ce0541f4605d41276d32a83",
+  "readerAfterSha256": "74af85f5eb6160ecd5e07b00beb2043a882de288e87f6615d6c8b32deb6e86d3",
+  "backupBeforeSha256": "f3269fa682337fc314b3b78d7367afd2e95be586714dabdd0f56b3be1057785b",
+  "backupAfterSha256": "e2c0e6af69dd8c9c7bc8a35c511a2960a339e8935a51c2fb9be98725893c633e",
+  "reviewBeforeSha256": "0c7a3b3f2809942b160f5811aaadd9e71b5eba726a212f72157ffd669cab6d03",
+  "reviewAfterSha256": "f65f6ece47eaaf70d9ee46e0b3304358e260d81f94e40569669ff0fe196c826d",
+  "htmlBeforeSha256": "c6207bb60d4ef7b895a42738609b09c8c7a7827c63260ab0935417a05e469eab",
+  "htmlAfterSha256": "534474118576b91ac6e21ec43ead2138b4e4f7feb751fc006d38b0198929aca0",
+  "studySha256": "82fafd24b164c5d5f4a9fc37ad2bcad90c81d1755bdb9b53ea853f23fd724fc9",
+  "plannerSha256": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+  "corpusSha256": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+  "reason": "Adição exclusiva de marcação de questão oficial pontualmente verificada, com referência histórica imutável, limite e armazenamento anteriores; LEG-08 só lê correspondência exata já vencida. Sobre a UX-BARALHOS-01 já incorporada; fixtures LEG01–09 e UX01 preservados."
+}
