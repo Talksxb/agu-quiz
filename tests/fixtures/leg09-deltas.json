@@ -1,0 +1,17 @@
+{
+  "sprint": "LEG-09",
+  "baseCommit": "d8e37d4de26e6fd2fdc375bba89d598f3feb2d70",
+  "studyBeforeSha256": "c367bfb39a82cddb3ef456123b8186ee3a84ef39039d92c4494d5f8f09b45013",
+  "studyAfterSha256": "82fafd24b164c5d5f4a9fc37ad2bcad90c81d1755bdb9b53ea853f23fd724fc9",
+  "readerBeforeSha256": "34768817511009ed069c9bab512165092036f6ed90ed3d2b3247f6932a8608bb",
+  "readerAfterSha256": "b6482d6087d03e55d7406beb18c1a2fc5c58f1cd2ce0541f4605d41276d32a83",
+  "backupBeforeSha256": "11993873b63fb9df591eb43ddc8dbec9ba2923d1c8f76b029c91568ec3bace10",
+  "backupAfterSha256": "f3269fa682337fc314b3b78d7367afd2e95be586714dabdd0f56b3be1057785b",
+  "reviewBeforeSha256": "64267e9a5f1167931d23a9cc2a3b42d769ad5b2dec6883ba11194a647690e8cb",
+  "reviewAfterSha256": "566217a961278d79c06d6005603646ff2b5a3d73ce9cdf885578e27455816f5a",
+  "htmlBeforeSha256": "68a789ac6f4544fdf3e49be73292008d8d39865bde7e0c3cb7ee986780b8a215",
+  "htmlAfterSha256": "47c7c6195c6ffdfeaa63fbc5d65b82b6ba96cb0f9733609ffe0118d68fd08cfe",
+  "plannerSha256": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+  "corpusSha256": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+  "reason": "Adição seletiva de origem estudo_integrado na lista forNotebook com ID de sessão já existente, validação curricular pelo dispositivo da sessão e continuidade da revisão LEG-08 sem nova agenda. Os fixtures LEG01–08 permanecem históricos e inalterados."
+}

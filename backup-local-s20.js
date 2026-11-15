@@ -81,8 +81,16 @@ function validateRecord(key,obj){
    if(!Array.isArray(marks)||marks.length>300)return false;
    const ids=new Set();
    for(const m of marks){
-    const ref=lookup.get(m?.unitId);
-    if(!isObj(m)||typeof m.id!=='string'||!/^pc-[a-zA-Z0-9-]{8,130}$/.test(m.id)||ids.has(m.id)||!ref||m.articleId!==ref.id||m.lawId!==ref.lawId||m.topic!==(ref.topic||null)||m.origin!=='leitor'||typeof m.prompt!=='string'||!m.prompt.trim()||m.prompt.length>450||typeof m.createdAt!=='string'||!Number.isFinite(Date.parse(m.createdAt))||!['pendente','anotado','dispensado'].includes(m.status))return false;
+    if(!isObj(m)||typeof m.id!=='string'||!/^pc-[a-zA-Z0-9-]{8,130}$/.test(m.id)||ids.has(m.id)||typeof m.prompt!=='string'||!m.prompt.trim()||m.prompt.length>450||typeof m.createdAt!=='string'||!Number.isFinite(Date.parse(m.createdAt))||!['pendente','anotado','dispensado'].includes(m.status))return false;
+    if(m.origin==='leitor'){
+     const ref=lookup.get(m.unitId);
+     if(!ref||m.articleId!==ref.id||m.lawId!==ref.lawId||m.topic!==(ref.topic||null))return false;
+    }else if(m.origin==='estudo_integrado'){
+     // Uma marcação importada pode anteceder a restauração da categoria de sessões.
+     // Validar o dispositivo e o tópico oficiais, sem exigir que a sessão já exista no navegador.
+     const ref=lookup.get(m.deviceId);
+     if(!ref?.topic||m.topic!==ref.topic||m.lawId!==null||m.articleId!==null||m.unitId!==null||typeof m.sessionId!=='string'||!/^ags-[a-zA-Z0-9-]+$/.test(m.sessionId)||m.sessionId.length>130)return false;
+    }else return false;
     ids.add(m.id);
    }
   }

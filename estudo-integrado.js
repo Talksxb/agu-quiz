@@ -5,6 +5,8 @@ const KEY='agu_estudo_integrado_s16_v1',VERSION='agu-integrated-study-v1';
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names={norma:'Leitura normativa',caderno:'Caderno AGU',questoes:'Questões verificadas',flashcards:'Flashcards',revisao:'Avaliação e revisão'};
 const stages=Object.keys(names),now=()=>new Date().toISOString();
+// LEG09: apenas estado efêmero do formulário; a marcação continua no leitor S13.
+let notebookMessage='',notebookOpen=false;
 // S33: após a substituição do painel, revelar a etapa efetivamente selecionada.
 function focusStage(key,keyboard){if(keyboard)document.querySelector?.('[data-agu-study-stage="'+key+'"]')?.focus?.({preventScroll:false})}
 const clauses=()=>new Map((root.AGU_LEGAL_CORPUS?.laws||[]).flatMap(l=>l.articles.flatMap(a=>a.clauses.map(c=>[c.id,{...c,article:a,law:l}]))));
@@ -94,6 +96,9 @@ function html(deviceId){
  if(missing.notes.length||missing.cards.length)out+='<div class="agu-notice">Referências antigas não encontradas: '+missing.notes.length+' nota(s), '+missing.cards.length+' cartão(ões). O histórico da sessão foi preservado, sem conteúdo inventado.</div>';
  out+='<p class="agu-muted">Sessão '+esc(s.createdAt.slice(0,10))+' · '+s.notes.length+' registro(s) associados · '+s.attemptIds.length+' avaliação(ões) · Etapa: '+esc(names[s.stage])+'</p>';
  out+='<div class="agu-tabs">'+stages.map(k=>'<button data-agu-study-stage="'+k+'" aria-pressed="'+(s.stage===k)+'" onclick="AGUStudy.goto(\''+k+'\',event.detail===0)">'+esc(names[k])+'</button>').join('')+'</div>';
+ out+='<details class="agu-ctx-box agu-study-notebook"'+(notebookOpen?' open':'')+'><summary>Para meu caderno</summary><p class="agu-muted">Guarde uma pergunta breve para escrever à mão depois. Apenas nesta sessão · tema comprovado '+esc(s.topic)+'. Não conclui etapas nem cria revisões.</p>'+
+ '<label for="agu-study-notebook-input">Dúvida, conceito ou distinção para recuperar</label><textarea id="agu-study-notebook-input" maxlength="450" rows="3" placeholder="O que preciso explicar ou distinguir depois?"></textarea>'+
+ '<button type="button" class="agu-light" id="agu-study-notebook-save" onclick="AGUStudy.saveNotebook(event.detail===0)">Guardar para meu caderno</button><p id="agu-study-notebook-status" class="agu-muted" role="status" aria-live="polite" tabindex="-1">'+esc(notebookMessage)+'</p></details>';
  if(s.stage==='norma')out+='<div class="agu-notice"><b>'+esc(item.label)+'</b><p>'+esc(item.text)+'</p><a href="'+esc(item.law.source)+'" target="_blank" rel="noopener noreferrer">Conferir fonte oficial</a></div><button class="agu-primary" onclick="AGUStudy.goto(\'caderno\',event.detail===0)">Continuar para Caderno</button>';
  if(s.stage==='caderno'){
   const notes=root.AGUCaderno?.list(deviceId)||[];
@@ -128,5 +133,16 @@ function goto(v,keyboard=false){if(stage(v)){root.render?.();focusStage(v,keyboa
 function pick(id,keyboard=false){if(focus(id)){root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUReview.reveal("]')?.focus?.({preventScroll:false})}}
 function collect(keyboard=false){syncNotes();root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUStudy.collect("]')?.focus?.({preventScroll:false})}
 function close(keyboard=false){if(finish()){root.render?.();if(keyboard)document.querySelector?.('button[onclick^="AGUStudy.begin("]')?.focus?.({preventScroll:false})}}
-root.AGUStudy={html,start,resume,stage,focus,trackOfficial,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close};
+function saveNotebook(keyboard=false){
+ const input=document.getElementById('agu-study-notebook-input'),prompt=input?.value.trim()||'',s=active();
+ notebookOpen=true;
+ if(!s||s.status!=='em_andamento'){notebookMessage='Inicie uma sessão válida antes de marcar um ponto.';root.render?.();return false}
+ if(!prompt||prompt.length>450){notebookMessage='Escreva um ponto breve de até 450 caracteres.';root.render?.();if(keyboard)document.getElementById('agu-study-notebook-input')?.focus?.();return false}
+ const saved=root.AGULegal?.notebookSaveStudy?.(prompt)===true;
+ notebookMessage=saved?'Marcação guardada na lista única “Para meu caderno”.':'Não foi possível gravar. Confira limite, armazenamento e dados anteriores; nada foi substituído.';
+ root.render?.();
+ if(keyboard)document.getElementById(saved?'agu-study-notebook-status':'agu-study-notebook-input')?.focus?.({preventScroll:false});
+ return saved;
+}
+root.AGUStudy={html,start,resume,stage,focus,trackOfficial,onRated,attachNote,syncNotes,finish,sessionsFor,active,orphans,exportBackup,importBackup,download,readFile,peek:()=>JSON.parse(JSON.stringify(state)),begin,open,goto,pick,collect,close,saveNotebook};
 })(window);
