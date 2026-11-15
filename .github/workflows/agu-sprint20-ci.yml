@@ -55,6 +55,8 @@ jobs:
         run: node tests/leg09-validacao.js
       - name: UX-BARALHOS-01 — catálogo, sessão e backup compatíveis
         run: node tests/ux-baralhos-01-validacao.js
+      - name: LEG-10 — questões oficiais verificadas, mesma lista e backup compatível
+        run: node tests/leg10-validacao.js
       - name: LEG-06 — Ação Popular integral, fonte e persistência
         run: node tests/leg06-validacao.js
       - name: LEG-05 — LINDB integral, fonte e persistência
@@ -83,6 +85,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEG-10 — questões oficiais, cinco viewports, foco e backup
+        run: node tests/leg10-browser.cjs
       - name: LEG-09 — sessão integrada para caderno, cinco viewports e backup
         run: node tests/leg09-browser.cjs
       - name: LEG-08 — revisão com caderno, cinco viewports e restauração
@@ -181,6 +185,8 @@ jobs:
             tests/artifacts-leg08/*.png
             tests/artifacts-leg09/*.json
             tests/artifacts-leg09/*.png
+            tests/artifacts-leg10/*.json
+            tests/artifacts-leg10/*.png
             tests/artifacts-work01/*.json
             tests/artifacts-work01/*.png
             tests/artifacts-ux-baralhos-01/*.json
@@ -201,6 +207,10 @@ jobs:
         run: node tests/sprint21-pages.cjs
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: LEG-10 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leg10-browser.cjs
       - name: LEG-09 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
