@@ -5,7 +5,7 @@
 'use strict';
 const fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path'),assert=require('node:assert/strict');
 const BASE='https://talksxb.github.io/agu-quiz/';
-const scripts=['revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js','leitor-juridico.js','meu-estudo.js','dados/legislacao-s13.js','estudo-integrado.js'];
+const scripts=['catalogo-disciplinas.js','revisao-inteligente.js','planejamento-semanal.js','leitor-consolidacao.js','backup-local-s20.js','leitor-juridico.js','meu-estudo.js','dados/legislacao-s13.js','estudo-integrado.js'];
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const delay=n=>new Promise(ok=>setTimeout(ok,n));
 async function get(url){
@@ -33,12 +33,14 @@ async function main(){
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='meu-estudo.js'?'20261113-work01b':script==='backup-local-s20.js'?'20261115-leg09':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':script==='leitor-juridico.js'?'20261115-leg09':script==='revisao-inteligente.js'?'20261115-leg09':'20261113-s35a','versão de cache '+script);
+    assert.equal(m[1],script==='catalogo-disciplinas.js'||script==='revisao-inteligente.js'?'20261115-ux01':script==='meu-estudo.js'?'20261113-work01b':script==='backup-local-s20.js'?'20261115-leg09':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':script==='leitor-juridico.js'?'20261115-leg09':'20261113-s35a','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
    }
-   console.log('PAGES_VERIFICADO: URL HTTPS, HTML e 8 scripts correspondem ao commit do checkout.');
+   assert.match(markup,/href="baralhos-ux\.css\?v=20261115-ux01"/);
+   assert.equal(sha(await get(BASE+'baralhos-ux.css?v=20261115-ux01')),sha(fs.readFileSync(path.join(__dirname,'../baralhos-ux.css'))));
+   console.log('PAGES_VERIFICADO: URL HTTPS, HTML, 9 scripts e CSS correspondem ao commit do checkout.');
    return;
   }catch(e){
    console.error('Pages tentativa',attempt,'falhou:',e.message);

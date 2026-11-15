@@ -30,7 +30,9 @@ check('caderno_cancelar','[data-ctx-record-id="'+note.id+'"]',()=>env.AGUCaderno
 env.AGUStudy.begin(device);
 check('estudo_encerrar','button[onclick^="AGUStudy.begin("]',()=>env.AGUStudy.close(true));
 assert.equal(env.AGUStudy.sessionsFor(device).filter(x=>x.status==='concluida').length,1);
-const firstCard=env.AGUReview.page().match(/<option value="([^"]+)"/)[1];
+// UX01 acrescentou filtros antes do catálogo legado; selecionar explicitamente
+// o primeiro cartão do seletor histórico evita confundi-lo com "Todas".
+const firstCard=env.AGUReview.page().match(/<select id="agu-card-list"[\s\S]*?<option value="([^"]+)"/)[1];
 check('revisao_catalogo','button[onclick^="AGUReview.reveal("]',()=>env.AGUReview.select(firstCard,true));
 assert.equal(env.AGUReview.attemptsInfo().length,0,'selecionar cartão não é responder');
 env.AGUPlanner.ensure();

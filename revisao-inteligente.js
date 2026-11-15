@@ -107,6 +107,17 @@ const blank=()=>({schema:'agu-review-v1',attempts:[],cards:{},created:new Date()
 let state;try{const parsed=JSON.parse(localStorage.getItem(KEY)||'null');state=parsed&&parsed.schema==='agu-review-v1'&&Array.isArray(parsed.attempts)&&parsed.cards&&typeof parsed.cards==='object'?parsed:blank()}catch(_){state=blank()}
 let active=null,revealed=false,pick='',currentMode='auto';
 let notebookReturn=null;
+// UX-BARALHOS-01: a sessão é um campo opcional do estado legado, sem chave extra,
+// alteração de intervalo ou migração. Só tentativas avaliadas contam como estudo.
+let deckFilters={discipline:'todos',topic:'',difficulty:'todas',due:false};
+const DECK_TITLES=Object.freeze({
+ 'ADM-06':'Competência e delegação administrativa',
+ 'ADM-13':'Supervisão ministerial e autonomia',
+ 'ADM-23':'Motivo, motivação e convalidação',
+ 'PC-03':'Normas fundamentais do processo civil',
+ 'CON-02':'Constituição e teoria constitucional',
+ 'CON-50':'Advocacia-Geral da União e PGFN'
+});
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // S33: os três botões comprovadamente substituídos por render() no Chrome.
 function focusAfter(selector,keyboard){if(keyboard)document.querySelector?.(selector)?.focus?.({preventScroll:false})}
@@ -115,6 +126,85 @@ const today=()=>localISO(new Date());
 const when=(days)=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);return localISO(d)};
 function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
 function stat(id){return state.cards[id]||{stage:0,due:null,errors:0,seen:0,ease:0}}
+function flashcards(){return ALL.filter(x=>x.kind==='flashcard')}
+function deckList(){
+ const groups=new Map();
+ for(const x of flashcards()){
+  if(!groups.has(x.code))groups.set(x.code,[]);
+  groups.get(x.code).push(x);
+ }
+ return [...groups].map(([code,cards])=>{
+  const meta=global.AGUDisciplines?.forTopic?.(code)||{code:code.split('-')[0],name:code.split('-')[0]};
+  const difficulties={};for(const x of cards){const k=Number.isInteger(x.level)?'original:'+x.level:'sem_nivel';difficulties[k]=(difficulties[k]||0)+1}
+  return {code,title:DECK_TITLES[code]||'Assunto '+code,discipline:meta.code,name:meta.name,cards,
+   count:cards.length,seen:cards.filter(x=>stat(x.id).seen>0).length,
+   new:cards.filter(x=>!stat(x.id).seen).length,
+   due:cards.filter(x=>stat(x.id).seen&&stat(x.id).due&&stat(x.id).due<=today()).length,difficulties};
+ }).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')||a.code.localeCompare(b.code));
+}
+function difficulty(x){return Number.isInteger(x.level)?'Nível cognitivo original '+x.level:'Nível não informado'}
+function matchesDifficulty(x,filter=deckFilters.difficulty){return filter==='todas'||(filter==='sem_nivel'?!Number.isInteger(x.level):'original:'+x.level===filter)}
+// Nunca traduzir level 2, 3 ou 4 em Fundamentos / Distinções / Aplicação AGU:
+// os metadados originais não documentam correspondência com essa nova taxonomia.
+function validSession(s){
+ if(!s||!['em_andamento','concluida'].includes(s.status)||!deckList().some(x=>x.code===s.code)||!Array.isArray(s.order)||!s.order.length||s.order.length>1000||new Set(s.order).size!==s.order.length||!Number.isInteger(s.index)||s.index<0||s.index>=s.order.length||!s.ratings||typeof s.ratings!=='object'||Array.isArray(s.ratings)||typeof s.revealed!=='boolean')return false;
+ if(!s.order.every(id=>INDEX.get(id)?.kind==='flashcard'&&INDEX.get(id).code===s.code))return false;
+ if(Object.keys(s.ratings).some(id=>!s.order.includes(id)||typeof s.ratings[id]!=='string'||!state.attempts.some(a=>a.id===s.ratings[id]&&a.itemId===id)))return false;
+ return s.status!=='concluida'||s.order.every(id=>s.ratings[id]);
+}
+function savedSession(){return validSession(state.librarySession)?state.librarySession:null}
+function saveDeckSession(s){
+ const next={...state,librarySession:s};
+ try{localStorage.setItem(KEY,JSON.stringify(next))}catch(_){alert('Não foi possível salvar a sessão. Os registros anteriores foram preservados.');return false}
+ state=next;return true;
+}
+function deckStart(code,keyboard=false){
+ const deck=deckList().find(x=>x.code===code);if(!deck)return false;
+ const prior=savedSession();
+ if(prior?.status==='em_andamento'&&prior.code===code)return deckResume(keyboard);
+ if(prior?.status==='em_andamento'&&prior.code!==code&&!confirm('Trocar de baralho? A sessão atual será substituída, mas as avaliações já realizadas continuarão no histórico.'))return false;
+ const selected=deck.cards.filter(x=>matchesDifficulty(x)&&(!deckFilters.due||(stat(x.id).seen&&stat(x.id).due&&stat(x.id).due<=today())));
+ if(!selected.length)return false;
+ const session={code,order:selected.map(x=>x.id),index:0,ratings:{},revealed:false,status:'em_andamento',startedAt:new Date().toISOString()};
+ if(!saveDeckSession(session))return false;
+ return deckResume(keyboard);
+}
+function deckResume(keyboard=false){
+ const s=savedSession();if(!s||s.status!=='em_andamento')return false;
+ currentMode='deck';active=INDEX.get(s.order[s.index]);revealed=s.revealed||!!s.ratings[active.id];pick='';global.render?.();
+ global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
+ focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;
+}
+function deckPause(keyboard=false){
+ if(currentMode!=='deck')return false;
+ currentMode='auto';active=null;revealed=false;global.render?.();
+ global.document?.querySelector?.('#agu-deck-library')?.scrollIntoView?.({block:'start'});
+ focusAfter('#agu-deck-resume',keyboard);return true;
+}
+function deckMove(step,keyboard=false){
+ const s=savedSession();if(currentMode!=='deck'||!s||s.status!=='em_andamento'||![-1,1].includes(step))return false;
+ const nextIndex=s.index+step;if(nextIndex<0||nextIndex>=s.order.length)return false;
+ const next={...s,index:nextIndex,revealed:!!s.ratings[s.order[nextIndex]]};
+ if(!saveDeckSession(next))return false;
+ active=INDEX.get(next.order[nextIndex]);revealed=next.revealed;global.render?.();
+ global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
+ focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;
+}
+function deckFilter(key,value){
+ if(key==='discipline')deckFilters.discipline=String(value);
+ else if(key==='topic')deckFilters.topic=String(value).slice(0,120);
+ else if(key==='difficulty')deckFilters.difficulty=String(value);
+ else if(key==='due')deckFilters.due=!!value;
+ else return false;
+ global.render?.();focusAfter('#agu-deck-filter-'+key,true);return true;
+}
+function deckNotebook(keyboard=false){
+ // LEG07 só autoriza marcas ligadas a um dispositivo granular documentado.
+ // Os flashcards não trazem deviceId validado: abrir a API/tela existente
+ // do leitor e exigir escolha manual da unidade (sem associação inferida).
+ if(currentMode!=='deck'||typeof global.setView!=='function'||!global.AGULegal?.tab)return false;
+ global.setView('legal');global.AGULegal.tab('para_caderno',keyboard);return true;
+}
 function urgent(x){
  const st=stat(x.id);
  if(x.status==='anulada')return -1000;
@@ -198,9 +288,11 @@ function choose(mode='auto'){
  active=pool[0]||null;revealed=false;pick='';
  return active;
 }
-function select(id,keyboard=false){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^="AGUReview.reveal("]',keyboard)}
+function select(id,keyboard=false){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^="AGUReview.reveal("]',keyboard)}
 function rating(grade,keyboard=false){
  if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
+ const session=currentMode==='deck'?savedSession():null;
+ if(currentMode==='deck'&&(!session||session.status!=='em_andamento'||session.order[session.index]!==active.id||session.ratings[active.id]))return false;
  const prior=stat(active.id),isOfficial=active.kind==='official';
  if(isOfficial&&(!pick||!INLINE_ADAPTED[active.id]?.auditVerified))return;
  const correct=isOfficial?pick===active.key:null;
@@ -213,8 +305,22 @@ function rating(grade,keyboard=false){
  else stage=Math.min(3,stage+2);
  const days=DAYS[stage];
  const st={stage,due:when(days),seen:(prior.seen||0)+1,errors:(prior.errors||0)+(applied==='errei'?1:0),ease:applied,last:new Date().toISOString(),lastCorrect:correct};
+ const attempt={id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};
+ if(session){
+  const ratings={...session.ratings,[active.id]:attempt.id};
+  const nextIndex=session.order.findIndex((id,i)=>i>session.index&&!ratings[id]);
+  const wrapIndex=session.order.findIndex(id=>!ratings[id]);
+  const index=nextIndex>=0?nextIndex:wrapIndex>=0?wrapIndex:session.index;
+  const complete=wrapIndex<0;
+  const next={...state,cards:{...state.cards,[active.id]:st},attempts:state.attempts.concat(attempt),
+   librarySession:{...session,ratings,index,revealed:false,status:complete?'concluida':'em_andamento',updatedAt:st.last}};
+  try{localStorage.setItem(KEY,JSON.stringify(next))}catch(_){alert('A avaliação não foi salva. Tente novamente; nenhuma tentativa foi adicionada.');return false}
+  state=next;active=complete?null:INDEX.get(session.order[index]);revealed=false;
+  global.render?.();global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
+  focusAfter(complete?'#agu-deck-done':'#agu-deck-face',keyboard);return true;
+ }
  state.cards[active.id]=st;
- state.attempts.push({id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'});
+ state.attempts.push(attempt);
  persist();
  if(currentMode==='integrated'||currentMode==='integrated_official'){
   const completed=state.attempts[state.attempts.length-1];
@@ -224,7 +330,14 @@ function rating(grade,keyboard=false){
  window.render();
  focusAfter('button[onclick^="AGUReview.reveal("]',keyboard);
 }
-function reveal(keyboard=false){if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;revealed=true;window.render();focusAfter('button[onclick^="AGUReview.rate(\'errei\'"]',keyboard)}
+function reveal(keyboard=false){
+ if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;
+ if(currentMode==='deck'){
+  const s=savedSession();if(!s||s.order[s.index]!==active.id)return;
+  if(!saveDeckSession({...s,revealed:true}))return;
+ }
+ revealed=true;window.render();focusAfter(currentMode==='deck'?'#agu-deck-rating-errei':'button[onclick^="AGUReview.rate(\'errei\'"]',keyboard);
+}
 function chooseAnswer(v,keyboard=false){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render();focusAfter('button.option.selected',keyboard)}
 function go(mode,keyboard=false){choose(mode);window.render();focusAfter('button[onclick^="AGUReview.go(\''+mode+'\'"]',keyboard)}
 function exportData(){
@@ -283,17 +396,19 @@ function importBackup(input){
   }catch(e){alert('Importação rejeitada: '+e.message)}
  };reader.onerror=()=>alert('Falha na leitura do backup.');reader.readAsText(file);
 }
-function cardHTML(x){
- const st=stat(x.id),base='<div class="note">Tópico <b>'+esc(x.code)+'</b> · '+esc(x.kind==='official'?'Cebraspe · Advogado da União':'Flashcard autoral')+' · '+esc(x.validation)+'</div>';
- if(x.kind==='flashcard'){
-  const supplemental=[
+function flashDetails(x){
+ return [
    x.caseNote?'<details class="agu-card-detail"><summary>Aplicação AGU</summary><p>'+esc(x.caseNote)+'</p></details>':'',
    x.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(x.trap)+'</p></details>':'',
    x.audit?'<details class="agu-card-detail"><summary>Rastreabilidade da evidência</summary><p>'+esc(x.audit.round)+' / '+esc(x.audit.lot)+' · '+esc(x.audit.item_id)+' · '+esc(x.audit.localizer)+' · status: '+esc(x.audit.evidenceStatus)+' (verificação pontual)</p></details>':'',
    '<details class="agu-card-detail"><summary>Fonte e estado jurídico</summary><p>'+esc(x.source)+(x.checked?' · '+esc(x.checked):'')+(x.reviewedAt?' · '+esc(x.reviewedAt):'')+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte oficial</a>':'<p>Fonte de aula/Caderno; conferência independente pendente.</p>')+'<p>Cartão de recuperação ativa. A verificação pontual não equivale a certificação integral do tema.</p></details>'
-  ].filter(Boolean).join('');
+ ].filter(Boolean).join('');
+}
+function cardHTML(x){
+ const st=stat(x.id),base='<div class="note">Tópico <b>'+esc(x.code)+'</b> · '+esc(x.kind==='official'?'Cebraspe · Advogado da União':'Flashcard autoral')+' · '+esc(x.validation)+'</div>';
+ if(x.kind==='flashcard'){
   return '<h2 class="question-title">'+esc(x.front)+'</h2>'+base+
-   (revealed?'<div class="feedback"><b>Resposta</b><p>'+esc(x.back)+'</p></div>'+supplemental:
+   (revealed?'<div class="feedback"><b>Resposta</b><p>'+esc(x.back)+'</p></div>'+flashDetails(x):
    '<div class="btnrow"><button class="primary" onclick="AGUReview.reveal(event.detail===0)">Mostrar resposta</button></div>');
  }
 
@@ -310,6 +425,49 @@ function cardHTML(x){
   '<div class="options">'+a.map(v=>'<button '+(revealed?'disabled ':'')+'class="option '+(pick===v?'selected':'')+'" onclick="AGUReview.answer(\''+v+'\',event.detail===0)">'+(q.options?.find(o=>o.id===v)?v+' — '+esc(q.options.find(o=>o.id===v).label):x.type==='ce'?(v==='C'?'CERTO':'ERRADO'):v)+'</button>').join('')+'</div>'+
   (revealed?'<div class="feedback '+(pick===x.key?'':'bad')+'"><b>Gabarito definitivo da questão original: '+esc(x.key)+'</b><p>'+esc(pick===x.key?'Resposta correspondente à referência histórica.':'Resposta diferente da referência histórica.')+'</p>'+(q.historicReason?'<details class="agu-card-detail"><summary>Fundamentação histórica · data da prova</summary><p>'+esc(q.historicReason)+'</p></details>':'<p>'+esc(q.reason)+'</p>')+(q.currentReason?'<details class="agu-card-detail"><summary>Direito atual e limites</summary><p>'+esc(q.currentReason)+'</p></details>':'')+(q.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(q.trap)+'</p></details>':'')+(q.sourceId?'<details class="agu-card-detail"><summary>Proveniência documental</summary><p>'+esc(q.sourceId)+' · '+esc(q.examLocator)+' · '+esc(q.keyLocator)+' · verificação pontual.</p></details>':'')+'<p class="small muted">Comentário pedagógico com dispositivo normativo identificado quando indicado; acerto isolado não certifica domínio.</p></div>':'<div class="btnrow"><button class="primary" '+(!pick?'disabled':'')+' onclick="AGUReview.reveal(event.detail===0)">Conferir resposta</button></div>'));
 }
+function libraryHTML(){
+ const decks=deckList(),session=savedSession(),activeSession=session?.status==='em_andamento';
+ const disciplines=[...new Map(decks.map(x=>[x.discipline,x.name]))];
+ const levels=[...new Set(flashcards().filter(x=>Number.isInteger(x.level)).map(x=>x.level))].sort((a,b)=>a-b);
+ const visible=decks.filter(x=>
+  (deckFilters.discipline==='todos'||x.discipline===deckFilters.discipline)&&
+  (!deckFilters.topic||[x.code,x.title].join(' ').toLocaleLowerCase('pt-BR').includes(deckFilters.topic.toLocaleLowerCase('pt-BR')))&&
+  (deckFilters.difficulty==='todas'||x.cards.some(c=>matchesDifficulty(c)))&&
+  (!deckFilters.due||x.due>0));
+ const intro='<section class="agu-deck-library" id="agu-deck-library" aria-label="Biblioteca de baralhos">'+
+  '<div class="agu-deck-intro"><div><h2>'+(currentMode==='deck'?'Sessão de estudo':'Escolha um baralho')+'</h2><p class="muted">Um assunto por vez, com o progresso salvo neste navegador.</p></div><span class="agu-deck-count">'+flashcards().length+' cartões · '+decks.length+' baralhos</span></div>';
+ if(currentMode==='deck'&&session)return intro+sessionHTML()+'</section>';
+ return intro+
+  (activeSession&&currentMode!=='deck'?'<div class="card agu-deck-tile" style="--deck-accent:#17656b;--deck-soft:#e5f4f2"><b>Sessão interrompida · '+esc(session.code)+'</b><p>Cartão '+(session.index+1)+' de '+session.order.length+' · '+Object.keys(session.ratings).length+' avaliados</p><div class="btnrow"><button id="agu-deck-resume" type="button" class="primary" onclick="AGUReview.deckResume(event.detail===0)">Retomar sessão</button></div></div>':'')+
+  '<div class="agu-deck-filters" aria-label="Filtrar baralhos">'+
+   '<label for="agu-deck-filter-discipline">Disciplina<select id="agu-deck-filter-discipline" onchange="AGUReview.deckFilter(\'discipline\',this.value)"><option value="todos">Todas as disciplinas</option>'+disciplines.map(([code,name])=>'<option value="'+esc(code)+'" '+(deckFilters.discipline===code?'selected':'')+'>'+esc(name)+'</option>').join('')+'</select></label>'+
+   '<label for="agu-deck-filter-topic">Assunto ou código<input id="agu-deck-filter-topic" type="search" value="'+esc(deckFilters.topic)+'" placeholder="Ex.: ADM-06, delegação" onchange="AGUReview.deckFilter(\'topic\',this.value)"></label>'+
+   '<label for="agu-deck-filter-difficulty">Dificuldade documentada<select id="agu-deck-filter-difficulty" onchange="AGUReview.deckFilter(\'difficulty\',this.value)"><option value="todas">Todas</option>'+levels.map(level=>'<option value="original:'+level+'" '+(deckFilters.difficulty==='original:'+level?'selected':'')+'>Nível cognitivo original '+level+'</option>').join('')+'<option value="sem_nivel" '+(deckFilters.difficulty==='sem_nivel'?'selected':'')+'>Nível não informado</option></select></label>'+
+   '<label class="agu-deck-toggle" for="agu-deck-filter-due"><input type="checkbox" id="agu-deck-filter-due" '+(deckFilters.due?'checked':'')+' onchange="AGUReview.deckFilter(\'due\',this.checked)">Somente com revisões vencidas</label>'+
+  '</div><p class="agu-deck-help">Níveis 2–4 preservam a classificação cognitiva original; ainda não há equivalência validada com Fundamentos, Distinções e Aplicação avançada. Sem ranking de incidência histórica.</p>'+
+  '<div class="agu-deck-grid">'+(visible.map(x=>{
+   const vars=global.AGUDisciplines?.cssVars?.(x.code)||'';
+   const levelText=Object.entries(x.difficulties).sort().map(([key,count])=>count+' '+(key==='sem_nivel'?'sem nível':key.replace('original:','no nível original '))).join(' · ');
+   const selection=x.cards.filter(c=>matchesDifficulty(c)&&(!deckFilters.due||(stat(c.id).seen&&stat(c.id).due&&stat(c.id).due<=today()))).length;
+   return '<article class="agu-deck-tile" style="'+vars+'"><span class="agu-deck-identity">'+esc(x.name)+'</span><span class="agu-deck-code">'+esc(x.code)+'</span><h3>'+esc(x.title)+'</h3><div class="agu-deck-meta"><span>'+x.count+' '+(x.count===1?'cartão':'cartões')+'</span><span>'+x.new+' inéditos</span><span>'+x.due+' vencidos</span></div><div class="agu-deck-help">Dificuldade: '+esc(levelText)+'</div><label class="small" for="agu-deck-progress-'+esc(x.code)+'">Progresso: '+x.seen+' de '+x.count+' já avaliados</label><progress id="agu-deck-progress-'+esc(x.code)+'" max="'+x.count+'" value="'+x.seen+'">'+x.seen+' de '+x.count+'</progress><div class="btnrow"><button class="primary" type="button" onclick="AGUReview.deckStart(\''+esc(x.code)+'\',event.detail===0)">'+(activeSession&&session.code===x.code?'Continuar':'Estudar baralho'+(selection!==x.count?' ('+selection+')':''))+'</button></div></article>';
+  }).join('')||'<p class="agu-deck-empty">Nenhum baralho corresponde aos filtros. Altere a disciplina, o assunto ou a dificuldade.</p>')+'</div></section>';
+}
+function sessionHTML(){
+ const s=savedSession();if(currentMode!=='deck'||!s)return '';
+ const deck=deckList().find(x=>x.code===s.code),vars=global.AGUDisciplines?.cssVars?.(s.code)||'';
+ if(!deck)return '';
+ const ratedCount=Object.keys(s.ratings).length;
+ if(s.status==='concluida')return '<section class="agu-deck-session" style="'+vars+'" aria-label="Resumo do baralho"><h2 tabindex="-1" id="agu-deck-done">Baralho concluído</h2><p>'+esc(deck.title)+' · '+ratedCount+' de '+s.order.length+' cartões avaliados nesta sessão.</p><p>As próximas revisões seguem os intervalos anteriores (D+1, D+7, D+21 e D+45). Suas respostas permanecem no histórico original.</p><div class="btnrow"><button class="primary" type="button" onclick="AGUReview.deckStart(\''+esc(s.code)+'\',event.detail===0)">Reestudar baralho</button><button class="secondary" type="button" onclick="AGUReview.deckPause(event.detail===0)">Voltar à biblioteca</button></div></section>';
+ const x=INDEX.get(s.order[s.index]),rated=s.ratings[x.id],shown=s.revealed||!!rated;
+ return '<section class="agu-deck-session" style="'+vars+'" aria-label="Sessão de flashcards"><div class="agu-deck-session-head"><div><span class="agu-deck-identity">'+esc(deck.name)+'</span><h2>'+esc(deck.title)+'</h2><span class="agu-deck-code">'+esc(x.code)+'</span></div><button type="button" class="secondary" onclick="AGUReview.deckPause(event.detail===0)">Pausar e voltar</button></div>'+
+ '<p class="agu-deck-stage" aria-live="polite">Cartão '+(s.index+1)+' de '+s.order.length+' · '+ratedCount+' avaliados</p><label class="small" for="agu-deck-session-progress">Avaliação nesta sessão</label><progress class="agu-deck-progress" id="agu-deck-session-progress" max="'+s.order.length+'" value="'+ratedCount+'">'+ratedCount+' de '+s.order.length+'</progress>'+
+ '<div class="agu-deck-meta"><span>'+esc(difficulty(x))+'</span><span>Cartão autoral de fundamento jurídico'+(x.origin?.includes('estilo_cebraspe')?' · estilo Cebraspe':'')+'</span><span>'+esc(x.validation||'validação pendente')+'</span></div>'+
+ (shown?'<div class="agu-deck-surface agu-deck-back" aria-label="Verso do cartão"><span class="agu-deck-stage">Verso · resposta</span><h3 class="question-title">'+esc(x.front)+'</h3><p>'+esc(x.back)+'</p>'+flashDetails(x)+'</div>':
+  '<button type="button" id="agu-deck-face" class="agu-deck-surface agu-deck-front" onclick="AGUReview.reveal(event.detail===0)"><span class="agu-deck-stage">Frente · pense antes de revelar</span><h3 class="question-title">'+esc(x.front)+'</h3><span class="agu-deck-flip-tip">Toque ou pressione Enter / Espaço para revelar a resposta →</span></button>')+
+ (rated?'<div class="agu-deck-rated" role="status">Você já avaliou este cartão nesta sessão. A avaliação não será registrada novamente.</div>':shown?'<div><p>Como foi recuperar a resposta?</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([value,label])=>'<button id="agu-deck-rating-'+value+'" type="button" class="'+(value==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+value+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
+ '<div class="btnrow"><button class="secondary" type="button" '+(s.index===0?'disabled':'')+' onclick="AGUReview.deckMove(-1,event.detail===0)">← Anterior</button><button id="agu-deck-next" class="secondary" type="button" '+(s.index===s.order.length-1?'disabled':'')+' onclick="AGUReview.deckMove(1,event.detail===0)">Próximo →</button></div>'+
+ '<div class="section"><button type="button" class="secondary" onclick="AGUReview.deckNotebook(event.detail===0)">Para meu caderno · abrir leitor</button><p class="agu-deck-help">A LEG-07 salva pendências somente em dispositivos jurídicos identificados. Os cartões ainda não têm ligação granular comprovada: escolha o dispositivo no leitor antes de guardar uma pergunta. Sem novo caderno ou vinculação automática.</p></div>'+notebookPanel()+'</section>';
+}
 function catalog(){
  const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));
  const groups=new Map();for(const c of cards){if(!groups.has(c.code))groups.set(c.code,[]);groups.get(c.code).push(c)}
@@ -322,15 +480,18 @@ function catalog(){
 function page(){
  const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
  if(active&&!INDEX.has(active.id))active=null;
- return '<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Recuperação ativa e próximas revisões</div></div></div>'+
+ const header='<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Biblioteca de assuntos · respostas comentadas · revisão espaçada</div></div></div>';
+ if(currentMode==='deck'&&savedSession())return header+libraryHTML();
+ return header+libraryHTML()+
+ '<div class="agu-deck-legacy"><h2>Revisão inteligente · fila sugerida</h2><p class="small muted">Os caminhos anteriores de revisão e questões oficiais continuam disponíveis.</p></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
  '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
  '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\',event.detail===0)">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\',event.detail===0)">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\',event.detail===0)">Questões oficiais</button></div></div>'+
  '<div class="card">'+catalog()+'</div>'+
- (active?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
+ (active&&currentMode!=='deck'?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
   (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
- '</div>':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
- notebookPanel()+
+ '</div>':currentMode==='deck'?'':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
+ (currentMode==='deck'?'':notebookPanel())+
  '<details class="card agu-catalog"><summary>Histórico e exportação</summary><p class="small muted">Dados salvos apenas neste navegador, sem login nem sincronização entre dispositivos. Faça backups periódicos.</p>'+
  '<div class="btnrow"><button class="secondary" onclick="AGUReview.exportData()">Exportar backup JSON</button><button class="secondary" onclick="document.getElementById(\'review-import\').click()">Importar sem substituir</button><input id="review-import" type="file" class="hidden" accept="application/json" onchange="AGUReview.importBackup(this)"></div>'+
  '<div class="small muted">'+(hist.length?hist.map(x=>esc(x.code)+' · '+esc(x.rating)+' · '+esc(x.due)).join('<hr>'):'Nenhuma tentativa registrada')+'</div></details>'+
@@ -376,5 +537,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,validateBackupObject,mergeBackupObject,deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,validateBackupObject,mergeBackupObject,deckStart,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
