@@ -60,7 +60,8 @@ async function main(){
   assert.ok(await page.getByText('Baralho concluído').isVisible());
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),2);
   const backup=await page.evaluate(()=>AGUBackup20.capture());
-  assert.equal(Object.keys(backup.items).length,1);
+  // A abertura legítima do Leitor LEG-07 persiste também seu estado de navegação.
+  assert.deepEqual(Object.keys(backup.items).sort(),['agu_leitor_juridico_s13_v1','agu_quiz_revisao_inteligente_v1']);
   assert.equal(backup.items['agu_quiz_revisao_inteligente_v1']!==undefined,true);
   const review=JSON.parse(backup.items['agu_quiz_revisao_inteligente_v1']);
   assert.equal(review.librarySession.status,'concluida');
