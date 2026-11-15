@@ -6,7 +6,7 @@
   "reviewAfterSha256": "dd00f5edb47e9c91a866f9f48d98b2861227d89e0cd0537f644d6f225941b8cc",
   "htmlAfterSha256": "e2248d0a4ef73507ec2cb8cf983cea63885f6edd8f98881d41485dcc7569813c",
   "cssBeforeSha256": "0ea120f61cb1ee4d0e4bb711369c23aa2e4cbc8ffa1b56076211f25a51452a4c",
-  "cssAfterSha256": "4946db95cc84a7b387231a36c8c32405b3ffe0404cc623eadd51287172e57e27",
+  "cssAfterSha256": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
   "unchanged": [
     "catalogo-disciplinas.js",
     "planejamento-semanal.js",

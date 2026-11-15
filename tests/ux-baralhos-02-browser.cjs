@@ -118,7 +118,10 @@ async function main(){
   if(width===390||width===1280){
    await page.locator('#agu-deck-library').screenshot({path:path.join(OUT,'sessao-'+width+'.png')});
   }
-  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow final '+width);
+  const spill=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,
+   elements:[...document.querySelectorAll('#main *')].filter(el=>el.getBoundingClientRect().right>innerWidth+2).slice(0,7)
+    .map(el=>({tag:el.tagName,cls:el.className,right:Math.round(el.getBoundingClientRect().right),text:(el.textContent||'').trim().slice(0,85)}))}));
+  assert.ok(spill.scrollWidth<=spill.viewport+2,'sem overflow final '+width+': '+JSON.stringify(spill));
   assert.deepEqual(errors,[]);
   results.push({width,baralhos:6,cartoes:36,selectedOne:true,graded:2,filters:true,choose:true,reload:true,backup:true,axe:width===390||width===1280});
   await context.close();
