@@ -29,10 +29,10 @@ async function adverse(origin,width,kind){const ctx=await browser.newContext({vi
    const name=kind==='blocked'?'getItem':'setItem',native=Storage.prototype[name];Storage.prototype[name]=function(k,...args){if(k===key)throw new DOMException('Acesso local indisponível',kind==='blocked'?'SecurityError':'QuotaExceededError');return native.call(this,k,...args)};
   }
  },{key:KEY,kind});
- await p.goto(origin,{waitUntil:'load'});assert.match(await p.locator('#agu-home-notebook-count').innerText(),/Contagem indisponível/);
+ await p.goto(origin,{waitUntil:'load'});assert.match(await p.locator('#agu-home-notebook-count').innerText(),kind==='quota'?/1 marcação pendente/:/Contagem indisponível/);
  const raw=await p.evaluate(k=>{const native=Storage.prototype.getItem;try{return native.call(localStorage,k)}catch{return null}},KEY);
  await p.locator('#agu-home-notebook-open').press('Enter');assert.ok(await p.locator('#agu-home-notebook-warning').isVisible());
- assert.equal(await p.evaluate(()=>document.activeElement?.id),'agu-home-notebook-warning');
+ assert.equal(await p.evaluate(()=>document.activeElement?.id),kind==='quota'?'agu-caderno-list':'agu-home-notebook-warning');
  assert.equal(await p.evaluate(k=>{try{return localStorage.getItem(k)}catch{return 'LEITURA_BLOQUEADA'}},KEY),kind==='blocked'?'LEITURA_BLOQUEADA':raw);
  await p.locator('#agu-home-notebook-return').click();assert.equal(await p.evaluate(()=>document.activeElement?.id),'agu-home-notebook-open');
  await ctx.close();return {kind,warning:true,rawPreserved:true};
