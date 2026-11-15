@@ -23,7 +23,7 @@ async function main(){
   await p.locator('#agu-reader .agu-tabs button').filter({hasText:'Questões'}).press('Enter');
   await p.getByRole('button',{name:'Responder no Leitor'}).press('Enter');
   assert.equal(await p.evaluate(()=>AGUQuestions18.selected()),'of-2015-adv-006');
-  const initial=await p.evaluate(()=>({review:localStorage.getItem(REVIEW),plan:localStorage.getItem('agu_quiz_planejamento_semanal_v1'),study:localStorage.getItem('agu_estudo_integrado_s16_v1'),notes:AGULegal.peek().notes}));
+  const initial=await p.evaluate(()=>({review:localStorage.getItem('agu_quiz_revisao_inteligente_v1'),plan:localStorage.getItem('agu_quiz_planejamento_semanal_v1'),study:localStorage.getItem('agu_estudo_integrado_s16_v1'),notes:AGULegal.peek().notes}));
   const details=p.locator('.agu-question-notebook'),summary=details.locator('summary');
   if(width<=430)await summary.tap();else await summary.press('Enter');
   assert.ok(await p.locator('#q18-notebook').isVisible());
@@ -33,7 +33,7 @@ async function main(){
   assert.match(await p.locator('#q18-notebook-status').innerText(),/Pendente registrada/);
   const item=await p.evaluate(()=>AGULegal.peek().forNotebook[2]);
   assert.equal(item.origin,'questao_verificada');assert.equal(item.questionId,'of-2015-adv-006');assert.equal(item.questionLabel,'AGU 2015 · Q6 · 187AGU_001_07');assert.equal(item.topic,'ADM-17');assert.deepEqual([item.lawId,item.articleId,item.unitId],[null,null,null]);assert.equal(item.status,'pendente');
-  const unchanged=await p.evaluate(()=>({review:localStorage.getItem(REVIEW),plan:localStorage.getItem('agu_quiz_planejamento_semanal_v1'),study:localStorage.getItem('agu_estudo_integrado_s16_v1'),notes:AGULegal.peek().notes}));assert.deepEqual(unchanged,initial);
+  const unchanged=await p.evaluate(()=>({review:localStorage.getItem('agu_quiz_revisao_inteligente_v1'),plan:localStorage.getItem('agu_quiz_planejamento_semanal_v1'),study:localStorage.getItem('agu_estudo_integrado_s16_v1'),notes:AGULegal.peek().notes}));assert.deepEqual(unchanged,initial);
   const a11y={};
   if(width===390||width===1280){
    await p.addScriptTag({content:axe.source});const run=async()=>p.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),passed:r.passes.map(v=>v.id)}});
@@ -53,7 +53,7 @@ async function main(){
   assert.equal(await p.evaluate(id=>AGULegal.peek().forNotebook.find(x=>x.id===id).id,item.id),item.id);
   await p.locator('.agu-paper-item').filter({hasText:'Qual o limite da motivação'}).getByRole('button',{name:'Abrir questão de origem'}).press('Enter');
   assert.equal(await p.evaluate(()=>AGULegal.peek().tab),'questoes');assert.equal(await p.evaluate(()=>AGUQuestions18.selected()),'of-2015-adv-006');
-  assert.equal(await p.evaluate(()=>localStorage.getItem(REVIEW)),initial.review);
+  assert.equal(await p.evaluate(()=>localStorage.getItem('agu_quiz_revisao_inteligente_v1')),initial.review);
   await p.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   await p.evaluate(()=>AGUReview.select('of-2015-adv-006'));await p.evaluate(()=>render());
   assert.equal(await p.locator('.agu-review-notebook-item').count(),1);assert.match(await p.locator('.agu-review-notebook').innerText(),/Abrir questão de origem/);
