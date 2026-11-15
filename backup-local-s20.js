@@ -95,6 +95,11 @@ function validateRecord(key,obj){
      // mas seu ID e rótulo históricos persistem sem exigir um estado de resposta ou revisão.
      const ref=root.AGUQuestions18?.notebookHistoricReference?.(m.questionId);
      if(!ref||m.questionLabel!==ref.label||m.topic!==ref.topic||m.lawId!==null||m.articleId!==null||m.unitId!==null)return false;
+    }else if(m.origin==='flashcard_existente'){
+     // Lista fechada da LEG11: aceitar arquivo antigo se o cartão foi retirado da interface,
+     // mas recusar IDs inventados, rótulos adulterados e vínculos curriculares por inferência.
+     const ref=root.AGUReview?.notebookHistoricCard?.(m.cardId);
+     if(!ref||m.cardLabel!==ref.label||m.topic!==ref.topic||m.lawId!==null||m.articleId!==null||m.unitId!==null)return false;
     }else return false;
     ids.add(m.id);
    }

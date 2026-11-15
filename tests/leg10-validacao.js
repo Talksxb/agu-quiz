@@ -12,13 +12,15 @@ function boot(seed=new Map([[READER,JSON.stringify({...legacy,forNotebook:[oldMa
  z.window=z;vm.createContext(z);for(const file of ['dados/legislacao-s13.js','dados/questoes-auditadas-s18.js','dados/questoes-auditadas-s19.js','revisao-inteligente.js','estudo-integrado.js','questoes-leitor-s18.js','leitor-consolidacao.js','leitor-juridico.js','backup-local-s20.js'])vm.runInContext(read(file),z);
  return {z,fields,records};
 }
-check('base, corpus, nove categorias, fixtures LEG09→LEG10→UX02 e fontes intocados',()=>{
- const old=JSON.parse(read('tests/fixtures/leg09-deltas.json')),ux=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),d=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json'));
+check('base, corpus, nove categorias, fixtures LEG09→LEG10→UX02→LEG11 e fontes intocados',()=>{
+ const old=JSON.parse(read('tests/fixtures/leg09-deltas.json')),ux=JSON.parse(read('tests/fixtures/ux-baralhos-01-delta.json')),d=JSON.parse(read('tests/fixtures/leg10-deltas.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-02-delta.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json'));
  for(const k of ['reader','backup'])assert.equal(old[k+'AfterSha256'],d[k+'BeforeSha256']);
  for(const k of ['review','html']){assert.equal(ux[k+'BeforeSha256'],old[k+'AfterSha256']);assert.equal(ux[k+'AfterSha256'],d[k+'BeforeSha256'])}
  for(const k of ['review','html'])assert.equal(d[k+'AfterSha256'],v[k+'BeforeSha256']);
- for(const [f,k] of [['questoes-leitor-s18.js','questionAfterSha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),d[k]);
- for(const [f,k] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(f)),v[k]);
+ for(const k of ['review','html'])assert.equal(v[k+'AfterSha256'],w[k+'BeforeSha256']);
+ for(const k of ['reader','backup'])assert.equal(d[k+'AfterSha256'],w[k+'BeforeSha256']);
+ for(const [f,k] of [['questoes-leitor-s18.js','questionSha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),w[k]);
+ for(const [f,k] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(f)),w[k]);
  assert.equal(sha(read('dados/questoes-auditadas-s18.js')),sha(require('node:child_process').execFileSync('git',['show','HEAD:dados/questoes-auditadas-s18.js'],{cwd:ROOT}))) ;
  const b=boot();assert.equal(b.z.AGUBackup20.keys().length,9);assert.equal(b.z.AGULegal.stats().laws,6);assert.equal(b.z.AGULegal.stats().units,1176);
 });

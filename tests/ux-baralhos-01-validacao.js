@@ -95,8 +95,9 @@ check('LEG07/08 continuam na única categoria de leitor, sem caderno paralelo',(
 check('fonte, corpus e legislativo inalterados, sem questões oficiais adicionais',()=>{
  const {x}=boot();assert.equal(x.AGUReview.deck().flashcards,36);assert.equal(x.AGUReview.deck().official,24);
  assert.equal(x.AGU_LEGAL_CORPUS.laws.length,6);assert.equal(x.AGUReview.searchCards().length,36);
- const f=JSON.parse(read('tests/fixtures/leg09-deltas.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json'));
+ const f=JSON.parse(read('tests/fixtures/leg09-deltas.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json'));
  for(const k of ['reader','backup'])assert.equal(t[k+'BeforeSha256'],f[k+'AfterSha256']);
- for(const [p,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(p)),t[key]);
+ for(const k of ['reader','backup'])assert.equal(t[k+'AfterSha256'],w[k+'BeforeSha256']);
+ for(const [p,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(p)),w[key]);
 });
 console.log('UX_BARALHOS_01_VALIDACAO_OK',JSON.stringify({checks,flashcards:36,decks:6,localStorageCategories:9}));
