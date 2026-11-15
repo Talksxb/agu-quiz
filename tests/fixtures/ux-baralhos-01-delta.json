@@ -3,7 +3,7 @@
   "baseCommit": "38b4c798bd457784b9db27aa6174588783e5fc6c",
   "reviewBeforeSha256": "566217a961278d79c06d6005603646ff2b5a3d73ce9cdf885578e27455816f5a",
   "htmlBeforeSha256": "47c7c6195c6ffdfeaa63fbc5d65b82b6ba96cb0f9733609ffe0118d68fd08cfe",
-  "reviewAfterSha256": "1e2851a024557e2558c79f300dbae27d6470dc520296dfe6828dfb60b93b0bd2",
+  "reviewAfterSha256": "241ec6bd31ad41a8fc048c74b4c884dfbe2e55b12dbf4f5b02e84c5379d12e91",
   "htmlAfterSha256": "c6207bb60d4ef7b895a42738609b09c8c7a7827c63260ab0935417a05e469eab",
   "unchanged": [
     "leitor-juridico.js",

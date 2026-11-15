@@ -32,6 +32,13 @@ async function main(){
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
+  assert.equal(await page.locator('.agu-deck-grid article').count(),0,'sessão ocupa a área principal');
+  assert.ok(await page.locator('.agu-deck-session').evaluate(node=>node.getBoundingClientRect().top<innerHeight),'sessão visível sem longa rolagem '+width);
+  if(width===390||width===1280){
+   await page.addScriptTag({content:axe.source});
+   const cardAudit=await page.evaluate(async()=>await axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
+   assert.equal(cardAudit.violations.length,0,'axe cartão '+width+': '+cardAudit.violations.map(x=>x.id).join(';'));
+  }
   assert.match(await page.locator('.agu-deck-stage').first().innerText(),/cartão 1 de 2/i);
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),0);
   const face=page.locator('#agu-deck-face');await face.focus();await face.press('Enter');
@@ -66,13 +73,13 @@ async function main(){
   const review=JSON.parse(backup.items['agu_quiz_revisao_inteligente_v1']);
   assert.equal(review.librarySession.status,'concluida');
   assert.equal(review.attempts.length,2);
+  await page.getByRole('button',{name:'Voltar à biblioteca'}).click();
   await page.locator('#agu-deck-filter-topic').fill('algo inexistente');await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
   assert.ok(await page.getByText('Nenhum baralho corresponde aos filtros').isVisible());
   await page.locator('#agu-deck-filter-topic').fill('');await page.locator('#agu-deck-filter-topic').press('Tab');
   if(width===390||width===1280){
    await page.locator('#agu-deck-library').screenshot({path:path.join(OUT,'biblioteca-'+width+'.png')});
-   await page.addScriptTag({content:axe.source});
    const audit=await page.evaluate(async()=>await axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
    assert.equal(audit.violations.length,0,'axe '+width+': '+audit.violations.map(x=>x.id+': '+x.description).join('; '));
   }
