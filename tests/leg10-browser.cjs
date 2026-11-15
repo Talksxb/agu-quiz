@@ -62,7 +62,10 @@ async function main(){
   assert.ok(await p.getByRole('button',{name:/Voltar à revisão programada/}).isVisible());
   await p.getByRole('button',{name:/Voltar à revisão programada/}).press('Enter');
   assert.equal(await p.evaluate(()=>document.activeElement?.id),'agu-review-notebook-origin-'+item.id);
-  await p.getByRole('button',{name:'Mostrar resposta',exact:true}).press('Enter');await p.getByRole('button',{name:'Lembrei',exact:true}).press('Enter');
+  // Cartão oficial verificado exige escolha C/E antes de conferir; "Mostrar resposta" é exclusivo de flashcard.
+  await p.locator('.options .option').filter({hasText:'ERRADO'}).press('Enter');
+  await p.getByRole('button',{name:'Conferir resposta',exact:true}).press('Enter');
+  await p.getByRole('button',{name:'Lembrei',exact:true}).press('Enter');
   assert.equal(await p.evaluate(id=>AGULegal.peek().forNotebook.find(x=>x.id===id).status,item.id),'pendente');
   await p.reload();const after=await p.evaluate(()=>({reader:AGULegal.peek(),study:AGUStudy.peek()}));assert.equal(after.reader.forNotebook.length,3);assert.deepEqual(after.reader.forNotebook.map(x=>x.origin),['leitor','estudo_integrado','questao_verificada']);
   await p.getByRole('button',{name:'Evolução',exact:true}).click();await p.getByRole('button',{name:'Dados e backup',exact:true}).click();
