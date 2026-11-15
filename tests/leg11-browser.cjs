@@ -112,6 +112,7 @@ async function main(){
   results.push({width,flashcardId:item.cardId,topic:item.topic,marks:5,manualStates:true,noScheduling:true,backupRestored:true,a11y});await ctx.close();
  }
  fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify({target:origin,browser:browser.version(),axe:axe.version,results},null,2));
+ console.log('LEG11_AXE',JSON.stringify(results.filter(x=>x.a11y.initial).map(x=>({width:x.width,violations:x.a11y.initial.violations.length,incomplete:x.a11y.initial.incomplete.reduce((n,v)=>n+v.nodes.length,0),passed:x.a11y.initial.passed.length,afterScroll:x.a11y.afterScroll.length,unresolved:x.a11y.unresolvedAfterScroll.length}))));
  console.log('LEG11_BROWSER_OK',JSON.stringify({target:origin,browser:browser.version(),viewports:results.map(x=>x.width)}));
 }
 main().catch(e=>{console.error(e.stack);process.exitCode=1}).finally(async()=>{await browser?.close();server.close()});
