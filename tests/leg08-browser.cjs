@@ -43,7 +43,7 @@ async function main(){
   assert.equal(await p.evaluate(()=>localStorage.getItem('agu_quiz_revisao_inteligente_v1')),originalReview);
   assert.ok(!p.url().includes('abrir=lei'),'retorno não mantém rota legal antiga');
   await first.getByRole('button',{name:'Anotei no meu caderno',exact:true}).press('Enter');
-  assert.equal(await p.evaluate(()=>document.activeElement?.classList.contains('question-title')),true);
+  assert.equal(await p.evaluate(()=>document.activeElement?.id),'agu-review-notebook-heading');
   const second=p.locator('.agu-review-notebook-item').filter({hasText:'Que publicação é exigida'});
   await second.getByRole('button',{name:'Dispensar',exact:true}).click();
   assert.equal(await p.locator('.agu-review-notebook-item').count(),1);
