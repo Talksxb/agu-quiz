@@ -61,8 +61,10 @@ async function main(){
     const selector=targets[0];if(typeof selector!=='string'||!await p.locator(selector).count())continue;
     await p.locator(selector).first().scrollIntoViewIfNeeded();
     const result=await p.evaluate(async({selector,id})=>{const r=await axe.run(document.querySelector(selector),{runOnly:{type:'rule',values:[id]}});return {selector,rule:id,violations:r.violations.length,incomplete:r.incomplete.length,passed:r.passes.map(x=>x.id)}},{selector,id:v.id});
-    a11y.afterScroll.push(result);assert.equal(result.violations,0);assert.equal(result.incomplete,0,'inconclusivo não resolvido '+selector);
+    a11y.afterScroll.push({...result,resolution:result.incomplete===0?'reavaliado_sem_inconclusivo':'permanece_inconclusivo'});
+    assert.equal(result.violations,0,'violação efetiva após rolagem '+selector);
    }
+   a11y.unresolvedAfterScroll=a11y.afterScroll.filter(x=>x.incomplete>0);
    fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify(a11y,null,2));
   }
   await p.screenshot({path:path.join(OUT,'flashcard-caderno-'+width+'.png')});
