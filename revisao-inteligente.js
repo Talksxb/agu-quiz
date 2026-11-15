@@ -613,6 +613,9 @@ function catalog(){
 function page(){
  const sum=summary(),p=plan(),hist=state.attempts.slice(-5).reverse();
  if(active&&!INDEX.has(active.id))active=null;
+ // Modo legado: tentativa importada conta como avaliação histórica, nunca como vencimento.
+ const priorCount=active?historicalCount(active.id):0;
+ const legacyDue=active?(stat(active.id).due?'próxima '+esc(stat(active.id).due):priorCount>0?'sem agenda local':'ainda inédito'):'';
  const header='<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Biblioteca de assuntos · respostas comentadas · revisão espaçada</div></div></div>';
  if(currentMode==='deck'&&savedSession())return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML();
  return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML()+
@@ -621,7 +624,7 @@ function page(){
  '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
  '<div class="btnrow"><button class="primary" onclick="AGUReview.go(\'auto\',event.detail===0)">Iniciar seleção automática</button><button class="secondary" onclick="AGUReview.go(\'flashcard\',event.detail===0)">Flashcards</button><button class="secondary" onclick="AGUReview.go(\'official\',event.detail===0)">Questões oficiais</button></div></div>'+
  '<div class="card">'+catalog()+'</div>'+
- (active&&currentMode!=='deck'?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Revisão anterior: '+(stat(active.id).seen||0)+' · próxima '+esc(stat(active.id).due||'inédita')+'</span></div>'+cardHTML(active)+
+ (active&&currentMode!=='deck'?'<div class="card"><div class="split"><span class="chip">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class="chip">Avaliações anteriores: '+priorCount+' · '+legacyDue+'</span></div>'+cardHTML(active)+
   (revealed&&active.status!=='anulada'?'<div class="section"><p>Como foi recuperar a resposta? Na questão oficial, um erro prevalece sobre a avaliação subjetiva.</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([v,label])=>'<button class="'+(v==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+v+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
  '</div>':currentMode==='deck'?'':'<div class="card"><h2>Sem itens na fila</h2><p>Nenhuma revisão vencida nesta modalidade. Volte no próximo vencimento ou escolha outra modalidade.</p></div>')+
  (currentMode==='deck'?'':notebookPanel())+

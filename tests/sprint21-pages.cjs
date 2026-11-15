@@ -34,7 +34,7 @@ async function main(){
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='revisao-inteligente.js'?'20261115-ux03':script==='leitor-juridico.js'||script==='backup-local-s20.js'?'20261115-leg11':script==='catalogo-disciplinas.js'?'20261115-ux01':script==='meu-estudo.js'?'20261113-work01b':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':'20261113-s35a','versão de cache '+script);
+    assert.equal(m[1],script==='revisao-inteligente.js'?'20261115-ux04':script==='leitor-juridico.js'||script==='backup-local-s20.js'?'20261115-leg11':script==='catalogo-disciplinas.js'?'20261115-ux01':script==='meu-estudo.js'?'20261113-work01b':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':'20261113-s35a','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
