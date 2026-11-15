@@ -55,6 +55,8 @@ jobs:
         run: node tests/leg09-validacao.js
       - name: UX-BARALHOS-01 — catálogo, sessão e backup compatíveis
         run: node tests/ux-baralhos-01-validacao.js
+      - name: UX-BARALHOS-02 — seleção, progresso e histórico preservado
+        run: node tests/ux-baralhos-02-validacao.js
       - name: LEG-10 — questões oficiais verificadas, mesma lista e backup compatível
         run: node tests/leg10-validacao.js
       - name: LEG-06 — Ação Popular integral, fonte e persistência
@@ -93,6 +95,8 @@ jobs:
         run: node tests/leg08-browser.cjs
       - name: UX-BARALHOS-01 — biblioteca e sessões reais em cinco viewports
         run: node tests/ux-baralhos-01-browser.cjs
+      - name: UX-BARALHOS-02 — filtros combinados, escolha e progressão
+        run: node tests/ux-baralhos-02-browser.cjs
       - name: LEG-07 — caderno físico, cinco viewports e backup sintético
         run: node tests/leg07-browser.cjs
       - name: LEG-06 — Ação Popular, cinco viewports e recuperação
@@ -191,6 +195,8 @@ jobs:
             tests/artifacts-work01/*.png
             tests/artifacts-ux-baralhos-01/*.json
             tests/artifacts-ux-baralhos-01/*.png
+            tests/artifacts-ux-baralhos-02/*.json
+            tests/artifacts-ux-baralhos-02/*.png
           if-no-files-found: ignore
           retention-days: 7
 
@@ -223,6 +229,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/ux-baralhos-01-browser.cjs
+      - name: UX-BARALHOS-02 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/ux-baralhos-02-browser.cjs
       - name: LEG-07 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -262,6 +272,7 @@ jobs:
             tests/artifacts-leg08/
             tests/artifacts-leg09/
             tests/artifacts-ux-baralhos-01/
+            tests/artifacts-ux-baralhos-02/
           if-no-files-found: ignore
           retention-days: 7
 
