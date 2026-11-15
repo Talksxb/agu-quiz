@@ -32,7 +32,7 @@ async function main(){
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
-  assert.match(await page.locator('.agu-deck-stage').first().innerText(),/Cartão 1 de 2/);
+  assert.match(await page.locator('.agu-deck-stage').first().innerText(),/cartão 1 de 2/i);
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),0);
   const face=page.locator('#agu-deck-face');await face.focus();await face.press('Enter');
   assert.ok(await page.getByText('Verso · resposta').isVisible());
@@ -50,7 +50,7 @@ async function main(){
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await page.evaluate(()=>localStorage.getItem('agu_quiz_revisao_inteligente_v1')),before,'reload intacto');
   await page.getByRole('button',{name:'Retomar sessão'}).click();
-  assert.match(await page.locator('.agu-deck-stage').first().innerText(),/Cartão 2 de 2/);
+  assert.match(await page.locator('.agu-deck-stage').first().innerText(),/cartão 2 de 2/i);
   await page.getByRole('button',{name:'Para meu caderno · abrir leitor'}).click();
   assert.equal(await page.evaluate(()=>AGULegal.peek().tab),'para_caderno');
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
