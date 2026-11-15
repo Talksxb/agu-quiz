@@ -1,0 +1,13 @@
+{
+  "sprint": "LEG-08",
+  "baseCommit": "5385190d6aace2bbc0c2be0877f60c47c47eb04c",
+  "reviewBeforeSha256": "ff1ad844a49ef7b98abdb7efd6bdd65f18a83924c4fc5ee8bcd9c75f9a68fc4a",
+  "reviewAfterSha256": "64267e9a5f1167931d23a9cc2a3b42d769ad5b2dec6883ba11194a647690e8cb",
+  "htmlBeforeSha256": "dcc0dac77e944c0789e495390ed2127f9084a3f6e85e7d7012635c63d3727f9a",
+  "htmlAfterSha256": "68a789ac6f4544fdf3e49be73292008d8d39865bde7e0c3cb7ee986780b8a215",
+  "readerSha256": "34768817511009ed069c9bab512165092036f6ed90ed3d2b3247f6932a8608bb",
+  "backupSha256": "11993873b63fb9df591eb43ddc8dbec9ba2923d1c8f76b029c91568ec3bace10",
+  "plannerSha256": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+  "corpusSha256": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+  "reason": "Consulta contextual e somente leitura de marcações na revisão de cartão já agendado, com atualização manual de status pela API LEG07. Nenhuma nova chave, migração, agenda ou cópia da marcação."
+}
