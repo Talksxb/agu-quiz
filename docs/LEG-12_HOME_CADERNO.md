@@ -6,7 +6,8 @@ Data de execução: 15/11/2026. Escopo único: abrir a lista `forNotebook` preex
 
 - Repositório: `Talksxb/agu-quiz`; publicação: https://talksxb.github.io/agu-quiz/.
 - Base revalidada da branch `leg/leg12-home-para-caderno`: `7fe92d1ffc0b3b7cfe398d90d1172feefb778621`, depois da UX-BARALHOS-03. Na verificação inicial, sem PR aberta; CI da `main` `43737287138` e Pages `43737286770` estavam aprovadas.
-- Estado histórico anterior: LEG07–11 integradas, UX01–03 integradas. Os hashes históricos não são invariantes: `index.html` da base `9e692d212b2536c80962d05bedee3cca306720928bbb486c31a6970058eb99a2`, `meu-estudo.js` `a6c8d9d8c706bee481517e37c18b141985f3737422270ca919e78b3d9b035fc0`.
+- **Concorrência reconciliada:** durante a CI da [PR #27](https://github.com/Talksxb/agu-quiz/pull/27), a `main` avançou para `aa4fff6791bbffa57c649be119769bc4c0a9912e` (merge da UX-BARALHOS-04, PR #26). A LEG-12 incorporou essa `main` por merge não destrutivo na branch, preservando o novo rótulo de histórico do motor, teste UX04, cache de `revisao-inteligente.js?v=20261115-ux04` e workflow. O delta LEG12 passou a encadear **UX03→UX04→LEG12** sem alterar as fixtures anteriores.
+- Estado histórico anterior: LEG07–11 integradas, UX01–04 integradas. Os hashes históricos não são invariantes: `index.html` antes da UX04 `9e692d212b2536c80962d05bedee3cca306720928bbb486c31a6970058eb99a2`, após UX04 `fd0b6e3ac1b564d5e5cfa04a445f3c16660181f3d6eff6377730d46af84a034d`, após a conciliação LEG12 `b15be4310bb20ab842aab91804c107ce97dd8819d18e7a84e0d00a630bb974a1`; `meu-estudo.js` antes `a6c8d9d8c706bee481517e37c18b141985f3737422270ca919e78b3d9b035fc0`, depois `e88aa5ee7cb77a5f4e193f690830c803604dcda1b3d2e6fe53e0d8285bed43de`.
 - PR/merge, CI e deploy desta sprint: **a confirmar após conclusão dos jobs remotos**; nunca confundir código na branch com código publicado.
 
 ## Decisão e fluxo
@@ -28,7 +29,7 @@ Data de execução: 15/11/2026. Escopo único: abrir a lista `forNotebook` preex
 ## Evidências e testes
 
 - Nova suíte `tests/leg12-validacao.js`: dez verificações de contador, navegação, foco, quatro origens, `topic:null`, mudança exclusivamente manual, ausência/invalidade/quota/SecurityError, simulação, reload, backup idempotente, 300/301, 450/451, 500/501, 12 MB e hashes encadeados.
-- Regressões Node: **28/28 suites aprovadas localmente** (27 anteriores incluindo UX03 e LEG12). As asserções de hash antigas foram encadeadas à fixture nova `tests/fixtures/leg12-deltas.json`, sem modificar fixtures históricas.
+- Regressões Node: **28/28 suites aprovadas localmente antes da UX04** (27 anteriores incluindo UX03 e LEG12). Após a reconciliação da UX04, **29/29 suítes aprovadas localmente**. As asserções de hash antigas foram encadeadas à fixture nova `tests/fixtures/leg12-deltas.json`, sem modificar fixtures históricas.
 - Nova jornada `tests/leg12-browser.cjs`: contextos sintéticos nas larguras 320, 360, 390, 430 e 1280, Enter/Espaço/toque, quatro origens, contador e retorno, estado de sessão, reload, backup S20, overflow e axe 390/1280. Guarda capturas e JSON com `violations`, `incomplete` e `passed`, mais reavaliação por rolagem. A execução local Chromium foi bloqueada por `socket() Operation not permitted` do ambiente e **não constitui aprovação**; CI remota deve ser consultada.
 - `.github/workflows/agu-sprint20-ci.yml` inclui a nova suíte Node e jornada Chromium, globs específicos `artifacts-leg12` e execução com `AGU_TEST_URL` após merge; `tests/sprint21-pages.cjs` verifica HTML, nove scripts e CSS por SHA exato.
 

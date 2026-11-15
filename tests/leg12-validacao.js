@@ -104,10 +104,11 @@ check('limites anteriores preservados: 300/301, 450/451, 500/501 comentários e 
  assert.equal(valid({...reader,notes}),true);assert.equal(valid({...reader,notes:{...notes,[ids[500]]:'extra'}}),false);
  assert.throws(()=>b.e.AGUBackup20.validateBundle(JSON.stringify({schema:'agu-portable-local-s20-v1',version:1,items:{[KEY]:' '.repeat(12*1024*1024+1)}})));
 });
-check('hashes encadeados UX03→LEG12 e módulos fora da Home intocados',()=>{
- const prior=JSON.parse(read('tests/fixtures/ux-baralhos-03-delta.json'));
+check('hashes encadeados UX03→UX04→LEG12 e módulos fora da Home intocados',()=>{
+ const prior=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  const now=JSON.parse(read('tests/fixtures/leg12-deltas.json'));
  assert.equal(now.baseCommit,'7fe92d1ffc0b3b7cfe398d90d1172feefb778621');
+ assert.equal(now.reconciledMain,'aa4fff6791bbffa57c649be119769bc4c0a9912e');
  assert.equal(now.htmlBeforeSha256,prior.htmlAfterSha256);assert.equal(now.homeBeforeSha256,prior.unchanged['meu-estudo.js']);
  assert.equal(sha('index.html'),now.htmlAfterSha256);assert.equal(sha('meu-estudo.js'),now.homeAfterSha256);
  for(const [file,hash] of Object.entries(now.unchanged))assert.equal(sha(file),hash,file);

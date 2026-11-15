@@ -59,6 +59,8 @@ jobs:
         run: node tests/ux-baralhos-02-validacao.js
       - name: UX-BARALHOS-03 — histórico importado e ponte curricular literal
         run: node tests/ux-baralhos-03-validacao.js
+      - name: UX-BARALHOS-04 — histórico coerente no modo legado e preservação
+        run: node tests/ux-baralhos-04-validacao.js
       - name: LEG-10 — questões oficiais verificadas, mesma lista e backup compatível
         run: node tests/leg10-validacao.js
       - name: LEG-11 — flashcards existentes, mesma lista e backup compatível
@@ -109,6 +111,8 @@ jobs:
         run: node tests/ux-baralhos-02-browser.cjs
       - name: UX-BARALHOS-03 — progressão e agenda no Chromium
         run: node tests/ux-baralhos-03-browser.cjs
+      - name: UX-BARALHOS-04 — histórico, caderno e retomada no Chromium
+        run: node tests/ux-baralhos-04-browser.cjs
       - name: LEG-07 — caderno físico, cinco viewports e backup sintético
         run: node tests/leg07-browser.cjs
       - name: LEG-06 — Ação Popular, cinco viewports e recuperação
@@ -215,6 +219,8 @@ jobs:
             tests/artifacts-ux-baralhos-02/*.png
             tests/artifacts-ux-baralhos-03/*.json
             tests/artifacts-ux-baralhos-03/*.png
+            tests/artifacts-ux-baralhos-04/*.json
+            tests/artifacts-ux-baralhos-04/*.png
           if-no-files-found: ignore
           retention-days: 7
 
@@ -263,6 +269,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/ux-baralhos-03-browser.cjs
+      - name: UX-BARALHOS-04 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/ux-baralhos-04-browser.cjs
       - name: LEG-07 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -308,6 +318,7 @@ jobs:
             tests/artifacts-ux-baralhos-01/
             tests/artifacts-ux-baralhos-02/
             tests/artifacts-ux-baralhos-03/
+            tests/artifacts-ux-baralhos-04/
           if-no-files-found: ignore
           retention-days: 7
 
