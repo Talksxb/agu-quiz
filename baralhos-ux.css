@@ -1,0 +1,65 @@
+/* UX-BARALHOS-01. Estilos deliberadamente restritos aos flashcards. */
+.agu-deck-library{margin:22px 0;color:#223d4a}
+.agu-deck-library *{min-width:0}
+.agu-deck-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.agu-deck-intro h2{font-size:23px;margin-bottom:4px}
+.agu-deck-intro p{margin:0}
+.agu-deck-count{background:#e9f1f3;color:#244d5e;padding:9px 13px;border-radius:18px;font-weight:650;font-size:13px}
+.agu-deck-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;padding:16px;border:1px solid #dce7eb;border-radius:14px;background:#f7fafb}
+.agu-deck-filters label{display:grid;gap:6px}
+.agu-deck-filters select,.agu-deck-filters input{width:100%;max-width:100%;min-height:44px}
+.agu-deck-toggle{display:flex!important;align-items:center;gap:9px;font-size:13px;padding:8px 0;cursor:pointer}
+.agu-deck-toggle input{width:18px;height:18px;accent-color:#17656b}
+.agu-deck-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.agu-deck-tile{--deck-accent:#455a64;--deck-soft:#edf2f4;background:#fff;border:1px solid #dce6e9;border-top:5px solid var(--deck-accent);border-radius:15px;padding:17px;display:flex;flex-direction:column;gap:10px}
+.agu-deck-identity{display:inline-flex;align-items:center;gap:9px;color:var(--deck-accent);font-weight:750;font-size:12px}
+.agu-deck-identity:before{content:'';width:12px;height:12px;border-radius:4px;background:var(--deck-accent);flex:none}
+.agu-deck-tile h3{font-size:20px;line-height:1.35;color:#203848;margin:0}
+.agu-deck-code{display:inline-flex;width:max-content;max-width:100%;padding:5px 9px;border-radius:7px;color:var(--deck-accent);background:var(--deck-soft);font-size:12px;font-weight:750}
+.agu-deck-meta{display:flex;gap:6px 12px;flex-wrap:wrap;color:#425f6d;font-size:12px}
+.agu-deck-tile progress{width:100%;height:9px;accent-color:#236b7a}
+.agu-deck-tile .btnrow{margin-top:auto}
+.agu-deck-tile button{min-height:44px}
+.agu-deck-empty{padding:20px;background:#f7fafb;border:1px dashed #b4c8d0;border-radius:12px}
+.agu-deck-session{--deck-accent:#455a64;--deck-soft:#edf2f4;background:linear-gradient(160deg,var(--deck-soft),#fff 65%);border:1px solid #d6e5ea;border-radius:18px;padding:clamp(14px,3vw,26px);margin-top:18px}
+.agu-deck-session-head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.agu-deck-session h2{font-size:22px;margin:5px 0}
+.agu-deck-session h3{margin:0}
+.agu-deck-stage{font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:var(--deck-accent)}
+.agu-deck-progress{width:100%;height:10px;accent-color:#247e80;margin:15px 0 6px}
+.agu-deck-surface{background:white;border:1px solid #cfdfe5;border-radius:18px;box-shadow:0 9px 25px #132e3812;padding:clamp(20px,4vw,38px);margin:15px 0;min-height:240px;overflow-wrap:anywhere}
+.agu-deck-front{width:100%;display:block;text-align:left;color:#1d3a4a;cursor:pointer}
+.agu-deck-front:hover{border-color:var(--deck-accent)}
+.agu-deck-surface .question-title{font-size:clamp(21px,3vw,29px);line-height:1.42;margin:16px 0}
+.agu-deck-flip-tip{color:#526b79;font-size:13px;font-weight:650}
+.agu-deck-back{border-top:5px solid var(--deck-accent)}
+.agu-deck-back p{font-size:16px;color:#243e4c;overflow-wrap:anywhere}
+.agu-deck-back .agu-card-detail p{font-size:14px}
+.agu-deck-back a{overflow-wrap:anywhere}
+.agu-deck-rated{background:#e8f5ef;border:1px solid #a9d5c1;border-radius:9px;padding:11px;color:#24543b;font-size:13px}
+.agu-deck-session .btnrow button{min-height:44px}
+.agu-deck-session button:disabled{opacity:.54;cursor:not-allowed}
+.agu-deck-help{font-size:12px;color:#536976;line-height:1.5}
+.agu-deck-legacy{margin-top:23px;border-top:1px solid #dce7eb;padding-top:18px}
+@media(max-width:750px){.agu-deck-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.agu-deck-grid{grid-template-columns:1fr}}
+@media(max-width:390px){.agu-deck-filters{grid-template-columns:1fr}.agu-deck-session .btnrow button{flex:1}.agu-deck-surface{padding:18px;min-height:200px}}
+@media(prefers-color-scheme:dark){
+ .agu-deck-library{color:#e7f0f4;background:#192e39;border-radius:18px;padding:16px}
+ .agu-deck-library .agu-deck-intro h2,.agu-deck-library .agu-deck-intro p{color:#e7f0f4}
+ .agu-deck-count{background:#294c5b;color:#e5f2f7}
+ .agu-deck-filters{background:#233b47;border-color:#59717b}
+ .agu-deck-filters label,.agu-deck-help{color:#cddfe6}
+ .agu-deck-tile{--deck-accent:var(--deck-dark-accent)!important;--deck-soft:var(--deck-dark-soft)!important;background:#233743;border-color:#59727d;color:#ebf3f7}
+ .agu-deck-tile h3,.agu-deck-tile label,.agu-deck-tile .agu-deck-meta{color:#ebf3f7}
+ .agu-deck-identity,.agu-deck-code{color:var(--deck-accent)}
+ .agu-deck-session{--deck-soft:var(--deck-dark-soft)!important;--deck-accent:var(--deck-dark-accent)!important;background:var(--deck-dark-soft);border-color:#64818e;color:#e6f0f4}
+ .agu-deck-session .agu-deck-identity{color:var(--deck-dark-accent)}
+ .agu-deck-session .agu-deck-code{background:#263a47;color:var(--deck-dark-accent)}
+ .agu-deck-session h2,.agu-deck-session h3,.agu-deck-session p,.agu-deck-session label,.agu-deck-session .agu-deck-help{color:#e6f0f4}
+ .agu-deck-session .agu-deck-stage{color:var(--deck-dark-accent)}
+ .agu-deck-session .agu-deck-surface{background:#fff;color:#1d3a4a}
+ .agu-deck-session .agu-deck-surface p,.agu-deck-session .agu-deck-surface h3{color:#243e4c}
+ .agu-deck-session .agu-deck-surface .agu-deck-stage{color:#286174}
+ .agu-deck-session .agu-deck-front .agu-deck-flip-tip{color:#526b79}
+}
+@media(prefers-reduced-motion:no-preference){.agu-deck-surface{transition:border-color .16s,box-shadow .16s}}
