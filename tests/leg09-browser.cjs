@@ -19,6 +19,7 @@ async function main(){
   if(width<=850)await p.getByRole('button',{name:'Índice',exact:true}).click();
   await p.locator('.agu-index-entry[onclick="AGULegal.article(\'L9784:art12\',true)"]').press('Enter');
   await p.locator('.agu-unit[onclick="AGULegal.unit(\'L9784:art12:caput\')"]').press('Space');
+  if(width<=850)await p.getByRole('button',{name:'Relacionados',exact:true}).click();
   await p.getByRole('button',{name:'Estudo integrado',exact:true}).press('Enter');
   assert.match(await p.locator('.agu-related').innerText(),/Iniciar \/ retomar estudo deste dispositivo/);
   await p.getByRole('button',{name:'Iniciar / retomar estudo deste dispositivo'}).press('Enter');
