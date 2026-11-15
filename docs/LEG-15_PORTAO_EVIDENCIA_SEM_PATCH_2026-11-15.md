@@ -1,0 +1,56 @@
+# AGU Quiz | LEG-15 — portão de evidência assistiva, sem patch
+
+**Corte:** 15/11/2026, `America/Sao_Paulo`. **Missão exclusiva:** verificar a possibilidade de avaliar assistivamente Home ⇄ lista única **“Para meu caderno”**. **Decisão:** `nao_testado_em_ambiente_assistivo_independente`; nenhum defeito novo localizado e reproduzido; **nenhuma alteração de produto**. O portão de teste mutável permaneceu fechado. LEG-16 **não foi executada**.
+
+## 1. Retomada, GitHub e trabalho concorrente
+
+- Repositório fonte: https://github.com/Talksxb/agu-quiz; produção estática: https://talksxb.github.io/agu-quiz/. A auditoria privada `Talksxb/agu-auditoria` **não foi consultada**; nenhum dado pessoal ou privado foi acessado.
+- `origin/main` e `git ls-remote` coincidiram na abertura em **`9b354559fa06ea48b318d69c15be2c625bb289a3`**, merge da [LEG-14 PR #36](https://github.com/Talksxb/agu-quiz/pull/36), documental e sem patch. A CI final da PR LEG14 [43765034475](https://github.com/Talksxb/agu-quiz/actions/runs/43765034475) estava `completed/success` em Node e Chromium; deploy [Pages 43765481517](https://github.com/Talksxb/agu-quiz/actions/runs/43765481517) também `completed/success`. Não houve CI de `push` após o merge exclusivamente documental, pelo filtro `push.paths` do workflow.
+- **Concorrência observada:** [UX-BARALHOS-08 PR #38](https://github.com/Talksxb/agu-quiz/pull/38), branch `ux/baralhos-08`, HEAD inicial **`8835dd2798d194e53ba3ceba379dc67144430d53`**, aberta em rascunho, alterando somente `docs/CHECKPOINT_UX-BARALHOS-08_2026-11-15.md` e `docs/PROMPT_UX-BARALHOS-09.md`; CI [43765957784](https://github.com/Talksxb/agu-quiz/actions/runs/43765957784) **`in_progress` na primeira consulta**. Seu resultado e eventual merge exigem reconsulta antes de integrar LEG15. Nada da UX08 foi editado ou presumido integrado nesta base.
+- O GET de proteção de `main` retornou `403 Resource not accessible by integration`; a lista de rulesets públicos retornou vazia. Isto **não prova ausência de proteção**: o fluxo será sempre PR em rascunho, CI e merge permitido, sem force push.
+- Foram lidos o handoff `docs/PROMPT_LEG-15.md`, checkpoints LEG07–14, UX01–07 e portões S39–45, bem como APIs de Home/leitor, workflow, fixtures e testes pertinentes. O histórico S37/S39/S45 já evidencia armazenamento compartilhado no navegador gerenciado, Incognito indisponível e Chromium local incapaz de iniciar; repetir a mesma simulação não transforma o Chrome/CDP em aparelho isolado.
+- Branch exclusiva proposta **`leg/leg15-evidencia-assistiva-sem-patch`**, criada em worktree limpo a partir da `main` citada. Dois documentos novos constituem toda a entrega: este checkpoint e `docs/PROMPT_LEG-16.md`. Não tocaram worktrees anteriores, inclusive os que continham mudanças preexistentes de outro trabalho.
+- **Conciliação efetiva depois do primeiro inventário:** a UX08 [PR #38](https://github.com/Talksxb/agu-quiz/pull/38) recebeu aprovação em sua [CI `43765957784`](https://github.com/Talksxb/agu-quiz/actions/runs/43765957784), foi integrada na `main` em **`45500690203bf4c8c31b96c1a30c69ff6e3eb993`** e teve [Pages `43766272734`](https://github.com/Talksxb/agu-quiz/actions/runs/43766272734) `completed/success`. A branch LEG15 absorveu essa `main` por **merge não destrutivo `607dc7bb6fa42d2471a6b0d17004d28895e14126`**, preservando os dois arquivos de UX08, sem conflito. O diff final **contra a nova `main`** continua contendo exclusivamente os dois documentos LEG15.
+
+## 2. Portão de independência — evidências e limites
+
+**Inventário read-only atual:** Linux `x86_64`, kernel `6.18.57`, Node **v24.22.1** e `/usr/bin/chromium`. Não existem no `PATH` `adb`, `emulator`, `scrcpy`, `orca` ou ferramenta semelhante. Os caminhos `/dev/bus/usb`, `/dev/kvm` e `/opt/android-sdk` não existem. As ferramentas disponibilizadas não anunciam serviço de aparelho Android/iOS, device farm autorizada, instância com TalkBack/VoiceOver ou leitor de tela independente; a interface de navegação disponível continua sendo o Chrome/CDP gerenciado/compartilhado. **Nenhum dispositivo, perfil, versão de leitor assistivo, partição isolada ou descarte seguro foi oferecido pelo estudante nesta solicitação.**
+
+**Evidência de defeito novo:** não foi apresentada captura, árvore acessível, sequência reproduzível, impacto observável ou estado de armazenamento isolado que demonstre um problema novo da Home, do atalho, da lista ou de seu retorno. Ausência de relato **não é prova de inexistência de defeitos**.
+
+**Consequência obrigatória:** não abrir sessão do Chrome/CDP compartilhado, não visitar notas do usuário, não instalar emulador/infraestrutura, não fabricar perfil sintético como se fosse independente e não repetir as jornadas mutáveis LEG12–14. Não foram executados TalkBack, VoiceOver, Orca, teste manual de anúncios/foco, toque físico, zoom assistivo 200/400%, axe novo ou novos cenários adversariais. Esses itens ficam **`nao_testado`**, não `aprovado`.
+
+## 3. Contrato conferido sem mudança
+
+- `AGUHome.notebookPending()` lê `agu_leitor_juridico_s13_v1`, exige `AGUBackup20.validateRecord` e conta apenas `status:'pendente'`, inclusive `topic:null`; falha de leitura ou validação dá aviso neutro, sem reparo silencioso. Demo não expõe o contador real.
+- `AGUHome.openNotebook()` chama `AGULegal.tab('para_caderno')` quando a categoria é válida, na **mesma** lista `forNotebook`; o retorno transitório `returnFromNotebook()` restabelece foco no botão da Home. Os filtros, edição, status e origens permanecem sob `leitor-juridico.js`. Nenhuma segunda lista, chave ou agenda.
+- Quatro origens anteriores preservadas sem remapeamento: `leitor`, `estudo_integrado`, `questao_verificada` e `flashcard_existente`. IDs únicos `pc-*`, estados **exclusivamente manuais** `pendente|anotado|dispensado`, datas ISO e pergunta até 450 caracteres. `topic` corresponde somente a ID granular comprovado ou `null`; somente ADM-06/CON-50 dos flashcards possuem vínculo curricular documental próprio. Origem ausente conserva referência textual, sem navegação fictícia.
+- LEG08 continua condicionada a `status:'pendente'`, `topic===active.code` e vencimento previamente salvo `due<=hoje`. Revisar/errar/acertar/concluir não equivale a escrever no caderno físico; nenhum estágio, prazo, resposta, sessão, questão, cartão, planejamento ou prioridade é alterado.
+- Backup S20: **nove** categorias, máximo 12 MB UTF-8, até **500** comentários, **300** marcações e **450** caracteres por gatilho, importação **somente de categorias ausentes** e gravação atômica. Não houve importação, backup pessoal, migração ou nova chave. Corpus público inalterado: 6 normas, 292 artigos, 1.176 unidades, 5 integrais, CF88 parcial; L4717 e DL4657 sem vínculo inferido.
+
+## 4. Evidência técnica realmente produzida e histórica
+
+- **Nova checagem somente leitura de produção:** `node tests/sprint21-pages.cjs` foi executado sobre o checkout do HEAD inicial. A primeira tentativa de carregar o HTML recebeu **HTTP 503 transitório**; a tentativa seguinte do próprio verificador devolveu **HTTP 200**, e o processo terminou **exit 0** com `PAGES_VERIFICADO`. HTML (**109.132 bytes**), **nove scripts**, CSS dos baralhos e módulo de questões corresponderam aos bytes/SHA-256 locais. Um 503 isolado, recuperado, não foi classificado como defeito novo da navegação Home ⇄ caderno.
+
+| Asset HTTPS | SHA-256 confirmado nesta LEG15 |
+| --- | --- |
+| `index.html` | `e33885e0469ce760408e1b7d7d03c2d8bcaa753dad0f237bfd745777bf0aef24` |
+| `meu-estudo.js` | `e88aa5ee7cb77a5f4e193f690830c803604dcda1b3d2e6fe53e0d8285bed43de` |
+| `leitor-juridico.js` | `1f119fb84c092b00a994943a1f0f09d85dcc6efabb6b85df536a3b3189a48c04` |
+| `backup-local-s20.js` | `8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9` |
+| `revisao-inteligente.js` | `fe6b8dcacc7363fd661055e737c73c443f1428d2b97e807faeb37e447650252c` |
+| `baralhos-ux.css` | `de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7` |
+| `questoes-leitor-s18.js` | `f4095116ca5bf0b31bd76ca323a88a7b8a1e0b079d100da9981d1f8f6d943c3f` |
+| `dados/legislacao-s13.js` | `c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a` |
+
+O verificador também aprovou `catalogo-disciplinas.js`, `planejamento-semanal.js`, `leitor-consolidacao.js` e `estudo-integrado.js`. **Não houve** novos testes de Node comportamental, Chromium, axe ou backup na LEG15 porque os gatilhos da seção 1 do handoff faltam. A CI da PR documental, se ocorrer, apenas **reexecuta regressões antigas**; não é avaliação assistiva independente.
+
+**Axe histórico LEG13, não reexecutado:** Home 390/1280 `violations=0`, `incomplete=0`, `passed=18` regras. Lista 390 `0/1 nó inconclusivo inicial/24 regras passed`; 1280 `0/5 nós inconclusivos iniciais/26 regras passed`; após rolagem/reavaliação não restaram esses nós inconclusivos. LEG11 permaneceu com 12 nós inconclusivos por largura em flashcards; UX05 registrou nove nós persistentes por largura na biblioteca — **fora do atalho**, nem aprovados nem falhas confirmadas. Nenhum resultado automático comprova TalkBack, VoiceOver ou conformidade WCAG integral.
+
+## 5. Decisão de encerramento e próxima ação mínima
+
+**LEG15 = checkpoint documental, sem patch e sem fixture de delta.** HTML, JS, CSS, testes, workflow, backup, corpus, estudo, revisão, questões, cartões e banco público de dados não foram escritos. Nenhuma nota, avaliação ou sessão real ou sintética foi criada. **PR, CI, eventual merge e novo deploy desta branch devem ser comprovados depois de acontecerem; o presente checkpoint não os presume.** Se a `main` avançar pela UX08, reconciliar somente os dois documentos de LEG15, sem sobrescrever a outra frente.
+
+A menor ação externa para abrir o portão é Tawan disponibilizar **um dispositivo Android/iOS de teste ou sessão assistiva realmente independente e autorizada**, com sistema/leitor de tela identificáveis, perfil/armazenamento vazio, dados sintéticos e descarte seguro; **não fornecer conta, histórico, nota ou backup pessoal**. Outra via admissível é uma **falha específica nova** com passos reproduzíveis, captura/árvore ou anúncios e impacto no fluxo Home ⇄ lista. Na ausência de ambos, **suspender rodadas iguais**; o próximo número LEG não torna a evidência mais independente.
+
+Handoff futuro autossuficiente: [`PROMPT_LEG-16.md`](PROMPT_LEG-16.md). **LEG16 não executada.**
