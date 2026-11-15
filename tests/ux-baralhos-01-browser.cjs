@@ -80,6 +80,8 @@ async function main(){
   await page.locator('#agu-deck-filter-topic').fill('');await page.locator('#agu-deck-filter-topic').press('Tab');
   if(width===390||width===1280){
    await page.locator('#agu-deck-library').screenshot({path:path.join(OUT,'biblioteca-'+width+'.png')});
+   // A recarga acima reinicializa a página; reinstalar o axe neste documento.
+   await page.addScriptTag({content:axe.source});
    const audit=await page.evaluate(async()=>await axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
    assert.equal(audit.violations.length,0,'axe '+width+': '+audit.violations.map(x=>x.id+': '+x.description).join('; '));
   }
