@@ -26,7 +26,7 @@ Data: 15/11/2026 (Brasil). Execução exclusiva da UX-BARALHOS-02. **Não** fora
 
 ## Critério de integração e limites conhecidos
 
-Branch de trabalho `ux/baralhos-02`; PR, CI, merge e Pages devem ser registrados no fechamento **após** confirmação externa. Se o teste Chromium, a auditoria axe, backup ou qualquer regressão falhar, manter a PR em rascunho; não presumir disponibilidade em produção.
+Branch de trabalho `ux/baralhos-02`; [PR #21](https://github.com/Talksxb/agu-quiz/pull/21) em rascunho durante a validação. A primeira CI remota detectou uma expectativa de texto UX01 desatualizada para o novo estado vazio; o teste foi ajustado, sem reduzir cobertura. A segunda CI revelou overflow real de metadado jurídico longo em 320 CSS px; a interface recebeu quebra de texto e o teste passou a listar elementos que excedam a viewport. **Aprovação integral do Chromium, merge e Pages devem ser confirmados no fechamento**, sem presumir publicação a partir da PR. Se auditoria axe, backup ou qualquer regressão falhar, manter a PR em rascunho.
 
 Ainda exigem trabalho específico: mapeamento curricular granular plano → baralho; classificação validada de níveis pedagógicos para os 22 cartões sem nível e os 14 com escala cognitiva 2–4; associação documental de flashcard a dispositivo; inspeção real em Android/TalkBack; eventual sincronização entre navegadores/ambientes somente com autorização explícita. O resultado da AUD02-FREQ-01 não é tratado como ranking definitivo.
 
