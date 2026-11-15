@@ -52,8 +52,9 @@ check('quatro itens auditados com IDs únicos',()=>{
  const arr=questions.all();assert.equal(arr.length,4);
  assert.equal(new Set(arr.map(x=>x.id)).size,4);
 });
-check('36 flashcards e Q48 preservados',()=>{
- assert.equal(review.deck().flashcards,36);
+check('36 flashcards legados, 8 novos e Q48 preservados',()=>{
+ assert.equal(review.deck().flashcards,44);
+ assert.equal(review.deck().lotAud02_2015,8);
  assert.ok(questions.all().some(x=>x.id==='of-2015-adv-048'));
 });
 check('Q1 não é certificada por fundamento de decreto posterior',()=>assert.equal(review.focusOfficial('of-2015-adv-001'),false));

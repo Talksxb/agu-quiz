@@ -1,0 +1,22 @@
+{
+  "sprint": "CARTOES-AUD-01",
+  "basePublica": "faad877363d34fdc531fc949249ca8e1907dd214",
+  "htmlBeforeSha256": "e33885e0469ce760408e1b7d7d03c2d8bcaa753dad0f237bfd745777bf0aef24",
+  "htmlAfterSha256": "84b495258860111d703680ed0d1d4f4d8df2ca7329ac578588bf313f6cab2b63",
+  "reviewBeforeSha256": "fe6b8dcacc7363fd661055e737c73c443f1428d2b97e807faeb37e447650252c",
+  "reviewAfterSha256": "49f45191fd46c3cc4664dc884e9d859e65624607cce5c6ddd1f518e5940d347d",
+  "newFile": "dados/flashcards-aud02-2015-atualizados-lote01.js",
+  "newFileSha256": "dd86f384f191aff9a202fe21c2c4a6b42cc258b7a4a4b8f2401b13d8e9a67a3e",
+  "unchanged": {
+    "dados/flashcards-aud03-lote01.js": "1b6634c8f8112688e0a3259d6bcf909f1c5ae39a552dd8b47ae1ea5657ec6f5b",
+    "baralhos-ux.css": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
+    "catalogo-disciplinas.js": "261b2b425ed8d6f41400e59d4e0545cbeb5b2292f6f4da250a39f4c2fa915ae3"
+  },
+  "cardsBefore": 36,
+  "cardsAdded": 8,
+  "cardsAfter": 44,
+  "decksBefore": 6,
+  "decksAfter": 9,
+  "historicalItems": [1,10,11,13,22,26,39],
+  "cohort": "Somente dados públicos; chaves históricas não validam direito vigente."
+}
