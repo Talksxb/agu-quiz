@@ -9,7 +9,7 @@ Este lote **não importa questões oficiais** e não republica enunciados da ban
 ## Retomada e escopo
 
 - `Talksxb/agu-quiz/main` na abertura: `faad877363d34fdc531fc949249ca8e1907dd214`; após UX08/LEG13, os ajustes concorrentes LEG14–16 eram documentais. Nenhuma PR pública aberta no momento da retomada; reconfirmar antes do merge.
-- Branch exclusiva: `cards/aud01-2015-atualizacoes`; PR, CI, merge e SHA final: registrar no fechamento após verificações remotas.
+- Branch exclusiva: `cards/aud01-2015-atualizacoes`; PR [#43](https://github.com/Talksxb/agu-quiz/pull/43), commit inicial remoto `6b53a245e646a814f9f5fd0a61ab0a2d94cc8a0e`, sobre a main `faad877363d34fdc531fc949249ca8e1907dd214`. A main foi reconfirmada sem avanço concorrente no momento de abrir a PR.
 - Fontes: caderno [187AGU_001_07](https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/187AGU_001_07.pdf) e [gabarito definitivo](https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf), ambos públicos. O documento original é a referência histórica; a fonte vigente é independente.
 - Triagem limitada a 20 candidatas: Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q16, Q20, Q22, Q24, Q26, Q36 e Q39. Somente Q1, Q10, Q11, Q13, Q22, Q26 e Q39 deram origem a cartões deste lote. Treze candidatas não foram publicadas; não se infere erro jurídico nem desatualização das demais apenas por sua exclusão.
 
@@ -37,11 +37,13 @@ Contagem anterior: 36 autorais, seis baralhos. Contagem com este lote: **44 auto
 - A única `forNotebook` da LEG07–13 segue em `agu_leitor_juridico_s13_v1`: os oito novos IDs passam a ser optativamente anotáveis, sem segunda lista ou criação automática.
 - Importação parcial até 3 MB, backup S20 até 12 MB UTF-8 e restauração apenas de categorias ausentes continuam sob testes legados.
 - Teste novo `tests/cartoes-aud-01-validacao.js`, jornada `tests/cartoes-aud-01-browser.cjs`, delta novo `tests/fixtures/cartoes-aud-01-delta.json` encadeado à LEG13/UX04. Fixtures históricos **não foram reescritos**; suítes antigas foram ajustadas apenas para expectativas atuais de hashes, contagem e API.
-- 32 suítes Node executadas localmente com êxito. A tentativa de Chromium local terminou antes de criar uma página (`socket() failed: Operation not permitted` no isolamento do executor); **não conta como teste de navegador executado**. O ensaio real nas cinco larguras 320/360/390/430/1280 e axe em 390/1280 foi previsto na CI; não representa Android ou TalkBack físico. Registrar resultado de jobs e de `incomplete` após execução.
+- 32 suítes Node executadas localmente com êxito. A tentativa de Chromium local terminou antes de criar uma página (`socket() failed: Operation not permitted` no isolamento do executor); **não conta como teste de navegador executado**.
+- CI inicial da PR #43, [run 43777027021](https://github.com/Talksxb/agu-quiz/actions/runs/43777027021), verde em `integridade-node` e `navegador-chromium`. Chromium `159.0.8154.6`, dados sintéticos e isolados: 320/360/390/430/1280 CSS px, frente/verso, Enter/Espaço, sessão, nota única, backup e reload. Axe em **390**: zero violações confirmadas, **2 regras inconclusivas / 13 nós inconclusivos**; em **1280**: zero violações confirmadas, **2 regras inconclusivas / 11 nós inconclusivos**. Não transformar `incomplete` em aprovado nem falha. Capturas e relatórios foram gerados no artefato GitHub `agu-s20-chromium-viewports` (`14186309858`), mas as imagens não foram abertas manualmente nesta execução.
+- Android físico e TalkBack **não testados**. Chromium com viewport e teclado não substitui leitor de tela nem observação independente.
 
 ## Aceite de publicação
 
-Não mesclar se houver falha de CI, conflito, privacidade, revisão, backup ou base jurídica. Após eventual merge verificar GitHub Pages via HTTPS, hashes SHA-256 do HTML, motor, CSS, dataset e demais assets alterados; a existência da PR não significa produção. Se a CI não for satisfatória, a PR permanece em rascunho.
+Não mesclar se houver falha de CI, conflito, privacidade, revisão, backup ou base jurídica. A PR #43 está inicialmente em rascunho e sem conflito; é necessário reexecutar checks após qualquer novo commit. Após eventual merge verificar GitHub Pages via HTTPS, hashes SHA-256 do HTML, motor, CSS, dataset e demais assets alterados; a existência da PR não significa produção.
 
 ## Pendências deliberadas
 
