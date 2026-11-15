@@ -67,6 +67,8 @@ jobs:
         run: node tests/leg11-validacao.js
       - name: LEG-12 — Home, contador validado, lista única e backup preservado
         run: node tests/leg12-validacao.js
+      - name: LEG-13 — portão do acesso Home, foco e armazenamento adversarial
+        run: node tests/leg13-validacao.js
       - name: LEG-06 — Ação Popular integral, fonte e persistência
         run: node tests/leg06-validacao.js
       - name: LEG-05 — LINDB integral, fonte e persistência
@@ -99,6 +101,8 @@ jobs:
         run: node tests/leg11-browser.cjs
       - name: LEG-12 — Home, lista única, cinco viewports, foco, axe e backup
         run: node tests/leg12-browser.cjs
+      - name: LEG-13 — foco, filtros, armazenamento e axe em cinco viewports
+        run: node tests/leg13-browser.cjs
       - name: LEG-10 — questões oficiais, cinco viewports, foco e backup
         run: node tests/leg10-browser.cjs
       - name: LEG-09 — sessão integrada para caderno, cinco viewports e backup
@@ -211,6 +215,8 @@ jobs:
             tests/artifacts-leg11/*.png
             tests/artifacts-leg12/*.json
             tests/artifacts-leg12/*.png
+            tests/artifacts-leg13/*.json
+            tests/artifacts-leg13/*.png
             tests/artifacts-work01/*.json
             tests/artifacts-work01/*.png
             tests/artifacts-ux-baralhos-01/*.json
@@ -245,6 +251,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/leg12-browser.cjs
+      - name: LEG-13 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leg13-browser.cjs
       - name: LEG-10 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -315,6 +325,8 @@ jobs:
             tests/artifacts-leg11/
             tests/artifacts-leg12/*.json
             tests/artifacts-leg12/*.png
+            tests/artifacts-leg13/*.json
+            tests/artifacts-leg13/*.png
             tests/artifacts-ux-baralhos-01/
             tests/artifacts-ux-baralhos-02/
             tests/artifacts-ux-baralhos-03/
