@@ -51,8 +51,12 @@ check('deltas antigos intactos e novo delta encadeado',()=>{
  const sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
  assert.equal(delta.reviewBeforeSha256,prior.reviewAfterSha256);
  assert.equal(delta.htmlBeforeSha256,prior.htmlAfterSha256);
+ const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));
+ assert.equal(leg12.htmlBeforeSha256,delta.htmlAfterSha256);
+ assert.equal(leg12.homeBeforeSha256,delta.unchanged['meu-estudo.js']);
  assert.equal(delta.reviewAfterSha256,sha('revisao-inteligente.js'));
- assert.equal(delta.htmlAfterSha256,sha('index.html'));
- for(const [file,hash] of Object.entries(delta.unchanged))assert.equal(sha(file),hash,file);
+ assert.equal(leg12.htmlAfterSha256,sha('index.html'));
+ assert.equal(leg12.homeAfterSha256,sha('meu-estudo.js'));
+ for(const [file,hash] of Object.entries(delta.unchanged))if(file!=='meu-estudo.js')assert.equal(sha(file),hash,file);
 });
 console.log('UX_BARALHOS_04_VALIDACAO_OK',JSON.stringify({checks,cardCount:36,deckCount:6,backupCategories:9}));

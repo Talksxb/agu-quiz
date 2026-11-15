@@ -107,7 +107,8 @@ check('fontes, corpus e arquivos não relacionados inalterados; fixture LEG11 ra
  const d=JSON.parse(read('tests/fixtures/leg11-deltas.json')),u=JSON.parse(read('tests/fixtures/ux-baralhos-03-delta.json')),v=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  for(const k of ['review','html'])assert.equal(d[k+'AfterSha256'],u[k+'BeforeSha256']);
  for(const k of ['review','html'])assert.equal(u[k+'AfterSha256'],v[k+'BeforeSha256']);
- for(const [file,key] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(file)),v[key]);
+ const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));assert.equal(leg12.htmlBeforeSha256,v.htmlAfterSha256);
+ assert.equal(sha(read('revisao-inteligente.js')),v.reviewAfterSha256);assert.equal(sha(read('index.html')),leg12.htmlAfterSha256);
  for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['dados/legislacao-s13.js','corpusSha256'],['planejamento-semanal.js','plannerSha256'],['dados/flashcards-aud03-lote01.js','aud03Sha256']])assert.equal(sha(read(file)),d[key]);
  assert.equal(d.baseCommit,'a1fb2ca');
 });

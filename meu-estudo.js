@@ -33,6 +33,41 @@ function route(topic,type,details,demo=false){
  return {...base,kind:'planner',activity:'Consultar roteiro no Plano',reason:details.reason+' · material deste tópico ainda não integrado'};
 }
 function focusTitle(){const title=root.document?.querySelector('#main h1');if(title){title.tabIndex=-1;title.focus({preventScroll:false})}}
+// LEG-12: a Home consulta a categoria existente; não mantém lista ou contador próprios.
+const readerKey='agu_leitor_juridico_s13_v1';
+let notebookFromHome=false,notebookWarning='';
+function notebookPending(){
+ try{
+  const raw=root.localStorage?.getItem(readerKey);
+  if(raw===null)return 0;
+  if(typeof raw!=='string')return null;
+  const saved=JSON.parse(raw);
+  if(!root.AGUBackup20?.validateRecord?.(readerKey,saved))return null;
+  return (saved.forNotebook||[]).filter(x=>x.status==='pendente').length;
+ }catch(_){return null}
+}
+function openNotebook(){
+ if(context().demo||typeof root.setView!=='function'||!root.AGULegal?.tab)return false;
+ const pending=notebookPending();
+ notebookFromHome=true;notebookWarning=pending===null?'O armazenamento local está indisponível ou precisa de conferência. Nenhuma marcação foi alterada; preserve seu backup.':'';
+ root.setView('legal');
+ if(pending!==null){
+  try{root.AGULegal.tab('para_caderno')}
+  catch(_){notebookWarning='Não foi possível gravar a posição do leitor. As marcações anteriores foram preservadas.';root.render?.()}
+ }
+ const target=root.document?.querySelector(pending===null?'#agu-home-notebook-warning':'#agu-caderno-list');
+ if(target){target.tabIndex=-1;target.focus({preventScroll:false})}
+ return true;
+}
+function notebookReturnPanel(){
+ if(!notebookFromHome)return '';
+ return '<section class="agu-notice" aria-label="Retorno à Home"><button id="agu-home-notebook-return" type="button" class="secondary" onclick="AGUHome.returnFromNotebook()">Voltar ao meu estudo de hoje</button>'+
+ (notebookWarning?'<p id="agu-home-notebook-warning" role="alert" tabindex="-1">'+esc(notebookWarning)+'</p>':'')+'</section>';
+}
+function returnFromNotebook(){
+ notebookFromHome=false;notebookWarning='';root.setView?.('dashboard');
+ root.document?.querySelector('#agu-home-notebook-open')?.focus({preventScroll:false});
+}
 function continueStudy(){
  const item=next();
  try{
@@ -46,17 +81,20 @@ function continueStudy(){
  }catch(e){root.alert('Não foi possível continuar: '+e.message+' Preserve seu histórico e consulte Dados e backup.');}
 }
 function panel(){
+ notebookFromHome=false;notebookWarning='';
  const item=next(),ctx=context(),review=ctx.demo?{}:root.AGUReview?.summary?.()||{};
  const attempts=ctx.demo?[]:root.AGUReview?.attemptsInfo?.()||[];
  const notes=ctx.demo?[]:root.AGUCaderno?.peek?.().records||[];
  const time=Number(ctx.weekMinutes)||0;
  const minutes=Number.isInteger(item.minutes)?item.minutes+' min previstos no plano':'Tempo livre · duração não estimada';
+ const pending=ctx.demo?null:notebookPending();
+ const notebookInfo=ctx.demo?'Contagem não exibida na simulação.':pending===null?'Contagem indisponível; preserve os dados locais.':pending===0?'Nenhuma marcação pendente.':pending+' marcaç'+(pending===1?'ão pendente.':'ões pendentes.');
  return '<section class="daily-mission" aria-labelledby="today-title"><div><span class="muted">'+(ctx.demo?'MISSÃO SIMULADA':'MEU ESTUDO DE HOJE')+'</span><h2 id="today-title">'+esc(item.title)+'</h2>'+
  (item.discipline?'<p class="today-discipline">'+esc(item.discipline)+'</p>':'')+'<p>'+esc(item.activity)+'</p><p class="today-detail">'+esc(item.reason)+'<br>'+esc(minutes)+'</p></div>'+
  '<button id="continue-study" class="primary" onclick="AGUHome.continueStudy()">Continuar estudando</button></section>'+
  '<div class="today-summary" role="region" aria-label="Atividade registrada neste navegador"><p><b>'+Number(review.due||0)+'</b> revisões pendentes no motor de revisão</p><p><b>'+Number(ctx.legacyDue||0)+'</b> revisões do treino autoral</p><p><b>'+time+'</b> min confirmados nesta semana</p></div>'+
- '<div class="btnrow today-links"><button class="secondary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'legal\')">'+(ctx.readerSaved&&!ctx.demo?'Retomar ponto salvo no leitor':'Consultar fontes jurídicas')+'</button><button class="secondary" onclick="setView(\'planner\')">Ver meu plano</button></div>'+
+ '<div class="btnrow today-links"><button class="secondary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'legal\')">'+(ctx.readerSaved&&!ctx.demo?'Retomar ponto salvo no leitor':'Consultar fontes jurídicas')+'</button><button class="secondary" onclick="setView(\'planner\')">Ver meu plano</button><button id="agu-home-notebook-open" type="button" class="secondary" onclick="AGUHome.openNotebook()"'+(ctx.demo?' disabled':'')+'>Para meu caderno</button></div><p class="small muted" id="agu-home-notebook-count" role="status">'+esc(notebookInfo)+'</p>'+
  '<p class="small muted">'+(ctx.demo?'Simulação isolada do histórico real.':attempts.length+' avaliações no motor de revisão · '+notes.length+' notas contextuais. Atividade registrada não equivale a domínio ou certificação jurídica.')+'</p>';
 }
-root.AGUHome={panel,next,continueStudy};
+root.AGUHome={panel,next,continueStudy,notebookPending,openNotebook,notebookReturnPanel,returnFromNotebook};
 })(window);
