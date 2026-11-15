@@ -89,7 +89,10 @@ test('modo demonstração não conta nem abre dados pessoais sintéticos',()=>{
 });
 test('hash de produto permanece exatamente no delta LEG12 após UX04',()=>{
  const prior=JSON.parse(read('tests/fixtures/leg12-deltas.json'));
+ const portao=JSON.parse(read('tests/fixtures/leg13-deltas.json'));
+ assert.equal(portao.initialMain,'c33716434b42a5656fa1fada62ba754f98b8c93d');assert.equal(portao.productDelta,false);
  assert.equal(sha('index.html'),prior.htmlAfterSha256);assert.equal(sha('meu-estudo.js'),prior.homeAfterSha256);
  for(const [file,hash] of Object.entries(prior.unchanged))assert.equal(sha(file),hash,file);
+ for(const [file,hash] of Object.entries(portao.sha256BeforeAndAfter))assert.equal(sha(file),hash,file);
 });
 console.log('LEG13_VALIDACAO_OK',JSON.stringify({checks,origens:4,backup:9,produtoAlterado:false}));

@@ -84,7 +84,10 @@ async function main(){
   assert.equal(await p.evaluate(()=>AGULegal.peek().forNotebook[0].status),'pendente');await p.locator('#agu-home-notebook-return').click();
   assert.match(await p.locator('#agu-home-notebook-count').innerText(),/2 marcações pendentes/);
   await p.evaluate(()=>{document.documentElement.style.fontSize='200%'});await p.locator('#agu-home-notebook-open').scrollIntoViewIfNeeded();
-  const zoom=await p.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,button:(()=>{const r=document.querySelector('#agu-home-notebook-open').getBoundingClientRect();return {left:r.left,right:r.right,viewport:innerWidth}})()}));
+  const zoom=await p.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,excessPx:document.documentElement.scrollWidth-innerWidth,button:(()=>{const r=document.querySelector('#agu-home-notebook-open').getBoundingClientRect();return {left:r.left,right:r.right,viewport:innerWidth}})(),
+   offenders:[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.right>innerWidth+2&&!e.closest('.secondary-nav')}).slice(0,12).map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,id:e.id,className:typeof e.className==='string'?e.className.slice(0,65):'',right:Math.round(r.right),text:e.textContent?.trim().slice(0,45)}})}));
+  assert.ok(zoom.button.left>=-1&&zoom.button.right<=width+2,'atalho fora do viewport após ampliação de fonte');
+  await p.screenshot({path:path.join(OUT,'home-zoom-'+width+'.png')});
   await p.evaluate(()=>{document.documentElement.style.fontSize=''});
   await p.reload();assert.match(await p.locator('#agu-home-notebook-count').innerText(),/2 marcações pendentes/);
   assert.equal(await p.evaluate(()=>AGULegal.peek().forNotebook.length),4);assert.deepEqual(errors,[]);
