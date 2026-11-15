@@ -29,7 +29,8 @@ check('baselines LEG08→LEG09→UX01→LEG10→UX02→LEG11→UX03 encadeados',
  for(const k of ['review','html'])assert.equal(w[k+'AfterSha256'],y[k+'BeforeSha256']);
  for(const k of ['review','html'])assert.equal(y[k+'AfterSha256'],z[k+'BeforeSha256']);
  const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));assert.equal(leg12.htmlBeforeSha256,z.htmlAfterSha256);
- assert.equal(sha(read('revisao-inteligente.js')),z.reviewAfterSha256);assert.equal(sha(read('index.html')),leg12.htmlAfterSha256);
+ const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
+ assert.equal(sha(read('revisao-inteligente.js')),z.reviewAfterSha256);assert.equal(sha(read('index.html')),leg13.htmlAfterSha256);
  for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256']])assert.equal(sha(read(file)),w[key]);
  for(const [file,key] of [['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(file)),t[key]);
  assert.match(read('index.html'),/revisao-inteligente\.js\?v=20261115-ux04/);
