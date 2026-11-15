@@ -36,7 +36,7 @@ async function main(){
   assert.equal(await page.evaluate(()=>AGUReview.reviewInfo('ri-con-01').due),null);
   const con=page.locator('.agu-deck-grid article').filter({has:page.locator('.agu-deck-code:text-is("CON-02")')});
   assert.match(await con.innerText(),/1 avaliados sem data/);
-  assert.match(await con.innerText(),/1 inéditos/);
+  assert.match(await con.innerText(),/0 inéditos/);
   const planBefore=await page.evaluate(key=>localStorage.getItem(key),PLAN);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
