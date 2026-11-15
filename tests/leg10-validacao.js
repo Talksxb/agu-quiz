@@ -21,7 +21,8 @@ check('base, corpus, nove categorias, fixtures LEG09→LEG10→UX02→LEG11→UX
  for(const k of ['reader','backup'])assert.equal(d[k+'AfterSha256'],w[k+'BeforeSha256']);
  for(const [f,k] of [['questoes-leitor-s18.js','questionSha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),w[k]);
  for(const k of ['review','html'])assert.equal(w[k+'AfterSha256'],y[k+'BeforeSha256']);
- for(const [f,k] of [['revisao-inteligente.js','reviewAfterSha256'],['index.html','htmlAfterSha256']])assert.equal(sha(read(f)),y[k]);
+ const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));assert.equal(leg12.htmlBeforeSha256,y.htmlAfterSha256);
+ assert.equal(sha(read('revisao-inteligente.js')),y.reviewAfterSha256);assert.equal(sha(read('index.html')),leg12.htmlAfterSha256);
  assert.equal(sha(read('dados/questoes-auditadas-s18.js')),sha(require('node:child_process').execFileSync('git',['show','HEAD:dados/questoes-auditadas-s18.js'],{cwd:ROOT}))) ;
  const b=boot();assert.equal(b.z.AGUBackup20.keys().length,9);assert.equal(b.z.AGULegal.stats().laws,6);assert.equal(b.z.AGULegal.stats().units,1176);
 });

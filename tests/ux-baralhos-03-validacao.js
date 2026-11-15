@@ -116,8 +116,12 @@ check('delta UX03 encadeia UX02→LEG11 sem reescrever fixtures anteriores',()=>
  assert.equal(delta.reviewBeforeSha256,leg11.reviewAfterSha256);
  assert.equal(delta.htmlBeforeSha256,leg11.htmlAfterSha256);
  assert.equal(sha('revisao-inteligente.js'),delta.reviewAfterSha256);
- assert.equal(sha('index.html'),delta.htmlAfterSha256);
- for(const file of ['planejamento-semanal.js','meu-estudo.js','estudo-integrado.js','leitor-juridico.js','backup-local-s20.js','questoes-leitor-s18.js','catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js']){
+ const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));
+ assert.equal(leg12.htmlBeforeSha256,delta.htmlAfterSha256);
+ assert.equal(leg12.homeBeforeSha256,delta.unchanged['meu-estudo.js']);
+ assert.equal(sha('index.html'),leg12.htmlAfterSha256);
+ assert.equal(sha('meu-estudo.js'),leg12.homeAfterSha256);
+ for(const file of ['planejamento-semanal.js','estudo-integrado.js','leitor-juridico.js','backup-local-s20.js','questoes-leitor-s18.js','catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js']){
   assert.equal(sha(file),delta.unchanged[file]);
  }
 });

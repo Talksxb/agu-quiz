@@ -1,0 +1,19 @@
+{
+  "sprint": "LEG-12",
+  "baseCommit": "7fe92d1ffc0b3b7cfe398d90d1172feefb778621",
+  "predecessor": "tests/fixtures/ux-baralhos-03-delta.json",
+  "htmlBeforeSha256": "9e692d212b2536c80962d05bedee3cca306720928bbb486c31a6970058eb99a2",
+  "htmlAfterSha256": "996a93578e6195ff78ad09ab63f3601718281183f8b3f71dec5300563c6b4175",
+  "homeBeforeSha256": "a6c8d9d8c706bee481517e37c18b141985f3737422270ca919e78b3d9b035fc0",
+  "homeAfterSha256": "e88aa5ee7cb77a5f4e193f690830c803604dcda1b3d2e6fe53e0d8285bed43de",
+  "unchanged": {
+    "leitor-juridico.js": "1f119fb84c092b00a994943a1f0f09d85dcc6efabb6b85df536a3b3189a48c04",
+    "backup-local-s20.js": "8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9",
+    "revisao-inteligente.js": "af05d3771d986d25c4024b9e791f84d0dc88e63cbde2d23221a4e831d07b8d3b",
+    "dados/legislacao-s13.js": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+    "planejamento-semanal.js": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+    "estudo-integrado.js": "82fafd24b164c5d5f4a9fc37ad2bcad90c81d1755bdb9b53ea853f23fd724fc9",
+    "questoes-leitor-s18.js": "f4095116ca5bf0b31bd76ca323a88a7b8a1e0b079d100da9981d1f8f6d943c3f"
+  },
+  "reason": "Apenas Home e montagem de rota legal: contagem somente leitura validada sobre agu_leitor_juridico_s13_v1 e retorno de foco da lista única; nenhum dado de revisão, catálogo ou backup modificado."
+}
