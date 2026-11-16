@@ -27,7 +27,7 @@ async function main(){
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
    if(!markup.includes('backup-local-s20.js?v=20261115-leg11'))throw Error('HTML sem a versão esperada');
-   if(!markup.includes('leitor-juridico.js?v=20261115-codigos01'))throw Error('HTML sem a versão nova do Leitor');
+   if(!markup.includes('leitor-juridico.js?v=20261116-bib02'))throw Error('HTML sem a versão nova do Leitor');
    if(!markup.includes('meu-estudo.js?v=20261115-leg12'))throw Error('HTML sem a versão LEG12 da Home');
    if(!markup.includes('questoes-leitor-s18.js?v=20261115-leg10'))throw Error('HTML sem a versão nova de questões verificadas');
    if(!markup.includes('leitor-consolidacao.js?v=20261113-leg02'))throw Error('HTML sem a versão nova de Consolidação');
@@ -35,7 +35,7 @@ async function main(){
    for(const script of scripts){
     const m=markup.match(new RegExp('<script src="'+script.replaceAll('.','\\.')+'\\?v=([^"]+)"'));
     assert.ok(m,'script não listado '+script);
-    assert.equal(m[1],script==='revisao-inteligente.js'||script==='dados/flashcards-aud02-2015-atualizados-lote02.js'?'20261115-cards-aud02':script==='dados/flashcards-aud02-2015-atualizados-lote01.js'?'20261115-cards-aud01':script==='leitor-juridico.js'||script==='dados/codigos-cc-cpc.js'?'20261115-codigos01':script==='backup-local-s20.js'?'20261115-leg11':script==='catalogo-disciplinas.js'?'20261115-ux01':script==='meu-estudo.js'?'20261115-leg12':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':'20261113-s35a','versão de cache '+script);
+    assert.equal(m[1],script==='revisao-inteligente.js'||script==='dados/flashcards-aud02-2015-atualizados-lote02.js'?'20261115-cards-aud02':script==='dados/flashcards-aud02-2015-atualizados-lote01.js'?'20261115-cards-aud01':script==='leitor-juridico.js'?'20261116-bib02':script==='dados/codigos-cc-cpc.js'?'20261115-codigos01':script==='backup-local-s20.js'?'20261115-leg11':script==='catalogo-disciplinas.js'?'20261115-ux01':script==='meu-estudo.js'?'20261115-leg12':script==='estudo-integrado.js'?'20261115-leg09':script==='leitor-consolidacao.js'?'20261113-leg02':script==='dados/legislacao-s13.js'?'20261114-leg06':'20261113-s35a','versão de cache '+script);
     const remoteJs=await get(BASE+script+'?v='+m[1]);
     const local=fs.readFileSync(path.join(__dirname,'..',script));
     assert.equal(sha(remoteJs),sha(local),'hash do asset diverge '+script);
