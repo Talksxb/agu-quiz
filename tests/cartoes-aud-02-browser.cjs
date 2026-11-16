@@ -24,7 +24,7 @@ async function main(){
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),0);
   const card=page.locator('#agu-deck-face');await card.focus();await card.press(width===390?'Space':'Enter');
-  const details=page.locator('.agu-card-detail');await details.locator('summary').click();
+  const details=page.locator('.agu-card-detail').filter({has:page.getByText('Referência histórica · prova AGU 2015')});await details.locator('summary').click();
   assert.match(await details.innerText(),/gabarito definitivo histórico: E/);
   assert.match(await details.innerText(),/flashcard é autoral/);
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),0);
