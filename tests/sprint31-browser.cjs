@@ -48,7 +48,7 @@ async function main(){
   assert.equal(indexAfter.visible,true,'foco após índice visível '+width);
   await page.keyboard.press('Tab');
   const indexNext=await page.evaluate(focusState);
-  assert.ok(narrow?indexNext.name.startsWith('Abrir texto oficial completo'):indexNext.name.startsWith('Art. 131'),
+  assert.ok(narrow?indexNext.name.startsWith('Trocar norma'):indexNext.name.startsWith('Art. 131'),
    'Tab segue em ordem após artigo '+width);
 
   if(narrow){await page.locator('#agu-reader .agu-mobile button').nth(2).click();
@@ -80,7 +80,7 @@ async function main(){
    assert.equal((await page.evaluate(focusState)).name,'Texto legal','Shift+Tab retorna ao painel '+width);
    await page.keyboard.press('Enter');
   }
-  const next=page.locator('#agu-reader .agu-document button.agu-light').nth(1);
+  const next=page.locator('#agu-reader .agu-step-next');
   await next.focus();await page.keyboard.press('Enter');
   const stepAfter=await page.evaluate(focusState);
   assert.equal((await page.locator('#agu-reader .agu-document h2').innerText()).trim(),'Art. 131','avanço de artigo '+width);
