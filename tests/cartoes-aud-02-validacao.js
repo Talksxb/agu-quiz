@@ -46,7 +46,8 @@ check('um baralho de uma carta agenda somente após nota voluntária',()=>{
 check('fixture aditiva encadeia fonte publicada e não reescreve histórico',()=>{
  const f=JSON.parse(read('tests/fixtures/cartoes-aud-02-delta.json')),previous=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json')),codigos=JSON.parse(read('tests/fixtures/codigos-cc-cpc-deltas.json')),biblioteca=JSON.parse(read('tests/fixtures/biblioteca-leis-02-deltas.json'));
  assert.equal(f.htmlBeforeSha256,codigos.changed['index.html'].after);assert.equal(biblioteca.changed['index.html'].before,f.htmlBeforeSha256);assert.equal(f.reviewBeforeSha256,previous.reviewAfterSha256);
- assert.equal(sha('index.html'),biblioteca.changed['index.html'].after);assert.equal(biblioteca.concurrentCards02HtmlSha256,f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),f.reviewAfterSha256);assert.equal(sha(f.newFile),f.newFileSha256);
+ const next=require('./hash-chain-cartoes-aud-03.cjs');
+ assert.equal(sha('index.html'),next('index.html',biblioteca.changed['index.html'].after));assert.equal(biblioteca.concurrentCards02HtmlSha256,f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),next('revisao-inteligente.js',f.reviewAfterSha256));assert.equal(sha(f.newFile),f.newFileSha256);
  for(const [file,value] of Object.entries(f.unchanged)){
   if(file==='leitor-juridico.js'){
    assert.equal(value,biblioteca.changed[file].before,'o leitor mudou somente pela Biblioteca02');
@@ -54,6 +55,6 @@ check('fixture aditiva encadeia fonte publicada e não reescreve histórico',()=
   }else assert.equal(sha(file),value,file);
  }
  const html=read('index.html');assert.ok(html.indexOf('flashcards-aud02-2015-atualizados-lote02.js')<html.indexOf('revisao-inteligente.js'));
- assert.match(html,/revisao-inteligente\.js\?v=20261115-cards-aud02/);assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
+ assert.match(html,/revisao-inteligente\.js\?v=20261116-cards-aud03/);assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
 });
 console.log('CARTOES_AUD_02_VALIDACAO_OK',JSON.stringify({tests,cards:48,decks:10,newCards:4}));
