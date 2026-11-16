@@ -11,6 +11,7 @@ Base remota verificada na abertura: `Talksxb/agu-quiz/main` em `164ad3446acd2cd2
 - O seletor **Escolher norma** continua recolhido inicialmente; não nasce um painel paralelo e só uma norma por vez aparece no índice e no texto.
 - Dentro do seletor há **etiquetas-filtro por matéria** com quantidade de diplomas e estados `aria-pressed`. O aluno filtra a lista de normas antes de escolher. O filtro **não abre outra norma** nem grava nada; a seleção explícita preserva o mecanismo do leitor.
 - A matéria da norma aberta aparece em chips legíveis acima do artigo. O índice deixa mais claro que o campo **Filtrar artigos deste trecho** pesquisa **somente os artigos exibidos**, no máximo 49 em códigos extensos; o salto pelo número continua sendo o caminho para um artigo fora desse trecho.
+- Durante a CI Chromium da PR, foi reproduzido **overflow de 131 px** em 320 CSS px com fonte 200%: o tamanho mínimo intrínseco do botão móvel **Relacionados** ultrapassava o espaço disponível. A regra CSS do próprio Leitor passa a permitir quebra de linha e largura mínima zero, sem alterar a navegação de motores externos. Validar a correção nas cinco larguras antes de integrar.
 - Todas as etiquetas são **metadados editoriais de interface, não códigos do edital nem vínculos de `article.topic`**. Não alteram questões, revisão, `forNotebook`, estudo integrado, cronograma ou backup.
 
 | Etiqueta editorial | Diplomas na interface | Quantidade |
@@ -45,7 +46,7 @@ As seis normas anteriores (`dados/legislacao-s13.js`) e o bundle CC/CPC (`dados/
 | Arquivo | SHA-256 anterior | SHA-256 novo |
 | --- | --- | --- |
 | `index.html` | `6ec95383253e2ce540e154230236de0b43ed43a39c20a644f223eb3ae9d45a0a` | `89f2cd32d778f3ffbf3922b3b194dda5f6cffcab775b85507b44a901416ba8b9` |
-| `leitor-juridico.js` | `d306a64da9782f60269e0a03a8231b76e7add58adbcba817f6b9f8035b5e1c19` | `83acc5d390d7a189b4b3954f6bb2f4bad7519f5464bdc6ae8585e47990b00bd0` |
+| `leitor-juridico.js` | `d306a64da9782f60269e0a03a8231b76e7add58adbcba817f6b9f8035b5e1c19` | `bfbf1676bd52fd1fba1a3e7e8b72d75c56a7896c06b61091c51154152d111869` |
 
 Quando a CI estiver verde e o merge for permitido, conferir Pages e SHA-256 via HTTPS de HTML, 11 scripts, CSS dos baralhos e módulo de questões. A aprovação de PR não é prova de produção.
 
