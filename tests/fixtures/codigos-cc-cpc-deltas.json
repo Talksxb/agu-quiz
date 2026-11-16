@@ -1,0 +1,28 @@
+{
+  "sprint": "CODIGOS-CC-CPC-01",
+  "baseMain": "5329e4bd6446efb32664dc79cd9e94005132a395",
+  "description": "Aditivo de CC/CPC espelhados sem cotejo oficial, reconciliado após CARTOES-AUD-01; índice de uma norma por vez; identidade histórica preservada.",
+  "changed": {
+    "index.html": {
+      "before": "84b495258860111d703680ed0d1d4f4d8df2ca7329ac578588bf313f6cab2b63",
+      "after": "6ec95383253e2ce540e154230236de0b43ed43a39c20a644f223eb3ae9d45a0a"
+    },
+    "leitor-juridico.js": {
+      "before": "1f119fb84c092b00a994943a1f0f09d85dcc6efabb6b85df536a3b3189a48c04",
+      "after": "d306a64da9782f60269e0a03a8231b76e7add58adbcba817f6b9f8035b5e1c19"
+    }
+  },
+  "added": {
+    "dados/codigos-cc-cpc.js": "b2aa0a4eae24d15fa3cae835069672affb4d9589ca5f19a77360fc03a167ee17",
+    "scripts/gerar-codigos-cc-cpc.cjs": "4a52a32c1079041a4b347143f8b1cb7ea0f395cb22051113a55610eb6bba95ce"
+  },
+  "sourceMirror": {
+    "repository": "https://github.com/LawCodex/br",
+    "commit": "e2a0e14bfc5cddf9a88b2aa05c66536cdb547aa1",
+    "retrievedAtMirror": "2026-10-12",
+    "ccMarkdownSha256": "02f30e533422f8aed9566953b7a731642b3d2293de3c373f5646c8d799ee7137",
+    "cpcMarkdownSha256": "39006ac91e7e93548cbdcbf167d69746f6b4d0ca45d5d81ffe19a27a193d910c",
+    "officialFullComparison": false
+  },
+  "counts": {"previousLaws":6,"newLaws":8,"previousArticles":292,"newArticles":3448,"previousUnits":1176,"newUnits":4332,"fullComparedNorms":5}
+}

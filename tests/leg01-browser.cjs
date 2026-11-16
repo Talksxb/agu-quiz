@@ -17,7 +17,8 @@ async function main(){
   if(width<=850)await p.getByRole('button',{name:'Texto legal',exact:true}).click();
   assert.ok((await p.locator('.agu-document').innerText()).includes('Texto integral incorporado'));
   assert.equal(await p.getByRole('link',{name:'Abrir texto oficial completo da norma',exact:true}).count(),1);
-  assert.deepEqual(await p.evaluate(()=>AGULegal.stats()),{laws:6,articles:292,units:1176,relations:18});
+  assert.deepEqual(await p.evaluate(()=>AGULegal.stats()),{laws:8,articles:3448,units:4332,relations:18});
+  assert.deepEqual(await p.evaluate(()=>({oldLaws:AGU_LEGAL_CORPUS.laws.slice(0,6).length,oldArticles:AGU_LEGAL_CORPUS.laws.slice(0,6).reduce((n,l)=>n+l.articles.length,0)})),{oldLaws:6,oldArticles:292});
   assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
   assert.deepEqual(errors,[]);results.push({width,legacyNotes:true,integralLabel:true});await ctx.close();
  }

@@ -1,5 +1,6 @@
 /* LEG13 — portão somente de diagnóstico: Home ⇄ lista única, dados anteriores intocados. */
 'use strict';
+const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,p))).digest('hex');
@@ -92,14 +93,14 @@ test('delta HTML LEG12→LEG13 e todos os demais assets preservados',()=>{
  const portao=JSON.parse(read('tests/fixtures/leg13-deltas.json'));
  assert.equal(portao.initialMain,'c33716434b42a5656fa1fada62ba754f98b8c93d');assert.equal(portao.productDelta,true);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
- assert.equal(portao.htmlBeforeSha256,prior.htmlAfterSha256);assert.equal(portao.htmlAfterSha256,cards.htmlBeforeSha256);assert.equal(sha('index.html'),cards.htmlAfterSha256);assert.equal(sha('meu-estudo.js'),prior.homeAfterSha256);
+ assert.equal(portao.htmlBeforeSha256,prior.htmlAfterSha256);assert.equal(portao.htmlAfterSha256,cards.htmlBeforeSha256);assert.equal(sha('index.html'),afterCodigos('index.html',cards.htmlAfterSha256));assert.equal(sha('meu-estudo.js'),prior.homeAfterSha256);
  for(const [file,hash] of Object.entries(prior.unchanged)){
-  if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);continue}
-  assert.equal(sha(file),hash,file);
+  if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);assert.equal(sha(file),cards.reviewAfterSha256);continue}
+  assert.equal(sha(file),afterCodigos(file,hash),file);
  }
  for(const [file,hash] of Object.entries(portao.sha256BeforeAndAfter)){
-  if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);continue}
-  assert.equal(sha(file),hash,file);
+  if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);assert.equal(sha(file),cards.reviewAfterSha256);continue}
+  assert.equal(sha(file),afterCodigos(file,hash),file);
  }
 });
 console.log('LEG13_VALIDACAO_OK',JSON.stringify({checks,origens:4,backup:9,produtoAlterado:'apenas_css_home'}));

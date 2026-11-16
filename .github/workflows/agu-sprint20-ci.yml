@@ -89,6 +89,8 @@ jobs:
         run: node tests/sprint34-validacao.js
       - name: Sprint 35 — controles secundários e recuperação de foco
         run: node tests/sprint35-validacao.js
+      - name: Códigos CC/CPC — corpus aditivo, seleção e preservação S20
+        run: node tests/codigos-cc-cpc-validacao.js
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -101,6 +103,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
+        run: node tests/codigos-cc-cpc-browser.cjs
       - name: CARTOES-AUD-01 — novas cartas, referência histórica, teclado e axe
         run: node tests/cartoes-aud-01-browser.cjs
       - name: LEG-11 — flashcards, cinco viewports, foco e backup
@@ -237,6 +241,8 @@ jobs:
             tests/artifacts-ux-baralhos-04/*.png
             tests/artifacts-ux-baralhos-05/*.json
             tests/artifacts-ux-baralhos-05/*.png
+            tests/artifacts-codigos-cc-cpc/*.json
+            tests/artifacts-codigos-cc-cpc/*.png
             tests/artifacts-cartoes-aud-01/*.json
             tests/artifacts-cartoes-aud-01/*.png
           if-no-files-found: ignore
@@ -255,6 +261,10 @@ jobs:
         run: node tests/sprint21-pages.cjs
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: Códigos CC/CPC na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/codigos-cc-cpc-browser.cjs
       - name: LEG-11 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -352,6 +362,8 @@ jobs:
             tests/artifacts-ux-baralhos-03/
             tests/artifacts-ux-baralhos-04/
             tests/artifacts-ux-baralhos-05/
+            tests/artifacts-codigos-cc-cpc/*.json
+            tests/artifacts-codigos-cc-cpc/*.png
           if-no-files-found: ignore
           retention-days: 7
 
