@@ -29,7 +29,7 @@ async function main(){
   await page.goto(origin,{waitUntil:'load'});
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/51 cartões · 11 baralhos/);
   assert.equal(await page.evaluate(()=>AGUReview.exactDeck('ADM/Atos administrativos')),null);
   assert.equal(await page.evaluate(()=>AGUReview.exactDeck('ADM-06').count),12);
   assert.equal(await page.evaluate(()=>AGUReview.reviewInfo('ri-con-01').seen),0);

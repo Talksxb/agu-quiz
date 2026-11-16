@@ -31,7 +31,7 @@ async function main(){
   await page.goto(origin,{waitUntil:'load'});
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/51 cartões · 11 baralhos/);
   const con=page.locator('.agu-deck-grid article').filter({has:page.locator('.agu-deck-code:text-is("CON-02")')});
   assert.match(await con.innerText(),/1 vencidos/);assert.match(await con.innerText(),/1 vencem hoje/);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
@@ -123,7 +123,7 @@ async function main(){
     .map(el=>({tag:el.tagName,cls:el.className,right:Math.round(el.getBoundingClientRect().right),text:(el.textContent||'').trim().slice(0,85)}))}));
   assert.ok(spill.scrollWidth<=spill.viewport+2,'sem overflow final '+width+': '+JSON.stringify(spill));
   assert.deepEqual(errors,[]);
-  results.push({width,baralhos:10,cartoes:48,selectedOne:true,graded:2,filters:true,choose:true,reload:true,backup:true,axe:width===390||width===1280});
+  results.push({width,baralhos:11,cartoes:51,selectedOne:true,graded:2,filters:true,choose:true,reload:true,backup:true,axe:width===390||width===1280});
   await context.close();
  }
  console.log('UX_BARALHOS_02_BROWSER_OK',JSON.stringify({target:origin,chromium:browser.version(),results}));

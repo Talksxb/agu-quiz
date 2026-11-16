@@ -1,0 +1,22 @@
+{
+  "id": "CARTOES-AUD-03",
+  "baseCommit": "aeedd9e1a3e7f3d00a8291516f30571e8c58942b",
+  "previousFixture": "tests/fixtures/cartoes-aud-02-delta.json",
+  "concurrentIntegratedFixture": "tests/fixtures/biblioteca-leis-02-deltas.json",
+  "htmlBeforeSha256": "e5dc8d39b174dd3e3024ea5a10f5b6b478c1277756907dd984570472724f0a7f",
+  "htmlAfterSha256": "71a30f8c930cbd254bc4d22b4d9d400b322dcf92e700a6afabda79419de75ded",
+  "reviewBeforeSha256": "888b4fada02c4e7123eef90cebd09e2e0ec81626afd4c925899cd1b6a4d8a7c2",
+  "reviewAfterSha256": "ade35f3ba8c77b0d33ec41063f3c72f20c3889b91ab619d94942ebf0c3768116",
+  "newFile": "dados/flashcards-aud02-2015-atualizados-lote03.js",
+  "newFileSha256": "f4cb472e30c9a283277004002c3f406112e973222169ad88e12163f9c379e6ed",
+  "unchanged": {
+    "baralhos-ux.css": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
+    "dados/flashcards-aud02-2015-atualizados-lote02.js": "9a9cc20420fc812a4dc803a487b089bc07e15e4f457428705d510120a3bd9e03"
+  },
+  "cardsBefore": 48,
+  "cardsAdded": 3,
+  "cardsAfter": 51,
+  "decksBefore": 10,
+  "decksAfter": 11,
+  "historicQuestions": [5, 7, 8]
+}
