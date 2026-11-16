@@ -1,0 +1,42 @@
+/* Biblioteca 02: tags editoriais por diploma, filtragem transitória e fontes não certificadas. */
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
+const ROOT=path.resolve(__dirname,'..'),read=file=>fs.readFileSync(path.join(ROOT,file),'utf8');
+const sha=file=>crypto.createHash('sha256').update(read(file)).digest('hex');
+const z={window:{}};
+for(const f of ['dados/legislacao-s13.js','dados/codigos-cc-cpc.js'])vm.runInNewContext(read(f),z,{filename:f});
+const corpus=z.window.AGU_LEGAL_CORPUS;
+function boot(){
+ const records=new Map(),document={getElementById:()=>null,querySelector:()=>null,querySelectorAll:()=>[],createElement:()=>({}),head:{appendChild(){}}};
+ const storage={getItem:k=>records.get(k)??null,setItem(k,v){records.set(k,String(v))}};
+ const w={AGU_LEGAL_CORPUS:corpus,document,localStorage:storage,crypto:crypto.webcrypto,Blob,Date,Math,render(){}};
+ vm.runInNewContext(read('leitor-juridico.js'),{window:w,document,localStorage:storage,crypto:crypto.webcrypto,Blob,Date,Math,URL},{filename:'leitor-juridico.js'});
+ return {w,records};
+}
+const {w,records}=boot();
+const options=()=>w.AGULegal.page().match(/<select id="agu-law-select"[^>]*>([\s\S]*?)<\/select>/)?.[1]||'';
+assert.equal(w.AGULegal.stats().laws,8);
+assert.match(w.AGULegal.page(),/<details id="agu-law-picker">/,'inicialmente recolhido');
+assert.equal((options().match(/<option value="(CF88|L9784|LC101|LC73|DL4657|L4717|L10406|L13105)"/g)||[]).length,8);
+assert.equal(w.AGULegal.filterLawMatter('Direito Civil'),true);
+assert.equal(records.size,0,'filtrar matéria não altera armazenamento');
+assert.match(w.AGULegal.page(),/<details id="agu-law-picker" open>/);
+assert.match(options(),/value="L10406"/);assert.match(options(),/value="DL4657"/);
+assert.doesNotMatch(options(),/value="L13105"/);assert.match(options(),/value="" disabled selected/);
+assert.match(w.AGULegal.page(),/2 norma\(s\) em Direito Civil/);
+assert.equal(w.AGULegal.peek().article,'CF88:art37','filtro não troca artigo aberto');
+assert.equal(w.AGULegal.filterLawMatter('Direito Processual Civil'),true);
+assert.match(options(),/value="L13105"/);assert.doesNotMatch(options(),/value="L10406"/);
+assert.equal(w.AGULegal.filterLawMatter('Desconhecido'),false);
+assert.equal(w.AGULegal.openLaw('L13105'),true);
+assert.equal(w.AGULegal.peek().article,'L13105:art1');
+assert.match(w.AGULegal.page(),/<span class="agu-matter-badge">Direito Processual Civil<\/span>/);
+assert.match(w.AGULegal.page(),/Matérias são etiquetas de navegação, não vínculos curriculares certificados/);
+assert.match(w.AGULegal.page(),/Busca apenas nos artigos exibidos abaixo/);
+assert.equal(w.AGULegal.filterLawMatter('Todas'),true);
+assert.equal((options().match(/<option value="(CF88|L9784|LC101|LC73|DL4657|L4717|L10406|L13105)"/g)||[]).length,8);
+assert.ok(corpus.laws.find(l=>l.id==='L10406').articles.every(a=>a.topic===null));
+assert.ok(corpus.laws.find(l=>l.id==='L13105').articles.every(a=>a.topic===null));
+const prior=JSON.parse(read('tests/fixtures/codigos-cc-cpc-deltas.json'));
+assert.equal(sha('dados/codigos-cc-cpc.js'),prior.added['dados/codigos-cc-cpc.js'],'bundle anterior sem alteração');
+console.log('BIBLIOTECA_02_NODE_OK: filtros de matérias, rótulos, 8 normas, nenhum tópico ou escrita de filtro.');
