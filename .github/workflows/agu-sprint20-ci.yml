@@ -27,6 +27,8 @@ jobs:
         run: node --version
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
         run: node tests/cartoes-aud-01-validacao.js
+      - name: CARTOES-AUD-02 — quatro cartas, 2015, fontes e revisão preservada
+        run: node tests/cartoes-aud-02-validacao.js
       - name: Regressão Sprint 19
         run: node tests/sprint19-validacao.js
       - name: Regressão Sprint 20
@@ -107,6 +109,8 @@ jobs:
         run: node tests/codigos-cc-cpc-browser.cjs
       - name: CARTOES-AUD-01 — novas cartas, referência histórica, teclado e axe
         run: node tests/cartoes-aud-01-browser.cjs
+      - name: CARTOES-AUD-02 — lote público, cinco viewports, foco e axe
+        run: node tests/cartoes-aud-02-browser.cjs
       - name: LEG-11 — flashcards, cinco viewports, foco e backup
         run: node tests/leg11-browser.cjs
       - name: LEG-12 — Home, lista única, cinco viewports, foco, axe e backup
@@ -245,6 +249,8 @@ jobs:
             tests/artifacts-codigos-cc-cpc/*.png
             tests/artifacts-cartoes-aud-01/*.json
             tests/artifacts-cartoes-aud-01/*.png
+            tests/artifacts-cartoes-aud-02/*.json
+            tests/artifacts-cartoes-aud-02/*.png
           if-no-files-found: ignore
           retention-days: 7
 
@@ -273,6 +279,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/cartoes-aud-01-browser.cjs
+      - name: CARTOES-AUD-02 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/cartoes-aud-02-browser.cjs
       - name: LEG-12 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/

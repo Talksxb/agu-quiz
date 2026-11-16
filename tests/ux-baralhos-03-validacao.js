@@ -123,10 +123,10 @@ check('delta UX03 encadeia UX02→LEG11 sem reescrever fixtures anteriores',()=>
  assert.equal(leg12.homeBeforeSha256,next.unchanged['meu-estudo.js']);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(next.reviewAfterSha256,cards.reviewBeforeSha256);
- assert.equal(sha('revisao-inteligente.js'),cards.reviewAfterSha256);
+ const nextCards=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha('revisao-inteligente.js'),nextCards('revisao-inteligente.js',cards.reviewAfterSha256));
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(sha('index.html'),afterCodigos('index.html',cards.htmlAfterSha256));
+ assert.equal(sha('index.html'),nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
  assert.equal(sha('meu-estudo.js'),leg12.homeAfterSha256);
  for(const file of ['planejamento-semanal.js','estudo-integrado.js','leitor-juridico.js','backup-local-s20.js','questoes-leitor-s18.js','catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js']){
   assert.equal(sha(file),afterCodigos(file,delta.unchanged[file]));

@@ -53,7 +53,7 @@ check('quatro itens auditados com IDs únicos',()=>{
  assert.equal(new Set(arr.map(x=>x.id)).size,4);
 });
 check('36 flashcards legados, 8 novos e Q48 preservados',()=>{
- assert.equal(review.deck().flashcards,44);
+ assert.equal(review.deck().flashcards,48);
  assert.equal(review.deck().lotAud02_2015,8);
  assert.ok(questions.all().some(x=>x.id==='of-2015-adv-048'));
 });
