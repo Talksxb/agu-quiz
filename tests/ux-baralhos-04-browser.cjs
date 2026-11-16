@@ -30,7 +30,7 @@ async function main(){
   await page.goto(origin,{waitUntil:'load'});
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/44 cartões · 9 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   const before=await page.evaluate(({review,plan})=>({review:localStorage.getItem(review),plan:localStorage.getItem(plan)}),{review:REVIEW,plan:PLAN});
   await page.evaluate(()=>AGUReview.select('ri-con-01'));
   assert.match(await page.locator('#main').innerText(),/Avaliações anteriores: 1 · sem agenda local/);

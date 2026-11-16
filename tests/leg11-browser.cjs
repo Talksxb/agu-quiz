@@ -31,7 +31,7 @@ async function main(){
   await p.goto(origin,{waitUntil:'load'});
   await p.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await p.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await p.locator('#agu-deck-library').innerText(),/44 cartões · 9 baralhos/);
+  assert.match(await p.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   const deck=p.locator('.agu-deck-grid article').filter({has:p.locator('.agu-deck-code:text-is("ADM-06")')});
   await deck.getByRole('button',{name:'Estudar baralho'}).click();
   const session=await p.evaluate(()=>AGUReview.deckSession());assert.equal(session.status,'em_andamento');assert.equal(session.order[0],'ri-adm-01');

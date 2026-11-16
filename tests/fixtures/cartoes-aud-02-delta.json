@@ -1,0 +1,21 @@
+{
+  "sprint": "CARTOES-AUD-02",
+  "baseMain": "164ad3446acd2cd23f53e41c96777312ae15aec0",
+  "htmlBeforeSha256": "6ec95383253e2ce540e154230236de0b43ed43a39c20a644f223eb3ae9d45a0a",
+  "htmlAfterSha256": "84eda7e467a4de9b4358adcc828844a5737f0879110d5759747d1b1387adb5d6",
+  "reviewBeforeSha256": "49f45191fd46c3cc4664dc884e9d859e65624607cce5c6ddd1f518e5940d347d",
+  "reviewAfterSha256": "888b4fada02c4e7123eef90cebd09e2e0ec81626afd4c925899cd1b6a4d8a7c2",
+  "newFile": "dados/flashcards-aud02-2015-atualizados-lote02.js",
+  "newFileSha256": "9a9cc20420fc812a4dc803a487b089bc07e15e4f457428705d510120a3bd9e03",
+  "cardsBefore": 44,
+  "cardsAdded": 4,
+  "cardsAfter": 48,
+  "decksBefore": 9,
+  "decksAfter": 10,
+  "unchanged": {
+    "baralhos-ux.css": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
+    "backup-local-s20.js": "8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9",
+    "leitor-juridico.js": "d306a64da9782f60269e0a03a8231b76e7add58adbcba817f6b9f8035b5e1c19",
+    "planejamento-semanal.js": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b"
+  }
+}

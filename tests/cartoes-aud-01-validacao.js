@@ -10,6 +10,7 @@ const scripts=['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js',
  'dados/flashcards-aud02-2015-atualizados-lote01.js','revisao-inteligente.js'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const afterCodigos=require('./hash-chain-codigos.cjs');
+const afterCartoes02=require('./hash-chain-cartoes-aud-02.cjs');
 function boot(initial={}){
  const data=new Map(Object.entries(initial).map(([key,value])=>[key,JSON.stringify(value)]));
  const root={Date,Math,Blob,URL,URLSearchParams,console,crypto:crypto.webcrypto,
@@ -45,7 +46,7 @@ check('dados novos são oito cartas autorais, sete itens históricos e fontes p�
 check('integra na biblioteca sem criar disciplinas artificiais nem duplicar IDs',()=>{
  const {root:z,data}=boot();const before=data.size;
  const decks=clone(z.AGUReview.deckList());
- assert.equal(z.AGUReview.deck().flashcards,44);
+ assert.equal(z.AGUReview.deck().flashcards,44,'o teste histórico carrega apenas o primeiro lote');
  assert.equal(z.AGUReview.deck().lotAud03,14);
  assert.equal(z.AGUReview.deck().lotAud02_2015,8);
  assert.equal(decks.length,9);
@@ -95,8 +96,8 @@ check('fixture encadeia somente hashes novos aos históricos preservados',()=>{
  const ux04=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  assert.equal(delta.htmlBeforeSha256,leg13.htmlAfterSha256);
  assert.equal(delta.reviewBeforeSha256,ux04.reviewAfterSha256);
- assert.equal(afterCodigos('index.html',delta.htmlAfterSha256),digest('index.html'));
- assert.equal(delta.reviewAfterSha256,digest('revisao-inteligente.js'));
+ assert.equal(afterCartoes02('index.html',afterCodigos('index.html',delta.htmlAfterSha256)),digest('index.html'));
+ assert.equal(afterCartoes02('revisao-inteligente.js',delta.reviewAfterSha256),digest('revisao-inteligente.js'));
  assert.equal(delta.newFileSha256,digest(delta.newFile));
  for(const [file,hash] of Object.entries(delta.unchanged))assert.equal(digest(file),hash,file);
  const html=read('index.html');assert.match(html,/dados\/flashcards-aud02-2015-atualizados-lote01\.js\?v=20261115-cards-aud01/);

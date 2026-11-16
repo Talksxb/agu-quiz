@@ -57,10 +57,10 @@ check('deltas antigos intactos e novo delta encadeado',()=>{
  assert.equal(leg12.homeBeforeSha256,delta.unchanged['meu-estudo.js']);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(delta.reviewAfterSha256,cards.reviewBeforeSha256);
- assert.equal(cards.reviewAfterSha256,sha('revisao-inteligente.js'));
+ const nextCards=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(nextCards('revisao-inteligente.js',cards.reviewAfterSha256),sha('revisao-inteligente.js'));
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(afterCodigos('index.html',cards.htmlAfterSha256),sha('index.html'));
+ assert.equal(nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)),sha('index.html'));
  assert.equal(leg12.homeAfterSha256,sha('meu-estudo.js'));
  for(const [file,hash] of Object.entries(delta.unchanged))if(file!=='meu-estudo.js')assert.equal(sha(file),afterCodigos(file,hash),file);
 });

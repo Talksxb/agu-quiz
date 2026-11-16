@@ -23,7 +23,7 @@ async function main(){
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await page.locator('.agu-deck-tile article').count(),0);
   assert.equal(await page.locator('.agu-deck-grid article').count(),9);
-  assert.match(await page.locator('#agu-deck-library').innerText(),/44 cartões · 9 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow biblioteca '+width);
   const colors=await page.locator('.agu-deck-grid article').evaluateAll(nodes=>nodes.map(n=>({code:n.querySelector('.agu-deck-code').textContent,accent:getComputedStyle(n).getPropertyValue('--deck-accent').trim()})));
   assert.notEqual(colors.find(c=>c.code==='ADM-06').accent,colors.find(c=>c.code==='CON-02').accent);

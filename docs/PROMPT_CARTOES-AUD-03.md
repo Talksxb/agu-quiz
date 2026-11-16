@@ -1,0 +1,25 @@
+# AGU QUIZ | WORK — CARTOES-AUD-03 (HANDOFF, NÃO EXECUTAR AGORA)
+
+Este arquivo é exclusivamente a preparação da próxima execução. **Não executar CARTOES-AUD-03 durante CARTOES-AUD-02.** Exigir pedido expresso em nova execução; uma sprint apenas, sem antecipar CARTOES-AUD-04 nem auditar secretamente o repositório privado.
+
+## Fonte e retomada
+
+Repositório público: `https://github.com/Talksxb/agu-quiz`; produção: `https://talksxb.github.io/agu-quiz/`. Revalidar HEAD da `main`, PRs/branches abertas e mescladas, conflitos, CI, Pages e SHA-256 HTTPS antes de qualquer escrita. Ler integralmente `docs/CHECKPOINT_CARTOES-AUD-01_2026-11-15.md`, `docs/CHECKPOINT_CARTOES-AUD-02_2026-11-15.md`, prompts anteriores, checkpoints UX01–08, LEG07–16, WORK01, bibliotecas CC/CPC, fixtures/testes e mudanças posteriores. A base histórica da CARTOES-AUD-02 foi `164ad3446acd2cd23f53e41c96777312ae15aec0`, contendo CARTOES-AUD-01 e LEG CC/CPC; **não presumir que a PR do segundo lote esteja mesclada** até constatar o fato.
+
+Fotografia proposta depois da CARTOES-AUD-02: 48 cartões autorais em 10 baralhos, dos quais 36 legados, 8 do lote CARTOES-AUD-01 (7 itens históricos distintos) e 4 do lote CARTOES-AUD-02 (Q2, Q3, Q9, Q12 da prova pública AGU 2015). Dez códigos: ADM-06 12; ADM-13 4; ADM-23 4; ADM-25 5; ADM-27 1; ADM-58 1; CON-02 2; CON-24 1; CON-50 8; PC-03 10. Recontar se houver novas mudanças pedagógicas legítimas. 14 disciplinas públicas, 14 níveis cognitivos originais 2/3/4 e 34 cartões sem nível, nove categorias S20.
+
+## Missão única e critérios de evidência
+
+Examinar um **novo conjunto pequeno** de candidatas de provas antigas, incluindo questões não promovidas da seleção histórica: Q4, Q5, Q6, Q7, Q8, Q16, Q20, Q24 e Q36 do caderno público `187AGU_001_07`. Q6 já possui adaptação oficial S19 — evitar duplicação editorial. Não presumir que uma questão gere um cartão. Também é possível avaliar outras questões já efetivamente comprovadas em fontes públicas; nenhuma matriz privada é necessária automaticamente.
+
+Para cada candidata separar: número e gabarito histórico oficial; versão original e fundamento na data da prova se demonstrável; mudança normativa/jurisprudencial posterior *somente se documentada*; dispositivo atual e data de corte explícita; limites e controvérsias; pergunta/resposta **autorais breves** com armadilha e caso prático. Fontes: prova e gabarito do Cebraspe públicos, normas atualizadas da Câmara/Senado/Planalto, STF/STJ oficiais. Navegar fontes primárias em vez de reproduzir enunciado, comentários ou artefatos privados. Candidata sem cadeia completa ou com ambiguidade material = quarentena, sem patch artificial. A auditoria privada `Talksxb/agu-auditoria` só poderá ser consultada se houver **autorização específica e indispensabilidade objetiva**, exclusivamente leitura, sem exportar matrizes, evidências, prova ou ranking ao Quiz.
+
+## Proteções e implementação eventual
+
+- Não alterar os 412 IDs curriculares, taxonomia, prova/gabaritos oficiais, classificações AUD02-FREQ provisórias, níveis originais, respostas históricas, intervalos D+1/D+7/D+21/D+45 nem registros pessoais. Cartões são **autorais**, não oficiais ou automaticamente certificados. `AGUDisciplines.verifiedFrequency()` não oferece ranking final publicado.
+- Preservar `agu_quiz_revisao_inteligente_v1` (`agu-review-v1`), histórico sem agenda, avaliação uma vez por cartão/sessão apenas por ação explícita, importação parcial ≤3 MB sem sobrescrever `seen/stage/due`; S20 nove categorias, ≤12 MB UTF-8 e restauração apenas de categorias ausentes. Manter única lista `forNotebook` em `agu_leitor_juridico_s13_v1`, com quatro origens existentes; nunca inferir `deviceId` ou tema granular a partir do título. Se adicionar cartões, registrar IDs novos no índice LEG11 sem reclassificar anteriores.
+- Não criar backend, login, sincronização entre dispositivos/GitHub/GPT Sites, analytics, lista de notas paralela nem efeito colateral em agenda/plano/task via navegação.
+- Apenas após validar fontes, acrescentar lote de dados isolado, referências autorais e testes sintéticos; novo fixture de delta SHA **encadeado ao último baseline efetivamente integrado**, sem modificar fixtures históricas. Manter todas as suítes Node e jornadas Chromium UX01–08, LEG01–16, WORK01, S20–35, CARTOES-AUD-01/02 e Códigos CC/CPC.
+- Chromium isolado 320/360/390/430/1280, tecla Enter/Espaço, foco, `aria-live`, `prefers-reduced-motion`, frente/verso, rating voluntário, backup, caderno, leitor, questões, plano e oficiais; axe 390/1280 com violations/incomplete/passed, capturas e rechecagem, sem afirmar WCAG integral. Sem Android físico/TalkBack real, declarar como não testado.
+
+Criar branch/PR exclusiva CARTOES-AUD-03, checkpoint factual, CI Node+Chromium verde antes de merge; em falha/confusão de proveniência ou risco de backup/privacidade, manter PR rascunho. Somente após merge confirmar Pages HTTPS, SHA-256 e jornada efetiva publicada. Handoff futuro somente para CARTOES-AUD-04, sem executá-lo. Parar após essa sprint.

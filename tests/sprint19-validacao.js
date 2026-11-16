@@ -56,7 +56,7 @@ check('quatro IDs auditados e sem duplicatas',()=>{
  assert.equal(questions.all().length,4);
  assert.equal(new Set(questions.all().map(q=>q.id)).size,4);
 });
-check('36 flashcards legados preservados e 8 autorais adicionados',()=>{assert.equal(review.deck().flashcards,44);assert.equal(review.deck().lotAud02_2015,8)});
+check('36 flashcards legados, 8 do primeiro lote e 4 do segundo preservados',()=>{assert.equal(review.deck().flashcards,48);assert.equal(review.deck().lotAud02_2015,8);assert.equal(review.deck().lotAud02_2015_02,4)});
 check('três cláusulas novas presentes',()=>{
  const ids=window.AGU_LEGAL_CORPUS.laws.flatMap(l=>l.articles.flatMap(a=>a.clauses.map(c=>c.id)));
  ['L9784:art50:p1','CF88:art49:V','CF88:art37:X'].forEach(id=>assert.ok(ids.includes(id)));

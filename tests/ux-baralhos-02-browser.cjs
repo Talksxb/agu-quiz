@@ -31,7 +31,7 @@ async function main(){
   await page.goto(origin,{waitUntil:'load'});
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/44 cartões · 9 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   const con=page.locator('.agu-deck-grid article').filter({has:page.locator('.agu-deck-code:text-is("CON-02")')});
   assert.match(await con.innerText(),/1 vencidos/);assert.match(await con.innerText(),/1 vencem hoje/);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');

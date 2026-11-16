@@ -108,7 +108,7 @@ async function main(){
  },KEYS);
  assert.equal(Object.keys(before.bundle.items).length,9,'todas as nove categorias precisam existir');
  assert.ok(Object.values(before.data).every(Boolean),'todas as chaves possuem valores');
- assert.equal(before.cards.flashcards,44);
+ assert.equal(before.cards.flashcards,48);
  assert.equal(before.cards.official,24);
  assert.deepEqual(before.audited.slice().sort(),STABLE_IDS.slice().sort());
  assert.equal(JSON.parse(before.data.agu_quiz_revisao_inteligente_v1).attempts.length,1);
