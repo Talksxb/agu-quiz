@@ -9,6 +9,7 @@
 - A lista de normas permanece no **Leitor Jurídico**, agora em um seletor `<details>` inicialmente recolhido. O estudante escolhe explicitamente a norma; o índice mostra **somente** seus artigos.
 - Para CC/CPC, o índice apresenta uma janela de até 49 artigos próximos ao selecionado, evitando milhares de controles simultâneos. O campo **Ir diretamente ao artigo** aceita numeração como `489` ou `1.228`. A ação **Trocar norma** revela e foca o seletor, inclusive em viewport estreito.
 - Anterior/próximo não atravessa automaticamente o limite de uma norma. A navegação das outras seis normas e os acessos contextuais foram preservados.
+- No desktop, após Enter em um artigo do índice, o foco também rola a coluna até o artigo selecionado; correção motivada por falha reproduzida na regressão Chromium da Sprint 31 em 1280 px.
 - Nenhuma segunda lista de anotações ou nova chave foi criada. `forNotebook`, comentários, estudos, revisões, questões e flashcards mantêm os formatos e operações originais. Novos artigos não recebem `topic` curricular por aproximação.
 
 ## Fonte, cobertura e limite jurídico

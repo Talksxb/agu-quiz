@@ -146,7 +146,7 @@ function notebookOrigin(id){
 function current(){return byId.get(state.article)||articles[0]}
 function structureLabel(a){return (a.structurePath||[]).map(id=>a.law.structure?.find(n=>n.id===id)?.label).filter(Boolean).join(' › ')||a.law.section}
 function focusAfter(selector,reveal=false){if(typeof document!=='undefined')document.querySelector?.(selector)?.focus?.({preventScroll:!reveal})}
-function article(id,restoreKeyboardFocus=false){const a=byId.get(id);if(!a)return;state.article=id;state.unit=a.clauses[0].id;state.mobile='text';save();root.render?.();if(restoreKeyboardFocus){const narrow=root.matchMedia?.('(max-width:850px)')?.matches;focusAfter(narrow?'#agu-reader .agu-document h2':'#agu-reader .agu-index-entry.selected',narrow)}}
+function article(id,restoreKeyboardFocus=false){const a=byId.get(id);if(!a)return;state.article=id;state.unit=a.clauses[0].id;state.mobile='text';save();root.render?.();if(restoreKeyboardFocus){const narrow=root.matchMedia?.('(max-width:850px)')?.matches;focusAfter(narrow?'#agu-reader .agu-document h2':'#agu-reader .agu-index-entry.selected',true)}}
 function openLaw(id,restart=true){const law=laws.find(l=>l.id===id);if(!law)return false;if(!restart&&current()?.law.id===id)return true;article(law.articles[0].id,true);return true}
 function showLawPicker(){
  if(root.matchMedia?.('(max-width:850px)')?.matches){state.mobile='index';save();root.render?.()}
