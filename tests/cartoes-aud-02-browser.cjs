@@ -21,6 +21,8 @@ async function main(){
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   await page.locator('#agu-deck-filter-topic').fill('ADM-27');
+  await page.locator('#agu-deck-filter-topic').press('Tab');
+  assert.equal(await page.locator('.agu-deck-grid article').count(),1);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),0);
   const card=page.locator('#agu-deck-face');await card.focus();await card.press(width===390?'Space':'Enter');
