@@ -111,7 +111,12 @@ check('hashes encadeados UX03→UX04→LEG12 e módulos fora da Home intocados',
  assert.equal(now.reconciledMain,'aa4fff6791bbffa57c649be119769bc4c0a9912e');
  assert.equal(now.htmlBeforeSha256,prior.htmlAfterSha256);assert.equal(now.homeBeforeSha256,prior.unchanged['meu-estudo.js']);
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,now.htmlAfterSha256);
- assert.equal(sha('index.html'),leg13.htmlAfterSha256);assert.equal(sha('meu-estudo.js'),now.homeAfterSha256);
- for(const [file,hash] of Object.entries(now.unchanged))assert.equal(sha(file),hash,file);
+ const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
+ assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
+ assert.equal(sha('index.html'),cards.htmlAfterSha256);assert.equal(sha('meu-estudo.js'),now.homeAfterSha256);
+ for(const [file,hash] of Object.entries(now.unchanged)){
+  if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);continue}
+  assert.equal(sha(file),hash,file);
+ }
 });
 console.log('LEG12_VALIDACAO_OK',JSON.stringify({tests,origins:4,backupCategories:9,limit:300,textMax:450}));

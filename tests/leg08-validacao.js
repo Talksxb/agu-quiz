@@ -30,10 +30,12 @@ check('baselines LEG08→LEG09→UX01→LEG10→UX02→LEG11→UX03 encadeados',
  for(const k of ['review','html'])assert.equal(y[k+'AfterSha256'],z[k+'BeforeSha256']);
  const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));assert.equal(leg12.htmlBeforeSha256,z.htmlAfterSha256);
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
- assert.equal(sha(read('revisao-inteligente.js')),z.reviewAfterSha256);assert.equal(sha(read('index.html')),leg13.htmlAfterSha256);
+ const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
+ assert.equal(z.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
+ assert.equal(sha(read('revisao-inteligente.js')),cards.reviewAfterSha256);assert.equal(sha(read('index.html')),cards.htmlAfterSha256);
  for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256']])assert.equal(sha(read(file)),w[key]);
  for(const [file,key] of [['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(file)),t[key]);
- assert.match(read('index.html'),/revisao-inteligente\.js\?v=20261115-ux04/);
+ assert.match(read('index.html'),/revisao-inteligente\.js\?v=20261115-cards-aud01/);
 });
 check('apenas pendência ADM-06 em cartão efetivamente agendado',()=>{const {z}=boot();z.AGUReview.go('auto');const list=copy(z.AGUReview.notebookDue());assert.equal(list.length,1);assert.equal(list[0].id,dueMark.id);assert.match(z.AGUReview.page(),/Quando a delegação exige hierarquia/);assert.doesNotMatch(z.AGUReview.page(),/Distinguir motivo e finalidade/);assert.match(z.AGUReview.page(),/sem tópico curricular comprovado/);assert.match(z.AGUReview.page(),/Anotei no meu caderno/)});
 check('sem cartão previamente agendado não introduz nenhuma recuperação automática',()=>{const b=boot(reader,{...review,cards:{}});b.z.AGUReview.go('auto');assert.deepEqual(copy(b.z.AGUReview.notebookDue()),[]);assert.doesNotMatch(b.z.AGUReview.page(),/agu-review-notebook-item/);const future=boot(reader,{...review,cards:{'ri-adm-01':{stage:1,due:'2999-01-01',seen:1}}});future.z.AGUReview.select('ri-adm-01');assert.deepEqual(copy(future.z.AGUReview.notebookDue()),[])});

@@ -22,13 +22,13 @@ async function main(){
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await page.locator('.agu-deck-tile article').count(),0);
-  assert.equal(await page.locator('.agu-deck-grid article').count(),6);
-  assert.match(await page.locator('#agu-deck-library').innerText(),/36 cartões · 6 baralhos/);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),9);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/44 cartões · 9 baralhos/);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow biblioteca '+width);
   const colors=await page.locator('.agu-deck-grid article').evaluateAll(nodes=>nodes.map(n=>({code:n.querySelector('.agu-deck-code').textContent,accent:getComputedStyle(n).getPropertyValue('--deck-accent').trim()})));
   assert.notEqual(colors.find(c=>c.code==='ADM-06').accent,colors.find(c=>c.code==='CON-02').accent);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
-  assert.equal(await page.locator('.agu-deck-grid article').count(),2);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),3);
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
@@ -87,7 +87,7 @@ async function main(){
   }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow final '+width);
   assert.deepEqual(errors,[]);
-  results.push({width,baralhos:6,cartoes:36,semOverflow:true,avaliacoes:2,retomada:true,backup:true,axe:width===390||width===1280});
+  results.push({width,baralhos:9,cartoes:44,semOverflow:true,avaliacoes:2,retomada:true,backup:true,axe:width===390||width===1280});
   await context.close();
  }
  console.log('UX_BARALHOS_01_BROWSER_OK',JSON.stringify({target:origin,chromium:browser.version(),results}));

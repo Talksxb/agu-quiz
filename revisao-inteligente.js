@@ -95,11 +95,14 @@ for(const x of global.AGU_OFFICIAL_S19?.questions||[]){
   normRef:x.legalReason,normUrl:x.lawUrl,legalScope:x.legalScope};
 }
 const AUD03_CARDS=Array.isArray(global.AGU_AUD03_CARDS)?global.AGU_AUD03_CARDS.filter(x=>x&&x.kind==='flashcard'&&/^aud03-flc-\d{3}$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.link==='string'&&/^https:\/\//.test(x.link)):[];
+// CARTOES-AUD-01: cards novos e autorais, selecionados por fonte normativa pública atual.
+// O gabarito da prova de 2015 é registro histórico e não certifica o fundamento atual.
+const AUD02_2015_CARDS=Array.isArray(global.AGU_AUD02_2015_CARDS)?global.AGU_AUD02_2015_CARDS.filter(x=>x&&x.kind==='flashcard'&&/^aud02-2015-flc-\d{3}$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.link==='string'&&/^https:\/\//.test(x.link)&&x.notOfficial===true&&x.historicalExam?.exam==='187AGU_001_07'&&['C','E'].includes(x.historicalExam.key)):[];
 // Conserva ID e state de revisão: apenas corrige classificação curricular de cartões legados.
 const CURRICULAR_CORRECTIONS={'ri-pc-01':'PC-03','ri-pc-02':'PC-03','ri-pc-03':'PC-03'};
 for(const c of CARDS)if(CURRICULAR_CORRECTIONS[c.id]){c.code=CURRICULAR_CORRECTIONS[c.id];c.curricularMigration='PC-01 → PC-03 (sem mudar ID, respostas ou histórico)'}
 const S18_ITEMS=Array.isArray(global.AGU_OFFICIAL_S18?.questions)?global.AGU_OFFICIAL_S18.questions.filter(x=>x.id==='of-2015-adv-048'&&x.exam==='187AGU_001_07'&&x.number===48&&x.key==='C'&&x.deviceId==='CF88:art131:caput').map(x=>({id:x.id,kind:'official',type:'ce',code:x.code,sourceKind:'prova_oficial',organizer:'Cebraspe',career:'Advogado da União',year:2015,exam:x.exam,number:x.number,theme:x.title,key:x.key,status:'gabarito_definitivo',validation:'gabarito_historico_e_fundamento_pontualmente_confirmados',source:'AGU 2015, caderno e gabarito definitivo',examUrl:x.examUrl,keyUrl:x.keyUrl,deviceId:x.deviceId})):[];
-const ALL=[...CARDS,...AUD03_CARDS,...OFFICIAL,...S18_ITEMS];
+const ALL=[...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...OFFICIAL,...S18_ITEMS];
 const IDS=ALL.map(x=>x.id);
 if(new Set(IDS).size!==IDS.length)throw Error('IDs duplicados no acervo AGU');
 const INDEX=new Map(ALL.map(x=>[x.id,x]));
@@ -112,7 +115,10 @@ const NOTEBOOK_CARD_HISTORY=Object.freeze(Object.fromEntries([
  ['ADM-23','ri-adm-05 aud03-flc-007 aud03-flc-008 aud03-flc-009',null],
  ['PC-03','ri-pc-01 ri-pc-02 ri-pc-03 ri26-pc-01 ri26-pc-02 ri26-pc-03 ri26-pc-04 aud03-flc-010 aud03-flc-011 aud03-flc-012',null],
  ['CON-02','ri-con-01 ri-con-02',null],
- ['CON-50','ri-con-03 ri26-con-01 aud03-flc-013 aud03-flc-014','CON-50']
+ ['CON-50','ri-con-03 ri26-con-01 aud03-flc-013 aud03-flc-014 aud02-2015-flc-001 aud02-2015-flc-007','CON-50'],
+ ['ADM-25','aud02-2015-flc-002 aud02-2015-flc-003 aud02-2015-flc-004 aud02-2015-flc-005',null],
+ ['ADM-58','aud02-2015-flc-006',null],
+ ['CON-24','aud02-2015-flc-008',null]
 ].flatMap(([code,ids,topic])=>ids.split(' ').map(id=>[id,Object.freeze({id,code,topic,label:'Flashcard '+id+' · '+code})]))));
 function notebookHistoricCard(id){return typeof id==='string'&&Object.hasOwn(NOTEBOOK_CARD_HISTORY,id)?NOTEBOOK_CARD_HISTORY[id]:null}
 function notebookEligibleCard(id){
@@ -134,7 +140,10 @@ const DECK_TITLES=Object.freeze({
  'ADM-23':'Motivo, motivação e convalidação',
  'PC-03':'Normas fundamentais do processo civil',
  'CON-02':'Constituição e teoria constitucional',
- 'CON-50':'Advocacia-Geral da União e PGFN'
+ 'CON-50':'Advocacia-Geral da União e PGFN',
+ 'ADM-25':'Licitações, contratos e registro de preços',
+ 'ADM-58':'Improbidade administrativa e acordos',
+ 'CON-24':'Mandado de injunção'
 });
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // S33: os três botões comprovadamente substituídos por render() no Chrome.
@@ -522,6 +531,7 @@ function flashDetails(x){
  return [
    x.caseNote?'<details class="agu-card-detail"><summary>Aplicação AGU</summary><p>'+esc(x.caseNote)+'</p></details>':'',
    x.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(x.trap)+'</p></details>':'',
+   x.historicalExam?'<details class="agu-card-detail"><summary>Referência histórica · prova AGU 2015</summary><p>Questão '+esc(x.historicalExam.number)+' · caderno '+esc(x.historicalExam.exam)+' · gabarito definitivo histórico: '+esc(x.historicalExam.key)+'. Este flashcard é autoral e aborda fundamento normativo atual. O gabarito de 2015 não certifica a interpretação jurídica atual.</p><a href="'+esc(x.historicalExam.examUrl)+'" target="_blank" rel="noopener noreferrer">Caderno original (PDF)</a> · <a href="'+esc(x.historicalExam.keyUrl)+'" target="_blank" rel="noopener noreferrer">Gabarito definitivo (PDF)</a></details>':'',
    x.audit?'<details class="agu-card-detail"><summary>Rastreabilidade da evidência</summary><p>'+esc(x.audit.round)+' / '+esc(x.audit.lot)+' · '+esc(x.audit.item_id)+' · '+esc(x.audit.localizer)+' · status: '+esc(x.audit.evidenceStatus)+' (verificação pontual)</p></details>':'',
    '<details class="agu-card-detail"><summary>Fonte e estado jurídico</summary><p>'+esc(x.source)+(x.checked?' · '+esc(x.checked):'')+(x.reviewedAt?' · '+esc(x.reviewedAt):'')+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte oficial</a>':'<p>Fonte de aula/Caderno; conferência independente pendente.</p>')+'<p>Cartão de recuperação ativa. A verificação pontual não equivale a certificação integral do tema.</p></details>'
  ].filter(Boolean).join('');
@@ -673,5 +683,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length,lotAud03:AUD03_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
