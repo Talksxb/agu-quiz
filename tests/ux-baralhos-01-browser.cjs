@@ -22,7 +22,7 @@ async function main(){
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await page.locator('.agu-deck-tile article').count(),0);
-  assert.equal(await page.locator('.agu-deck-grid article').count(),10);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),11);
   assert.match(await page.locator('#agu-deck-library').innerText(),/51 cartões · 11 baralhos/);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow biblioteca '+width);
   const colors=await page.locator('.agu-deck-grid article').evaluateAll(nodes=>nodes.map(n=>({code:n.querySelector('.agu-deck-code').textContent,accent:getComputedStyle(n).getPropertyValue('--deck-accent').trim()})));

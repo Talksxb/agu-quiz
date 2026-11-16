@@ -42,7 +42,7 @@ async function main(){
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
   assert.ok(await page.getByText('Nenhum cartão corresponde à combinação de filtros').isVisible());
   await page.getByRole('button',{name:'Limpar filtros'}).click();
-  assert.equal(await page.locator('.agu-deck-grid article').count(),10);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),11);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
   await page.locator('#agu-deck-filter-status').selectOption('pendentes');
