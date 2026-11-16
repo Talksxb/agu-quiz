@@ -22,7 +22,7 @@ async function run(){
    await p.locator('#agu-law-picker summary').focus();await p.keyboard.press('Enter');
    assert.equal(await p.locator('#agu-law-picker').evaluate(e=>e.open),true);
    const before=await p.evaluate(()=>Object.keys(localStorage).sort());
-   await p.getByRole('button',{name:/Direito Civil \(2\)/}).click();
+   await p.getByRole('button',{name:'Direito Civil',exact:true}).click();
    assert.equal(await p.locator('#agu-law-picker').evaluate(e=>e.open),true);
    assert.equal(await p.locator('.agu-matter-option[aria-pressed="true"]').innerText().then(s=>s.includes('Direito Civil')),true);
    assert.equal(await p.locator('#agu-law-select option').count(),3,'placeholder e CC/LINDB');
@@ -33,7 +33,7 @@ async function run(){
    assert.equal(await p.evaluate(()=>AGULegal.peek().article),'L10406:art1');
    assert.match(await p.locator('.agu-selected-matters').innerText(),/Direito Civil/);
    await p.locator('.agu-change-law').click();
-   await p.getByRole('button',{name:/Direito Processual Civil \(1\)/}).click();
+   await p.getByRole('button',{name:'Direito Processual Civil',exact:true}).click();
    assert.equal(await p.locator('#agu-law-select option').count(),2);
    await p.locator('#agu-law-select').selectOption('L13105');
    if(width<850)await p.locator('#agu-reader .agu-mobile button').first().click();
