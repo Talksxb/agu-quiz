@@ -22,7 +22,7 @@ async function main(){
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await page.locator('.agu-deck-tile article').count(),0);
-  assert.equal(await page.locator('.agu-deck-grid article').count(),9);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),10);
   assert.match(await page.locator('#agu-deck-library').innerText(),/48 cartões · 10 baralhos/);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow biblioteca '+width);
   const colors=await page.locator('.agu-deck-grid article').evaluateAll(nodes=>nodes.map(n=>({code:n.querySelector('.agu-deck-code').textContent,accent:getComputedStyle(n).getPropertyValue('--deck-accent').trim()})));
@@ -87,7 +87,7 @@ async function main(){
   }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow final '+width);
   assert.deepEqual(errors,[]);
-  results.push({width,baralhos:9,cartoes:44,semOverflow:true,avaliacoes:2,retomada:true,backup:true,axe:width===390||width===1280});
+  results.push({width,baralhos:10,cartoes:48,semOverflow:true,avaliacoes:2,retomada:true,backup:true,axe:width===390||width===1280});
   await context.close();
  }
  console.log('UX_BARALHOS_01_BROWSER_OK',JSON.stringify({target:origin,chromium:browser.version(),results}));

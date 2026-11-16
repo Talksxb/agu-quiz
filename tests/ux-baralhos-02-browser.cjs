@@ -42,7 +42,7 @@ async function main(){
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
   assert.ok(await page.getByText('Nenhum cartão corresponde à combinação de filtros').isVisible());
   await page.getByRole('button',{name:'Limpar filtros'}).click();
-  assert.equal(await page.locator('.agu-deck-grid article').count(),9);
+  assert.equal(await page.locator('.agu-deck-grid article').count(),10);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
   await page.locator('#agu-deck-filter-status').selectOption('pendentes');
@@ -123,7 +123,7 @@ async function main(){
     .map(el=>({tag:el.tagName,cls:el.className,right:Math.round(el.getBoundingClientRect().right),text:(el.textContent||'').trim().slice(0,85)}))}));
   assert.ok(spill.scrollWidth<=spill.viewport+2,'sem overflow final '+width+': '+JSON.stringify(spill));
   assert.deepEqual(errors,[]);
-  results.push({width,baralhos:9,cartoes:44,selectedOne:true,graded:2,filters:true,choose:true,reload:true,backup:true,axe:width===390||width===1280});
+  results.push({width,baralhos:10,cartoes:48,selectedOne:true,graded:2,filters:true,choose:true,reload:true,backup:true,axe:width===390||width===1280});
   await context.close();
  }
  console.log('UX_BARALHOS_02_BROWSER_OK',JSON.stringify({target:origin,chromium:browser.version(),results}));
