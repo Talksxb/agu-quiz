@@ -1,0 +1,28 @@
+{
+  "sprint": "BIBLIOTECA-LEIS-02",
+  "baseMain": "164ad3446acd2cd23f53e41c96777312ae15aec0",
+  "description": "Tags editoriais por diploma e filtro transitório da biblioteca, sem alterar corpus, marcas ou associações curriculares. CC/CPC continuam pendentes de cotejo oficial completo.",
+  "changed": {
+    "index.html": {
+      "before": "6ec95383253e2ce540e154230236de0b43ed43a39c20a644f223eb3ae9d45a0a",
+      "after": "89f2cd32d778f3ffbf3922b3b194dda5f6cffcab775b85507b44a901416ba8b9"
+    },
+    "leitor-juridico.js": {
+      "before": "d306a64da9782f60269e0a03a8231b76e7add58adbcba817f6b9f8035b5e1c19",
+      "after": "83acc5d390d7a189b4b3954f6bb2f4bad7519f5464bdc6ae8585e47990b00bd0"
+    }
+  },
+  "notModified": {
+    "dados/legislacao-s13.js": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+    "dados/codigos-cc-cpc.js": "b2aa0a4eae24d15fa3cae835069672affb4d9589ca5f19a77360fc03a167ee17"
+  },
+  "officialCotejo": {
+    "civilCodeFullComparison": false,
+    "procedureCodeFullComparison": false,
+    "civilCodeSource": "https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm",
+    "procedureCodeSource": "https://planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105compilada.htm",
+    "civilSourceAccess": "desafio anti-automação no acesso oficial; texto não extraído",
+    "procedureSourceAccess": "pesquisa web permitiu leitura pontual dos arts. 1 e 489; sem extração integral em bytes",
+    "lawLabelsAreEditorial": true
+  }
+}

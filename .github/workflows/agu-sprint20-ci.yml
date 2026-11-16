@@ -91,6 +91,8 @@ jobs:
         run: node tests/sprint35-validacao.js
       - name: Códigos CC/CPC — corpus aditivo, seleção e preservação S20
         run: node tests/codigos-cc-cpc-validacao.js
+      - name: Biblioteca 02 — matérias editoriais, filtros e preservação de dados
+        run: node tests/biblioteca-leis-02-validacao.js
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -105,6 +107,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
         run: node tests/codigos-cc-cpc-browser.cjs
+      - name: Biblioteca 02 — filtros por matéria, teclado, toque e axe
+        run: node tests/biblioteca-leis-02-browser.cjs
       - name: CARTOES-AUD-01 — novas cartas, referência histórica, teclado e axe
         run: node tests/cartoes-aud-01-browser.cjs
       - name: LEG-11 — flashcards, cinco viewports, foco e backup
@@ -243,6 +247,8 @@ jobs:
             tests/artifacts-ux-baralhos-05/*.png
             tests/artifacts-codigos-cc-cpc/*.json
             tests/artifacts-codigos-cc-cpc/*.png
+            tests/artifacts-biblioteca-02/*.json
+            tests/artifacts-biblioteca-02/*.png
             tests/artifacts-cartoes-aud-01/*.json
             tests/artifacts-cartoes-aud-01/*.png
           if-no-files-found: ignore
@@ -265,6 +271,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/codigos-cc-cpc-browser.cjs
+      - name: Biblioteca 02 na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/biblioteca-leis-02-browser.cjs
       - name: LEG-11 na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -364,6 +374,8 @@ jobs:
             tests/artifacts-ux-baralhos-05/
             tests/artifacts-codigos-cc-cpc/*.json
             tests/artifacts-codigos-cc-cpc/*.png
+            tests/artifacts-biblioteca-02/*.json
+            tests/artifacts-biblioteca-02/*.png
           if-no-files-found: ignore
           retention-days: 7
 
