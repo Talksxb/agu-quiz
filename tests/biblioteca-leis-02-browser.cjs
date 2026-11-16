@@ -43,7 +43,10 @@ async function run(){
    assert.ok(overflow.scroll<=overflow.viewport+1,'overflow horizontal '+width+' '+JSON.stringify(overflow));
    if(width<=390){
     await p.evaluate(()=>{document.querySelector('#agu-reader').style.fontSize='200%'});
-    overflow=await p.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth}));
+    overflow=await p.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth,offenders:[...document.querySelectorAll('#agu-reader *')].filter(e=>{
+     const r=e.getBoundingClientRect(),s=getComputedStyle(e);return s.display!=='none'&&r.width>0&&(r.right>innerWidth+2||r.left< -2);
+    }).slice(0,12).map(e=>({tag:e.tagName,cls:e.className,id:e.id,text:(e.innerText||'').slice(0,50),right:Math.round(e.getBoundingClientRect().right),width:Math.round(e.getBoundingClientRect().width)}))}));
+    if(overflow.scroll>overflow.viewport+1){console.error('BIB_02_ZOOM_DIAG',JSON.stringify({width,overflow}));await p.screenshot({path:path.join(OUT,'zoom-overflow-'+width+'.png'),fullPage:true})}
     assert.ok(overflow.scroll<=overflow.viewport+1,'overflow com texto 200% '+width);
    }
    const evidence={width,overflow,errors,axe:null};
