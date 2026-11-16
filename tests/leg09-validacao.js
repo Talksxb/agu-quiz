@@ -1,5 +1,6 @@
 /* LEG09 — Estudo Integrado alimenta a lista única, sem nova agenda ou caderno digital. */
 'use strict';
+const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),copy=x=>JSON.parse(JSON.stringify(x)),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const READER='agu_leitor_juridico_s13_v1',STUDY='agu_estudo_integrado_s16_v1',REVIEW='agu_quiz_revisao_inteligente_v1',PLAN='agu_quiz_planejamento_semanal_v1';
@@ -18,14 +19,14 @@ check('cadeia de deltas LEG07/08/09→UX01→LEG10→UX02→LEG11→UX03',()=>{
  for(const k of ['review','html']){assert.equal(n[k+'AfterSha256'],u[k+'BeforeSha256']);assert.equal(u[k+'AfterSha256'],t[k+'BeforeSha256']);assert.equal(t[k+'AfterSha256'],v[k+'BeforeSha256'])}
  for(const k of ['review','html'])assert.equal(v[k+'AfterSha256'],w[k+'BeforeSha256']);
  for(const k of ['reader','backup'])assert.equal(t[k+'AfterSha256'],w[k+'BeforeSha256']);
- for(const [f,k] of [['estudo-integrado.js','studySha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),w[k]);
+ for(const [f,k] of [['estudo-integrado.js','studySha256'],['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(f)),afterCodigos(f,w[k]));
  for(const k of ['review','html'])assert.equal(w[k+'AfterSha256'],y[k+'BeforeSha256']);
  for(const k of ['review','html'])assert.equal(y[k+'AfterSha256'],z[k+'BeforeSha256']);
  const leg12=JSON.parse(read('tests/fixtures/leg12-deltas.json'));assert.equal(leg12.htmlBeforeSha256,z.htmlAfterSha256);
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(z.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(sha(read('revisao-inteligente.js')),cards.reviewAfterSha256);assert.equal(sha(read('index.html')),cards.htmlAfterSha256);
+ assert.equal(sha(read('revisao-inteligente.js')),cards.reviewAfterSha256);assert.equal(sha(read('index.html')),afterCodigos('index.html',cards.htmlAfterSha256));
  assert.equal(n.readerBeforeSha256,p.readerSha256);assert.equal(n.backupBeforeSha256,p.backupSha256);assert.equal(n.reviewBeforeSha256,p.reviewAfterSha256);assert.equal(n.htmlBeforeSha256,p.htmlAfterSha256);
  const {validate}=require('../lib/catalogo-legislativo'),b=boot();assert.deepEqual(copy(validate(b.z.AGU_LEGAL_CORPUS)),{laws:6,articles:292,units:1176,integral:5});assert.equal(b.z.AGUBackup20.keys().length,9);
 });

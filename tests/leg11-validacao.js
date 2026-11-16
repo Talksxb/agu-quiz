@@ -1,5 +1,6 @@
 /* LEG11 — flashcards reais na mesma lista opcional do leitor, sem agenda nova. */
 'use strict';
+const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),copy=x=>JSON.parse(JSON.stringify(x)),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const READER='agu_leitor_juridico_s13_v1',REVIEW='agu_quiz_revisao_inteligente_v1',STUDY='agu_estudo_integrado_s16_v1',PLAN='agu_quiz_planejamento_semanal_v1';
@@ -111,8 +112,8 @@ check('fontes, corpus e arquivos não relacionados inalterados; fixture LEG11 ra
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(v.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(sha(read('revisao-inteligente.js')),cards.reviewAfterSha256);assert.equal(sha(read('index.html')),cards.htmlAfterSha256);
- for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['dados/legislacao-s13.js','corpusSha256'],['planejamento-semanal.js','plannerSha256'],['dados/flashcards-aud03-lote01.js','aud03Sha256']])assert.equal(sha(read(file)),d[key]);
+ assert.equal(sha(read('revisao-inteligente.js')),cards.reviewAfterSha256);assert.equal(sha(read('index.html')),afterCodigos('index.html',cards.htmlAfterSha256));
+ for(const [file,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['dados/legislacao-s13.js','corpusSha256'],['planejamento-semanal.js','plannerSha256'],['dados/flashcards-aud03-lote01.js','aud03Sha256']])assert.equal(sha(read(file)),afterCodigos(file,d[key]));
  assert.equal(d.baseCommit,'a1fb2ca');
 });
 console.log('LEG11_VALIDACAO_OK',JSON.stringify({checks:count,flashcards:36,backupCategories:9,promptMax:450,marksMax:300}));

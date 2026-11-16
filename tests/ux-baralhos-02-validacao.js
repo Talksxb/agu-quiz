@@ -1,5 +1,6 @@
 /* UX-BARALHOS-02 — avaliações e seleção com dados 100% sintéticos. */
 'use strict';
+const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');
 const sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
@@ -139,7 +140,7 @@ check('cronograma e leitura não recebem vínculo curricular presumido',()=>{
  const f=JSON.parse(read('tests/fixtures/leg10-deltas.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json'));
  assert.equal(sha('planejamento-semanal.js'),f.plannerSha256);
  assert.equal(f.readerAfterSha256,w.readerBeforeSha256);
- assert.equal(sha('leitor-juridico.js'),w.readerAfterSha256);
+ assert.equal(sha('leitor-juridico.js'),afterCodigos('leitor-juridico.js',w.readerAfterSha256));
  assert.equal(sha('estudo-integrado.js'),f.studySha256);
  assert.equal(sha('dados/legislacao-s13.js'),f.corpusSha256);
  const {root}=boot();root.AGUPlannerContext=()=>({disciplines:[['ADM','Direito Administrativo',['Atos administrativos']]],sessions:[],answers:[],reviews:[],notebook:[],topic:{}});

@@ -1,5 +1,6 @@
 /* UX-BARALHOS-01 — somente perfis sintéticos e preservação do contrato público. */
 'use strict';
+const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const clone=x=>JSON.parse(JSON.stringify(x)),sha=s=>crypto.createHash('sha256').update(s).digest('hex');
@@ -98,6 +99,6 @@ check('fonte, corpus e legislativo inalterados, sem questões oficiais adicionai
  const f=JSON.parse(read('tests/fixtures/leg09-deltas.json')),t=JSON.parse(read('tests/fixtures/leg10-deltas.json')),w=JSON.parse(read('tests/fixtures/leg11-deltas.json'));
  for(const k of ['reader','backup'])assert.equal(t[k+'BeforeSha256'],f[k+'AfterSha256']);
  for(const k of ['reader','backup'])assert.equal(t[k+'AfterSha256'],w[k+'BeforeSha256']);
- for(const [p,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(p)),w[key]);
+ for(const [p,key] of [['leitor-juridico.js','readerAfterSha256'],['backup-local-s20.js','backupAfterSha256'],['estudo-integrado.js','studySha256'],['planejamento-semanal.js','plannerSha256'],['dados/legislacao-s13.js','corpusSha256']])assert.equal(sha(read(p)),afterCodigos(p,w[key]));
 });
 console.log('UX_BARALHOS_01_VALIDACAO_OK',JSON.stringify({checks,flashcards:36,decks:6,localStorageCategories:9}));

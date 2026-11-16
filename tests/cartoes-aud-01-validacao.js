@@ -9,6 +9,7 @@ const KEY='agu_quiz_revisao_inteligente_v1';
 const scripts=['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js',
  'dados/flashcards-aud02-2015-atualizados-lote01.js','revisao-inteligente.js'];
 const clone=x=>JSON.parse(JSON.stringify(x));
+const afterCodigos=require('./hash-chain-codigos.cjs');
 function boot(initial={}){
  const data=new Map(Object.entries(initial).map(([key,value])=>[key,JSON.stringify(value)]));
  const root={Date,Math,Blob,URL,URLSearchParams,console,crypto:crypto.webcrypto,
@@ -94,7 +95,7 @@ check('fixture encadeia somente hashes novos aos históricos preservados',()=>{
  const ux04=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  assert.equal(delta.htmlBeforeSha256,leg13.htmlAfterSha256);
  assert.equal(delta.reviewBeforeSha256,ux04.reviewAfterSha256);
- assert.equal(delta.htmlAfterSha256,digest('index.html'));
+ assert.equal(afterCodigos('index.html',delta.htmlAfterSha256),digest('index.html'));
  assert.equal(delta.reviewAfterSha256,digest('revisao-inteligente.js'));
  assert.equal(delta.newFileSha256,digest(delta.newFile));
  for(const [file,hash] of Object.entries(delta.unchanged))assert.equal(digest(file),hash,file);
