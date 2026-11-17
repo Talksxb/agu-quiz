@@ -55,6 +55,6 @@ check('fixture aditiva encadeia fonte publicada e não reescreve histórico',()=
   }else assert.equal(sha(file),value,file);
  }
  const html=read('index.html');assert.ok(html.indexOf('flashcards-aud02-2015-atualizados-lote02.js')<html.indexOf('revisao-inteligente.js'));
- assert.match(html,/revisao-inteligente\.js\?v=20261116-cards-aud03/);assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
+ assert.match(html,/revisao-inteligente\.js\?v=20261117-uxestudo01/);assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
 });
 console.log('CARTOES_AUD_02_VALIDACAO_OK',JSON.stringify({tests,cards:48,decks:10,newCards:4}));

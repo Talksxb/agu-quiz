@@ -14,6 +14,11 @@ function next(){
   const open=sessions.filter(s=>s.status==='em_andamento'&&catalog.some(u=>u.id===s.deviceId));
   const session=open.find(s=>s.id===state.activeId)||open.slice().sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)))[0];
   if(session){const unit=catalog.find(u=>u.id===session.deviceId);return {kind:'session',sessionId:session.id,deviceId:session.deviceId,title:unit.law+' · '+unit.article,discipline:unit.topic,activity:stages[session.stage]||'Estudo integrado',reason:'Sessão em andamento · retome a etapa salva',minutes:null}}
+  const deckSession=root.AGUReview?.deckSession?.();
+  if(deckSession?.status==='em_andamento'){
+   const deck=root.AGUReview.deckList().find(d=>d.code===deckSession.code);
+   if(deck)return {kind:'deck',topic:deck.code,title:deck.title,discipline:deck.name,activity:'Cartão '+(deckSession.index+1)+' de '+deckSession.order.length,reason:'Baralho em andamento · retome a seleção salva',minutes:null};
+  }
   const week=root.AGUPlanner?.current?.();
   const task=week?root.AGUPlanner.next(week):null;
   if(task)return route(task.topic,task.type,{reason:'Próxima tarefa do plano semanal · '+task.date,minutes:task.minutes});
@@ -74,7 +79,8 @@ function continueStudy(){
   if(item.kind==='session'||item.kind==='lesson'){
    if(item.kind==='session'?!root.AGUStudy?.resume(item.sessionId):!root.AGUStudy?.start(item.deviceId))throw Error('Sessão indisponível. Abra a Biblioteca para consultar o material.');
    root.setView('legal');root.AGULegal.unit(item.deviceId);root.AGULegal.tab('estudo');
-  }else if(item.kind==='review'){root.setView('review');root.AGUReview.go('auto')}
+  }else if(item.kind==='deck'){root.setView('review');if(!root.AGUReview.deckResume())throw Error('Baralho indisponível.')}
+  else if(item.kind==='review'){root.setView('review');root.AGUReview.go('auto')}
   else if(item.kind==='quiz')root.startQuiz(item.topic);
   else root.setView('planner');
   focusTitle();
@@ -93,7 +99,7 @@ function panel(){
  (item.discipline?'<p class="today-discipline">'+esc(item.discipline)+'</p>':'')+'<p>'+esc(item.activity)+'</p><p class="today-detail">'+esc(item.reason)+'<br>'+esc(minutes)+'</p></div>'+
  '<button id="continue-study" class="primary" onclick="AGUHome.continueStudy()">Continuar estudando</button></section>'+
  '<div class="today-summary" role="region" aria-label="Atividade registrada neste navegador"><p><b>'+Number(review.due||0)+'</b> revisões pendentes no motor de revisão</p><p><b>'+Number(ctx.legacyDue||0)+'</b> revisões do treino autoral</p><p><b>'+time+'</b> min confirmados nesta semana</p></div>'+
- '<div class="btnrow today-links"><button class="secondary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'legal\')">'+(ctx.readerSaved&&!ctx.demo?'Retomar ponto salvo no leitor':'Consultar fontes jurídicas')+'</button><button class="secondary" onclick="setView(\'planner\')">Ver meu plano</button><button id="agu-home-notebook-open" type="button" class="secondary" onclick="AGUHome.openNotebook()"'+(ctx.demo?' disabled':'')+'>Para meu caderno</button></div><p class="small muted" id="agu-home-notebook-count" role="status">'+esc(notebookInfo)+'</p>'+
+ '<div class="btnrow today-links"><button id="agu-home-subjects" type="button" class="secondary" onclick="AGUSubjects.openLibrary()">Estudar por assunto</button><button class="secondary" onclick="setView(\'review\')">Abrir revisões</button><button class="secondary" onclick="setView(\'legal\')">'+(ctx.readerSaved&&!ctx.demo?'Retomar ponto salvo no leitor':'Consultar fontes jurídicas')+'</button><button class="secondary" onclick="setView(\'planner\')">Ver meu plano</button><button id="agu-home-notebook-open" type="button" class="secondary" onclick="AGUHome.openNotebook()"'+(ctx.demo?' disabled':'')+'>Para meu caderno</button></div><p class="small muted" id="agu-home-notebook-count" role="status">'+esc(notebookInfo)+'</p>'+
  '<p class="small muted">'+(ctx.demo?'Simulação isolada do histórico real.':attempts.length+' avaliações no motor de revisão · '+notes.length+' notas contextuais. Atividade registrada não equivale a domínio ou certificação jurídica.')+'</p>';
 }
 root.AGUHome={panel,next,continueStudy,notebookPending,openNotebook,notebookReturnPanel,returnFromNotebook};

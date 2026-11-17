@@ -138,6 +138,7 @@ let notebookReturn=null;
 // UX-BARALHOS-01: a sessão é um campo opcional do estado legado, sem chave extra,
 // alteração de intervalo ou migração. Só tentativas avaliadas contam como estudo.
 let deckFilters={discipline:'todos',topic:'',difficulty:'todas',status:'todos'};
+let scopedTopic=null; // UX ESTUDO 01: filtro exato transitório, sem vínculo ou agenda novos.
 let pendingDeck=null; // Escolha transitória: nenhuma tentativa ou preferência é gravada ao filtrar.
 const REVIEW_STATES=Object.freeze(['todos','pendentes','vencidos','hoje','ineditos','futuros','sem_data']);
 const DECK_TITLES=Object.freeze({
@@ -290,6 +291,7 @@ function deckMove(step,keyboard=false){
  focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;
 }
 function deckFilter(key,value){
+ if(key==='topic')scopedTopic=null;
  if(key==='discipline')deckFilters.discipline=String(value);
  else if(key==='topic')deckFilters.topic=String(value).slice(0,120);
  else if(key==='difficulty')deckFilters.difficulty=String(value);
@@ -300,6 +302,7 @@ function deckFilter(key,value){
  global.render?.();focusAfter('#agu-deck-filter-'+(key==='due'?'status':key),true);return true;
 }
 function deckClearFilters(keyboard=false){
+ scopedTopic=null;
  deckFilters={discipline:'todos',topic:'',difficulty:'todas',status:'todos'};pendingDeck=null;
  global.render?.();focusAfter('#agu-deck-filter-discipline',keyboard);return true;
 }
@@ -307,6 +310,12 @@ function deckNotebook(keyboard=false){
  // Caminho legado mantido: permite consultar a lista geral sem interferir na sessão.
  if(currentMode!=='deck'||typeof global.setView!=='function'||!global.AGULegal?.tab)return false;
  global.setView('legal');global.AGULegal.tab('para_caderno',keyboard);return true;
+}
+// Abre a biblioteca existente sem iniciar/substituir a sessão interrompida.
+function browseTopic(code,status='todos'){
+ if(!exactDeck(code)||!REVIEW_STATES.includes(status))return false;
+ scopedTopic=code;deckFilters={discipline:'todos',topic:code,difficulty:'todas',status};
+ pendingDeck=null;currentMode='library';active=null;revealed=false;pick='';return true;
 }
 function flashNotebookForm(x,prefix){
  if(!notebookEligibleCard(x?.id))return '';
@@ -572,7 +581,7 @@ function libraryHTML(){
  const levels=[...new Set(flashcards().filter(x=>Number.isInteger(x.level)).map(x=>x.level))].sort((a,b)=>a-b);
  const visible=decks.filter(x=>
   (deckFilters.discipline==='todos'||x.discipline===deckFilters.discipline)&&
-  (!deckFilters.topic||[x.code,x.title].join(' ').toLocaleLowerCase('pt-BR').includes(deckFilters.topic.toLocaleLowerCase('pt-BR')))&&
+  (scopedTopic?x.code===scopedTopic:(!deckFilters.topic||[x.code,x.title].join(' ').toLocaleLowerCase('pt-BR').includes(deckFilters.topic.toLocaleLowerCase('pt-BR'))))&&
   selectedCards(x).length>0);
  const selectedCount=visible.reduce((n,deck)=>n+selectedCards(deck).length,0);
  const intro='<section class="agu-deck-library" id="agu-deck-library" aria-label="Biblioteca de baralhos">'+
@@ -636,6 +645,7 @@ function page(){
  const legacyDue=active?(stat(active.id).due?'próxima '+esc(stat(active.id).due):priorCount>0?'sem agenda local':'ainda inédito'):'';
  const header='<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Biblioteca de assuntos · respostas comentadas · revisão espaçada</div></div></div>';
  if(currentMode==='deck'&&savedSession())return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML();
+ if(currentMode==='library')return header+libraryHTML()+'<div class="btnrow"><button type="button" class="secondary" onclick="AGUReview.go(\'auto\',event.detail===0)">Abrir fila geral de revisão</button></div>';
  return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML()+
  '<div class="agu-deck-legacy"><h2>Revisão inteligente · fila sugerida</h2><p class="small muted">Os caminhos anteriores de revisão e questões oficiais continuam disponíveis.</p></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões vencidas</div><div class="metric">'+sum.due+'</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
@@ -691,5 +701,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,browseTopic,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
