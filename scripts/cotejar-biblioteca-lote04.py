@@ -22,11 +22,16 @@ class Paragraphs(HTMLParser):
         self.depth = 0
         self.current = []
         self.lines = []
+        self.centered = set()
+        self.current_centered = False
 
     def handle_starttag(self, tag, attrs):
         if tag == 'p':
             if self.depth == 0:
                 self.current = []
+                attributes = dict(attrs)
+                self.current_centered = (attributes.get('align', '').lower() == 'center'
+                                         or 'text-align: center' in attributes.get('style', '').lower())
             self.depth += 1
 
     def handle_endtag(self, tag):
@@ -35,6 +40,8 @@ class Paragraphs(HTMLParser):
             if not self.depth:
                 value = ' '.join(''.join(self.current).split())
                 if value:
+                    if self.current_centered:
+                        self.centered.add(len(self.lines))
                     self.lines.append(value)
 
     def handle_data(self, data):
@@ -83,7 +90,9 @@ def official_articles(raw, start=1, end=5):
     parser.feed(raw.decode('utf-8', errors='replace'))
     found = {}
     active = None
-    for para in parser.lines:
+    for index, para in enumerate(parser.lines):
+        if index in parser.centered:
+            continue
         match = re.match(r'^Art\.\s*(\d+)[º°.]?\s', para, re.I)
         if match:
             active = int(match.group(1))
@@ -94,7 +103,7 @@ def official_articles(raw, start=1, end=5):
         elif active in found:
             # Títulos estruturais entre artigos não fazem parte do dispositivo anterior.
             # Mantém incisos/alinéas com redação, mesmo iniciados por numeral romano.
-            if (para.startswith(('CAPÍTULO ', 'TÍTULO ', 'SEÇÃO ', 'LIVRO ', 'PARTE ', 'SUBSEÇÃO '))
+            if (re.match(r'^(?:CAP[IÍ]TULO|T[IÍ]TULO|SE[CÇ][AÃ]O|LIVRO|PARTE|SUBSE[CÇ][AÃ]O)\b', para, re.I)
                     or (len(para) < 180 and para.upper() == para and
                         not re.match(r'^(?:[IVXLCDM]+\s*[-–]|§\s*\d+)', para))):
                 continue
