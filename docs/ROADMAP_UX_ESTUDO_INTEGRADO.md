@@ -15,7 +15,7 @@ Atualizado em 17/11/2026. GitHub é a fonte da verdade. Aulas continuam no ChatG
 | Tempo total estimado | 2–4 horas para as três sprints com importação local simples; incerteza alta |
 | Tempo restante | 1,5–3,5 horas, faixa inicial a recalibrar após CI/S02 |
 | Próxima sprint | 02 — síntese estruturada de encerramento, prévia e aplicação aos registros existentes |
-| Publicação | Branch `feat/ux-estudo-integrado-01`; PR a criar; sem merge ou deploy desta entrega |
+| Publicação | Branch `feat/ux-estudo-integrado-01`; [PR #54](https://github.com/Talksxb/agu-quiz/pull/54) aberta em rascunho; sem merge ou deploy desta entrega |
 
 A faixa usa o trabalho observado nesta execução (navegação pequena, módulos reutilizados e regressão extensa). A maior incerteza é a compatibilidade/deduplicação do registro de aula e validação no celular; não inclui construir servidor MCP. Não se promete preço ou prazo de infraestrutura não contratada.
 
@@ -49,7 +49,7 @@ Mantidas **três sprints**: os módulos existentes suportam o primeiro increment
 - Sem código curricular literal, não ligar dispositivos, perguntas ou estatística. CC/CPC sem `topic` continuam acessíveis na biblioteca geral, com seus estados atuais.
 - A lista do leitor só oferece os tópicos já presentes em seu índice; para outro código, a nova navegação sinaliza e abre a lista geral. A origem do formulário permanece visível e deve ser conferida antes de criar marcação.
 - Sessão integrada mantém prioridade anterior na Home; baralho é retomado antes da próxima tarefa do plano quando não existe sessão integrada aberta. Os motores não têm timestamp comum de última interação que justifique escolher pelo mais recente.
-- Autenticação de CLI `gh` ausente; usar Git autenticado disponível e conector para a PR/consulta de checks. Não salvar credenciais no código.
+- Autenticação de escrita por Git/CLI ausente; entrega publicada pelo conector GitHub, com árvore idêntica ao commit local verificada por Git. Não salvar credenciais no código.
 - Hashes/cache históricos representam versões anteriores. Novo delta encadeia as mudanças e testa todos os arquivos/fixtures que permanecem intocados.
 - Prévia temporária, sem configuração de hosting na PR; captura apenas com dados sintéticos. Nenhum GPT Site publicado.
 
@@ -60,3 +60,5 @@ Mantidas **três sprints**: os módulos existentes suportam o primeiro increment
 - Produção de base confirmada por HTTPS/hashes antes de editar.
 - Resultado e limites técnicos: [diagnóstico S01](UX_ESTUDO_INTEGRADO_01_DIAGNOSTICO.md).
 - Continuidade exclusiva: [prompt S02](PROMPT_UX_ESTUDO_INTEGRADO_02.md). **S02 não executada.**
+
+- Validação intermediária: 37/37 suítes Node aprovadas localmente e no run [44097954000](https://github.com/Talksxb/agu-quiz/actions/runs/44097954000). Primeiro Chromium falhou no seletor `getByLabel` exato do teste, antes da seleção da disciplina. Corrigido para o ID do controle rotulado, preservando teclado/axe e todos os critérios; diagnósticos axe passam a ser gravados a cada etapa, inclusive em falha. Nova CI obrigatória.

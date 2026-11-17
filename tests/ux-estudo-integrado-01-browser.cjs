@@ -22,11 +22,11 @@ async function main(){
   async function scan(label){
    assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow '+label+' '+width);
    await p.addScriptTag({content:axe.source});const a=await p.evaluate(()=>axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));
-   scans.push({label,violations:a.violations,incomplete:a.incomplete});assert.deepEqual(a.violations,[],label+' axe '+width);
+   scans.push({label,violations:a.violations,incomplete:a.incomplete});fs.writeFileSync(path.join(OUT,'diagnostico-'+width+'.json'),JSON.stringify({width,scans},null,2));assert.deepEqual(a.violations,[],label+' axe '+width);
   }
   await p.locator('#agu-home-subjects').press('Enter');await scan('biblioteca');
-  await p.getByLabel('Disciplina',{exact:true}).selectOption('CIV');assert.match(await p.locator('.agu-subjects').innerText(),/Nenhum assunto disponível/);
-  await p.getByLabel('Disciplina',{exact:true}).selectOption('ADM');
+  await p.locator('#agu-subject-discipline').selectOption('CIV');assert.match(await p.locator('.agu-subjects').innerText(),/Nenhum assunto disponível/);
+  await p.locator('#agu-subject-discipline').selectOption('ADM');
   await p.locator('[data-agu-subject="ADM-06"]').press('Space');
   assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-subject-title');await scan('assunto');
   await p.screenshot({path:path.join(OUT,'assunto-'+width+'.png'),fullPage:true});
