@@ -1,0 +1,17 @@
+{
+  "baseCommit": "b6050894ec86874b776572a0185552da05e6d334",
+  "changed": {
+    "index.html": {
+      "before": "12523390cb2c48d88c85595970ab5281eee37f76168216db698cf7bf63af4ada",
+      "after": "53ad199d41448ec2f2245bdc1927fe529151a4a290ad9dc5f7a82dd96b0f66f8"
+    },
+    "importar-aula.js": {
+      "before": "7bcea5e663ea72db815325cd838e7577923c234f705adcd5c87b276382a32ad9",
+      "after": "512153f4bf1f69e4e3fb3cefb7621fcce806137b4cbcd42cd07c71034c9677dc"
+    },
+    "importar-aula.css": {
+      "before": "65b55032c54d6a13840f73bf5fe629410ac59c25627e19d76a9a0d2c0bffd746",
+      "after": "31c1a7c75de1f16d7656d669540762b031ac9fe30543c0922d0f401ea071606d"
+    }
+  }
+}

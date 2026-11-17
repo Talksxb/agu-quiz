@@ -1,6 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),HTML=read('index.html'),KEY='agu_quiz_mvp1_2026';
+const afterUx03=require('./hash-chain-ux-estudo-integrado-03.cjs');
 const clone=x=>JSON.parse(JSON.stringify(x));
 function boot(initial=new Map()){
  const saved=new Map(initial),fields={'#main':{innerHTML:'',contains:()=>false}},flags={quota:false,readBlocked:false};let writes=0;
@@ -92,6 +93,6 @@ test('renderização/Markdown não executam marcação e fontes não criam chama
 });
 test('delta encadeado mantém todos os motores e fixtures históricos byte a byte',()=>{
  const d=JSON.parse(read('tests/fixtures/ux-estudo-integrado-02-delta.json')),sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
- for(const [f,c] of Object.entries(d.changed))assert.equal(sha(f),c.after,f);for(const set of [d.added,d.unchanged,d.historicalFixtures])for(const [f,h] of Object.entries(set))assert.equal(sha(f),h,f);
+ for(const [f,c] of Object.entries(d.changed))assert.equal(sha(f),afterUx03(f,c.after),f);for(const [f,h] of Object.entries(d.added))assert.equal(sha(f),afterUx03(f,h),f);for(const set of [d.unchanged,d.historicalFixtures])for(const [f,h] of Object.entries(set))assert.equal(sha(f),h,f);
 });
 (async()=>{for(const [name,fn] of tasks){await fn();console.log('UX_ESTUDO_02_OK',name)}console.log('UX_ESTUDO_INTEGRADO_02_VALIDACAO_OK',JSON.stringify({checks:tasks.length,backupCategories:9}))})().catch(e=>{console.error(e);process.exitCode=1});
