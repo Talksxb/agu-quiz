@@ -44,6 +44,18 @@ class CotejoTests(unittest.TestCase):
         self.assertEqual(out['25'], 'Art. 25. Texto válido.')
         self.assertEqual(out['26'], 'Art. 26. Outro texto. I - Inciso normativo.')
 
+    def test_artigos_interpolados_nao_contaminam_artigo_anterior(self):
+        text = '''<p>Art. 48. Texto-base.</p>
+        <p>Art. 48-A. Dispositivo acrescido.</p>
+        <p>Art. 49. Texto seguinte.</p>
+        <p>Art. 49-A. Parágrafo novo.</p>
+        <p>Art. 50. Limite.</p>'''
+        found = mod.official_articles(text.encode(), 48, 49)
+        self.assertEqual(found['48'], 'Art. 48. Texto-base.')
+        self.assertEqual(found['48-A'], 'Art. 48-A. Dispositivo acrescido.')
+        self.assertEqual(found['49-A'], 'Art. 49-A. Parágrafo novo.')
+        self.assertEqual(found['49'], 'Art. 49. Texto seguinte.')
+
 
 if __name__ == '__main__':
     unittest.main()
