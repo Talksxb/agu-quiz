@@ -1,0 +1,71 @@
+[
+  {
+    "width": 1280,
+    "scans": 6,
+    "violations": 0,
+    "incompleteUnique": []
+  },
+  {
+    "width": 320,
+    "scans": 6,
+    "violations": 0,
+    "incompleteUnique": [
+      [
+        "color-contrast",
+        "button[onclick=\"setView('legal')\"]",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ],
+      [
+        "color-contrast",
+        ".secondary-more > summary",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ]
+    ]
+  },
+  {
+    "width": 360,
+    "scans": 6,
+    "violations": 0,
+    "incompleteUnique": [
+      [
+        "color-contrast",
+        "button[onclick=\"setView('legal')\"]",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ],
+      [
+        "color-contrast",
+        ".secondary-more > summary",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ]
+    ]
+  },
+  {
+    "width": 390,
+    "scans": 6,
+    "violations": 0,
+    "incompleteUnique": [
+      [
+        "color-contrast",
+        "button[onclick=\"setView('legal')\"]",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ],
+      [
+        "color-contrast",
+        ".secondary-more > summary",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ]
+    ]
+  },
+  {
+    "width": 430,
+    "scans": 6,
+    "violations": 0,
+    "incompleteUnique": [
+      [
+        "color-contrast",
+        ".secondary-more > summary",
+        "  Element's background color could not be determined because it's partially obscured by another element"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "run": 44115557627,
+  "head": "7efcbeb7a4d413231bff5e34caf71d82fa3bf113",
+  "artifact": 14343441564,
+  "artifactSha256": "cbce03426c7bde0004151e938d83169efaa1991dc8ac3374cfc7a2741afb824b",
+  "artifactBytes": 16427546,
+  "chromium": "159.0.8154.6",
+  "results": [
+    {
+      "width": 320,
+      "previewHeight": 7778.703125,
+      "draftPreserved": true,
+      "manualRecordSaved": true,
+      "readNavigationWrites": 0,
+      "backupOldAndNew": true,
+      "physicalAndroid": false,
+      "scans": 6,
+      "violations": 0,
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 360,
+      "previewHeight": 6627.953125,
+      "draftPreserved": true,
+      "manualRecordSaved": true,
+      "readNavigationWrites": 0,
+      "backupOldAndNew": true,
+      "physicalAndroid": false,
+      "scans": 6,
+      "violations": 0,
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 390,
+      "previewHeight": 5964.03125,
+      "draftPreserved": true,
+      "manualRecordSaved": true,
+      "readNavigationWrites": 0,
+      "backupOldAndNew": true,
+      "physicalAndroid": false,
+      "scans": 6,
+      "violations": 0,
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 430,
+      "previewHeight": 5472.28125,
+      "draftPreserved": true,
+      "manualRecordSaved": true,
+      "readNavigationWrites": 0,
+      "backupOldAndNew": true,
+      "physicalAndroid": false,
+      "scans": 6,
+      "violations": 0,
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "width": 1280,
+      "previewHeight": 3105.40625,
+      "draftPreserved": true,
+      "manualRecordSaved": true,
+      "readNavigationWrites": 0,
+      "backupOldAndNew": true,
+      "physicalAndroid": false,
+      "scans": 6,
+      "violations": 0,
+      "incompleteRules": []
+    }
+  ],
+  "focusedNavigationProbe": "adicionado após este run; consultar checks do fechamento da PR #61"
+}

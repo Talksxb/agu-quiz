@@ -70,11 +70,27 @@ function makeRecord(value,target=''){
   hypothesis:l.hipoteseEvolucao,agu:l.aplicacaoAgu,evidenceCount:0,state:'Registro de aula — sem avaliação no Quiz',summary:summary(l,target),answers:[],revisions:[]};
 }
 function isLesson(record){return typeof record?.id==='string'&&record.id.startsWith(PREFIX+'aula-')}
-function recordHTML(record){return '<details class="agu-lesson-record"><summary>Ver síntese e ponto de retomada</summary><div class="agu-lesson-text">'+esc(record.summary)+'</div></details>'}
+function recordHTML(record){return '<details class="agu-lesson-record" id="agu-lesson-record-'+esc(record.id)+'"><summary>Ver síntese e ponto de retomada</summary><div class="agu-lesson-text">'+esc(record.summary)+'</div></details>'}
 const mdEscape=s=>String(s).replace(/[\\`*_\[\]<>!#]/g,'\\$&');
 function markdown(record){return '## '+mdEscape(record.title)+'\n\n'+mdEscape(record.summary).replace(/\n/g,'  \n')+'\n\n'}
 function focus(selector){root.document?.querySelector(selector)?.focus?.({preventScroll:false})}
-function render(selector){root.render?.();if(selector)focus(selector)}
+function render(selector){
+ // O painel compartilha a página com o formulário original. Redesenhá-lo não deve apagar o rascunho.
+ const draft=['#nbtopic','#nbHyp','#nbAgu'].map(id=>({id,value:root.document?.querySelector(id)?.value}));
+ root.render?.();
+ for(const {id,value} of draft){const field=root.document?.querySelector(id);if(field&&typeof value==='string')field.value=value}
+ if(selector)focus(selector);
+}
+function goNotebook(section){
+ const id={import:'agu-lesson-title',manual:'agu-notebook-manual-title',records:'agu-notebook-records-title',confirm:'agu-lesson-confirm-title'}[section];
+ const element=id&&root.document?.getElementById(id);if(!element)return false;
+ element.focus({preventScroll:false});return true;
+}
+function showSaved(){
+ const record=completed&&root.document?.getElementById('agu-lesson-record-'+completed.recordId);if(!record)return false;
+ record.open=true;record.querySelector('summary')?.focus({preventScroll:false});return true;
+}
+function notebookNavigationHTML(){return '<nav class="agu-notebook-nav" aria-label="Atalhos do Caderno">'+[['import','Importar aula'],['manual','Registro manual'],['records','Ver registros']].map(([key,label])=>'<button type="button" class="secondary" onclick="AGULessonImport.goNotebook(\''+key+'\')">'+label+'</button>').join('')+'</nav>'}
 function inform(text,bad=false){message=text;error=bad}
 function prepare(lesson,target=''){
  const checked=validate(lesson),snapshot=root.AGULessonHost.inspect(checked,target);
@@ -134,18 +150,21 @@ function panel(){
  if(reading)out+='<button type="button" class="secondary" onclick="AGULessonImport.cancel()">Cancelar leitura</button>';
  if(pending){
   const l=pending.lesson,choices=root.AGULessonHost.topics(l.disciplina),status=pending.snapshot.status;
-  out+='<div id="agu-lesson-preview" tabindex="-1"><h3>Prévia da aula</h3><p><b>'+esc(l.titulo)+'</b><br>'+esc(l.data)+' · '+esc(l.disciplina)+' · módulo pedagógico '+esc(l.moduloPedagogico)+'</p>'+
+  out+='<div id="agu-lesson-preview" tabindex="-1"><h3>Prévia da aula</h3><p><b>'+esc(l.titulo)+'</b><br>'+esc(l.data)+' · '+esc(l.disciplina)+' · módulo pedagógico '+esc(l.moduloPedagogico)+'</p><button type="button" class="secondary" onclick="AGULessonImport.goNotebook(\'confirm\')">Ir à confirmação</button>'+
    '<p class="note">Código granular declarado: '+esc(l.assuntoCurricular||'não informado')+(l.assuntoCurricular?(knownCode(l.assuntoCurricular)?' — reconhecido no acervo; vínculo declarado na síntese.':' — não reconhecido neste acervo; permanece como texto informado.'):'')+' Módulo pedagógico e código curricular são identificações distintas.</p>'+
    '<label for="agu-lesson-target">Tema do Quiz (opcional)</label><select id="agu-lesson-target" onchange="AGULessonImport.target(this.value)"><option value=""'+(!pending.target?' selected':'')+'>Sem vínculo curricular</option>'+choices.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===pending.target?' selected':'')+'>'+esc(t.id)+'</option>').join('')+'</select>'+
    '<p class="small muted">O tema é escolhido por você. A ausência de vínculo não impede guardar a síntese. Confira também as fontes; o importador não as verifica.</p>'+
    '<div class="agu-lesson-text">'+esc(pending.snapshot.record.summary)+'</div>'+
-   '<label class="agu-lesson-confirm"><input id="agu-lesson-confirm" type="checkbox" onchange="AGULessonImport.confirm(this.checked)"'+(pending.confirmed?' checked':'')+(status!=='new'?' disabled':'')+'>Confirmo o conteúdo e o destino mostrados. Salvar somente no Caderno.</label>'+
+   '<h3 id="agu-lesson-confirm-title" tabindex="-1">Confirmar registro</h3><label class="agu-lesson-confirm"><input id="agu-lesson-confirm" type="checkbox" onchange="AGULessonImport.confirm(this.checked)"'+(pending.confirmed?' checked':'')+(status!=='new'?' disabled':'')+'>Confirmo o conteúdo e o destino mostrados. Salvar somente no Caderno.</label>'+
    '<div class="btnrow"><button type="button" id="agu-lesson-save" class="primary" onclick="AGULessonImport.save()"'+(!pending.confirmed||status!=='new'?' disabled':'')+'>Guardar aula no Caderno</button><button type="button" class="secondary" onclick="AGULessonImport.refresh()">Atualizar prévia</button><button type="button" class="secondary" onclick="AGULessonImport.cancel()">Cancelar importação</button></div><p class="small muted">A prévia é temporária; recarregar descarta a seleção ainda não salva.</p></div>';
  }
- if(completed&&knownCode(completed.lesson.assuntoCurricular))out+='<button type="button" class="secondary" onclick="AGULessonImport.goSubject(\''+esc(completed.lesson.assuntoCurricular)+'\')">Consultar assunto informado '+esc(completed.lesson.assuntoCurricular)+'</button>';
+ if(completed){out+='<div class="btnrow"><button type="button" class="primary" onclick="AGULessonImport.showSaved()">Ver aula guardada</button>';
+  if(knownCode(completed.lesson.assuntoCurricular))out+='<button type="button" class="secondary" onclick="AGULessonImport.goSubject(\''+esc(completed.lesson.assuntoCurricular)+'\')">Consultar assunto informado '+esc(completed.lesson.assuntoCurricular)+'</button>';
+  out+='</div>';
+ }
  out+='<details class="agu-lesson-help"><summary>Como gerar a síntese no ChatGPT</summary><ol><li>Ao terminar a aula, use o pedido abaixo para gerar o arquivo de encerramento.</li><li>Baixe o JSON no aparelho e selecione-o aqui.</li><li>Confira conteúdo e destino; depois confirme e guarde no Caderno.</li></ol><label for="agu-lesson-prompt">Pedido para usar no encerramento da aula</label><textarea id="agu-lesson-prompt" rows="8" readonly>'+esc(prompt())+'</textarea><button type="button" class="secondary" onclick="AGULessonImport.downloadExample()">Baixar exemplo sintético JSON</button><p class="small muted">O exemplo é uma demonstração, sem estudo real. A importação não acessa conversas privadas, não cria revisões e não altera o cronograma. Use o backup em Dados e backup para mudar de aparelho.</p></details></section>';
  return out;
 }
-root.AGULessonImport={MAX_BYTES,parse,validate,makeRecord,isLesson,recordHTML,markdown,entryHTML,panel,stage,readFile,target,confirm,refresh,cancel,save,open,goSubject,example,prompt,downloadExample,
+root.AGULessonImport={MAX_BYTES,parse,validate,makeRecord,isLesson,recordHTML,markdown,entryHTML,panel,stage,readFile,target,confirm,refresh,cancel,save,open,goSubject,goNotebook,showSaved,notebookNavigationHTML,example,prompt,downloadExample,
  peek:()=>({reading,message,error,pending:pending?{lesson:validate(pending.lesson),target:pending.target,confirmed:pending.confirmed,status:pending.snapshot.status}:null,completed:completed?{recordId:completed.recordId,target:completed.target}:null})};
 })(window);
