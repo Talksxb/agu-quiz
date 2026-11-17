@@ -1,5 +1,6 @@
 /* UX04 — coerência do histórico sintético entre biblioteca e revisão legada. */
 'use strict';
+const afterUx=require('./hash-chain-ux-estudo-integrado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');
@@ -61,7 +62,7 @@ check('deltas antigos intactos e novo delta encadeado',()=>{
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
  assert.equal(nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)),sha('index.html'));
- assert.equal(leg12.homeAfterSha256,sha('meu-estudo.js'));
+ assert.equal(afterUx('meu-estudo.js',leg12.homeAfterSha256),sha('meu-estudo.js'));
  for(const [file,hash] of Object.entries(delta.unchanged))if(file!=='meu-estudo.js')assert.equal(sha(file),afterCodigos(file,hash),file);
 });
 console.log('UX_BARALHOS_04_VALIDACAO_OK',JSON.stringify({checks,cardCount:36,deckCount:6,backupCategories:9}));

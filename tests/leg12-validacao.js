@@ -1,5 +1,6 @@
 /* LEG12 — atalho da Home para a lista única, sem escrita na consulta nem agenda nova. */
 'use strict';
+const afterUx=require('./hash-chain-ux-estudo-integrado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),sha=p=>crypto.createHash('sha256').update(read(p)).digest('hex');
@@ -114,7 +115,7 @@ check('hashes encadeados UX03→UX04→LEG12 e módulos fora da Home intocados',
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,now.htmlAfterSha256);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha('index.html'),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));assert.equal(sha('meu-estudo.js'),now.homeAfterSha256);
+ const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha('index.html'),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));assert.equal(sha('meu-estudo.js'),afterUx('meu-estudo.js',now.homeAfterSha256));
  for(const [file,hash] of Object.entries(now.unchanged)){
   if(file==='revisao-inteligente.js'){assert.equal(hash,cards.reviewBeforeSha256);assert.equal(sha(file),next(file,cards.reviewAfterSha256));continue}
   assert.equal(sha(file),afterCodigos(file,hash),file);

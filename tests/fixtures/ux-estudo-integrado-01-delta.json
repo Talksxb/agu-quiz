@@ -1,0 +1,73 @@
+{
+  "baseCommit": "31a47693b8f690e543f565c83208e3cdc637a547",
+  "changed": {
+    "index.html": {
+      "before": "71a30f8c930cbd254bc4d22b4d9d400b322dcf92e700a6afabda79419de75ded",
+      "after": "c6ad34d838ae8e37bb0e5cc4b852be70f2b646e11f684dc78637ca2076168420"
+    },
+    "meu-estudo.js": {
+      "before": "e88aa5ee7cb77a5f4e193f690830c803604dcda1b3d2e6fe53e0d8285bed43de",
+      "after": "4f40a6e92b7c9ae49ec36347098be15e1ca28e050950434b322cd9b665270961"
+    },
+    "revisao-inteligente.js": {
+      "before": "ade35f3ba8c77b0d33ec41063f3c72f20c3889b91ab619d94942ebf0c3768116",
+      "after": "1b00b945bd20f804e13c98445377f4e1437909c7235825006475bc54537a373e"
+    }
+  },
+  "added": {
+    "navegacao-estudo.js": "1d8d3a343ff79fba54d3edc199ccecbf50dd5f7bc22c7fe0e9fdc0bd3a220797",
+    "navegacao-estudo.css": "0312f9d37aa2e04570af7f58ebe2b0e9b96d0ac696035efbca584940668e02ab"
+  },
+  "unchanged": {
+    "backup-local-s20.js": "8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9",
+    "baralhos-ux.css": "de772af0e639f70f57bc4ea8d6bf59fd9cd6971463ae936f9a74d390be42d3b7",
+    "caderno-contextual.js": "0eff71cc11e85110faf755d3e6ae305eb5b21c5624e4b8f52111fff1c44675a8",
+    "catalogo-disciplinas.js": "261b2b425ed8d6f41400e59d4e0545cbeb5b2292f6f4da250a39f4c2fa915ae3",
+    "dados/codigos-cc-cpc.js": "b2aa0a4eae24d15fa3cae835069672affb4d9589ca5f19a77360fc03a167ee17",
+    "dados/flashcards-aud02-2015-atualizados-lote01.js": "dd86f384f191aff9a202fe21c2c4a6b42cc258b7a4a4b8f2401b13d8e9a67a3e",
+    "dados/flashcards-aud02-2015-atualizados-lote02.js": "9a9cc20420fc812a4dc803a487b089bc07e15e4f457428705d510120a3bd9e03",
+    "dados/flashcards-aud02-2015-atualizados-lote03.js": "f4cb472e30c9a283277004002c3f406112e973222169ad88e12163f9c379e6ed",
+    "dados/flashcards-aud03-lote01.js": "1b6634c8f8112688e0a3259d6bcf909f1c5ae39a552dd8b47ae1ea5657ec6f5b",
+    "dados/legislacao-s13.js": "c038fc9416d1b441aa710bb970eb8428a92008f197ca367ea09df53f6c45f51a",
+    "dados/questoes-auditadas-s18.js": "12a4d996fd014629c774f85abd53fce7a1cd81d43051cfd79cdde731a53b6686",
+    "dados/questoes-auditadas-s19.js": "433391f72d99a297ce9bcad7f5ac6d8ca99ac8f72f9aeb95c3806676f90117f4",
+    "dados/relacoes-juridicas-s14.js": "42c769ad3d2c878d631269e7005cc5efba906eb886aa9d364999b86c08539b84",
+    "dados/versoes-normativas-s17.js": "7a68440fa6deaca2a4ba256af164f8f9567398a983859b650d65dcb5a528febf",
+    "estudo-integrado.js": "82fafd24b164c5d5f4a9fc37ad2bcad90c81d1755bdb9b53ea853f23fd724fc9",
+    "leitor-consolidacao.js": "e6d030e22c96d9b1dc39430bf13e34a832bef835f1be93fa3f42b6fe39851ba4",
+    "leitor-juridico.js": "a935237c9d857890dd86a2c00d8b86c1265c5574cd2e64cb82157dc1575fd930",
+    "lib/catalogo-legislativo.js": "b1e08d4e041c49ce6a34cac29396416b31e960f851911bd65a9cb69bcd845a9c",
+    "planejamento-semanal.js": "b11788273caf97a35d155be1b60d42dbb7f302b6aa55912f1f4e6942436bbc7b",
+    "questoes-leitor-s18.js": "f4095116ca5bf0b31bd76ca323a88a7b8a1e0b079d100da9981d1f8f6d943c3f"
+  },
+  "historicalFixtures": {
+    "tests/fixtures/biblioteca-leis-02-deltas.json": "3022233031806d9cfb7b7922c3f057533281c30a1d7b8e2a83a4e62a6332a346",
+    "tests/fixtures/cartoes-aud-01-delta.json": "44a1579a0ccc42112b70a17b86d9848951104e86ab29ef534c98bf1cc17cf06e",
+    "tests/fixtures/cartoes-aud-02-delta.json": "e5d228297d276c51efffb29b531e7c27260293e707f829eac909bbc1ac68526f",
+    "tests/fixtures/cartoes-aud-03-delta.json": "dcb7f369bba4f51c38564a91d95a4aee7236b86b5ebc03f9fdf3b5d462a64f43",
+    "tests/fixtures/codigos-cc-cpc-deltas.json": "c5da2b5ca86b6e0944ffb9e2be5664b0e56512ddb17111116ec5c184326990b3",
+    "tests/fixtures/leg01-identidade-s36.json": "50d464e8d9d2d2b20defb214c1bace6ef45b6241e5ecdf8081cbdff016bde6e2",
+    "tests/fixtures/leg02-correcao-legados.json": "6eb3a1914a794b320b113dd441e25c4800ff20e468179025a50256ff5a64675a",
+    "tests/fixtures/leg02-manifesto.json": "b8f80fa81cbc46461cc8bea3b954f6ab0cc3f8458bddfc0bff3722f4689a8a82",
+    "tests/fixtures/leg03-manifesto.json": "dd2e5530e08344d9d6b1ecd524cc66ae447e8dcf6872ae535b68259195040edb",
+    "tests/fixtures/leg03-preservacao.json": "000032169843609acbea398bcf81ca9dbb04cfb78197ad342c677a91707a08d0",
+    "tests/fixtures/leg04-manifesto.json": "034b30ac4acd802f03c6be74151e8c1d6b3cf0f7af349d5b5385728c92cc065d",
+    "tests/fixtures/leg04-preservacao.json": "e2fb8c106364a35b190ecf9591a098b56f3aae9397483c48fa90b9b0fea57b08",
+    "tests/fixtures/leg05-leitor-delta.json": "2b366cb61a133dd89ec3faf38d8808f8a8fb332fc7b2bffad95f62e8b7afa703",
+    "tests/fixtures/leg05-manifesto.json": "dbf0680dfb42e7b27ccc0a4751359c4cc46edffc6e28076636a0a1a35d94c84f",
+    "tests/fixtures/leg05-preservacao.json": "76b1894e48a5131ef984673ac9cbb488543b27ed0a98d58c014f7fda36328405",
+    "tests/fixtures/leg06-manifesto.json": "7689dab07851a6fa8a310d1649c6cbac9fc4448d9caea8b8da6b754f36a47131",
+    "tests/fixtures/leg06-preservacao.json": "18634b05a9c6c1abbfd28b3a8085715367c36cdfd82fd0571f738a7c3e0ef122",
+    "tests/fixtures/leg07-deltas.json": "2e6e77629365f36485b6e4b20cb4c485748580efe8f3185ff242758e49123333",
+    "tests/fixtures/leg08-preservacao.json": "b511b553b00bbc38afa04bb5b142972b50a761e5aa135b75203b036cd585270b",
+    "tests/fixtures/leg09-deltas.json": "239e40ebd1f59e1a12fc9402b6342913c986ac018bab3bd599c03226cd715fc5",
+    "tests/fixtures/leg10-deltas.json": "46492a7fa45984fd2782ce3c138225d579447e3f7eb5963dc2b2037cf6562f28",
+    "tests/fixtures/leg11-deltas.json": "55ad3ca840759eb51d177147be4d9645a0f91ee25a694bf38df3b568bd6b8783",
+    "tests/fixtures/leg12-deltas.json": "3bc7f2c155fff50a559877fd526552f2a04477e8cd58e0a01ca40c224ba90c80",
+    "tests/fixtures/leg13-deltas.json": "648927d894134a852d0c3b4da7b7bb8fd96f61276b182b356c257483a69567f7",
+    "tests/fixtures/ux-baralhos-01-delta.json": "9c7190ff747e3e4643cf6a107b4eec1e64b982288b03f159954d0c9280e1b108",
+    "tests/fixtures/ux-baralhos-02-delta.json": "5cd2b155c93dc9a05823b3a7c76dbe9c8abfa5872b4a01268db6441edbc25915",
+    "tests/fixtures/ux-baralhos-03-delta.json": "b7b98b908802bf00987b2ba9a5e0476d81c50d00eaaf22c760f6e759cb2febcc",
+    "tests/fixtures/ux-baralhos-04-delta.json": "a728866538a9e481fc06cda5448f4ae94e5d2abd1dcc304f8448f91818ead390"
+  }
+}

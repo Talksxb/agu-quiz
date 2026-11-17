@@ -1,0 +1,349 @@
+{
+  "run": 44098474542,
+  "head": "d87cc23f6815b3c17784c900f0508274b7673518",
+  "chromium": "159.0.8154.6",
+  "artifact": 14335177273,
+  "scans": 35,
+  "violations": 0,
+  "results": [
+    {
+      "width": 320,
+      "restored": 3,
+      "attempts": 1,
+      "incomplete": [
+        {
+          "stage": "biblioteca",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "stage": "assunto",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "stage": "leitor",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "caderno",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "baralhos",
+          "rules": [
+            {
+              "id": "aria-prohibited-attr",
+              "nodes": 1
+            },
+            {
+              "id": "color-contrast",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "stage": "retomada",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 12
+            }
+          ]
+        },
+        {
+          "stage": "questao",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "restored": 3,
+      "attempts": 1,
+      "incomplete": [
+        {
+          "stage": "biblioteca",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "assunto",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "leitor",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "caderno",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "baralhos",
+          "rules": [
+            {
+              "id": "aria-prohibited-attr",
+              "nodes": 1
+            },
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "retomada",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 11
+            }
+          ]
+        },
+        {
+          "stage": "questao",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "restored": 3,
+      "attempts": 1,
+      "incomplete": [
+        {
+          "stage": "biblioteca",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "assunto",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "leitor",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "caderno",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "baralhos",
+          "rules": [
+            {
+              "id": "aria-prohibited-attr",
+              "nodes": 1
+            },
+            {
+              "id": "color-contrast",
+              "nodes": 2
+            }
+          ]
+        },
+        {
+          "stage": "retomada",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 11
+            }
+          ]
+        },
+        {
+          "stage": "questao",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "restored": 3,
+      "attempts": 1,
+      "incomplete": [
+        {
+          "stage": "biblioteca",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "assunto",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "leitor",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "caderno",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "baralhos",
+          "rules": [
+            {
+              "id": "aria-prohibited-attr",
+              "nodes": 1
+            },
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "retomada",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 10
+            }
+          ]
+        },
+        {
+          "stage": "questao",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "restored": 3,
+      "attempts": 1,
+      "incomplete": [
+        {
+          "stage": "caderno",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "baralhos",
+          "rules": [
+            {
+              "id": "aria-prohibited-attr",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "stage": "retomada",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 9
+            }
+          ]
+        },
+        {
+          "stage": "questao",
+          "rules": [
+            {
+              "id": "color-contrast",
+              "nodes": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
