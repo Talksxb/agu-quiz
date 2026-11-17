@@ -33,6 +33,17 @@ class CotejoTests(unittest.TestCase):
                                                  'Art. 3º Até 18 (dezoito) anos.'),
                          'diferenca_textual_exige_revisao')
 
+    def test_titulos_centralizados_em_caixa_mista_nao_viram_artigo(self):
+        html = '''<p align="justify">Art. 25. Texto válido.</p>
+        <p align="center"><b>Seção II</b></p>
+        <p align="center"><b>Da Sucessão Provisória</b></p>
+        <p align="justify">Art. 26. Outro texto.</p>
+        <p align="justify">I - Inciso normativo.</p>
+        <p align="justify">Art. 27. Limite.</p>'''
+        out = mod.official_articles(html.encode(), 25, 26)
+        self.assertEqual(out['25'], 'Art. 25. Texto válido.')
+        self.assertEqual(out['26'], 'Art. 26. Outro texto. I - Inciso normativo.')
+
 
 if __name__ == '__main__':
     unittest.main()
