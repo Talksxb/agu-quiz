@@ -277,7 +277,6 @@ jobs:
             tests/artifacts-ux-estudo-integrado-01/*.png
             tests/artifacts-ux-estudo-integrado-03/
             tests/artifacts-ux-estudo-integrado-02/*.json
-            tests/artifacts-ux-estudo-integrado-03/
             tests/artifacts-ux-estudo-integrado-02/*.png
           if-no-files-found: ignore
           retention-days: 7

@@ -35,6 +35,16 @@ async function main(){
   }
   async function upload(value){await p.locator('#agu-lesson-file').setInputFiles({name:'aula.json',mimeType:'application/json',buffer:Buffer.from(typeof value==='string'?value:JSON.stringify(value))});await p.waitForFunction(()=>!AGULessonImport.peek().reading)}
   await scan('rascunho-manual');
+  // Os inconclusivos S02 ficam na borda da navegação horizontal; medir cada controle após receber foco.
+  const focusedNavigation=[];
+  for(const control of await p.locator('.secondary-nav > button, .secondary-more > summary').all()){
+   await control.focus();
+   const geometry=await control.evaluate(e=>{const r=e.getBoundingClientRect(),n=e.closest('nav').getBoundingClientRect();return {left:r.left,right:r.right,clipLeft:Math.max(0,n.left),clipRight:Math.min(innerWidth,n.right),label:e.textContent}});
+   assert.ok(geometry.left>=geometry.clipLeft-2&&geometry.right<=geometry.clipRight+2,'controle focado visível: '+geometry.label);
+   const diagnostic=await control.evaluate(async e=>{const r=await axe.run(e,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});return {violations:r.violations,incomplete:r.incomplete}});
+   assert.deepEqual(diagnostic.violations,[]);assert.deepEqual(diagnostic.incomplete,[],'controle focado com contraste mensurável');focusedNavigation.push({geometry,...diagnostic});
+  }
+
   await nav.getByRole('button',{name:'Importar aula',exact:true}).press('Enter');assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-lesson-title');await assertDraft();
   await upload('{invalido');await assertDraft();assert.deepEqual(await p.evaluate(()=>({...localStorage})),previous);
   const lesson=await p.evaluate(()=>({...AGULessonImport.example(),id:'aula-ux03-longa-20261117',assuntoCurricular:'ADM-06',titulo:'Aula sintética longa para validação móvel',conceitos:Array.from({length:12},(_,i)=>('Conceito sintético '+i+'. ').repeat(20)),erros:Array.from({length:8},()=>('Dificuldade sintética relatada. ').repeat(14)),retomada:'Retomada sintética no ChatGPT. '.repeat(25),fontes:[{dispositivo:'Fonte sintética não certificada',url:'https://example.org/'+('referencia'.repeat(100)),verificacao:'a_conferir'}],paraCaderno:['Ponto final sintético do caderno físico.']}));
@@ -66,9 +76,9 @@ async function main(){
    const restored=await q.evaluate(b=>AGUBackup20.importMissing(b),b);assert.equal(restored.added,Object.keys(b.items).length);await q.reload({waitUntil:'load'});
    assert.equal(await q.evaluate(()=>AGUPlannerContext().notebook.length),expected,'restauração '+label);assert.equal(await q.evaluate(()=>AGUReview.attemptsInfo().length),1);assert.equal((await q.evaluate(b=>AGUBackup20.importMissing(b),b)).added,0);await dst.close();
   }
-  assert.deepEqual(errors,[]);results.push({width,previewHeight,draftPreserved:true,manualRecordSaved:true,readNavigationWrites:0,backupOldAndNew:true,physicalAndroid:false,scans});await ctx.close();
+  assert.deepEqual(errors,[]);results.push({width,previewHeight,draftPreserved:true,manualRecordSaved:true,readNavigationWrites:0,backupOldAndNew:true,physicalAndroid:false,focusedNavigation,scans});await ctx.close();
  }
  fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify({target:origin,chromium:browser.version(),results},null,2));
- console.log('UX_ESTUDO_INTEGRADO_03_BROWSER_OK',JSON.stringify({chromium:browser.version(),widths:results.map(r=>r.width),scans:results.reduce((n,r)=>n+r.scans.length,0)}));
+ console.log('UX_ESTUDO_INTEGRADO_03_BROWSER_OK',JSON.stringify({chromium:browser.version(),widths:results.map(r=>r.width),scans:results.reduce((n,r)=>n+r.scans.length,0),focusedNavigation:results.reduce((n,r)=>n+r.focusedNavigation.length,0)}));
 }
 main().catch(e=>{console.error(e.stack);process.exitCode=1}).finally(async()=>{await browser?.close();server.close()});
