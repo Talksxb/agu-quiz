@@ -1,5 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
+const afterUx02=require('./hash-chain-ux-estudo-integrado-02.cjs');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),html=read('index.html');
 const READER='agu_leitor_juridico_s13_v1',REVIEW='agu_quiz_revisao_inteligente_v1',PLAN='agu_quiz_planejamento_semanal_v1';
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -68,7 +69,7 @@ test('simulação e armazenamento inválido não criam novo registro',()=>{
 });
 test('delta exato mantém corpus, motores externos, backup e todas as fixtures históricas',()=>{
  const delta=JSON.parse(read('tests/fixtures/ux-estudo-integrado-01-delta.json')),sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
- for(const [file,change] of Object.entries(delta.changed))assert.equal(sha(file),change.after,file);
+ for(const [file,change] of Object.entries(delta.changed))assert.equal(sha(file),afterUx02(file,change.after),file);
  for(const entries of [delta.added,delta.unchanged,delta.historicalFixtures])for(const [file,hash] of Object.entries(entries))assert.equal(sha(file),hash,file);
  assert.equal(everyExternalSecretAbsent(),true);
 });

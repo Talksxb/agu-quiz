@@ -1,7 +1,7 @@
 name: AGU Quiz · Integridade, estudo e acessibilidade
 on:
   pull_request:
-    branches: [main]
+    branches: [main, 'feat/ux-estudo-integrado-01']
   push:
     branches: [main]
     paths:
@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Node.js runtime
         run: node --version
+      - name: UX Estudo Integrado 02 — síntese, confirmação e backup existente
+        run: node tests/ux-estudo-integrado-02-validacao.js
       - name: UX Estudo Integrado 01 — vínculos literais e preservação dos motores
         run: node tests/ux-estudo-integrado-01-validacao.js
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
@@ -111,6 +113,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: UX Estudo Integrado 02 — importar aula, Caderno, cinco larguras e restauração
+        run: node tests/ux-estudo-integrado-02-browser.cjs
       - name: UX Estudo Integrado 01 — assuntos, retomada, notas, backup e axe em cinco larguras
         run: node tests/ux-estudo-integrado-01-browser.cjs
       - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
@@ -269,6 +273,8 @@ jobs:
             tests/artifacts-cartoes-aud-03/*.png
             tests/artifacts-ux-estudo-integrado-01/*.json
             tests/artifacts-ux-estudo-integrado-01/*.png
+            tests/artifacts-ux-estudo-integrado-02/*.json
+            tests/artifacts-ux-estudo-integrado-02/*.png
           if-no-files-found: ignore
           retention-days: 7
 
