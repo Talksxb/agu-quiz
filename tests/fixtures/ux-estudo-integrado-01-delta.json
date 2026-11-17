@@ -11,11 +11,11 @@
     },
     "revisao-inteligente.js": {
       "before": "ade35f3ba8c77b0d33ec41063f3c72f20c3889b91ab619d94942ebf0c3768116",
-      "after": "0c672836c17d1f1b26c5141a8f8c505a7c3cfa25860eef71d944802366c2adf6"
+      "after": "1b00b945bd20f804e13c98445377f4e1437909c7235825006475bc54537a373e"
     }
   },
   "added": {
-    "navegacao-estudo.js": "5faf7c5393d7ea2e6ccdca5db9eb7ec520f0edfc1cc72314027df645b8c28bb3",
+    "navegacao-estudo.js": "1d8d3a343ff79fba54d3edc199ccecbf50dd5f7bc22c7fe0e9fdc0bd3a220797",
     "navegacao-estudo.css": "0312f9d37aa2e04570af7f58ebe2b0e9b96d0ac696035efbca584940668e02ab"
   },
   "unchanged": {

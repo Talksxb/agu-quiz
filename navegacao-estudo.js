@@ -2,6 +2,7 @@
 (function(root){
 'use strict';
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const count=(n,one,many)=>n+' '+(n===1?one:many);
 let selected='',discipline='todos',search='',connected=false,message='';
 const demo=()=>root.AGUHomeContext?.().demo===true;
 function articles(){
@@ -30,6 +31,7 @@ function open(kind,id){
  const item=catalog().find(x=>x.code===selected);if(!item||demo())return false;
  message='';
  try{
+  if(['law','question','notebook'].includes(kind)&&root.AGUHome?.notebookPending?.()===null)throw Error('O armazenamento do leitor precisa de conferência.');
   if(kind==='cards'||kind==='review'){
    if(!item.deck||!root.AGUReview.browseTopic(item.code,kind==='review'?'pendentes':'todos'))return false;
    connected=true;root.setView('review');focus('#agu-deck-library h2');
@@ -40,7 +42,6 @@ function open(kind,id){
    const q=item.questions.find(x=>x.id===id);if(!q)return false;
    connected=true;root.setView('legal');root.AGULegal.unit(q.deviceId);root.AGULegal.tab('questoes');root.AGUQuestions18.choose(q.id);focus('#agu-question-context');
   }else if(kind==='notebook'){
-   if(root.AGUHome?.notebookPending?.()===null)throw Error('O armazenamento precisa de conferência. Preserve o backup em Dados e backup.');
    connected=true;root.setView('legal');root.AGULegal.tab('para_caderno');root.AGULegal.notebookFilter('tema',item.articles.length?item.code:'todos');root.AGULegal.notebookFilter('estado','todos');focus('#agu-caderno-list');
   }else return false;
   return true;
@@ -60,7 +61,7 @@ function detail(item){
  '<p class="note">Acervo parcial. Os vínculos usam o código já registrado em cada recurso; não representam cobertura integral do assunto.</p>'+
  (message?'<p id="agu-subject-message" role="alert" tabindex="-1">'+esc(message)+'</p>':'')+
  '<div class="agu-subject-resources"><section><h3>Legislação</h3>'+(item.articles.length?'<p class="small">Vínculo registrado no acervo. Confira a fonte e o estado de verificação no leitor.</p><div class="agu-subject-actions">'+item.articles.map(a=>'<button type="button" class="secondary" onclick="AGUSubjects.open(\'law\',\''+esc(a.unit)+'\')">'+esc(a.law)+' · '+esc(a.label)+'</button>').join('')+'</div>':'<p>Vínculo com dispositivo pendente. Consulte a biblioteca geral de legislação.</p>')+'</section>'+
- '<section><h3>Cartões e revisão</h3>'+(d?'<p>'+d.count+' cartões autorais · '+d.due+' revisões pendentes na agenda existente.</p><div class="btnrow"><button type="button" class="primary" onclick="AGUSubjects.open(\'cards\')">Abrir cartões de '+esc(item.code)+'</button><button type="button" class="secondary" onclick="AGUSubjects.open(\'review\')">Revisar '+esc(item.code)+'</button></div>':'<p>Cartões e revisão por assunto pendentes neste acervo.</p>')+'</section>'+
+ '<section><h3>Cartões e revisão</h3>'+(d?'<p>'+count(d.count,'cartão autoral','cartões autorais')+' · '+count(d.due,'revisão pendente','revisões pendentes')+' na agenda existente.</p><div class="btnrow"><button type="button" class="primary" onclick="AGUSubjects.open(\'cards\')">Abrir cartões de '+esc(item.code)+'</button><button type="button" class="secondary" onclick="AGUSubjects.open(\'review\')">Revisar '+esc(item.code)+'</button></div>':'<p>Cartões e revisão por assunto pendentes neste acervo.</p>')+'</section>'+
  '<section><h3>Questões</h3>'+(item.questions.length?'<p class="small">Gabarito histórico e fundamento conferidos pontualmente; o enunciado disponível é uma adaptação identificada no leitor.</p><div class="agu-subject-actions">'+item.questions.map(q=>'<button type="button" class="secondary" onclick="AGUSubjects.open(\'question\',\''+esc(q.id)+'\')">AGU '+q.year+' · Q'+q.number+'</button>').join('')+'</div>':'<p>Vínculo direto verificado pendente. Questões de outros assuntos continuam na biblioteca.</p>')+'</section>'+
  '<section id="agu-subject-progress"><h3>Progresso registrado</h3><p>'+(d?d.seen+' de '+d.count+' cartões com avaliação no histórico. ':'')+attempts.length+' avaliações neste assunto.</p><p class="small muted">Abrir materiais não registra estudo, tempo ou domínio. O plano semanal e a agenda continuam nos módulos atuais.</p></section>'+
  '<section><h3>Para meu caderno</h3><p>'+(item.articles.length?'Acesse a lista existente, filtrada por '+esc(item.code)+', com todos os estados. Marcações sem tema documentado continuam na lista geral.':'O filtro deste código ainda não está disponível no leitor. Acesse a lista geral existente.')+'</p><p class="small muted">Para criar uma marcação, confira a origem indicada no formulário do leitor.</p><button type="button" class="secondary" onclick="AGUSubjects.open(\'notebook\')">Abrir Para meu caderno</button></section></div></section>';
@@ -72,7 +73,7 @@ function page(){
  return '<section class="card agu-subjects" aria-labelledby="agu-subjects-title"><h2 id="agu-subjects-title" tabindex="-1">Estudar por assunto</h2><p>Escolha um assunto e encontre os recursos já disponíveis. As aulas continuam no ChatGPT.</p>'+
  '<div class="agu-subject-filters"><label for="agu-subject-discipline">Disciplina<select id="agu-subject-discipline" onchange="AGUSubjects.filter(\'discipline\',this.value)"><option value="todos">Todas as disciplinas</option>'+(root.AGUDisciplines?.list?.()||[]).map(d=>'<option value="'+esc(d.code)+'"'+(discipline===d.code?' selected':'')+'>'+esc(d.name)+'</option>').join('')+'</select></label>'+
  '<label for="agu-subject-search">Assunto ou código<input id="agu-subject-search" type="search" value="'+esc(search)+'" placeholder="Ex.: ADM-06, delegação" onchange="AGUSubjects.filter(\'search\',this.value)"></label></div>'+
- '<p role="status" aria-live="polite">'+visible.length+' assuntos disponíveis · acervo parcial</p><div class="agu-subject-grid">'+(visible.map(x=>'<button type="button" class="hub-entry" data-agu-subject="'+esc(x.code)+'" onclick="AGUSubjects.select(\''+esc(x.code)+'\')"><span>'+esc(x.name)+' · '+esc(x.code)+'</span><b>'+esc(x.title)+'</b><span>'+(x.deck?.count||0)+' cartões · '+x.articles.length+' artigos vinculados · '+x.questions.length+' questões com vínculo direto</span></button>').join('')||'<p>Nenhum assunto disponível neste filtro. O currículo e as normas gerais permanecem acessíveis abaixo; vínculos pendentes não foram presumidos.</p>')+'</div></section>';
+ '<p role="status" aria-live="polite">'+count(visible.length,'assunto disponível','assuntos disponíveis')+' · acervo parcial</p><div class="agu-subject-grid">'+(visible.map(x=>'<button type="button" class="hub-entry" data-agu-subject="'+esc(x.code)+'" onclick="AGUSubjects.select(\''+esc(x.code)+'\')"><span>'+esc(x.name)+' · '+esc(x.code)+'</span><b>'+esc(x.title)+'</b><span>'+count(x.deck?.count||0,'cartão','cartões')+' · '+count(x.articles.length,'artigo vinculado','artigos vinculados')+' · '+count(x.questions.length,'questão com vínculo direto','questões com vínculo direto')+'</span></button>').join('')||'<p>Nenhum assunto disponível neste filtro. O currículo e as normas gerais permanecem acessíveis abaixo; vínculos pendentes não foram presumidos.</p>')+'</div></section>';
 }
 root.AGUSubjects={page,catalog,select,back,filter,open,openLibrary,returnPanel};
 })(window);

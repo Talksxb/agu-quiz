@@ -12,7 +12,7 @@ Auditoria privada: https://github.com/Talksxb/agu-auditoria (somente leitura se 
 
 ## Retomada factual obrigatória, sem repetir o diagnóstico
 
-1. Consultar `main` real, PRs abertas e estado de publicação. A base histórica S01 é `31a47693b8f690e543f565c83208e3cdc637a547`; a entrega está em `feat/ux-estudo-integrado-01`. Localizar sua PR por branch se o número ainda não estiver no roadmap. Não assumir que foi mesclada.
+1. Consultar `main` real, PRs abertas e estado de publicação. A base histórica S01 é `31a47693b8f690e543f565c83208e3cdc637a547`; a entrega está em `feat/ux-estudo-integrado-01`. A PR é #54 (https://github.com/Talksxb/agu-quiz/pull/54). Localizá-la por branch se tiver sido fechada/substituída. Não assumir que foi mesclada.
 2. Ler **uma vez** `docs/ROADMAP_UX_ESTUDO_INTEGRADO.md` (fonte única de progresso/tempo), `docs/UX_ESTUDO_INTEGRADO_01_DIAGNOSTICO.md`, resultado final dos checks da PR S01 e as observações posteriores no roadmap. Não repetir a investigação geral nem executar novamente sprints antigas documentais.
 3. Se S01 está na main, partir da main atual. Se permanece aberta, não mesclar sem checar autorização/concorrência: trabalhar empilhado sobre a branch da S01, declarando dependência e base da PR; não copiar arquivos obsoletos sobre main mais nova. Sem rebase/force push para resolver concorrência.
 4. GitHub permanece fonte da verdade; GPT Sites são cópias independentes, sem sincronização comprovada. Não publicar nos GPT Sites. Preservar todos os dados reais; testes mutáveis apenas em contextos sintéticos independentes.

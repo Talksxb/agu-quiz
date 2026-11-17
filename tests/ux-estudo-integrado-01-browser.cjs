@@ -43,6 +43,7 @@ async function main(){
   const marks=await p.evaluate(()=>JSON.stringify(AGULegal.peek().forNotebook));await scan('caderno');
   await p.getByRole('button',{name:'← Voltar ao assunto ADM-06',exact:true}).click();
   await p.getByRole('button',{name:'Abrir cartões de ADM-06',exact:true}).click();await scan('baralhos');
+  assert.equal(await p.getByRole('group',{name:'Filtrar baralhos',exact:true}).isVisible(),true);
   assert.equal(await p.locator('.agu-deck-grid .agu-deck-tile').count(),1);
   await p.getByRole('button',{name:'Estudar baralho',exact:true}).press('Enter');
   await p.locator('#agu-deck-face').press('Space');await p.locator('#agu-deck-rating-lembrei').press('Enter');

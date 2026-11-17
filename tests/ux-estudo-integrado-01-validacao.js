@@ -63,6 +63,8 @@ test('questão pontual conserva identidade e abrir não responde nem conclui',()
 test('simulação e armazenamento inválido não criam novo registro',()=>{
  const {e,saved}=boot();e.switchDemo();assert.match(e.AGUSubjects.page(),/Saia da simulação/);assert.equal(e.AGUSubjects.select('ADM-06'),false);assert.equal(saved.size,0);
  e.switchDemo();e.AGUSubjects.select('ADM-06');saved.set(READER,'{inválido');const before=JSON.stringify([...saved]);assert.equal(e.AGUSubjects.open('notebook'),false);assert.equal(JSON.stringify([...saved]),before);
+ assert.equal(e.AGUSubjects.open('law','L9784:art12:caput'),false);assert.equal(JSON.stringify([...saved]),before);
+ e.AGUSubjects.select('ADM-17');assert.equal(e.AGUSubjects.open('question','of-2015-adv-006'),false);assert.equal(JSON.stringify([...saved]),before);
 });
 test('delta exato mantém corpus, motores externos, backup e todas as fixtures históricas',()=>{
  const delta=JSON.parse(read('tests/fixtures/ux-estudo-integrado-01-delta.json')),sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');

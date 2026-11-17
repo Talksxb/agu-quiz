@@ -80,3 +80,7 @@ S02 deverá fechar o contrato de importação e a deduplicação estável usando
 ## Limites mantidos para continuidade
 
 S02 não foi executada. A síntese de aula ainda não entra no site. Nenhuma leitura automática das conversas foi habilitada. A integração desta PR e sua publicação em Pages precisam de CI verde, revisão e verificação de concorrência. Atualizar a produção apenas após integração regular; não publicar automaticamente GPT Sites.
+
+### Evidência de validação obtida e revisão final
+
+O run 44098474542 aprovou Node e Chromium com todas as regressões. A nova jornada teve 35 varreduras em cinco larguras e zero violações automáticas. O artefato foi baixado, seu SHA conferido e o JSON/captura de 390 px inspecionados. Existem `incomplete` de contraste relacionados a controles parcialmente fora da área visível; não significam conformidade. Um `incomplete` semântico concreto nos filtros de baralho (`aria-label` em div sem papel válido) foi corrigido para grupo nomeado na revisão final, com asserção de papel/nome no browser. A proteção contra leitor inválido agora abrange legislação/questão/lista. Consultar o último run da PR para a validação desses ajustes posteriores; não confundir o run anterior com prova da revisão final.
