@@ -45,3 +45,7 @@ Antes de aplicar, lê e valida o histórico principal completo e compara seus by
 Não adotar MCP/backend nesta sprint. O arquivo estruturado usa a infraestrutura atual e não exige nova chave ou inferência no site. O Caderno contextual não é destino automático: seu contrato restrito por dispositivo/fontes não pode ser contornado.
 
 S03 deve partir dos artefatos efetivamente produzidos, corrigir apenas dificuldades demonstradas, verificar os caminhos móveis e acessibilidade/persistência/backup, e preparar integração/publicação regular conforme autorização. A cadeia #54 → PR S02 precisa ser respeitada; não copiar arquivos antigos sobre main mais nova. Handoff completo: `PROMPT_UX_ESTUDO_INTEGRADO_03.md`.
+
+### Validação final do produto e fechamento documental
+
+A PR é #57, dependente de #54. CI 44109421365 aprovada no produto `a589edb…`: 38 suítes Node e todas as regressões Chromium; nova jornada com 30 varreduras nas cinco larguras, zero violações automáticas e apenas color-contrast inconclusivo. Artefato/JSON e captura de 390 px inspecionados; resumo versionado em `evidencias-ux-estudo-integrado-02/ci-44109421365-resumo.json`. O fechamento seguinte altera somente documentos/evidências; conferir seus checks atuais na PR. Progresso verificado 70%; S03 não executada.
