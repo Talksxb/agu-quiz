@@ -93,12 +93,13 @@ def official_articles(raw, start=1, end=5):
     for index, para in enumerate(parser.lines):
         if index in parser.centered:
             continue
-        match = re.match(r'^Art\.\s*(\d+)[º°.]?\s', para, re.I)
+        match = re.match(r'^Art\.\s*(\d+(?:-[A-Z])?)[º°.]?\s', para, re.I)
         if match:
-            active = int(match.group(1))
-            if active > end:
+            number = int(match.group(1).split('-')[0])
+            active = match.group(1)
+            if number > end:
                 break
-            if active >= start:
+            if number >= start:
                 found[active] = [para]
         elif active in found:
             # Títulos estruturais entre artigos não fazem parte do dispositivo anterior.
@@ -121,6 +122,12 @@ const out={};for(const law of ctx.window.AGU_LEGAL_CORPUS.laws){
  out[law.id]={};for(let n=Number(process.argv[1]);n<=Number(process.argv[2]);n++){
   const a=law.articles.find(x=>x.id===law.id+':art'+n);
   out[law.id][n]=a?.clauses?.[0]?.text??null;
+ }
+ for(const a of law.articles){
+  const match=a.id.match(/:art(\d+-[A-Z])$/);
+  if(match&&Number(match[1].split('-')[0])>=Number(process.argv[1])&&
+   Number(match[1].split('-')[0])<=Number(process.argv[2]))
+   out[law.id][match[1]]=a.clauses?.[0]?.text??null;
  }}process.stdout.write(JSON.stringify(out));'''
     return json.loads(subprocess.check_output(['node', '-e', js, str(start), str(end)], text=True))
 
@@ -128,6 +135,7 @@ const out={};for(const law of ctx.window.AGU_LEGAL_CORPUS.laws){
 def run(cc, cpc, start=1, end=5):
     mirror = mirror_articles(start, end)
     rows = []
+    suffix_manifest = {}
     sources = [('L10406', cc), ('L13105', cpc)]
     for law, path in sources:
         raw = Path(path).read_bytes()
@@ -146,10 +154,31 @@ def run(cc, cpc, start=1, end=5):
                 'mirror_excerpt': left[:180],
                 'official_excerpt': right[:180],
             })
+        suffix_keys = sorted((key for key in official.keys() | mirror[law].keys()
+                              if re.fullmatch(r'\d+-[A-Z]', key)),
+                             key=lambda key: (int(key.split('-')[0]), key))
+        suffixes = {key: official.get(key, '') for key in suffix_keys}
+        # Dispositivos interpolados são catalogados separadamente: não são
+        # anexados artificialmente ao artigo numérico anterior.
+        if suffixes:
+            suffix_manifest[law] = {key: hashlib.sha256(value.encode()).hexdigest()
+                                    for key, value in suffixes.items()}
+        for key in suffix_keys:
+            left = normalize(mirror[law].get(key) or '')
+            right = official.get(key, '')
+            rows.append({
+                'id': f'{law}:art{key}', 'mirror_present': bool(left),
+                'official_present': bool(right),
+                'exact_after_whitespace_normalization': bool(left and right and left == right),
+                'comparison_class': classify_difference(left, right) if left and right else 'dispositivo_ausente',
+                'mirror_sha256': hashlib.sha256(left.encode()).hexdigest(),
+                'official_sha256': hashlib.sha256(right.encode()).hexdigest(),
+                'mirror_excerpt': left[:180], 'official_excerpt': right[:180],
+            })
     return {'scope': f'artigos {start}–{end} de cada código, incluindo subdivisões e notas editoriais em parágrafos',
             'sources': {law: {'file': str(path), 'sha256': hashlib.sha256(Path(path).read_bytes()).hexdigest(),
                               'bytes': Path(path).stat().st_size} for law, path in sources},
-            'rows': rows}
+            'rows': rows, 'official_suffixes': suffix_manifest}
 
 
 if __name__ == '__main__':
