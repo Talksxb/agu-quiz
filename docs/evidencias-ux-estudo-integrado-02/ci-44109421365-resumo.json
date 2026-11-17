@@ -1,0 +1,49 @@
+{
+  "run": 44109421365,
+  "head": "a589edb482ccc39ea1b82946b3f9f451d84f7dc3",
+  "artifact": 14339838122,
+  "artifactSha256": "5c419fc8b0c384273df15c4857bb95182424a036708e7a607572ded75811f5fc",
+  "chromium": "159.0.8154.6",
+  "scans": 30,
+  "violations": 0,
+  "incompleteRules": [
+    "color-contrast"
+  ],
+  "results": [
+    {
+      "width": 320,
+      "restoredCategories": 5,
+      "legacyRecordPreserved": true,
+      "oneImportedRecord": true,
+      "attemptsUnchanged": 1
+    },
+    {
+      "width": 360,
+      "restoredCategories": 5,
+      "legacyRecordPreserved": true,
+      "oneImportedRecord": true,
+      "attemptsUnchanged": 1
+    },
+    {
+      "width": 390,
+      "restoredCategories": 5,
+      "legacyRecordPreserved": true,
+      "oneImportedRecord": true,
+      "attemptsUnchanged": 1
+    },
+    {
+      "width": 430,
+      "restoredCategories": 5,
+      "legacyRecordPreserved": true,
+      "oneImportedRecord": true,
+      "attemptsUnchanged": 1
+    },
+    {
+      "width": 1280,
+      "restoredCategories": 5,
+      "legacyRecordPreserved": true,
+      "oneImportedRecord": true,
+      "attemptsUnchanged": 1
+    }
+  ]
+}
