@@ -42,7 +42,7 @@ select,input{max-width:100%}
 .today-links{margin-bottom:12px}.today-links button{min-height:44px}
 /* LEG13: a Home deve manter o botão de retomada legível ao ampliar a fonte. */
 @media(max-width:530px){.daily-mission .primary{white-space:normal;overflow-wrap:anywhere;line-height:1.35}}
-</style><link rel="stylesheet" href="baralhos-ux.css?v=20261115-ux02"></head><body><div class="app"><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
+</style><link rel="stylesheet" href="baralhos-ux.css?v=20261115-ux02"><link rel="stylesheet" href="apostila.css?v=livro-int-001"></head><body><div class="app"><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
 <button class="nav active" data-view="dashboard">Início</button>
 <button class="nav" data-view="study">Estudar</button>
 <button class="nav" data-view="library">Biblioteca Inteligente</button>
@@ -68,6 +68,7 @@ select,input{max-width:100%}
 <script src="leitor-juridico.js?v=20261116-bib02"></script>
 <script src="backup-local-s20.js?v=20261115-leg11"></script>
 <script src="meu-estudo.js?v=20261115-leg12"></script>
+<script src="apostila.js?v=livro-int-001"></script>
 <script>
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const D=[['ADM','Direito Administrativo',['Organização administrativa','Atos administrativos','Poderes administrativos','Processo administrativo','Licitações e contratos','Responsabilidade civil do Estado']],['CON','Direito Constitucional',['Constituição e poder constituinte','Direitos fundamentais','Organização do Estado','Separação de poderes','Controle de constitucionalidade','Funções essenciais à Justiça']],['FIN','Direito Financeiro',['PPA, LDO e LOA','Receitas e despesas públicas','Lei de Responsabilidade Fiscal','Créditos adicionais','Controle financeiro']],['PC','Direito Processual Civil',['Normas fundamentais','Competência e sujeitos processuais','Tutela provisória','Sentença e coisa julgada','Recursos e precedentes','Fazenda Pública em juízo']],['TRIB','Direito Tributário',['Competências tributárias','Obrigação e crédito tributário','Lançamento e extinção']],['CIV','Direito Civil',['LINDB','Obrigações e contratos']],['EMP','Direito Empresarial',['Sociedades','Recuperação e falência']],['TRAB','Direito do Trabalho',['Relação de emprego','Responsabilidade estatal']],['PREV','Direito Previdenciário',['Seguridade social','RGPS e RPPS']],['INT','Direito Internacional',['Tratados','Responsabilidade internacional']],['AMB','Direito Ambiental',['Princípios e competências','Licenciamento ambiental']],['ECO','Direito Econômico',['Regulação','Concorrência']],['DH','Direitos Humanos',['Sistemas de proteção','Tutela coletiva']],['OUT','Complementares — a auditar',['Demais tópicos condicionados ao edital']]];
@@ -226,12 +227,12 @@ const mock=()=>{let d=fresh();d.seed=true;let t=new Date();d.sessions=[{id:'d1',
 function persist(){if(!demo){localStorage.setItem(STORE,JSON.stringify(real))}}
 const NAV_GROUPS={
  dashboard:'dashboard',study:'study',quiz:'study',explore:'study',planner:'study',
- library:'library',review:'library',legal:'library',officialExam:'library',notebook:'library',matrix:'library',curriculum:'library',
+ library:'library',review:'library',legal:'library',officialExam:'library',notebook:'library',matrix:'library',curriculum:'library',book:'library',
  evolution:'evolution',organization:'evolution',sessions:'evolution',settings:'evolution'
 };
 const NAV_ITEMS={
  study:[['study','Visão de estudo'],['quiz','Praticar'],['explore','Explorar temas'],['planner','Plano semanal']],
- library:[['library','Acervo'],['review','Flashcards e revisões'],['officialExam','Questões'],['legal','Materiais']],
+ library:[['library','Acervo'],['review','Flashcards e revisões'],['officialExam','Questões'],['legal','Materiais'],['book','Apostila']],
  evolution:[['evolution','Panorama'],['organization','Disciplinas'],['sessions','Sessões'],['settings','Dados e backup']]
 };
 function currentGroup(){return NAV_GROUPS[view]||'dashboard'}
@@ -245,7 +246,7 @@ function setView(v){
  if(!NAV_GROUPS[v])return;
  // O acionador interno desaparece ao redesenhar a página: não deixar o foco perdido no <body>.
  const inside=$('#main')?.contains(document.activeElement);
- view=v;feedback=null;selected=null;render();
+ view=v;feedback=null;selected=null;render();if(v==='book')window.AGUBookReader?.activate?.();
  if(inside){const title=$('#main h1');if(title){title.tabIndex=-1;title.focus({preventScroll:true})}}
 }
 function info(t){return data.topic[t]||{score:0,evidence:0,state:'Não iniciado'}}
@@ -265,6 +266,7 @@ function library(){
  ['review','Flashcards e revisões','Recuperação ativa, fundamento jurídico e revisão espaçada'],
  ['officialExam','Questões Cebraspe','Cadernos, gabaritos históricos e questões disponíveis'],
  ['legal','Legislação e materiais','Texto oficial, jurisprudência e Caderno por dispositivo'],
+ ['book','Apostila de leitura','Capítulos completos, diagramas e continuidade em uma área protegida'],
  ['notebook','Caderno AGU','Anotações e consolidação de estudos']
  ].map(([v,title,sub])=>'<button class="hub-entry" onclick="setView(\''+v+'\')"><b>'+title+'</b><span>'+sub+'</span></button>').join('')+
  '</div><details class="hub-details"><summary>Organização por disciplina e currículo</summary><p class="muted">Acesse os tópicos e os identificadores curriculares sem sair da Biblioteca.</p><div class="btnrow"><button class="secondary" onclick="setView(\'curriculum\')">Currículo</button><button class="secondary" onclick="setView(\'matrix\')">Matriz 2022</button></div></details></div>';
@@ -425,7 +427,7 @@ function organization(){
 }
 function setOrganizationMode(mode){if(['prioridade','horas','constancia','questoes'].includes(mode)){organizationMode=mode;render()}}
 
-function render(){const pages={dashboard,study,library,evolution,organization,planner:()=>window.AGUPlanner.page(),explore,curriculum,matrix:matrixPage,quiz,officialExam,review:()=>window.AGUReview.page(),legal:()=>(window.AGUHome?.notebookReturnPanel?.()||'')+(window.AGUReview?.notebookReturnPanel?.()||'')+window.AGULegal.page(),sessions,notebook,settings};if(!pages[view])view='dashboard';$('#main').innerHTML=navigationInside()+pages[view]();document.querySelectorAll('.nav').forEach(x=>{const active=x.dataset.view===currentGroup();x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
+function render(){const pages={dashboard,study,library,evolution,organization,planner:()=>window.AGUPlanner.page(),explore,curriculum,matrix:matrixPage,quiz,officialExam,review:()=>window.AGUReview.page(),legal:()=>(window.AGUHome?.notebookReturnPanel?.()||'')+(window.AGUReview?.notebookReturnPanel?.()||'')+window.AGULegal.page(),book:()=>window.AGUBookReader.page(),sessions,notebook,settings};if(!pages[view])view='dashboard';$('#main').innerHTML=navigationInside()+pages[view]();document.querySelectorAll('.nav').forEach(x=>{const active=x.dataset.view===currentGroup();x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
 window.AGUHomeContext=()=>{let readerSaved=false;try{readerSaved=!!localStorage.getItem('agu_leitor_juridico_s13_v1')}catch{}return {demo,recommended:recommended(),disciplines:D,practiceTopics:[...new Set(Q.filter(q=>quizMode!=='ce'||q.type==='ce').map(q=>q.topic))],weekMinutes:weekMinutes(),legacyDue:dueReview().length,readerSaved}};
 window.AGUPlannerContext=()=>({disciplines:D,sessions:data.sessions,answers:data.answers,reviews:data.reviews,notebook:data.notebook,topic:data.topic});window.setOrganizationMode=setOrganizationMode;window.openAudited2015=openAudited2015;window.chooseOfficial=chooseOfficial;window.chooseOfficialLetter=chooseOfficialLetter;window.gradeOfficial=gradeOfficial;window.nextOfficial=nextOfficial;window.importMatrixPrompt=importMatrixPrompt;window.importCurriculum=importCurriculum;window.saveQuestionMap=saveQuestionMap;window.unmapQuestion=unmapQuestion;window.matrixTopic=matrixTopic;window.setMatrixDisc=setMatrixDisc;window.matrixSearchChanged=matrixSearchChanged;window.exportIntegration=exportIntegration;window.quizSeen=quizSeen;window.setView=setView;window.startQuiz=startQuiz;window.choose=choose;window.submitAnswer=submitAnswer;window.saveJustification=saveJustification;window.saveRubric=saveRubric;window.nextQuestion=nextQuestion;window.toggleTimer=toggleTimer;window.confirmTimer=confirmTimer;window.addManual=addManual;window.makeNotebook=makeNotebook;window.downloadMarkdown=downloadMarkdown;window.switchDemo=switchDemo;window.exportJSON=exportJSON;window.importJSON=importJSON;window.resetReal=resetReal;window.render=render;
 // Um botão parcialmente recortado pode receber Tab sem rolagem automática no Chromium.
@@ -437,6 +439,6 @@ document.addEventListener('focusin',event=>{
  const r=el.getBoundingClientRect(),n=nav.getBoundingClientRect();
  if(r.left<n.left+3||r.right>n.right-3)el.scrollIntoView({block:'nearest',inline:'center'});
 });
-document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){const p=new URLSearchParams(window.location.search),law=p.get('norma')||'L9784',device=p.get('dispositivo');view='legal';AGULegal.openLaw(law,false);if(device&&device.startsWith(law+':'))AGULegal.unit(device);render()}else{render()}
+document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){const p=new URLSearchParams(window.location.search),law=p.get('norma')||'L9784',device=p.get('dispositivo');view='legal';AGULegal.openLaw(law,false);if(device&&device.startsWith(law+':'))AGULegal.unit(device);render()}else if(new URLSearchParams(window.location.search).get('abrir')==='apostila'){view='book';render();window.AGUBookReader?.activate?.()}else{render()}
 </script></body></html>
 
