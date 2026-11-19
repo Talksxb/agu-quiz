@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Node.js runtime
         run: node --version
+      - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
+        run: node tests/livro-sites-001-validacao.js
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
         run: node tests/cartoes-aud-01-validacao.js
       - name: CARTOES-AUD-02 — quatro cartas, 2015, fontes e revisão preservada
@@ -109,6 +111,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LIVRO-SITES-001 — cartão da apostila em três larguras de tela
+        run: node tests/livro-sites-001-browser.cjs
       - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
         run: node tests/codigos-cc-cpc-browser.cjs
       - name: Biblioteca 02 — filtros por matéria, teclado, toque e axe

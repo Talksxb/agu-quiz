@@ -1,5 +1,6 @@
 /* UX04 — coerência do histórico sintético entre biblioteca e revisão legada. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');
@@ -60,7 +61,7 @@ check('deltas antigos intactos e novo delta encadeado',()=>{
  const nextCards=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(nextCards('revisao-inteligente.js',cards.reviewAfterSha256),sha('revisao-inteligente.js'));
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)),sha('index.html'));
+ assert.equal(nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)),legacyIndexDigest());
  assert.equal(leg12.homeAfterSha256,sha('meu-estudo.js'));
  for(const [file,hash] of Object.entries(delta.unchanged))if(file!=='meu-estudo.js')assert.equal(sha(file),afterCodigos(file,hash),file);
 });

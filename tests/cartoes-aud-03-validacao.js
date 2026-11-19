@@ -1,5 +1,6 @@
 /* CARTOES-AUD-03: gabarito histórico, fontes atuais, persistência e delta. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const BASE=path.resolve(__dirname,'..'),KEY='agu_quiz_revisao_inteligente_v1';
 const read=f=>fs.readFileSync(path.join(BASE,f),'utf8');
@@ -59,7 +60,7 @@ check('hashes e ordem de carregamento respeitam baseline integrado; CSS preserva
  assert.equal(f.htmlBeforeSha256,biblioteca.changed['index.html'].after);
  assert.equal(f.reviewBeforeSha256,older.reviewAfterSha256);
  assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
- assert.equal(sha('index.html'),f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),f.reviewAfterSha256);
+ assert.equal(legacyIndexDigest(),f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),f.reviewAfterSha256);
  assert.equal(sha(f.newFile),f.newFileSha256);
  for(const [file,hash] of Object.entries(f.unchanged))assert.equal(sha(file),hash,file);
  const html=read('index.html');assert.ok(html.indexOf('flashcards-aud02-2015-atualizados-lote02.js')<html.indexOf('flashcards-aud02-2015-atualizados-lote03.js'));

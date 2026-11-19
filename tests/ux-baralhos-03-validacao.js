@@ -1,6 +1,7 @@
 /* UX03 — histórico efetivo versus agenda local e ponte curricular literal.
  * Todos os registros são sintéticos; nenhuma categoria pessoal é consultada. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(ROOT,x),'utf8');
@@ -126,7 +127,7 @@ check('delta UX03 encadeia UX02→LEG11 sem reescrever fixtures anteriores',()=>
  const nextCards=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha('revisao-inteligente.js'),nextCards('revisao-inteligente.js',cards.reviewAfterSha256));
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- assert.equal(sha('index.html'),nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
+ assert.equal(legacyIndexDigest(),nextCards('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
  assert.equal(sha('meu-estudo.js'),leg12.homeAfterSha256);
  for(const file of ['planejamento-semanal.js','estudo-integrado.js','leitor-juridico.js','backup-local-s20.js','questoes-leitor-s18.js','catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js']){
   assert.equal(sha(file),afterCodigos(file,delta.unchanged[file]));

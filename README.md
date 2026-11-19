@@ -6,6 +6,12 @@ Interface estática do AGU Quiz 1.4, preservada da evolução incremental do pro
 
 No GitHub, abra **Settings → Pages → Build and deployment → Deploy from a branch** e selecione **main / (root)**. O endereço público será `https://talksxb.github.io/agu-quiz/` somente depois que a implantação for concluída.
 
+## Apostila · Leitura AGU
+
+Em **Biblioteca Inteligente**, o cartão **Apostila · Leitura AGU** abre o [leitor de capítulos no Sites](https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/). O capítulo experimental ADM-53 está disponível em [leitura direta](https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/adm-53). Trata-se de conteúdo editorial público e autônomo: não exige login nem Azure, não consulta o repositório privado de auditoria e não transfere o progresso do Quiz entre domínios.
+
+O conteúdo jurídico é atualizado no leitor; o Quiz mantém apenas o endereço público. O teste `tests/livro-sites-001-validacao.js` confere a presença do atalho e a ausência de referências a caminhos internos. Os testes de integridade de versões anteriores comparam um índice normalizado que exclui **somente** o acréscimo do cartão e de seu estilo (`tests/livro-sites-001-legado.cjs`); toda outra alteração histórica continua coberta pelos hashes originais.
+
 ## Limites importantes
 
 - O site é **público** e executa somente no navegador; **não há login nem sincronização com Google Sheets**.

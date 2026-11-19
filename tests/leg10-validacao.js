@@ -1,5 +1,6 @@
 /* LEG10 — questões oficiais pontualmente verificadas alimentam o mesmo forNotebook. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),copy=x=>JSON.parse(JSON.stringify(x)),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
@@ -27,7 +28,7 @@ check('base, corpus, nove categorias, fixtures LEG09→LEG10→UX02→LEG11→UX
  const leg13=JSON.parse(read('tests/fixtures/leg13-deltas.json'));assert.equal(leg13.htmlBeforeSha256,leg12.htmlAfterSha256);
  const cards=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json'));
  assert.equal(z.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
- const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha(read('revisao-inteligente.js')),next('revisao-inteligente.js',cards.reviewAfterSha256));assert.equal(sha(read('index.html')),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
+ const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha(read('revisao-inteligente.js')),next('revisao-inteligente.js',cards.reviewAfterSha256));assert.equal(legacyIndexDigest(),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
  assert.equal(sha(read('dados/questoes-auditadas-s18.js')),sha(require('node:child_process').execFileSync('git',['show','HEAD:dados/questoes-auditadas-s18.js'],{cwd:ROOT}))) ;
  const b=boot();assert.equal(b.z.AGUBackup20.keys().length,9);assert.equal(b.z.AGULegal.stats().laws,6);assert.equal(b.z.AGULegal.stats().units,1176);
 });
