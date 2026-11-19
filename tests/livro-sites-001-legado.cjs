@@ -7,7 +7,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 
 const originalTiles="'<div class=\"hub-tiles\">'+[";
-const sitesTiles="'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/\" rel=\"noopener noreferrer\" aria-label=\"Abrir Apostila Leitura AGU\"><b>Apostila · Leitura AGU</b><span>Capítulos completos em leitor acessível, com diagramas e referências. ADM-53 disponível.</span></a>'+[";
+const sitesTiles="'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/\" rel=\"noopener noreferrer\"><b>Apostila · Leitura AGU</b><span>Capítulos completos em leitor acessível, com diagramas e referências. ADM-53 disponível.</span></a>'+[";
 const sitesStyle='.hub-book{background:#e9f4f2;border-color:#b7d7d1;text-decoration:none}.hub-book:hover,.hub-book:focus-visible{background:#dff0eb;border-color:#438e83}.hub-book b{color:#15545a}.hub-book span{color:#476d70}\n';
 
 module.exports=function legacyIndexDigest(){
