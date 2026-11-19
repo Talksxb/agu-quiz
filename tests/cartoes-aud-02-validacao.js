@@ -1,5 +1,6 @@
 /* CARTOES-AUD-02 — quatro cartões autorais de fontes primárias e prova pública. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const BASE=path.resolve(__dirname,'..'),KEY='agu_quiz_revisao_inteligente_v1';
 const read=f=>fs.readFileSync(path.join(BASE,f),'utf8');
@@ -47,7 +48,7 @@ check('fixture aditiva encadeia fonte publicada e não reescreve histórico',()=
  const f=JSON.parse(read('tests/fixtures/cartoes-aud-02-delta.json')),previous=JSON.parse(read('tests/fixtures/cartoes-aud-01-delta.json')),codigos=JSON.parse(read('tests/fixtures/codigos-cc-cpc-deltas.json')),biblioteca=JSON.parse(read('tests/fixtures/biblioteca-leis-02-deltas.json'));
  assert.equal(f.htmlBeforeSha256,codigos.changed['index.html'].after);assert.equal(biblioteca.changed['index.html'].before,f.htmlBeforeSha256);assert.equal(f.reviewBeforeSha256,previous.reviewAfterSha256);
  const next=require('./hash-chain-cartoes-aud-03.cjs');
- assert.equal(sha('index.html'),next('index.html',biblioteca.changed['index.html'].after));assert.equal(biblioteca.concurrentCards02HtmlSha256,f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),next('revisao-inteligente.js',f.reviewAfterSha256));assert.equal(sha(f.newFile),f.newFileSha256);
+ assert.equal(legacyIndexDigest(),next('index.html',biblioteca.changed['index.html'].after));assert.equal(biblioteca.concurrentCards02HtmlSha256,f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),next('revisao-inteligente.js',f.reviewAfterSha256));assert.equal(sha(f.newFile),f.newFileSha256);
  for(const [file,value] of Object.entries(f.unchanged)){
   if(file==='leitor-juridico.js'){
    assert.equal(value,biblioteca.changed[file].before,'o leitor mudou somente pela Biblioteca02');

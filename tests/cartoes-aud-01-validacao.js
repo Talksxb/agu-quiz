@@ -1,5 +1,6 @@
 /* CARTOES-AUD-01 — escopo público, provas históricas e revisão sem efeitos de leitura. */
 'use strict';
+const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..');
@@ -96,7 +97,7 @@ check('fixture encadeia somente hashes novos aos históricos preservados',()=>{
  const ux04=JSON.parse(read('tests/fixtures/ux-baralhos-04-delta.json'));
  assert.equal(delta.htmlBeforeSha256,leg13.htmlAfterSha256);
  assert.equal(delta.reviewBeforeSha256,ux04.reviewAfterSha256);
- assert.equal(afterCartoes02('index.html',afterCodigos('index.html',delta.htmlAfterSha256)),digest('index.html'));
+ assert.equal(afterCartoes02('index.html',afterCodigos('index.html',delta.htmlAfterSha256)),legacyIndexDigest());
  assert.equal(afterCartoes02('revisao-inteligente.js',delta.reviewAfterSha256),digest('revisao-inteligente.js'));
  assert.equal(delta.newFileSha256,digest(delta.newFile));
  for(const [file,hash] of Object.entries(delta.unchanged))assert.equal(digest(file),hash,file);
