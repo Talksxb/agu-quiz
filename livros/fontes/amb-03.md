@@ -1364,37 +1364,37 @@ LIVRO-AMB-001 · Edição de 20/11/2026 · Material original de estudo, sem cert
 
 Os diagramas são SVGs embutidos no [HTML integral original](../livro-amb-001-original.html), sem arquivos SVG autônomos neste repositório. A representação textual dos quatro diagramas já está nos blocos de leitura (seções 2, 3, 4 e 8). As descrições a seguir complementam a acessibilidade e permitem conferir ramos e limites no visual; nenhuma figura foi inventada.
 
-### Figura V1 — 
+### Figura V1 — Árvore conceitual — a Constituição não tem uma competência ambiental única
 
 **Descrição alternativa substantiva:** A Constituição organiza quatro referências diferentes: o art. 23 trata da execução administrativa comum; os arts. 24 e 30 disciplinam a legislação concorrente, a suplementação e o interesse local; e o art. 225 impõe o dever material de proteção e a avaliação dos impactos quando exigida. A LC 140/2011 organiza a cooperação administrativa, sem eliminar a autonomia federativa nem dispensar a proteção ambiental.
 
-**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
+**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#%C3%A1rvore-conceitual-a-constitui%C3%A7%C3%A3o-n%C3%A3o-tem-uma-compet%C3%AAncia-ambiental-%C3%BAnica). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
 
-### Figura V2 — 
+### Figura V2 — 3.5. Supletividade, subsidiariedade e mora
 
 **Descrição alternativa substantiva:** A atuação supletiva substitui o exercício da ação de outro ente apenas diante de pressuposto jurídico demonstrado, como falta de órgão capacitado ou hipótese de mora juridicamente relevante. A atuação subsidiária é apoio técnico ou administrativo solicitado, sem transferir a titularidade decisória. Identificar a base legal, o gatilho, a competência final e a documentação impede confundir as duas figuras.
 
-**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
+**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#supletividade-subsidiariedade-e-mora). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
 
-### Figura V3 — 
+### Figura V3 — 4.2. Fluxo decisório de competência e fiscalização
 
 **Descrição alternativa substantiva:** O fluxograma começa distinguindo licença ou renovação de vistoria, auto e sanção. Para licenciamento, identifica o ente atribuído pela LC 140, examina localização, tipologia, hipótese federal, órgão estruturado, prazo e transição. Para fiscalização, preserva proteção e medidas urgentes, confronta auto do licenciador com atuação de outros entes e exige prova de omissão, insuficiência, duplicidade e confronto interpretativo com a Lei 15.190/2025; não há resultado automático.
 
-**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
+**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#fluxo-decis%C3%B3rio-de-compet%C3%AAncia-e-fiscaliza%C3%A7%C3%A3o). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
 
-### Figura V4 — 
+### Figura V4 — 8.7. Diagrama da resolução
 
 **Descrição alternativa substantiva:** O caso parte da rodovia presente em dois Estados. A situação orienta a competência licenciadora federal do IBAMA, a participação técnica dos demais entes sem duplicação de licenças, a fiscalização comum diante de dano, o cotejo de autos e da mora na renovação, a análise do enquadramento em LAE e a entrega de manifestação motivada com providências documentais e preventivas.
 
-**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
+**Visualização histórica preservada:** [abrir o SVG incorporado ao HTML original](../livro-amb-001-original.html#diagrama-da-resolu%C3%A7%C3%A3o). Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.
 
 ### Tabelas originais preservadas semanticamente
 
 O JSON publicado contém os dados em listas achatadas; este apêndice restaura a **forma tabular** dos dois quadros a partir das células reais do HTML original. Não implica que a conversão visual completa tenha sido certificada.
 
-### Tabela T1 — 
+### Tabela T1 — 3.5. Supletividade, subsidiariedade e mora
 
-Transcrição célula a célula da tabela do HTML original; mantém texto e ordem de linhas/colunas. [Inspecionar tabela na edição visual](../livro-amb-001-original.html#).
+Transcrição célula a célula da tabela do HTML original; mantém texto e ordem de linhas/colunas. [Inspecionar tabela na edição visual](../livro-amb-001-original.html#supletividade-subsidiariedade-e-mora).
 
 | Critério | Atuação supletiva | Atuação subsidiária |
 | --- | --- | --- |
@@ -1404,9 +1404,9 @@ Transcrição célula a célula da tabela do HTML original; mantém texto e orde
 | Exemplo | Estado licencia impacto local por ausência do órgão municipal capacitado/conselho | Estado oferece perícia hídrica solicitada pelo Município |
 | Prova necessária | Falta de estrutura, mora relevante, competência e formalização | Pedido, escopo e documentação do apoio |
 
-### Tabela T2 — 
+### Tabela T2 — 5.4. Quadro de vigência — três relógios que não podem ser misturados
 
-Transcrição célula a célula da tabela do HTML original; mantém texto e ordem de linhas/colunas. [Inspecionar tabela na edição visual](../livro-amb-001-original.html#).
+Transcrição célula a célula da tabela do HTML original; mantém texto e ordem de linhas/colunas. [Inspecionar tabela na edição visual](../livro-amb-001-original.html#quadro-de-vig%C3%AAncia-tr%C3%AAs-rel%C3%B3gios-que-n%C3%A3o-podem-ser-misturados).
 
 | Marco | Consequência na análise |
 | --- | --- |
