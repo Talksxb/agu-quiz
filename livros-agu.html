@@ -62,12 +62,12 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 </header>
 <section id="catalog" class="card" aria-labelledby="catalog-title">
 <h2 id="catalog-title">Escolha seu livro</h2>
-<p class="small muted">Livros completos preservados de arquivos editoriais do Projeto AGU. A versão de PDF é apresentada em texto extraído, sem reproduzir fielmente gráficos e paginação tipográfica.</p>
+<p class="small muted">Capítulos autorais para leitura contínua ou guiada, preservados de edições finais do Projeto AGU. Transposições textuais podem não reproduzir a diagramação e os gráficos; quando disponível, consulte a versão original.</p>
 <div id="cards" class="grid">
 <button type="button" class="book" data-book="lgpd-adm64b"><strong>LGPD na Administração Pública</strong><span>LIVRO-DIG-001 · ADM-64b · edição 2.0 · 24 páginas</span><span>Direito Digital</span></button>
 <button type="button" class="book" data-book="adm-53"><strong>Responsabilidade patrimonial do Estado</strong><span>LIVRO-PIL-001 · ADM-53 · edição 1.0 · 20 páginas</span><span>Direito Administrativo</span></button>
 <button type="button" class="book" data-book="adm-54"><strong>Agentes públicos</strong><span>LIVRO-ADM-002 · ADM-54 · edição 1.0 · 17 seções</span><span>Direito Administrativo</span></button>
-<button type="button" class="book" disabled><strong>Direito Ambiental</strong><span>Livro completo ainda não localizado/concluído.</span><span>Não é material certificado ou publicado.</span></button>
+<button type="button" class="book" data-book="amb-03"><strong>Competências e Cooperação Ambiental</strong><span>LIVRO-AMB-001 · AMB-03 · edição de 20/11/2026 · 17 seções</span><span>Direito Ambiental · capítulo autônomo</span></button>
 </div>
 </section>
 <section id="book" class="card" hidden aria-labelledby="book-title">
@@ -75,6 +75,7 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 <p id="book-category" class="small muted"></p>
 <h2 id="book-title" tabindex="-1"></h2>
 <p id="book-status" class="small muted"></p>
+<p id="book-original" class="small" hidden><a id="original-link" target="_blank" rel="noopener noreferrer">Abrir edição original responsiva, com quadros e diagramas</a></p>
 <p class="notice">Leitura não equivale a domínio curricular. O histórico é local, sem sincronização com Caderno, auditoria, GPT Sites ou outros aparelhos. Em capítulos provenientes de PDF, a extração de texto não substitui o arquivo original em apresentação gráfica.</p>
 <div class="controls">
 <div class="field"><label for="page">Seção ou página</label><select id="page"></select></div>
@@ -115,7 +116,8 @@ Fontes: arquivos editoriais originais LIVRO-DIG-001 v2.0, LIVRO-PIL-001 v1.0 e L
 const manifest={
  "lgpd-adm64b":"livros/lgpd-adm64b.json",
  "adm-53":"livros/adm-53.json",
- "adm-54":"livros/adm-54.json"
+ "adm-54":"livros/adm-54.json",
+ "amb-03":"livros/amb-03.json"
 };
 const KEY="agu_livros_reader_v1";
 const $=id=>document.getElementById(id);
@@ -192,6 +194,9 @@ async function openBook(id){
  index=Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
  $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
+ const originalOk=typeof data.original_html==='string'&&/^livros\/[a-z0-9-]+\.html$/.test(data.original_html);
+ $('book-original').hidden=!originalOk;
+ if(originalOk)$('original-link').href=data.original_html;
  $('page').replaceChildren();data.pages.forEach((p,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=(i+1)+'. '+p.label;$('page').appendChild(op)});
  $('wpm').textContent='—';$('recall').value='';history.replaceState(null,'','?livro='+encodeURIComponent(id));
  renderCurrent();
