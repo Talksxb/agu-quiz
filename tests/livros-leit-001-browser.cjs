@@ -82,7 +82,7 @@ async function main(){
   assert.equal(await original.getAttribute('href'),'livros/livro-amb-001-original.html');
   const resp=await env.request.get(new URL('livros/livro-amb-001-original.html',url).href);
   assert.equal(resp.status(),200);
-  assert.match(await resp.text(),/<svg\\b/i,'diagramas da edição original preservados');
+  assert.match(await resp.text(),/<svg\b/i,'diagramas da edição original preservados');
   await env.locator('#mode').selectOption('guided');
   assert.equal(await env.locator('#read-guided').isVisible(),true);
   await env.getByRole('button',{name:'Iniciar leitura'}).click();
