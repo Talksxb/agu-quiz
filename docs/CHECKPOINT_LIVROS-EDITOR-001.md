@@ -21,7 +21,7 @@
 | `tests/livros-editor-001-fidelidade.cjs` | Adicionado, não integrado à publicação | Verificador documental local/CI manual |
 | `docs/CHECKPOINT_LIVROS-EDITOR-001.md` | Este registro | Limites, estados e handoff |
 
-**SHA de origem (Git blob):** Ambiental HTML `b12e615a3afe3762ead34455e6d25aeb1d4fce81`; Ambiental JSON `1ef017d5766fdf75f47abbd27d333f844c6d91d6`; LGPD JSON `832e4701576a1abed3e0052da961d62248b7993b`. No mesmo commit-base, ADM-53 `87f...` e ADM-54 `7b1bbe881aa4e3b398be88060e584b2bdaee8e2c` devem permanecer inalterados. O leitor `livros-agu.html` não integra o diff.
+**SHA de origem (Git blob):** Ambiental HTML `b12e615a3afe3762ead34455e6d25aeb1d4fce81`; Ambiental JSON `1ef017d5766fdf75f47abbd27d333f844c6d91d6`; LGPD JSON `832e4701576a1abed3e0052da961d62248b7993b`. No mesmo commit-base, ADM-53 `cbb484ac817bee33467b055232188c39d36cd730` e ADM-54 `7b1bbe881aa4e3b398be88060e584b2bdaee8e2c` devem permanecer inalterados. O leitor `livros-agu.html` não integra o diff.
 
 ## Evidência e portões
 
