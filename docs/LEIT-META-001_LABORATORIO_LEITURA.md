@@ -35,3 +35,11 @@ Exercitar a fluência na leitura jurídica sem sacrificar compreensão. A sessã
 
 ## Próxima iteração proposta
 `LEIT-META-002-INT`: sob autorização independente, validar piloto no navegador, ajustar acessibilidade/UX e oferecer atalho contextual na Biblioteca Inteligente, mantendo backup e estado legado inalterados.
+
+## Atualização — LEIT-META-002-INT (20/11/2026)
+- O piloto tem cartão de entrada na Biblioteca Inteligente no mesmo commit de revisão. Os guardas de hash históricos foram ajustados **somente** para retirar os dois cartões editoriais na normalização, preservando o HTML anterior.
+- A CI foi estendida: Node com teste do laboratório, Playwright + axe em 320, 390, 768 e 1280 px, simulação guiada e teste em URL publicada após merge.
+- Melhoria de acessibilidade: foco programático no título de cada etapa, manutenção de pausa/retorno e prevenção de overflow horizontal; somente a CI executada pode confirmar estes comportamentos.
+- Cotejo pontual: LGPD arts. 6º, 23, 26, §1º, e 27; Lei 9.784/1999 art. 50 e §1º. A exceção do art. 26, §1º, referente à execução descentralizada e finalidade específica foi explicitada. Sem declaração de certificação integral do corpus.
+- Pendente até evidência independente: testes em Android físico e leitura por leitor de tela real. Tests Chromium/axe medem compatibilidade automatizada, não substituem esses dispositivos.
+- Após aprovação de CI e revisão: retirar rascunho, integrar PR e verificar GitHub Pages antes de declarar publicação.
