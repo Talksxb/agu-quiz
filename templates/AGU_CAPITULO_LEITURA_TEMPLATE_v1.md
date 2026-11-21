@@ -95,7 +95,7 @@ publishing_policy: "rascunho; não publicado"
 
 | Fonte/dispositivo/precedente | Seção estável | Caso/questão afetados | Gatilho e providência | Estado |
 |---|---|---|---|---|
-| [F-01 / ARTIGO] | [ID] | [CASO/Q] | [ALTERAÇÃO REAL A CONFERIR; NÃO ENSEIO] | [PENDENTE] |
+| [F-01 / ARTIGO] | [ID] | [CASO/Q] | [ALTERAÇÃO REAL A CONFERIR; NÃO ENSAIO] | [PENDENTE] |
 
 [Indicar necessidade **pontual** de doutrina, se demonstrada; caso contrário, dispensá-la. Diferenciar correção editorial, edição jurídica e publicação.]
 
