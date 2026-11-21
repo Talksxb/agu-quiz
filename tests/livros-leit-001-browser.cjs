@@ -42,7 +42,7 @@ async function main(){
    const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_livros_reader_v1')||'{}'));
    assert.deepEqual(saved['lgpd-adm64b'].done,[0]);
    assert.equal(localStorageCheck(saved),true);
-   await page.reload();await page.getByRole('button',{name:/LGPD na Administração Pública/}).click();
+   await page.reload(); // O link profundo já reabre o livro, sem escolher novamente no catálogo.
    await page.waitForFunction(()=>document.querySelector('#book-title')?.textContent==='LGPD aplicada à Administração Pública');
    assert.equal(await page.locator('#page').inputValue(),'1','retomada local');
    await page.locator('#mode').selectOption('integral');
