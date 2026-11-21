@@ -31,6 +31,8 @@ jobs:
         run: node tests/leitura-meta-001-validacao.js
       - name: LIVROS-LEIT-001 — integridade do acervo, capítulo completo e hashes legados
         run: node tests/livros-leit-001-validacao.js
+      - name: LIVROS-EDITOR-001 — fidelidade textual de AMB-03 e recursos visuais
+        run: node tests/livros-editor-001-fidelidade.cjs
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
         run: node tests/livro-sites-001-validacao.js
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
