@@ -85,6 +85,35 @@ def classify_difference(mirror, official):
     return 'diferenca_textual_exige_revisao'
 
 
+ARTICLE_PATTERN = re.compile(r'^Art\.\s*(\d{1,3}(?:\.\d{3})*|\d+)(?:-([A-Z]))?[º°.]?\s', re.I)
+REVOKED_RANGE_PATTERN = re.compile(
+    r'^Arts\.\s*(\d{1,3}(?:\.\d{3})*|\d+)\s+a\s+'
+    r'(\d{1,3}(?:\.\d{3})*|\d+)[º°.]?\s', re.I)
+
+
+def official_revoked_ranges(raw, start=1, end=5):
+    """Manifesta intervalos expressamente revogados, sem fabricar texto individual.
+
+    Mantém a linha de origem em cada ID para reconciliação verificável. Outros
+    intervalos (não revogatórios) não recebem classificação jurídica automática.
+    """
+    parser = Paragraphs()
+    parser.feed(raw.decode('utf-8', errors='replace'))
+    result = {}
+    for index, para in enumerate(parser.lines):
+        if index in parser.centered:
+            continue
+        match = REVOKED_RANGE_PATTERN.match(para)
+        if not match or not re.search(r'\bRevogad[oa]s?\b', para, re.I):
+            continue
+        first, last = (int(part.replace('.', '')) for part in match.groups())
+        if first > last:
+            continue
+        for number in range(max(start, first), min(end, last) + 1):
+            result[number] = {'start': first, 'end': last, 'source_line': normalize(para)}
+    return result
+
+
 def official_articles(raw, start=1, end=5):
     parser = Paragraphs()
     parser.feed(raw.decode('utf-8', errors='replace'))
@@ -93,14 +122,17 @@ def official_articles(raw, start=1, end=5):
     for index, para in enumerate(parser.lines):
         if index in parser.centered:
             continue
-        match = re.match(r'^Art\.\s*(\d+(?:-[A-Z])?)[º°.]?\s', para, re.I)
+        match = ARTICLE_PATTERN.match(para)
         if match:
-            number = int(match.group(1).split('-')[0])
-            active = match.group(1)
+            number = int(match.group(1).replace('.', ''))
+            active = str(number) + (('-' + match.group(2).upper()) if match.group(2) else '')
             if number > end:
                 break
             if number >= start:
                 found[active] = [para]
+        elif REVOKED_RANGE_PATTERN.match(para):
+            # Um intervalo é estrutura própria; nunca extensão do artigo anterior.
+            active = None
         elif active in found:
             # Títulos estruturais entre artigos não fazem parte do dispositivo anterior.
             # Mantém incisos/alinéas com redação, mesmo iniciados por numeral romano.
@@ -140,15 +172,20 @@ def run(cc, cpc, start=1, end=5):
     for law, path in sources:
         raw = Path(path).read_bytes()
         official = official_articles(raw, start, end)
+        revoked = official_revoked_ranges(raw, start, end)
         for number in range(start, end + 1):
             left = normalize(mirror[law].get(str(number)) or '')
             right = official.get(str(number), '')
+            grouped_revocation = (number in revoked and not right and
+                                  bool(re.search(r'\bRevogad[oa]\b', left, re.I)))
             rows.append({
                 'id': f'{law}:art{number}',
                 'mirror_present': bool(left),
                 'official_present': bool(right),
                 'exact_after_whitespace_normalization': bool(left and right and left == right),
-                'comparison_class': classify_difference(left, right) if left and right else 'dispositivo_ausente',
+                'comparison_class': ('revogacao_agrupada_documentada' if grouped_revocation else
+                                     classify_difference(left, right) if left and right else 'dispositivo_ausente'),
+                'official_revocation_range': revoked.get(number),
                 'mirror_sha256': hashlib.sha256(left.encode()).hexdigest(),
                 'official_sha256': hashlib.sha256(right.encode()).hexdigest(),
                 'mirror_excerpt': left[:180],
