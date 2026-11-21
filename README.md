@@ -12,6 +12,14 @@ Em **Biblioteca Inteligente**, o cartão **Apostila · Leitura AGU** abre o [lei
 
 O conteúdo jurídico é atualizado no leitor; o Quiz mantém apenas o endereço público. O teste `tests/livro-sites-001-validacao.js` confere a presença do atalho e a ausência de referências a caminhos internos. Os testes de integridade de versões anteriores comparam um índice normalizado que exclui **somente** o acréscimo do cartão e de seu estilo (`tests/livro-sites-001-legado.cjs`); toda outra alteração histórica continua coberta pelos hashes originais.
 
+## Laboratório de Leitura Jurídica (LEIT-META-002)
+
+O cartão **Laboratório de Leitura Jurídica**, dentro da **Biblioteca Inteligente**, abre `laboratorio-leitura.html`. Há leitura integral e guiada por frases com pausa/retorno, três questões de recuperação objetiva por texto, resposta discursiva autoavaliada e histórico local de sessões.
+
+O método não promete suprimir subvocalização nem mede domínio curricular automaticamente. Os dois casos são **autorais**, fundamentados pontualmente na LGPD (arts. 6º, 23, 26 e 27) e na Lei nº 9.784/1999 (art. 50), sujeitos à revisão editorial; não são questões oficiais e os IDs do piloto não integram a matriz curricular de 412 IDs.
+
+A chave `agu_leitura_lab_v1` é exclusiva do laboratório e **não** modifica o banco/backup legados do Quiz. O histórico não sincroniza entre navegadores/aparelhos e não é vinculado ao Caderno AGU. Não armazena o conteúdo discursivo. O teste `tests/leitura-meta-001-validacao.js` e a jornada `tests/leitura-meta-002-browser.cjs` são invocados pela CI. O acesso no GitHub Pages depende de integração e deploy efetivos.
+
 ## Limites importantes
 
 - O site é **público** e executa somente no navegador; **não há login nem sincronização com Google Sheets**.
