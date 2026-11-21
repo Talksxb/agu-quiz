@@ -66,7 +66,7 @@ O título histórico da documentação `LIVROS-LEIT-001` descrevia Ambiental com
 |---|---|---|---|
 | SVG V1 árvore constitucional | §2 (art. 23, 24/30 e 225) | Descrição substantiva, texto linear já existente, link à âncora | Sem perda do arquivo original; desenho não incorporado ao MD |
 | Tabela T1 supletiva/subsidiária | §3.5 | Células reais restauradas em tabela Markdown no aparato; texto linear dos 17 blocos mantido | Estrutura recuperada; duplicate textual intencional |
-| SVG V2 supletiva/subsidiária | §3.5 | Descrição e link; desenho mantido no HTML | Fidelity visual dependente do HTML |
+| SVG V2 supletiva/subsidiária | §3.5 | Descrição e link; desenho mantido no HTML | Fidelidade visual dependente do HTML |
 | SVG V3 fluxo licença/fiscalização | §4.2 | Descrição inclui separação dos caminhos e ressalvas; link | Branches visuais preservados somente no HTML |
 | Tabela T2 três relógios | §5.4 | Células reais da tabela restituídas em Markdown | Sem reinterpretação dos marcos |
 | SVG V4 solução AGU | §8.7 | Descrição com etapas; link ao HTML | Sem redesenhar fluxos |
