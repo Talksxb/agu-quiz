@@ -20,6 +20,21 @@ O método não promete suprimir subvocalização nem mede domínio curricular au
 
 A chave `agu_leitura_lab_v1` é exclusiva do laboratório e **não** modifica o banco/backup legados do Quiz. O histórico não sincroniza entre navegadores/aparelhos e não é vinculado ao Caderno AGU. Não armazena o conteúdo discursivo. O teste `tests/leitura-meta-001-validacao.js` e a jornada `tests/leitura-meta-002-browser.cjs` são invocados pela CI. O acesso no GitHub Pages depende de integração e deploy efetivos.
 
+## Livros integrais no Laboratório — LIVROS-LEIT-001
+
+A **Biblioteca Inteligente** inclui o cartão **Livros · Leitura guiada AGU**, apontando para `livros-agu.html`. O Laboratório de Leitura Jurídica existente também oferece atalho. O leitor usa o mesmo princípio de cronômetro, ritmo ajustável e acompanhamento local, mas preserva os capítulos por páginas/seções: leitura contínua não é interrompida por questões; leitura guiada é opcional e usa blocos de sentido.
+
+Capítulos existentes, incorporados a partir dos originais editoriais do projeto:
+- `livros/lgpd-adm64b.json` — LIVRO-DIG-001, LGPD aplicada à Administração Pública, edição 2.0, 24 páginas de texto extraído do PDF (corte editorial 20/11/2026; auditoria histórica 04/11/2026);
+- `livros/adm-53.json` — LIVRO-PIL-001, Responsabilidade patrimonial do Estado, edição 1.0, 20 páginas de texto extraído do PDF (18/11/2026);
+- `livros/adm-54.json` — LIVRO-ADM-002, Agentes públicos, edição 1.0, 17 seções, fonte Markdown preservada (18/11/2026).
+
+**Direito Ambiental ainda não tem livro completo localizado/publicável.** O leitor exibe cartão desabilitado com status verdadeiro, nunca cria conteúdo resumido ou inventa certificação. O acervo poderá receber `LIVRO-AMB-001` quando produzido e editorialmente verificado.
+
+Os textos extraídos de PDF podem perder diagramação e gráficos; as palavras e páginas de texto foram preservadas no dataset de leitura, e o documento de origem é a referência de fidelidade editorial. Os textos são autorais, não um pacote de leis integrais ou de peças confidenciais do repositório privado. A publicação GitHub Pages é pública. Cada obra registra no próprio texto sua proveniência, lacunas e verificação pontual, sem alegar certificação integral.
+
+O progresso fica exclusivamente no `localStorage` **deste navegador/domínio**, em chave própria `agu_livros_reader_v1` (página atual, páginas concluídas e horário de atualização). O campo de recuperação livre não é salvo. O registro de leitura não representa domínio, pontuação de concurso, sincronização entre dispositivos, nem integração automática com o Caderno AGU ou a matriz oficial. Testes: `tests/livros-leit-001-validacao.js`, `tests/livros-leit-001-browser.cjs`.
+
 ## Limites importantes
 
 - O site é **público** e executa somente no navegador; **não há login nem sincronização com Google Sheets**.
