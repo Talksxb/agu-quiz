@@ -29,7 +29,7 @@ Capítulos existentes, incorporados a partir dos originais editoriais do projeto
 - `livros/adm-53.json` — LIVRO-PIL-001, Responsabilidade patrimonial do Estado, edição 1.0, 20 páginas de texto extraído do PDF (18/11/2026);
 - `livros/adm-54.json` — LIVRO-ADM-002, Agentes públicos, edição 1.0, 17 seções, fonte Markdown preservada (18/11/2026).
 
-**Direito Ambiental ainda não tem livro completo localizado/publicável.** O leitor exibe cartão desabilitado com status verdadeiro, nunca cria conteúdo resumido ou inventa certificação. O acervo poderá receber `LIVRO-AMB-001` quando produzido e editorialmente verificado.
+**Direito Ambiental — AMB-03 disponível:** o capítulo autoral `LIVRO-AMB-001 — Competências e Cooperação Ambiental` (20/11/2026) foi integrado em `livros/amb-03.json` com 17 seções textuais e link para a edição original `livros/livro-amb-001-original.html`, preservada com diagramas SVG, tabelas e referências. **Escopo delimitado ao AMB-03; não representa conclusão de AMB-01 a AMB-11 ou certificação integral.** A transposição para blocos não replica toda a diagramação; consulte a edição original para diagramas. A integração é técnica, sem revisão de mérito jurídico adicional.
 
 Os textos extraídos de PDF podem perder diagramação e gráficos; as palavras e páginas de texto foram preservadas no dataset de leitura, e o documento de origem é a referência de fidelidade editorial. Os textos são autorais, não um pacote de leis integrais ou de peças confidenciais do repositório privado. A publicação GitHub Pages é pública. Cada obra registra no próprio texto sua proveniência, lacunas e verificação pontual, sem alegar certificação integral.
 

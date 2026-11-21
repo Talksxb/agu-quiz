@@ -36,3 +36,21 @@ Disponibilizar livros originais de LGPD, Direito Administrativo e espaço para D
 
 ## Próxima tarefa independente
 `LIVRO-AMB-001`: selecionar uma **unidade curricular literal** a partir da matriz verificada, produzir capítulo ambiental completo conforme `AGU_BASE_MESTRA_v5.2_FINAL` e `AGU_PADRAO_LEITURA_COMPLETA_v1.1_FINAL`, com problema gerador, direito positivo, jurisprudência pontual, requisitos, exceções, caso AGU resolvido, questões autorais, fontes e lacunas; entregar Markdown autoral e PDF quando apropriado. Somente depois publicar no dataset.
+
+
+## Atualização — LIVRO-AMB-001 / integração da edição final (21/11/2026)
+
+**Repositório de publicação:** `Talksxb/agu-quiz` · branch `feature/livro-amb-001-leitura` (antes da mescla).
+
+**Fonte editorial recuperada:** `LIVRO-AMB-001_Leitura_Responsiva.html` (Biblioteca do projeto), edição 20/11/2026. O título e conteúdo demonstram que se trata de **Competências e Cooperação Ambiental**, com foco no ID **AMB-03**, e não de cobertura integral de todos os tópicos ambientais.
+
+**Tratamento editorial e integridade:**
+- `livros/livro-amb-001-original.html`: cópia literal do HTML responsivo, sem scripts e com os quatro elementos SVG e os quadros visuais preservados. Git blob SHA do original `b12e615a3afe3762ead34455e6d25aeb1d4fce81` registrado em teste de regressão.
+- `livros/amb-03.json`: transposição textual por 17 seções de título, com aproximadamente 9,4 mil palavras para os modos contínuo e guiado. A transposição não deve ser tratada como reprodução gráfica idêntica: o botão `Abrir edição original responsiva` assegura a consulta aos diagramas e quadros.
+- `livros-agu.html`: novo cartão habilitado para AMB-03, deep link `?livro=amb-03`, ritmo regulável e persistência na chave já existente `agu_livros_reader_v1` sem migração destrutiva.
+- Não confundir AMB-03 com os demais AMB-01–11. Não houve reauditoria das alterações legislativas ou da jurisprudência contida na versão editorial; permanece a declaração de fontes, datas e limitações do próprio livro.
+- A origem do conteúdo é um documento autoral já preparado para publicação, e não um espelho do repositório privado de auditoria. Nunca incluir evidências privadas ou marcas pessoais.
+
+**Validação exigida:** ampliar os testes existentes `tests/livros-leit-001-validacao.js` e `tests/livros-leit-001-browser.cjs`, já executados na CI; conferir fonte literal por hash, carregamento 17/17 seções, leitura guiada, pausa, retorno, progresso local segregado, acesso ao original, responsividade e axe-core em viewport móvel. Antes do merge, exigir jobs CI verdes. Após merge, confirmar build/deploy do GitHub Pages e jornada pública automática.
+
+**Lacunas não resolvidas pela integração:** teste físico Android/TalkBack; cotejo jurídico substantivo posterior à edição; acessibilidade das figuras SVG na edição original e revisão visual da conversão Markdown; estudo do aluno e avaliação das respostas de recuperação. A leitura continua não certificando domínio.
