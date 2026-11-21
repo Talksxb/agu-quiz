@@ -60,7 +60,7 @@ A descrição `oficial` de uma questão exige órgão, concurso/cargo, ano, enun
 ## 5. Contrato de Markdown canônico
 
 - UTF-8; **um H1** por obra, H2 para seções estruturais, H3 para subseções, títulos semanticamente específicos e âncoras estáveis quando houver manutenção diferencial. Não introduzir H1 extra em anexos.
-- Texto principal em prosa; listas e tabelas **complementam** a explicação. Tabelas complexas exigem versão linear acessível ou comentário que reconstruía as relações. Usar tabelas estreitas no móvel e links estáveis.
+- Texto principal em prosa; listas e tabelas **complementam** a explicação. Tabelas complexas exigem versão linear acessível ou comentário que reconstrua as relações. Usar tabelas estreitas no móvel e links estáveis.
 - Figuras exigem alternativa **substantiva**, com premissas, setas, ramos e limites; preservar ativo visual original e vincular à seção. Não bastam `diagrama abaixo` ou `imagem ilustrativa`.
 - Fontes primárias em links legíveis e referências por afirmação; notas numeradas para observações, não para esconder lacuna. Evitar rodapé/cabeçalho de PDF, espaços de paginação e linhas quebradas artificialmente na **nova** redação.
 - Não transformar Markdown em HTML/PDF/JSON diretamente sem validador e comparação de título, ordem, prosa, tabelas, figuras, questões e referências. A publicação continua exigindo revisão.
