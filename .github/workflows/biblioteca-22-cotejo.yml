@@ -1,0 +1,88 @@
+name: Biblioteca 22 - cotejo integral verificavel
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/biblioteca-22-cotejo.yml'
+      - 'scripts/reexecutar-matriz-2008.py'
+      - 'scripts/cotejar-biblioteca-lote04.py'
+      - 'tests/test_reexecutar_matriz_2008.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comparar-2008:
+    # A etapa 22 não é disparada pelas PRs antigas nem mesclada automaticamente.
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'audit/biblioteca-leis-22-reexecucao-evidencias'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exato
+        uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Testes determinísticos e universo histórico
+        run: |
+          python -m unittest discover -s tests -p 'test_biblioteca_leis_05.py' -v
+          python -m unittest discover -s tests -p 'test_reexecutar_matriz_2008.py' -v
+          python scripts/validar-matriz-transicao-biblioteca.py
+      - name: Baixar fontes oficiais completas (sem publicar HTML)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/biblioteca-22
+          curl --fail --location --silent --show-error --retry 3 --connect-timeout 20 --max-time 180 \
+            'https://www2.camara.leg.br/legin/fed/lei/2002/lei-10406-10-janeiro-2002-432893-normaatualizada-pl.html' \
+            --output /tmp/biblioteca-22/cc.html
+          curl --fail --location --silent --show-error --retry 3 --connect-timeout 20 --max-time 180 \
+            'https://www2.camara.leg.br/legin/fed/lei/2015/lei-13105-16-marco-2015-780273-normaatualizada-pl.html' \
+            --output /tmp/biblioteca-22/cpc.html
+          # Controle de proveniência: hashes/bytes exatos, sem aceitar mudança da captura.
+          printf 'CC:  '; sha256sum /tmp/biblioteca-22/cc.html
+          printf 'CPC: '; sha256sum /tmp/biblioteca-22/cpc.html
+          test "$(wc -c </tmp/biblioteca-22/cc.html)" -eq 1571920
+          test "$(wc -c </tmp/biblioteca-22/cpc.html)" -eq 938199
+          echo '6ed7c19586b21355e998746a0620cea5c2f3e6a24036d7f3743b7d30330e5d90  /tmp/biblioteca-22/cc.html' | sha256sum -c -
+          echo '0d7f8c9a0f67734cc047c3bea8bfabd57a7823f361d774041e11815822722821  /tmp/biblioteca-22/cpc.html' | sha256sum -c -
+      - name: Reexecutar exatamente 2008 identidades
+        run: |
+          python scripts/reexecutar-matriz-2008.py \
+            /tmp/biblioteca-22/cc.html /tmp/biblioteca-22/cpc.html \
+            --saida biblioteca-22-matriz-reexecutada-2008.csv
+      - name: Registrar contagens e ID editorial efetivamente medidos
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from collections import Counter
+          from pathlib import Path
+          path = Path('biblioteca-22-matriz-reexecutada-2008.csv')
+          with path.open(newline='', encoding='utf-8') as f:
+              rows = list(csv.DictReader(f, delimiter=';'))
+          assert len(rows) == 2008
+          counts = Counter(row['classe_nova'] for row in rows)
+          editorial = [row['id'] for row in rows
+                       if row['classe_nova'] == 'diferenca_aparente_restrita_a_nota_editorial_revisar']
+          report = ['## Biblioteca 22 — reexecução real de 2.008 IDs', '',
+                    '| Classe | Quantidade |', '| --- | ---: |']
+          report += [f'| {key} | {count} |' for key, count in sorted(counts.items())]
+          report += ['', 'IDs de diferenças editoriais: ' + (', '.join(editorial) or 'nenhum') + '.',
+                     '', 'Texto comparado; não é certificação de vigência ou julgamento jurídico.']
+          with Path(__import__('os').environ['GITHUB_STEP_SUMMARY']).open('a', encoding='utf-8') as out:
+              out.write('\n'.join(report) + '\n')
+          print('\n'.join(report))
+          PY
+      - name: Publicar somente CSV de hashes e classes (não o HTML oficial)
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblioteca-22-matriz-reexecutada-2008
+          path: biblioteca-22-matriz-reexecutada-2008.csv
+          retention-days: 30
