@@ -7,12 +7,12 @@ const fs=require('node:fs');
 const path=require('node:path');
 
 const originalTiles="'<div class=\"hub-tiles\">'+[";
-const sitesTiles="'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/\" rel=\"noopener noreferrer\"><b>Apostila · Leitura AGU</b><span>Capítulos completos em leitor acessível, com diagramas e referências. ADM-53 disponível.</span></a><a class=\"hub-entry hub-book\" href=\"laboratorio-leitura.html\"><b>Laboratório de Leitura Jurídica</b><span>Treine fluência e compreensão com casos autorais de LGPD e Direito Administrativo.</span></a>'+[";
+const sitesTiles="'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/\" rel=\"noopener noreferrer\"><b>Apostila · Leitura AGU</b><span>Capítulos completos em leitor acessível, com diagramas e referências. ADM-53 disponível.</span></a><a class=\"hub-entry hub-book\" href=\"laboratorio-leitura.html\"><b>Laboratório de Leitura Jurídica</b><span>Treine fluência e compreensão com casos autorais de LGPD e Direito Administrativo.</span></a><a class=\"hub-entry hub-book\" href=\"livros-agu.html\"><b>Livros · Leitura guiada AGU</b><span>LGPD, Agentes Públicos e Responsabilidade do Estado: capítulos completos com ritmo e progresso locais.</span></a>'+[";
 const sitesStyle='.hub-book{background:#e9f4f2;border-color:#b7d7d1;text-decoration:none}.hub-book:hover,.hub-book:focus-visible{background:#dff0eb;border-color:#438e83}.hub-book b{color:#15545a}.hub-book span{color:#476d70}\n';
 
 module.exports=function legacyIndexDigest(){
  const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
- assert.equal(html.split(sitesTiles).length,2,'Os cartões Sites e Laboratório devem aparecer exatamente uma vez');
+ assert.equal(html.split(sitesTiles).length,2,'Os cartões Sites, Laboratório e Livros devem aparecer exatamente uma vez');
  assert.equal(html.split(sitesStyle).length,2,'O estilo Sites deve aparecer exatamente uma vez');
  const legacyHtml=html.replace(sitesTiles,originalTiles).replace(sitesStyle,'');
  return crypto.createHash('sha256').update(legacyHtml).digest('hex');
