@@ -10,6 +10,7 @@ on:
       - '*.js'
       - '*.css'
       - 'dados/**'
+      - 'livros/**'
       - 'lib/**'
       - 'scripts/**'
       - 'fontes/**'
@@ -28,6 +29,8 @@ jobs:
         run: node --version
       - name: LEIT-META-001 — fluxo sintético, integridade e persistência segregada
         run: node tests/leitura-meta-001-validacao.js
+      - name: LIVROS-LEIT-001 — integridade do acervo, capítulo completo e hashes legados
+        run: node tests/livros-leit-001-validacao.js
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
         run: node tests/livro-sites-001-validacao.js
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
@@ -116,6 +119,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
         run: node tests/leitura-meta-002-browser.cjs
+      - name: LIVROS-LEIT-001 — livros integrais, toque emulado, retomada e axe
+        run: node tests/livros-leit-001-browser.cjs
       - name: LIVRO-SITES-001 — cartão da apostila em três larguras de tela
         run: node tests/livro-sites-001-browser.cjs
       - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
@@ -202,6 +207,8 @@ jobs:
           path: |
             tests/artifacts-leit-meta/*.json
             tests/artifacts-leit-meta/*.png
+            tests/artifacts-livros-001/*.json
+            tests/artifacts-livros-001/*.png
             tests/artifacts-s20/*.json
             tests/artifacts-s20/*.png
             tests/artifacts-s21/*.json
@@ -377,6 +384,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/leitura-meta-002-browser.cjs
+      - name: LIVROS-LEIT-001 — três livros completos na URL pública
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/livros-leit-001-browser.cjs
       - name: Jornada real no GitHub Pages publicado
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -388,6 +399,7 @@ jobs:
           name: agu-work01-publicado
           path: |
             tests/artifacts-leit-meta/
+            tests/artifacts-livros-001/
             tests/artifacts-work01/
             tests/artifacts-leg03/
             tests/artifacts-leg04/
