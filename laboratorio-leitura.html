@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>AGU | Laboratório de Leitura Jurídica — protótipo</title>
+<title>AGU | Laboratório de Leitura Jurídica — AGU Quiz</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#f5f7f9;color:#173344;line-height:1.55}
 *{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}
@@ -93,7 +93,7 @@ a{color:#155e6b}footer{margin-top:25px;color:#5d7380;font-size:12px}
 <div><div class="small">Variação da linha de base</div><div class="metric" id="delta">—</div><div class="small">não equivale a evolução comprovada</div></div>
 </div>
 <div id="feedback"></div>
-<details><summary>Critérios metodológicos e limitações</summary><p>Estes dois textos têm extensões e assuntos diferentes. Repetição, cansaço e familiaridade podem alterar o desempenho. O modo guiado é experimental; não há comprovação de que acelere a leitura jurídica sem perdas. A nota mede apenas três itens objetivos e não certifica domínio do Direito nem valida automaticamente sua resposta aberta.</p></details>
+<details><summary>Critérios metodológicos e limitações</summary><p>Estes dois textos têm extensões e assuntos diferentes. Repetição, cansaço e familiaridade podem alterar o desempenho. O modo guiado é experimental; não há comprovação de que acelere a leitura jurídica sem perdas. A apresentação por frases pode ser encerrada antes do final; nesse caso, a pontuação não prova leitura integral. A nota mede apenas três itens objetivos e não certifica domínio do Direito nem valida automaticamente sua resposta aberta.</p></details>
 <div class="actions"><button class="primary" id="again">Nova sessão</button><button id="clear">Apagar histórico local</button></div>
 </section>
 <section class="card" aria-labelledby="history-title">
@@ -111,11 +111,11 @@ a{color:#155e6b}footer{margin-top:25px;color:#5d7380;font-size:12px}
 (function(){
 const STORAGE="agu_leitura_lab_v1";
 const texts=[
-{id:"DIG-LGPD-01",label:"LGPD e contratação pública",source:"LGPD, arts. 6º, 23 e 26",paras:[
+{id:"DIG-LGPD-01",label:"LGPD e contratação pública",source:"LGPD, arts. 6º, 23, 26 e 27",paras:[
 "Uma autarquia federal planeja reformular o atendimento de um programa público destinado a microempreendedores. O cadastro atual reúne identificação pessoal, endereço, informações sobre a atividade profissional e documentos enviados pelos interessados. Para reduzir filas, a equipe propõe uma plataforma digital capaz de permitir a consulta do andamento dos pedidos.",
 "Durante a licitação, um fornecedor sugere importar a base completa para sua infraestrutura. Afirma que assim poderá oferecer atendimento personalizado e, no futuro, desenvolver novas funcionalidades. A proposta parece econômica, mas sua justificativa não especifica por que cada informação seria indispensável para consultar o andamento de um requerimento.",
 "A finalidade pública do programa não torna irrestrito o tratamento de dados pessoais. A atividade da autarquia precisa observar finalidades determinadas e princípios como adequação e necessidade. É importante distinguir o acesso necessário à execução de um serviço contratado de usos comerciais independentes, ainda que uma mesma empresa tenha capacidade técnica para ambos.",
-"O uso compartilhado entre entidades públicas, quando relacionado às suas atribuições, exige análise própria. A transferência de dados mantidos pelo Poder Público para entidades privadas está sujeita às hipóteses legais e a controles específicos. A mera existência de contrato não dispensa a demonstração de finalidade legítima nem autoriza que dados excedentes sejam empregados em projeto futuro não delimitado.",
+"O uso compartilhado entre entidades públicas, quando relacionado às suas atribuições, exige análise própria. A transferência de dados mantidos pelo Poder Público para entidades privadas é, como regra, vedada, ressalvadas as hipóteses legais. Uma delas envolve execução descentralizada de atividade pública que exija a transferência, exclusivamente para fim específico e determinado. O contrato não autoriza a empresa a reutilizar dados excedentes para exploração comercial ou projetos futuros indefinidos.",
 "Antes de aprovar a contratação, a assessoria jurídica solicita um mapa das operações de tratamento. Quer saber quais campos serão acessados, quem decidirá sobre as operações, qual a finalidade de cada acesso e como serão aplicados os controles de segurança. Também recomenda que a solução ofereça consulta de andamento com o conjunto mínimo de informações adequadas ao serviço.",
 "A decisão consultiva não opõe inovação e proteção de dados como valores incompatíveis. A questão é desenhar uma solução tecnológica ajustada ao dever público, examinando limites jurídicos desde o planejamento. Se informações adicionais forem realmente necessárias depois, sua utilização deverá receber justificativa própria à luz das finalidades e regras aplicáveis."
 ],questions:[
@@ -159,9 +159,9 @@ function start(){
  $("whole").hidden=mode!=="full";$("guided").hidden=mode!=="guided";$("back").hidden=mode!=="guided";
  $("read-meta").textContent=t.label+" · "+wordCount(t.paras.join(" "))+" palavras · "+(mode==="full"?"leitura integral":"frases guiadas");
  $("whole").replaceChildren();t.paras.forEach(p=>{const el=document.createElement("p");el.textContent=p;$("whole").append(el)});
- $("pause").textContent="Pausar";setProgress(mode==="full"?0:100/session.sentences.length);showSentence();
+ $("pause").textContent="Pausar";setProgress(0);if(mode==="guided")showSentence();
  ticker=setInterval(updateClock,250);updateClock();if(mode==="guided")scheduleNext();
- $("reading").scrollIntoView({block:"start"});
+ $("reading").scrollIntoView({block:"start"});$("read-title").setAttribute("tabindex","-1");$("read-title").focus?.();
 }
 function finish(){
  if(!session)return;if(session.running)pause();const ms=Math.max(1000,session.elapsed);
@@ -173,7 +173,7 @@ function finish(){
   q.a.forEach((option,j)=>{const line=document.createElement("label");line.className="option";const radio=document.createElement("input");radio.type="radio";radio.name="q"+i;radio.value=j;line.append(radio,document.createTextNode(option));box.append(line)});
   $("questions").append(box);
  });
- $("open-answer").value="";$("evaluation").scrollIntoView({block:"start"});
+ $("open-answer").value="";$("evaluation").scrollIntoView({block:"start"});$("evaluate-title").setAttribute("tabindex","-1");$("evaluate-title").focus?.();
 }
 function readHistory(){try{const d=JSON.parse(localStorage.getItem(STORAGE)||"[]");return Array.isArray(d)?d.slice(0,30):[]}catch(e){return []}}
 function saveHistory(entry){try{const h=readHistory();h.unshift(entry);localStorage.setItem(STORAGE,JSON.stringify(h.slice(0,30)));return true}catch(e){return false}}
@@ -196,14 +196,14 @@ function grade(){
  const note=document.createElement("p");note.className="notice";note.textContent="Resposta discursiva registrada somente durante esta sessão: avalie se identificou problema, limite e providência. O sistema não atribui nota jurídica ao texto livre.";details.append(note);
  const persisted=saveHistory({date:new Date().toLocaleDateString("pt-BR"),text:session.text.label,wpm:session.wpm,correct,mode:session.mode});
  if(!persisted){const err=document.createElement("p");err.className="notice";err.textContent="O navegador não permitiu salvar o histórico local.";details.append(err)}
- $("evaluation").hidden=true;$("result").hidden=false;renderHistory();$("result").scrollIntoView({block:"start"});
+ $("evaluation").hidden=true;$("result").hidden=false;renderHistory();$("result").scrollIntoView({block:"start"});$("results-title").setAttribute("tabindex","-1");$("results-title").focus?.();
 }
 $("unit").addEventListener("change",updateMeta);$("mode").addEventListener("change",updateMeta);
 $("start").addEventListener("click",start);$("done").addEventListener("click",finish);
 $("pause").addEventListener("click",()=>{if(!session)return;session.running?pause():resume()});
 $("back").addEventListener("click",()=>{if(!session||session.mode!=="guided")return;session.index=Math.max(0,session.index-1);showSentence();if(session.running)scheduleNext()});
 $("grade").addEventListener("click",grade);
-$("again").addEventListener("click",()=>{clearInterval(ticker);clearTimeout(paceTimer);session=null;$("result").hidden=true;$("setup").hidden=false;$("setup").scrollIntoView({block:"start"})});
+$("again").addEventListener("click",()=>{clearInterval(ticker);clearTimeout(paceTimer);session=null;$("result").hidden=true;$("setup").hidden=false;$("setup").scrollIntoView({block:"start"});$("setup-title").setAttribute("tabindex","-1");$("setup-title").focus?.()});
 $("clear").addEventListener("click",()=>{if(confirm("Apagar somente o histórico deste laboratório neste navegador?")){try{localStorage.removeItem(STORAGE)}catch(e){}renderHistory()}});
 updateMeta();renderHistory();
 })();
