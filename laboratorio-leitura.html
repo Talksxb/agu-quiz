@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AGU | Laboratório de Leitura Jurídica — AGU Quiz</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#f5f7f9;color:#173344;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:1px solid #b9cdd3;border-radius:10px;background:white;color:#1e4f59;padding:11px 15px;min-height:44px;font-weight:650}
+button.primary{background:#17656b;color:white;border-color:#17656b}button:hover{filter:brightness(.96)}button:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:3px solid #da9c27;outline-offset:3px}
+.wrap{width:min(860px,100%);margin:0 auto;padding:22px 16px 64px}
+header{border-bottom:1px solid #d9e3e8;padding-bottom:18px}
+.small{font-size:12px;color:#59717d}h1{font-size:clamp(23px,4vw,34px);line-height:1.15;letter-spacing:-.5px;margin:8px 0}
+h2{font-size:21px;margin:0 0 12px}h3{font-size:17px;margin:0 0 8px}
+p{margin:9px 0 14px}.lead{color:#4c6472}.tag{display:inline-block;background:#e1efee;color:#14525a;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700}
+.card{background:#fff;border:1px solid #dfe8ec;border-radius:15px;padding:clamp(16px,3vw,26px);margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:grid;gap:5px}
+label{font-weight:650}select,input,textarea{width:100%;border-radius:10px;border:1px solid #bdcfd5;padding:11px;background:#fff;color:#193948}
+textarea{min-height:115px;resize:vertical}fieldset{border:0;margin:0;padding:0}legend{font-weight:700}
+.inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.inline input[type=radio]{width:auto}
+.muted{color:#536e79;font-size:14px}.notice{border-left:4px solid #d29b45;background:#fffbf2;padding:12px 15px;border-radius:8px;font-size:14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.actions>button{flex:0 1 auto}
+.reader{max-width:72ch;margin:18px auto 0;font:clamp(17px,2.5vw,20px)/1.85 Georgia,serif;color:#203746}
+.reader p{margin:0 0 1.1em;color:inherit}.sentence{font:clamp(20px,4vw,30px)/1.65 Georgia,serif;min-height:6.7em;margin:25px 0;display:flex;align-items:center}
+.metric{font-size:28px;font-weight:800;line-height:1.3;color:#14585e;font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stats>div{border:1px solid #e0e9eb;border-radius:12px;padding:13px}
+.progress{height:10px;border-radius:12px;background:#e6eff0;overflow:hidden}.progress>div{background:#267c7c;height:100%;width:0}
+.question{padding:17px 0;border-top:1px solid #e0e8eb}.question:first-of-type{border:0}
+.option{display:block;padding:8px 10px;border-radius:8px;font-weight:400;cursor:pointer}
+.option input{width:auto;margin-right:8px}.option:has(input:checked){background:#edf7f6}
+details{background:#f5f8f9;padding:12px 15px;border-radius:9px;margin:12px 0}summary{cursor:pointer;font-weight:700}
+.history-item{border-top:1px solid #e1e8eb;padding:10px 0;font-size:14px}
+a{color:#155e6b}footer{margin-top:25px;color:#5d7380;font-size:12px}
+[hidden]{display:none!important}
+@media(max-width:570px){.grid,.stats{grid-template-columns:1fr}.actions>button{flex:1}.wrap{padding:15px 11px 48px}.stats{gap:7px}.sentence{min-height:8em}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="tag">AGU QUIZ · PILOTO ISOLADO</span>
+<h1>Laboratório de Leitura Jurídica</h1>
+<p class="lead">Treine fluência com monitoramento metacognitivo. A medida principal é <strong>velocidade acompanhada de compreensão</strong>, não velocidade isolada.</p>
+<a href="./">Voltar ao AGU Quiz</a>
+</header>
+<section class="card" id="setup" aria-labelledby="setup-title">
+<h2 id="setup-title">Preparar uma sessão</h2>
+<p class="notice">Antes de começar, formule três perguntas: <strong>qual é o problema, qual é o limite jurídico e que providência é adequada?</strong> Não tente suprimir sua voz interna. A releitura é permitida quando necessária.</p>
+<div class="grid">
+<div class="field"><label for="unit">Texto jurídico</label><select id="unit"><option value="DIG-LGPD-01">Direito Digital · LGPD e contratação</option><option value="ADM-MOT-01">Administrativo · Motivação do ato</option></select></div>
+<div class="field"><label for="mode">Modo de leitura</label><select id="mode"><option value="full">Integral — ritmo natural</option><option value="guided">Guiada — frases completas</option></select></div>
+<div class="field"><label for="target">Ritmo desejado no modo guiado (palavras/min)</label><input type="number" id="target" min="100" max="350" step="10" value="170" inputmode="numeric"></div>
+<div class="field"><label for="baseline">Linha de base pessoal (opcional, palavras/min)</label><input type="number" id="baseline" min="1" max="1000" placeholder="Ex.: 173" inputmode="numeric"></div>
+</div>
+<p class="muted" id="text-meta"></p>
+<div class="actions"><button class="primary" id="start">Iniciar leitura</button></div>
+</section>
+<section class="card" id="reading" hidden aria-labelledby="read-title">
+<div class="inline" style="justify-content:space-between">
+<div><h2 id="read-title">Leitura em andamento</h2><span class="small" id="read-meta"></span></div>
+<div><span class="small">Tempo efetivo</span><div class="metric" id="clock">00:00</div></div>
+</div>
+<div class="progress" role="progressbar" aria-label="Progresso do texto" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress" style="margin-top:14px"><div id="progress-bar"></div></div>
+<div id="whole" class="reader" tabindex="-1"></div>
+<div id="guided" hidden>
+<p class="muted">Frases completas permanecem visíveis. Você pode pausar ou voltar; o objetivo não é impedir regressões.</p>
+<div class="sentence" id="sentence" tabindex="-1" aria-live="off"></div>
+<p class="small" id="sentence-count"></p>
+</div>
+<div class="actions">
+<button id="pause">Pausar</button>
+<button id="back" hidden>Voltar uma frase</button>
+<button class="primary" id="done">Concluir leitura e responder</button>
+</div>
+<p class="small">O cronômetro pausa quando você seleciona “Pausar”. Tempo de leitura guiada é medido de forma efetiva, não estimado pelo ritmo configurado.</p>
+</section>
+<section class="card" id="evaluation" hidden aria-labelledby="evaluate-title">
+<h2 id="evaluate-title">Recuperação ativa</h2>
+<p class="muted">Responda sem consultar o texto. Só depois do envio aparecerá o gabarito. A resposta discursiva é autoavaliada, não recebe nota automática.</p>
+<div id="questions"></div>
+<div class="field"><label for="open-answer">Em até três frases: qual problema jurídico você identificou e qual providência recomendaria?</label><textarea id="open-answer" placeholder="Seu raciocínio, com suas próprias palavras"></textarea></div>
+<div class="actions"><button class="primary" id="grade">Corrigir questões objetivas</button></div>
+</section>
+<section class="card" id="result" hidden aria-labelledby="results-title">
+<h2 id="results-title">Resultado da sessão</h2>
+<div class="stats">
+<div><div class="small">Velocidade efetiva</div><div class="metric" id="wpm">—</div><div class="small">palavras/min</div></div>
+<div><div class="small">Compreensão objetiva</div><div class="metric" id="score">—</div><div class="small">questões corretas</div></div>
+<div><div class="small">Variação da linha de base</div><div class="metric" id="delta">—</div><div class="small">não equivale a evolução comprovada</div></div>
+</div>
+<div id="feedback"></div>
+<details><summary>Critérios metodológicos e limitações</summary><p>Estes dois textos têm extensões e assuntos diferentes. Repetição, cansaço e familiaridade podem alterar o desempenho. O modo guiado é experimental; não há comprovação de que acelere a leitura jurídica sem perdas. A apresentação por frases pode ser encerrada antes do final; nesse caso, a pontuação não prova leitura integral. A nota mede apenas três itens objetivos e não certifica domínio do Direito nem valida automaticamente sua resposta aberta.</p></details>
+<div class="actions"><button class="primary" id="again">Nova sessão</button><button id="clear">Apagar histórico local</button></div>
+</section>
+<section class="card" aria-labelledby="history-title">
+<h2 id="history-title">Histórico neste navegador</h2>
+<p class="muted">Os registros ficam somente no armazenamento local deste endereço. Não há sincronização com o Caderno AGU, o Quiz, o GPT Sites ou o repositório privado.</p>
+<div id="history"></div>
+</section>
+<footer>
+<p><strong>Fontes jurídicas:</strong> Lei nº 13.709/2018, arts. 6º, 23 e 26; Lei nº 9.784/1999, art. 50. <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm" target="_blank" rel="noopener noreferrer">LGPD — Planalto</a> · <a href="https://www.planalto.gov.br/ccivil_03/leis/l9784.htm" target="_blank" rel="noopener noreferrer">Lei do Processo Administrativo — Planalto</a>. Consulta pontual da LGPD: 20/11/2026. Textos e questões são autorais para treinamento; não são itens oficiais nem transcrição da auditoria.</p>
+<p><strong>Benchmarks de interface:</strong> LetoReader, Blaze Reader e MD Reader. O código deste piloto é uma implementação original, sem incorporar código de terceiros. Não usa API, login nem coleta dados do navegador remotamente.</p>
+</footer>
+</div>
+<script>
+"use strict";
+(function(){
+const STORAGE="agu_leitura_lab_v1";
+const texts=[
+{id:"DIG-LGPD-01",label:"LGPD e contratação pública",source:"LGPD, arts. 6º, 23, 26 e 27",paras:[
+"Uma autarquia federal planeja reformular o atendimento de um programa público destinado a microempreendedores. O cadastro atual reúne identificação pessoal, endereço, informações sobre a atividade profissional e documentos enviados pelos interessados. Para reduzir filas, a equipe propõe uma plataforma digital capaz de permitir a consulta do andamento dos pedidos.",
+"Durante a licitação, um fornecedor sugere importar a base completa para sua infraestrutura. Afirma que assim poderá oferecer atendimento personalizado e, no futuro, desenvolver novas funcionalidades. A proposta parece econômica, mas sua justificativa não especifica por que cada informação seria indispensável para consultar o andamento de um requerimento.",
+"A finalidade pública do programa não torna irrestrito o tratamento de dados pessoais. A atividade da autarquia precisa observar finalidades determinadas e princípios como adequação e necessidade. É importante distinguir o acesso necessário à execução de um serviço contratado de usos comerciais independentes, ainda que uma mesma empresa tenha capacidade técnica para ambos.",
+"O uso compartilhado entre entidades públicas, quando relacionado às suas atribuições, exige análise própria. A transferência de dados mantidos pelo Poder Público para entidades privadas é, como regra, vedada, ressalvadas as hipóteses legais. Uma delas envolve execução descentralizada de atividade pública que exija a transferência, exclusivamente para fim específico e determinado. O contrato não autoriza a empresa a reutilizar dados excedentes para exploração comercial ou projetos futuros indefinidos.",
+"Antes de aprovar a contratação, a assessoria jurídica solicita um mapa das operações de tratamento. Quer saber quais campos serão acessados, quem decidirá sobre as operações, qual a finalidade de cada acesso e como serão aplicados os controles de segurança. Também recomenda que a solução ofereça consulta de andamento com o conjunto mínimo de informações adequadas ao serviço.",
+"A decisão consultiva não opõe inovação e proteção de dados como valores incompatíveis. A questão é desenhar uma solução tecnológica ajustada ao dever público, examinando limites jurídicos desde o planejamento. Se informações adicionais forem realmente necessárias depois, sua utilização deverá receber justificativa própria à luz das finalidades e regras aplicáveis."
+],questions:[
+{q:"Qual é a dúvida jurídica central do caso?",a:["Se a eficiência do serviço permite importar e utilizar livremente toda a base.","Se o contrato pode substituir o procedimento licitatório.","Se o programa deve deixar de ser digital."],correct:0,why:"A eficiência deve conviver com finalidade, necessidade e limites aplicáveis ao tratamento de dados."},
+{q:"A contratação de uma empresa privada torna automaticamente legítima qualquer transferência de dados?",a:["Sim, desde que o preço seja vantajoso.","Sim, caso a empresa tenha sistemas de segurança.","Não. É necessário examinar hipóteses legais, finalidade e dados estritamente pertinentes."],correct:2,why:"A existência do contrato, por si só, não autoriza uso indiscriminado de dados."},
+{q:"Qual providência melhor expressa a atuação consultiva?",a:["Aprovar logo a base integral e verificar finalidades depois.","Mapear operações, campos necessários, responsabilidades e controles antes da contratação.","Proibir toda contratação de tecnologia por envolver dados pessoais."],correct:1,why:"A análise preventiva permite inovação com finalidade delimitada e tratamento proporcional."}
+]},
+{id:"ADM-MOT-01",label:"Motivação de atos administrativos",source:"Lei nº 9.784/1999, art. 50",paras:[
+"Uma agência reguladora federal recebe pedidos de autorização para uma atividade sujeita a requisitos técnicos. Após examinar documentos, o setor responsável decide indeferir uma solicitação e informa ao interessado apenas que a medida atende ao interesse público. O requerente, contudo, afirma ter apresentado os documentos exigidos e pede acesso aos fundamentos concretos da decisão.",
+"A motivação de atos administrativos não deve ser confundida com a simples presença de expressões solenes. Quando o ordenamento exige que uma decisão seja motivada, a autoridade precisa indicar fatos e fundamentos jurídicos relevantes. Isso permite compreender por que determinada consequência foi aplicada à situação examinada e torna possível contestar eventual erro.",
+"No processo administrativo federal, a Lei nº 9.784/1999 exige motivação em diversas hipóteses, inclusive nas decisões que neguem, limitem ou afetem direitos ou interesses e nas que decidam processos administrativos de concurso ou seleção pública. A motivação deve ser explícita, clara e congruente. A necessidade de fundamentar não significa, porém, repetir mecanicamente toda a legislação.",
+"Imagine que a agência possua parecer técnico detalhado, previamente produzido, que identifique a ausência de um requisito indispensável. A autoridade poderá, observadas as exigências legais, concordar com os fundamentos de parecer anterior e incorporá-los à sua decisão. Uma referência inteligível ao parecer pertinente é diferente de uma fórmula vaga, incapaz de mostrar o caminho racional percorrido.",
+"Para a assessoria jurídica, o problema não é substituir a avaliação técnica pela preferência pessoal do parecerista. Sua tarefa é verificar se a decisão demonstra fatos relevantes, fundamento jurídico aplicável e correspondência entre eles. Também deve observar se o interessado poderá conhecer os motivos efetivos e exercer as formas de impugnação cabíveis.",
+"Uma decisão bem motivada não se torna infalível, mas favorece o controle administrativo e jurisdicional. Explicar as razões é uma garantia de racionalidade institucional e de respeito à pessoa afetada. Quando o órgão identifica lacunas reais de fundamentação, o encaminhamento adequado depende da fase do procedimento e dos vícios efetivamente constatados."
+],questions:[
+{q:"Qual é a deficiência principal da decisão inicial?",a:["Ela foi assinada por uma agência reguladora.","Ela apresentou apenas referência genérica ao interesse público, sem fundamentos concretos.","Ela não foi decidida judicialmente."],correct:1,why:"Fórmulas genéricas não demonstram, por si só, fundamentos de fato e de direito exigidos."},
+{q:"A motivação pode incorporar fundamentos de parecer anterior?",a:["Sim, nas condições legais, de maneira explícita, clara e congruente.","Não, a autoridade sempre deve reescrever integralmente cada documento técnico.","Somente quando existir concordância de todas as partes."],correct:0,why:"O art. 50, § 1º, admite declaração de concordância com fundamentos anteriores que passam a integrar o ato."},
+{q:"Qual é o papel adequado da assessoria jurídica?",a:["Substituir automaticamente a conclusão da equipe técnica.","Aceitar qualquer justificativa se houver ganho de eficiência.","Verificar o vínculo entre fatos, fundamentos jurídicos e conclusão, além da possibilidade de controle."],correct:2,why:"O controle da motivação examina justificativa e adequação jurídica, sem assumir toda competência técnica."}
+]}
+];
+const $=id=>document.getElementById(id), now=()=>performance.now();
+const wordCount=s=>(s.trim().match(/\S+/g)||[]).length;
+let session=null, ticker=null, paceTimer=null, questionsAnswered=false;
+function selected(){return texts.find(x=>x.id===$("unit").value)||texts[0]}
+function updateMeta(){const t=selected();$("text-meta").textContent=t.source+" · "+wordCount(t.paras.join(" "))+" palavras · texto autoral para prática";$("target").disabled=$("mode").value!=="guided"}
+function clockFormat(ms){const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function elapsed(){return session ? session.elapsed+(session.running?now()-session.started:0) : 0}
+function updateClock(){$("clock").textContent=clockFormat(elapsed())}
+function pause(){if(!session||!session.running)return;session.elapsed=elapsed();session.running=false;clearTimeout(paceTimer);clearInterval(ticker);$("pause").textContent="Continuar";updateClock()}
+function resume(){if(!session||session.running)return;session.running=true;session.started=now();ticker=setInterval(updateClock,250);$("pause").textContent="Pausar";if(session.mode==="guided")scheduleNext()}
+function splitSentences(t){return t.paras.join(" ").match(/[^.!?]+[.!?]+|[^.!?]+$/g).map(s=>s.trim()).filter(Boolean)}
+function setProgress(value){const v=Math.max(0,Math.min(100,Math.round(value)));$("progress-bar").style.width=v+"%";$("progress").setAttribute("aria-valuenow",String(v))}
+function showSentence(){if(!session)return;$("sentence").textContent=session.sentences[session.index]||"";$("sentence-count").textContent="Frase "+(session.index+1)+" de "+session.sentences.length;setProgress((session.index+1)/session.sentences.length*100)}
+function scheduleNext(){clearTimeout(paceTimer);if(!session||!session.running||session.mode!=="guided")return;const s=session.sentences[session.index];const interval=Math.max(400,wordCount(s)*60000/session.target);paceTimer=setTimeout(()=>{if(!session||!session.running)return;if(session.index<session.sentences.length-1){session.index++;showSentence();scheduleNext()}else{pause();$("sentence-count").textContent+=" · fim do texto; conclua a leitura para responder"}},interval)}
+function start(){
+ const t=selected(), mode=$("mode").value, speed=Number($("target").value);
+ if(mode==="guided"&&(!Number.isFinite(speed)||speed<100||speed>350)){alert("Escolha de 100 a 350 palavras por minuto.");return}
+ session={text:t,mode,target:speed,elapsed:0,running:true,started:now(),index:0,sentences:splitSentences(t),wpm:0,baseline:Number($("baseline").value)||null};
+ questionsAnswered=false;
+ $("setup").hidden=true;$("reading").hidden=false;$("evaluation").hidden=true;$("result").hidden=true;
+ $("whole").hidden=mode!=="full";$("guided").hidden=mode!=="guided";$("back").hidden=mode!=="guided";
+ $("read-meta").textContent=t.label+" · "+wordCount(t.paras.join(" "))+" palavras · "+(mode==="full"?"leitura integral":"frases guiadas");
+ $("whole").replaceChildren();t.paras.forEach(p=>{const el=document.createElement("p");el.textContent=p;$("whole").append(el)});
+ $("pause").textContent="Pausar";setProgress(0);if(mode==="guided")showSentence();
+ ticker=setInterval(updateClock,250);updateClock();if(mode==="guided")scheduleNext();
+ $("reading").scrollIntoView({block:"start"});$("read-title").setAttribute("tabindex","-1");$("read-title").focus?.();
+}
+function finish(){
+ if(!session)return;if(session.running)pause();const ms=Math.max(1000,session.elapsed);
+ session.wpm=Math.round(wordCount(session.text.paras.join(" "))*60000/ms);
+ $("reading").hidden=true;$("evaluation").hidden=false;
+ $("questions").replaceChildren();
+ session.text.questions.forEach((q,i)=>{
+  const box=document.createElement("fieldset");box.className="question";const lg=document.createElement("legend");lg.textContent=(i+1)+". "+q.q;box.append(lg);
+  q.a.forEach((option,j)=>{const line=document.createElement("label");line.className="option";const radio=document.createElement("input");radio.type="radio";radio.name="q"+i;radio.value=j;line.append(radio,document.createTextNode(option));box.append(line)});
+  $("questions").append(box);
+ });
+ $("open-answer").value="";$("evaluation").scrollIntoView({block:"start"});$("evaluate-title").setAttribute("tabindex","-1");$("evaluate-title").focus?.();
+}
+function readHistory(){try{const d=JSON.parse(localStorage.getItem(STORAGE)||"[]");return Array.isArray(d)?d.slice(0,30):[]}catch(e){return []}}
+function saveHistory(entry){try{const h=readHistory();h.unshift(entry);localStorage.setItem(STORAGE,JSON.stringify(h.slice(0,30)));return true}catch(e){return false}}
+function renderHistory(){
+ const root=$("history");root.replaceChildren();const h=readHistory();
+ if(!h.length){const el=document.createElement("p");el.className="muted";el.textContent="Nenhuma sessão registrada neste navegador.";root.append(el);return}
+ h.forEach(e=>{const row=document.createElement("div");row.className="history-item";row.textContent=(e.date||"Data indisponível")+" · "+(e.text||"Texto")+" · "+e.wpm+" palavras/min · "+e.correct+"/3 questões · "+(e.mode==="guided"?"guiada":"integral");root.append(row)});
+}
+function grade(){
+ if(!session||questionsAnswered)return;
+ const checked=session.text.questions.map((_,i)=>document.querySelector('input[name="q'+i+'"]:checked'));
+ if(checked.some(x=>!x)){alert("Responda as três questões objetivas antes de conferir.");return}
+ questionsAnswered=true;
+ const correct=checked.filter((x,i)=>Number(x.value)===session.text.questions[i].correct).length;
+ $("wpm").textContent=String(session.wpm);$("score").textContent=correct+"/3";
+ const delta=session.baseline?Math.round((session.wpm/session.baseline-1)*100):null;
+ $("delta").textContent=delta===null?"—":(delta>0?"+":"")+delta+"%";
+ const details=$("feedback");details.replaceChildren();
+ session.text.questions.forEach((q,i)=>{const p=document.createElement("p");p.textContent=(i+1)+". "+(Number(checked[i].value)===q.correct?"Acerto. ":"Rever. ")+q.why;details.append(p)});
+ const note=document.createElement("p");note.className="notice";note.textContent="Resposta discursiva registrada somente durante esta sessão: avalie se identificou problema, limite e providência. O sistema não atribui nota jurídica ao texto livre.";details.append(note);
+ const persisted=saveHistory({date:new Date().toLocaleDateString("pt-BR"),text:session.text.label,wpm:session.wpm,correct,mode:session.mode});
+ if(!persisted){const err=document.createElement("p");err.className="notice";err.textContent="O navegador não permitiu salvar o histórico local.";details.append(err)}
+ $("evaluation").hidden=true;$("result").hidden=false;renderHistory();$("result").scrollIntoView({block:"start"});$("results-title").setAttribute("tabindex","-1");$("results-title").focus?.();
+}
+$("unit").addEventListener("change",updateMeta);$("mode").addEventListener("change",updateMeta);
+$("start").addEventListener("click",start);$("done").addEventListener("click",finish);
+$("pause").addEventListener("click",()=>{if(!session)return;session.running?pause():resume()});
+$("back").addEventListener("click",()=>{if(!session||session.mode!=="guided")return;session.index=Math.max(0,session.index-1);showSentence();if(session.running)scheduleNext()});
+$("grade").addEventListener("click",grade);
+$("again").addEventListener("click",()=>{clearInterval(ticker);clearTimeout(paceTimer);session=null;$("result").hidden=true;$("setup").hidden=false;$("setup").scrollIntoView({block:"start"});$("setup-title").setAttribute("tabindex","-1");$("setup-title").focus?.()});
+$("clear").addEventListener("click",()=>{if(confirm("Apagar somente o histórico deste laboratório neste navegador?")){try{localStorage.removeItem(STORAGE)}catch(e){}renderHistory()}});
+updateMeta();renderHistory();
+})();
+</script>
+</body>
+</html>

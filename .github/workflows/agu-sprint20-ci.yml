@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - '*.html'
       - '*.js'
       - '*.css'
       - 'dados/**'
@@ -25,6 +26,8 @@ jobs:
           node-version: '22'
       - name: Node.js runtime
         run: node --version
+      - name: LEIT-META-001 — fluxo sintético, integridade e persistência segregada
+        run: node tests/leitura-meta-001-validacao.js
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
         run: node tests/livro-sites-001-validacao.js
       - name: CARTOES-AUD-01 — fontes públicas, 8 cartas e motor preservado
@@ -111,6 +114,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
+        run: node tests/leitura-meta-002-browser.cjs
       - name: LIVRO-SITES-001 — cartão da apostila em três larguras de tela
         run: node tests/livro-sites-001-browser.cjs
       - name: Códigos CC/CPC — uma norma por vez, cinco viewports e axe
@@ -195,6 +200,8 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-leit-meta/*.json
+            tests/artifacts-leit-meta/*.png
             tests/artifacts-s20/*.json
             tests/artifacts-s20/*.png
             tests/artifacts-s21/*.json
@@ -281,6 +288,9 @@ jobs:
           node-version: '22'
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
+      - name: LEIT-META-002 — arquivo publicado por GitHub Pages
+        run: |
+          node -e "fetch('https://talksxb.github.io/agu-quiz/laboratorio-leitura.html').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{if(!t.includes('Laboratório de Leitura Jurídica'))throw Error('Conteúdo divergente'); console.log('LAB_PUBLICADO_OK')}).catch(e=>{console.error(e);process.exit(1)})"
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
       - name: Códigos CC/CPC na URL publicada
@@ -363,6 +373,10 @@ jobs:
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
         run: node tests/leg03-browser.cjs
+      - name: LEIT-META-002 — jornada no laboratório publicado
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/leitura-meta-002-browser.cjs
       - name: Jornada real no GitHub Pages publicado
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -373,6 +387,7 @@ jobs:
         with:
           name: agu-work01-publicado
           path: |
+            tests/artifacts-leit-meta/
             tests/artifacts-work01/
             tests/artifacts-leg03/
             tests/artifacts-leg04/
