@@ -30,4 +30,20 @@ class Biblioteca23Tests(TestCase):
   x=mod.diff_excerpt('Art. 10. Texto.','Art. 10. Texto (nota).')
   self.assertIn('espelho[',x)
   self.assertIn('oficial[',x)
+ def test_reconhece_revogados_plural_sem_inventar_artigo(self):
+  import tempfile
+  from unittest.mock import patch as mock_patch
+  spec2=importlib.util.spec_from_file_location('cotejo_plurais',SCRIPT.parents[1]/'scripts/cotejar-biblioteca-lote04.py')
+  comparator=importlib.util.module_from_spec(spec2);spec2.loader.exec_module(comparator)
+  with tempfile.TemporaryDirectory() as td:
+   cc=Path(td)/'cc.html';cpc=Path(td)/'cpc.html'
+   cc.write_text('<p>Arts. 1.620 a 1.629. (Revogados pela Lei nº 12.010, de 2009)</p>',encoding='utf-8')
+   cpc.write_text('<p>Art. 1.620. Norma simulada.</p>',encoding='utf-8')
+   mirror={'L10406':{'1620':'Art. 1.620. a 1.629. (Revogados pela Lei nº 12.010, de 2009)'},
+           'L13105':{'1620':'Art. 1.620. Norma simulada.'}}
+   with mock_patch.object(comparator,'mirror_articles',return_value=mirror):
+    rows=comparator.run(str(cc),str(cpc),1620,1620)['rows']
+  self.assertEqual(rows[0]['comparison_class'],'revogacao_agrupada_documentada')
+  self.assertFalse(rows[0]['official_present'])
+  self.assertEqual(rows[0]['official_revocation_range']['end'],1629)
 if __name__=='__main__':main()
