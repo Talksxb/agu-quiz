@@ -177,7 +177,7 @@ def run(cc, cpc, start=1, end=5):
             left = normalize(mirror[law].get(str(number)) or '')
             right = official.get(str(number), '')
             grouped_revocation = (number in revoked and not right and
-                                  bool(re.search(r'\bRevogad[oa]\b', left, re.I)))
+                                  bool(re.search(r'\bRevogad[oa]s?\b', left, re.I)))
             rows.append({
                 'id': f'{law}:art{number}',
                 'mirror_present': bool(left),

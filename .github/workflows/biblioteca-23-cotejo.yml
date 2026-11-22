@@ -1,0 +1,80 @@
+name: Biblioteca 23 - primeira passagem e triagem juridica
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/auditar-biblioteca-23.py'
+      - 'tests/test_auditar_biblioteca_23.py'
+      - '.github/workflows/biblioteca-23-cotejo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cotejo:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'audit/biblioteca-leis-23-triagem-1148'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Testes de regressao do cotejador e contrato do universo
+        run: |
+          python -m unittest discover -s tests -p 'test_biblioteca_leis_05.py' -v
+          python -m unittest discover -s tests -p 'test_reexecutar_matriz_2008.py' -v
+          python -m unittest discover -s tests -p 'test_auditar_biblioteca_23.py' -v
+          python scripts/validar-matriz-transicao-biblioteca.py
+      - name: Baixar HTML oficial sem republicar
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/biblioteca23
+          curl -fsSL --retry 3 --connect-timeout 20 --max-time 180 \
+            'https://www2.camara.leg.br/legin/fed/lei/2002/lei-10406-10-janeiro-2002-432893-normaatualizada-pl.html' \
+            -o /tmp/biblioteca23/cc.html
+          curl -fsSL --retry 3 --connect-timeout 20 --max-time 180 \
+            'https://www2.camara.leg.br/legin/fed/lei/2015/lei-13105-16-marco-2015-780273-normaatualizada-pl.html' \
+            -o /tmp/biblioteca23/cpc.html
+          test "$(wc -c </tmp/biblioteca23/cc.html)" -eq 1571920
+          test "$(wc -c </tmp/biblioteca23/cpc.html)" -eq 938199
+          echo '6ed7c19586b21355e998746a0620cea5c2f3e6a24036d7f3743b7d30330e5d90  /tmp/biblioteca23/cc.html' | sha256sum -c -
+          echo '0d7f8c9a0f67734cc047c3bea8bfabd57a7823f361d774041e11815822722821  /tmp/biblioteca23/cpc.html' | sha256sum -c -
+      - name: Cotejar os 1148 pendentes e preparar 111 divergencias
+        run: |
+          python scripts/auditar-biblioteca-23.py /tmp/biblioteca23/cc.html /tmp/biblioteca23/cpc.html --saida artefatos/biblioteca23
+      - name: Verificar igualdade de chaves e resumo
+        run: |
+          python - <<'PY'
+          import csv,json
+          from collections import Counter
+          from pathlib import Path
+          p=Path('artefatos/biblioteca23')
+          def rows(s):
+              with (p/s).open(encoding='utf-8',newline='') as f:
+                  return list(csv.DictReader(f,delimiter=';'))
+          newer=rows('primeira_passagem_1148.csv')
+          old=rows('triagem_juridica_111.csv')
+          assert len(newer)==len({r['id'] for r in newer})==1148
+          assert len(old)==len({r['id'] for r in old})==111
+          assert set(r['id'] for r in newer).isdisjoint(r['id'] for r in old)
+          assert sum(r['id'].startswith('L10406:') for r in newer)==1075
+          assert sum(r['id'].startswith('L13105:') for r in newer)==73
+          for r in newer:
+              assert len(r['espelho_sha256'])==len(r['oficial_sha256'])==64
+          summary=json.loads((p/'resumo.json').read_text())
+          assert summary['total_importado']==3156
+          assert summary['primeira_passagem_anterior']+summary['novo_cotejo']==3156
+          print('BIB23 conclusao textual:',json.dumps(summary,ensure_ascii=False,indent=2))
+          PY
+      - name: Salvar manifesto de cotejo, nunca HTML completo
+        uses: actions/upload-artifact@v4
+        with:
+          name: biblioteca-23-primeira-passagem-1148-e-triagem-111
+          path: artefatos/biblioteca23/
+          retention-days: 30
