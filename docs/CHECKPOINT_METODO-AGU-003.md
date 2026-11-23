@@ -19,6 +19,10 @@ O teste novo reproduziu a omissão de livros antes do patch. Depois, 19 cenário
 
 Compilação editorial em `--check` idempotente, quatro capítulos, três candidatos pendentes e 51 cartões históricos reconfirmados. O motor de revisão, fontes e conteúdo jurídico dos capítulos não foram alterados. Sintaxe e diferenças Git conferidas.
 
+Primeiro HEAD remoto: `163916b2671159a98df190cf48e96855672b8f38`, árvore `024c14f2ab8ca3de903ca416b211a45527c1b936`, [PR draft #79](https://github.com/Talksxb/agu-quiz/pull/79). Na [CI 45183001110](https://github.com/Talksxb/agu-quiz/actions/runs/45183001110), Node e exportação editorial foram aprovados; as duas jornadas MÉTODO-AGU-001/003 passaram antes das regressões históricas restantes. Esse estado parcial não é o fechamento de toda a CI.
+
+No fechamento adicional, a leitura de arquivo passou a recusar UTF-8 inválido quando as APIs estritas estão disponíveis, com fixture binária no navegador; o fallback histórico é declarado no contrato. A opção de adicionar capítulos só aparece quando já existe percurso, e o aviso de capítulo desconhecido não promete aplicar registros omitidos. O delta do backup foi atualizado explicitamente, sem editar baselines históricos. Esse fechamento recebe novo HEAD e CI; os checks do HEAD atual e a descrição final da PR #79 governam a aceitação.
+
 Chromium local indisponível por ausência do executável. A CI da PR executa a suíte nova em 320/390/768/1280, download/restauração reais em 12 contextos sintéticos, axe e regressões históricas. **Não declarar seu sucesso antes da execução.** O resultado final, HEAD/árvore, commits, PR, CI, artefatos, hashes e eventuais correções complementares serão registrados na descrição final da PR desta branch, preservando a distinção entre este registro pré-CI e o fechamento efetivamente verificado.
 
 ## Lacunas e continuidade

@@ -31,6 +31,8 @@ Não há escolha de “vencedor por data”, exclusão ou substituição automá
 
 Todo o arquivo, suas categorias e a estrutura de livros são validados antes da primeira escrita. Limite S20 preservado: **12.000.000 bytes UTF-8**, por categoria, pacote e arquivo formatado de exportação. A categoria resultante de uma mesclagem também deve caber nesse limite.
 
+No navegador com `TextDecoder`/`File.arrayBuffer`, a leitura recusa UTF-8 inválido em vez de substituir caracteres silenciosamente. A suíte usa um arquivo binário artificial inválido para verificar a rejeição sem gravação. O fallback histórico `.text()` permanece para ambientes sem essas APIs; não se afirma decodificação estrita nesse fallback.
+
 | Campo | Regra |
 |---|---|
 | ID de capítulo/atividade/âncora | Letras minúsculas, números e hífen; início alfanumérico, até 140 caracteres; recusa chaves perigosas |
