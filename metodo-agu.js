@@ -2,7 +2,7 @@
 (function(root){
 'use strict';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const x=document.createElement(tag);if(text!==undefined)x.textContent=text;if(cls)x.className=cls;return x};
-const KEY='agu_livros_reader_v1';let catalog=null,current=null,activity='estudar',renderedBook='',zoomTrigger=null,loadToken=0,selectedCardId=null;
+const KEY='agu_livros_reader_v1',drafts=new Map();let catalog=null,current=null,activity='estudar',renderedBook='',zoomTrigger=null,loadToken=0,selectedCardId=null,observer=null;
 function notice(message){$('method-status').textContent=message}
 function safeDB(){try{const value=JSON.parse(localStorage.getItem(KEY)||'{}');return value&&typeof value==='object'&&!Array.isArray(value)?value:null}catch{return null}}
 function record(){return safeDB()?.[current?.id]||{}}
@@ -20,7 +20,7 @@ function renderActivities(type){const box=$('activity-list');box.replaceChildren
  for(const a of items){const item=el('article',undefined,'method-activity'),heading=el('h4',a.title),ref=el('a','Consultar a seção de origem'),prompt=el('div',undefined,'reader');
  ref.href='#'+a.sectionId;ref.addEventListener('click',e=>{e.preventDefault();setActivity('estudar');root.AGULivros.move(current.sections.findIndex(s=>s.id===a.sectionId));document.getElementById(a.sectionId)?.focus()});
  root.AGULivros.renderText(prompt,a.prompt);item.append(heading,el('p',a.nature+' · '+current.curricularIds.join(', ')),ref,prompt);
- const input=el('textarea'),label=el('label','Sua hipótese ou resposta');input.id='draft-'+a.id;input.maxLength=12000;label.htmlFor=input.id;input.value=record().activities?.[a.id]?.draft||'';
+ const input=el('textarea'),label=el('label','Sua hipótese ou resposta');input.id='draft-'+a.id;input.maxLength=12000;label.htmlFor=input.id;input.value=drafts.get(a.id)??record().activities?.[a.id]?.draft??'';input.addEventListener('input',()=>drafts.set(a.id,input.value));
  const save=el('button','Guardar rascunho'),show=el('button',type==='aplicar'?'Consultar caso resolvido':'Conferir respostas'),done=el('button','Registrar atividade realizada'),status=el('p','', 'method-result');status.setAttribute('role','status');
  const answer=el('div',undefined,'method-answer reader');answer.id='answer-'+a.id;answer.hidden=true;show.setAttribute('aria-expanded','false');show.setAttribute('aria-controls',answer.id);
  // A resposta só entra no DOM após solicitação explícita.
@@ -31,7 +31,7 @@ function renderActivities(type){const box=$('activity-list');box.replaceChildren
  item.append(label,input,save,show,done,status,answer);box.appendChild(item);
  }
 }
-function renderReview(){const list=$('review-list'),face=$('review-face');list.replaceChildren();face.innerHTML=selectedCardId?(root.AGUReview?.focusedHTML?.()||''):'';
+function renderReview(){const list=$('review-list'),face=$('review-face');list.replaceChildren();face.replaceChildren();try{const raw=localStorage.getItem('agu_quiz_revisao_inteligente_v1');if(raw){const r=JSON.parse(raw);if(r.schema!=='agu-review-v1'||!Array.isArray(r.attempts)||!r.cards||typeof r.cards!=='object'||Array.isArray(r.cards))throw Error('inválido')}}catch{list.appendChild(el('p','O registro de revisão está inválido. Os dados anteriores foram preservados; recupere seu backup pelo Quiz antes de avaliar cartões.'));return}face.innerHTML=selectedCardId?(root.AGUReview?.focusedHTML?.()||''):'';
  for(const ref of (current?.reviewCards||[]).filter(c=>c.status==='aprovado')){const c=root.AGUReview?.notebookEligibleCard(ref.cardId);if(!c)continue;const group=el('div'),b=el('button',c.front),status=root.AGUReview.reviewInfo(c.id);b.type='button';b.dataset.cardId=c.id;b.addEventListener('click',()=>{selectedCardId=c.id;root.AGUReview.focusCard(c.id);renderReview();face.scrollIntoView({block:'start'});face.querySelector('button')?.focus()});group.append(b,el('p',ref.label+' · '+(status.due?'Próxima revisão: '+status.due:'Sem revisão agendada')+' · '+status.seen+' avaliação(ões)', 'small muted'));list.appendChild(group)}
  if(!list.children.length)list.appendChild(el('p','Ainda não há cartões aprovados vinculados a este capítulo. Candidatos editoriais aguardam conferência.'));
 }
@@ -42,7 +42,9 @@ function addResources(section,sectionId){for(const r of current.resources.filter
 function openFigure(r,trigger){const d=$('figure-dialog');zoomTrigger=trigger;$('figure-title').textContent=r.title;$('figure-image').src=r.src;$('figure-image').alt=r.alt;$('figure-orientation').value=r.orientation;$('figure-scale').value='100';resizeFigure();d.showModal();$('figure-close').focus()}
 function resizeFigure(){const horizontal=$('figure-orientation').value==='horizontal',scale=Number($('figure-scale').value);$('figure-scroll').classList.toggle('horizontal',horizontal);$('figure-image').style.width=horizontal?'auto':scale+'%';$('figure-image').style.height=horizontal?scale+'%':'auto'}
 function decorate(book,index){if(!current||current.id!==book.id)return;
- if(renderedBook!==book.id){const full=$('read-full');full.replaceChildren();book.pages.forEach((p,i)=>{const s=current.sections[i],section=el('section',undefined,'method-section');section.id=s.id;section.tabIndex=-1;section.dataset.sourceSection=String(i);root.AGULivros.renderText(section,p.text);addResources(section,s.id);full.appendChild(section)});renderedBook=book.id}
+ if(renderedBook!==book.id){observer?.disconnect();const full=$('read-full');full.replaceChildren();book.pages.forEach((p,i)=>{const s=current.sections[i],section=el('section',undefined,'method-section');section.id=s.id;section.tabIndex=-1;section.dataset.sourceSection=String(i);root.AGULivros.renderText(section,p.text);section.querySelectorAll('h2,h3,h4,h5,h6').forEach((h,n)=>{h.id=s.headings[n]?.id||s.id+'-heading-'+n});addResources(section,s.id);full.appendChild(section)});renderedBook=book.id;
+  if('IntersectionObserver' in root){observer=new IntersectionObserver(entries=>{if(activity!=='estudar'||$('mode').value!=='integral')return;const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)[0];if(visible&&window.scrollY>full.offsetTop){root.AGULivros.remember(Number(visible.target.dataset.sourceSection));$('method-context').textContent='Seção selecionada: '+current.sections[Number(visible.target.dataset.sourceSection)].title}},{rootMargin:'-10% 0px -65% 0px'});full.querySelectorAll('.method-section').forEach(s=>observer.observe(s))}
+ }
  $('method-context').textContent='Seção selecionada: '+current.sections[index].title;
  const deep=new URLSearchParams(location.search).get('secao'),target=document.getElementById(deep||current.sections[index].id);if(index>0||deep)target?.scrollIntoView({block:'start'});
 }
@@ -58,7 +60,7 @@ async function init(manifest){try{catalog=await getJSON('livros/catalogo.json');
  $('figure-close').addEventListener('click',()=>$('figure-dialog').close());$('figure-dialog').addEventListener('close',()=>zoomTrigger?.focus());$('figure-scale').addEventListener('input',resizeFigure);$('figure-orientation').addEventListener('change',resizeFigure);
  return catalog;
 }
-root.AGUMethod={init,loadBook,decorate,renderCatalog,renderReview,setActivity,resetRendering:()=>{renderedBook=''},sectionId:()=>current?.sections[Number($('page').value)]?.id};
+root.AGUMethod={init,loadBook,decorate,renderCatalog,renderReview,setActivity,resetRendering:()=>{renderedBook=''},sectionId:()=>current?.sections[Number($('page').value)]?.id,indexForSectionId:id=>current?.sections.findIndex(s=>s.id===id)??-1,edition:()=>current?.edition};
 // O motor original chama render() ao revelar/avaliar; somente o painel contextual é atualizado.
 root.render=()=>{if(activity==='revisar')renderReview()};
 })(window);

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidato a cartão Método AGU v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "chapterId",
+    "sectionId",
+    "curricularIds",
+    "front",
+    "back",
+    "sources",
+    "chapterEdition",
+    "cardVersion",
+    "status",
+    "nature",
+    "cognitiveType",
+    "category",
+    "semanticKey",
+    "dependencies"
+  ],
+  "properties": {
+    "schema": {
+      "const": "agu-card-candidate-v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+    },
+    "chapterId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+    },
+    "sectionId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+    },
+    "curricularIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "front": {
+      "type": "string",
+      "minLength": 1
+    },
+    "back": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "locator",
+          "consultedAt",
+          "status",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consultedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "enum": [
+              "confirmado_pontualmente",
+              "parcial",
+              "pendente"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "chapterEdition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cardVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "candidato",
+        "em_revisao",
+        "aprovado",
+        "suspenso",
+        "obsoleto"
+      ]
+    },
+    "nature": {
+      "enum": [
+        "autoral",
+        "adaptada",
+        "oficial"
+      ]
+    },
+    "cognitiveType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semanticKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dependencies": {
+      "type": "object",
+      "required": [
+        "sections",
+        "sources"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "reviewer",
+        "at",
+        "scope",
+        "evidenceSha256"
+      ]
+    },
+    "officialEvidence": {
+      "type": "object",
+      "required": [
+        "examUrl",
+        "keyUrl",
+        "item"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "aprovado"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "approval"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "nature": {
+            "const": "oficial"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "officialEvidence"
+        ]
+      }
+    }
+  ]
+}

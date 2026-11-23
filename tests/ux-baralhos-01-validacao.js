@@ -12,7 +12,7 @@ function boot(initial={},oneCard=false){
  x.window=x;vm.createContext(x);
  for(const p of ['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js','dados/questoes-auditadas-s18.js','dados/questoes-auditadas-s19.js','dados/legislacao-s13.js','revisao-inteligente.js','leitor-consolidacao.js','leitor-juridico.js','backup-local-s20.js']){
   let code=read(p);
-  if(oneCard&&p==='revisao-inteligente.js')code=code.replace('const ALL=[...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];',"const ALL=[...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS].filter(x=>x.kind!=='flashcard'||x.id==='ri-adm-01');");
+  if(oneCard&&p==='revisao-inteligente.js')code=code.replace('const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];',"const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS].filter(x=>x.kind!=='flashcard'||x.id==='ri-adm-01');");
   vm.runInContext(code,x,{filename:p});
  }
  return {x,records};

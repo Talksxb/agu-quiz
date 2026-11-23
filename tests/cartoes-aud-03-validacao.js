@@ -60,7 +60,7 @@ check('hashes e ordem de carregamento respeitam baseline integrado; CSS preserva
  assert.equal(f.htmlBeforeSha256,biblioteca.changed['index.html'].after);
  assert.equal(f.reviewBeforeSha256,older.reviewAfterSha256);
  assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);
- assert.equal(legacyIndexDigest(),f.htmlAfterSha256);assert.equal(sha('revisao-inteligente.js'),f.reviewAfterSha256);
+ assert.equal(legacyIndexDigest(),f.htmlAfterSha256);assert.equal(crypto.createHash('sha256').update(require('./metodo-agu-001-legado.cjs').review(read('revisao-inteligente.js'))).digest('hex'),f.reviewAfterSha256);
  assert.equal(sha(f.newFile),f.newFileSha256);
  for(const [file,hash] of Object.entries(f.unchanged))assert.equal(sha(file),hash,file);
  const html=read('index.html');assert.ok(html.indexOf('flashcards-aud02-2015-atualizados-lote02.js')<html.indexOf('flashcards-aud02-2015-atualizados-lote03.js'));

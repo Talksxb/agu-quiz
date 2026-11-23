@@ -57,6 +57,16 @@ function affected(previous,next,cards){
  if(!previous)return [];const old=new Map(previous.sections.map(s=>[s.id,s.sha256])),ss=new Map(next.sections.map(s=>[s.id,s.sha256]));
  return cards.filter(c=>Object.entries(c.dependencies?.sections||{}).some(([id,h])=>old.has(id)&&ss.get(id)!==h)||Object.entries(c.dependencies?.sources||{}).some(([id,h])=>hash(next.sources.find(s=>s.id===id)||null)!==h)).map(c=>({id:c.id,chapterId:next.id,status:'em_revisao',previousStatus:c.status,reason:'Seção/fonte dependente alterada; revalidação explícita necessária',preserveHistory:true}));
 }
+function approvedEditorial(records,all,candidates,legacy){
+ const ids=new Set(legacy.map(c=>c.id));return records.map(record=>{
+  const c=record.card;validateCandidate(c);assert(c.status==='aprovado'&&c.sources.every(s=>s.status==='confirmado_pontualmente'),'Cartão novo sem aprovação e fontes pontualmente conferidas');
+  assert(!ids.has(c.id),'ID já existente: reutilizar vínculo, sem cópia');ids.add(c.id);
+  const current=candidates.find(x=>x.id===c.id),chapter=all.find(x=>x.m.id===c.chapterId);assert(chapter,'Cartão sem capítulo aprovado');assert(!current?.duplicateOf,'Duplicata: decidir reuso de ID antes da aprovação');
+  const frozenHash=hash({front:c.front,back:c.back,sources:c.sources,chapterEdition:c.chapterEdition,cardVersion:c.cardVersion});assert(record.contentSha256===frozenHash,'Snapshot aprovado divergente');
+  const dependenciesChanged=!current||current.front!==c.front||current.back!==c.back||Object.entries(c.dependencies.sections).some(([id,h])=>chapter.data.sections.find(s=>s.id===id)?.sha256!==h)||Object.entries(c.dependencies.sources).some(([id,h])=>hash(chapter.data.sources.find(s=>s.id===id)||null)!==h);
+  return {id:c.id,kind:'flashcard',code:c.curricularIds[0],front:c.front,back:c.back,source:c.sources.map(s=>s.locator).join('; '),link:c.sources[0].url,origin:'flashcard_editorial_'+c.nature,notOfficial:c.nature!=='oficial',validation:'aprovacao_editorial_documentada_sem_certificacao_integral',reviewedAt:c.approval.at,editorialStatus:dependenciesChanged||record.suspended?'suspenso':'aprovado',editorialVersion:c.cardVersion,chapterId:c.chapterId,sectionId:c.sectionId,approval:c.approval,contentSha256:frozenHash,previousVersions:record.previousVersions||[]};
+ });
+}
 function inputHash(root,m,md){const {approval,...rest}=m;return hash({markdown:md,metadata:rest,assets:(m.resources||[]).filter(r=>r.type==='figure').map(r=>({src:r.src,sha256:hash(fs.readFileSync(safePath(root,r.src)))}))})}
 function compile(root,m,{fixture=false}={}){
  const md=read(root,m.canonical),ss=validateMetadata(m,md,{fixture});
@@ -77,7 +87,8 @@ function build({root=ROOT,check=false,fixture=false,config='livros/editorial/cat
  const ids=new Set();for(const c of all){assert(!ids.has(c.m.id),'Capítulo duplicado no manifesto');ids.add(c.m.id);let d=catalog.disciplines.find(d=>d.id===c.m.discipline.id);if(!d){d={...c.m.discipline,chapters:[]};catalog.disciplines.push(d)}d.chapters.push({id:c.m.id,title:c.m.title,edition:c.m.edition,curricularIds:c.m.curricularIds,reader:c.m.readerPath,method:'livros/metodo/'+c.m.id+'.json',status:'publicado'})}
  for(const c of candidates)assert(candidates.filter(x=>x.id===c.id).length===1,'ID de candidato duplicado');
  const bindings=registry.cards.map(b=>{const old=existing.find(c=>c.id===b.cardId);assert(old,'Cartão legado inexistente');assert(hash({front:old.front,back:old.back,source:old.source,link:old.link})===b.contentSha256,'Cartão histórico alterado sem revisão');assert(b.status==='aprovado'&&b.approval?.reviewer&&date(b.approval.at)&&sourceOK(b.source),'Vínculo sem revisão/fonte');for(const ref of b.chapters){const c=all.find(c=>c.m.id===ref.chapterId);assert(c?.data.sections.some(s=>s.id===ref.sectionId),'Vínculo capítulo/seção inexistente')}return b});
- let changed=0;const emit=(p,v,o={})=>{changed+=Number(write(root,p,v,{check,...o}))};
+ const editorial=approvedEditorial(json(root,'livros/editorial/cartoes-aprovados.json').records,all,candidates,existing);
+ let changed=0;const plannedWrites=[];const emit=(p,v,o={})=>plannedWrites.push([p,v,o]);
  const revalidation=[];let previousCandidates=[];try{previousCandidates=json(root,'livros/candidatos/cartoes.json').cards}catch(e){if(e.code!=='ENOENT')throw e}
  for(const c of all){if(only&&c.m.id!==only)continue;const output='livros/metodo/'+c.m.id+'.json';let prior;try{prior=json(root,output)}catch(e){if(e.code!=='ENOENT')throw e}
   if(prior&&prior.sourceSha256!==c.data.sourceSha256){assert(prior.edition!==c.m.edition,'Texto mudou: incrementar edição antes de publicar');emit('livros/historico/'+c.m.id+'/'+prior.edition+'.json',prior)}
@@ -85,14 +96,19 @@ function build({root=ROOT,check=false,fixture=false,config='livros/editorial/cat
   revalidation.push(...affected(prior,c.data,[...previousCandidates.filter(x=>x.chapterId===c.m.id),...dependencies]));
   // Associações aprovadas têm hash de seção/fonte; alterações retiram o vínculo da revisão.
   c.data.reviewCards=bindings.filter(b=>b.chapters.some(r=>r.chapterId===c.m.id)).map(b=>{const ref=b.chapters.find(r=>r.chapterId===c.m.id),dirty=Object.entries(ref.dependencies.sections).some(([id,h])=>c.data.sections.find(s=>s.id===id)?.sha256!==h)||Object.entries(ref.dependencies.sources||{}).some(([id,h])=>hash(c.data.sources.find(s=>s.id===id)||null)!==h);return {cardId:b.cardId,sectionId:ref.sectionId,relation:ref.relation,label:ref.label,status:dirty?'em_revisao':b.status,source:b.source,approval:b.approval}});
+  c.data.reviewCards.push(...editorial.filter(x=>x.chapterId===c.m.id).map(x=>({cardId:x.id,sectionId:x.sectionId,relation:'proposicao_editorial_revisada',label:'Cartão da edição '+x.editorialVersion,status:x.editorialStatus,approval:x.approval})));
   emit(c.m.readerPath,c.reader,{semantic:true});emit(output,c.data);emit('livros/relatorios/'+c.m.id+'.json',c.fidelity);
  }
  for(const p of cfg.collections){const collection=json(root,p);assert(collection.schema==='agu-collection-v1'&&Array.isArray(collection.chapters),'Coleção inválida');assert(new Set(collection.chapters.map(c=>c.editorialId)).size===collection.chapters.length,'Obra duplicada na coleção');for(const c of collection.chapters)if(c.status.publication==='publicado')assert(ids.has(c.chapterId),'Coleção aponta obra não publicada')}
  emit('livros/catalogo.json',catalog);emit('livros/candidatos/cartoes.json',{schema:'agu-candidates-v1',cards:candidates});
+ let priorEditorial=[];try{const context={};context.window=context;vm.runInNewContext(read(root,'dados/flashcards-editoriais.js'),context);priorEditorial=context.AGU_EDITORIAL_CARDS||[]}catch(e){if(e.code!=='ENOENT')throw e}
+ for(const old of priorEditorial){const newer=editorial.find(c=>c.id===old.id);assert(newer,'Cartão já publicado removido: conservar snapshot suspenso e histórico');if(newer.contentSha256!==old.contentSha256)assert(newer.editorialVersion!==old.editorialVersion&&newer.previousVersions.some(v=>v.contentSha256===old.contentSha256),'Mudança de cartão exige versão e snapshot anterior')}
+ emit('dados/flashcards-editoriais.js','/* Gerado pelo pipeline; candidatos nunca entram neste arquivo. */\nwindow.AGU_EDITORIAL_CARDS = '+JSON.stringify(editorial,null,2)+';\n');
  // Mantém pendências de revalidação até decisão editorial, inclusive ao reprocessar.
  let retained=[];try{retained=json(root,'livros/relatorios/revalidacao.json').items}catch(e){if(e.code!=='ENOENT')throw e}
  emit('livros/relatorios/revalidacao.json',{schema:'agu-revalidation-v1',items:[...new Map([...retained,...revalidation].map(x=>[x.chapterId+':'+x.id,x])).values()]});
- return {chapters:all.length,candidates:candidates.length,legacyCards:existing.length,changed,revalidation:revalidation.length};
+ for(const [p,v,o] of plannedWrites)changed+=Number(write(root,p,v,{check,...o}));
+ return {chapters:all.length,candidates:candidates.length,legacyCards:existing.length,approvedEditorial:editorial.filter(c=>c.editorialStatus==='aprovado').length,changed,revalidation:revalidation.length};
 }
-module.exports={hash,frontMatter,sections,extract,validateMetadata,sourceOK,official,legacyCards,candidate,validateCandidate,deduplicate,affected,inputHash,compile,build,safePath};
+module.exports={hash,frontMatter,sections,extract,validateMetadata,sourceOK,official,legacyCards,candidate,validateCandidate,deduplicate,affected,approvedEditorial,inputHash,compile,build,safePath};
 if(require.main===module){try{const args=process.argv.slice(2),arg=k=>args.includes(k)?args[args.indexOf(k)+1]:null;console.log('METODO_AGU_PIPELINE_OK',JSON.stringify(build({root:arg('--root')||ROOT,config:arg('--config')||undefined,check:args.includes('--check'),only:arg('--chapter')})))}catch(e){console.error('METODO_AGU_PIPELINE_REJEITADO:',e.message);process.exitCode=1}}

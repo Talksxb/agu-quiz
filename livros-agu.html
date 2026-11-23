@@ -134,6 +134,7 @@ Fontes: arquivos editoriais originais LIVRO-DIG-001 v2.0, LIVRO-PIL-001 v1.0 e L
 <script src="dados/flashcards-aud02-2015-atualizados-lote01.js"></script>
 <script src="dados/flashcards-aud02-2015-atualizados-lote02.js"></script>
 <script src="dados/flashcards-aud02-2015-atualizados-lote03.js"></script>
+<script src="dados/flashcards-editoriais.js"></script>
 <script src="revisao-inteligente.js"></script>
 <script src="metodo-agu.js"></script>
 <script>
@@ -151,7 +152,7 @@ let openSequence=0;
 let book=null,index=0,ms=0,started=0,running=false,tick=null,guidedTimer=null,blocks=[],block=0,lastWpm=null;
 function countWords(s){return (s.match(/\S+/g)||[]).length}
 function safeLoad(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:null}catch{return null}}
-function save(){const db=safeLoad();if(!db||(db[book.id]&&(typeof db[book.id]!=='object'||Array.isArray(db[book.id])))){notify('Registro local inválido; dados anteriores preservados.');return}db[book.id]={...(db[book.id]||{}),page:index,done:completed,sectionId:window.AGUMethod?.sectionId(),updated:new Date().toISOString()};try{localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='O navegador não permitiu guardar progresso local.'}}
+function save(){const db=safeLoad();if(!db||(db[book.id]&&(typeof db[book.id]!=='object'||Array.isArray(db[book.id])))){notify('Registro local inválido; dados anteriores preservados.');return}const prior=db[book.id]||{},edition=window.AGUMethod?.edition();let readingEditions=prior.readingEditions||{};if(prior.methodEdition&&prior.methodEdition!==edition)readingEditions={...readingEditions,[prior.methodEdition]:{page:prior.page,done:prior.done,sectionId:prior.sectionId,updated:prior.updated}};db[book.id]={...prior,page:index,done:completed,sectionId:window.AGUMethod?.sectionId(),methodEdition:edition,readingEditions,updated:new Date().toISOString()};try{localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='O navegador não permitiu guardar progresso local.'}}
 let completed=[];
 function elapsed(){return ms+(running?performance.now()-started:0)}
 function formatted(t){const sec=Math.floor(t/1000);return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
@@ -176,8 +177,8 @@ function renderMarkdown(root,markdown){
  function flush(){if(paragraph.length){const p=document.createElement('p');inline(p,paragraph.join(' ').trim());root.appendChild(p);paragraph=[]}items=null}
  for(let i=0;i<lines.length;i++){const s=lines[i].trim();
  if(!s){flush();continue}
- const h=s.match(/^(#{1,4})\s+(.+)/);
- if(h){flush();const hn=document.createElement(h[1].length<=2?'h2':'h3');inline(hn,h[2]);root.appendChild(hn);continue}
+ const h=s.match(/^(#{1,6})\s+(.+)/);
+ if(h){flush();const hn=document.createElement(h[1].length===1?'h2':'h'+Math.min(6,h[1].length+1));inline(hn,h[2]);root.appendChild(hn);continue}
  if(s.startsWith('|')&&s.endsWith('|')){flush();const pre=document.createElement('p');pre.className='raw-block';pre.textContent=s;root.appendChild(pre);continue}
  const bullet=s.match(/^\s*(?:[-*•]|\d+\.)\s+(.+)/);
  if(bullet){if(!items){flush();items=document.createElement('ul');root.appendChild(items)}const li=document.createElement('li');inline(li,bullet[1]);items.appendChild(li);continue}
@@ -217,8 +218,8 @@ async function openBook(id){
  try{
  const response=await fetch(manifest[id],{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
- if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const state=safeLoad()?.[id]||{};completed=Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
- index=Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
+ if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const state=safeLoad()?.[id]||{};completed=(!state.methodEdition||state.methodEdition===window.AGUMethod?.edition())&&Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
+ const stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
  $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
  const originalOk=typeof data.original_html==='string'&&/^livros\/[a-z0-9-]+\.html$/.test(data.original_html);
@@ -253,7 +254,7 @@ $('next-block').addEventListener('click',()=>{block=Math.min(block+1,blocks.leng
 $('top').addEventListener('click',()=>{$('book-title').scrollIntoView({block:'start'});$('book-title').focus()});
 $('reset').addEventListener('click',()=>{if(!book||!confirm('Zerar somente as marcações deste livro neste navegador?'))return;completed=[];index=0;save();renderCurrent()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)pause()});
-window.AGULivros={openBook,move,pause,renderText};
+window.AGULivros={openBook,move,pause,renderText,remember(i){if(!book||i===index)return;index=Math.max(0,Math.min(book.pages.length-1,i));$('page').value=String(index);save()}};
 const requested=new URLSearchParams(location.search).get('livro');
 window.AGUMethod.init(manifest).then(()=>{if(requested&&manifest[requested])openBook(requested)});
 })();

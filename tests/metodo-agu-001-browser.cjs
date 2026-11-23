@@ -6,7 +6,7 @@ const server=process.env.AGU_TEST_URL?null:http.createServer((req,res)=>{const p
 const seedReview=JSON.stringify({schema:'agu-review-v1',cards:{'ri-adm-01':{seen:3,stage:2,due:'2099-05-01',errors:1,ease:'lembrei'}},attempts:[],created:'2026-11-10T12:00:00Z'});
 const seedReader={'adm-53':{page:2,done:[0],updated:'2026-11-20T12:00:00Z'},'registro-externo':{preservar:'bytes de teste'}};
 const squeeze=s=>s.replace(/\s+/g,'');
-function expected(text,format){if(format!=='markdown')return squeeze(text);return squeeze(text.replace(/^#{1,4}\s+/gm,'').replace(/^\s*(?:[-*•]|\d+\.)\s+/gm,'').replace(/\*\*([^*]+)\*\*/g,'$1').replace(/`([^`]+)`/g,'$1').replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'$1'))}
+function expected(text,format){if(format!=='markdown')return squeeze(text);return squeeze(text.split('\n').map(line=>/^#{1,4}\s/.test(line)?line.replace(/^#{1,4}\s+/,''):line.replace(/^\s*(?:[-*•]|\d+\.)\s+/,'')).join('\n').replace(/\*\*([^*]+)\*\*/g,'$1').replace(/`([^`]+)`/g,'$1').replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'$1'))}
 async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=process.env.AGU_TEST_URL||'http://127.0.0.1:'+server.address().port+'/';const browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.AGU_CHROMIUM_BIN||undefined});const results=[];
  try{for(const width of [320,390,768,1280]){
   const context=await browser.newContext({viewport:{width,height:850},reducedMotion:'reduce',timezoneId:'America/Sao_Paulo'}),page=await context.newPage(),errors=[],scans=[];
