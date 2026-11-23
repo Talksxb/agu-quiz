@@ -167,6 +167,7 @@ function previewRestore(raw,{mergeBooks=false}={}){
   }
   if(previous!==null&&mergeBooks&&books.added.length){
    const merged={...current};for(const id of books.added)merged[id]=incoming[id];
+   if(!validateRecord(BOOKS,merged))throw Error('Percurso combinado ultrapassa os limites de estrutura; nenhum dado foi alterado.');
    const value=JSON.stringify(merged);if(fileBytes(value)>MAX)throw Error('Percurso combinado excede 12 MB; nenhum dado foi alterado.');
    operations.push({key,previous,value});categories[categories.length-1].action='adicionar capítulos ausentes';
   }
@@ -228,7 +229,7 @@ function showPreview(raw){
  error.setAttribute('role','alert');error.tabIndex=-1;detail.setAttribute('role','status');row.className='btnrow';cancel.type=apply.type='button';cancel.className=apply.className='secondary';
  let plan,completed=false;
  function refresh(){
-  error.textContent='';list.replaceChildren();warnings.replaceChildren();
+  error.textContent='';detail.textContent='';list.replaceChildren();warnings.replaceChildren();
   try{plan=previewRestore(raw,{mergeBooks:merge.checked});apply.disabled=false;
    for(const c of plan.categories)list.appendChild(make('li',c.label+': '+c.action+'.'));
    detail.textContent=plan.books.added.length+' capítulo(s) a adicionar; '+plan.books.kept.length+' registro(s) local(is) preservado(s); '+plan.books.skipped.length+' registro(s) do arquivo não aplicado(s). Nenhum registro existente será substituído.';

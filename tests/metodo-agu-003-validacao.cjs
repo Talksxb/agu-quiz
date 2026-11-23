@@ -38,6 +38,17 @@ test('prévia vencida aborta antes da primeira escrita',()=>{
 test('percurso local inválido bloqueia mesclagem e preserva bytes',()=>{
  for(const raw of ['{inválido',JSON.stringify({'adm-53':{page:-1}})]){db.set(KEY,raw);assert.throws(()=>B.restore(bookBundle({'adm-54':{page:0}}),{mergeBooks:true}),/inválido|inconsistente/);assert.equal(db.get(KEY),raw);assert.equal(B.importMissing(bookBundle({})).added,0);assert.equal(db.get(KEY),raw);}
 });
+test('mesclagem não grava um conjunto que invalida limites de capítulos ou nós',()=>{
+ const many=Object.fromEntries(Array.from({length:2000},(_,i)=>['capitulo-'+i,{}]));
+ const large=()=>({extra:Array.from({length:10000},()=>Array(11).fill('texto artificial'))});
+ for(const [current,incoming] of [[many,{'capitulo-adicional':{}}],[{'capitulo-local':large()},{'capitulo-importado':large()}]]){
+  assert.equal(P.validate(current),true);assert.equal(P.validate(incoming),true);assert.equal(P.validate({...current,...incoming}),false);
+  const before=JSON.stringify(current);db.set(KEY,before);
+  assert.throws(()=>B.restore(bundle({[REVIEW]:review,[KEY]:JSON.stringify(incoming)}),{mergeBooks:true}),/Percurso combinado/);
+  assert.equal(db.get(KEY),before,'resultado inválido não pode substituir percurso válido');
+  assert.equal(db.has(REVIEW),false,'nenhuma outra categoria pode ser escrita antes de validar o conjunto');
+ }
+});
 test('quota na última escrita reverte inserções e preserva categoria existente',()=>{
  const raw=JSON.stringify({'adm-53':record()});db.set(KEY,raw);env.localStorage.setItem=(k,v)=>{if(k===KEY)throw Error('quota sintética');storage.setItem(k,v)};
  const b=bundle({[REVIEW]:review,[KEY]:JSON.stringify({'adm-54':{page:0}})});assert.throws(()=>B.restore(b,{mergeBooks:true}),/revertida/);assert.equal(db.get(KEY),raw);assert.equal(db.has(REVIEW),false);
