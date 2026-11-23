@@ -1,0 +1,21 @@
+{
+  "schema": "agu-revalidation-v1",
+  "items": [
+    {
+      "id": "metodo-amb-03-proposicao-1",
+      "chapterId": "amb-03",
+      "status": "em_revisao",
+      "previousStatus": "candidato",
+      "reason": "Seção/fonte dependente alterada; revalidação explícita necessária",
+      "preserveHistory": true
+    },
+    {
+      "id": "metodo-amb-03-proposicao-2",
+      "chapterId": "amb-03",
+      "status": "em_revisao",
+      "previousStatus": "candidato",
+      "reason": "Seção/fonte dependente alterada; revalidação explícita necessária",
+      "preserveHistory": true
+    }
+  ]
+}

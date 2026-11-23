@@ -1,0 +1,66 @@
+{
+  "before": "ade35f3ba8c77b0d33ec41063f3c72f20c3889b91ab619d94942ebf0c3768116",
+  "after": "53fb571eb4333e16b64ae63a59d9684a342bec2d632059ff327b170ce4ba6111",
+  "changes": [
+    {
+      "before": "const ALL=[...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];\n",
+      "after": "// MÉTODO-AGU-001: adaptador opcional de dados editoriais; intervalos e gravação permanecem no motor original.\nconst EDITORIAL_CARDS=(Array.isArray(global.AGU_EDITORIAL_CARDS)?global.AGU_EDITORIAL_CARDS:[]).filter(x=>x&&x.kind==='flashcard'&&/^metodo-[a-z0-9-]+$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&/^https:\\/\\//.test(x.link)&&['aprovado','suspenso'].includes(x.editorialStatus)&&x.approval?.reviewer);\nconst editorialEligible=x=>!x.editorialStatus||x.editorialStatus==='aprovado';\nconst ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];\n"
+    },
+    {
+      "before": "function notebookHistoricCard(id){return typeof id==='string'&&Object.hasOwn(NOTEBOOK_CARD_HISTORY,id)?NOTEBOOK_CARD_HISTORY[id]:null}\n",
+      "after": "function notebookHistoricCard(id){const x=INDEX.get(id);if(x?.editorialStatus)return {id:x.id,code:x.code,topic:null,label:'Flashcard editorial '+x.id};return typeof id==='string'&&Object.hasOwn(NOTEBOOK_CARD_HISTORY,id)?NOTEBOOK_CARD_HISTORY[id]:null}\n"
+    },
+    {
+      "before": " return ref&&x?.kind==='flashcard'&&x.code===ref.code&&x.notebookUnavailable!==true?x:null;\n",
+      "after": " return ref&&x?.kind==='flashcard'&&editorialEligible(x)&&x.code===ref.code&&x.notebookUnavailable!==true?x:null;\n"
+    },
+    {
+      "before": "function flashcards(){return ALL.filter(x=>x.kind==='flashcard')}\n",
+      "after": "function flashcards(){return ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard')}\n"
+    },
+    {
+      "before": "",
+      "after": " if(s.order.some(id=>!editorialEligible(INDEX.get(id)))){global.alert?.('Um cartão desta sessão aguarda revalidação editorial. A sessão, as respostas e a agenda foram preservadas. Escolha uma seleção de cartões aprovados para continuar.');return false}\n"
+    },
+    {
+      "before": " return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id]?.auditVerified===true)&&(!stat(x.id).due||stat(x.id).due<=today()))\n",
+      "after": " return ALL.filter(x=>editorialEligible(x)&&x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id]?.auditVerified===true)&&(!stat(x.id).due||stat(x.id).due<=today()))\n"
+    },
+    {
+      "before": " const due=ALL.filter(x=>x.status!=='anulada'&&stat(x.id).due&&stat(x.id).due<=today());\n const newCards=ALL.filter(x=>x.kind==='flashcard'&&!historicalCount(x.id)).length;\n const repeated=ALL.filter(x=>stat(x.id).errors>=2);\n",
+      "after": " const due=ALL.filter(x=>editorialEligible(x)&&x.status!=='anulada'&&stat(x.id).due&&stat(x.id).due<=today());\n const newCards=ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard'&&!historicalCount(x.id)).length;\n const repeated=ALL.filter(x=>editorialEligible(x)&&stat(x.id).errors>=2);\n"
+    },
+    {
+      "before": "function select(id,keyboard=false){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^=\"AGUReview.reveal(\"]',keyboard)}\n",
+      "after": "function select(id,keyboard=false){const q=INDEX.get(id);if(!q||!editorialEligible(q)||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^=\"AGUReview.reveal(\"]',keyboard)}\n"
+    },
+    {
+      "before": " if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;\n",
+      "after": " if(!active||!editorialEligible(active)||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;\n"
+    },
+    {
+      "before": " const attempt={id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};\n",
+      "after": " const attempt={...(active.editorialVersion?{editorialCardVersion:active.editorialVersion}:{}),id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};\n"
+    },
+    {
+      "before": " const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));\n",
+      "after": " const cards=ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));\n"
+    },
+    {
+      "before": "function searchCards(){return ALL.filter(x=>x.kind==='flashcard').map(x=>({id:x.id,code:x.code,front:x.front,back:x.back,source:x.source||'',validation:x.validation||'',origin:x.origin||'flashcard_autoral'}))}\n",
+      "after": "function searchCards(){return ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard').map(x=>({id:x.id,code:x.code,front:x.front,back:x.back,source:x.source||'',validation:x.validation||'',origin:x.origin||'flashcard_autoral'}))}\n"
+    },
+    {
+      "before": " return ALL.filter(x=>x.kind==='flashcard'&&x.code===code).map(x=>({id:x.id,code:x.code,front:x.front,origin:x.origin||'flashcard_autoral',validation:x.validation||'revisao_pendente',due:stat(x.id).due,seen:stat(x.id).seen||0}))\n",
+      "after": " return ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard'&&x.code===code).map(x=>({id:x.id,code:x.code,front:x.front,origin:x.origin||'flashcard_autoral',validation:x.validation||'revisao_pendente',due:stat(x.id).due,seen:stat(x.id).seen||0}))\n"
+    },
+    {
+      "before": " if(!x||x.kind!=='flashcard')return false;\n",
+      "after": " if(!x||!editorialEligible(x)||x.kind!=='flashcard')return false;\n"
+    },
+    {
+      "before": "global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};\n",
+      "after": "global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};\n"
+    }
+  ]
+}

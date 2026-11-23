@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contrato editorial Método AGU v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "editorialId",
+    "title",
+    "discipline",
+    "edition",
+    "canonical",
+    "readerPath",
+    "reader",
+    "curricularIds",
+    "dates",
+    "verification",
+    "sections",
+    "coverage",
+    "sources",
+    "resources",
+    "activities",
+    "propositions",
+    "approval"
+  ],
+  "properties": {
+    "schema": {
+      "const": "agu-chapter-v1"
+    },
+    "fixture": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+    },
+    "editorialId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "discipline": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "edition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metadataVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical": {
+      "type": "string",
+      "pattern": "\\.md$"
+    },
+    "readerPath": {
+      "type": "string",
+      "pattern": "^livros/[a-z0-9-]+\\.json$"
+    },
+    "reader": {
+      "type": "object"
+    },
+    "curricularIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]+(?:-[A-Z]+)?-[0-9]+[a-z]?$"
+      },
+      "minItems": 1
+    },
+    "dates": {
+      "type": "object",
+      "required": [
+        "edition",
+        "auditCutoff",
+        "legalConsultation"
+      ],
+      "properties": {
+        "edition": {
+          "type": "string",
+          "format": "date"
+        },
+        "auditCutoff": {
+          "type": "string",
+          "format": "date"
+        },
+        "legalConsultation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "migration": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "status",
+        "gaps"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "marker",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "marker": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "curricularId",
+          "subitem",
+          "sections",
+          "status"
+        ],
+        "properties": {
+          "curricularId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subitem": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+            },
+            "minItems": 1
+          },
+          "status": {
+            "enum": [
+              "delimitado",
+              "parcial",
+              "planejado"
+            ]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "locator",
+          "consultedAt",
+          "status",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consultedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "enum": [
+              "confirmado_pontualmente",
+              "parcial",
+              "pendente"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 0
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sectionId",
+          "type",
+          "alt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "sectionId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "type": {
+            "enum": [
+              "figure",
+              "table"
+            ]
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 26
+          },
+          "src": {
+            "type": "string",
+            "minLength": 1
+          },
+          "orientation": {
+            "enum": [
+              "vertical",
+              "horizontal"
+            ]
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "minItems": 2
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "figure"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "src",
+                "orientation"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "table"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "rows"
+              ]
+            }
+          }
+        ]
+      },
+      "minItems": 0
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sectionId",
+          "type",
+          "nature",
+          "prompt",
+          "answer"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "sectionId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "type": {
+            "enum": [
+              "aplicar",
+              "recuperar"
+            ]
+          },
+          "nature": {
+            "enum": [
+              "autoral",
+              "adaptada",
+              "oficial"
+            ]
+          },
+          "prompt": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "sectionId"
+              ],
+              "properties": {
+                "sectionId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+                },
+                "start": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "end": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "answer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "sectionId"
+              ],
+              "properties": {
+                "sectionId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+                },
+                "start": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "end": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        }
+      },
+      "minItems": 0
+    },
+    "propositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sectionId",
+          "activityId",
+          "sourceRefs",
+          "category",
+          "cognitiveType",
+          "semanticKey"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "sectionId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "activityId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+          },
+          "sourceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,100}$"
+            },
+            "minItems": 1
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cognitiveType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "semanticKey": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 0
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "status",
+        "inputSha256",
+        "record"
+      ],
+      "properties": {
+        "status": {
+          "const": "aprovado"
+        },
+        "inputSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "record": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "description": "Validação semântica adicional obrigatória em scripts/metodo-agu.cjs: fonte oficial, existência/ordem de seções, seletores, hashes, duplicatas e bloqueio de fixtures."
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "agu-card-bindings-v1",
+  "cards": [
+    {
+      "cardId": "aud03-flc-013",
+      "cardVersion": "historica-preservada",
+      "status": "aprovado",
+      "contentSha256": "ccd9278c02639edb5adb3443f4bf6c289a59b7265c3e354ee695dfda70115ae3",
+      "source": {
+        "id": "cf-131",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 131, caput",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Âmbito institucional da consultoria da AGU",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      },
+      "chapters": [
+        {
+          "chapterId": "amb-03",
+          "sectionId": "amb-03-s11",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Âmbito institucional da consultoria da AGU",
+          "dependencies": {
+            "sections": {
+              "amb-03-s11": "01a13cbbe25698c5345fc8f84e47155d9bdc7fefc8ef095f98714106021631b1"
+            },
+            "sources": {
+              "cf": "723ab3cfa676f0d4017355e01cb2fe77a14e9a27442983f1acecbea82f2146a6"
+            }
+          }
+        },
+        {
+          "chapterId": "adm-53",
+          "sectionId": "adm-53-s13",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Âmbito institucional da consultoria da AGU",
+          "dependencies": {
+            "sections": {
+              "adm-53-s13": "2b96282036f808a97b75cc5e15968a571d98489381c329ddd2c54bd775dd9831"
+            },
+            "sources": {
+              "cf": "df92727af108cc29302cf4eb9d99af5aaa0b01f911f16be504e93984309ba117"
+            }
+          }
+        },
+        {
+          "chapterId": "adm-54",
+          "sectionId": "adm-54-s14",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Âmbito institucional da consultoria da AGU",
+          "dependencies": {
+            "sections": {
+              "adm-54-s14": "1e085da75b3e304f0d294f3add85cdc3817a56f1e9affe167b0e4144536b2f39"
+            },
+            "sources": {
+              "cf": "df92727af108cc29302cf4eb9d99af5aaa0b01f911f16be504e93984309ba117"
+            }
+          }
+        },
+        {
+          "chapterId": "lgpd-adm64b",
+          "sectionId": "lgpd-adm64b-s16",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Âmbito institucional da consultoria da AGU",
+          "dependencies": {
+            "sections": {
+              "lgpd-adm64b-s16": "fecaff8b9b78304f17616a0e7a39df1c28e6abd521a3c4504be5b7e66c824c5d"
+            },
+            "sources": {
+              "cf": "6662258784ad863645a9ac6ebf87f7b4cf2f6dbcaaf0cd68f38317661962409b"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "cardId": "aud03-flc-008",
+      "cardVersion": "historica-preservada",
+      "status": "aprovado",
+      "contentSha256": "0ceb91e089e846001e93a1755babbc0e4949ac9c522bb83f9d0610b5900cc4d5",
+      "source": {
+        "id": "lei9784-50",
+        "url": "https://www2.camara.leg.br/legin/fed/lei/1999/lei-9784-29-janeiro-1999-322239-normaatualizada-pl.html",
+        "locator": "Lei 9.784/1999, art. 50, § 1º",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Motivação por referência a parecer: fundamento complementar",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      },
+      "chapters": [
+        {
+          "chapterId": "amb-03",
+          "sectionId": "amb-03-s11",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Motivação por referência a parecer: fundamento complementar",
+          "dependencies": {
+            "sections": {
+              "amb-03-s11": "01a13cbbe25698c5345fc8f84e47155d9bdc7fefc8ef095f98714106021631b1"
+            },
+            "sources": {
+              "cf": "723ab3cfa676f0d4017355e01cb2fe77a14e9a27442983f1acecbea82f2146a6"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "cardId": "aud02-2015-flc-02-009",
+      "cardVersion": "historica-preservada",
+      "status": "aprovado",
+      "contentSha256": "bccafcf15420b62a03dd3def9349438b66b9bb160a9fa01135608feb7c4695a3",
+      "source": {
+        "id": "cf-37-x",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 37, X",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Remuneração e reserva de lei: fundamento comum",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      },
+      "chapters": [
+        {
+          "chapterId": "adm-54",
+          "sectionId": "adm-54-s12",
+          "relation": "fundamento_complementar_sem_ampliar_cobertura",
+          "label": "Remuneração e reserva de lei: fundamento comum",
+          "dependencies": {
+            "sections": {
+              "adm-54-s12": "18fde2a3340ae6579ae269ed8b8b4b35d37a4fd47f40f6b71bb5a25e13704475"
+            },
+            "sources": {
+              "cf": "df92727af108cc29302cf4eb9d99af5aaa0b01f911f16be504e93984309ba117"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

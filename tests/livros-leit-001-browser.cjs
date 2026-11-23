@@ -20,11 +20,11 @@ async function main(){
    const page=await ctx.newPage(),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'load'});await page.evaluate(()=>setView('library'));
-   const tile=page.getByRole('link',{name:/Livros · Leitura guiada AGU/});
+   const tile=page.getByRole('link',{name:/Método AGU/});
    assert.equal(await tile.isVisible(),true);
    await tile.click();await page.waitForURL(/livros-agu\.html$/);
    assert.equal(await page.getByRole('button',{name:/Competências e Cooperação Ambiental/}).isEnabled(),true);
-   await page.getByRole('button',{name:/LGPD na Administração Pública/}).click();
+   await page.getByRole('button',{name:/LGPD.*Administração Pública/}).click();
    await page.waitForFunction(()=>document.querySelector('#book-title')?.textContent==='LGPD aplicada à Administração Pública');
    assert.equal(await page.locator('#read-full').isVisible(),true);
    assert.match(await page.locator('#read-full').innerText(),/LGPD aplicada à Administração Pública/);

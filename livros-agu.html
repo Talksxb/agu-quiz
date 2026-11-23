@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Livros · Leitura AGU | Laboratório</title>
+<title>Método AGU | Ler, aplicar, recuperar e revisar</title>
+<link rel="stylesheet" href="metodo-agu.css">
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#193643;background:#f5f7f9;line-height:1.55}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}
@@ -53,15 +54,18 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 </style>
 </head>
 <body>
+<a class="skip-method" href="#catalog-title">Ir aos capítulos</a>
 <div class="wrap">
 <header>
-<nav aria-label="Navegação"><a href="./">AGU Quiz</a><a href="laboratorio-leitura.html">Laboratório de leitura</a></nav>
-<span class="tag">BIBLIOTECA · LEITURA AGU</span>
-<h1>Livros no laboratório</h1>
-<p class="muted">Leia os capítulos completos, navegue pelas páginas ou seções e use a apresentação guiada por blocos de sentido. O conteúdo permanece disponível sem interrupções de perguntas.</p>
+<nav aria-label="Navegação"><a href="./">AGU Quiz</a><a href="laboratorio-leitura.html">Treino opcional de leitura</a></nav>
+<span class="tag">BIBLIOTECA INTELIGENTE</span>
+<h1>Método AGU</h1>
+<p class="muted method-intro">Parta do problema, estude os fundamentos e volte à prática. Cada capítulo reúne leitura integral, aplicação, recuperação e cartões relacionados. Escolha seu caminho e retome quando quiser.</p>
+<p id="method-status" role="status"></p>
 </header>
 <section id="catalog" class="card" aria-labelledby="catalog-title">
-<h2 id="catalog-title">Escolha seu livro</h2>
+<h2 id="catalog-title" tabindex="-1">Disciplinas e capítulos</h2>
+<button id="method-continue" class="primary" type="button" hidden>Continuar leitura</button>
 <p class="small muted">Capítulos autorais para leitura contínua ou guiada, preservados de edições finais do Projeto AGU. Transposições textuais podem não reproduzir a diagramação e os gráficos; quando disponível, consulte a versão original.</p>
 <div id="cards" class="grid">
 <button type="button" class="book" data-book="lgpd-adm64b"><strong>LGPD na Administração Pública</strong><span>LIVRO-DIG-001 · ADM-64b · edição 2.0 · 24 páginas</span><span>Direito Digital</span></button>
@@ -69,6 +73,8 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 <button type="button" class="book" data-book="adm-54"><strong>Agentes públicos</strong><span>LIVRO-ADM-002 · ADM-54 · edição 1.0 · 17 seções</span><span>Direito Administrativo</span></button>
 <button type="button" class="book" data-book="amb-03"><strong>Competências e Cooperação Ambiental</strong><span>LIVRO-AMB-001 · AMB-03 · edição de 20/11/2026 · 17 seções</span><span>Direito Ambiental · capítulo autônomo</span></button>
 </div>
+<details class="method-secondary"><summary>Coleção de Direito Ambiental</summary><p>Sequência de leitura sugerida. Obras planejadas ou produzidas aguardam revisão e publicação; você pode escolher livremente entre as publicadas.</p><ol id="collection-list"></ol></details>
+<details class="method-secondary"><summary>Recursos de leitura já disponíveis</summary><p><a href="laboratorio-leitura.html">Laboratório de Leitura Jurídica</a>: treino opcional de fluência e compreensão.</p><p><a href="https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/" rel="noopener noreferrer" target="_blank">Apostila · Leitura AGU no GPT Sites</a>: edição externa, sem sincronização automática. A edição de referência deste percurso é a identificada no capítulo do Quiz.</p></details>
 </section>
 <section id="book" class="card" hidden aria-labelledby="book-title">
 <p><button id="back-catalog" type="button">Voltar aos livros</button></p>
@@ -77,6 +83,15 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 <p id="book-status" class="small muted"></p>
 <p id="book-original" class="small" hidden><a id="original-link" target="_blank" rel="noopener noreferrer">Abrir edição original responsiva, com quadros e diagramas</a></p>
 <p class="notice">Leitura não equivale a domínio curricular. O histórico é local, sem sincronização com Caderno, auditoria, GPT Sites ou outros aparelhos. Em capítulos provenientes de PDF, a extração de texto não substitui o arquivo original em apresentação gráfica.</p>
+<nav id="method-tabs" class="method-tabs" aria-label="Atividades do capítulo" hidden>
+<button type="button" data-method-activity="estudar" aria-pressed="true" aria-controls="study-panel">Estudar</button>
+<button type="button" data-method-activity="aplicar" aria-pressed="false" aria-controls="method-activities">Aplicar</button>
+<button type="button" data-method-activity="recuperar" aria-pressed="false" aria-controls="method-activities">Recuperar</button>
+<button type="button" data-method-activity="revisar" aria-pressed="false" aria-controls="method-review">Revisar</button>
+</nav>
+<p id="method-context" class="small muted"></p>
+<section id="study-panel" aria-label="Leitura integral do capítulo" class="method-panel">
+<details><summary>Ajustar a leitura</summary><div class="method-tools"><label for="reading-size">Tamanho da letra<input id="reading-size" type="range" min="18" max="28" step="1" value="20"></label><label for="reading-height">Espaçamento entre linhas<input id="reading-height" type="range" min="1.5" max="2.3" step="0.05" value="1.85"></label></div><p><a id="method-lab" href="laboratorio-leitura.html">Treinar fluência no laboratório de leitura</a></p></details>
 <div class="controls">
 <div class="field"><label for="page">Seção ou página</label><select id="page"></select></div>
 <div class="field"><label for="mode">Apresentação</label><select id="mode"><option value="integral">Leitura contínua</option><option value="guided">Guiada por blocos de sentido</option></select></div>
@@ -106,10 +121,22 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 </details>
 <div class="controls-footer"><button id="top">Voltar ao início do trecho</button><button id="reset">Zerar apenas o progresso deste livro</button></div>
 </section>
+<section id="method-activities" class="method-panel" hidden aria-labelledby="activity-title"><h3 id="activity-title" tabindex="-1">Atividades do capítulo</h3><p>Registre sua hipótese antes de consultar a solução. Você pode guardar um rascunho e voltar à seção a qualquer momento.</p><div id="activity-list"></div></section>
+<section id="method-review" class="method-panel" hidden aria-labelledby="review-title"><h3 id="review-title" tabindex="-1">Revisar com cartões relacionados</h3><p>Fundamentos complementares já conferidos, com os mesmos IDs, histórico e agenda dos baralhos. Revelar a resposta não cria uma revisão; a avaliação é uma escolha sua.</p><div id="review-list" class="method-review-list"></div><div id="review-face" aria-live="polite"></div></section>
+</section>
 <footer class="small muted" style="margin-top:24px">
 Fontes: arquivos editoriais originais LIVRO-DIG-001 v2.0, LIVRO-PIL-001 v1.0 e LIVRO-ADM-002 v1.0. Conferências pontuais identificadas nas próprias obras, sem certificação integral de auditoria. Não foram importados dados privados do repositório de auditoria.
 </footer>
 </div>
+<dialog id="figure-dialog" class="method-zoom" aria-labelledby="figure-title"><h2 id="figure-title">Diagrama</h2><div class="controls"><button id="figure-close" type="button">Fechar figura</button><label for="figure-orientation">Enquadramento<select id="figure-orientation"><option value="vertical">Vertical</option><option value="horizontal">Horizontal</option></select></label><label for="figure-scale">Ampliação (%)<input id="figure-scale" type="range" min="100" max="300" step="25" value="100"></label></div><div id="figure-scroll" class="zoom-scroll" tabindex="0" role="region" aria-label="Figura ampliada com rolagem própria"><img id="figure-image" alt=""></div></dialog>
+<script src="catalogo-disciplinas.js"></script>
+<script src="dados/flashcards-aud03-lote01.js"></script>
+<script src="dados/flashcards-aud02-2015-atualizados-lote01.js"></script>
+<script src="dados/flashcards-aud02-2015-atualizados-lote02.js"></script>
+<script src="dados/flashcards-aud02-2015-atualizados-lote03.js"></script>
+<script src="dados/flashcards-editoriais.js"></script>
+<script src="revisao-inteligente.js"></script>
+<script src="metodo-agu.js"></script>
 <script>
 (function(){
 'use strict';
@@ -121,10 +148,11 @@ const manifest={
 };
 const KEY="agu_livros_reader_v1";
 const $=id=>document.getElementById(id);
+let openSequence=0;
 let book=null,index=0,ms=0,started=0,running=false,tick=null,guidedTimer=null,blocks=[],block=0,lastWpm=null;
 function countWords(s){return (s.match(/\S+/g)||[]).length}
-function safeLoad(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
-function save(){const db=safeLoad();db[book.id]={page:index,done:completed,updated:new Date().toISOString()};try{localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='O navegador não permitiu guardar progresso local.'}}
+function safeLoad(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:null}catch{return null}}
+function save(){const db=safeLoad();if(!db||(db[book.id]&&(typeof db[book.id]!=='object'||Array.isArray(db[book.id])))){notify('Registro local inválido; dados anteriores preservados.');return}const prior=db[book.id]||{},edition=window.AGUMethod?.edition();let readingEditions=prior.readingEditions||{};if(prior.methodEdition&&prior.methodEdition!==edition)readingEditions={...readingEditions,[prior.methodEdition]:{page:prior.page,done:prior.done,sectionId:prior.sectionId,updated:prior.updated}};db[book.id]={...prior,page:index,done:completed,sectionId:window.AGUMethod?.sectionId(index),methodEdition:edition,readingEditions,updated:new Date().toISOString()};try{localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='O navegador não permitiu guardar progresso local.'}}
 let completed=[];
 function elapsed(){return ms+(running?performance.now()-started:0)}
 function formatted(t){const sec=Math.floor(t/1000);return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
@@ -149,8 +177,8 @@ function renderMarkdown(root,markdown){
  function flush(){if(paragraph.length){const p=document.createElement('p');inline(p,paragraph.join(' ').trim());root.appendChild(p);paragraph=[]}items=null}
  for(let i=0;i<lines.length;i++){const s=lines[i].trim();
  if(!s){flush();continue}
- const h=s.match(/^(#{1,4})\s+(.+)/);
- if(h){flush();const hn=document.createElement(h[1].length<=2?'h2':'h3');inline(hn,h[2]);root.appendChild(hn);continue}
+ const h=s.match(/^(#{1,6})\s+(.+)/);
+ if(h){flush();const hn=document.createElement(h[1].length===1?'h2':'h'+Math.min(6,h[1].length+1));inline(hn,h[2]);root.appendChild(hn);continue}
  if(s.startsWith('|')&&s.endsWith('|')){flush();const pre=document.createElement('p');pre.className='raw-block';pre.textContent=s;root.appendChild(pre);continue}
  const bullet=s.match(/^\s*(?:[-*•]|\d+\.)\s+(.+)/);
  if(bullet){if(!items){flush();items=document.createElement('ul');root.appendChild(items)}const li=document.createElement('li');inline(li,bullet[1]);items.appendChild(li);continue}
@@ -182,27 +210,27 @@ function renderCurrent(){
  blocks=segment(content);showBlock();
  $('read-guided').hidden=$('mode').value!=='guided';$('read-full').hidden=$('mode').value==='guided';
  setProgress();notify('Trecho '+(index+1)+' de '+book.pages.length+'. Inicie o cronômetro quando começar a ler.');
- focusHeading();
+ focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);$('book').dataset.chapterId=book.id;
 }
 async function openBook(id){
- if(!Object.prototype.hasOwnProperty.call(manifest,id))return;
- notify('');$('catalog').hidden=true;$('book').hidden=false;$('book-title').textContent='Carregando livro...';
+ if(!Object.prototype.hasOwnProperty.call(manifest,id))return;const sequence=++openSequence;
+ notify('');$('catalog').hidden=true;$('book').hidden=false;$('book').removeAttribute('data-chapter-id');$('method-tabs').hidden=true;$('read-full').replaceChildren();$('method-activities').hidden=true;$('method-review').hidden=true;$('book-title').textContent='Carregando livro...';
  try{
  const response=await fetch(manifest[id],{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
- book=data;const state=safeLoad()[id]||{};completed=Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
- index=Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
+ if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const state=safeLoad()?.[id]||{};completed=(!state.methodEdition||state.methodEdition===window.AGUMethod?.edition())&&Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
+ const stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
  $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
  const originalOk=typeof data.original_html==='string'&&/^livros\/[a-z0-9-]+\.html$/.test(data.original_html);
  $('book-original').hidden=!originalOk;
  if(originalOk)$('original-link').href=data.original_html;
  $('page').replaceChildren();data.pages.forEach((p,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=(i+1)+'. '+p.label;$('page').appendChild(op)});
- $('wpm').textContent='—';$('recall').value='';history.replaceState(null,'','?livro='+encodeURIComponent(id));
+ $('wpm').textContent='—';$('recall').value='';history.replaceState(null,'','?livro='+encodeURIComponent(id)+(location.hash||''));
  renderCurrent();
  }catch(err){$('book-title').textContent='Livro indisponível';notify('Não foi possível carregar o livro: '+err.message)}
 }
-function closeBook(){if(running)pause();book=null;$('book').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);$('catalog-title').focus?.()}
+function closeBook(){if(running)pause();book=null;$('book').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);$('catalog-title').focus?.();window.AGUMethod?.renderCatalog()}
 function move(i){if(!book)return;index=Math.max(0,Math.min(book.pages.length-1,i));save();renderCurrent()}
 function finish(){
  if(!book)return;const t=Math.max(1000,elapsed());const raw=book.pages[index].text,word=countWords(raw);
@@ -216,7 +244,7 @@ function finish(){
 $('cards').addEventListener('click',e=>{const btn=e.target.closest('button[data-book]');if(btn)openBook(btn.dataset.book)});
 $('back-catalog').addEventListener('click',closeBook);
 $('page').addEventListener('change',e=>move(Number(e.target.value)));
-$('mode').addEventListener('change',()=>{if(!book)return;if(running)pause();$('read-guided').hidden=$('mode').value!=='guided';$('read-full').hidden=$('mode').value==='guided';if($('mode').value==='guided'){block=0;showBlock()}});
+$('mode').addEventListener('change',()=>{if(!book)return;if(running)pause();$('read-guided').hidden=$('mode').value!=='guided';$('read-full').hidden=$('mode').value==='guided';if($('mode').value==='guided'){block=0;showBlock()}else window.AGUMethod?.decorate(book,index)});
 $('pace').addEventListener('change',()=>{const speed=Number($('pace').value);if(!Number.isFinite(speed)||speed<80||speed>350)$('pace').value='170';if(running)scheduleGuide()});
 $('pause').addEventListener('click',()=>running?pause():resume());
 $('prev').addEventListener('click',()=>move(index-1));
@@ -226,7 +254,9 @@ $('next-block').addEventListener('click',()=>{block=Math.min(block+1,blocks.leng
 $('top').addEventListener('click',()=>{$('book-title').scrollIntoView({block:'start'});$('book-title').focus()});
 $('reset').addEventListener('click',()=>{if(!book||!confirm('Zerar somente as marcações deste livro neste navegador?'))return;completed=[];index=0;save();renderCurrent()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)pause()});
-const requested=new URLSearchParams(location.search).get('livro');if(requested&&manifest[requested])openBook(requested);
+window.AGULivros={openBook,move,pause,renderText,remember(i){if(!book||i===index)return;index=Math.max(0,Math.min(book.pages.length-1,i));$('page').value=String(index);save()}};
+const requested=new URLSearchParams(location.search).get('livro');
+window.AGUMethod.init(manifest).then(()=>{if(requested&&manifest[requested])openBook(requested)});
 })();
 </script>
 </body>

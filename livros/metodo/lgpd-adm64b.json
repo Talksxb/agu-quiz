@@ -1,0 +1,344 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "lgpd-adm64b",
+  "editorialId": "LIVRO-DIG-001",
+  "title": "LGPD aplicada à Administração Pública",
+  "discipline": {
+    "id": "DIG",
+    "name": "Direito Digital"
+  },
+  "edition": "2.0",
+  "metadataVersion": "1.1",
+  "canonical": "livros/fontes/lgpd-adm64b.md",
+  "readerPath": "livros/lgpd-adm64b.json",
+  "reader": {
+    "id": "lgpd-adm64b",
+    "category": "Direito Digital",
+    "curricular_id": "ADM-64b",
+    "title": "LGPD aplicada à Administração Pública",
+    "edition": "LIVRO-DIG-001 · edição 2.0 (20/11/2026)",
+    "source": "LIVRO-DIG-001_LGPD_ADMINISTRACAO_PUBLICA_v2.0.pdf",
+    "source_format": "pdf-extracted-text",
+    "verification": "Conferências pontuais até 20/11/2026, corte da auditoria em 04/11/2026; sem certificação integral"
+  },
+  "curricularIds": [
+    "ADM-64b"
+  ],
+  "dates": {
+    "edition": "2026-11-20",
+    "legalConsultation": "Declarada na obra: 2026-11-20; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "lgpd-adm64b-s01",
+      "marker": "01",
+      "title": "Página 1",
+      "page": 0,
+      "sha256": "4379072420128c85912a5609ca119b322e11427e6496ecf88e2cf49e927bc0e2",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s02",
+      "marker": "02",
+      "title": "Página 2",
+      "page": 1,
+      "sha256": "67fe2707bb81ca6df29300b341a34509f8dbf9b22311669ea8817864f4a53ed2",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s03",
+      "marker": "03",
+      "title": "Página 3",
+      "page": 2,
+      "sha256": "e6fc35ed55e885fa35b67de719654b7988213c1d8d30d3ed2354328c8c93650a",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s04",
+      "marker": "04",
+      "title": "Página 4",
+      "page": 3,
+      "sha256": "a2aaec8ec7adb72297f0c041489365bb322069e2c289ca2249e7bfd78fb6adb8",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s05",
+      "marker": "05",
+      "title": "Página 5",
+      "page": 4,
+      "sha256": "c097b3008f1d09017b141c87b79577bbe9c03c88e8c3045a7e03954ac8dfd626",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s06",
+      "marker": "06",
+      "title": "Página 6",
+      "page": 5,
+      "sha256": "e69c5c3b7c8d936ec445b3cc7d3447f770a8b8340b53d33918ae1ad21352ebdf",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s07",
+      "marker": "07",
+      "title": "Página 7",
+      "page": 6,
+      "sha256": "dcb803f21ca70aa96a977a54729464acefd7452c36bdead1af9ff98b8cab0f65",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s08",
+      "marker": "08",
+      "title": "Página 8",
+      "page": 7,
+      "sha256": "5c9a44057ef630bb0804347193c15cd09f1319542c1de479de6d9e1ffec7f8a0",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s09",
+      "marker": "09",
+      "title": "Página 9",
+      "page": 8,
+      "sha256": "7a925bab7a75616d062f08d0f45d28c0c9d0ff41f00b1e664ea0075249c2ccae",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s10",
+      "marker": "10",
+      "title": "Página 10",
+      "page": 9,
+      "sha256": "8c293bc03d21ae1ca670fa4aa081bd872683c7c79bfb6312f8cea108f799ce12",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s11",
+      "marker": "11",
+      "title": "Página 11",
+      "page": 10,
+      "sha256": "2734dcc55b9a491d35addff7f10e339f183ddbb0ab6aecc45439cb9ca4c4ad8b",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s12",
+      "marker": "12",
+      "title": "Página 12",
+      "page": 11,
+      "sha256": "722842ca76f7da00ec95b55c3620cadb80cf948c9b02c43dcbb4eea2d1533781",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s13",
+      "marker": "13",
+      "title": "Página 13",
+      "page": 12,
+      "sha256": "2b51d64707c4941cb25a68073ba0c655362e13fa3bac27b0ecf69d3952c130ec",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s14",
+      "marker": "14",
+      "title": "Página 14",
+      "page": 13,
+      "sha256": "d6d30ff76e722a0ecc09f7f6caa3ac6a2fd5e2c17b01911123442565a33acad0",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s15",
+      "marker": "15",
+      "title": "Página 15",
+      "page": 14,
+      "sha256": "eb434fca9a7607f83870e9d6ff0a0d35e3f61a7a84db3fa4f7d9fa95bf4ff3d5",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s16",
+      "marker": "16",
+      "title": "Página 16",
+      "page": 15,
+      "sha256": "fecaff8b9b78304f17616a0e7a39df1c28e6abd521a3c4504be5b7e66c824c5d",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s17",
+      "marker": "17",
+      "title": "Página 17",
+      "page": 16,
+      "sha256": "708de7897b699b35d5e19d80453dad9ef6f5dae8cf4cb365b9d7fefe64bcf5a1",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s18",
+      "marker": "18",
+      "title": "Página 18",
+      "page": 17,
+      "sha256": "88e221c8701bee1ae1c29ca05772496851e65404575362eedba1e2d6fb62d901",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s19",
+      "marker": "19",
+      "title": "Página 19",
+      "page": 18,
+      "sha256": "f0d4debca80a87655a9cfdd2d24cd5273aa77d75178f27b5fc549d2be712cd61",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s20",
+      "marker": "20",
+      "title": "Página 20",
+      "page": 19,
+      "sha256": "65f2393ef2d9bb9063db28a69677d737cb8c864eef6dc1bdb892a7ab01a0ab19",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s21",
+      "marker": "21",
+      "title": "Página 21",
+      "page": 20,
+      "sha256": "ed11f76712d56af7c299595c26bab8f6e17825a0535a97573832d466a720b97e",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s22",
+      "marker": "22",
+      "title": "Página 22",
+      "page": 21,
+      "sha256": "9e6db9abdac492d14b7a08b09b3b6f22767013eac7d9c68dbf32c456271a394c",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s23",
+      "marker": "23",
+      "title": "Página 23",
+      "page": 22,
+      "sha256": "06ff04aed80f569fcdda376b5a4003c222a2149bc2454413f6f84792263f1ae4",
+      "headings": []
+    },
+    {
+      "id": "lgpd-adm64b-s24",
+      "marker": "24",
+      "title": "Página 24",
+      "page": 23,
+      "sha256": "30870754d193566c55fb9ebae7cc8bcb0a04c76de65358ae19770f28cf79cf17",
+      "headings": []
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-64b",
+      "subitem": "LGPD aplicada à Administração Pública; recorte declarado na obra",
+      "sections": [
+        "lgpd-adm64b-s01",
+        "lgpd-adm64b-s02",
+        "lgpd-adm64b-s03",
+        "lgpd-adm64b-s04",
+        "lgpd-adm64b-s05",
+        "lgpd-adm64b-s06",
+        "lgpd-adm64b-s07",
+        "lgpd-adm64b-s08",
+        "lgpd-adm64b-s09",
+        "lgpd-adm64b-s10",
+        "lgpd-adm64b-s11",
+        "lgpd-adm64b-s12",
+        "lgpd-adm64b-s13",
+        "lgpd-adm64b-s14",
+        "lgpd-adm64b-s15",
+        "lgpd-adm64b-s16",
+        "lgpd-adm64b-s17",
+        "lgpd-adm64b-s18",
+        "lgpd-adm64b-s19",
+        "lgpd-adm64b-s20",
+        "lgpd-adm64b-s21",
+        "lgpd-adm64b-s22",
+        "lgpd-adm64b-s23",
+        "lgpd-adm64b-s24"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "lgpd",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "locator": "LGPD, arts. 6º, 7º, 11 e 23",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "lgpd-adm64b-caso",
+      "type": "aplicar",
+      "sectionId": "lgpd-adm64b-s16",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": "13 Caso AGU resolvido e retorno ao problema\n\n13.1 Primeiro caso resolvido — integração de cadastros e controle social\nFatos. Retomemos a plataforma de benefícios. A secretaria tem competência legal para reconhecer\nelegibilidade, prevenir pagamento indevido e conceder a prestação. Parte dos dados vem de outra entidade\nfederal, a contratada oferece motor de triagem automatizada e há pedido de informações por jornalista. A\nminuta prevê transferência irrestrita de bases por tempo indeterminado e uso posterior para aperfeiçoamento\ncomercial do modelo.",
+      "answer": "Questão jurídica. Pode a Administração implementar o projeto sem consentimento individual de todos os\ncidadãos e liberar integralmente os cadastros à contratada?\nAnálise. O núcleo de tratamento pode ser legítimo sem consentimento, desde que se identifiquem as\natribuições legais e a hipótese pertinente dos arts. 7º, II ou III, ou 11, II, conforme a natureza de cada dado. O\nart. 23 exige finalidade pública e transparência; o art. 26 e a ADI 6649 impõem finalidade específica,\ncompatibilidade e minimização no compartilhamento entre órgãos. A entrega a particular demanda a\ninvestigação separada dos arts. 26, §1º, e 27, inclusive exceção aplicável e formalidades. Não se deve aceitar\ncomo justificativa o “consentimento presumido”: a pessoa não negociou de modo livre a condição de receber\nserviço público. Tampouco parece necessário enviar todos os históricos clínicos e telefones quando bastariam\natributos de elegibilidade ou respostas de verificação.\nObjeção forte. A equipe gestora argumenta que restringir dados prejudica combate à fraude, impede\naprendizado do modelo e eleva custo. A objeção merece exame técnico, mas não elimina a obrigação de testar se\nresultado equivalente pode ser obtido com atributos menos intrusivos, acesso por consultas específicas,\nsegregação ou dados agregados. A eficiência não desaparece da balança: integra a avaliação de adequação, mas\nprecisa de evidência e proporcionalidade. Uso comercial independente pela contratada não se legitima apenas\npor estar no mesmo contrato de prestação do serviço.\nConclusão condicionada. A AGU pode opinar favoravelmente à continuidade após saneamento do projeto,\nmas não à sua configuração original. Antes da operação, recomenda-se: (1) registrar a atribuição legal e base de\ntratamento por finalidade e categoria; (2) elaborar matriz de necessidade de campos e de destinatários,\nincluindo dado sensível; (3) formalizar o compartilhamento interinstitucional com publicidade e perfis de\nacesso; (4) reestruturar instrumento com a empresa, vedando finalidade comercial autônoma e disciplinando\nsuboperadores e eventual transferência internacional; (5) realizar avaliação de risco e, quando apropriado,\nRIPD; (6) prever contestação e revisão de decisões automatizadas, correção de dados e motivação; (7)\n\n\n                                                                                      LIVRO-DIG-001 • 20/11/2026 • 16\n\nestabelecer gestão de incidentes, registros e plano de resposta; (8) submeter implementação efetiva à\nfiscalização administrativa correspondente.\nPedido do jornalista. Em paralelo, a Administração deve processar a solicitação pela LAI, separar os dados de\nfiscalização da política de informações pessoais não necessárias, justificar eventuais restrições e considerar\nacesso parcial, agregação ou anonimização. Não é correto presumir que a totalidade da planilha é pública ou\nsecreta. Se existir dispositivo legal específico de publicidade de determinada informação, ele deve ser\nindividualmente examinado.\nPraxis. A boa manifestação jurídica não “carimba” o projeto nem se limita a proibi-lo. Ela explicita quais fatos\nprecisam ser comprovados e torna a decisão administrativa controlável por cidadãos, gestores, auditoria e\nJustiça.\n\n13.2 Segundo caso resolvido — contratação de SaaS em nuvem e incidente de segurança\nFatos. Uma autarquia federal integrante do SISP contrata plataforma SaaS para gestão de solicitações de\nbenefício de saúde. O termo de referência exige disponibilidade contínua, mas a minuta do fornecedor autoriza\nsuporte administrativo a partir do exterior, processamento de telemetria para desenvolvimento de produtos\npróprios e contratação unilateral de suboperadores. Parte do banco contém diagnósticos e dados de\ndependentes menores. Após três meses, um token de integração fica exposto e permite a acesso a um\nsubconjunto de registros. A empresa demora dois dias para comunicar o problema, informando apenas que não\nhouve indisponibilidade. O órgão sustenta que, por ter contratado fornecedor experiente, a obrigação de\ncomunicação à ANPD seria exclusivamente da empresa.\nCompetência e regime. A autarquia é, em princípio, controladora das operações necessárias à sua competência\nlegal de gerir benefícios; o SaaS executa atividades como operador na medida em que observa instruções,\nembora qualquer finalidade própria de desenvolvimento comercial deva ser isoladamente qualificada. A\nrelação contratual exige a Lei 14.133/2021, a IN SGD/ME 94/2022 e o modelo aplicável da Portaria SGD/MGI\n5.950/2023 no âmbito SISP, além da LGPD. Diagnósticos são dados sensíveis; dados de menores requerem\nproteção adicional. O contrato não suprime as responsabilidades do controlador nem transforma\nautomaticamente toda operação do fornecedor em operação autorizada do órgão. [F2; F11; F12; F17; F18]\nExame do contrato. A autorização ampla de “melhoria de serviços” não justifica o treinamento comercial do\nfornecedor com dados pessoais dos administrados. A AGU deve exigir finalidade definida, vedação ou\ntratamento autônomo juridicamente justificado para qualquer uso secundário, inventário de suboperadores e\nregiões, nível de acesso de suporte, plano de resposta a incidentes, evidência de segurança, portabilidade,\nretenção e fiscalização. Se houver transferência internacional, o mecanismo jurídico do art. 33 e da Resolução\n19 deve ser identificado. A adequação europeia da Resolução 32 só aproveita às transferências abrangidas por\nseu escopo e não sana dados enviados a outros destinos ou finalidades indevidas.\nExame do incidente. Exposição de token pode comprometer confidencialidade mesmo sem interrupção do\nserviço; disponibilidade não é sinônimo de proteção. A autarquia deve apurar o momento de conhecimento de\nque dados pessoais foram afetados, dados e titulares alcançados, probabilidade de dano e eventuais medidas de\ncontenção. A presença de diagnósticos, dados de crianças e credenciais impõe exame rigoroso dos critérios\ncumulativos do art. 5º da Resolução 15/2024. Sendo comunicável, compete ao controlador notificar ANPD e\ntitulares no prazo geral de três dias úteis, ressalvados prazos legais específicos. A operadora deve informar\nimediatamente o controlador e cooperar; não é aceitável aguardar conclusão de perícia para iniciar resposta.\n[F14]\nObjeção forte. A área técnica argumenta que bloquear o SaaS interromperia atendimento essencial, e que a\nnotificação pública sem investigação concluída criaria alarme. Ambas as preocupações são legítimas, mas\npedem solução proporcional: revogar credenciais, restringir integração, preservar continuidade por plano\nalternativo, comunicar o que já se conhece com ressalvas justificadas e complementar informações no prazo\n\n\n\n                                                                                    LIVRO-DIG-001 • 20/11/2026 • 17\n\nregulamentar quando necessário. O grau de divulgação deve ser definido pelos riscos, não por interesse\nreputacional do fornecedor ou da autarquia.\nConclusão e providências. O parecer é desfavorável à continuidade da cláusula de treinamento comercial\nirrestrito e à distribuição unilateral de suboperadores. Recomenda aditivo e providências de fiscalização\ncompatíveis com o regime da contratação, revisão técnica de acessos, isolamento do token, inventário de dados\nafetados, registro do evento, avaliação documentada de comunicabilidade, comunicação tempestiva se\npreenchidos os critérios, correção das falhas e plano de atendimento ao titular. A autarquia não deve assumir\nque a ANPD aplicará multa simples como sanção administrativa comum ao próprio órgão, mas tampouco\npresumir imunidade a ações corretivas, apuração de responsabilidades e pretensões de reparação. A resposta\njurídica preserva a continuidade legítima do serviço sem ocultar riscos.\n\n13.3 Miniparecer integrado — critério de decisão\nNos dois casos, a forma de uma manifestação AGU pode ser reconstruída em seis movimentos: a) delimitar os\nfatos comprovados e os documentos ausentes; b) identificar competência, categoria de dado e hipótese de\ntratamento; c) cotejar compartilhamento e regime do particular; d) examinar, quando presentes, IA, nuvem e\ncirculação internacional; e) enfrentar a objeção tecnicamente mais forte; f) concluir de modo condicionado,\ncom medidas verificáveis, responsáveis e pontos de reavaliação. A finalidade do parecer não é blindar decisão\nadministrativa já tomada, mas permitir que ela seja corrigida antes de produzir violação de direitos e\ndesperdício de recursos públicos."
+    },
+    {
+      "id": "lgpd-adm64b-recuperacao",
+      "type": "recuperar",
+      "sectionId": "lgpd-adm64b-s20",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": "Recuperação ativa\n1. Qual é a diferença entre direito fundamental à proteção de dados e dever de manter segredo?\n2. Quais três testes cumulativos você aplicaria antes de autorizar cruzamento cadastral?\n3. Por que consentimento costuma ser base problemática para o cumprimento de obrigações públicas?\n4. Como muda a análise quando a base contém dado de saúde e não apenas renda?\n5. Qual a diferença jurídica entre compartilhar dados entre órgãos e transferi-los à contratada?\n6. Em quais condições a publicidade pode ser parcial diante de pedido pela LAI?\n7. O que exige o art. 20 e o que ele não exige literalmente?\n8. Por que multas dos incisos II e III do art. 52 não devem ser automaticamente imputadas a órgão público?\n9. Por que a decisão de adequação de um destino estrangeiro não autoriza, sozinha, todo tratamento nacional?\n10. Quais cláusulas contratuais mínimas você exigiria de SaaS utilizado para política pública com dados\nsensíveis?\n\n\n                                                                                     LIVRO-DIG-001 • 20/11/2026 • 20\n\n11. Qual é o marco inicial do prazo de três dias úteis no regulamento de comunicação de incidentes?\n12. Em que difere o direito de revisão do art. 20 de uma garantia administrativa de motivação?",
+      "answer": "Respostas de conferência\n1. Proteção governa o tratamento de dados identificáveis mesmo sem segredo; sigilo é apenas uma das técnicas\ne restrições possíveis.\n2. Verificar competência e atribuição, hipótese legal apropriada para o tipo de dado e proporcionalidade\noperacional com os princípios do art. 6º.\n3. A relação de poder pode inviabilizar vontade verdadeiramente livre e o tratamento necessário pode fundar-\nse em dever legal ou política pública.\n4. Dados sensíveis acionam art. 11 e salvaguardas reforçadas, não o transplante automático de art. 7º.\n5. Entre órgãos, art. 26 e STF exigem justificativa específica; para particulares, aplicam-se ainda exceções do art.\n26, §1º, e disciplina do art. 27.\n6. Distinguir dados da atividade estatal de informações pessoais de terceiros, motivar restrições e entregar\nparte ostensiva ou versão agregada/tarjada quando cabível.\n7. Permite solicitar revisão de decisão exclusivamente automatizada que afete interesses; não contém obrigação\ntextual universal de revisão por ser humano.\n8. O §3º do art. 52 tem rol próprio para órgãos e entidades públicas, sem os incisos de multa simples e diária.\n9. Porque art. 33 define mecanismo jurídico da transferência; competência, base legal, finalidade, minimização\ne regras do poder público permanecem em vigor.\n10. Objeto e instruções, papéis, finalidade, restrição de reuso, suboperadores, segurança auditável, informação\nrápida de incidentes, transferência internacional, reversibilidade e retenção legalmente compatível.\n11. Do conhecimento pelo controlador de que o incidente afetou dados pessoais; avalia-se risco ou dano\nrelevante e a incidência de eventual prazo legal especial.\n12. O art. 20 cuida da decisão exclusivamente automatizada que afeta interesses e prevê revisão e explicação;\nmotivação, contraditório e legalidade administrativa podem exigir garantias adicionais mesmo com\nparticipação humana."
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Fonte estruturada recuperada da transcrição pública; cabeçalhos, rodapés e quebras preservados. Hierarquia e imagens do PDF não certificadas; não se afirma fidelidade visual ao PDF/Word."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "1e227fd92f9d99b1f817d6074f333a61286a85644d4de51c6f3d328aed1697ba"
+  },
+  "inputSha256": "1e227fd92f9d99b1f817d6074f333a61286a85644d4de51c6f3d328aed1697ba",
+  "sourceSha256": "3fd7a537f03e883ab10fcce7851840e98a13c673a8b0f609e6ec4e073113083a",
+  "reviewCards": [
+    {
+      "cardId": "aud03-flc-013",
+      "sectionId": "lgpd-adm64b-s16",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Âmbito institucional da consultoria da AGU",
+      "status": "aprovado",
+      "source": {
+        "id": "cf-131",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 131, caput",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Âmbito institucional da consultoria da AGU",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    }
+  ]
+}

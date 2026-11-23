@@ -31,6 +31,8 @@ jobs:
         run: node tests/leitura-meta-001-validacao.js
       - name: LIVROS-LEIT-001 — integridade do acervo, capítulo completo e hashes legados
         run: node tests/livros-leit-001-validacao.js
+      - name: MÉTODO-AGU-001 — ingestão, segurança editorial e idempotência
+        run: node scripts/metodo-agu.cjs --check && node tests/metodo-agu-001-validacao.cjs
       - name: LIVROS-EDITOR-001 — fidelidade textual de AMB-03 e recursos visuais
         run: node tests/livros-editor-001-fidelidade.cjs
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
@@ -107,6 +109,25 @@ jobs:
         run: node tests/codigos-cc-cpc-validacao.js
       - name: Biblioteca 02 — matérias editoriais, filtros e preservação de dados
         run: node tests/biblioteca-leis-02-validacao.js
+  exportacao-editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependências opcionais de revisão, sem servidor
+        run: pip install python-docx==1.2.0 reportlab==4.4.9 PyMuPDF==1.26.6 jsonschema==4.26.0
+      - name: Schemas e transposição idempotente Word/PDF
+        run: python3 tests/metodo-agu-001-exportacao.py
+      - name: Gerar exemplo de revisão com diferenças explícitas
+        run: python3 scripts/exportar-metodo-agu.py --chapter amb-03 --out tests/artifacts-metodo-agu/revisao
+      - uses: actions/upload-artifact@v4
+        with:
+          name: metodo-agu-revisao-editorial
+          path: tests/artifacts-metodo-agu/revisao/
+          retention-days: 7
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -121,6 +142,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
         run: node tests/leitura-meta-002-browser.cjs
+      - name: MÉTODO-AGU-001 — quatro capítulos, atividades, legado e acessibilidade móvel
+        run: node tests/metodo-agu-001-browser.cjs
       - name: LIVROS-LEIT-001 — livros integrais, toque emulado, retomada e axe
         run: node tests/livros-leit-001-browser.cjs
       - name: LIVRO-SITES-001 — cartão da apostila em três larguras de tela
@@ -207,6 +230,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-metodo-agu/
             tests/artifacts-leit-meta/*.json
             tests/artifacts-leit-meta/*.png
             tests/artifacts-livros-001/*.json
@@ -295,6 +319,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: MÉTODO-AGU-002 — edição pública, catálogo, capítulos e recursos por hash
+        run: node tests/metodo-agu-002-pages.cjs
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
       - name: LEIT-META-002 — arquivo publicado por GitHub Pages
@@ -302,6 +328,10 @@ jobs:
           node -e "fetch('https://talksxb.github.io/agu-quiz/laboratorio-leitura.html').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{if(!t.includes('Laboratório de Leitura Jurídica'))throw Error('Conteúdo divergente'); console.log('LAB_PUBLICADO_OK')}).catch(e=>{console.error(e);process.exit(1)})"
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: Método AGU na URL publicada — quatro capítulos e quatro larguras
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/metodo-agu-001-browser.cjs
       - name: Códigos CC/CPC na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -400,6 +430,7 @@ jobs:
         with:
           name: agu-work01-publicado
           path: |
+            tests/artifacts-metodo-agu/
             tests/artifacts-leit-meta/
             tests/artifacts-livros-001/
             tests/artifacts-work01/

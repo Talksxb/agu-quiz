@@ -1,0 +1,134 @@
+{
+  "id": "lgpd-adm64b",
+  "edition": "2.0",
+  "sourceSha256": "3fd7a537f03e883ab10fcce7851840e98a13c673a8b0f609e6ec4e073113083a",
+  "inputSha256": "1e227fd92f9d99b1f817d6074f333a61286a85644d4de51c6f3d328aed1697ba",
+  "sections": [
+    {
+      "id": "lgpd-adm64b-s01",
+      "sha256": "4379072420128c85912a5609ca119b322e11427e6496ecf88e2cf49e927bc0e2",
+      "characters": 3934
+    },
+    {
+      "id": "lgpd-adm64b-s02",
+      "sha256": "67fe2707bb81ca6df29300b341a34509f8dbf9b22311669ea8817864f4a53ed2",
+      "characters": 4412
+    },
+    {
+      "id": "lgpd-adm64b-s03",
+      "sha256": "e6fc35ed55e885fa35b67de719654b7988213c1d8d30d3ed2354328c8c93650a",
+      "characters": 4291
+    },
+    {
+      "id": "lgpd-adm64b-s04",
+      "sha256": "a2aaec8ec7adb72297f0c041489365bb322069e2c289ca2249e7bfd78fb6adb8",
+      "characters": 4536
+    },
+    {
+      "id": "lgpd-adm64b-s05",
+      "sha256": "c097b3008f1d09017b141c87b79577bbe9c03c88e8c3045a7e03954ac8dfd626",
+      "characters": 4328
+    },
+    {
+      "id": "lgpd-adm64b-s06",
+      "sha256": "e69c5c3b7c8d936ec445b3cc7d3447f770a8b8340b53d33918ae1ad21352ebdf",
+      "characters": 4388
+    },
+    {
+      "id": "lgpd-adm64b-s07",
+      "sha256": "dcb803f21ca70aa96a977a54729464acefd7452c36bdead1af9ff98b8cab0f65",
+      "characters": 4638
+    },
+    {
+      "id": "lgpd-adm64b-s08",
+      "sha256": "5c9a44057ef630bb0804347193c15cd09f1319542c1de479de6d9e1ffec7f8a0",
+      "characters": 4440
+    },
+    {
+      "id": "lgpd-adm64b-s09",
+      "sha256": "7a925bab7a75616d062f08d0f45d28c0c9d0ff41f00b1e664ea0075249c2ccae",
+      "characters": 4285
+    },
+    {
+      "id": "lgpd-adm64b-s10",
+      "sha256": "8c293bc03d21ae1ca670fa4aa081bd872683c7c79bfb6312f8cea108f799ce12",
+      "characters": 4431
+    },
+    {
+      "id": "lgpd-adm64b-s11",
+      "sha256": "2734dcc55b9a491d35addff7f10e339f183ddbb0ab6aecc45439cb9ca4c4ad8b",
+      "characters": 4457
+    },
+    {
+      "id": "lgpd-adm64b-s12",
+      "sha256": "722842ca76f7da00ec95b55c3620cadb80cf948c9b02c43dcbb4eea2d1533781",
+      "characters": 4369
+    },
+    {
+      "id": "lgpd-adm64b-s13",
+      "sha256": "2b51d64707c4941cb25a68073ba0c655362e13fa3bac27b0ecf69d3952c130ec",
+      "characters": 4471
+    },
+    {
+      "id": "lgpd-adm64b-s14",
+      "sha256": "d6d30ff76e722a0ecc09f7f6caa3ac6a2fd5e2c17b01911123442565a33acad0",
+      "characters": 4441
+    },
+    {
+      "id": "lgpd-adm64b-s15",
+      "sha256": "eb434fca9a7607f83870e9d6ff0a0d35e3f61a7a84db3fa4f7d9fa95bf4ff3d5",
+      "characters": 4175
+    },
+    {
+      "id": "lgpd-adm64b-s16",
+      "sha256": "fecaff8b9b78304f17616a0e7a39df1c28e6abd521a3c4504be5b7e66c824c5d",
+      "characters": 4253
+    },
+    {
+      "id": "lgpd-adm64b-s17",
+      "sha256": "708de7897b699b35d5e19d80453dad9ef6f5dae8cf4cb365b9d7fefe64bcf5a1",
+      "characters": 4420
+    },
+    {
+      "id": "lgpd-adm64b-s18",
+      "sha256": "88e221c8701bee1ae1c29ca05772496851e65404575362eedba1e2d6fb62d901",
+      "characters": 3940
+    },
+    {
+      "id": "lgpd-adm64b-s19",
+      "sha256": "f0d4debca80a87655a9cfdd2d24cd5273aa77d75178f27b5fc549d2be712cd61",
+      "characters": 4398
+    },
+    {
+      "id": "lgpd-adm64b-s20",
+      "sha256": "65f2393ef2d9bb9063db28a69677d737cb8c864eef6dc1bdb892a7ab01a0ab19",
+      "characters": 3733
+    },
+    {
+      "id": "lgpd-adm64b-s21",
+      "sha256": "ed11f76712d56af7c299595c26bab8f6e17825a0535a97573832d466a720b97e",
+      "characters": 3644
+    },
+    {
+      "id": "lgpd-adm64b-s22",
+      "sha256": "9e6db9abdac492d14b7a08b09b3b6f22767013eac7d9c68dbf32c456271a394c",
+      "characters": 4255
+    },
+    {
+      "id": "lgpd-adm64b-s23",
+      "sha256": "06ff04aed80f569fcdda376b5a4003c222a2149bc2454413f6f84792263f1ae4",
+      "characters": 4251
+    },
+    {
+      "id": "lgpd-adm64b-s24",
+      "sha256": "30870754d193566c55fb9ebae7cc8bcb0a04c76de65358ae19770f28cf79cf17",
+      "characters": 1512
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Fonte estruturada recuperada da transcrição pública; cabeçalhos, rodapés e quebras preservados. Hierarquia e imagens do PDF não certificadas; não se afirma fidelidade visual ao PDF/Word."
+  ],
+  "resources": []
+}

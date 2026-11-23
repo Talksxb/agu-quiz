@@ -1,0 +1,308 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "adm-53",
+  "editorialId": "LIVRO-PIL-001",
+  "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
+  "discipline": {
+    "id": "ADM",
+    "name": "Direito Administrativo"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.1",
+  "canonical": "livros/fontes/adm-53.md",
+  "readerPath": "livros/adm-53.json",
+  "reader": {
+    "id": "adm-53",
+    "category": "Direito Administrativo",
+    "curricular_id": "ADM-53",
+    "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
+    "edition": "LIVRO-PIL-001 · edição 1.0 (18/11/2026)",
+    "source": "LIVRO-PIL-001_ADM-53_CAPITULO_v1.0.pdf",
+    "source_format": "pdf-extracted-text",
+    "verification": "Verificações oficiais pontuais; sem certificação integral"
+  },
+  "curricularIds": [
+    "ADM-53"
+  ],
+  "dates": {
+    "edition": "2026-11-18",
+    "legalConsultation": "Declarada na obra: 2026-11-18; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "adm-53-s01",
+      "marker": "01",
+      "title": "Página 1",
+      "page": 0,
+      "sha256": "31b019bea85e1ffcfd514e325953fa06c6468e3c4ae8f96cc9c64f27e66c19c7",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s02",
+      "marker": "02",
+      "title": "Página 2",
+      "page": 1,
+      "sha256": "207da72c5b2f9c52a38e870ea98e296ef6bb4b3b51236b5803f31c98d46b520e",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s03",
+      "marker": "03",
+      "title": "Página 3",
+      "page": 2,
+      "sha256": "73425ef65e339526480d734f8a24cebd10ead06c006608ec823571a201ca8432",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s04",
+      "marker": "04",
+      "title": "Página 4",
+      "page": 3,
+      "sha256": "4a2874a304d469fab0088ba2eb62d6f2e0c0fe5ff3101518cdadf7c0fe3b748e",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s05",
+      "marker": "05",
+      "title": "Página 5",
+      "page": 4,
+      "sha256": "a7ddc56c119370667853757ea63dd5e90856daa7877591fc32952d1d3dba2303",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s06",
+      "marker": "06",
+      "title": "Página 6",
+      "page": 5,
+      "sha256": "0265876bb62e5b4d326aff9959b728e2bde40436c684069582fbb9ba54084aca",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s07",
+      "marker": "07",
+      "title": "Página 7",
+      "page": 6,
+      "sha256": "cf464da593a540518fbb8b6ea2699f59377cece71d91cce67384cbaefcb10815",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s08",
+      "marker": "08",
+      "title": "Página 8",
+      "page": 7,
+      "sha256": "85a5bafe77ebd9fafb22c46ae1d77a8d457aba7f89d7572ac5195b14e7eacb7c",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s09",
+      "marker": "09",
+      "title": "Página 9",
+      "page": 8,
+      "sha256": "2b95787df5ab5435d3125ebc40815c14f4a17eed5b858e0797fe5d4e7e7ab3f0",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s10",
+      "marker": "10",
+      "title": "Página 10",
+      "page": 9,
+      "sha256": "40d10af8829a6cd85d02616d6753d06f7b03316d6393c692784052b87648d548",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s11",
+      "marker": "11",
+      "title": "Página 11",
+      "page": 10,
+      "sha256": "0b22cd537b84ea8390cd494717cd4c1014fa46385dab26e795c84b122fa0f482",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s12",
+      "marker": "12",
+      "title": "Página 12",
+      "page": 11,
+      "sha256": "8affb32f91d2bf90e5bc74b474babc14bdf0eff374b1fa2bd1a3ad679871f0ce",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s13",
+      "marker": "13",
+      "title": "Página 13",
+      "page": 12,
+      "sha256": "2b96282036f808a97b75cc5e15968a571d98489381c329ddd2c54bd775dd9831",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s14",
+      "marker": "14",
+      "title": "Página 14",
+      "page": 13,
+      "sha256": "3ab96591142104c4b6f016de701fa3635d96be96d9ac820491ecf813f1af9b0e",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s15",
+      "marker": "15",
+      "title": "Página 15",
+      "page": 14,
+      "sha256": "bf13afa7ca6175aec36f1e063153e4958af250d567b14455987ca9bd782dc116",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s16",
+      "marker": "16",
+      "title": "Página 16",
+      "page": 15,
+      "sha256": "6da9668b8fca623cc06c80d05797ea7cef05d998114f93abd95ac25fdd80f960",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s17",
+      "marker": "17",
+      "title": "Página 17",
+      "page": 16,
+      "sha256": "3906c6fc132e2d7b8832025ec084af27451be1d4a887eba15b1d7d4957532049",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s18",
+      "marker": "18",
+      "title": "Página 18",
+      "page": 17,
+      "sha256": "6ac33276e54289a691438cd6120c86dd3b3d8f02f98b45e9445eaa19a1033a84",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s19",
+      "marker": "19",
+      "title": "Página 19",
+      "page": 18,
+      "sha256": "d891438e5bc34f4d0e1cfed13bce21ae1981af2f32502ea5b9b149afeaa5b9ae",
+      "headings": []
+    },
+    {
+      "id": "adm-53-s20",
+      "marker": "20",
+      "title": "Página 20",
+      "page": 19,
+      "sha256": "d9f56caea0147251577117da2b3ead9a07f1e1d1839ed9b8e75f3d1331526480",
+      "headings": []
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-53",
+      "subitem": "Responsabilidade patrimonial do Estado no Direito brasileiro; recorte declarado na obra",
+      "sections": [
+        "adm-53-s01",
+        "adm-53-s02",
+        "adm-53-s03",
+        "adm-53-s04",
+        "adm-53-s05",
+        "adm-53-s06",
+        "adm-53-s07",
+        "adm-53-s08",
+        "adm-53-s09",
+        "adm-53-s10",
+        "adm-53-s11",
+        "adm-53-s12",
+        "adm-53-s13",
+        "adm-53-s14",
+        "adm-53-s15",
+        "adm-53-s16",
+        "adm-53-s17",
+        "adm-53-s18",
+        "adm-53-s19",
+        "adm-53-s20"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "cf37",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição, art. 37, § 6º",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "adm-53-caso",
+      "type": "aplicar",
+      "sectionId": "adm-53-s13",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": "Fatos e problema institucional\n\nUma caminhonete oficial da União, conduzida em serviço por servidor lotado em órgão\nfederal, atravessa cruzamento com semáforo vermelho e colide com automóvel particular\nque seguia pela contramão. O particular é hospitalizado por três dias, apresenta notas\nmédicas de R$ 16.000, orçamento de reparo do carro de R$ 24.000 e alegação de perda de\nreceitas profissionais de R$ 30.000. Pede R$ 70.000 de dano material mais compensação\nmoral a definir. A Administração, em relatório preliminar sem perícia, afirma que a\ncontramão afasta inteiramente o dever de reparar. Uma câmera registra o instante da\ncolisão, mas não oferece estimativa confiável de velocidade.\n\nProblema da AGU: a União pode negar a indenização de plano? Deve reconhecer\nintegralmente o valor reclamado? Existe base para ação contra o motorista público? Que\nprovidências são necessárias para uma resposta juridicamente sustentável?",
+      "answer": "Competência, regime e enquadramento\n\nA atuação de servidor na condução de veículo oficial durante deslocamento de serviço\nconfigura, em princípio, a qualidade funcional relevante para o art. 37, § 6º, da\nConstituição. A demanda principal de terceiro por esse dano deve ser dirigida à União, e\nnão diretamente ao servidor, considerada a regra do Tema 940. O fundamento é a\nresponsabilidade objetiva constitucional: a vítima não tem de demonstrar que o servidor\nagiu com intenção de causar acidente ou negligência pessoal como requisito originário da\nresponsabilização da União.\n\nA responsabilidade, entretanto, ainda exige dano e causalidade. Avançar o sinal vermelho\nconstitui fato estatal relevante; trafegar pela contramão constitui fato da vítima\npotencialmente relevante. É necessário apurar se ambos contribuíram causalmente para o\nresultado e em que medida. O orçamento de veículo e as notas não demonstram,\nisoladamente, que todo gasto decorreu da colisão; e o lucro cessante não se presume do\nvalor declarado pelo autor. A estimativa de R$ 70.000 é pretensão, não resultado\njuridicamente apurado.\n\nObjeção forte e alternativas\n\nA melhor objeção favorável à União não é “o servidor não teve culpa” nem “havia\ncontramão, então não pagamos”. A objeção precisa demonstrar que a circulação indevida\ndo particular foi a causa exclusiva do acidente, ou, subsidiariamente, que contribuiu de\nmodo causalmente significativo para reduzir a indenização. O vídeo e a perícia podem\nrevelar cenário de inevitabilidade da colisão apesar de comportamento regular do veículo\noficial, mas também podem apontar que o avanço do vermelho foi a causa predominante.\nSem exame técnico, atribuir exclusividade ou repartir porcentagens seria antecipação sem\nprova.\n\n                        Responsabilidade patrimonial do Estado • edição 1.0 | 13\n\nAGU | LIVRO-PIL-001 | ADM-53\n\n\n\nDe outro lado, a defesa do particular baseada apenas na palavra “objetiva” falha ao\ndescartar o art. 945 e o nexo. A solução constitucional não é prêmio pelo comportamento\ndo servidor nem sanção abstrata ao motorista privado: é reparação de prejuízo\nefetivamente imputável ao risco administrativo, com eventual redução por participação\ncausal da vítima.\n\nHá três trajetórias legítimas. Primeira: se perícia e provas demonstrarem que o dano\nresultou exclusivamente da manobra do particular, pode-se contestar integralmente a\npretensão. Segunda: se demonstrada contribuição dos dois condutores, a União pode\nreconhecer ou negociar a parte causalmente atribuível ao serviço público, discutindo\nrubricas não provadas. Terceira: se a contramão for irrelevante para o dano e o avanço do\nsinal estatal for causa suficiente, a responsabilidade objetiva pode levar à reparação\nintegral dos danos efetivamente comprovados, ainda sujeita ao exame das categorias e\nvalores. A escolha é factual, não retórica.\n\nMinimanifestação consultiva modelo\n   Assunto: Pretensão de indenização decorrente de colisão com veículo oficial.\n\n   Relatório. O expediente relata colisão entre veículo da União conduzido em serviço,\n   que avançou sinal vermelho, e veículo particular que trafegava pela contramão. O\n   requerente apresenta despesas médicas, orçamento de reparação automotiva,\n   declaração de lucros cessantes e pedido de compensação extrapatrimonial. Não\n   consta laudo conclusivo sobre a dinâmica do acidente.\n\n   Fundamentação. Incide em princípio o art. 37, § 6º, da Constituição, quanto à\n   responsabilidade objetiva por conduta funcional, e o art. 43 do Código Civil. A\n   dispensa de prova de culpa do servidor não dispensa demonstração do dano e do\n   nexo causal. A circulação do particular pela contramão demanda exame à luz do art.\n   945 do Código Civil, podendo influir no montante da reparação se tiver contribuído\n   causalmente para o evento, sem afastar automaticamente a obrigação. A orientação\n   do STF no Tema 940 separa a ação da vítima contra a pessoa jurídica da eventual\n   pretensão regressiva contra agente que tenha agido com dolo ou culpa. A questão 20\n   da prova AGU de 2015, em fatos semelhantes, recebeu gabarito definitivo errado para\n   a proposição de indenização estatal necessariamente integral.\n\n   Conclusão. Não há base probatória para indeferimento automático nem para\n   reconhecimento integral dos valores pedidos. Recomenda-se requisitar laudo de\n   trânsito, arquivo original das imagens, registros de semáforo, dados de deslocamento\n   e depoimentos; conferir autenticidade, necessidade e nexo das despesas; solicitar\n   documentos fiscais e registros de renda relativos ao lucro cessante; reavaliar prazo e\n   competência; instruir avaliação de composição ou defesa proporcional ao resultado.\n   Havendo reparação imputável ao erário, apurar autonomamente eventual culpa ou\n   dolo do agente, asseguradas as garantias procedimentais. A conclusão é\n   condicionada à prova e deverá ser revista se a instrução alterar a dinâmica dos\n   fatos.\n\n                        Responsabilidade patrimonial do Estado • edição 1.0 | 14"
+    },
+    {
+      "id": "adm-53-recuperacao",
+      "type": "recuperar",
+      "sectionId": "adm-53-s17",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": "15. Recuperação ativa para outro momento\nEstas perguntas devem ser respondidas depois da leitura, sem confundir contato com\ntexto e aprendizagem demonstrada. Não há pausa obrigatória no capítulo.\n\n  1.   Por que o art. 37, § 6º, não torna o Estado segurador universal?\n  2.   Em que a responsabilidade primária da União difere do regresso contra servidor?\n  3.   Como diferenciar culpa exclusiva da vítima e contribuição concorrente?\n  4.   O que precisa ser provado quando se alega omissão específica?\n  5.   Por que os Temas 592 e 362 não se contradizem?\n  6.   Qual é a relevância do dever fiscalizatório específico no Tema 366?\n  7.   O que a perícia inconclusiva não permite concluir no Tema 1.237?\n  8.   Como a Súmula 652 separa solidariedade de execução?\n  9.   Qual é o prazo ordinário da pretensão indenizatória contra a Fazenda Pública?\n  10. Que fatos adicionais você requisitaria antes de defender integralmente a União no\n       acidente do capítulo?\n\n\n                       Responsabilidade patrimonial do Estado • edição 1.0 | 17",
+      "answer": "Respostas para autocorreção\n  1.   Porque continuam exigíveis atuação funcional, dano, nexo e análise de excludentes\n       e concorrência causal.\n  2.   A vítima demanda a pessoa jurídica em regime objetivo; o regresso contra agente\n       depende de dolo/culpa e prova própria.\n  3.   Exclusividade rompe o nexo estatal; concorrência causal permite, conforme prova,\n       moderação proporcional da reparação.\n  4.   Dever jurídico individualizado, possibilidade concreta de agir, falha relevante, dano\n       e nexo entre omissão e resultado.\n  5.   O primeiro trata da proteção do detento sob custódia; o segundo nega automatismo\n       causal em crime posterior de foragido sem nexo direto.\n  6.   Não basta competência abstrata para fiscalizar; é preciso identificar licença\n       irregular, conhecimento de risco ou outra violação específica.\n  7.   Não basta para exonerar o ente por si só; deve-se confrontar todo o conjunto\n       probatório e as excludentes.\n  8.   A Administração pode ser corresponsável, mas não se executa sua responsabilidade\n       indiscriminadamente antes do poluidor direto nas condições da súmula.\n  9.   Em regra, cinco anos conforme Decreto nº 20.910/1932 e Tema 553/STJ, observado\n       caso, termo inicial e eventual regime especial.\n  10. Vídeo original, croqui, semáforo, velocidades, laudo, informações do deslocamento,\n       prontuário, gastos documentados, renda anterior e posterior, evidências de\n       participação causal."
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Fonte estruturada recuperada da transcrição pública; cabeçalhos, rodapés e quebras preservados. Hierarquia e imagens do PDF não certificadas; não se afirma fidelidade visual ao PDF/Word."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "3ed14bb32099b2f3d5d6455de5f36c50a4aba515c37ef0e01867505c1831b932"
+  },
+  "inputSha256": "3ed14bb32099b2f3d5d6455de5f36c50a4aba515c37ef0e01867505c1831b932",
+  "sourceSha256": "acd63c54e9eb5500c5486dc91be537df88be8d7efccd4beea00f9876271eb604",
+  "reviewCards": [
+    {
+      "cardId": "aud03-flc-013",
+      "sectionId": "adm-53-s13",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Âmbito institucional da consultoria da AGU",
+      "status": "aprovado",
+      "source": {
+        "id": "cf-131",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 131, caput",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Âmbito institucional da consultoria da AGU",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    }
+  ]
+}

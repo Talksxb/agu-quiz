@@ -11,7 +11,7 @@ const sitesTiles="'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href
 const sitesStyle='.hub-book{background:#e9f4f2;border-color:#b7d7d1;text-decoration:none}.hub-book:hover,.hub-book:focus-visible{background:#dff0eb;border-color:#438e83}.hub-book b{color:#15545a}.hub-book span{color:#476d70}\n';
 
 module.exports=function legacyIndexDigest(){
- const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
+ const html=require('./metodo-agu-001-legado.cjs')(fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8'));
  assert.equal(html.split(sitesTiles).length,2,'Os cartões Sites, Laboratório e Livros devem aparecer exatamente uma vez');
  assert.equal(html.split(sitesStyle).length,2,'O estilo Sites deve aparecer exatamente uma vez');
  const legacyHtml=html.replace(sitesTiles,originalTiles).replace(sitesStyle,'');

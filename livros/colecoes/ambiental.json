@@ -1,0 +1,278 @@
+{
+  "schema": "agu-collection-v1",
+  "id": "ambiental",
+  "title": "Direito Ambiental",
+  "planningNote": "Sequência técnica proposta em MÉTODO-AGU-001: nove obras, com agrupamentos explícitos AMB-01/02 e AMB-09/10; livre navegação. Produção de AMB-04 e AMB-05 declarada nos handoffs consultados, sem publicação.",
+  "program": {
+    "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+    "locator": "17.2.1, Direito Ambiental, página impressa 42",
+    "consultedAt": "2026-11-22",
+    "status": "literalidade_dos_11_itens_conferida_no_edital_de_abertura",
+    "gaps": [
+      "Retificações posteriores não inventariadas integralmente nesta execução"
+    ]
+  },
+  "coveragePolicy": "Contabilizar apenas subitem com seção e revisão expressas; conexões não somam cobertura. Não calcular porcentagem de domínio por livros ou cartões.",
+  "sharedFoundations": [
+    {
+      "key": "cf-131-consultoria-executivo",
+      "cardId": "aud03-flc-013",
+      "relation": "fundamento_institucional_complementar; não amplia cobertura AMB"
+    }
+  ],
+  "chapters": [
+    {
+      "editorialId": "LIVRO-AMB-001",
+      "chapterId": "amb-03",
+      "title": "Competências e Cooperação Ambiental",
+      "order": 1,
+      "curricular": [
+        {
+          "id": "AMB-03",
+          "subitems": [
+            "Repartição de competências em matéria ambiental.",
+            "Normas de cooperação."
+          ],
+          "coverage": "delimitada_no_capitulo_publico"
+        }
+      ],
+      "connections": [
+        "AMB-01",
+        "AMB-02",
+        "AMB-04"
+      ],
+      "status": {
+        "production": "produzido",
+        "review": "edicao_publica_preservada",
+        "publication": "publicado"
+      },
+      "edition": "1.0",
+      "evidence": "JSON/Markdown/HTML públicos reconfirmados",
+      "resources": "livros/metodo/amb-03.json"
+    },
+    {
+      "editorialId": "LIVRO-AMB-002",
+      "chapterId": "amb-04",
+      "title": "Polícia, licenciamento e controle ambiental",
+      "order": 2,
+      "curricular": [
+        {
+          "id": "AMB-04",
+          "subitems": [
+            "Poder de polícia e Direito Ambiental.",
+            "Licenciamento ambiental.",
+            "Compensação ambiental.",
+            "Biossegurança.",
+            "Infrações ambientais."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "produzido",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": "1.0",
+      "evidence": "Handoff editorial consultado em 22/11/2026; conteúdo da obra não importado nem revalidado",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-003",
+      "chapterId": "amb-05",
+      "title": "Responsabilidade e Reparação Ambiental",
+      "order": 3,
+      "curricular": [
+        {
+          "id": "AMB-05",
+          "subitems": [
+            "Responsabilidade ambiental.",
+            "Conceito de dano.",
+            "A reparação do dano ambiental.",
+            "Extração irregular de recursos minerais."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "produzido",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": "1.0",
+      "evidence": "Handoff editorial consultado em 22/11/2026; conteúdo da obra não importado nem revalidado",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-004",
+      "chapterId": null,
+      "title": "Princípios e Constituição ambiental",
+      "order": 4,
+      "curricular": [
+        {
+          "id": "AMB-01",
+          "subitems": [
+            "Princípios do Direito Ambiental."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        },
+        {
+          "id": "AMB-02",
+          "subitems": [
+            "A Constituição Federal e o meio ambiente."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-005",
+      "chapterId": null,
+      "title": "SISNAMA e políticas ambientais",
+      "order": 5,
+      "curricular": [
+        {
+          "id": "AMB-06",
+          "subitems": [
+            "Sistema nacional do meio ambiente.",
+            "Política nacional do meio ambiente.",
+            "Política Energética.",
+            "Política de Saneamento."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-006",
+      "chapterId": null,
+      "title": "Estudo de impacto ambiental",
+      "order": 6,
+      "curricular": [
+        {
+          "id": "AMB-07",
+          "subitems": [
+            "Estudo de impacto ambiental.",
+            "Conceito.",
+            "Competências.",
+            "Natureza jurídica.",
+            "Requisitos."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-007",
+      "chapterId": null,
+      "title": "Biodiversidade e conhecimento tradicional",
+      "order": 7,
+      "curricular": [
+        {
+          "id": "AMB-08",
+          "subitems": [
+            "Biodiversidade.",
+            "Principais instrumentos de proteção internacional.",
+            "Acesso.",
+            "Política nacional.",
+            "Proteção jurídica do conhecimento tradicional associado."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-008",
+      "chapterId": null,
+      "title": "Florestas, APPs e unidades de conservação",
+      "order": 8,
+      "curricular": [
+        {
+          "id": "AMB-09",
+          "subitems": [
+            "Proteção às florestas."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        },
+        {
+          "id": "AMB-10",
+          "subitems": [
+            "Áreas de preservação permanente e unidades de conservação."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-009",
+      "chapterId": null,
+      "title": "Crimes ambientais",
+      "order": 9,
+      "curricular": [
+        {
+          "id": "AMB-11",
+          "subitems": [
+            "Crimes contra o meio ambiente."
+          ],
+          "coverage": "planejada_nao_contabilizar"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
+      },
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null
+    }
+  ]
+}

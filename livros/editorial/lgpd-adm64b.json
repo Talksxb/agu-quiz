@@ -1,0 +1,279 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "lgpd-adm64b",
+  "editorialId": "LIVRO-DIG-001",
+  "title": "LGPD aplicada à Administração Pública",
+  "discipline": {
+    "id": "DIG",
+    "name": "Direito Digital"
+  },
+  "edition": "2.0",
+  "metadataVersion": "1.1",
+  "canonical": "livros/fontes/lgpd-adm64b.md",
+  "readerPath": "livros/lgpd-adm64b.json",
+  "reader": {
+    "id": "lgpd-adm64b",
+    "category": "Direito Digital",
+    "curricular_id": "ADM-64b",
+    "title": "LGPD aplicada à Administração Pública",
+    "edition": "LIVRO-DIG-001 · edição 2.0 (20/11/2026)",
+    "source": "LIVRO-DIG-001_LGPD_ADMINISTRACAO_PUBLICA_v2.0.pdf",
+    "source_format": "pdf-extracted-text",
+    "verification": "Conferências pontuais até 20/11/2026, corte da auditoria em 04/11/2026; sem certificação integral"
+  },
+  "curricularIds": [
+    "ADM-64b"
+  ],
+  "dates": {
+    "edition": "2026-11-20",
+    "legalConsultation": "Declarada na obra: 2026-11-20; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "lgpd-adm64b-s01",
+      "marker": "01",
+      "title": "Página 1"
+    },
+    {
+      "id": "lgpd-adm64b-s02",
+      "marker": "02",
+      "title": "Página 2"
+    },
+    {
+      "id": "lgpd-adm64b-s03",
+      "marker": "03",
+      "title": "Página 3"
+    },
+    {
+      "id": "lgpd-adm64b-s04",
+      "marker": "04",
+      "title": "Página 4"
+    },
+    {
+      "id": "lgpd-adm64b-s05",
+      "marker": "05",
+      "title": "Página 5"
+    },
+    {
+      "id": "lgpd-adm64b-s06",
+      "marker": "06",
+      "title": "Página 6"
+    },
+    {
+      "id": "lgpd-adm64b-s07",
+      "marker": "07",
+      "title": "Página 7"
+    },
+    {
+      "id": "lgpd-adm64b-s08",
+      "marker": "08",
+      "title": "Página 8"
+    },
+    {
+      "id": "lgpd-adm64b-s09",
+      "marker": "09",
+      "title": "Página 9"
+    },
+    {
+      "id": "lgpd-adm64b-s10",
+      "marker": "10",
+      "title": "Página 10"
+    },
+    {
+      "id": "lgpd-adm64b-s11",
+      "marker": "11",
+      "title": "Página 11"
+    },
+    {
+      "id": "lgpd-adm64b-s12",
+      "marker": "12",
+      "title": "Página 12"
+    },
+    {
+      "id": "lgpd-adm64b-s13",
+      "marker": "13",
+      "title": "Página 13"
+    },
+    {
+      "id": "lgpd-adm64b-s14",
+      "marker": "14",
+      "title": "Página 14"
+    },
+    {
+      "id": "lgpd-adm64b-s15",
+      "marker": "15",
+      "title": "Página 15"
+    },
+    {
+      "id": "lgpd-adm64b-s16",
+      "marker": "16",
+      "title": "Página 16"
+    },
+    {
+      "id": "lgpd-adm64b-s17",
+      "marker": "17",
+      "title": "Página 17"
+    },
+    {
+      "id": "lgpd-adm64b-s18",
+      "marker": "18",
+      "title": "Página 18"
+    },
+    {
+      "id": "lgpd-adm64b-s19",
+      "marker": "19",
+      "title": "Página 19"
+    },
+    {
+      "id": "lgpd-adm64b-s20",
+      "marker": "20",
+      "title": "Página 20"
+    },
+    {
+      "id": "lgpd-adm64b-s21",
+      "marker": "21",
+      "title": "Página 21"
+    },
+    {
+      "id": "lgpd-adm64b-s22",
+      "marker": "22",
+      "title": "Página 22"
+    },
+    {
+      "id": "lgpd-adm64b-s23",
+      "marker": "23",
+      "title": "Página 23"
+    },
+    {
+      "id": "lgpd-adm64b-s24",
+      "marker": "24",
+      "title": "Página 24"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-64b",
+      "subitem": "LGPD aplicada à Administração Pública; recorte declarado na obra",
+      "sections": [
+        "lgpd-adm64b-s01",
+        "lgpd-adm64b-s02",
+        "lgpd-adm64b-s03",
+        "lgpd-adm64b-s04",
+        "lgpd-adm64b-s05",
+        "lgpd-adm64b-s06",
+        "lgpd-adm64b-s07",
+        "lgpd-adm64b-s08",
+        "lgpd-adm64b-s09",
+        "lgpd-adm64b-s10",
+        "lgpd-adm64b-s11",
+        "lgpd-adm64b-s12",
+        "lgpd-adm64b-s13",
+        "lgpd-adm64b-s14",
+        "lgpd-adm64b-s15",
+        "lgpd-adm64b-s16",
+        "lgpd-adm64b-s17",
+        "lgpd-adm64b-s18",
+        "lgpd-adm64b-s19",
+        "lgpd-adm64b-s20",
+        "lgpd-adm64b-s21",
+        "lgpd-adm64b-s22",
+        "lgpd-adm64b-s23",
+        "lgpd-adm64b-s24"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "lgpd",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "locator": "LGPD, arts. 6º, 7º, 11 e 23",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "lgpd-adm64b-caso",
+      "type": "aplicar",
+      "sectionId": "lgpd-adm64b-s16",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "lgpd-adm64b-s16",
+          "start": "13 Caso AGU resolvido e retorno ao problema",
+          "end": "Questão jurídica."
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "lgpd-adm64b-s16",
+          "start": "Questão jurídica."
+        },
+        {
+          "sectionId": "lgpd-adm64b-s17"
+        },
+        {
+          "sectionId": "lgpd-adm64b-s18",
+          "end": "14 Questões"
+        }
+      ]
+    },
+    {
+      "id": "lgpd-adm64b-recuperacao",
+      "type": "recuperar",
+      "sectionId": "lgpd-adm64b-s20",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "lgpd-adm64b-s20",
+          "start": "Recuperação ativa"
+        },
+        {
+          "sectionId": "lgpd-adm64b-s21",
+          "end": "Respostas de conferência"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "lgpd-adm64b-s21",
+          "start": "Respostas de conferência",
+          "end": "Transferência a caso novo"
+        }
+      ]
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Fonte estruturada recuperada da transcrição pública; cabeçalhos, rodapés e quebras preservados. Hierarquia e imagens do PDF não certificadas; não se afirma fidelidade visual ao PDF/Word."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "1e227fd92f9d99b1f817d6074f333a61286a85644d4de51c6f3d328aed1697ba"
+  }
+}

@@ -9,7 +9,9 @@ module.exports=function afterCartoes03(file,previous){
  }
  if(file==='revisao-inteligente.js'){
   assert.equal(previous,delta.reviewBeforeSha256,'CARTOES03 motor: main integrada divergiu');
-  return delta.reviewAfterSha256;
+  const method=require('./fixtures/metodo-agu/review-delta.json');
+  assert.equal(delta.reviewAfterSha256,method.before,'MÉTODO parte do motor histórico exato');
+  return method.after;
  }
  return previous;
 };
