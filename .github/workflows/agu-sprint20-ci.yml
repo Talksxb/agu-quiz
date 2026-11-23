@@ -35,6 +35,8 @@ jobs:
         run: node scripts/metodo-agu.cjs --check && node tests/metodo-agu-001-validacao.cjs
       - name: MÉTODO-AGU-003 — percurso no backup, compatibilidade e restauração não destrutiva
         run: node tests/metodo-agu-003-validacao.cjs
+      - name: MÉTODO-AGU-004 — verificador Pages aceita bytes iguais e rejeita divergência
+        run: node tests/metodo-agu-004-pages-validacao.cjs
       - name: LIVROS-EDITOR-001 — fidelidade textual de AMB-03 e recursos visuais
         run: node tests/livros-editor-001-fidelidade.cjs
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
@@ -313,6 +315,50 @@ jobs:
             tests/artifacts-cartoes-aud-03/*.json
             tests/artifacts-cartoes-aud-03/*.png
           if-no-files-found: ignore
+          retention-days: 7
+
+  pages-revisao-compativel:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Conferir se a correção do teste mantém os arquivos publicados
+        id: compat
+        env:
+          AGU_PAGES_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if git diff --quiet "$AGU_PAGES_BASE_SHA" HEAD -- tests/sprint21-pages.cjs; then
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          elif git diff --quiet "$AGU_PAGES_BASE_SHA" HEAD -- ':(top,glob)*.html' ':(top,glob)*.js' ':(top,glob)*.css' dados livros lib fontes; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.compat.outputs.run == 'true'
+        with:
+          node-version: '22'
+      - name: Cotejar arquivos públicos usando o verificador corrigido
+        if: steps.compat.outputs.run == 'true'
+        run: node tests/metodo-agu-002-pages.cjs && node tests/sprint21-pages.cjs
+      - name: Preparar navegador em contexto efêmero
+        if: steps.compat.outputs.run == 'true'
+        run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: Conferir Método e backup na URL publicada sem dados pessoais
+        if: steps.compat.outputs.run == 'true'
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/metodo-agu-001-browser.cjs && node tests/metodo-agu-003-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.compat.outputs.run == 'true'
+        with:
+          name: agu-pages-verificacao-pr
+          path: |
+            tests/artifacts-metodo-agu/
+            tests/artifacts-metodo-agu-003/
           retention-days: 7
 
   pages-publicado:

@@ -22,11 +22,13 @@ async function get(url){
 }
 async function main(){
  const home=fs.readFileSync(path.join(__dirname,'../index.html'));
+ const backupVersion=home.toString('utf8').match(/backup-local-s20\.js\?v=([^"\s]+)/)?.[1];
+ assert.ok(backupVersion,'Checkout sem versão de cache do backup');
  for(let attempt=1;attempt<=7;attempt++){
   try{
    const remote=await get(BASE+'?agu_verify='+Date.now());
    const markup=remote.toString('utf8');
-   if(!markup.includes('backup-local-s20.js?v=20261115-leg11'))throw Error('HTML sem a versão esperada');
+   if(!markup.includes('backup-local-s20.js?v='+backupVersion))throw Error('HTML sem a versão esperada');
    if(!markup.includes('leitor-juridico.js?v=20261116-bib02'))throw Error('HTML sem a versão nova do Leitor');
    if(!markup.includes('meu-estudo.js?v=20261115-leg12'))throw Error('HTML sem a versão LEG12 da Home');
    if(!markup.includes('questoes-leitor-s18.js?v=20261115-leg10'))throw Error('HTML sem a versão nova de questões verificadas');
