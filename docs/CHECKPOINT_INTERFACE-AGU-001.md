@@ -30,4 +30,6 @@ A primeira CI (`45267376424`) confirmou os oito perfis e as 32 varreduras novas,
 
 A inspeção das capturas também motivou um ajuste delimitado: “Biblioteca” cabe em uma linha a 320 px; quando a fonte duplica, a navegação passa a duas linhas e indicadores/atalhos passam a uma coluna, evitando colunas estreitas com palavras fragmentadas. As regressões verificam esses arranjos, sem reduzir a fonte para caber.
 
+Na regressão S23, a premissa antiga de que o primeiro Tab alcança um botão foi atualizada para verificar primeiro o novo link de salto, sua visibilidade e a transferência real de foco ao conteúdo. O botão principal e o restante dos ensaios de foco/backup continuam verificados. O servidor desse ensaio passa a servir CSS com o tipo correto, permitindo testar a folha externa.
+
 Continuidade em `docs/PROMPT_INTERFACE-AGU-002.md`, não executada neste lote.
