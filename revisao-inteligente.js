@@ -272,6 +272,7 @@ function deckRepeat(keyboard=false){
 }
 function deckResume(keyboard=false){
  const s=savedSession();if(!s||s.status!=='em_andamento')return false;
+ if(s.order.some(id=>!editorialEligible(INDEX.get(id)))){global.alert?.('Um cartão desta sessão aguarda revalidação editorial. A sessão, as respostas e a agenda foram preservadas. Escolha uma seleção de cartões aprovados para continuar.');return false}
  pendingDeck=null;
  currentMode='deck';active=INDEX.get(s.order[s.index]);revealed=s.revealed||!!s.ratings[active.id];pick='';global.render?.();
  global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
@@ -432,7 +433,7 @@ function choose(mode='auto'){
 }
 function select(id,keyboard=false){const q=INDEX.get(id);if(!q||!editorialEligible(q)||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^="AGUReview.reveal("]',keyboard)}
 function rating(grade,keyboard=false){
- if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
+ if(!active||!editorialEligible(active)||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;
  const session=currentMode==='deck'?savedSession():null;
  if(currentMode==='deck'&&(!session||session.status!=='em_andamento'||session.order[session.index]!==active.id||session.ratings[active.id]))return false;
  const prior=stat(active.id),isOfficial=active.kind==='official';
@@ -447,7 +448,7 @@ function rating(grade,keyboard=false){
  else stage=Math.min(3,stage+2);
  const days=DAYS[stage];
  const st={stage,due:when(days),seen:(prior.seen||0)+1,errors:(prior.errors||0)+(applied==='errei'?1:0),ease:applied,last:new Date().toISOString(),lastCorrect:correct};
- const attempt={id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};
+ const attempt={...(active.editorialVersion?{editorialCardVersion:active.editorialVersion}:{}),id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};
  if(session){
   const ratings={...session.ratings,[active.id]:attempt.id};
   const nextIndex=session.order.findIndex((id,i)=>i>session.index&&!ratings[id]);

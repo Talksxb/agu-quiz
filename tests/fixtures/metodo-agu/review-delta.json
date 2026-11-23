@@ -1,6 +1,6 @@
 {
   "before": "ade35f3ba8c77b0d33ec41063f3c72f20c3889b91ab619d94942ebf0c3768116",
-  "after": "0f8406fdb7ae0eb1eb4e33b4d103a274ccbd27bbffaa3fc5a60d1993c225f979",
+  "after": "53fb571eb4333e16b64ae63a59d9684a342bec2d632059ff327b170ce4ba6111",
   "changes": [
     {
       "before": "const ALL=[...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];\n",
@@ -19,6 +19,10 @@
       "after": "function flashcards(){return ALL.filter(x=>editorialEligible(x)&&x.kind==='flashcard')}\n"
     },
     {
+      "before": "",
+      "after": " if(s.order.some(id=>!editorialEligible(INDEX.get(id)))){global.alert?.('Um cartão desta sessão aguarda revalidação editorial. A sessão, as respostas e a agenda foram preservadas. Escolha uma seleção de cartões aprovados para continuar.');return false}\n"
+    },
+    {
       "before": " return ALL.filter(x=>x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id]?.auditVerified===true)&&(!stat(x.id).due||stat(x.id).due<=today()))\n",
       "after": " return ALL.filter(x=>editorialEligible(x)&&x.kind===kind&&x.status!=='anulada'&&(kind!=='official'||INLINE_ADAPTED[x.id]?.auditVerified===true)&&(!stat(x.id).due||stat(x.id).due<=today()))\n"
     },
@@ -29,6 +33,14 @@
     {
       "before": "function select(id,keyboard=false){const q=INDEX.get(id);if(!q||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^=\"AGUReview.reveal(\"]',keyboard)}\n",
       "after": "function select(id,keyboard=false){const q=INDEX.get(id);if(!q||!editorialEligible(q)||(q.kind==='official'&&!INLINE_ADAPTED[id]?.auditVerified))return;currentMode=q.kind==='official'?'official':'flashcard';active=q;revealed=false;pick='';window.render();focusAfter('button[onclick^=\"AGUReview.reveal(\"]',keyboard)}\n"
+    },
+    {
+      "before": " if(!active||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;\n",
+      "after": " if(!active||!editorialEligible(active)||!revealed||!['errei','dificil','lembrei','facil'].includes(grade)||active.status==='anulada')return;\n"
+    },
+    {
+      "before": " const attempt={id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};\n",
+      "after": " const attempt={...(active.editorialVersion?{editorialCardVersion:active.editorialVersion}:{}),id:'rv-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),itemId:active.id,kind:active.kind,code:active.code,at:st.last,rating:applied,selected:isOfficial?pick:null,correct,sourceStatus:active.validation,due:st.due,stage,origin:active.kind==='official'?'prova_oficial':'flashcard_autoral'};\n"
     },
     {
       "before": " const cards=ALL.filter(x=>x.kind==='flashcard').slice().sort((a,b)=>a.code.localeCompare(b.code)||a.front.localeCompare(b.front));\n",
