@@ -53,7 +53,7 @@ check('fixture aditiva encadeia fonte publicada e não reescreve histórico',()=
   if(file==='leitor-juridico.js'){
    assert.equal(value,biblioteca.changed[file].before,'o leitor mudou somente pela Biblioteca02');
    assert.equal(sha(file),biblioteca.changed[file].after,file);
-  }else assert.equal(sha(file),value,file);
+  }else assert.equal(sha(file),require('./hash-chain-metodo-backup.cjs')(file,value),file);
  }
  const html=read('index.html');assert.ok(html.indexOf('flashcards-aud02-2015-atualizados-lote02.js')<html.indexOf('revisao-inteligente.js'));
  assert.match(html,/revisao-inteligente\.js\?v=20261116-cards-aud03/);assert.equal(f.cardsBefore+f.cardsAdded,f.cardsAfter);

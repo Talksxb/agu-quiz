@@ -29,7 +29,7 @@ check('cadeia de deltas LEG07/08/09→UX01→LEG10→UX02→LEG11→UX03',()=>{
  assert.equal(z.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
  const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha(read('revisao-inteligente.js')),next('revisao-inteligente.js',cards.reviewAfterSha256));assert.equal(legacyIndexDigest(),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
  assert.equal(n.readerBeforeSha256,p.readerSha256);assert.equal(n.backupBeforeSha256,p.backupSha256);assert.equal(n.reviewBeforeSha256,p.reviewAfterSha256);assert.equal(n.htmlBeforeSha256,p.htmlAfterSha256);
- const {validate}=require('../lib/catalogo-legislativo'),b=boot();assert.deepEqual(copy(validate(b.z.AGU_LEGAL_CORPUS)),{laws:6,articles:292,units:1176,integral:5});assert.equal(b.z.AGUBackup20.keys().length,9);
+ const {validate}=require('../lib/catalogo-legislativo'),b=boot();assert.deepEqual(copy(validate(b.z.AGU_LEGAL_CORPUS)),{laws:6,articles:292,units:1176,integral:5});assert.equal(b.z.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
 });
 let snapshot,sessionId,studyId;
 check('sessão efetiva ADM-06 usa ID existente e salva apenas no forNotebook',()=>{

@@ -111,7 +111,7 @@ check('reload, avaliação única e backup S20 mantêm a categoria e o agendamen
  const snapshot=copy(JSON.parse(b.saved.get(KEY)));
  assert.equal(snapshot.librarySession.status,'concluida');
  assert.equal(snapshot.attempts.length,1);assert.equal(snapshot.cards['ri-con-02'].due,day(0));
- const bundle=b.root.AGUBackup20.capture();assert.equal(b.root.AGUBackup20.keys().length,9);
+ const bundle=b.root.AGUBackup20.capture();assert.equal(b.root.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
  const restored=boot();assert.equal(restored.root.AGUBackup20.importMissing(bundle).added,1);
  assert.equal(restored.root.AGUBackup20.importMissing(bundle).added,0);
  const loaded=boot({[KEY]:restored.saved.get(KEY)});assert.equal(loaded.root.AGUReview.deckSession().status,'concluida');
@@ -146,6 +146,6 @@ check('cronograma e leitura não recebem vínculo curricular presumido',()=>{
  const {root}=boot();root.AGUPlannerContext=()=>({disciplines:[['ADM','Direito Administrativo',['Atos administrativos']]],sessions:[],answers:[],reviews:[],notebook:[],topic:{}});
  const topic=root.AGUPlanner?.generate?.().days.flatMap(x=>x.tasks).find(x=>x.topic);
  assert.ok(topic?.topic.includes('/'),'plano conserva tópicos amplos ADM/..., não equivale ao ID granular ADM-06');
- assert.equal(root.AGUBackup20.keys().length,9);
+ assert.equal(root.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
 });
 console.log('UX_BARALHOS_02_VALIDACAO_OK',JSON.stringify({checks,flashcards:36,decks:6,storageCategories:9}));

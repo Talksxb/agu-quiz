@@ -1,0 +1,16 @@
+{
+  "schema": "agu-method-backup-nav-delta-v1",
+  "baseCommit": "d41442201e449f437babc80ec240dac281d7404e",
+  "before": "3b4f036949d1a765ef5e3c86a997ae9435a8cbf0a04fd95c19b33d831bd11d02",
+  "after": "365fbb8290f1456681849b32e1197ff5fdb746ab7b9a5ffb4050901aa05b01a9",
+  "changes": [
+    {
+      "before": "<script src=\"backup-local-s20.js?v=20261115-leg11\"></script>\n",
+      "after": "<script src=\"dados/metodo-agu-referencias.js\"></script>\n<script src=\"metodo-agu-progresso.js\"></script>\n<script src=\"backup-local-s20.js?v=20261123-metodo03\"></script>\n"
+    },
+    {
+      "before": "document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){const p=new URLSearchParams(window.location.search),law=p.get('norma')||'L9784',device=p.get('dispositivo');view='legal';AGULegal.openLaw(law,false);if(device&&device.startsWith(law+':'))AGULegal.unit(device);render()}else{render()}\n",
+      "after": "document.querySelectorAll('.nav').forEach(x=>x.onclick=()=>setView(x.dataset.view));if(new URLSearchParams(window.location.search).get('abrir')==='backup'){view='settings';render();document.getElementById('agu-s20-backup-title')?.focus();document.getElementById('agu-s20-backup-title')?.scrollIntoView({block:'start'});}else if(new URLSearchParams(window.location.search).get('abrir')==='questao'){view='review';window.AGUReview.go('official')}else if(new URLSearchParams(window.location.search).get('abrir')==='lei'){const p=new URLSearchParams(window.location.search),law=p.get('norma')||'L9784',device=p.get('dispositivo');view='legal';AGULegal.openLaw(law,false);if(device&&device.startsWith(law+':'))AGULegal.unit(device);render()}else{render()}\n"
+    }
+  ]
+}

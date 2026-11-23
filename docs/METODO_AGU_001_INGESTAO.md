@@ -14,6 +14,7 @@ Este procedimento vale para qualquer disciplina. Segue o padrão editorial públ
 | Dados do leitor legado | `livros/<id>.json` | Gerados dos blocos canônicos; conserva o schema de leitura |
 | Índice contextual | `livros/metodo/<id>.json` | Seções, âncoras, fontes, recursos, atividades e referências a cartões |
 | Catálogo de disciplinas | `livros/catalogo.json` | Gerado; inclui somente os capítulos aprovados da configuração |
+| Referências de progresso/backup | `dados/metodo-agu-referencias.js` | Geradas dos índices aprovados: edição, seções e atividades. MÉTODO-AGU-003 usa o mesmo manifesto, sem edição manual por disciplina; contrato em `METODO_AGU_003_BACKUP.md` |
 | Proposições candidatas | `livros/candidatos/cartoes.json` | Geradas de proposições explícitas; não são carregadas no motor |
 | Aprovação de cartões novos | `livros/editorial/cartoes-aprovados.json` | Snapshots revisados, com versão, prova de conferência e hash; vazio nesta execução |
 | Reuso de cartões existentes | `livros/editorial/cartoes-vinculados.json` | Referências a IDs históricos ou editoriais já aprovados, com alcance do vínculo e dependências |
