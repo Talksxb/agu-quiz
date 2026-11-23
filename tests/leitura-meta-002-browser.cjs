@@ -8,7 +8,7 @@ const server=PUBLIC?null:http.createServer((req,res)=>{
  const name=decodeURIComponent((req.url||'/').split('?')[0]).replace(/^[/\\]+/,'')||'index.html';
  const file=path.resolve(ROOT,name);
  if(!file.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('Forbidden')}
- fs.readFile(file,(err,data)=>{res.writeHead(err?404:200,{'content-type':file.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(err?'Missing':data)})
+ fs.readFile(file,(err,data)=>{res.writeHead(err?404:200,{'content-type':file.endsWith('.css')?'text/css;charset=utf-8':file.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(err?'Missing':data)})
 });
 async function run(){
  fs.mkdirSync(OUT,{recursive:true});

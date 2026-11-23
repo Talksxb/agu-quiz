@@ -11,7 +11,7 @@ const server=http.createServer((req,res)=>{
  const file=path.resolve(ROOT,rel||'index.html');
  if(!file.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('denied')}
  fs.readFile(file,(e,buf)=>{if(e){res.writeHead(404);return res.end('not found')}
-  res.writeHead(200,{'content-type':file.endsWith('.js')?'application/javascript;charset=utf-8':'text/html;charset=utf-8','cache-control':'no-store'});res.end(buf)});
+  res.writeHead(200,{'content-type':file.endsWith('.css')?'text/css;charset=utf-8':file.endsWith('.js')?'application/javascript;charset=utf-8':'text/html;charset=utf-8','cache-control':'no-store'});res.end(buf)});
 });
 const focus=()=>{
  const e=document.activeElement,r=e.getBoundingClientRect();

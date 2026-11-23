@@ -13,7 +13,7 @@ const server=http.createServer((req,res)=>{
  if(!dest.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('denied')}
  fs.readFile(dest,(err,b)=>{
   if(err){res.writeHead(404);return res.end('missing')}
-  const type=dest.endsWith('.html')?'text/html; charset=utf-8':dest.endsWith('.js')?'application/javascript; charset=utf-8':'application/octet-stream';
+  const type=dest.endsWith('.css')?'text/css;charset=utf-8':dest.endsWith('.html')?'text/html; charset=utf-8':dest.endsWith('.js')?'application/javascript; charset=utf-8':'application/octet-stream';
   res.writeHead(200,{'content-type':type,'cache-control':'no-store'});res.end(b);
  });
 });

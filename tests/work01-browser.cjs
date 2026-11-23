@@ -5,7 +5,7 @@ const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-wo
 const server=http.createServer((req,res)=>{
  const f=path.resolve(ROOT,decodeURIComponent((req.url||'/').split('?')[0]).replace(/^[/\\]+/,'')||'index.html');
  if(!f.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end()}
- fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'content-type':f.endsWith('.html')?'text/html;charset=utf-8':'application/javascript;charset=utf-8','cache-control':'no-store'});res.end(e?'missing':b)});
+ fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'content-type':f.endsWith('.css')?'text/css;charset=utf-8':f.endsWith('.html')?'text/html;charset=utf-8':'application/javascript;charset=utf-8','cache-control':'no-store'});res.end(e?'missing':b)});
 });
 let browser;
 async function main(){

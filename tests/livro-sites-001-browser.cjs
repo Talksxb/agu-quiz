@@ -7,7 +7,7 @@ const ROOT=path.resolve(__dirname,'..');
 const server=http.createServer((req,res)=>{
  const name=decodeURIComponent((req.url||'/').split('?')[0]).replace(/^[/\\]+/,'')||'index.html',file=path.resolve(ROOT,name);
  if(!file.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('Forbidden')}
- fs.readFile(file,(error,bytes)=>{res.writeHead(error?404:200,{'content-type':file.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(error?'Missing':bytes)});
+ fs.readFile(file,(error,bytes)=>{res.writeHead(error?404:200,{'content-type':file.endsWith('.css')?'text/css;charset=utf-8':file.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(error?'Missing':bytes)});
 });
 async function run(){
  await new Promise(ok=>server.listen(0,'127.0.0.1',ok));

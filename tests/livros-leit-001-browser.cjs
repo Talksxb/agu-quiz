@@ -7,7 +7,7 @@ const PUBLIC=process.env.AGU_TEST_URL||'';
 const srv=PUBLIC?null:http.createServer((req,res)=>{
  const s=decodeURIComponent((req.url||'/').split('?')[0]).replace(/^[/\\]+/,'')||'index.html',f=path.resolve(ROOT,s);
  if(!f.startsWith(ROOT+path.sep)){res.writeHead(403);res.end('Forbidden');return}
- fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'content-type':f.endsWith('.json')?'application/json; charset=utf-8':f.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(e?'Missing':b)})
+ fs.readFile(f,(e,b)=>{res.writeHead(e?404:200,{'content-type':f.endsWith('.json')?'application/json; charset=utf-8':f.endsWith('.css')?'text/css;charset=utf-8':f.endsWith('.html')?'text/html; charset=utf-8':'application/javascript; charset=utf-8'});res.end(e?'Missing':b)})
 });
 async function main(){
  fs.mkdirSync(ART,{recursive:true});if(srv)await new Promise(resolve=>srv.listen(0,'127.0.0.1',resolve));
