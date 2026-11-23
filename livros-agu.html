@@ -52,6 +52,7 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 @media(max-width:590px){.grid{grid-template-columns:1fr}.wrap{padding:12px 10px 44px}.controls-footer button{flex:1}.book{min-height:123px}.card{padding:14px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="simulados-agu.css">
 </head>
 <body>
 <a class="skip-method" href="#catalog-title">Ir aos capítulos</a>
@@ -261,5 +262,7 @@ const requested=new URLSearchParams(location.search).get('livro');
 window.AGUMethod.init(manifest).then(()=>{if(requested&&manifest[requested])openBook(requested)});
 })();
 </script>
+<script src="simulados-agu.js"></script>
+<script src="simulados-agu-ui.js"></script>
 </body>
 </html>

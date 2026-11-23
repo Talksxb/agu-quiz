@@ -1,0 +1,173 @@
+{
+  "schema": "agu-simulado-approvals-v1",
+  "records": [
+    {
+      "id": "sim-dig-01",
+      "contentSha256": "82d50c1a46f734575c987cc6dd88d33648b5729b2cf3b0b24d50b82bb80b8c14",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-02",
+      "contentSha256": "080929464277a135425ad7263f84db6bbc2887ed5d6d07da8be7001ab53c23f8",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-03",
+      "contentSha256": "8d83325b4a823b28e29afc2272754b4a8d37f8bc44dc7de57661666d7c46488d",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-04",
+      "contentSha256": "e4d507f3b9d9d7465c00e03d2da323ff929ee730271498ebd016e82f3c1fbb32",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-05",
+      "contentSha256": "d14738889ae821423e383c990060559ef8d570736dceff53881cda2ec415a5da",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-06",
+      "contentSha256": "3d3409a46b40ec372412cfb719d86bb2107b6c0eb5c2bfee40fcf4ce12254a1c",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-07",
+      "contentSha256": "bd444dd72a31e8fa2c488f4e63ba992ea4afbe79acc668d4a098341cb68d60c7",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-dig-08",
+      "contentSha256": "6c0400d3e4d100f2c17566f9f28a27760956786013a3e3517b6cf73acc839c20",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-01",
+      "contentSha256": "29742347fec052150593d06452ae0b4c836559d37180d07172af3364ecaee40f",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-02",
+      "contentSha256": "516eaa72a3f64ca32f71e6d9c65c3e307b6142f1c8205796382956fa3cefb297",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-03",
+      "contentSha256": "fb7bf9afa7711918a21be6b37a8f3cec339a800b37095b2ab5057ea9292df754",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-04",
+      "contentSha256": "cdf7ca083b6af0dcd70b144c6a6680f0c13e6015713a986e485b6caa5290b15d",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-05",
+      "contentSha256": "d82deae78cf2c5fbd9780cb8b3184ac9e6b5646d52bf27d41cf5448b8f68b534",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-06",
+      "contentSha256": "2b43c6aaa7ce2667ab222d7b509f065d7ef71a53464db7c2b9bdc13aae278cd4",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-07",
+      "contentSha256": "fd04c483015609820b6148fe243f3c1d649463cb8c92aaae52853396dcc3c4d6",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-amb-08",
+      "contentSha256": "98213055247a734d0ec3b936fa9a2d701fc63a7ff5053c91572eae150c5e7a0b",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-01",
+      "contentSha256": "e24b8014e353449ff06e41a19cd003e1f17e5e6e1d0d2a71022bb66d4ae394ac",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-02",
+      "contentSha256": "a7c75d219520dbc153bf5e90a520b1d2232e96a2b0b58c4443f65eefce48ec02",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-03",
+      "contentSha256": "0f8ea9a43b0992ce32b3b6f7563013155cbffc8bc0a12df75a993096d519ae8c",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-04",
+      "contentSha256": "f13fab7cd57a8b95f47e78b819f27f53a91014d9d2e7dd23d9832a2ea4305ac2",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-05",
+      "contentSha256": "268c0604e1909efe3c3484483dab5e7e090903e343cde55af1f83ffc4bd0bf24",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-06",
+      "contentSha256": "6a15da45f19ac2947f6b1f5818214cf85ea934216e8ae903abdf52c62ad63742",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-07",
+      "contentSha256": "63c125e8f71a4c3ce6faeaaa50d16eb2482367bd405de44911547c8ed165e710",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    },
+    {
+      "id": "sim-adm-08",
+      "contentSha256": "c1cb7431735665c9a699d336cec61c506c1df2e1e4083406a91bd5ca837b9ba4",
+      "reviewer": "Codex — revisão editorial e normativa pontual assistida SIMULADOS-AGU-002",
+      "at": "2026-11-23",
+      "scope": "Edição 1.1: alternativas incorretas revistas, resposta única e comentários cotejados com fontes oficiais e seção. IDs e gabaritos preservados; não equivale a revisão humana independente ou certificação integral."
+    }
+  ]
+}

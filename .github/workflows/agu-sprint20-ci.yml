@@ -27,6 +27,8 @@ jobs:
           node-version: '22'
       - name: Node.js runtime
         run: node --version
+      - name: SIMULADOS-AGU-001 — questões, cronômetro, correção, versões e preservação
+        run: node scripts/gerar-simulados.cjs --check && node tests/simulados-agu-001.cjs
       - name: LEIT-META-001 — fluxo sintético, integridade e persistência segregada
         run: node tests/leitura-meta-001-validacao.js
       - name: LIVROS-LEIT-001 — integridade do acervo, capítulo completo e hashes legados
@@ -144,6 +146,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: SIMULADOS-AGU-001 — móvel, retomada, correção, cartões e axe
+        run: node tests/simulados-agu-001-browser.cjs
       - name: INTERFACE-AGU-001 — topo, navegação móvel, reflow e histórico preservado
         run: node tests/interface-agu-001-browser.cjs
       - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
@@ -238,6 +242,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-simulados-agu/
             tests/artifacts-interface-agu-001/
             tests/artifacts-metodo-agu/
             tests/artifacts-metodo-agu-003/
@@ -382,6 +387,10 @@ jobs:
           node -e "fetch('https://talksxb.github.io/agu-quiz/laboratorio-leitura.html').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{if(!t.includes('Laboratório de Leitura Jurídica'))throw Error('Conteúdo divergente'); console.log('LAB_PUBLICADO_OK')}).catch(e=>{console.error(e);process.exit(1)})"
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: SIMULADOS-AGU-002 — simulados na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/simulados-agu-001-browser.cjs
       - name: Método AGU na URL publicada — quatro capítulos e quatro larguras
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -488,6 +497,7 @@ jobs:
         with:
           name: agu-work01-publicado
           path: |
+            tests/artifacts-simulados-agu/
             tests/artifacts-metodo-agu/
             tests/artifacts-metodo-agu-003/
             tests/artifacts-leit-meta/
