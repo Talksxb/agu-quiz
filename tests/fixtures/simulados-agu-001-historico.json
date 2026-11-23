@@ -1,0 +1,43 @@
+{
+  "id": "sim-dig-01",
+  "version": "1.0",
+  "topic": "Direito Digital · LGPD",
+  "chapterId": "lgpd-adm64b",
+  "sectionId": "lgpd-adm64b-s04",
+  "curricularId": "ADM-64b",
+  "nature": "autoral",
+  "title": "Coleta mínima de dados",
+  "stem": "Para emitir uma certidão, uma autarquia pede também religião e histórico de saúde, embora esses campos não tenham relação demonstrada com o serviço. Qual deve ser a primeira providência na análise jurídica?",
+  "options": [
+    "Obter consentimento e manter todos os campos, pois ele supre a falta de pertinência.",
+    "Examinar a necessidade de cada campo e retirar os excessivos, considerando a finalidade do serviço.",
+    "Manter a coleta porque toda autarquia exerce finalidade pública.",
+    "Exigir apenas que o formulário tenha aviso de privacidade.",
+    "Substituir o consentimento por contrato, mantendo a mesma coleta."
+  ],
+  "correct": 1,
+  "feedback": [
+    "O consentimento não afasta os princípios do tratamento.",
+    "A necessidade limita o tratamento ao mínimo pertinente e proporcional à finalidade.",
+    "A natureza pública do órgão não dispensa necessidade e adequação.",
+    "Transparência é necessária, mas não torna legítima a coleta excessiva.",
+    "Trocar a base legal não corrige a ausência de necessidade."
+  ],
+  "explanation": "A análise começa pela finalidade e pelos dados estritamente necessários. O art. 6º, III, exige pertinência, proporcionalidade e ausência de excesso; consentimento ou aviso não dispensam esses requisitos.",
+  "card": {
+    "front": "Um consentimento válido legitima a coleta de dados sem necessidade para a finalidade?",
+    "back": "Não. A base legal e os princípios são exigências cumulativas. Reduza os campos ao mínimo pertinente; dados sensíveis exigem ainda exame do regime do art. 11."
+  },
+  "sources": [
+    {
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+      "checkedAt": "2026-11-23",
+      "status": "confirmado_pontualmente",
+      "locator": "LGPD, art. 6º, I–III; art. 11"
+    }
+  ],
+  "sectionSha256": "a2aaec8ec7adb72297f0c041489365bb322069e2c289ca2249e7bfd78fb6adb8",
+  "chapterEdition": "2.0",
+  "status": "aprovado_pontualmente",
+  "contentSha256": "7c47002be50f092d0a055e52473a462585b51a7de3b0f73c1e974d47003bde5f"
+}

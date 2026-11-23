@@ -22,6 +22,10 @@ async function main() {
       page.on('pageerror', e => errors.push(e.message)); await page.goto(new URL('livros-agu.html', base).href); await page.locator('#discipline-AMB').waitFor();
       const prior = await page.evaluate(() => { const seed = { agu_quiz_mvp1_2026: '{"fixture":"legado"}', agu_quiz_revisao_inteligente_v1: '{"schema":"agu-review-v1","cards":{},"attempts":[]}', agu_livros_reader_v1: '{"adm-54":{"page":3,"done":[]}}' }; for (const [k, v] of Object.entries(seed)) localStorage.setItem(k, v); return seed; });
       await page.locator('#sim-open').click(); await page.locator('#sim-count').waitFor(); assert.equal(await page.locator('#sim-count').inputValue(), '15'); assert.equal(await page.locator('#sim-minutes').inputValue(), '20'); await scan(page, 'configuração', scans);
+      for (const [n, m] of [[5, 7], [10, 12], [15, 20]]) {
+        await page.getByRole('button', { name: n + ' questões · ' + m + ' min', exact: true }).click();
+        assert.equal(await page.locator('#sim-count').inputValue(), String(n)); assert.equal(await page.locator('#sim-minutes').inputValue(), String(m));
+      }
       await page.getByRole('button', { name: 'Iniciar treino', exact: true }).click(); await page.locator('#sim-question-title').waitFor();
       assert.equal(await page.locator('[data-sim-go]').count(), 15); assert.equal(await page.locator('.sim-correction').count(), 0); assert.equal(await page.getByText('Revelar fundamento', { exact: true }).count(), 0);
       await page.locator('input[name="sim-answer"]').first().check(); await page.locator('#sim-confidence').selectOption('alta'); await scan(page, 'questão', scans);
@@ -31,7 +35,12 @@ async function main() {
       await page.getByRole('button', { name: 'Encerrar e corrigir', exact: true }).click(); await page.getByRole('button', { name: 'Confirmar encerramento', exact: true }).click();
       await page.locator('#sim-weak-title').waitFor(); await scan(page, 'resultado', scans); assert.ok(await page.locator('.sim-next').count() >= 14);
       assert.equal(await page.locator('.sim-card div:not([hidden])').count(), 0); await page.getByRole('button', { name: 'Revelar fundamento', exact: true }).first().click(); await scan(page, 'cartão revelado', scans);
+      assert.equal(await page.locator('.sim-next:visible').count(), 3, 'A correção abre apenas os três fundamentos prioritários');
       const final = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), E.KEY); assert.equal(final.history.length, 1); assert.equal(final.active, null); assert.equal(E.summary(final.history[0]).blank, 14);
+      await page.getByText('Preparar aprofundamento no chat da disciplina', { exact: true }).click();
+      const promptEvent = page.waitForEvent('download'); await page.getByRole('button', { name: 'Baixar roteiro', exact: true }).click();
+      const promptFile = path.join(OUT, 'roteiro-' + width + '.txt'); await (await promptEvent).saveAs(promptFile);
+      assert.equal(fs.readFileSync(promptFile, 'utf8'), E.contentPrompt(final.history[0]));
       const dl = page.waitForEvent('download'); await page.getByRole('button', { name: 'Exportar sessões', exact: true }).first().click(); const download = await dl, file = path.join(OUT, 'sessao-' + width + '.json'); await download.saveAs(file); assert.ok(E.validateDB(JSON.parse(fs.readFileSync(file, 'utf8'))));
       assert.deepEqual(await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, localStorage.getItem(k)])), Object.keys(prior)), prior, 'Outros percursos e agendas preservados');
       await page.screenshot({ path: path.join(OUT, 'resultado-' + width + '.png'), fullPage: false });
@@ -40,6 +49,41 @@ async function main() {
       await page.locator('#sim-context').click(); await page.getByRole('button', { name: 'Iniciar treino', exact: true }).waitFor(); await page.locator('#sim-mode').selectOption('estudo'); await page.locator('#sim-count').fill('4'); await page.getByRole('button', { name: 'Iniciar treino', exact: true }).click();
       await page.locator('input[name="sim-answer"]').first().check(); await page.getByRole('button', { name: 'Conferir esta questão', exact: true }).click(); assert.equal(await page.locator('.sim-correction').count(), 1); assert.ok(await page.locator('input[name="sim-answer"]').first().isDisabled()); await scan(page, 'estudo', scans);
       assert.deepEqual(errors, []); results.push({ width, scans, independentContext: true, physicalAndroid: false }); await context.close();
+    }
+    // Arquivo real em contexto independente: importação, conflito, UTF-8 e arquivamento explícito.
+    {
+      const context = await browser.newContext({ viewport: { width: 390, height: 850 } }), page = await context.newPage(), scans = [];
+      await page.goto(new URL('livros-agu.html?simulado=1', base).href); await page.locator('#sim-count').waitFor();
+      const guard = 'agu_simulado_guard_fixture'; await page.evaluate(k => localStorage.setItem(k, 'preservar outro percurso'), guard);
+      const file = path.join(OUT, 'sessao-390.json'), expected = JSON.parse(fs.readFileSync(file, 'utf8'));
+      async function importFile(payload) {
+        if (!await page.locator('#sim-import').isVisible()) await page.getByText('Histórico e exportação de sessões', { exact: true }).click();
+        await page.locator('#sim-import').setInputFiles(payload);
+        await page.waitForFunction(() => document.getElementById('sim-import')?.value === '');
+      }
+      await importFile(file);
+      assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)).history, E.KEY), expected.history);
+      await scan(page, 'arquivo importado', scans);
+      const before = await page.evaluate(key => localStorage.getItem(key), E.KEY), conflict = E.copy(expected);
+      conflict.history[0].answers[0].choice = (conflict.history[0].answers[0].choice + 1) % 5;
+      await importFile({ name: 'conflito.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(conflict)) });
+      assert.equal(await page.evaluate(key => localStorage.getItem(key), E.KEY), before, 'O mesmo ID preserva o registro local');
+      await importFile({ name: 'utf8-invalido.json', mimeType: 'application/json', buffer: Buffer.from([0xc3, 0x28]) });
+      assert.match(await page.locator('#sim-alert').innerText(), /Importação recusada/);
+      assert.equal(await page.evaluate(key => localStorage.getItem(key), E.KEY), before);
+      await page.getByText('Arquivar sessões concluídas para abrir espaço', { exact: true }).click();
+      const confirm = page.getByRole('button', { name: 'Já guardei o arquivo; iniciar novo histórico', exact: true }); assert.ok(await confirm.isDisabled());
+      const downloadEvent = page.waitForEvent('download'); await page.getByRole('button', { name: 'Baixar histórico antes de arquivar', exact: true }).click();
+      const archived = await downloadEvent, archivedFile = path.join(OUT, 'arquivo-antes-de-arquivar.json'); await archived.saveAs(archivedFile);
+      assert.deepEqual(JSON.parse(fs.readFileSync(archivedFile, 'utf8')), JSON.parse(before));
+      assert.equal(await page.evaluate(key => localStorage.getItem(key), E.KEY), before, 'Baixar não apaga o histórico');
+      await scan(page, 'confirmação de arquivamento', scans);
+      await confirm.click(); await page.waitForFunction(key => JSON.parse(localStorage.getItem(key)).history.length === 0, E.KEY);
+      assert.equal(await page.evaluate(k => localStorage.getItem(k), guard), 'preservar outro percurso');
+      await importFile(archivedFile); assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)).history, E.KEY), expected.history);
+      await page.locator('#sim-scope').selectOption('amb-03'); assert.match(await page.locator('#sim-available').innerText(), /Serão usadas 8/);
+      await page.getByRole('button', { name: 'Iniciar treino', exact: true }).click(); assert.equal(await page.locator('[data-sim-go]').count(), 8, 'Não repete itens para completar quinze');
+      results.push({ importArchive: true, utf8Rejected: true, sameIdPreserved: true, roundTrip: true, insufficientPool: true, scans }); await context.close();
     }
     // A retomada após o prazo encerra uma vez sem aguardar 20 minutos de relógio real.
     {

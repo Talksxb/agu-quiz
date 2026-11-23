@@ -73,4 +73,20 @@ test('mudança de regra, fonte ou seção retira item até revisão por hash cor
   const pending = P.compile(source, { records: [] }, chapters); assert.equal(pending.bank.questions.length, 0);
   const dup = E.copy(source); dup.records.push(dup.records[0]); assert.throws(() => P.compile(dup, approvals, chapters), /duplicada/);
 });
+test('edição nova conserva os snapshots e o gabarito da sessão histórica', () => {
+  const historic = read('tests/fixtures/simulados-agu-001-historico.json'), oldBank = { ...bank, questions: [historic] };
+  let s = E.create(oldBank, { ...config, count: 1 }, [], now); s = E.mark(s, 0, { choice: historic.correct, confidence: 'alta' }, now + 1);
+  const db = E.finish({ ...E.empty(), active: s }, now + 1000), old = JSON.stringify(db.history[0]);
+  const current = E.create(bank, { ...config, count: 24, strategy: 'novas' }, db.history, now + 2000);
+  assert.equal(current.questions.find(q => q.id === historic.id).version, '1.1');
+  assert.equal(JSON.stringify(db.history[0]), old); assert.equal(E.summary(db.history[0]).correct, 1); assert.equal(db.history[0].questions[0].version, '1.0');
+});
+test('limite de oitenta sessões recusa conjunto excessivo sem alterar o histórico', () => {
+  const s = E.create(bank, { ...config, count: 1 }, [], now), one = E.finish({ ...E.empty(), active: s }, now + 1000).history[0];
+  const full = { ...E.empty(), history: Array.from({ length: E.MAX }, (_, i) => ({ ...E.copy(one), id: 'sim-historico-' + i })) };
+  assert.ok(E.validateDB(full)); const before = JSON.stringify(full);
+  assert.equal(E.validateDB({ ...full, active: E.create(bank, { ...config, count: 1 }, [], now + 2000) }), false);
+  assert.throws(() => E.merge(full, { ...E.empty(), history: [{ ...E.copy(one), id: 'sim-adicional' }] }), /limites/);
+  assert.equal(JSON.stringify(full), before); assert.ok(E.validateDB({ ...full, history: [] }));
+});
 console.log('SIMULADOS_AGU_001_OK', count, 'cenários');
