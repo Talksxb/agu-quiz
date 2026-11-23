@@ -1,0 +1,8 @@
+{
+  "schema": "agu-method-nav-delta-v1",
+  "baseCommit": "423c54c7def0f4bdf6fb65b74f6fc67e947f8da2",
+  "before": "fd192e808b8960b48cbacf9c874165d2f646ef7b1f5bc1b07f92f6a26bad137d",
+  "after": "c5790fa8f66e6c4d35d08a5ff114f2df64a9dba3bb9fd8fe3b80f9d387c8b078",
+  "beforeTiles": "'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/\" rel=\"noopener noreferrer\"><b>Apostila · Leitura AGU</b><span>Capítulos completos em leitor acessível, com diagramas e referências. ADM-53 disponível.</span></a><a class=\"hub-entry hub-book\" href=\"laboratorio-leitura.html\"><b>Laboratório de Leitura Jurídica</b><span>Treine fluência e compreensão com casos autorais de LGPD e Direito Administrativo.</span></a><a class=\"hub-entry hub-book\" href=\"livros-agu.html\"><b>Livros · Leitura guiada AGU</b><span>LGPD, Agentes Públicos e Responsabilidade do Estado: capítulos completos com ritmo e progresso locais.</span></a>'+[",
+  "afterTiles": "'<div class=\"hub-tiles\"><a class=\"hub-entry hub-book\" href=\"livros-agu.html\"><b>Método AGU</b><span>Leia capítulos completos, aplique a casos e recupere os fundamentos. Continue a leitura e revise com seus cartões.</span></a>'+["
+}

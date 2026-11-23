@@ -1,0 +1,31 @@
+/* MÉTODO-AGU-001: caderno móvel sobre o leitor e o motor existentes. */
+.small,.book span,.tag{font-size:.875rem}.method-intro{max-width:65ch}
+.discipline{margin:1.5rem 0}.discipline h3{border-bottom:1px solid #cedde2;padding-bottom:.5rem}
+.method-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0}
+.method-tabs button{flex:1 1 110px}.method-tabs [aria-pressed=true]{background:#17656b;color:white;border-color:#17656b}
+.method-panel{min-width:0}.method-panel h3{margin-top:1rem}
+.reader{font-size:var(--reading-size,20px);line-height:var(--reading-height,1.85)}
+.reader .method-section{scroll-margin-top:1rem;border-bottom:1px solid #e1e8eb;margin-bottom:2rem;padding-bottom:1rem}
+.method-section:focus{outline:3px solid #d49d31;outline-offset:4px}
+.reader h4{font-size:1.1em}.reader h5,.reader h6{font-size:1em}
+.method-tools{background:#edf4f4;padding:1rem;border-radius:10px;display:flex;flex-wrap:wrap;gap:1rem;margin:1rem 0}
+.method-tools label{flex:1 1 180px}.method-tools input{margin-top:.3rem}
+.method-figure{margin:1.5rem 0;max-width:100%}.method-figure img{display:block;max-width:100%;height:auto;margin:auto}
+.method-figure figcaption{font:1rem/1.5 system-ui,sans-serif;margin:.6rem 0}.method-figure button{width:100%}
+.method-table{max-width:100%;overflow:auto;border:1px solid #cad9de;border-radius:8px;margin:1rem 0}
+.method-table table{border-collapse:collapse;min-width:420px;width:100%;font:1rem/1.5 system-ui,sans-serif}.method-table th,.method-table td{padding:.7rem;text-align:left;vertical-align:top;border:1px solid #d4e0e4}
+.method-table caption{padding:.7rem;font-weight:700;text-align:left}
+.method-answer{border-left:3px solid #438e83;padding:1rem;background:#f1f7f5;overflow-wrap:anywhere}
+.method-activity{border-top:1px solid #dce7ea;margin-top:1rem;padding-top:1rem;min-width:0;overflow-wrap:anywhere}
+.method-activity textarea{min-height:10rem;resize:vertical;font-size:1rem}
+.method-result{min-height:1.5rem;color:#264c57}.method-secondary{margin-top:2rem}
+.method-review-list{display:grid;gap:.75rem}.method-review-list button{text-align:left;white-space:normal}
+#method-review .feedback{border-left:3px solid #438e83;background:#eef7f4;padding:1rem;margin:1rem 0}
+#method-review .btnrow{display:flex;gap:.5rem;flex-wrap:wrap}#method-review .btnrow button{flex:1 1 110px}
+#method-review .agu-notice{padding:1rem;border:1px solid #cedde2;border-radius:10px;margin-top:1rem}
+#method-review h2{font-size:1.3rem}#method-review .note,#method-review .muted{font-size:1rem;color:#405e6a}
+dialog.method-zoom{width:95vw;max-width:1200px;height:90vh;border:1px solid #819da6;border-radius:12px;padding:1rem;color:#193643}
+dialog.method-zoom::backdrop{background:#132f40bb}.zoom-scroll{height:calc(100% - 160px);overflow:auto;max-width:100%;border:1px solid #dce7ea;margin-top:1rem}
+.zoom-scroll img{display:block;width:100%;max-width:none;height:auto;transform-origin:top left}.zoom-scroll.horizontal img{width:auto;max-width:none;height:100%}
+.method-zoom .controls{align-items:center}.skip-method{position:absolute;left:8px;top:-100px;background:white;z-index:100}.skip-method:focus{top:8px;padding:1rem}
+@media(max-width:590px){.method-tools{padding:.7rem}.method-tabs{gap:.4rem}.method-tabs button{flex-basis:43%;padding:.6rem}.method-zoom .controls>*{flex:1 1 110px}}

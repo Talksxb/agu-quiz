@@ -19,10 +19,12 @@ async function run(){
    page.on('pageerror',error=>errors.push(error.message));
    await page.goto('http://127.0.0.1:'+server.address().port+'/',{waitUntil:'load'});
    await page.evaluate(()=>setView('library'));
+   await page.getByRole('link',{name:/Método AGU/}).click();
+   await page.getByText('Recursos de leitura já disponíveis',{exact:true}).click();
    const link=page.getByRole('link',{name:/Apostila · Leitura AGU/});
    assert.equal(await link.isVisible(),true,'atalho visível em '+width);
    assert.equal(await link.getAttribute('href'),'https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/');
-   assert.match(await link.innerText(),/ADM-53 disponível/);
+   assert.match(await link.innerText(),/GPT Sites/);
    const dimensions=await page.evaluate(()=>({page:document.documentElement.scrollWidth,viewport:innerWidth}));
    assert.ok(dimensions.page<=dimensions.viewport+1,'sem rolagem horizontal em '+width);
    await link.focus();assert.equal(await link.evaluate(el=>el===document.activeElement),true,'foco por teclado em '+width);

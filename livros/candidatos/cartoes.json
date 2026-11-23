@@ -1,0 +1,125 @@
+{
+  "schema": "agu-candidates-v1",
+  "cards": [
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-amb-03-proposicao-1",
+      "chapterId": "amb-03",
+      "sectionId": "amb-03-s14",
+      "curricularIds": [
+        "AMB-03"
+      ],
+      "front": "Qual é a diferença estrutural entre o art. 23 e o art. 24 da\nConstituição em matéria ambiental?",
+      "back": "Art. 23 trata de execução administrativa comum e dever de\ncooperação; art. 24 distribui poder legislativo concorrente entre União,\nEstados e DF com normas gerais, suplementação e regime de eficácia.",
+      "sources": [
+        {
+          "id": "cf",
+          "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+          "locator": "Constituição; artigos citados na edição",
+          "consultedAt": "2026-11-20",
+          "status": "parcial",
+          "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.0",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_fundamentada",
+      "category": "distincao_entre_institutos",
+      "semanticKey": "amb03-recuperacao-1",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência",
+      "dependencies": {
+        "sections": {
+          "amb-03-s14": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88"
+        },
+        "sources": {
+          "cf": "6662258784ad863645a9ac6ebf87f7b4cf2f6dbcaaf0cd68f38317661962409b"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-amb-03-proposicao-2",
+      "chapterId": "amb-03",
+      "sectionId": "amb-03-s14",
+      "curricularIds": [
+        "AMB-03"
+      ],
+      "front": "Por que o Município pode legislar sobre matéria ambiental, embora\nnão apareça no caput do art. 24?",
+      "back": "O art. 30, I–II, permite legislar sobre interesse local e\nsuplementar normas; Tema 145 reconhece competência ambiental municipal\nharmoniosa.",
+      "sources": [
+        {
+          "id": "cf",
+          "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+          "locator": "Constituição; artigos citados na edição",
+          "consultedAt": "2026-11-20",
+          "status": "parcial",
+          "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.0",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_fundamentada",
+      "category": "distincao_entre_institutos",
+      "semanticKey": "amb03-recuperacao-2",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência",
+      "dependencies": {
+        "sections": {
+          "amb-03-s14": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88"
+        },
+        "sources": {
+          "cf": "6662258784ad863645a9ac6ebf87f7b4cf2f6dbcaaf0cd68f38317661962409b"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-amb-03-proposicao-3",
+      "chapterId": "amb-03",
+      "sectionId": "amb-03-s14",
+      "curricularIds": [
+        "AMB-03"
+      ],
+      "front": "Quais são os principais critérios do art. 7º, XIV, da LC 140 para\nlicenciamento federal? Por que o simples financiamento federal é\ninsuficiente?",
+      "back": "Critérios incluem localização transfronteiriça, mar/ZEE, terras\nindígenas, UCs federais salvo APAs, desenvolvimento em dois Estados,\nhipóteses militares, nucleares e tipologias regulamentares; a\ntitularidade federal não aparece como critério geral\nautossuficiente.",
+      "sources": [
+        {
+          "id": "lc140",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+          "locator": "LC 140/2011, arts. 7º, 13, 14 e 17",
+          "consultedAt": "2026-11-20",
+          "status": "parcial",
+          "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.0",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_fundamentada",
+      "category": "distincao_entre_institutos",
+      "semanticKey": "amb03-recuperacao-3",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência",
+      "dependencies": {
+        "sections": {
+          "amb-03-s14": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88"
+        },
+        "sources": {
+          "lc140": "790074ea2886fd3b24be3b1e614e2c31d4fdc8a0b1bbbe6359d4d1eb74103d71"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    }
+  ]
+}

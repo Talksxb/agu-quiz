@@ -23,6 +23,8 @@ async function run(){
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto(root,{waitUntil:'load'});
   await page.evaluate(()=>setView('library'));
+  await page.getByRole('link',{name:/Método AGU/}).click();
+  await page.getByText('Recursos de leitura já disponíveis',{exact:true}).click();
   const link=page.getByRole('link',{name:/Laboratório de Leitura Jurídica/});
   assert.equal(await link.isVisible(),true,'link no acervo: '+width);
   assert.equal(await link.getAttribute('href'),'laboratorio-leitura.html');

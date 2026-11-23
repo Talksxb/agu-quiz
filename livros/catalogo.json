@@ -1,0 +1,70 @@
+{
+  "schema": "agu-method-catalog-v1",
+  "disciplines": [
+    {
+      "id": "DIG",
+      "name": "Direito Digital",
+      "chapters": [
+        {
+          "id": "lgpd-adm64b",
+          "title": "LGPD aplicada à Administração Pública",
+          "edition": "2.0",
+          "curricularIds": [
+            "ADM-64b"
+          ],
+          "reader": "livros/lgpd-adm64b.json",
+          "method": "livros/metodo/lgpd-adm64b.json",
+          "status": "publicado"
+        }
+      ]
+    },
+    {
+      "id": "ADM",
+      "name": "Direito Administrativo",
+      "chapters": [
+        {
+          "id": "adm-53",
+          "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
+          "edition": "1.0",
+          "curricularIds": [
+            "ADM-53"
+          ],
+          "reader": "livros/adm-53.json",
+          "method": "livros/metodo/adm-53.json",
+          "status": "publicado"
+        },
+        {
+          "id": "adm-54",
+          "title": "Agentes públicos e a natureza dos vínculos com o Estado",
+          "edition": "1.0",
+          "curricularIds": [
+            "ADM-54"
+          ],
+          "reader": "livros/adm-54.json",
+          "method": "livros/metodo/adm-54.json",
+          "status": "publicado"
+        }
+      ]
+    },
+    {
+      "id": "AMB",
+      "name": "Direito Ambiental",
+      "chapters": [
+        {
+          "id": "amb-03",
+          "title": "Competências e Cooperação Ambiental",
+          "edition": "1.0",
+          "curricularIds": [
+            "AMB-03"
+          ],
+          "reader": "livros/amb-03.json",
+          "method": "livros/metodo/amb-03.json",
+          "status": "publicado"
+        }
+      ]
+    }
+  ],
+  "collections": [
+    "livros/colecoes/ambiental.json"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "amb-03",
+  "edition": "1.0",
+  "sourceSha256": "4d5f37014f1ff1366d2c56f7c07bf86ed37993d23ea9c5f86e3ae2588ac0f25f",
+  "inputSha256": "cf2a2c02ea3ad8be70f2b9a672907961639bf7a9679c6caa1f154f8b316be5e4",
+  "sections": [
+    {
+      "id": "amb-03-s01",
+      "sha256": "31bc866246c1af72d93d5b6c27352d1d4e5b56c45cfd3c70982e1de62f967846",
+      "characters": 914
+    },
+    {
+      "id": "amb-03-s02",
+      "sha256": "952c621762b20062ddee41d7ba68d757b2ccc9a047d5834176da6721a8f0e11b",
+      "characters": 534
+    },
+    {
+      "id": "amb-03-s03",
+      "sha256": "597f8a9fec5c1cd51e8a64bf0e8f8055b4b43f9944a1a2626ce8c02540482c5c",
+      "characters": 1622
+    },
+    {
+      "id": "amb-03-s04",
+      "sha256": "95e17f825c2655e60129de64fd20011616ca7b4d601e2d7f5f599eb22e6b5a85",
+      "characters": 2645
+    },
+    {
+      "id": "amb-03-s05",
+      "sha256": "450b1fee7feeb30b307650db0fc7ce86c7d29adae79577babe91bd6c5f3105de",
+      "characters": 5975
+    },
+    {
+      "id": "amb-03-s06",
+      "sha256": "35ac1ffcaf4212c6a194fe27d833b606394295414125fec49cd2b17e7b9341dc",
+      "characters": 9328
+    },
+    {
+      "id": "amb-03-s07",
+      "sha256": "44e5a2eb4820598647e382c30aad289e8e14629392911260e474c4fa4e53e0f9",
+      "characters": 6181
+    },
+    {
+      "id": "amb-03-s08",
+      "sha256": "79f12a9360ebf0b17ff7b1f9f61472926c7f55fd201e8caeea394c7caaeb1e04",
+      "characters": 5124
+    },
+    {
+      "id": "amb-03-s09",
+      "sha256": "55dbb25852361b1f0a463cda9403f913f1e8bdab8338e3f6a17977dafa87c990",
+      "characters": 4674
+    },
+    {
+      "id": "amb-03-s10",
+      "sha256": "8312a969411ff79464893860ee364f843c66e853b46a49c7490e7d239539d00c",
+      "characters": 2519
+    },
+    {
+      "id": "amb-03-s11",
+      "sha256": "01a13cbbe25698c5345fc8f84e47155d9bdc7fefc8ef095f98714106021631b1",
+      "characters": 9627
+    },
+    {
+      "id": "amb-03-s12",
+      "sha256": "ff2268c68ca739bba1a68866adad9898c7fb696cd29418a952626717b06cd26c",
+      "characters": 4574
+    },
+    {
+      "id": "amb-03-s13",
+      "sha256": "8342777dace48b6cffd1f978b0d70a0a6a5da096b2c0085fef9d47e3c5b670b2",
+      "characters": 1329
+    },
+    {
+      "id": "amb-03-s14",
+      "sha256": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88",
+      "characters": 1084
+    },
+    {
+      "id": "amb-03-s15",
+      "sha256": "057afc850dd8008cb4ae195fb0a4f1e887053e6f0dcb0d5c05cb4dc3c269bf74",
+      "characters": 2261
+    },
+    {
+      "id": "amb-03-s16",
+      "sha256": "33b3d45efbf263176028a2db0687972cc572b67760815f6f2a4fc41942e11db8",
+      "characters": 6371
+    },
+    {
+      "id": "amb-03-s17",
+      "sha256": "75b5fef66a409cad662ad49d2b8e6cc6791e3b7dc624bb84cac7f9afe8446145",
+      "characters": 1551
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Quatro SVG preservados com correção explícita de caixa em atributos XML; duas tabelas reconstruídas das células originais. Recursos no final da seção correspondente, sem prometer a paginação original."
+  ],
+  "resources": [
+    {
+      "id": "amb-03-recurso-1",
+      "type": "figure",
+      "sectionId": "amb-03-s05",
+      "sha256": "0b2043bfae14c3343b7945c91ef960a2a9be89064ece0854de222f994dd23c28"
+    },
+    {
+      "id": "amb-03-recurso-2",
+      "type": "table",
+      "sectionId": "amb-03-s06",
+      "sha256": "d2c3bb6e9485ec91c6d54914f1a7a530db16b00a0e695a145a4ff4bfc6daa382"
+    },
+    {
+      "id": "amb-03-recurso-3",
+      "type": "figure",
+      "sectionId": "amb-03-s06",
+      "sha256": "cdd549a45e5b18fc3b7903539e9120ad8a87c0b64f1d942114e699dd15226c05"
+    },
+    {
+      "id": "amb-03-recurso-4",
+      "type": "figure",
+      "sectionId": "amb-03-s07",
+      "sha256": "329b26d0d493e65c7a2a6317e9041f8a114e727df89112b3c8eaeccec7e3a8e8"
+    },
+    {
+      "id": "amb-03-recurso-5",
+      "type": "table",
+      "sectionId": "amb-03-s08",
+      "sha256": "77e6af1c2239a085c0336616c3c4751e162e1fe72fca860af26234623c6c0be4"
+    },
+    {
+      "id": "amb-03-recurso-6",
+      "type": "figure",
+      "sectionId": "amb-03-s11",
+      "sha256": "e84efaaa3dceae357a060f35111613e5728bad427e05e4677151b07135e41188"
+    }
+  ]
+}

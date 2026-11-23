@@ -1,0 +1,226 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "adm-54",
+  "editorialId": "LIVRO-ADM-002",
+  "title": "Agentes públicos e a natureza dos vínculos com o Estado",
+  "discipline": {
+    "id": "ADM",
+    "name": "Direito Administrativo"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/adm-54.md",
+  "readerPath": "livros/adm-54.json",
+  "reader": {
+    "id": "adm-54",
+    "category": "Direito Administrativo",
+    "curricular_id": "ADM-54",
+    "title": "Agentes públicos e a natureza dos vínculos com o Estado",
+    "edition": "LIVRO-ADM-002 · edição 1.0 (18/11/2026)",
+    "source": "LIVRO-ADM-002_ADM-54_AGENTES_PUBLICOS_v1.0.md",
+    "source_format": "markdown",
+    "verification": "Conferências oficiais pontuais; sem certificação integral de auditoria ou domínio"
+  },
+  "curricularIds": [
+    "ADM-54"
+  ],
+  "dates": {
+    "edition": "2026-11-18",
+    "legalConsultation": "Declarada na obra: 2026-11-18; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "adm-54-s01",
+      "marker": "01",
+      "title": "Abertura"
+    },
+    {
+      "id": "adm-54-s02",
+      "marker": "02",
+      "title": "1. O problema de quem mantém um serviço essencial"
+    },
+    {
+      "id": "adm-54-s03",
+      "marker": "03",
+      "title": "2. Quem é agente público e por que a expressão é ampla"
+    },
+    {
+      "id": "adm-54-s04",
+      "marker": "04",
+      "title": "3. Servidor público e funcionário público não são equivalentes em toda lei"
+    },
+    {
+      "id": "adm-54-s05",
+      "marker": "05",
+      "title": "4. Cargo, emprego e função: a porta correta de entrada"
+    },
+    {
+      "id": "adm-54-s06",
+      "marker": "06",
+      "title": "5. A Constituição governa qualquer modelo de vínculo"
+    },
+    {
+      "id": "adm-54-s07",
+      "marker": "07",
+      "title": "6. O emprego público é contratual, mas não puramente privado"
+    },
+    {
+      "id": "adm-54-s08",
+      "marker": "08",
+      "title": "7. A ADI 2.135 e o tempo: a mudança não transforma servidores existentes"
+    },
+    {
+      "id": "adm-54-s09",
+      "marker": "09",
+      "title": "8. Cargos em comissão e funções de confiança não são atalhos para rotinas permanentes"
+    },
+    {
+      "id": "adm-54-s10",
+      "marker": "10",
+      "title": "9. Contratação temporária: a exceção decorre da necessidade, não do nome do contrato"
+    },
+    {
+      "id": "adm-54-s11",
+      "marker": "11",
+      "title": "10. Dispensa de empregado concursado: motivação não é estabilidade"
+    },
+    {
+      "id": "adm-54-s12",
+      "marker": "12",
+      "title": "11. Preceitos constitucionais que afetam todos os vínculos"
+    },
+    {
+      "id": "adm-54-s13",
+      "marker": "13",
+      "title": "12. Um mapa das distinções que decidem a prova e o parecer"
+    },
+    {
+      "id": "adm-54-s14",
+      "marker": "14",
+      "title": "13. Caso resolvido para atuação consultiva da AGU"
+    },
+    {
+      "id": "adm-54-s15",
+      "marker": "15",
+      "title": "14. Questões comentadas"
+    },
+    {
+      "id": "adm-54-s16",
+      "marker": "16",
+      "title": "15. Síntese, recuperação e transferência"
+    },
+    {
+      "id": "adm-54-s17",
+      "marker": "17",
+      "title": "16. Fontes oficiais, versão e pontos para atualização"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-54",
+      "subitem": "Agentes públicos e a natureza dos vínculos com o Estado; recorte declarado na obra",
+      "sections": [
+        "adm-54-s01",
+        "adm-54-s02",
+        "adm-54-s03",
+        "adm-54-s04",
+        "adm-54-s05",
+        "adm-54-s06",
+        "adm-54-s07",
+        "adm-54-s08",
+        "adm-54-s09",
+        "adm-54-s10",
+        "adm-54-s11",
+        "adm-54-s12",
+        "adm-54-s13",
+        "adm-54-s14",
+        "adm-54-s15",
+        "adm-54-s16",
+        "adm-54-s17"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "lei8112",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm",
+      "locator": "Lei 8.112/1990, art. 2º",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "adm-54-caso",
+      "type": "aplicar",
+      "sectionId": "adm-54-s14",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "adm-54-s14",
+          "start": "**Fatos.**",
+          "end": "**Questão e competência.**"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "adm-54-s14",
+          "start": "**Questão e competência.**"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-recuperacao",
+      "type": "recuperar",
+      "sectionId": "adm-54-s16",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "adm-54-s16",
+          "start": "**Perguntas de recuperação",
+          "end": "**Respostas de autocorreção.**"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "adm-54-s16",
+          "start": "**Respostas de autocorreção.**",
+          "end": "**Transferência"
+        }
+      ]
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "4c9362bc5ac01b6f85cb82d99f1cdc717a45865d0c87e28bd5a30e3e04e5db25"
+  }
+}

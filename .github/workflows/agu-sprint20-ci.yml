@@ -31,6 +31,8 @@ jobs:
         run: node tests/leitura-meta-001-validacao.js
       - name: LIVROS-LEIT-001 — integridade do acervo, capítulo completo e hashes legados
         run: node tests/livros-leit-001-validacao.js
+      - name: MÉTODO-AGU-001 — ingestão, segurança editorial e idempotência
+        run: node scripts/metodo-agu.cjs --check && node tests/metodo-agu-001-validacao.cjs
       - name: LIVROS-EDITOR-001 — fidelidade textual de AMB-03 e recursos visuais
         run: node tests/livros-editor-001-fidelidade.cjs
       - name: LIVRO-SITES-001 — atalho público sem vazar acervo privado
@@ -121,6 +123,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
         run: node tests/leitura-meta-002-browser.cjs
+      - name: MÉTODO-AGU-001 — quatro capítulos, atividades, legado e acessibilidade móvel
+        run: node tests/metodo-agu-001-browser.cjs
       - name: LIVROS-LEIT-001 — livros integrais, toque emulado, retomada e axe
         run: node tests/livros-leit-001-browser.cjs
       - name: LIVRO-SITES-001 — cartão da apostila em três larguras de tela
@@ -207,6 +211,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-metodo-agu/
             tests/artifacts-leit-meta/*.json
             tests/artifacts-leit-meta/*.png
             tests/artifacts-livros-001/*.json

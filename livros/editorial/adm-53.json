@@ -1,0 +1,247 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "adm-53",
+  "editorialId": "LIVRO-PIL-001",
+  "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
+  "discipline": {
+    "id": "ADM",
+    "name": "Direito Administrativo"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/adm-53.md",
+  "readerPath": "livros/adm-53.json",
+  "reader": {
+    "id": "adm-53",
+    "category": "Direito Administrativo",
+    "curricular_id": "ADM-53",
+    "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
+    "edition": "LIVRO-PIL-001 · edição 1.0 (18/11/2026)",
+    "source": "LIVRO-PIL-001_ADM-53_CAPITULO_v1.0.pdf",
+    "source_format": "pdf-extracted-text",
+    "verification": "Verificações oficiais pontuais; sem certificação integral"
+  },
+  "curricularIds": [
+    "ADM-53"
+  ],
+  "dates": {
+    "edition": "2026-11-18",
+    "legalConsultation": "Declarada na obra: 2026-11-18; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "adm-53-s01",
+      "marker": "01",
+      "title": "Página 1"
+    },
+    {
+      "id": "adm-53-s02",
+      "marker": "02",
+      "title": "Página 2"
+    },
+    {
+      "id": "adm-53-s03",
+      "marker": "03",
+      "title": "Página 3"
+    },
+    {
+      "id": "adm-53-s04",
+      "marker": "04",
+      "title": "Página 4"
+    },
+    {
+      "id": "adm-53-s05",
+      "marker": "05",
+      "title": "Página 5"
+    },
+    {
+      "id": "adm-53-s06",
+      "marker": "06",
+      "title": "Página 6"
+    },
+    {
+      "id": "adm-53-s07",
+      "marker": "07",
+      "title": "Página 7"
+    },
+    {
+      "id": "adm-53-s08",
+      "marker": "08",
+      "title": "Página 8"
+    },
+    {
+      "id": "adm-53-s09",
+      "marker": "09",
+      "title": "Página 9"
+    },
+    {
+      "id": "adm-53-s10",
+      "marker": "10",
+      "title": "Página 10"
+    },
+    {
+      "id": "adm-53-s11",
+      "marker": "11",
+      "title": "Página 11"
+    },
+    {
+      "id": "adm-53-s12",
+      "marker": "12",
+      "title": "Página 12"
+    },
+    {
+      "id": "adm-53-s13",
+      "marker": "13",
+      "title": "Página 13"
+    },
+    {
+      "id": "adm-53-s14",
+      "marker": "14",
+      "title": "Página 14"
+    },
+    {
+      "id": "adm-53-s15",
+      "marker": "15",
+      "title": "Página 15"
+    },
+    {
+      "id": "adm-53-s16",
+      "marker": "16",
+      "title": "Página 16"
+    },
+    {
+      "id": "adm-53-s17",
+      "marker": "17",
+      "title": "Página 17"
+    },
+    {
+      "id": "adm-53-s18",
+      "marker": "18",
+      "title": "Página 18"
+    },
+    {
+      "id": "adm-53-s19",
+      "marker": "19",
+      "title": "Página 19"
+    },
+    {
+      "id": "adm-53-s20",
+      "marker": "20",
+      "title": "Página 20"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-53",
+      "subitem": "Responsabilidade patrimonial do Estado no Direito brasileiro; recorte declarado na obra",
+      "sections": [
+        "adm-53-s01",
+        "adm-53-s02",
+        "adm-53-s03",
+        "adm-53-s04",
+        "adm-53-s05",
+        "adm-53-s06",
+        "adm-53-s07",
+        "adm-53-s08",
+        "adm-53-s09",
+        "adm-53-s10",
+        "adm-53-s11",
+        "adm-53-s12",
+        "adm-53-s13",
+        "adm-53-s14",
+        "adm-53-s15",
+        "adm-53-s16",
+        "adm-53-s17",
+        "adm-53-s18",
+        "adm-53-s19",
+        "adm-53-s20"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "cf37",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição, art. 37, § 6º",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "adm-53-caso",
+      "type": "aplicar",
+      "sectionId": "adm-53-s13",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "adm-53-s13",
+          "start": "Fatos e problema institucional",
+          "end": "Competência, regime e enquadramento"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "adm-53-s13",
+          "start": "Competência, regime e enquadramento"
+        },
+        {
+          "sectionId": "adm-53-s14"
+        }
+      ]
+    },
+    {
+      "id": "adm-53-recuperacao",
+      "type": "recuperar",
+      "sectionId": "adm-53-s17",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "adm-53-s17",
+          "start": "15. Recuperação ativa para outro momento"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "adm-53-s18",
+          "start": "Respostas para autocorreção",
+          "end": "Caso novo para demonstrar domínio"
+        }
+      ]
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Fonte estruturada recuperada da transcrição pública; cabeçalhos, rodapés e quebras preservados. Hierarquia e imagens do PDF não certificadas; não se afirma fidelidade visual ao PDF/Word."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "433e31fe97d0ae72ee6b884e645ce9f8bef1ee3b7d5247927ddf561d343212c1"
+  }
+}

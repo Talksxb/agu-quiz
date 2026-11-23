@@ -1,0 +1,404 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "adm-54",
+  "editorialId": "LIVRO-ADM-002",
+  "title": "Agentes públicos e a natureza dos vínculos com o Estado",
+  "discipline": {
+    "id": "ADM",
+    "name": "Direito Administrativo"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/adm-54.md",
+  "readerPath": "livros/adm-54.json",
+  "reader": {
+    "id": "adm-54",
+    "category": "Direito Administrativo",
+    "curricular_id": "ADM-54",
+    "title": "Agentes públicos e a natureza dos vínculos com o Estado",
+    "edition": "LIVRO-ADM-002 · edição 1.0 (18/11/2026)",
+    "source": "LIVRO-ADM-002_ADM-54_AGENTES_PUBLICOS_v1.0.md",
+    "source_format": "markdown",
+    "verification": "Conferências oficiais pontuais; sem certificação integral de auditoria ou domínio"
+  },
+  "curricularIds": [
+    "ADM-54"
+  ],
+  "dates": {
+    "edition": "2026-11-18",
+    "legalConsultation": "Declarada na obra: 2026-11-18; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "adm-54-s01",
+      "marker": "01",
+      "title": "Abertura",
+      "page": 0,
+      "sha256": "d19190eba112c50ce0cacdea4e03e7a38c4270b22c1bf3c37fbb7845eb677e87",
+      "headings": [
+        {
+          "id": "adm-54-s01-h1",
+          "level": 1,
+          "title": "Agentes públicos e a natureza dos vínculos com o Estado"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s02",
+      "marker": "02",
+      "title": "1. O problema de quem mantém um serviço essencial",
+      "page": 1,
+      "sha256": "f52ecbd3179ad711c9863f5fcb6cdb382433ca6f31376959640101ca1c562937",
+      "headings": [
+        {
+          "id": "adm-54-s02-h1",
+          "level": 2,
+          "title": "1. O problema de quem mantém um serviço essencial"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s03",
+      "marker": "03",
+      "title": "2. Quem é agente público e por que a expressão é ampla",
+      "page": 2,
+      "sha256": "45435b85d31a1c413019dc0524291975c22266d9a953e64406d3b8301a4aec27",
+      "headings": [
+        {
+          "id": "adm-54-s03-h1",
+          "level": 2,
+          "title": "2. Quem é agente público e por que a expressão é ampla"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s04",
+      "marker": "04",
+      "title": "3. Servidor público e funcionário público não são equivalentes em toda lei",
+      "page": 3,
+      "sha256": "9978f7e36b6c0ad5c336c76c5f5fd845beca6032ec8460e6a5000c06221a2f3a",
+      "headings": [
+        {
+          "id": "adm-54-s04-h1",
+          "level": 2,
+          "title": "3. Servidor público e funcionário público não são equivalentes em toda lei"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s05",
+      "marker": "05",
+      "title": "4. Cargo, emprego e função: a porta correta de entrada",
+      "page": 4,
+      "sha256": "619c99162e9d54a851c49c160ebd6e5165874c6d88d9b10dd7377bfcf6d1dc5f",
+      "headings": [
+        {
+          "id": "adm-54-s05-h1",
+          "level": 2,
+          "title": "4. Cargo, emprego e função: a porta correta de entrada"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s06",
+      "marker": "06",
+      "title": "5. A Constituição governa qualquer modelo de vínculo",
+      "page": 5,
+      "sha256": "8ba3e9e025258d26774ec1a98a5aa23b8968d4efd86d61a26fb8e78609bc6106",
+      "headings": [
+        {
+          "id": "adm-54-s06-h1",
+          "level": 2,
+          "title": "5. A Constituição governa qualquer modelo de vínculo"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s07",
+      "marker": "07",
+      "title": "6. O emprego público é contratual, mas não puramente privado",
+      "page": 6,
+      "sha256": "fab180ee194f0999b5bd783adf1b31fd0d7f00c17845c8e2d194a2860e7e5393",
+      "headings": [
+        {
+          "id": "adm-54-s07-h1",
+          "level": 2,
+          "title": "6. O emprego público é contratual, mas não puramente privado"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s08",
+      "marker": "08",
+      "title": "7. A ADI 2.135 e o tempo: a mudança não transforma servidores existentes",
+      "page": 7,
+      "sha256": "ab1258306376774a201d5143b8a36df1bda727d736d76ab49ca161bdc928d160",
+      "headings": [
+        {
+          "id": "adm-54-s08-h1",
+          "level": 2,
+          "title": "7. A ADI 2.135 e o tempo: a mudança não transforma servidores existentes"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s09",
+      "marker": "09",
+      "title": "8. Cargos em comissão e funções de confiança não são atalhos para rotinas permanentes",
+      "page": 8,
+      "sha256": "30392378586ccd9931c91d385656b78bee5e4e5838e98bdf027c572bcd5e2c88",
+      "headings": [
+        {
+          "id": "adm-54-s09-h1",
+          "level": 2,
+          "title": "8. Cargos em comissão e funções de confiança não são atalhos para rotinas permanentes"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s10",
+      "marker": "10",
+      "title": "9. Contratação temporária: a exceção decorre da necessidade, não do nome do contrato",
+      "page": 9,
+      "sha256": "ef6e314849e12b935eea4908fca5e6654936bdb7e13242ececfdbe698f39300b",
+      "headings": [
+        {
+          "id": "adm-54-s10-h1",
+          "level": 2,
+          "title": "9. Contratação temporária: a exceção decorre da necessidade, não do nome do contrato"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s11",
+      "marker": "11",
+      "title": "10. Dispensa de empregado concursado: motivação não é estabilidade",
+      "page": 10,
+      "sha256": "511c88d0e3ff24fef12b64ded73a8f2c73b1df828eba98f86031930dd0fa83e6",
+      "headings": [
+        {
+          "id": "adm-54-s11-h1",
+          "level": 2,
+          "title": "10. Dispensa de empregado concursado: motivação não é estabilidade"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s12",
+      "marker": "12",
+      "title": "11. Preceitos constitucionais que afetam todos os vínculos",
+      "page": 11,
+      "sha256": "18fde2a3340ae6579ae269ed8b8b4b35d37a4fd47f40f6b71bb5a25e13704475",
+      "headings": [
+        {
+          "id": "adm-54-s12-h1",
+          "level": 2,
+          "title": "11. Preceitos constitucionais que afetam todos os vínculos"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s13",
+      "marker": "13",
+      "title": "12. Um mapa das distinções que decidem a prova e o parecer",
+      "page": 12,
+      "sha256": "3e1634330950c565ddb77c57d3c0f1ea6e08edc9a66582b8eda1006513e04414",
+      "headings": [
+        {
+          "id": "adm-54-s13-h1",
+          "level": 2,
+          "title": "12. Um mapa das distinções que decidem a prova e o parecer"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s14",
+      "marker": "14",
+      "title": "13. Caso resolvido para atuação consultiva da AGU",
+      "page": 13,
+      "sha256": "1e085da75b3e304f0d294f3add85cdc3817a56f1e9affe167b0e4144536b2f39",
+      "headings": [
+        {
+          "id": "adm-54-s14-h1",
+          "level": 2,
+          "title": "13. Caso resolvido para atuação consultiva da AGU"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s15",
+      "marker": "15",
+      "title": "14. Questões comentadas",
+      "page": 14,
+      "sha256": "f18cba507207ff02b8e3347ce0cdaeed378b16fdd279200c294527b0529c28e8",
+      "headings": [
+        {
+          "id": "adm-54-s15-h1",
+          "level": 2,
+          "title": "14. Questões comentadas"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s16",
+      "marker": "16",
+      "title": "15. Síntese, recuperação e transferência",
+      "page": 15,
+      "sha256": "d0b24565ed895ea70b35cf1dd02f567036cf9e261f748f9a6f0b61891692869c",
+      "headings": [
+        {
+          "id": "adm-54-s16-h1",
+          "level": 2,
+          "title": "15. Síntese, recuperação e transferência"
+        }
+      ]
+    },
+    {
+      "id": "adm-54-s17",
+      "marker": "17",
+      "title": "16. Fontes oficiais, versão e pontos para atualização",
+      "page": 16,
+      "sha256": "aab92f010b41ad36f839e43df8353ebb2907c9c37fbf0f6485fc15d30925a5a2",
+      "headings": [
+        {
+          "id": "adm-54-s17-h1",
+          "level": 2,
+          "title": "16. Fontes oficiais, versão e pontos para atualização"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "ADM-54",
+      "subitem": "Agentes públicos e a natureza dos vínculos com o Estado; recorte declarado na obra",
+      "sections": [
+        "adm-54-s01",
+        "adm-54-s02",
+        "adm-54-s03",
+        "adm-54-s04",
+        "adm-54-s05",
+        "adm-54-s06",
+        "adm-54-s07",
+        "adm-54-s08",
+        "adm-54-s09",
+        "adm-54-s10",
+        "adm-54-s11",
+        "adm-54-s12",
+        "adm-54-s13",
+        "adm-54-s14",
+        "adm-54-s15",
+        "adm-54-s16",
+        "adm-54-s17"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "lei8112",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm",
+      "locator": "Lei 8.112/1990, art. 2º",
+      "consultedAt": "2026-11-18",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "adm-54-caso",
+      "type": "aplicar",
+      "sectionId": "adm-54-s14",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": "**Fatos.** A autarquia federal Alfa administra serviço digital permanente. O órgão perdeu prestadores terceirizados e identifica deficiência crônica de pessoal próprio. Propõe (a) “empregados celetistas” selecionados por entrevistas, criados por portaria interna; (b) seis cargos em comissão de “assessor tecnológico” cujas atribuições efetivas serão programação de rotina e atendimento; (c) vinte contratos temporários por um ano, com renovações sucessivas previstas informalmente; e (d) a conversão, por opção individual, de servidores efetivos estatutários antigos para a CLT. Alega urgência e a decisão da ADI 2.135. Há orçamento de curto prazo, mas nenhuma lei específica de criação dos novos empregos foi apresentada. A Procuradoria Federal especializada é chamada a se manifestar, no âmbito da AGU.",
+      "answer": "**Questão e competência.** O exame jurídico deve identificar os vínculos propostos, controlar a conformidade constitucional e orientar alternativas administrativas; não cabe ao parecerista substituir a autoridade na gestão operacional ou reconhecer, sem documentação, que um serviço pode ser interrompido. São relevantes a lei de estruturação da autarquia, o quadro atual de cargos e empregos, contratos, atribuições reais, histórico de contratações, justificativas da urgência, autorizações e orçamento. A manifestação precisa distinguir conclusão jurídica do juízo gerencial sobre prioridades.\n\n**Análise da proposta (a).** Um emprego na Administração federal autárquica depende de fundamento legal e, como regra, de **concurso público** (CF 37, II; Lei 9.962, arts. 1º e 2º). A ADI 2.135 retirou o obstáculo constitucional geral do regime único em perspectiva futura, mas não autorizou portaria a criar emprego nem entrevista a substituir concurso. A proposta, como apresentada, é juridicamente inadequada. Se houver interesse estrutural legítimo, a Administração deve instruir proposta institucional legislativa e, depois de instituído o emprego de modo válido, realizar o concurso adequado, observadas exigências fiscais e de pessoal.\n\n**Análise da proposta (b).** Cargos em comissão só podem exercer direção, chefia ou assessoramento reais, com atribuições descritas em lei e número proporcional (CF 37, V; Tema 1.010). Programação habitual e atendimento operacional não se tornam assessoramento pela etiqueta. Antes de concluir sobre cada cargo, examine a lei que o instituiu e as atribuições efetivas. Se a substância for execução rotineira, **não recomendar** sua ocupação como solução para déficit permanente de analistas. Se existir núcleo efetivamente estratégico de assessoramento, ele deve ser separado, demonstrado e dimensionado.\n\n**Análise da proposta (c).** A necessidade é relevante, mas a prova narrada indica **déficit estrutural**, não contingência temporária excepcional. Sem subsunção a hipótese legal da Lei 8.745 e aos requisitos do Tema 612, a contratação excepcional não pode funcionar como concurso adiado sem termo. A autoridade deve produzir diagnóstico de fatos extraordinários e temporários, caso existam, identificando base legal, prazo, seleção cabível, autorização, vedação de prorrogações indevidas e custos. Se não houver fundamento, a alternativa deve ser estrutural. Contratos nulos podem gerar obrigações de salário e FGTS (Tema 916); sucessivas renovações elevam risco de desvirtuamento e repercussões do Tema 551.\n\n**Análise da proposta (d).** A transmudação de regime dos **atuais servidores** foi expressamente vedada pelo STF na ADI 2.135. A assinatura de termo de opção não torna a conversão constitucionalmente válida. A proposta deve ser rejeitada como apresentada, sem impedir análise individual de institutos legais diferentes que não importem transposição de regime.\n\n**Objeção forte.** “O serviço é essencial; exigir concursos e lei agora cria dano aos cidadãos. Por que a AGU não autorizaria contratação emergencial e deixaria a regularização para depois?” A objeção acerta ao exigir proteção da continuidade do serviço, mas erra ao tratar todo requisito constitucional como obstáculo descartável. Uma situação excepcional **genuína**, comprovada e prevista em lei pode permitir contratação temporária. Há também reorganização legítima de tarefas, gestão de contratos existentes nos limites legais, planejamento de concurso e medidas tecnológicas e orçamentárias. A opção juridicamente defensável é demonstrar quais instrumentos lícitos respondem ao risco de interrupção e qual sua duração; não reconhecer informalmente uma emergência permanente.\n\n**Conclusão e providências.** Opinar **desfavoravelmente às quatro propostas tal como formuladas**, com ressalva de que cada hipótese pode ser reavaliada se os pressupostos legais comprovados mudarem. Recomendar instrução documental sobre atividades, urgência, quadro, leis de criação, custos, contratos e histórico de renovação; plano de continuidade operacional lícito, solução de pessoal conforme regime existente, proposta de provimento estrutural com concurso quando cabível e monitoramento dos vínculos temporários. Registrar expressamente a ADI 2.135 (eficácia prospectiva e vedação de transmudação), os Temas 612, 1.010 e 916 e os artigos relevantes. Se já houve trabalho irregularmente prestado, examinar seus efeitos patrimoniais e responsabilizações com base na tese **correspondente**, sem negar remuneração por reflexo nem convalidar investidura nula.\n\nEssa solução é freireana em sentido substantivo: começou no problema vivido — continuidade de serviço público —, tornou explícita a contradição entre urgência e acesso impessoal, investigou as condições normativas e voltou à prática com alternativas que preservam direitos de usuários, trabalhadores e candidatos."
+    },
+    {
+      "id": "adm-54-recuperacao",
+      "type": "recuperar",
+      "sectionId": "adm-54-s16",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": "**Perguntas de recuperação, para responder após encerrar a leitura, sem consulta:**\n\n1. Por que um mesário pode ser agente público sem ser servidor estatutário?\n2. Em que sentido “funcionário público” no art. 327 do CP é mais amplo do que “servidor” na Lei 8.112?\n3. Qual diferença entre concurso como forma de acesso e CLT como regime de vínculo?\n4. O que exatamente impede a ADI 2.135 em relação aos servidores atuais?\n5. Quais pressupostos cumulativos tornam legítima uma contratação temporária?\n6. Como separar motivação da dispensa de estatal e estabilidade do servidor efetivo?\n7. O que mudou no art. 37, XVI, com a EC 138/2025?\n8. Qual providência inicial da AGU quando recebe pedido de “comissionados” para atividades técnicas rotineiras?",
+      "answer": "**Respostas de autocorreção.** (1) O conceito funcional alcança colaboração cívica transitória; estatuto exige investidura em cargo. (2) O CP inclui exercício de cargo, emprego ou função, até transitório e sem remuneração, para finalidade penal; a Lei 8.112 define servidor titular de cargo para seus efeitos. (3) Concurso seleciona o ingresso; CLT rege a relação de emprego, sujeita a normas públicas. (4) A decisão proíbe transmudação do regime dos atuais servidores e opera prospectivamente. (5) Previsão legal, prazo predeterminado, necessidade temporária, interesse público excepcional e indispensabilidade, sem suprir rotina permanente ordinária. (6) O Tema 1.022 exige razão formal razoável para dispensar concursado de estatal, não estabilidade do art. 41 nem processo administrativo obrigatório da tese. (7) A combinação de professor com outro cargo de qualquer natureza substituiu a antiga restrição textual à natureza técnica ou científica, sujeita às condições restantes. (8) Requisitar lei instituidora e descrição real de atribuições, confrontar o Tema 1.010, propor provimento estrutural ou solução temporária genuína se legal."
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "4c9362bc5ac01b6f85cb82d99f1cdc717a45865d0c87e28bd5a30e3e04e5db25"
+  },
+  "inputSha256": "4c9362bc5ac01b6f85cb82d99f1cdc717a45865d0c87e28bd5a30e3e04e5db25",
+  "sourceSha256": "4f654c0a9d93afdbc71eecce58796cccc5c030cc5dc8ec1814a910582e862dea",
+  "reviewCards": [
+    {
+      "cardId": "aud03-flc-013",
+      "sectionId": "adm-54-s14",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Âmbito institucional da consultoria da AGU",
+      "status": "aprovado",
+      "source": {
+        "id": "cf-131",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 131, caput",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Âmbito institucional da consultoria da AGU",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    },
+    {
+      "cardId": "aud02-2015-flc-02-009",
+      "sectionId": "adm-54-s12",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Remuneração e reserva de lei: fundamento comum",
+      "status": "aprovado",
+      "source": {
+        "id": "cf-37-x",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 37, X",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Remuneração e reserva de lei: fundamento comum",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    }
+  ]
+}

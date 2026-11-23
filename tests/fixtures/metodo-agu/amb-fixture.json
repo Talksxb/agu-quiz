@@ -1,0 +1,112 @@
+{
+  "schema": "agu-chapter-v1",
+  "fixture": true,
+  "id": "amb-fixture",
+  "editorialId": "FIXTURE-METODO-AMB",
+  "title": "Fixture técnica ambiental — não é capítulo jurídico",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.0",
+  "canonical": "tests/fixtures/metodo-agu/amb-fixture.md",
+  "readerPath": "livros/amb-fixture.json",
+  "reader": {
+    "id": "amb-fixture",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-07",
+    "title": "Fixture técnica — NÃO PUBLICAR",
+    "edition": "Edição técnica 1.0",
+    "source": "Fixture sintética",
+    "source_format": "markdown",
+    "verification": "Pendente; sem conteúdo jurídico"
+  },
+  "curricularIds": [
+    "AMB-07"
+  ],
+  "dates": {
+    "edition": "2026-11-22",
+    "auditCutoff": "2026-11-04",
+    "legalConsultation": "Não realizada; ensaio sintético"
+  },
+  "verification": {
+    "status": "pendente",
+    "gaps": [
+      "Fixture, não publicar"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb-fixture-abertura",
+      "marker": "abertura",
+      "title": "Fixture técnica"
+    },
+    {
+      "id": "amb-fixture-atividade",
+      "marker": "atividade",
+      "title": "Ensaio sem direito material"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-07",
+      "subitem": "Fixture para validar vínculo, sem cobertura jurídica",
+      "sections": [
+        "amb-fixture-abertura"
+      ],
+      "status": "planejado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "fonte-fixture",
+      "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "Página 42; apenas identificação curricular usada no teste",
+      "consultedAt": "2026-11-22",
+      "status": "pendente",
+      "scope": "Fonte de identificação; nenhum fundamento jurídico criado"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb-fixture-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb-fixture-atividade",
+      "title": "Recuperação sintética",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb-fixture-atividade",
+          "start": "Pergunta de teste:",
+          "end": "Resposta de teste:"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb-fixture-atividade",
+          "start": "Resposta de teste:"
+        }
+      ]
+    }
+  ],
+  "propositions": [
+    {
+      "id": "amb-fixture-candidato",
+      "sectionId": "amb-fixture-atividade",
+      "activityId": "amb-fixture-recuperacao",
+      "sourceRefs": [
+        "fonte-fixture"
+      ],
+      "category": "fixture_sem_direito",
+      "cognitiveType": "ensaio_tecnico",
+      "semanticKey": "fixture-marcador"
+    }
+  ],
+  "approval": {
+    "status": "aprovado",
+    "inputSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "record": "Aprovação exclusiva de estrutura sintética pelo teste; NÃO autoriza publicação"
+  }
+}

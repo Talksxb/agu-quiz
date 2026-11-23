@@ -1,0 +1,795 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-03",
+  "editorialId": "LIVRO-AMB-001",
+  "title": "Competências e Cooperação Ambiental",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.0",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-03.md",
+  "readerPath": "livros/amb-03.json",
+  "reader": {
+    "id": "amb-03",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-03",
+    "title": "Competências e Cooperação Ambiental",
+    "edition": "LIVRO-AMB-001 · edição final de 20/11/2026",
+    "source": "LIVRO-AMB-001_Leitura_Responsiva.html (arquivo editorial integral)",
+    "source_format": "markdown",
+    "original_html": "livros/livro-amb-001-original.html",
+    "verification": "Capítulo autoral de escopo AMB-03, fontes e lacunas editoriais da obra; sem certificação integral de auditoria ou domínio",
+    "transcription_note": "Versão original responsiva preservada com diagramas; nesta leitura guiada há conversão textual por seções. Para conferir quadros e diagramas, abrir o original."
+  },
+  "curricularIds": [
+    "AMB-03"
+  ],
+  "dates": {
+    "edition": "2026-11-20",
+    "legalConsultation": "Declarada na obra: 2026-11-20; não reconferida nesta migração",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-22"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Atualização jurídica não reexecutada pelo pipeline",
+      "Certificação integral e domínio não aferidos"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb-03-s01",
+      "marker": "01",
+      "title": "Abertura e identificação",
+      "page": 0,
+      "sha256": "31bc866246c1af72d93d5b6c27352d1d4e5b56c45cfd3c70982e1de62f967846",
+      "headings": [
+        {
+          "id": "amb-03-s01-h1",
+          "level": 1,
+          "title": "LIVRO-AMB-001 — Competências e Cooperação Ambiental"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s02",
+      "marker": "02",
+      "title": "Como usar este capítulo",
+      "page": 1,
+      "sha256": "952c621762b20062ddee41d7ba68d757b2ccc9a047d5834176da6721a8f0e11b",
+      "headings": [
+        {
+          "id": "amb-03-s02-h1",
+          "level": 2,
+          "title": "Como usar este capítulo"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s03",
+      "marker": "03",
+      "title": "Problema gerador — uma rodovia, duas unidades da Federação e quatro órgãos ambientais",
+      "page": 2,
+      "sha256": "597f8a9fec5c1cd51e8a64bf0e8f8055b4b43f9944a1a2626ce8c02540482c5c",
+      "headings": [
+        {
+          "id": "amb-03-s03-h1",
+          "level": 2,
+          "title": "Problema gerador — uma rodovia, duas unidades da Federação e quatro órgãos ambientais"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s04",
+      "marker": "04",
+      "title": "1. Federalismo ambiental: unidade de proteção e pluralidade de autoridades",
+      "page": 3,
+      "sha256": "95e17f825c2655e60129de64fd20011616ca7b4d601e2d7f5f599eb22e6b5a85",
+      "headings": [
+        {
+          "id": "amb-03-s04-h1",
+          "level": 2,
+          "title": "1. Federalismo ambiental: unidade de proteção e pluralidade de autoridades"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s05",
+      "marker": "05",
+      "title": "2. Constituição: os quatro pilares e sua articulação",
+      "page": 4,
+      "sha256": "450b1fee7feeb30b307650db0fc7ce86c7d29adae79577babe91bd6c5f3105de",
+      "headings": [
+        {
+          "id": "amb-03-s05-h1",
+          "level": 2,
+          "title": "2. Constituição: os quatro pilares e sua articulação"
+        },
+        {
+          "id": "amb-03-s05-h2",
+          "level": 3,
+          "title": "2.1. Artigo 23 — competência administrativa comum"
+        },
+        {
+          "id": "amb-03-s05-h3",
+          "level": 3,
+          "title": "2.2. Artigo 24 — legislação concorrente e suas camadas"
+        },
+        {
+          "id": "amb-03-s05-h4",
+          "level": 3,
+          "title": "2.3. Artigo 30 — interesse local e suplementação municipal"
+        },
+        {
+          "id": "amb-03-s05-h5",
+          "level": 3,
+          "title": "2.4. Artigo 225 — dever fundamental de proteção e controle das escolhas administrativas"
+        },
+        {
+          "id": "amb-03-s05-h6",
+          "level": 3,
+          "title": "Árvore conceitual — a Constituição não tem uma competência ambiental única"
+        },
+        {
+          "id": "amb-03-s05-h7",
+          "level": 4,
+          "title": "Árvore constitucional"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s06",
+      "marker": "06",
+      "title": "3. Lei Complementar 140/2011: cooperação que não se confunde com indistinção",
+      "page": 5,
+      "sha256": "35ac1ffcaf4212c6a194fe27d833b606394295414125fec49cd2b17e7b9341dc",
+      "headings": [
+        {
+          "id": "amb-03-s06-h1",
+          "level": 2,
+          "title": "3. Lei Complementar 140/2011: cooperação que não se confunde com indistinção"
+        },
+        {
+          "id": "amb-03-s06-h2",
+          "level": 3,
+          "title": "3.1. Instrumentos de cooperação e delegação de execução"
+        },
+        {
+          "id": "amb-03-s06-h3",
+          "level": 3,
+          "title": "3.2. União, Estados, DF e Municípios — a lógica de atribuições"
+        },
+        {
+          "id": "amb-03-s06-h4",
+          "level": 3,
+          "title": "3.3. O tratamento específico das APAs e das autorizações de vegetação"
+        },
+        {
+          "id": "amb-03-s06-h5",
+          "level": 3,
+          "title": "3.4. Um ente licencia; vários entes podem se manifestar"
+        },
+        {
+          "id": "amb-03-s06-h6",
+          "level": 3,
+          "title": "3.5. Supletividade, subsidiariedade e mora"
+        },
+        {
+          "id": "amb-03-s06-h7",
+          "level": 4,
+          "title": "Supletiva e subsidiária"
+        },
+        {
+          "id": "amb-03-s06-h8",
+          "level": 3,
+          "title": "3.6. Prazo, renovação e transição da LC 140"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s07",
+      "marker": "07",
+      "title": "4. Fiscalizar, licenciar e sancionar: três operações jurídicas distintas",
+      "page": 6,
+      "sha256": "44e5a2eb4820598647e382c30aad289e8e14629392911260e474c4fa4e53e0f9",
+      "headings": [
+        {
+          "id": "amb-03-s07-h1",
+          "level": 2,
+          "title": "4. Fiscalizar, licenciar e sancionar: três operações jurídicas distintas"
+        },
+        {
+          "id": "amb-03-s07-h2",
+          "level": 3,
+          "title": "4.1. O conflito novo: art. 65 da Lei 15.190/2025 versus LC 140 e ADI 4.757"
+        },
+        {
+          "id": "amb-03-s07-h3",
+          "level": 3,
+          "title": "4.2. Fluxo decisório de competência e fiscalização"
+        },
+        {
+          "id": "amb-03-s07-h4",
+          "level": 4,
+          "title": "Fluxo licenciamento e fiscalização"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s08",
+      "marker": "08",
+      "title": "5. Compatibilização das leis ambientais em novembro de 2026",
+      "page": 7,
+      "sha256": "79f12a9360ebf0b17ff7b1f9f61472926c7f55fd201e8caeea394c7caaeb1e04",
+      "headings": [
+        {
+          "id": "amb-03-s08-h1",
+          "level": 2,
+          "title": "5. Compatibilização das leis ambientais em novembro de 2026"
+        },
+        {
+          "id": "amb-03-s08-h2",
+          "level": 3,
+          "title": "5.1. Lei 6.938/1981: sistema e exigência de licença"
+        },
+        {
+          "id": "amb-03-s08-h3",
+          "level": 3,
+          "title": "5.2. Lei 15.190/2025: regime geral, vigência e passagem de regimes"
+        },
+        {
+          "id": "amb-03-s08-h4",
+          "level": 3,
+          "title": "5.3. Lei 15.300/2025 e a licença ambiental especial"
+        },
+        {
+          "id": "amb-03-s08-h5",
+          "level": 3,
+          "title": "5.4. Quadro de vigência — três relógios que não podem ser misturados"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s09",
+      "marker": "09",
+      "title": "6. Jurisprudência: decisão, fundamento e alcance",
+      "page": 8,
+      "sha256": "55dbb25852361b1f0a463cda9403f913f1e8bdab8338e3f6a17977dafa87c990",
+      "headings": [
+        {
+          "id": "amb-03-s09-h1",
+          "level": 2,
+          "title": "6. Jurisprudência: decisão, fundamento e alcance"
+        },
+        {
+          "id": "amb-03-s09-h2",
+          "level": 3,
+          "title": "6.1. ADI 4.757/DF — controle de constitucionalidade da LC 140"
+        },
+        {
+          "id": "amb-03-s09-h3",
+          "level": 3,
+          "title": "6.2. Tema 145, RE 586.224/SP — competência ambiental municipal"
+        },
+        {
+          "id": "amb-03-s09-h4",
+          "level": 3,
+          "title": "6.3. ADI 7.007/BA — limites de flexibilização estadual"
+        },
+        {
+          "id": "amb-03-s09-h5",
+          "level": 3,
+          "title": "6.4. STJ — fiscalização, omissão e responsabilidade"
+        },
+        {
+          "id": "amb-03-s09-h6",
+          "level": 3,
+          "title": "6.5. O que não está decidido nesta edição"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s10",
+      "marker": "10",
+      "title": "7. Controvérsias e objeções que um parecer precisa enfrentar",
+      "page": 9,
+      "sha256": "8312a969411ff79464893860ee364f843c66e853b46a49c7490e7d239539d00c",
+      "headings": [
+        {
+          "id": "amb-03-s10-h1",
+          "level": 2,
+          "title": "7. Controvérsias e objeções que um parecer precisa enfrentar"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s11",
+      "marker": "11",
+      "title": "8. Caso AGU integralmente resolvido — corredor interestadual",
+      "page": 10,
+      "sha256": "01a13cbbe25698c5345fc8f84e47155d9bdc7fefc8ef095f98714106021631b1",
+      "headings": [
+        {
+          "id": "amb-03-s11-h1",
+          "level": 2,
+          "title": "8. Caso AGU integralmente resolvido — corredor interestadual"
+        },
+        {
+          "id": "amb-03-s11-h2",
+          "level": 3,
+          "title": "8.1. Fatos delimitados e elementos que devem ser provados"
+        },
+        {
+          "id": "amb-03-s11-h3",
+          "level": 3,
+          "title": "8.2. Licenciamento e exigências interfederativas"
+        },
+        {
+          "id": "amb-03-s11-h4",
+          "level": 3,
+          "title": "8.3. Fiscalização concorrente, autos e dano emergencial"
+        },
+        {
+          "id": "amb-03-s11-h5",
+          "level": 3,
+          "title": "8.4. Omissão em renovação e licença tácita"
+        },
+        {
+          "id": "amb-03-s11-h6",
+          "level": 3,
+          "title": "8.5. O argumento da LAE e sua resposta"
+        },
+        {
+          "id": "amb-03-s11-h7",
+          "level": 3,
+          "title": "8.6. Manifestação jurídica conclusiva — minuta de nota técnica AGU"
+        },
+        {
+          "id": "amb-03-s11-h8",
+          "level": 3,
+          "title": "8.7. Diagrama da resolução"
+        },
+        {
+          "id": "amb-03-s11-h9",
+          "level": 4,
+          "title": "Solução do caso AGU"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s12",
+      "marker": "12",
+      "title": "9. Questões comentadas — todas autorais, sem simulação de enunciado oficial",
+      "page": 11,
+      "sha256": "ff2268c68ca739bba1a68866adad9898c7fb696cd29418a952626717b06cd26c",
+      "headings": [
+        {
+          "id": "amb-03-s12-h1",
+          "level": 2,
+          "title": "9. Questões comentadas — todas autorais, sem simulação de enunciado oficial"
+        },
+        {
+          "id": "amb-03-s12-h2",
+          "level": 3,
+          "title": "Questão 1 — certo ou errado"
+        },
+        {
+          "id": "amb-03-s12-h3",
+          "level": 3,
+          "title": "Questão 2 — certo ou errado"
+        },
+        {
+          "id": "amb-03-s12-h4",
+          "level": 3,
+          "title": "Questão 3 — múltipla escolha"
+        },
+        {
+          "id": "amb-03-s12-h5",
+          "level": 3,
+          "title": "Questão 4 — certo ou errado"
+        },
+        {
+          "id": "amb-03-s12-h6",
+          "level": 3,
+          "title": "Questão 5 — situação prática"
+        },
+        {
+          "id": "amb-03-s12-h7",
+          "level": 3,
+          "title": "Questão 6 — certo ou errado"
+        },
+        {
+          "id": "amb-03-s12-h8",
+          "level": 3,
+          "title": "Questão 7 — análise crítica"
+        },
+        {
+          "id": "amb-03-s12-h9",
+          "level": 3,
+          "title": "Questão 8 — múltipla escolha"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s13",
+      "marker": "13",
+      "title": "10. Síntese final — voltar à prática, sem substituir o raciocínio",
+      "page": 12,
+      "sha256": "8342777dace48b6cffd1f978b0d70a0a6a5da096b2c0085fef9d47e3c5b670b2",
+      "headings": [
+        {
+          "id": "amb-03-s13-h1",
+          "level": 2,
+          "title": "10. Síntese final — voltar à prática, sem substituir o raciocínio"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s14",
+      "marker": "14",
+      "title": "11. Recuperação ativa — responda sem consultar o capítulo",
+      "page": 13,
+      "sha256": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88",
+      "headings": [
+        {
+          "id": "amb-03-s14-h1",
+          "level": 2,
+          "title": "11. Recuperação ativa — responda sem consultar o capítulo"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s15",
+      "marker": "15",
+      "title": "12. Respostas de referência — só consultar após a recuperação",
+      "page": 14,
+      "sha256": "057afc850dd8008cb4ae195fb0a4f1e887053e6f0dcb0d5c05cb4dc3c269bf74",
+      "headings": [
+        {
+          "id": "amb-03-s15-h1",
+          "level": 2,
+          "title": "12. Respostas de referência — só consultar após a recuperação"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s16",
+      "marker": "16",
+      "title": "13. Fontes primárias, proveniência e lacunas",
+      "page": 15,
+      "sha256": "33b3d45efbf263176028a2db0687972cc572b67760815f6f2a4fc41942e11db8",
+      "headings": [
+        {
+          "id": "amb-03-s16-h1",
+          "level": 2,
+          "title": "13. Fontes primárias, proveniência e lacunas"
+        },
+        {
+          "id": "amb-03-s16-h2",
+          "level": 3,
+          "title": "Fontes oficiais efetivamente consultadas em 20/11/2026"
+        },
+        {
+          "id": "amb-03-s16-h3",
+          "level": 3,
+          "title": "Auditoria efetivamente recuperada — não confundir com atualização de lei"
+        },
+        {
+          "id": "amb-03-s16-h4",
+          "level": 3,
+          "title": "Lacunas declaradas e gatilhos de atualização"
+        }
+      ]
+    },
+    {
+      "id": "amb-03-s17",
+      "marker": "17",
+      "title": "14. Handoff editorial — próximo livro de Direito Ambiental",
+      "page": 16,
+      "sha256": "75b5fef66a409cad662ad49d2b8e6cc6791e3b7dc624bb84cac7f9afe8446145",
+      "headings": [
+        {
+          "id": "amb-03-s17-h1",
+          "level": 2,
+          "title": "14. Handoff editorial — próximo livro de Direito Ambiental"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-03",
+      "subitem": "Repartição de competências em matéria ambiental. Normas de cooperação.",
+      "sections": [
+        "amb-03-s01",
+        "amb-03-s02",
+        "amb-03-s03",
+        "amb-03-s04",
+        "amb-03-s05",
+        "amb-03-s06",
+        "amb-03-s07",
+        "amb-03-s08",
+        "amb-03-s09",
+        "amb-03-s10",
+        "amb-03-s11",
+        "amb-03-s12",
+        "amb-03-s13",
+        "amb-03-s14",
+        "amb-03-s15",
+        "amb-03-s16",
+        "amb-03-s17"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cf",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "locator": "Constituição; artigos citados na edição",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    },
+    {
+      "id": "lc140",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+      "locator": "LC 140/2011, arts. 7º, 13, 14 e 17",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+      "revision": "1"
+    }
+  ],
+  "resources": [
+    {
+      "id": "amb-03-recurso-1",
+      "type": "figure",
+      "title": "Constituição: competências e proteção",
+      "sectionId": "amb-03-s05",
+      "alt": "### Figura V1 — Árvore conceitual — a Constituição não tem uma competência ambiental única\n\n**Descrição alternativa substantiva:** A Constituição organiza quatro referências diferentes: o art. 23 trata da execução administrativa comum; os arts. 24 e 30 disciplinam a legislação concorrente, a suplementação e o interesse local; e o art. 225 impõe o dever material de proteção e a avaliação dos impactos quando exigida. A LC 140/2011 organiza a cooperação administrativa, sem eliminar a autonomia federativa nem dispensar a proteção ambiental.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "src": "livros/recursos/amb-03-v1.svg",
+      "orientation": "vertical",
+      "origin": {
+        "path": "livros/livro-amb-001-original.html",
+        "sha256": "922eed7f51e0afa81231f52ce484842e7bfa0c7e9ebfd5ac89c9711b0e06e4ee",
+        "normalization": "viewbox→viewBox; baseprofile→baseProfile (atributos SVG XML)"
+      }
+    },
+    {
+      "id": "amb-03-recurso-2",
+      "type": "table",
+      "title": "Comparação de atuação supletiva e subsidiária",
+      "sectionId": "amb-03-s06",
+      "alt": "Comparação de atuação supletiva e subsidiária. Critério; Atuação supletiva; Atuação subsidiária. Conceito; Substituição de quem originalmente exerceria a ação; Auxílio a quem permanece competente. Gatilho; Hipótese normativa (LC 140, arts. 14–15; interpretação da ADI 4.757); Solicitação do ente originário (art. 16, parágrafo único). Efeito; Outro ente pratica a ação administrativa afetada; Titular originário mantém a decisão. Exemplo; Estado licencia impacto local por ausência do órgão municipal capacitado/conselho; Estado oferece perícia hídrica solicitada pelo Município. Prova necessária; Falta de estrutura, mora relevante, competência e formalização; Pedido, escopo e documentação do apoio",
+      "rows": [
+        [
+          "Critério",
+          "Atuação supletiva",
+          "Atuação subsidiária"
+        ],
+        [
+          "Conceito",
+          "Substituição de quem originalmente exerceria a ação",
+          "Auxílio a quem permanece competente"
+        ],
+        [
+          "Gatilho",
+          "Hipótese normativa (LC 140, arts. 14–15; interpretação da ADI 4.757)",
+          "Solicitação do ente originário (art. 16, parágrafo único)"
+        ],
+        [
+          "Efeito",
+          "Outro ente pratica a ação administrativa afetada",
+          "Titular originário mantém a decisão"
+        ],
+        [
+          "Exemplo",
+          "Estado licencia impacto local por ausência do órgão municipal capacitado/conselho",
+          "Estado oferece perícia hídrica solicitada pelo Município"
+        ],
+        [
+          "Prova necessária",
+          "Falta de estrutura, mora relevante, competência e formalização",
+          "Pedido, escopo e documentação do apoio"
+        ]
+      ]
+    },
+    {
+      "id": "amb-03-recurso-3",
+      "type": "figure",
+      "title": "Cooperação e competências na LC 140",
+      "sectionId": "amb-03-s06",
+      "alt": "### Figura V2 — 3.5. Supletividade, subsidiariedade e mora\n\n**Descrição alternativa substantiva:** A atuação supletiva substitui o exercício da ação de outro ente apenas diante de pressuposto jurídico demonstrado, como falta de órgão capacitado ou hipótese de mora juridicamente relevante. A atuação subsidiária é apoio técnico ou administrativo solicitado, sem transferir a titularidade decisória. Identificar a base legal, o gatilho, a competência final e a documentação impede confundir as duas figuras.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "src": "livros/recursos/amb-03-v2.svg",
+      "orientation": "vertical",
+      "origin": {
+        "path": "livros/livro-amb-001-original.html",
+        "sha256": "b55b2dfdce423de46b321a90b5f4d6f9644d0cec2474aa0178d9e8a0a71d2ae1",
+        "normalization": "viewbox→viewBox; baseprofile→baseProfile (atributos SVG XML)"
+      }
+    },
+    {
+      "id": "amb-03-recurso-4",
+      "type": "figure",
+      "title": "Fiscalização, licenciamento e sanção",
+      "sectionId": "amb-03-s07",
+      "alt": "### Figura V3 — 4.2. Fluxo decisório de competência e fiscalização\n\n**Descrição alternativa substantiva:** O fluxograma começa distinguindo licença ou renovação de vistoria, auto e sanção. Para licenciamento, identifica o ente atribuído pela LC 140, examina localização, tipologia, hipótese federal, órgão estruturado, prazo e transição. Para fiscalização, preserva proteção e medidas urgentes, confronta auto do licenciador com atuação de outros entes e exige prova de omissão, insuficiência, duplicidade e confronto interpretativo com a Lei 15.190/2025; não há resultado automático.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "src": "livros/recursos/amb-03-v3.svg",
+      "orientation": "vertical",
+      "origin": {
+        "path": "livros/livro-amb-001-original.html",
+        "sha256": "fc24ed9e662774e0661557a663d315940cf957181cbebb4c520be80cf43ea7e0",
+        "normalization": "viewbox→viewBox; baseprofile→baseProfile (atributos SVG XML)"
+      }
+    },
+    {
+      "id": "amb-03-recurso-5",
+      "type": "table",
+      "title": "Transição e vigência das leis",
+      "sectionId": "amb-03-s08",
+      "alt": "Transição e vigência das leis. Marco; Consequência na análise. 04/11/2026 — corte histórico da auditoria; Fotografia documental do projeto; não é a data de início da vigência das leis.. 04/02/2026 — vigência geral da Lei 15.190; Regime procedimental com transição por etapas (art. 60).. 23/12/2025 — publicação da Lei 15.300; LAE já tem disciplina legal desde sua publicação; depende de requisitos e enquadramentos próprios.. 20/11/2026 — corte desta edição; Atualização editorial: conferir redação, vetos, regulamentação e novos litígios constitucionais aplicáveis, sem certificar inventário exaustivo.",
+      "rows": [
+        [
+          "Marco",
+          "Consequência na análise"
+        ],
+        [
+          "04/11/2026 — corte histórico da auditoria",
+          "Fotografia documental do projeto; não é a data de início da vigência das leis."
+        ],
+        [
+          "04/02/2026 — vigência geral da Lei 15.190",
+          "Regime procedimental com transição por etapas (art. 60)."
+        ],
+        [
+          "23/12/2025 — publicação da Lei 15.300",
+          "LAE já tem disciplina legal desde sua publicação; depende de requisitos e enquadramentos próprios."
+        ],
+        [
+          "20/11/2026 — corte desta edição",
+          "Atualização editorial: conferir redação, vetos, regulamentação e novos litígios constitucionais aplicáveis, sem certificar inventário exaustivo."
+        ]
+      ]
+    },
+    {
+      "id": "amb-03-recurso-6",
+      "type": "figure",
+      "title": "Solução institucional do caso AGU",
+      "sectionId": "amb-03-s11",
+      "alt": "### Figura V4 — 8.7. Diagrama da resolução\n\n**Descrição alternativa substantiva:** O caso parte da rodovia presente em dois Estados. A situação orienta a competência licenciadora federal do IBAMA, a participação técnica dos demais entes sem duplicação de licenças, a fiscalização comum diante de dano, o cotejo de autos e da mora na renovação, a análise do enquadramento em LAE e a entrega de manifestação motivada com providências documentais e preventivas.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "src": "livros/recursos/amb-03-v4.svg",
+      "orientation": "vertical",
+      "origin": {
+        "path": "livros/livro-amb-001-original.html",
+        "sha256": "46fa33eded55aee1111a2d19055f48f02bccc0476f4a6e3fc77bfb77956e6fa9",
+        "normalization": "viewbox→viewBox; baseprofile→baseProfile (atributos SVG XML)"
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "amb-03-caso",
+      "type": "aplicar",
+      "sectionId": "amb-03-s11",
+      "title": "Caso AGU: formule sua hipótese",
+      "nature": "autoral",
+      "prompt": "### 8.1. Fatos delimitados e elementos que devem ser provados\n\nConsidere comprovado que a rodovia federal **é empreendimento único desenvolvido em dois Estados**, que possui trechos novos,\ntravessias fluviais e potencial de significativa degradação; que o\nprocesso foi protocolado em março de 2026; que o IBAMA é o licenciador\noriginário; que houve audiência pública e EIA/RIMA em elaboração; que um\nEstado quer impor licença geral paralela; que os municípios querem\nlicenciar os trechos urbanos; e que os fiscais estaduais registraram\ncarreamento de sedimentos em um canteiro. Não se presume presença em\nterra indígena ou unidade de conservação de proteção integral, nem\nenquadramento por decreto como empreendimento estratégico. Não há prova\ninicial de que o IBAMA tenha sido formalmente comunicado e permanecido\nomisso diante do dano; essa prova precisará ser produzida.",
+      "answer": "### 8.2. Licenciamento e exigências interfederativas\n\nA atribuição de licenciamento recai sobre a União em razão do\n**art. 7º, XIV, “e”, da LC 140/2011**, independentemente do\nfato de o empreendimento também ser federal. O IBAMA conduz a decisão e\ndeve exigir os estudos proporcionais à magnitude dos impactos, observada\na disciplina procedimental da Lei 15.190/2025 e o art. 225, § 1º, IV, da\nConstituição. A obra é posterior à vigência geral da lei, de modo que\nnão há aplicação da regra de transição do art. 60 para um processo já em\ncurso em 04/02/2026. Se houver atividade destacável e independente,\ndeve-se avaliar seu enquadramento próprio, sem fracionamento artificial\npara escapar ao licenciamento integrado.\n\nO pedido de licença ambiental **estadual separada** para\no mesmo empreendimento deve ser indeferido juridicamente, mediante\ndiálogo institucional e decisão motivada. O Estado pode encaminhar\nparecer e documentação, requerer exame de impactos em seu território e,\nonde a lei exigir, fornecer outorgas ou autorizações específicas\ndistintas da licença ambiental de empreendimento. As manifestações\nestaduais e municipais no licenciamento são, como regra, não\nvinculantes; mas o IBAMA deve enfrentá-las motivadamente, sobretudo\ndiante de risco técnico relevante. Os Municípios preservam suas\ncompetências urbanísticas e ambientais locais nos limites legais, sem\nlicenciar repetidamente a rodovia interestadual.\n\nA travessia de APA deve ser examinada conforme o **art. 12**: o simples ente instituidor da APA não muda o licenciador.\nSe o empreendimento afetar unidade de conservação, deverá ser estudada a\nincidência das normas setoriais, zonas de amortecimento e participação\ndo gestor, sem presumir que toda proteção específica é afastada pela LC\n140. A autorização de supressão de vegetação decorrente do licenciamento\nsegue o art. 13, § 2º, observado eventual regime especial\nespecífico.\n\n### 8.3. Fiscalização concorrente, autos e dano emergencial\n\nSerra Azul pode fiscalizar, colher provas e adotar medidas imediatas\nproporcionais para evitar, fazer cessar ou mitigar a degradação,\n**com comunicação ao órgão competente**. O IBAMA deve\napurar o fato, avaliar condicionantes e exercer sua atribuição\nfiscalizatória e sancionatória principal. Se houver dois autos pelo\nmesmo lançamento de sedimentos, não se recomenda declarar\nautomaticamente nulo o estadual apenas porque foi lavrado por outro\nente; primeiro devem-se comparar as circunstâncias, a existência de\n**omissão ou insuficiência na tutela federal** e a\nlegislação aplicável, inclusive a tensão entre LC 140, art. 17, e Lei\n15.190, art. 65.\n\nSe o IBAMA já tiver fiscalizado de modo suficiente, adotado medidas e\ninstaurado procedimento sobre os mesmos fatos, há fundamento forte para\norganizar prevalência procedimental e prevenir dupla sanção. Se houver\nprova robusta de que ignorou sucessivos alertas ou não conteve\ndegradação relevante, a atuação protetiva estadual ganha fundamento\nconstitucional e jurisprudencial mais forte. O ato emergencial de\ncontenção não deve ficar condicionado a uma controvérsia abstrata de\ncompetência. Na dúvida razoável sobre conflito normativo novo, a AGU\ndeve propor coordenação e preservação de evidências, evitando\ncancelamentos automáticos irrefletidos.\n\n### 8.4. Omissão em renovação e licença tácita\n\nNo caso descrito, o IBAMA demorou a decidir uma renovação. É\nnecessário saber se a licença anterior existia, qual seu prazo, quando\nfoi requerida a renovação e se houve complementações suspensivas. A\nsolicitação apresentada com antecedência mínima legal pode implicar\nprorrogação de validade da licença anterior, conforme art. 14, § 4º, mas\na **mora imotivada e desproporcional** exige aplicação da\ninterpretação conforme fixada na ADI 4.757. Isso não autoriza o\nempreendedor a afirmar que o pedido novo foi deferido tacitamente: art.\n14, § 3º, veda expressamente esse resultado. Deve-se documentar a mora,\nexigir decisão e avaliar o mecanismo supletivo conforme a situação\njurídica concreta.\n\n### 8.5. O argumento da LAE e sua resposta\n\nO ministério setorial sustenta que a obra seria “estratégica” e,\nportanto, deveria receber LAE imediata. A Lei 15.300 não concede licença\npor autodeclaração de prioridade. Exige enquadramento normativo do\nempreendimento e cumprimento de requisitos: TR, estudos, EIA/RIMA,\naudiência pública, manifestações pertinentes, parecer técnico e decisão.\nO Decreto 12.673/2025 criou estrutura de proposição de atividades\nestratégicas, mas isso não substitui o decreto de enquadramento previsto\nno regime. Sem comprovação, aplica-se o regime comum. Ainda que\nenquadrada, a LAE não remove o dever constitucional de avaliar\nsignificativa degradação.\n\n### 8.6. Manifestação jurídica conclusiva — minuta de nota técnica AGU\n\n**Interessado:** órgão federal executor do corredor\nrodoviário interestadual. **Questão:** repartição de\natribuições no licenciamento, efeitos de exigências\nestaduais/municipais, autuações por órgãos diversos, mora na renovação e\neventual LAE. **Fundamentação:** CF, arts. 23, 24, 30 e\n225; LC 140/2011, arts. 2º, 4º–5º, 7º, XIV, “e”, 12–17; Lei 6.938/1981,\nart. 10; Leis 15.190/2025 e 15.300/2025; STF, ADI 4.757 e Tema 145, sem\nprejuízo de normas setoriais efetivamente incidentes.\n\n**Conclusão:** (a) é atribuição originária da União,\nexercida pelo órgão federal ambiental competente, promover o\nlicenciamento do empreendimento interestadual; (b) exigência estadual ou\nmunicipal de licença ambiental geral paralela para o mesmo\nempreendimento, sem hipótese legal específica, não prevalece, mas devem\nser preservadas manifestações técnicas, autorizações legalmente\nautônomas e competências territoriais próprias; (c) o órgão licenciador\ndeve considerar e motivadamente responder a informações relevantes dos\ndemais entes, inclusive quanto a impactos cumulativos e alternativas;\n(d) a fiscalização ambiental permanece comum, sendo admissíveis medidas\nurgentes de contenção e participação estadual, enquanto a validade e\neventual prevalência dos autos devem ser avaliadas com base em\nidentidade fática, competência sancionatória, omissão ou insuficiência e\nna controvérsia atual do art. 65 da Lei 15.190; (e) a mora de renovação\nnão cria licença tácita, exigindo exame do art. 14, §§ 3º–4º, da LC 140\ne da interpretação conforme na ADI 4.757; e (f) a LAE exige comprovação\nde enquadramento estratégico e cumprimento de requisitos legais, sem\ndispensa automática de EIA/RIMA e participação.\n\n**Providências recomendadas:** instituir expediente de\narticulação do IBAMA com os órgãos estaduais e municipais, com mapa das\natribuições e das autorizações autônomas; obter relatórios técnicos\ngeorreferenciados, autos de fiscalização e histórico de notificações;\ncomparar os processos sancionatórios antes de decidir por manutenção,\nrevisão ou cancelamento; adotar imediatamente medidas preventivas quando\nhouver risco atual; registrar cronologia de prazos do\nlicenciamento/renovação; realizar checagem formal de eventual decreto de\nenquadramento em LAE e de ações no STF; e, persistindo conflito\nconcreto, avaliar solução administrativa interfederativa ou medida\njudicial proporcional, sem pleitear blindagem geral da Administração\nfederal contra fiscalização protetiva.\n\n**Argumentos contrários enfrentados:** o custo econômico\nda duplicidade não elimina tutela ambiental; a autonomia estadual não\npermite duplicar licença federal sem base legal; a competência comum não\nlegitima duas punições idênticas sem análise; o novo art. 65 não pode\nser aplicado mecanicamente para esvaziar o art. 23 e a ADI 4.757; e a\nurgência estratégica não dispensa a Constituição. **Natureza da peça:** manifestação didática de caso hipotético, não parecer\ninstitucional aprovado nem substituto de análise dos autos reais.\n\n### 8.7. Diagrama da resolução\n\n#### Solução do caso AGU\n\n**Rodovia interestadual**\nDois Estados e impactos relevantes\n\n↓\n**IBAMA**\nLicenciador federal, art. 7º, XIV, e\n\n↓\n**Participação**\nIncorporar manifestação técnica estadual e municipal\n\n↓\n**Fiscalização comum**\nConter o dano e confrontar autos e omissão\n\n↓\n**Renovação**\nAfastar licença tácita e exigir decisão tempestiva\n\n↓\n**AGU**\nParecer, integração administrativa e atuação contenciosa se necessária\n\nEsquema autoral; arquivo SVG vetorial editável disponível no pacote de fontes.\n\nO diagrama editável anexo apresenta: qualificação dos fatos →\nverificação de LC 140/Lei 15.190 → determinação do licenciador federal →\nparticipação estadual/municipal → resposta a risco imediato → cotejo de\nautos e omissões → orientação consultiva → medidas contenciosas\nsubsidiárias, se necessárias. Os ramos não são automatismos; cada\ndecisão depende de provas e fundamentação."
+    },
+    {
+      "id": "amb-03-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb-03-s14",
+      "title": "Recuperação ativa do capítulo",
+      "nature": "autoral",
+      "prompt": "## 11. Recuperação ativa — responda sem consultar o capítulo\n\n- Qual é a diferença estrutural entre o art. 23 e o art. 24 da\nConstituição em matéria ambiental?\n\n- Por que o Município pode legislar sobre matéria ambiental, embora\nnão apareça no caput do art. 24?\n\n- Quais são os principais critérios do art. 7º, XIV, da LC 140 para\nlicenciamento federal? Por que o simples financiamento federal é\ninsuficiente?\n\n- O que muda ao saber que uma área afetada é APA, e não unidade de\nconservação de outra categoria?\n\n- Defina atuação supletiva e subsidiária e indique o gatilho jurídico\nde cada uma.\n\n- Qual é a diferença entre manifestação não vinculante de outro ente e\nautorização setorial autônoma?\n\n- O que decidiu a ADI 4.757 sobre mora de renovação e prevalência de\nautos?\n\n- Por que o novo art. 65 da Lei 15.190 exige cautela\ninterpretativa?\n\n- Como funciona a transição da Lei 15.190 para processos de\nlicenciamento iniciados antes de 04/02/2026?\n\n- Diante de dois autos pelo mesmo dano, quais fatos e documentos devem\nser levantados antes de recomendar cancelamento ou manutenção?",
+      "answer": "## 12. Respostas de referência — só consultar após a recuperação\n\n- Art. 23 trata de execução administrativa comum e dever de\ncooperação; art. 24 distribui poder legislativo concorrente entre União,\nEstados e DF com normas gerais, suplementação e regime de eficácia.\n\n- O art. 30, I–II, permite legislar sobre interesse local e\nsuplementar normas; Tema 145 reconhece competência ambiental municipal\nharmoniosa.\n\n- Critérios incluem localização transfronteiriça, mar/ZEE, terras\nindígenas, UCs federais salvo APAs, desenvolvimento em dois Estados,\nhipóteses militares, nucleares e tipologias regulamentares; a\ntitularidade federal não aparece como critério geral\nautossuficiente.\n\n- A APA afasta o critério isolado do ente instituidor da unidade;\ndevem-se aplicar os demais parâmetros legais e respeitar proteção da\nárea.\n\n- Supletiva = substituição quando presentes hipóteses legais ou a\ninterpretação constitucional; subsidiária = apoio a pedido de quem\npermanece competente.\n\n- Parecer não vinculante subsidia decisão motivada do licenciador;\nautorização setorial autônoma possui fundamento jurídico próprio e pode\ncontinuar exigível.\n\n- Mora imotivada e desproporcional na renovação aciona supletividade;\nprevalência do auto do licenciador não afasta atuação supletiva quando\nprovada omissão ou insuficiência fiscalizatória.\n\n- Porque a nova norma ordinária se relaciona tensamente com matéria de\nLC, proteção constitucional comum e interpretação do STF; não há\nautorização para declarar automaticamente sua invalidade ou revogação da\nLC.\n\n- Regra procedimental nova aos processos iniciados após a vigência;\npara os em curso, preservam-se obrigações e cronogramas da etapa\ncorrente e adaptam-se as subsequentes (art. 60).\n\n- Identidade da infração, autores, datas, provas, local, processos,\ncomunicação e reação do licenciador, urgência, omissão, base legal e\nestado judicial de aplicação do art. 65, garantindo contraditório e\nvedação de dupla punição indevida.\n\n**Proposta posterior de avaliação, não realizada:**\nresolver nova situação de licenciamento de atividade localizada apenas\nnum Estado, com impacto local controvertido e omissão do órgão\nmunicipal, redigindo nota de 25–35 linhas. O capítulo não atribui nota\nnem registra competência demonstrada."
+    }
+  ],
+  "propositions": [
+    {
+      "id": "metodo-amb-03-proposicao-1",
+      "sectionId": "amb-03-s14",
+      "activityId": "amb-03-recuperacao",
+      "front": "Qual é a diferença estrutural entre o art. 23 e o art. 24 da\nConstituição em matéria ambiental?",
+      "back": "Art. 23 trata de execução administrativa comum e dever de\ncooperação; art. 24 distribui poder legislativo concorrente entre União,\nEstados e DF com normas gerais, suplementação e regime de eficácia.",
+      "sourceRefs": [
+        "cf"
+      ],
+      "category": "distincao_entre_institutos",
+      "cognitiveType": "recuperacao_fundamentada",
+      "semanticKey": "amb03-recuperacao-1",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência"
+    },
+    {
+      "id": "metodo-amb-03-proposicao-2",
+      "sectionId": "amb-03-s14",
+      "activityId": "amb-03-recuperacao",
+      "front": "Por que o Município pode legislar sobre matéria ambiental, embora\nnão apareça no caput do art. 24?",
+      "back": "O art. 30, I–II, permite legislar sobre interesse local e\nsuplementar normas; Tema 145 reconhece competência ambiental municipal\nharmoniosa.",
+      "sourceRefs": [
+        "cf"
+      ],
+      "category": "distincao_entre_institutos",
+      "cognitiveType": "recuperacao_fundamentada",
+      "semanticKey": "amb03-recuperacao-2",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência"
+    },
+    {
+      "id": "metodo-amb-03-proposicao-3",
+      "sectionId": "amb-03-s14",
+      "activityId": "amb-03-recuperacao",
+      "front": "Quais são os principais critérios do art. 7º, XIV, da LC 140 para\nlicenciamento federal? Por que o simples financiamento federal é\ninsuficiente?",
+      "back": "Critérios incluem localização transfronteiriça, mar/ZEE, terras\nindígenas, UCs federais salvo APAs, desenvolvimento em dois Estados,\nhipóteses militares, nucleares e tipologias regulamentares; a\ntitularidade federal não aparece como critério geral\nautossuficiente.",
+      "sourceRefs": [
+        "lc140"
+      ],
+      "category": "distincao_entre_institutos",
+      "cognitiveType": "recuperacao_fundamentada",
+      "semanticKey": "amb03-recuperacao-3",
+      "relation": "pergunta_e_resposta_editoriais; candidato pendente de conferência"
+    }
+  ],
+  "visualDifferences": [
+    "Ajustes de tipografia e paginação web; texto integral preservado por bloco.",
+    "Quatro SVG preservados com correção explícita de caixa em atributos XML; duas tabelas reconstruídas das células originais. Recursos no final da seção correspondente, sem prometer a paginação original."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
+    "inputSha256": "cf2a2c02ea3ad8be70f2b9a672907961639bf7a9679c6caa1f154f8b316be5e4"
+  },
+  "inputSha256": "cf2a2c02ea3ad8be70f2b9a672907961639bf7a9679c6caa1f154f8b316be5e4",
+  "sourceSha256": "4d5f37014f1ff1366d2c56f7c07bf86ed37993d23ea9c5f86e3ae2588ac0f25f",
+  "reviewCards": [
+    {
+      "cardId": "aud03-flc-013",
+      "sectionId": "amb-03-s11",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Âmbito institucional da consultoria da AGU",
+      "status": "aprovado",
+      "source": {
+        "id": "cf-131",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+        "locator": "Constituição, art. 131, caput",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Âmbito institucional da consultoria da AGU",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    },
+    {
+      "cardId": "aud03-flc-008",
+      "sectionId": "amb-03-s11",
+      "relation": "fundamento_complementar_sem_ampliar_cobertura",
+      "label": "Motivação por referência a parecer: fundamento complementar",
+      "status": "aprovado",
+      "source": {
+        "id": "lei9784-50",
+        "url": "https://www2.camara.leg.br/legin/fed/lei/1999/lei-9784-29-janeiro-1999-322239-normaatualizada-pl.html",
+        "locator": "Lei 9.784/1999, art. 50, § 1º",
+        "consultedAt": "2026-11-22",
+        "status": "confirmado_pontualmente",
+        "scope": "Somente a proposição deste cartão histórico e o vínculo complementar; sem certificação do capítulo",
+        "revision": "1"
+      },
+      "approval": {
+        "reviewer": "MÉTODO-AGU-001: reuso de cartão histórico conferido, sem promoção de candidato",
+        "at": "2026-11-22",
+        "scope": "Motivação por referência a parecer: fundamento complementar",
+        "evidence": "Consulta pública da fonte oficial e cotejo com cartão; corpo/ID históricos intactos"
+      }
+    }
+  ]
+}
