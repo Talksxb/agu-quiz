@@ -26,4 +26,6 @@ Regressão específica na CI: 320/360/390/430/768 px, 980 px com toque e mouse e
 
 Publicação pretendida exclusivamente pelo fluxo GitHub Pages existente, após aprovação dos checks do HEAD exato. Não há migração para outro domínio. Android físico, TalkBack e a configuração específica do navegador da captura não foram testados; axe e emulação não certificam conformidade integral.
 
+A primeira CI (`45267376424`) confirmou os oito perfis e as 32 varreduras novas, Node e exportação. A regressão histórica Biblioteca 02 identificou overflow a 200% em 320 px: o span do contexto “Dispositivo selecionado” atingia 346 px. Correção restrita em CSS permite encolher e quebrar o texto desse contexto; o teste histórico permanece inalterado. A execução seguinte deve confirmar a correção e concluir as demais jornadas antes de publicar.
+
 Continuidade em `docs/PROMPT_INTERFACE-AGU-002.md`, não executada neste lote.
