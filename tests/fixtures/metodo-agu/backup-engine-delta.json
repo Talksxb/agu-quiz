@@ -1,0 +1,63 @@
+{
+  "baseCommit": "d41442201e449f437babc80ec240dac281d7404e",
+  "before": "8f1884ab63c2d6e4bb3bca753d01607a29abedf07e60d61ecb6f1c464a07f4f9",
+  "after": "43cbf8169d068212d2cc3f60b9544ce51003b26558dc755439142054eb183463",
+  "changes": [
+    {
+      "before": "/* Sprint 20: backup local completo, exportação e restauração apenas de chaves ausentes.\n   Nenhuma rede, sincronização, coleta remota nem alteração de dados já armazenados. */\n",
+      "after": "/* Backup S20: nove categorias históricas preservadas. MÉTODO-AGU-003 acrescenta\n   livros opcionais e adição explícita de capítulos ausentes, sem substituir registros. */\n"
+    },
+    {
+      "before": " ['agu_quiz_mapeamento_questoes_v1','Mapeamento curricular pessoal']\n",
+      "after": " ['agu_quiz_mapeamento_questoes_v1','Mapeamento curricular pessoal'],\n ['agu_livros_reader_v1','Percurso do Método AGU']\n"
+    },
+    {
+      "before": "",
+      "after": " case 'agu_livros_reader_v1':return root.AGUMethodProgress?.validate(obj)===true;\n"
+    },
+    {
+      "before": "",
+      "after": " if(['__proto__','prototype','constructor'].some(k=>Object.hasOwn(b,k)||Object.hasOwn(b.items,k)))throw Error('Chave perigosa no formato de backup.');\n"
+    },
+    {
+      "before": "function importMissing(raw){\n const b=validateBundle(raw);\n const missing=Object.entries(b.items).filter(([key])=>localStorage.getItem(key)===null);\n",
+      "after": "const BOOKS='agu_livros_reader_v1';\nfunction previewRestore(raw,{mergeBooks=false}={}){\n const b=validateBundle(raw),expected={},operations=[],categories=[],books={added:[],kept:[],skipped:[],conflicts:[],references:[]};\n for(const [key,value] of Object.entries(b.items)){\n  const previous=localStorage.getItem(key);expected[key]=previous;\n  categories.push({key,label:entries.find(x=>x[0]===key)[1],action:previous===null?'adicionar':'preservar'});\n  if(previous===null)operations.push({key,previous,value});\n  if(key!==BOOKS)continue;\n  const incoming=JSON.parse(value);let current={};\n  if(previous!==null&&mergeBooks){try{current=JSON.parse(previous)}catch{throw Error('Percurso local inválido; os dados anteriores foram preservados.')}if(!validateRecord(BOOKS,current))throw Error('Percurso local inconsistente; preserve os dados anteriores.');}\n  for(const [id,record] of Object.entries(incoming)){\n   books.references.push(root.AGUMethodProgress.assess(id,record));\n   if(previous!==null&&!mergeBooks)books.skipped.push(id);\n   else if(previous===null||!Object.hasOwn(current,id))books.added.push(id);\n   else{books.kept.push(id);if(JSON.stringify(current[id])!==JSON.stringify(record))books.conflicts.push(id);}\n  }\n  if(previous!==null&&mergeBooks&&books.added.length){\n   const merged={...current};for(const id of books.added)merged[id]=incoming[id];\n   const value=JSON.stringify(merged);if(fileBytes(value)>MAX)throw Error('Percurso combinado excede 12 MB; nenhum dado foi alterado.');\n   operations.push({key,previous,value});categories[categories.length-1].action='adicionar capítulos ausentes';\n  }\n }\n // Somente livros podem modificar uma categoria existente, e sempre na última escrita.\n operations.sort((a,b)=>Number(a.previous!==null)-Number(b.previous!==null));\n return {expected,operations,categories,books};\n}\nfunction restore(raw,{mergeBooks=false,expected=null}={}){\n const plan=previewRestore(raw,{mergeBooks});\n if(expected&&(Object.keys(expected).length!==Object.keys(plan.expected).length||Object.keys(plan.expected).some(k=>expected[k]!==plan.expected[k])))throw Error('Os dados locais mudaram desde a prévia. Selecione o arquivo novamente para conferir.');\n"
+    },
+    {
+      "before": "  for(const [key,value] of missing){if(localStorage.getItem(key)!==null)continue;localStorage.setItem(key,value);written.push(key)}\n",
+      "after": "  for(const op of plan.operations){\n   if(localStorage.getItem(op.key)!==op.previous)throw Error('Os dados locais mudaram durante a restauração.');\n   localStorage.setItem(op.key,op.value);written.push(op);\n  }\n"
+    },
+    {
+      "before": "  for(const key of written)try{localStorage.removeItem(key)}catch(_){}\n  throw Error('Armazenamento insuficiente; tentativa revertida: '+e.message);\n",
+      "after": "  const pending=[];\n  for(const op of [...written].reverse()){\n   try{if(localStorage.getItem(op.key)===op.value){if(op.previous===null)localStorage.removeItem(op.key);else localStorage.setItem(op.key,op.previous)}}catch{pending.push(op.key)}\n  }\n  throw Error(pending.length?'Restauração parcial: não foi possível desfazer '+pending.length+' inserção(ões). Preserve o arquivo e este navegador. '+e.message:'Armazenamento indisponível ou dados alterados; tentativa revertida: '+e.message);\n"
+    },
+    {
+      "before": " return {added:written.length,skipped:Object.keys(b.items).length-written.length,keys:written};\n",
+      "after": " const added=written.filter(op=>op.previous===null).length;\n return {added,skipped:plan.categories.length-added,keys:written.map(op=>op.key),chaptersAdded:plan.books.added.length,chaptersKept:plan.books.kept.length,chaptersSkipped:plan.books.skipped.length};\n"
+    },
+    {
+      "before": "",
+      "after": "function importMissing(raw){const {added,skipped,keys}=restore(raw);return {added,skipped,keys}}\n"
+    },
+    {
+      "before": "",
+      "after": "  if(Object.hasOwn(b.items,BOOKS)){showPreview(raw);return;}\n"
+    },
+    {
+      "before": "",
+      "after": "function showPreview(raw){\n const make=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node};\n document.getElementById('agu-backup-preview')?.remove();\n const dialog=make('dialog');dialog.id='agu-backup-preview';dialog.className='agu-backup-preview';dialog.setAttribute('aria-labelledby','agu-backup-preview-title');\n const title=make('h2','Conferir restauração');title.id='agu-backup-preview-title';title.tabIndex=-1;\n const intro=make('p','Seus dados continuam locais. As nove categorias anteriores só são adicionadas quando ausentes. Capítulos existentes serão preservados por inteiro, inclusive seus rascunhos, edições e campos adicionais.');\n const label=make('label'),merge=make('input');merge.type='checkbox';merge.id='agu-backup-merge-books';label.htmlFor=merge.id;label.append(merge,document.createTextNode(' Adicionar também capítulos ausentes no percurso já existente'));\n const list=make('ul'),detail=make('p'),warnings=make('ul'),error=make('p'),row=make('div'),cancel=make('button','Cancelar'),apply=make('button','Confirmar restauração');\n error.setAttribute('role','alert');error.tabIndex=-1;detail.setAttribute('role','status');row.className='btnrow';cancel.type=apply.type='button';cancel.className=apply.className='secondary';\n let plan,completed=false;\n function refresh(){\n  error.textContent='';list.replaceChildren();warnings.replaceChildren();\n  try{plan=previewRestore(raw,{mergeBooks:merge.checked});apply.disabled=false;\n   for(const c of plan.categories)list.appendChild(make('li',c.label+': '+c.action+'.'));\n   detail.textContent=plan.books.added.length+' capítulo(s) a adicionar; '+plan.books.kept.length+' registro(s) local(is) preservado(s); '+plan.books.skipped.length+' registro(s) do arquivo não aplicado(s). Nenhum registro existente será substituído.';\n   for(const id of plan.books.kept)warnings.appendChild(make('li',id+': registro atual preservado; a cópia do arquivo não será aplicada.'));\n   for(const id of plan.books.skipped)warnings.appendChild(make('li',id+': não será importado; o percurso local será mantido como está.'));\n   for(const r of plan.books.references){if(!r.known)warnings.appendChild(make('li',r.id+': capítulo fora do catálogo atual. Registro será guardado sem abrir conteúdo ou atribuir aprendizagem.'));else if(r.mismatch)warnings.appendChild(make('li',r.title+': registro da edição '+r.edition+'; edição atual '+r.currentEdition+'. O histórico será preservado e não marcará a edição atual como lida.'));else if(r.legacy)warnings.appendChild(make('li',r.title+': registro antigo sem edição identificada. Confira a posição ao retomar.'));}\n  }catch(e){apply.disabled=true;plan=null;error.textContent=e.message;}\n }\n merge.addEventListener('change',refresh);cancel.addEventListener('click',()=>dialog.close());\n apply.addEventListener('click',()=>{if(!plan)return;try{const result=restore(raw,{mergeBooks:merge.checked,expected:plan.expected});const status=document.getElementById('agu-backup-status');if(status)status.textContent=result.added+' categoria(s) restaurada(s); '+result.chaptersAdded+' capítulo(s) adicionado(s), '+result.chaptersKept+' preservado(s), '+result.chaptersSkipped+' não aplicado(s). Recarregue a página ou retome o capítulo para carregar os registros.';completed=true;dialog.close();}catch(e){error.textContent=e.message;error.focus();}});\n dialog.addEventListener('close',()=>{dialog.remove();document.getElementById(completed?'agu-backup-status':'agu-s20-restore')?.focus();});\n row.append(cancel,apply);dialog.append(title,intro,label,list,detail,warnings,error,row);document.body.appendChild(dialog);refresh();dialog.showModal();title.focus();\n}\n"
+    },
+    {
+      "before": " return '<div class=\"card section\"><h2>Backup local completo</h2>'+\n '<p>Cópia de '+count+' de '+entries.length+' categorias locais: histórico, questões, revisões, Caderno, sessões, planejamento, notas e matriz importada. O arquivo pode conter informações pessoais; guarde-o de forma privada. Nada é enviado a servidores.</p>'+\n '<p class=\"muted\">A restauração completa só preenche categorias ausentes. <b>Não substitui nem mescla categorias existentes.</b> Para recuperar tentativas/notas dentro de uma categoria já usada, utilize a importação do módulo correspondente. Limite: 12 MB.</p>'+\n",
+      "after": " const p=typeof URLSearchParams==='function'?new URLSearchParams(root.location?.search||''):null,id=p?.get('livro'),back=p?.get('retorno')==='metodo'?'<p><a href=\"livros-agu.html'+(id&&/^[a-z0-9][a-z0-9-]{0,139}$/.test(id)?'?livro='+encodeURIComponent(id):'')+'\">Retomar o Método AGU</a></p>':'';\n return '<style>.agu-backup-preview{box-sizing:border-box;width:680px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;border:1px solid #aebfc5;border-radius:12px;padding:20px;color:#172b39;background:#fff;overflow-wrap:anywhere}.agu-backup-preview::backdrop{background:#102b3baa}.agu-backup-preview h2{font-size:22px}.agu-backup-preview input[type=checkbox]{width:auto;min-height:24px}.agu-backup-preview label{display:block;margin:18px 0}.agu-backup-preview button{min-height:44px}.agu-backup-preview .btnrow{display:flex;flex-wrap:wrap;gap:10px}</style><div class=\"card section\"><h2 id=\"agu-s20-backup-title\" tabindex=\"-1\">Backup local completo</h2>'+back+\n '<p>Cópia de '+count+' de '+entries.length+' categorias locais: histórico, questões, revisões, Caderno, sessões, planejamento, notas, matriz importada e percurso do Método AGU. O arquivo pode conter informações pessoais; guarde-o de forma privada. Nada é enviado a servidores.</p>'+\n '<p class=\"muted\">A restauração preenche categorias ausentes. <b>As nove categorias anteriores não são substituídas nem mescladas.</b> No percurso, você pode escolher adicionar capítulos ausentes; capítulos existentes permanecem inteiros. Confira a prévia. Limite: 12 MB.</p><p id=\"agu-backup-status\" role=\"status\" tabindex=\"-1\"></p>'+\n"
+    },
+    {
+      "before": " '<button class=\"secondary\" type=\"button\" onclick=\"document.getElementById(\\'agu-s20-backup-file\\').click()\">Restaurar categorias ausentes</button>'+\n",
+      "after": " '<button class=\"secondary\" id=\"agu-s20-restore\" type=\"button\" onclick=\"document.getElementById(\\'agu-s20-backup-file\\').click()\">Restaurar categorias ausentes</button>'+\n"
+    },
+    {
+      "before": "root.AGUBackup20={panel,capture,validateBundle,validateRecord,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};\n",
+      "after": "root.AGUBackup20={panel,capture,validateBundle,validateRecord,previewRestore,restore,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};\n"
+    }
+  ]
+}

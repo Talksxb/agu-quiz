@@ -80,7 +80,7 @@ test('300/301 marcações, 450/451 caracteres e 500/501 comentários mantêm os 
 });
 test('backup de nove categorias restaura só ausentes, sem mesclar, e rejeita mais de 12 MB',()=>{
  const b=boot(new Map([[KEY,JSON.stringify(READER)]])),backup=b.runtime.AGUBackup20.capture(),fresh=boot();
- assert.equal(b.runtime.AGUBackup20.keys().length,9);assert.equal(fresh.runtime.AGUBackup20.importMissing(JSON.stringify(backup)).added,1);
+ assert.equal(b.runtime.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);assert.equal(fresh.runtime.AGUBackup20.importMissing(JSON.stringify(backup)).added,1);
  assert.equal(fresh.runtime.AGUBackup20.importMissing(JSON.stringify(backup)).added,0);
  assert.equal(fresh.storage.get(KEY),JSON.stringify(READER));
  assert.throws(()=>b.runtime.AGUBackup20.validateBundle(JSON.stringify({schema:'agu-portable-local-s20-v1',version:1,items:{[KEY]:'x'.repeat(12*1024*1024+1)}})));

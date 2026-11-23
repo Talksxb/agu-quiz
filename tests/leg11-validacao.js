@@ -29,7 +29,7 @@ check('36 IDs reais estáveis, origens fechadas, currículo documental somente e
  for(const id of ['fake-001','of-2015-adv-006','__proto__','ri-adm-099','aud03-flc-099'])assert.equal(z.AGUReview.notebookEligibleCard(id),null);
  assert.equal(z.AGUReview.notebookHistoricCard('ri-adm-01').topic,'ADM-06');assert.equal(z.AGUReview.notebookHistoricCard('ri-adm-05').topic,null);
  assert.equal(z.AGUReview.notebookHistoricCard('ri26-con-01').topic,'CON-50');
- assert.equal(z.AGUBackup20.keys().length,9);assert.equal(z.AGULegal.stats().laws,6);assert.equal(z.AGULegal.stats().units,1176);
+ assert.equal(z.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);assert.equal(z.AGULegal.stats().laws,6);assert.equal(z.AGULegal.stats().units,1176);
 });
 check('registro explícito, sem revelar, responder, agendar, substituir ou duplicar marca anterior',()=>{
  const {z,store}=boot(),old=copy(z.AGULegal.peek().forNotebook),before=[store.get(REVIEW),store.get(STUDY),store.get(PLAN)];

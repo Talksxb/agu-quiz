@@ -30,7 +30,7 @@ check('base, corpus, nove categorias, fixtures LEG09→LEG10→UX02→LEG11→UX
  assert.equal(z.reviewAfterSha256,cards.reviewBeforeSha256);assert.equal(leg13.htmlAfterSha256,cards.htmlBeforeSha256);
  const next=require('./hash-chain-cartoes-aud-02.cjs');assert.equal(sha(read('revisao-inteligente.js')),next('revisao-inteligente.js',cards.reviewAfterSha256));assert.equal(legacyIndexDigest(),next('index.html',afterCodigos('index.html',cards.htmlAfterSha256)));
  assert.equal(sha(read('dados/questoes-auditadas-s18.js')),sha(require('node:child_process').execFileSync('git',['show','HEAD:dados/questoes-auditadas-s18.js'],{cwd:ROOT}))) ;
- const b=boot();assert.equal(b.z.AGUBackup20.keys().length,9);assert.equal(b.z.AGULegal.stats().laws,6);assert.equal(b.z.AGULegal.stats().units,1176);
+ const b=boot();assert.equal(b.z.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);assert.equal(b.z.AGULegal.stats().laws,6);assert.equal(b.z.AGULegal.stats().units,1176);
 });
 check('quatro itens elegíveis; demais questões não foram promovidas',()=>{
  const {z}=boot();assert.deepEqual(copy(z.AGUQuestions18.all().map(q=>q.id)),['of-2015-adv-048','of-2015-adv-006','of-2015-adv-007','of-2015-adv-009']);

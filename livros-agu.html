@@ -57,7 +57,7 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 <a class="skip-method" href="#catalog-title">Ir aos capítulos</a>
 <div class="wrap">
 <header>
-<nav aria-label="Navegação"><a href="./">AGU Quiz</a><a href="laboratorio-leitura.html">Treino opcional de leitura</a></nav>
+<nav aria-label="Navegação"><a href="./">AGU Quiz</a><a href="laboratorio-leitura.html">Treino opcional de leitura</a><a id="method-backup" href="./?abrir=backup&amp;retorno=metodo">Backup do percurso</a></nav>
 <span class="tag">BIBLIOTECA INTELIGENTE</span>
 <h1>Método AGU</h1>
 <p class="muted method-intro">Parta do problema, estude os fundamentos e volte à prática. Cada capítulo reúne leitura integral, aplicação, recuperação e cartões relacionados. Escolha seu caminho e retome quando quiser.</p>
@@ -136,6 +136,8 @@ Fontes: arquivos editoriais originais LIVRO-DIG-001 v2.0, LIVRO-PIL-001 v1.0 e L
 <script src="dados/flashcards-aud02-2015-atualizados-lote03.js"></script>
 <script src="dados/flashcards-editoriais.js"></script>
 <script src="revisao-inteligente.js"></script>
+<script src="dados/metodo-agu-referencias.js"></script>
+<script src="metodo-agu-progresso.js"></script>
 <script src="metodo-agu.js"></script>
 <script>
 (function(){
@@ -152,7 +154,7 @@ let openSequence=0;
 let book=null,index=0,ms=0,started=0,running=false,tick=null,guidedTimer=null,blocks=[],block=0,lastWpm=null;
 function countWords(s){return (s.match(/\S+/g)||[]).length}
 function safeLoad(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:null}catch{return null}}
-function save(){const db=safeLoad();if(!db||(db[book.id]&&(typeof db[book.id]!=='object'||Array.isArray(db[book.id])))){notify('Registro local inválido; dados anteriores preservados.');return}const prior=db[book.id]||{},edition=window.AGUMethod?.edition();let readingEditions=prior.readingEditions||{};if(prior.methodEdition&&prior.methodEdition!==edition)readingEditions={...readingEditions,[prior.methodEdition]:{page:prior.page,done:prior.done,sectionId:prior.sectionId,updated:prior.updated}};db[book.id]={...prior,page:index,done:completed,sectionId:window.AGUMethod?.sectionId(index),methodEdition:edition,readingEditions,updated:new Date().toISOString()};try{localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='O navegador não permitiu guardar progresso local.'}}
+function save(){const db=safeLoad();if(!db||!window.AGUMethodProgress.validate(db)){notify('Registro local inválido; dados anteriores preservados.');return}try{const prior=window.AGUMethodProgress.prepare(db[book.id]||{},window.AGUMethod?.edition());db[book.id]={...prior,page:index,done:completed,sectionId:window.AGUMethod?.sectionId(index),methodEdition:window.AGUMethod?.edition(),updated:new Date().toISOString()};if(!window.AGUMethodProgress.validate(db))throw Error('Registro incompatível');localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='Não foi possível guardar o progresso; dados anteriores preservados.'}}
 let completed=[];
 function elapsed(){return ms+(running?performance.now()-started:0)}
 function formatted(t){const sec=Math.floor(t/1000);return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
@@ -210,7 +212,7 @@ function renderCurrent(){
  blocks=segment(content);showBlock();
  $('read-guided').hidden=$('mode').value!=='guided';$('read-full').hidden=$('mode').value==='guided';
  setProgress();notify('Trecho '+(index+1)+' de '+book.pages.length+'. Inicie o cronômetro quando começar a ler.');
- focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);$('book').dataset.chapterId=book.id;
+ focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);$('book').dataset.chapterId=book.id;$('method-backup').href='./?abrir=backup&retorno=metodo&livro='+encodeURIComponent(book.id);
 }
 async function openBook(id){
  if(!Object.prototype.hasOwnProperty.call(manifest,id))return;const sequence=++openSequence;
@@ -218,7 +220,7 @@ async function openBook(id){
  try{
  const response=await fetch(manifest[id],{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
- if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const state=safeLoad()?.[id]||{};completed=(!state.methodEdition||state.methodEdition===window.AGUMethod?.edition())&&Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
+ if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const previous=safeLoad()?.[id]||{},state=window.AGUMethodProgress.validate({[id]:previous})?window.AGUMethodProgress.active(previous,window.AGUMethod?.edition()):{};completed=Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
  const stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
  $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
@@ -230,7 +232,7 @@ async function openBook(id){
  renderCurrent();
  }catch(err){$('book-title').textContent='Livro indisponível';notify('Não foi possível carregar o livro: '+err.message)}
 }
-function closeBook(){if(running)pause();book=null;$('book').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);$('catalog-title').focus?.();window.AGUMethod?.renderCatalog()}
+function closeBook(){if(running)pause();book=null;$('book').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);$('method-backup').href='./?abrir=backup&retorno=metodo';$('catalog-title').focus?.();window.AGUMethod?.renderCatalog()}
 function move(i){if(!book)return;index=Math.max(0,Math.min(book.pages.length-1,i));save();renderCurrent()}
 function finish(){
  if(!book)return;const t=Math.max(1000,elapsed());const raw=book.pages[index].text,word=countWords(raw);

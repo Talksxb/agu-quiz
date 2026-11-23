@@ -46,7 +46,7 @@ check('acervo real, níveis originais e nove categorias não se alteraram',()=>{
  assert.deepEqual(copy(decks.map(x=>[x.code,x.count])),[['ADM-06',12],['ADM-13',4],['ADM-23',4],['CON-02',2],['CON-50',4],['PC-03',10]]);
  assert.deepEqual(copy(decks.reduce((p,d)=>{for(const [level,count] of Object.entries(d.difficulties))p[level]=(p[level]||0)+count;return p},{})),
   {'sem_nivel':22,'original:2':7,'original:3':6,'original:4':1});
- assert.equal(w.AGUBackup20.keys().length,9);
+ assert.equal(w.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
  assert.equal(w.AGUDisciplines.verifiedFrequency(null,'ADM-06'),null);
  assert.match(read('revisao-inteligente.js'),/const DAYS=\[1,7,21,45\]/);
 });

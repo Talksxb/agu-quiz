@@ -66,7 +66,7 @@ check('reload restaura posição e mantém IDs, tentativas e revisão prévia',(
 });
 check('backup do legado e restauração de categoria ausente preservam a sessão',()=>{
  const b=boot();b.x.AGUReview.deckStart('CON-02');b.x.AGUReview.reveal();b.x.AGUReview.rate('lembrei');
- const bundle=clone(b.x.AGUBackup20.capture());assert.equal(b.x.AGUBackup20.keys().length,9);
+ const bundle=clone(b.x.AGUBackup20.capture());assert.equal(b.x.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
  assert.equal(b.x.AGUBackup20.validateRecord(KEY,JSON.parse(b.records.get(KEY))),true);
  const restored=boot();assert.equal(restored.x.AGUBackup20.importMissing(bundle).added,1);
  assert.equal(restored.x.AGUReview.validateBackupObject({schema:'agu-review-backup-v1',data:JSON.parse(b.records.get(KEY))}).length,1);
@@ -87,7 +87,7 @@ check('filtro por dificuldade real restringe a sessão sem reclassificar nível'
  assert.match(x.AGUReview.page(),/Nível cognitivo original 4/);
 });
 check('LEG07/08 continuam na única categoria de leitor, sem caderno paralelo',()=>{
- const {x,records}=boot();assert.equal(x.AGUBackup20.keys().length,9);
+ const {x,records}=boot();assert.equal(x.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
  assert.equal(x.AGULegal.peek().forNotebook,undefined);
  assert.equal(typeof x.AGULegal.notebookSave,'function');assert.equal(typeof x.AGULegal.notebookSetStatus,'function');
  x.AGUReview.deckStart('ADM-06');assert.equal(x.AGUReview.notebookDue().length,0);

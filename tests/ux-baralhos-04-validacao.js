@@ -39,7 +39,7 @@ check('histórico longo, revisão, caderno e backup são independentes da leitur
  const {z,records}=boot({[KEY]:data}),before=records.get(KEY);
  z.AGUReview.select('ri-con-01');assert.match(z.AGUReview.page(),/Avaliações anteriores: 1400 · sem agenda local/);
  assert.equal(z.AGUReview.reviewInfo('ri-con-01').seen,0);
- assert.equal(z.AGUBackup20.keys().length,9);assert.equal(z.AGUReview.exactDeck('ADM/Atos administrativos'),null);
+ assert.equal(z.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);assert.equal(z.AGUReview.exactDeck('ADM/Atos administrativos'),null);
  assert.deepEqual(clone(z.AGUReview.exactDeck('ADM-06')),{code:'ADM-06',discipline:'ADM',count:12});
  assert.equal(records.get(KEY),before);
  const bundle=z.AGUBackup20.capture(),restored=boot();assert.equal(restored.z.AGUBackup20.importMissing(bundle).added,1);

@@ -8,5 +8,5 @@ module.exports=function expectedAfterCodigos(file,previous){
  if(change)assert.equal(previous,change.before,'Cadeia anterior incompatível: '+file);
  const first=change?change.after:previous,following=next.changed[file];
  if(following)assert.equal(first,following.before,'Cadeia BIBLIOTECA-02 incompatível: '+file);
- return following?following.after:first;
+ return require('./hash-chain-metodo-backup.cjs')(file,following?following.after:first);
 };

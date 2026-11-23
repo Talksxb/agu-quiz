@@ -1,5 +1,5 @@
-/* Sprint 20: backup local completo, exportação e restauração apenas de chaves ausentes.
-   Nenhuma rede, sincronização, coleta remota nem alteração de dados já armazenados. */
+/* Backup S20: nove categorias históricas preservadas. MÉTODO-AGU-003 acrescenta
+   livros opcionais e adição explícita de capítulos ausentes, sem substituir registros. */
 (function(root){
 'use strict';
 const MAX=12000000;
@@ -12,7 +12,8 @@ const entries=[
  ['agu_leitor_juridico_s13_v1','Comentários do Leitor Jurídico'],
  ['agu_consolidacao_s17_v1','Preferências da Biblioteca'],
  ['agu_quiz_curriculo_repo_v1','Matriz curricular importada'],
- ['agu_quiz_mapeamento_questoes_v1','Mapeamento curricular pessoal']
+ ['agu_quiz_mapeamento_questoes_v1','Mapeamento curricular pessoal'],
+ ['agu_livros_reader_v1','Percurso do Método AGU']
 ];
 const keys=new Set(entries.map(x=>x[0]));
 const isObj=x=>x&&typeof x==='object'&&!Array.isArray(x);
@@ -22,6 +23,7 @@ const fileBytes=value=>new Blob([value]).size;
 function validateRecord(key,obj){
  if(!isObj(obj))return false;
  switch(key){
+ case 'agu_livros_reader_v1':return root.AGUMethodProgress?.validate(obj)===true;
  case 'agu_quiz_mvp1_2026':{
   if(obj.version!==1||!isObj(obj.topic)||!capArr(obj.answers)||!capArr(obj.sessions)||!capArr(obj.reviews)||!capArr(obj.notebook))return false;
   const hasUniqueIds=arr=>new Set(arr.map(x=>x.id)).size===arr.length;
@@ -138,6 +140,7 @@ function validateBundle(raw){
  if(typeof raw==='string'&&fileBytes(raw)>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
  const b=typeof raw==='string'?JSON.parse(raw):raw;
  if(!isObj(b)||b.schema!=='agu-portable-local-s20-v1'||b.version!==1||!isObj(b.items)||Object.keys(b.items).length>keys.size)throw Error('Formato de backup local incompatível.');
+ if(['__proto__','prototype','constructor'].some(k=>Object.hasOwn(b,k)||Object.hasOwn(b.items,k)))throw Error('Chave perigosa no formato de backup.');
  for(const [key,value] of Object.entries(b.items)){
   if(!keys.has(key)||typeof value!=='string'||fileBytes(value)>MAX)throw Error('Categoria não autorizada ou excedendo limite.');
   let obj;try{obj=JSON.parse(value)}catch(_){throw Error('JSON inválido na categoria '+key)}
@@ -146,18 +149,52 @@ function validateBundle(raw){
  if(fileBytes(JSON.stringify(b))>MAX)throw Error('Backup ultrapassa o limite de 12 MB.');
  return b;
 }
-function importMissing(raw){
- const b=validateBundle(raw);
- const missing=Object.entries(b.items).filter(([key])=>localStorage.getItem(key)===null);
+const BOOKS='agu_livros_reader_v1';
+function previewRestore(raw,{mergeBooks=false}={}){
+ const b=validateBundle(raw),expected={},operations=[],categories=[],books={added:[],kept:[],skipped:[],conflicts:[],references:[]};
+ for(const [key,value] of Object.entries(b.items)){
+  const previous=localStorage.getItem(key);expected[key]=previous;
+  categories.push({key,label:entries.find(x=>x[0]===key)[1],action:previous===null?'adicionar':'preservar'});
+  if(previous===null)operations.push({key,previous,value});
+  if(key!==BOOKS)continue;
+  const incoming=JSON.parse(value);let current={};
+  if(previous!==null&&mergeBooks){try{current=JSON.parse(previous)}catch{throw Error('Percurso local inválido; os dados anteriores foram preservados.')}if(!validateRecord(BOOKS,current))throw Error('Percurso local inconsistente; preserve os dados anteriores.');}
+  for(const [id,record] of Object.entries(incoming)){
+   books.references.push(root.AGUMethodProgress.assess(id,record));
+   if(previous!==null&&!mergeBooks)books.skipped.push(id);
+   else if(previous===null||!Object.hasOwn(current,id))books.added.push(id);
+   else{books.kept.push(id);if(JSON.stringify(current[id])!==JSON.stringify(record))books.conflicts.push(id);}
+  }
+  if(previous!==null&&mergeBooks&&books.added.length){
+   const merged={...current};for(const id of books.added)merged[id]=incoming[id];
+   const value=JSON.stringify(merged);if(fileBytes(value)>MAX)throw Error('Percurso combinado excede 12 MB; nenhum dado foi alterado.');
+   operations.push({key,previous,value});categories[categories.length-1].action='adicionar capítulos ausentes';
+  }
+ }
+ // Somente livros podem modificar uma categoria existente, e sempre na última escrita.
+ operations.sort((a,b)=>Number(a.previous!==null)-Number(b.previous!==null));
+ return {expected,operations,categories,books};
+}
+function restore(raw,{mergeBooks=false,expected=null}={}){
+ const plan=previewRestore(raw,{mergeBooks});
+ if(expected&&(Object.keys(expected).length!==Object.keys(plan.expected).length||Object.keys(plan.expected).some(k=>expected[k]!==plan.expected[k])))throw Error('Os dados locais mudaram desde a prévia. Selecione o arquivo novamente para conferir.');
  const written=[];
  try{
-  for(const [key,value] of missing){if(localStorage.getItem(key)!==null)continue;localStorage.setItem(key,value);written.push(key)}
+  for(const op of plan.operations){
+   if(localStorage.getItem(op.key)!==op.previous)throw Error('Os dados locais mudaram durante a restauração.');
+   localStorage.setItem(op.key,op.value);written.push(op);
+  }
  }catch(e){
-  for(const key of written)try{localStorage.removeItem(key)}catch(_){}
-  throw Error('Armazenamento insuficiente; tentativa revertida: '+e.message);
+  const pending=[];
+  for(const op of [...written].reverse()){
+   try{if(localStorage.getItem(op.key)===op.value){if(op.previous===null)localStorage.removeItem(op.key);else localStorage.setItem(op.key,op.previous)}}catch{pending.push(op.key)}
+  }
+  throw Error(pending.length?'Restauração parcial: não foi possível desfazer '+pending.length+' inserção(ões). Preserve o arquivo e este navegador. '+e.message:'Armazenamento indisponível ou dados alterados; tentativa revertida: '+e.message);
  }
- return {added:written.length,skipped:Object.keys(b.items).length-written.length,keys:written};
+ const added=written.filter(op=>op.previous===null).length;
+ return {added,skipped:plan.categories.length-added,keys:written.map(op=>op.key),chaptersAdded:plan.books.added.length,chaptersKept:plan.books.kept.length,chaptersSkipped:plan.books.skipped.length};
 }
+function importMissing(raw){const {added,skipped,keys}=restore(raw);return {added,skipped,keys}}
 function exportFile(){
  try{
   const str=JSON.stringify(capture(),null,2),blob=new Blob([str],{type:'application/json'});
@@ -173,21 +210,48 @@ async function readFile(input){
   if(file.size>MAX)throw Error('Arquivo maior que 12 MB.');
   const raw=await file.text();if(raw.length>MAX)throw Error('Arquivo maior que 12 MB.');
   const b=validateBundle(raw),missing=Object.keys(b.items).filter(k=>localStorage.getItem(k)===null);
+  if(Object.hasOwn(b.items,BOOKS)){showPreview(raw);return;}
   if(!confirm('Restaurar '+missing.length+' categoria(s) ausente(s)? Nenhum dado atual será substituído. O aplicativo precisará recarregar.'))return;
   const out=importMissing(raw);
   alert(out.added+' categoria(s) restaurada(s), '+out.skipped+' preservada(s). Recarregue a página para carregar o backup.');
  }catch(e){alert('Backup rejeitado: '+e.message)}
  finally{if(input)input.value=''}
 }
+function showPreview(raw){
+ const make=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node};
+ document.getElementById('agu-backup-preview')?.remove();
+ const dialog=make('dialog');dialog.id='agu-backup-preview';dialog.className='agu-backup-preview';dialog.setAttribute('aria-labelledby','agu-backup-preview-title');
+ const title=make('h2','Conferir restauração');title.id='agu-backup-preview-title';title.tabIndex=-1;
+ const intro=make('p','Seus dados continuam locais. As nove categorias anteriores só são adicionadas quando ausentes. Capítulos existentes serão preservados por inteiro, inclusive seus rascunhos, edições e campos adicionais.');
+ const label=make('label'),merge=make('input');merge.type='checkbox';merge.id='agu-backup-merge-books';label.htmlFor=merge.id;label.append(merge,document.createTextNode(' Adicionar também capítulos ausentes no percurso já existente'));
+ const list=make('ul'),detail=make('p'),warnings=make('ul'),error=make('p'),row=make('div'),cancel=make('button','Cancelar'),apply=make('button','Confirmar restauração');
+ error.setAttribute('role','alert');error.tabIndex=-1;detail.setAttribute('role','status');row.className='btnrow';cancel.type=apply.type='button';cancel.className=apply.className='secondary';
+ let plan,completed=false;
+ function refresh(){
+  error.textContent='';list.replaceChildren();warnings.replaceChildren();
+  try{plan=previewRestore(raw,{mergeBooks:merge.checked});apply.disabled=false;
+   for(const c of plan.categories)list.appendChild(make('li',c.label+': '+c.action+'.'));
+   detail.textContent=plan.books.added.length+' capítulo(s) a adicionar; '+plan.books.kept.length+' registro(s) local(is) preservado(s); '+plan.books.skipped.length+' registro(s) do arquivo não aplicado(s). Nenhum registro existente será substituído.';
+   for(const id of plan.books.kept)warnings.appendChild(make('li',id+': registro atual preservado; a cópia do arquivo não será aplicada.'));
+   for(const id of plan.books.skipped)warnings.appendChild(make('li',id+': não será importado; o percurso local será mantido como está.'));
+   for(const r of plan.books.references){if(!r.known)warnings.appendChild(make('li',r.id+': capítulo fora do catálogo atual. Registro será guardado sem abrir conteúdo ou atribuir aprendizagem.'));else if(r.mismatch)warnings.appendChild(make('li',r.title+': registro da edição '+r.edition+'; edição atual '+r.currentEdition+'. O histórico será preservado e não marcará a edição atual como lida.'));else if(r.legacy)warnings.appendChild(make('li',r.title+': registro antigo sem edição identificada. Confira a posição ao retomar.'));}
+  }catch(e){apply.disabled=true;plan=null;error.textContent=e.message;}
+ }
+ merge.addEventListener('change',refresh);cancel.addEventListener('click',()=>dialog.close());
+ apply.addEventListener('click',()=>{if(!plan)return;try{const result=restore(raw,{mergeBooks:merge.checked,expected:plan.expected});const status=document.getElementById('agu-backup-status');if(status)status.textContent=result.added+' categoria(s) restaurada(s); '+result.chaptersAdded+' capítulo(s) adicionado(s), '+result.chaptersKept+' preservado(s), '+result.chaptersSkipped+' não aplicado(s). Recarregue a página ou retome o capítulo para carregar os registros.';completed=true;dialog.close();}catch(e){error.textContent=e.message;error.focus();}});
+ dialog.addEventListener('close',()=>{dialog.remove();document.getElementById(completed?'agu-backup-status':'agu-s20-restore')?.focus();});
+ row.append(cancel,apply);dialog.append(title,intro,label,list,detail,warnings,error,row);document.body.appendChild(dialog);refresh();dialog.showModal();title.focus();
+}
 function panel(){
  let count=0;try{for(const [key] of entries)if(localStorage.getItem(key)!==null)count++}catch(_){}
- return '<div class="card section"><h2>Backup local completo</h2>'+
- '<p>Cópia de '+count+' de '+entries.length+' categorias locais: histórico, questões, revisões, Caderno, sessões, planejamento, notas e matriz importada. O arquivo pode conter informações pessoais; guarde-o de forma privada. Nada é enviado a servidores.</p>'+
- '<p class="muted">A restauração completa só preenche categorias ausentes. <b>Não substitui nem mescla categorias existentes.</b> Para recuperar tentativas/notas dentro de uma categoria já usada, utilize a importação do módulo correspondente. Limite: 12 MB.</p>'+
+ const p=typeof URLSearchParams==='function'?new URLSearchParams(root.location?.search||''):null,id=p?.get('livro'),back=p?.get('retorno')==='metodo'?'<p><a href="livros-agu.html'+(id&&/^[a-z0-9][a-z0-9-]{0,139}$/.test(id)?'?livro='+encodeURIComponent(id):'')+'">Retomar o Método AGU</a></p>':'';
+ return '<style>.agu-backup-preview{box-sizing:border-box;width:680px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;border:1px solid #aebfc5;border-radius:12px;padding:20px;color:#172b39;background:#fff;overflow-wrap:anywhere}.agu-backup-preview::backdrop{background:#102b3baa}.agu-backup-preview h2{font-size:22px}.agu-backup-preview input[type=checkbox]{width:auto;min-height:24px}.agu-backup-preview label{display:block;margin:18px 0}.agu-backup-preview button{min-height:44px}.agu-backup-preview .btnrow{display:flex;flex-wrap:wrap;gap:10px}</style><div class="card section"><h2 id="agu-s20-backup-title" tabindex="-1">Backup local completo</h2>'+back+
+ '<p>Cópia de '+count+' de '+entries.length+' categorias locais: histórico, questões, revisões, Caderno, sessões, planejamento, notas, matriz importada e percurso do Método AGU. O arquivo pode conter informações pessoais; guarde-o de forma privada. Nada é enviado a servidores.</p>'+
+ '<p class="muted">A restauração preenche categorias ausentes. <b>As nove categorias anteriores não são substituídas nem mescladas.</b> No percurso, você pode escolher adicionar capítulos ausentes; capítulos existentes permanecem inteiros. Confira a prévia. Limite: 12 MB.</p><p id="agu-backup-status" role="status" tabindex="-1"></p>'+
  '<div class="btnrow"><button class="secondary" type="button" onclick="AGUBackup20.exportFile()">Exportar cópia completa</button>'+
- '<button class="secondary" type="button" onclick="document.getElementById(\'agu-s20-backup-file\').click()">Restaurar categorias ausentes</button>'+
+ '<button class="secondary" id="agu-s20-restore" type="button" onclick="document.getElementById(\'agu-s20-backup-file\').click()">Restaurar categorias ausentes</button>'+
  '<input class="hidden" type="file" id="agu-s20-backup-file" accept="application/json" onchange="AGUBackup20.readFile(this)"></div></div>';
 }
-root.AGUBackup20={panel,capture,validateBundle,validateRecord,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};
+root.AGUBackup20={panel,capture,validateBundle,validateRecord,previewRestore,restore,importMissing,exportFile,readFile,keys:()=>entries.map(([key,label])=>({key,label}))};
 })(window);
 

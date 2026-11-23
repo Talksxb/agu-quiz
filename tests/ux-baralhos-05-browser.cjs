@@ -109,7 +109,7 @@ async function main(){
   assert.deepEqual(Object.keys(snapshot.items).sort(),[REVIEW,READER,PLAN].sort());
   const isolated=await browser.newContext({viewport:{width,height:900}}),q=await isolated.newPage();
   await q.goto(origin,{waitUntil:'load'});
-  const imported=await q.evaluate(bundle=>({first:AGUBackup20.importMissing(bundle),second:AGUBackup20.importMissing(bundle),size:AGUBackup20.keys().length,notes:JSON.parse(localStorage.getItem('agu_leitor_juridico_s13_v1')).forNotebook.length}),snapshot);
+  const imported=await q.evaluate(bundle=>({first:AGUBackup20.importMissing(bundle),second:AGUBackup20.importMissing(bundle),size:AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,notes:JSON.parse(localStorage.getItem('agu_leitor_juridico_s13_v1')).forNotebook.length}),snapshot);
   assert.equal(imported.first.added,3);assert.equal(imported.second.added,0);
   assert.equal(imported.size,9);assert.equal(imported.notes,5);
   await isolated.close();

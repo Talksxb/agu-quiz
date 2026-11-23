@@ -6,7 +6,7 @@ const BASE=(process.env.AGU_TEST_URL||'https://talksxb.github.io/agu-quiz/').rep
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
 const catalog=read('livros/catalogo.json'),chapters=catalog.disciplines.flatMap(d=>d.chapters);
-const files=new Set(['index.html','livros-agu.html','laboratorio-leitura.html','metodo-agu.js','metodo-agu.css','revisao-inteligente.js','dados/flashcards-editoriais.js','livros/catalogo.json',...catalog.collections]);
+const files=new Set(['index.html','livros-agu.html','laboratorio-leitura.html','metodo-agu.js','metodo-agu.css','metodo-agu-progresso.js','dados/metodo-agu-referencias.js','backup-local-s20.js','revisao-inteligente.js','dados/flashcards-editoriais.js','livros/catalogo.json',...catalog.collections]);
 for(const c of chapters){
  files.add(c.reader);files.add(c.method);
  const data=read(c.method);files.add(data.canonical);

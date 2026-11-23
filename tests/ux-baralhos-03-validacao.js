@@ -97,7 +97,7 @@ check('intervalos e restauração de nove categorias continuam no motor original
  for(const [grade,stage,days] of [['errei',0,1],['dificil',0,1],['lembrei',1,7],['facil',2,21]]){
   const {z}=boot();z.AGUReview.deckStart('CON-02');z.AGUReview.reveal();z.AGUReview.rate(grade);
   const info=z.AGUReview.reviewInfo('ri-con-01');assert.equal(info.due,day(days));
-  assert.equal(z.AGUBackup20.keys().length,9);assert.equal(z.AGUReview.attemptsInfo().length,1);
+  assert.equal(z.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);assert.equal(z.AGUReview.attemptsInfo().length,1);
  }
  const {z,saved}=boot();z.AGUReview.deckStart('CON-02');z.AGUReview.reveal();z.AGUReview.rate('facil');
  z.AGUReview.reveal();z.AGUReview.rate('errei');assert.equal(z.AGUReview.deckRepeat(),true);
