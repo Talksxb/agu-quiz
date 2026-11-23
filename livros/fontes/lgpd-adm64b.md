@@ -14,6 +14,8 @@
 }
 ---
 
+# LGPD aplicada à Administração Pública — fonte editorial de revisão
+
 <!-- Migração literal dos blocos da edição pública, sem revisão jurídica. -->
 
 <!-- AGU_EDITOR_SECTION_START:01 -->

@@ -15,7 +15,7 @@
         {
           "id": "cf",
           "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
-          "locator": "Constituição; artigos citados na edição",
+          "locator": "Constituição Federal, arts. 23, 24, 30 e 225, nos recortes da edição original",
           "consultedAt": "2026-11-20",
           "status": "parcial",
           "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
@@ -24,7 +24,7 @@
       ],
       "chapterEdition": "1.0",
       "cardVersion": "1.0",
-      "status": "candidato",
+      "status": "em_revisao",
       "nature": "autoral",
       "cognitiveType": "recuperacao_fundamentada",
       "category": "distincao_entre_institutos",
@@ -35,7 +35,7 @@
           "amb-03-s14": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88"
         },
         "sources": {
-          "cf": "6662258784ad863645a9ac6ebf87f7b4cf2f6dbcaaf0cd68f38317661962409b"
+          "cf": "723ab3cfa676f0d4017355e01cb2fe77a14e9a27442983f1acecbea82f2146a6"
         }
       },
       "duplicateOf": null,
@@ -55,16 +55,25 @@
         {
           "id": "cf",
           "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
-          "locator": "Constituição; artigos citados na edição",
+          "locator": "Constituição Federal, arts. 23, 24, 30 e 225, nos recortes da edição original",
           "consultedAt": "2026-11-20",
           "status": "parcial",
           "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
+          "revision": "1"
+        },
+        {
+          "id": "stf-tema-145",
+          "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=145",
+          "locator": "STF RE 586.224/SP, Tema 145; tese conforme seção 13 da edição original",
+          "consultedAt": "2026-11-20",
+          "status": "parcial",
+          "scope": "Conferência declarada no capítulo original; sem nova conferência nesta migração",
           "revision": "1"
         }
       ],
       "chapterEdition": "1.0",
       "cardVersion": "1.0",
-      "status": "candidato",
+      "status": "em_revisao",
       "nature": "autoral",
       "cognitiveType": "recuperacao_fundamentada",
       "category": "distincao_entre_institutos",
@@ -75,7 +84,8 @@
           "amb-03-s14": "88fbab16ae7b66961b0d469771fc4378a175be650c44bb5ed254d57576cddf88"
         },
         "sources": {
-          "cf": "6662258784ad863645a9ac6ebf87f7b4cf2f6dbcaaf0cd68f38317661962409b"
+          "cf": "723ab3cfa676f0d4017355e01cb2fe77a14e9a27442983f1acecbea82f2146a6",
+          "stf-tema-145": "f5ec441a49130a342d9963baf2ad11ff6dca79eed82c274fdcff184850d4379b"
         }
       },
       "duplicateOf": null,

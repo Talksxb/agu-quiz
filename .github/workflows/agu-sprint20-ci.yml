@@ -109,6 +109,25 @@ jobs:
         run: node tests/codigos-cc-cpc-validacao.js
       - name: Biblioteca 02 — matérias editoriais, filtros e preservação de dados
         run: node tests/biblioteca-leis-02-validacao.js
+  exportacao-editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependências opcionais de revisão, sem servidor
+        run: pip install python-docx==1.2.0 reportlab==4.4.9 PyMuPDF==1.26.6 jsonschema==4.26.0
+      - name: Schemas e transposição idempotente Word/PDF
+        run: python3 tests/metodo-agu-001-exportacao.py
+      - name: Gerar exemplo de revisão com diferenças explícitas
+        run: python3 scripts/exportar-metodo-agu.py --chapter amb-03 --out tests/artifacts-metodo-agu/revisao
+      - uses: actions/upload-artifact@v4
+        with:
+          name: metodo-agu-revisao-editorial
+          path: tests/artifacts-metodo-agu/revisao/
+          retention-days: 7
   navegador-chromium:
     runs-on: ubuntu-latest
     timeout-minutes: 20

@@ -8,7 +8,7 @@
     "name": "Direito Administrativo"
   },
   "edition": "1.0",
-  "metadataVersion": "1.0",
+  "metadataVersion": "1.1",
   "canonical": "livros/fontes/adm-53.md",
   "readerPath": "livros/adm-53.json",
   "reader": {
@@ -242,6 +242,6 @@
   "approval": {
     "status": "aprovado",
     "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
-    "inputSha256": "433e31fe97d0ae72ee6b884e645ce9f8bef1ee3b7d5247927ddf561d343212c1"
+    "inputSha256": "3ed14bb32099b2f3d5d6455de5f36c50a4aba515c37ef0e01867505c1831b932"
   }
 }

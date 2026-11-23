@@ -8,7 +8,7 @@
     "name": "Direito Digital"
   },
   "edition": "2.0",
-  "metadataVersion": "1.0",
+  "metadataVersion": "1.1",
   "canonical": "livros/fontes/lgpd-adm64b.md",
   "readerPath": "livros/lgpd-adm64b.json",
   "reader": {
@@ -274,6 +274,6 @@
   "approval": {
     "status": "aprovado",
     "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
-    "inputSha256": "f15290089a0d6509793879ff87b70a240c5534bd3b9128a3ce4c671160c2afaf"
+    "inputSha256": "1e227fd92f9d99b1f817d6074f333a61286a85644d4de51c6f3d328aed1697ba"
   }
 }

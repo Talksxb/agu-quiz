@@ -529,7 +529,7 @@
     {
       "id": "cf",
       "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
-      "locator": "Constituição; artigos citados na edição",
+      "locator": "Constituição Federal, arts. 23, 24, 30 e 225, nos recortes da edição original",
       "consultedAt": "2026-11-20",
       "status": "parcial",
       "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
@@ -543,6 +543,15 @@
       "status": "parcial",
       "scope": "Conferência declarada na edição original; não revalidada pelo compilador",
       "revision": "1"
+    },
+    {
+      "id": "stf-tema-145",
+      "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=145",
+      "locator": "STF RE 586.224/SP, Tema 145; tese conforme seção 13 da edição original",
+      "consultedAt": "2026-11-20",
+      "status": "parcial",
+      "scope": "Conferência declarada no capítulo original; sem nova conferência nesta migração",
+      "revision": "1"
     }
   ],
   "resources": [
@@ -551,7 +560,7 @@
       "type": "figure",
       "title": "Constituição: competências e proteção",
       "sectionId": "amb-03-s05",
-      "alt": "### Figura V1 — Árvore conceitual — a Constituição não tem uma competência ambiental única\n\n**Descrição alternativa substantiva:** A Constituição organiza quatro referências diferentes: o art. 23 trata da execução administrativa comum; os arts. 24 e 30 disciplinam a legislação concorrente, a suplementação e o interesse local; e o art. 225 impõe o dever material de proteção e a avaliação dos impactos quando exigida. A LC 140/2011 organiza a cooperação administrativa, sem eliminar a autonomia federativa nem dispensar a proteção ambiental.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "alt": "A Constituição organiza quatro referências diferentes: o art. 23 trata da execução administrativa comum; os arts. 24 e 30 disciplinam a legislação concorrente, a suplementação e o interesse local; e o art. 225 impõe o dever material de proteção e a avaliação dos impactos quando exigida. A LC 140/2011 organiza a cooperação administrativa, sem eliminar a autonomia federativa nem dispensar a proteção ambiental.",
       "src": "livros/recursos/amb-03-v1.svg",
       "orientation": "vertical",
       "origin": {
@@ -604,7 +613,7 @@
       "type": "figure",
       "title": "Cooperação e competências na LC 140",
       "sectionId": "amb-03-s06",
-      "alt": "### Figura V2 — 3.5. Supletividade, subsidiariedade e mora\n\n**Descrição alternativa substantiva:** A atuação supletiva substitui o exercício da ação de outro ente apenas diante de pressuposto jurídico demonstrado, como falta de órgão capacitado ou hipótese de mora juridicamente relevante. A atuação subsidiária é apoio técnico ou administrativo solicitado, sem transferir a titularidade decisória. Identificar a base legal, o gatilho, a competência final e a documentação impede confundir as duas figuras.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "alt": "A atuação supletiva substitui o exercício da ação de outro ente apenas diante de pressuposto jurídico demonstrado, como falta de órgão capacitado ou hipótese de mora juridicamente relevante. A atuação subsidiária é apoio técnico ou administrativo solicitado, sem transferir a titularidade decisória. Identificar a base legal, o gatilho, a competência final e a documentação impede confundir as duas figuras.",
       "src": "livros/recursos/amb-03-v2.svg",
       "orientation": "vertical",
       "origin": {
@@ -618,7 +627,7 @@
       "type": "figure",
       "title": "Fiscalização, licenciamento e sanção",
       "sectionId": "amb-03-s07",
-      "alt": "### Figura V3 — 4.2. Fluxo decisório de competência e fiscalização\n\n**Descrição alternativa substantiva:** O fluxograma começa distinguindo licença ou renovação de vistoria, auto e sanção. Para licenciamento, identifica o ente atribuído pela LC 140, examina localização, tipologia, hipótese federal, órgão estruturado, prazo e transição. Para fiscalização, preserva proteção e medidas urgentes, confronta auto do licenciador com atuação de outros entes e exige prova de omissão, insuficiência, duplicidade e confronto interpretativo com a Lei 15.190/2025; não há resultado automático.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "alt": "O fluxograma começa distinguindo licença ou renovação de vistoria, auto e sanção. Para licenciamento, identifica o ente atribuído pela LC 140, examina localização, tipologia, hipótese federal, órgão estruturado, prazo e transição. Para fiscalização, preserva proteção e medidas urgentes, confronta auto do licenciador com atuação de outros entes e exige prova de omissão, insuficiência, duplicidade e confronto interpretativo com a Lei 15.190/2025; não há resultado automático.",
       "src": "livros/recursos/amb-03-v3.svg",
       "orientation": "vertical",
       "origin": {
@@ -661,7 +670,7 @@
       "type": "figure",
       "title": "Solução institucional do caso AGU",
       "sectionId": "amb-03-s11",
-      "alt": "### Figura V4 — 8.7. Diagrama da resolução\n\n**Descrição alternativa substantiva:** O caso parte da rodovia presente em dois Estados. A situação orienta a competência licenciadora federal do IBAMA, a participação técnica dos demais entes sem duplicação de licenças, a fiscalização comum diante de dano, o cotejo de autos e da mora na renovação, a análise do enquadramento em LAE e a entrega de manifestação motivada com providências documentais e preventivas.\n\n**Visualização histórica preservada:** . Este link aponta para a seção que contém o gráfico; o SVG não foi extraído, redesenhado nem substituído.",
+      "alt": "O caso parte da rodovia presente em dois Estados. A situação orienta a competência licenciadora federal do IBAMA, a participação técnica dos demais entes sem duplicação de licenças, a fiscalização comum diante de dano, o cotejo de autos e da mora na renovação, a análise do enquadramento em LAE e a entrega de manifestação motivada com providências documentais e preventivas.",
       "src": "livros/recursos/amb-03-v4.svg",
       "orientation": "vertical",
       "origin": {
@@ -713,7 +722,8 @@
       "front": "Por que o Município pode legislar sobre matéria ambiental, embora\nnão apareça no caput do art. 24?",
       "back": "O art. 30, I–II, permite legislar sobre interesse local e\nsuplementar normas; Tema 145 reconhece competência ambiental municipal\nharmoniosa.",
       "sourceRefs": [
-        "cf"
+        "cf",
+        "stf-tema-145"
       ],
       "category": "distincao_entre_institutos",
       "cognitiveType": "recuperacao_fundamentada",
@@ -742,9 +752,9 @@
   "approval": {
     "status": "aprovado",
     "record": "Transposição de edição já pública na main 423c54c7; sem mudança jurídica. Gate de novas edições permanece explícito.",
-    "inputSha256": "cf2a2c02ea3ad8be70f2b9a672907961639bf7a9679c6caa1f154f8b316be5e4"
+    "inputSha256": "a76bf78f5dd187d4dd76c39bbad9cd28308ec9e44f021e75f5bd587e94d5bd6e"
   },
-  "inputSha256": "cf2a2c02ea3ad8be70f2b9a672907961639bf7a9679c6caa1f154f8b316be5e4",
+  "inputSha256": "a76bf78f5dd187d4dd76c39bbad9cd28308ec9e44f021e75f5bd587e94d5bd6e",
   "sourceSha256": "4d5f37014f1ff1366d2c56f7c07bf86ed37993d23ea9c5f86e3ae2588ac0f25f",
   "reviewCards": [
     {

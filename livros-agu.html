@@ -210,11 +210,11 @@ function renderCurrent(){
  blocks=segment(content);showBlock();
  $('read-guided').hidden=$('mode').value!=='guided';$('read-full').hidden=$('mode').value==='guided';
  setProgress();notify('Trecho '+(index+1)+' de '+book.pages.length+'. Inicie o cronômetro quando começar a ler.');
- focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);
+ focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);$('book').dataset.chapterId=book.id;
 }
 async function openBook(id){
  if(!Object.prototype.hasOwnProperty.call(manifest,id))return;const sequence=++openSequence;
- notify('');$('catalog').hidden=true;$('book').hidden=false;$('book-title').textContent='Carregando livro...';
+ notify('');$('catalog').hidden=true;$('book').hidden=false;$('book').removeAttribute('data-chapter-id');$('method-tabs').hidden=true;$('read-full').replaceChildren();$('method-activities').hidden=true;$('method-review').hidden=true;$('book-title').textContent='Carregando livro...';
  try{
  const response=await fetch(manifest[id],{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
