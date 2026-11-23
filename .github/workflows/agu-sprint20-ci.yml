@@ -319,6 +319,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: MÉTODO-AGU-002 — edição pública, catálogo, capítulos e recursos por hash
+        run: node tests/metodo-agu-002-pages.cjs
       - name: Verificar HTTPS, HTML e hashes do GitHub Pages ativo
         run: node tests/sprint21-pages.cjs
       - name: LEIT-META-002 — arquivo publicado por GitHub Pages
@@ -326,6 +328,10 @@ jobs:
           node -e "fetch('https://talksxb.github.io/agu-quiz/laboratorio-leitura.html').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{if(!t.includes('Laboratório de Leitura Jurídica'))throw Error('Conteúdo divergente'); console.log('LAB_PUBLICADO_OK')}).catch(e=>{console.error(e);process.exit(1)})"
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: Método AGU na URL publicada — quatro capítulos e quatro larguras
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/metodo-agu-001-browser.cjs
       - name: Códigos CC/CPC na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -424,6 +430,7 @@ jobs:
         with:
           name: agu-work01-publicado
           path: |
+            tests/artifacts-metodo-agu/
             tests/artifacts-leit-meta/
             tests/artifacts-livros-001/
             tests/artifacts-work01/
