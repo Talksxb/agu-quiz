@@ -16,7 +16,7 @@ Este procedimento vale para qualquer disciplina. Segue o padrão editorial públ
 | Catálogo de disciplinas | `livros/catalogo.json` | Gerado; inclui somente os capítulos aprovados da configuração |
 | Proposições candidatas | `livros/candidatos/cartoes.json` | Geradas de proposições explícitas; não são carregadas no motor |
 | Aprovação de cartões novos | `livros/editorial/cartoes-aprovados.json` | Snapshots revisados, com versão, prova de conferência e hash; vazio nesta execução |
-| Reuso de cartões históricos | `livros/editorial/cartoes-vinculados.json` | Referências aos IDs existentes, com alcance do vínculo e dependências |
+| Reuso de cartões existentes | `livros/editorial/cartoes-vinculados.json` | Referências a IDs históricos ou editoriais já aprovados, com alcance do vínculo e dependências |
 | Dados aprovados para o motor | `dados/flashcards-editoriais.js` | Somente snapshots aprovados; suspensos conservam identidade para histórico, sem entrar na seleção ativa |
 | Relatórios | `livros/relatorios/` | Hashes, diferenças de apresentação e dependências a revalidar |
 
