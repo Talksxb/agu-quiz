@@ -44,11 +44,31 @@ async function main() {
       const dl = page.waitForEvent('download'); await page.getByRole('button', { name: 'Exportar sessões', exact: true }).first().click(); const download = await dl, file = path.join(OUT, 'sessao-' + width + '.json'); await download.saveAs(file); assert.ok(E.validateDB(JSON.parse(fs.readFileSync(file, 'utf8'))));
       assert.deepEqual(await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, localStorage.getItem(k)])), Object.keys(prior)), prior, 'Outros percursos e agendas preservados');
       await page.screenshot({ path: path.join(OUT, 'resultado-' + width + '.png'), fullPage: false });
-      await page.getByRole('link', { name: 'Estudar esta seção', exact: true }).first().click(); await page.locator('#method-tabs').waitFor(); await page.waitForFunction(() => document.querySelectorAll('[data-source-section]').length > 0);
+      const targetQuestion = E.weaknesses(final.history[0])[0].q, targetChapter = JSON.parse(fs.readFileSync(path.join(ROOT, 'livros/metodo/' + targetQuestion.chapterId + '.json'))), targetIndex = targetChapter.sections.findIndex(s => s.id === targetQuestion.sectionId);
+      await page.getByRole('link', { name: 'Estudar esta seção', exact: true }).first().click();
+      await page.waitForFunction(([id, index]) => document.getElementById('page')?.value === String(index) && document.activeElement?.id === id, [targetQuestion.sectionId, targetIndex]);
+      assert.equal(new URL(page.url()).searchParams.get('secao'), targetQuestion.sectionId);
+      const top = await page.locator('#' + targetQuestion.sectionId).evaluate(el => el.getBoundingClientRect().top); assert.ok(top >= -1 && top < 150, 'Abre a seção indicada no topo da leitura');
+      await page.reload(); await page.waitForFunction(index => document.getElementById('page')?.value === String(index), targetIndex);
+      const following = (targetIndex + 1) % targetChapter.sections.length;
+      await page.locator('#page').selectOption(String(following)); assert.equal(new URL(page.url()).searchParams.has('secao'), false);
+      await page.reload(); await page.waitForFunction(index => document.getElementById('page')?.value === String(index), following);
       assert.ok(await page.locator('#book').isVisible()); assert.ok(await page.locator('#read-full').isVisible());
       await page.locator('#sim-context').click(); await page.getByRole('button', { name: 'Iniciar treino', exact: true }).waitFor(); await page.locator('#sim-mode').selectOption('estudo'); await page.locator('#sim-count').fill('4'); await page.getByRole('button', { name: 'Iniciar treino', exact: true }).click();
       await page.locator('input[name="sim-answer"]').first().check(); await page.getByRole('button', { name: 'Conferir esta questão', exact: true }).click(); assert.equal(await page.locator('.sim-correction').count(), 1); assert.ok(await page.locator('input[name="sim-answer"]').first().isDisabled()); await scan(page, 'estudo', scans);
       assert.deepEqual(errors, []); results.push({ width, scans, independentContext: true, physicalAndroid: false }); await context.close();
+    }
+    // Uma seção de outro livro ou inexistente não substitui o ponto válido salvo.
+    {
+      const context = await browser.newContext(), page = await context.newPage(); await page.goto(base);
+      await page.evaluate(() => localStorage.setItem('agu_livros_reader_v1', JSON.stringify({ 'amb-03': { page: 2, done: [1] } })));
+      for (const id of ['lgpd-adm64b-s09', 'secao-inexistente']) {
+        await page.goto(new URL('livros-agu.html?livro=amb-03&secao=' + id, base).href);
+        await page.locator('#book[data-chapter-id="amb-03"]').waitFor();
+        assert.equal(await page.locator('#page').inputValue(), '2'); assert.equal(new URL(page.url()).searchParams.has('secao'), false);
+        assert.deepEqual(await page.evaluate(() => JSON.parse(localStorage.getItem('agu_livros_reader_v1'))['amb-03'].done), [1]);
+      }
+      results.push({ invalidSection: true, crossChapterSection: true, savedPositionPreserved: true }); await context.close();
     }
     // Arquivo real em contexto independente: importação, conflito, UTF-8 e arquivamento explícito.
     {

@@ -216,25 +216,27 @@ function renderCurrent(){
  focusHeading();window.AGUMethod?.resetRendering();window.AGUMethod?.decorate(book,index);$('book').dataset.chapterId=book.id;$('method-backup').href='./?abrir=backup&retorno=metodo&livro='+encodeURIComponent(book.id);
 }
 async function openBook(id){
- if(!Object.prototype.hasOwnProperty.call(manifest,id))return;const sequence=++openSequence;
+ if(!Object.prototype.hasOwnProperty.call(manifest,id))return;const sequence=++openSequence,query=new URLSearchParams(location.search),requestedSection=query.get('livro')===id?query.get('secao'):null;
  notify('');$('catalog').hidden=true;$('book').hidden=false;$('book').removeAttribute('data-chapter-id');$('method-tabs').hidden=true;$('read-full').replaceChildren();$('method-activities').hidden=true;$('method-review').hidden=true;$('book-title').textContent='Carregando livro...';
  try{
  const response=await fetch(manifest[id],{cache:'no-cache'});if(!response.ok)throw Error('HTTP '+response.status);
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
  if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const previous=safeLoad()?.[id]||{},state=window.AGUMethodProgress.validate({[id]:previous})?window.AGUMethodProgress.active(previous,window.AGUMethod?.edition()):{};completed=Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
- const stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
+ const requestedIndex=window.AGUMethod?.indexForSectionId(requestedSection)??-1,stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=requestedIndex>=0?requestedIndex:stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
  $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
  const originalOk=typeof data.original_html==='string'&&/^livros\/[a-z0-9-]+\.html$/.test(data.original_html);
  $('book-original').hidden=!originalOk;
  if(originalOk)$('original-link').href=data.original_html;
  $('page').replaceChildren();data.pages.forEach((p,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=(i+1)+'. '+p.label;$('page').appendChild(op)});
- $('wpm').textContent='—';$('recall').value='';history.replaceState(null,'','?livro='+encodeURIComponent(id)+(location.hash||''));
+ $('wpm').textContent='—';$('recall').value='';history.replaceState(null,'','?livro='+encodeURIComponent(id)+(requestedIndex>=0?'&secao='+encodeURIComponent(requestedSection):'')+(location.hash||''));
  renderCurrent();
+ if(requestedIndex>=0)document.getElementById(requestedSection)?.focus({preventScroll:true});
  }catch(err){$('book-title').textContent='Livro indisponível';notify('Não foi possível carregar o livro: '+err.message)}
 }
 function closeBook(){if(running)pause();book=null;$('book').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);$('method-backup').href='./?abrir=backup&retorno=metodo';$('catalog-title').focus?.();window.AGUMethod?.renderCatalog()}
-function move(i){if(!book)return;index=Math.max(0,Math.min(book.pages.length-1,i));save();renderCurrent()}
+function clearSectionRequest(){if(book&&new URLSearchParams(location.search).has('secao'))history.replaceState(null,'','?livro='+encodeURIComponent(book.id)+(location.hash||''))}
+function move(i){if(!book)return;clearSectionRequest();index=Math.max(0,Math.min(book.pages.length-1,i));save();renderCurrent()}
 function finish(){
  if(!book)return;const t=Math.max(1000,elapsed());const raw=book.pages[index].text,word=countWords(raw);
  // A métrica só é interpretável quando o leitor termina o trecho; não é prova de compreensão.
@@ -257,7 +259,7 @@ $('next-block').addEventListener('click',()=>{block=Math.min(block+1,blocks.leng
 $('top').addEventListener('click',()=>{$('book-title').scrollIntoView({block:'start'});$('book-title').focus()});
 $('reset').addEventListener('click',()=>{if(!book||!confirm('Zerar somente as marcações deste livro neste navegador?'))return;completed=[];index=0;save();renderCurrent()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)pause()});
-window.AGULivros={openBook,move,pause,renderText,remember(i){if(!book||i===index)return;index=Math.max(0,Math.min(book.pages.length-1,i));$('page').value=String(index);save()}};
+window.AGULivros={openBook,move,pause,renderText,remember(i){if(!book||i===index)return;clearSectionRequest();index=Math.max(0,Math.min(book.pages.length-1,i));$('page').value=String(index);save()}};
 const requested=new URLSearchParams(location.search).get('livro');
 window.AGUMethod.init(manifest).then(()=>{if(requested&&manifest[requested])openBook(requested)});
 })();
