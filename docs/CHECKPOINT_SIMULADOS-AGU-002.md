@@ -73,3 +73,9 @@ O backup geral ainda não inclui simulados; exportação/importação próprias 
 A montagem de sessões, correção, cartões dos fundamentos e roteiro são automáticos. Não há geração de novas proposições jurídicas por IA em segundo plano. Quatro paráfrases históricas já públicas continuam no Leitor; nenhum banco de provas privado foi incorporado. A expansão histórica permanece a lacuna concreta.
 
 A próxima execução está delimitada integralmente em `docs/PROMPT_SIMULADOS-AGU-003.md`: pequena amostra pública verificável, distinguindo item histórico/gabarito/anulação de eventual adaptação atual, com vínculos reais e aproveitamento do pipeline de cartões existente. **Não executar 003 durante este fechamento.**
+
+## Complemento da conferência pública
+
+A PR #82 foi integrada em `ed773f49f7132bb189ab10161d9b150e7437a52c`, após CI `45272721876` aprovada no HEAD `f0930ac257898ceb139a11c2e0d0dad8a3475254`. O artefato `14865773287`, SHA-256 `7c656fcdebf88f9c54fd256df99cea99d8324b8abab2da9c010e43232e32a4f9`, confirmou 22 varreduras do simulado sem violações ou inconclusivos. A implantação Pages `45273796684` concluiu com sucesso. A jornada manual pública confirmou entrada pelo Método, 15/20, confiança, recarga sem renovar tempo, correção, prioridade para erro de alta confiança e cartão.
+
+Essa conferência encontrou um defeito adicional: o link indicava `lgpd-adm64b-s09`, mas o leitor descartava `secao` e abria Página 1. O teste anterior só exigia que o capítulo tivesse seções renderizadas, sem conferir o destino escolhido. A etapa 002 continua na branch complementar `fix/simulados-agu-002-secao`, com correção restrita no leitor e regressão exigindo seção, foco, posição, recarga, navegação seguinte e recusa de seção inválida/de outro livro. Não declarar a aceitação final apenas pelo primeiro merge. O fechamento factual da PR #82 deve apontar a PR complementar e sua CI/implantação efetivamente verificadas.
