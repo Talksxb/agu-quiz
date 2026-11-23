@@ -54,6 +54,10 @@ async function main() {
         snapshots.push({label,geometry,...axe});
       }
       await scan('Início');
+      if (width === 320) {
+        const navLabels = await page.locator('.side .nav > span').evaluateAll(labels => labels.map(e=>({height:e.getBoundingClientRect().height,line:parseFloat(getComputedStyle(e).lineHeight)})));
+        assert.ok(navLabels.every(r=>r.height<=r.line+1), 'quatro rótulos inteiros em 320 px');
+      }
       const cta = await page.locator('#continue-study').boundingBox();
       assert.ok(cta.y >= 0 && cta.y + cta.height < height - (touch || width <= 860 ? 78 : 0), 'continuar visível sem rolagem');
       await page.screenshot({path:path.join(OUT,`inicio-${width}-${touch?'toque':'mouse'}.png`),fullPage:true});
@@ -75,6 +79,10 @@ async function main() {
         await page.addStyleTag({content:':root{font-size:200%}'});
         const reflow = await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
         assert.ok(reflow.scroll <= reflow.width + 1, 'reflow com texto a 200%');
+        if (width === 320) {
+          const flow = await page.evaluate(()=>({navRows:new Set([...document.querySelectorAll('.side .nav')].map(e=>e.getBoundingClientRect().y)).size,summaryColumns:getComputedStyle(document.querySelector('.today-summary')).gridTemplateColumns.split(' ').length,linkColumns:getComputedStyle(document.querySelector('.today-links')).gridTemplateColumns.split(' ').length}));
+          assert.deepEqual(flow,{navRows:2,summaryColumns:1,linkColumns:1},'texto ampliado reorganiza os grupos');
+        }
         await page.locator('.hub-details summary').focus();
         const focus = await page.evaluate(()=>({focused:document.activeElement===document.querySelector('.hub-details summary'),bottom:document.activeElement.getBoundingClientRect().bottom,navTop:document.querySelector('.side').getBoundingClientRect().top}));
         assert.equal(focus.focused, true);

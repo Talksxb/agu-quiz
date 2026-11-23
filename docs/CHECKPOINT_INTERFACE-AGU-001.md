@@ -28,4 +28,6 @@ Publicação pretendida exclusivamente pelo fluxo GitHub Pages existente, após 
 
 A primeira CI (`45267376424`) confirmou os oito perfis e as 32 varreduras novas, Node e exportação. A regressão histórica Biblioteca 02 identificou overflow a 200% em 320 px: o span do contexto “Dispositivo selecionado” atingia 346 px. Correção restrita em CSS permite encolher e quebrar o texto desse contexto; o teste histórico permanece inalterado. A execução seguinte deve confirmar a correção e concluir as demais jornadas antes de publicar.
 
+A inspeção das capturas também motivou um ajuste delimitado: “Biblioteca” cabe em uma linha a 320 px; quando a fonte duplica, a navegação passa a duas linhas e indicadores/atalhos passam a uma coluna, evitando colunas estreitas com palavras fragmentadas. As regressões verificam esses arranjos, sem reduzir a fonte para caber.
+
 Continuidade em `docs/PROMPT_INTERFACE-AGU-002.md`, não executada neste lote.
