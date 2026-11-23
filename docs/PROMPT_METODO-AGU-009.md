@@ -41,3 +41,7 @@ Não regenerar conteúdo, não forçar schema approved, não calcular hash fict�
 ## Entrega
 
 Relatar HEAD/árvore de main e branch, CI relevante, arquivos/hashes efetivos (ou ausência), confronto texto/figuras/PDF, decisão por gate, fontes oficiais realmente verificadas, PR draft se houver alteração, lacunas restantes e prompt completo de continuidade. A mera ingestão não demonstra estudo, desempenho, domínio ou certificação integral do edital.
+
+## Nota de continuidade da linha principal
+
+No fechamento de 008, a main já havia avançado para **ee52ed2bc41a61cfd9db4ed803fd7a0840cfb1b6** pela integração de **INTERFACE-AGU-001 #84**, sem modificar catálogo ou manifesto Ambiental. A branch 008 permanece baseada no commit anterior por isolamento; antes de qualquer preparação em 009, reconfirmar HEAD e CI/deploy atuais, trabalhar sobre a base explicitamente revisada e **não incorporar alterações de PRs pendentes por conveniência**. A existência desta nota não substitui reconfirmação futura.
