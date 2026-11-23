@@ -33,3 +33,5 @@ A inspeção das capturas também motivou um ajuste delimitado: “Biblioteca”
 Na regressão S23, a premissa antiga de que o primeiro Tab alcança um botão foi atualizada para verificar primeiro o novo link de salto, sua visibilidade e a transferência real de foco ao conteúdo. O botão principal e o restante dos ensaios de foco/backup continuam verificados. O servidor desse ensaio passa a servir CSS com o tipo correto, permitindo testar a folha externa.
 
 Continuidade em `docs/PROMPT_INTERFACE-AGU-002.md`, não executada neste lote.
+
+A jornada WORK01 expôs a mesma falha de MIME em outros servidores legados: a folha externa era entregue como JavaScript/HTML/octet-stream e o layout testado deixava de corresponder ao real. Corrigido exclusivamente o tipo CSS nesses servidores de teste (26 arquivos); nenhuma asserção de produto, fixtures ou motores foi removida. Essa rodada deve validar as jornadas com os estilos realmente carregados.
