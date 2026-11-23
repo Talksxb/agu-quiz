@@ -102,3 +102,11 @@ O responsável deverá disponibilizar **em upload direto nesta conversa, ou por 
 **DECISÃO: AMB-04 continua NÃO PUBLICADO, REVISÃO PENDENTE.** A edição 1.0 não foi reproduzida com pretensão de equivalência integral, nem reescrita. Não alterados nenhum catálogo, manifesto, capítulo, dados, motor, cartões, agenda, backup, CI histórica, auditoria privada ou infraestrutura. Nesta branch, somente este checkpoint e o prompt de continuidade foram adicionados. CI da PR é regressão documental e **não** prova a aptidão jurídica ou técnica do capítulo ainda fora do catálogo.
 
 **Próxima etapa:** MÉTODO-AGU-009, com condição de entrada concreta: o pacote canônico de arquivos deve ser fornecido ou tornar-se acessível por link/ID autenticado; sem ele, não repetir pesquisa ou criar nova PR que apenas reproduza o mesmo bloqueio.
+
+## 6. Mudança concorrente da main durante o fechamento de 008
+
+Após a gravação inicial dos documentos, a main avançou de **1191267482ace4429cfd9d5f559a626461b29493** para **ee52ed2bc41a61cfd9db4ed803fd7a0840cfb1b6**, árvore **c154e7f7476f87aa8dc020a29a65935ad80f5fa7**, em commit direto **INTERFACE-AGU-001 (#84)**. A comparação pública mostra 36 arquivos de interface, estilos, workflows e testes; **nenhum arquivo do catálogo ou da coleção Ambiental foi alterado**: ambos conservaram os mesmos blobs, com AMB-04 produzido/revisão pendente/não publicado. A PR #82 de Simulados continua aberta/draft e não foi incorporada.
+
+Novo deploy nativo da main **45271753789: completed/success**. A CI main **45271755687: in_progress** no instante desta reconfirmação; não foi declarada verde antes da conclusão. CI/deploy anteriores 45230341092/45230340034 continuam registros históricos de sucesso no HEAD anterior, não selo da nova main.
+
+**A branch 008 continua ancorada deliberadamente no HEAD anterior**, para não incorporar alterações de interface por conveniência. Comparação entre a nova main e a branch 008: 2 commits à frente, 1 atrás; o **diff de conteúdo da PR contém apenas os dois documentos da etapa 008**. Não rebasear/mesclar enquanto a frente editorial permanece bloqueada. A criação desta PR draft não é publicação nem aprovação do novo código de interface.
