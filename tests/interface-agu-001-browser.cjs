@@ -56,7 +56,7 @@ async function main() {
       await scan('Início');
       if (width === 320) {
         const navLabels = await page.locator('.side .nav > span').evaluateAll(labels => labels.map(e=>({height:e.getBoundingClientRect().height,line:parseFloat(getComputedStyle(e).lineHeight)})));
-        assert.ok(navLabels.every(r=>r.height<=r.line+1), 'quatro rótulos inteiros em 320 px');
+        assert.ok(navLabels.every(r=>r.height<=r.line+1), 'quatro rótulos inteiros em 320 px: '+JSON.stringify(navLabels));
       }
       const cta = await page.locator('#continue-study').boundingBox();
       assert.ok(cta.y >= 0 && cta.y + cta.height < height - (touch || width <= 860 ? 78 : 0), 'continuar visível sem rolagem');
