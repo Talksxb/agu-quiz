@@ -22,6 +22,12 @@ O fluxo manual de navegador confirmou acesso pela Biblioteca, configuração 15/
 
 O fechamento da PR deverá registrar o **HEAD efetivamente aprovado**, a URL da CI, resultado dos jobs, correções necessárias e inconclusivos de acessibilidade. Este checkpoint de preparação não declara previamente CI aprovada. Android físico e TalkBack permanecem sem teste. Não foram criados Caderno, horas de estudo ou domínio do aluno a partir dos registros sintéticos.
 
+## Conferência da primeira CI remota
+
+A PR draft #82 foi criada com HEAD `ef1e5d24d8ff7a9d6fed8033164d677b9912f149`. A execução `45265299205` terminou aprovada, incluindo a jornada nova nas quatro larguras. O artefato `14860849622` foi recuperado e seu SHA-256 `37b772f8c08ff63d22c3c353e054b3b344f787c57693a065cb516104c3198adb` conferido. O relatório dos simulados contém vinte varreduras, zero violações e quatro inconclusivos `aria-prohibited-attr`, todos no mesmo grupo `.sim-presets`, além de retomada expirada e três casos adversariais de armazenamento aprovados.
+
+A revisão identificou que o contêiner de durações possuía nome acessível sem papel semântico. Foi acrescentado `role="group"`, preservando rótulo, controles e funcionamento. Esse ajuste exige nova CI e reconferência do relatório no **novo HEAD** antes do fechamento; a CI anterior permanece apenas evidência histórica.
+
 ## Continuidade
 
 `docs/PROMPT_SIMULADOS-AGU-002.md` contém o prompt completo da próxima execução: revisar o conjunto efetivo e, somente nessa nova etapa autorizada, integrar e conferir a publicação. Não executar 002 no fechamento de 001. O resultado da CI e o diff devem governar a decisão, sem usar apenas uma contagem de testes ou cartões.

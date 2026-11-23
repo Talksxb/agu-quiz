@@ -54,7 +54,7 @@
   function renderSetup() {
     body.replaceChildren();
     body.append(el('p', 'Comece pelas questões. Depois da correção, volte ao fundamento, ao cartão e à seção que precisa estudar. O resultado orienta seu próximo passo; não certifica domínio.'));
-    const presets = el('div', undefined, 'sim-presets'); presets.setAttribute('aria-label', 'Durações sugeridas');
+    const presets = el('div', undefined, 'sim-presets'); presets.setAttribute('role', 'group'); presets.setAttribute('aria-label', 'Durações sugeridas');
     for (const [n, m] of [[5, 7], [10, 12], [15, 20]]) presets.appendChild(button(n + ' questões · ' + m + ' min', () => { $('sim-count').value = n; $('sim-minutes').value = m; availability(); }, n === 15 ? 'primary' : ''));
     const form = el('form'), controls = el('div', undefined, 'controls'); form.addEventListener('submit', e => { e.preventDefault(); start(); });
     const mode = select('sim-mode', [['simulado', 'Simulado · correção ao terminar'], ['estudo', 'Estudo · conferir uma por vez']], 'simulado');
