@@ -8,6 +8,8 @@ O usuário solicitou expressamente executar SIMULADOS-AGU-002, conforme o prompt
 
 A consulta inicial confirmou `main` em `1191267482ace4429cfd9d5f559a626461b29493`, com MÉTODO-AGU-005/PR #80, e PR #82 aberta em rascunho, sem conflitos, HEAD `0708a29ffff3a37863eb7f73b7240cd38a3d7b07`. A CI histórica `45266434289` estava aprovada; seu relatório tinha vinte varreduras do simulado, zero violações e zero inconclusivos. Essa execução anterior não aprova antecipadamente os novos arquivos de 002.
 
+A primeira revisão de 002, HEAD `da823595ed7f65f74c54865bb4f61c9d67c6a63b`, passou na CI `45271537035`. O artefato `14866176492` foi baixado e teve SHA-256 `f4785c0c6b9c2e088ccaa8bddff074939b9c0044869cd18b4ef6d1c784e72e29` conferido: 22 varreduras do simulado, zero violações e zero inconclusivos, com importação/arquivamento e casos adversariais aprovados. Durante a CI, `main` avançou para `ee52ed2bc41a61cfd9db4ed803fd7a0840cfb1b6` com INTERFACE-AGU-001/PR #84 já integrada. O único conflito era a inserção de etapas e caminhos de artefatos na CI; ambas as jornadas foram preservadas na resolução. Não se integrou outra PR aberta. A combinação com a nova base exige nova CI e novo relatório do HEAD final antes de publicar.
+
 Foram consultados o prompt completo de 002, implementação e checkpoint de 001, ingestão Método AGU, backup/compatibilidade e protocolo existente de cartões. Aplicam-se os quatro documentos pedagógicos finais do Projeto AGU já consultados. O recorte é implementação e conteúdo de treino; não retoma uma aula, não pressupõe Caderno sincronizado e não atesta domínio do aluno. `agu-auditoria` privado não foi importado ou alterado.
 
 ## Revisão editorial e normativa

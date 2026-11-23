@@ -12,7 +12,7 @@ const server=http.createServer((req,res)=>{
  const f=path.resolve(ROOT,requested||'index.html');
  if(!f.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('denied')}
  fs.readFile(f,(e,b)=>{if(e){res.writeHead(404);return res.end('not found')}
- res.writeHead(200,{'Content-Type':f.endsWith('.html')?'text/html; charset=utf-8':f.endsWith('.js')?'application/javascript; charset=utf-8':'application/octet-stream','Cache-Control':'no-store'});res.end(b)});
+ res.writeHead(200,{'Content-Type':f.endsWith('.css')?'text/css;charset=utf-8':f.endsWith('.html')?'text/html; charset=utf-8':f.endsWith('.js')?'application/javascript; charset=utf-8':'application/octet-stream','Cache-Control':'no-store'});res.end(b)});
 });
 const KEYS=[
  'agu_quiz_mvp1_2026','agu_quiz_revisao_inteligente_v1','agu_quiz_planejamento_semanal_v1',
