@@ -1,0 +1,228 @@
+{
+  "schema": "agu-simulado-editorial-v1",
+  "edition": "1.0",
+  "checkedAt": "2026-11-23",
+  "sources": {
+    "lgpd": {"url":"https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html","checkedAt":"2026-11-23","status":"confirmado_pontualmente"},
+    "cf": {"url":"https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html","checkedAt":"2026-11-23","status":"confirmado_pontualmente"},
+    "lc140": {"url":"https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm","checkedAt":"2026-11-23","status":"confirmado_pontualmente"}
+  },
+  "records": [
+    {
+      "id":"sim-dig-01","version":"1.0","semanticKey":"lgpd-necessidade-coleta","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s04","curricularId":"ADM-64b","nature":"autoral","title":"Coleta mínima de dados",
+      "stem":"Para emitir uma certidão, uma autarquia pede também religião e histórico de saúde, embora esses campos não tenham relação demonstrada com o serviço. Qual deve ser a primeira providência na análise jurídica?",
+      "options":["Obter consentimento e manter todos os campos, pois ele supre a falta de pertinência.","Examinar a necessidade de cada campo e retirar os excessivos, considerando a finalidade do serviço.","Manter a coleta porque toda autarquia exerce finalidade pública.","Exigir apenas que o formulário tenha aviso de privacidade.","Substituir o consentimento por contrato, mantendo a mesma coleta."],"correct":1,
+      "feedback":["O consentimento não afasta os princípios do tratamento.","A necessidade limita o tratamento ao mínimo pertinente e proporcional à finalidade.","A natureza pública do órgão não dispensa necessidade e adequação.","Transparência é necessária, mas não torna legítima a coleta excessiva.","Trocar a base legal não corrige a ausência de necessidade."],
+      "explanation":"A análise começa pela finalidade e pelos dados estritamente necessários. O art. 6º, III, exige pertinência, proporcionalidade e ausência de excesso; consentimento ou aviso não dispensam esses requisitos.",
+      "card":{"front":"Um consentimento válido legitima a coleta de dados sem necessidade para a finalidade?","back":"Não. A base legal e os princípios são exigências cumulativas. Reduza os campos ao mínimo pertinente; dados sensíveis exigem ainda exame do regime do art. 11."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 6º, I–III; art. 11"}
+    },
+    {
+      "id":"sim-dig-02","version":"1.0","semanticKey":"lgpd-base-obrigacao-legal","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s04","curricularId":"ADM-64b","nature":"autoral","title":"Consentimento e obrigação legal",
+      "stem":"Uma lei impõe à autarquia a manutenção de cadastro com dados pessoais comuns. A assessoria conclui que todo registro depende obrigatoriamente do consentimento do titular. Qual é a avaliação correta?",
+      "options":["A conclusão procede, pois o consentimento é a única base aplicável ao Estado.","O cadastro é livre de qualquer princípio, porque foi previsto em lei.","A lei dispensa também informar a finalidade ao cidadão.","O cumprimento de obrigação legal pode fundamentar o tratamento, sem dispensar os demais requisitos da LGPD.","A ausência de consentimento exige converter o cadastro em banco privado."],"correct":3,
+      "feedback":["O art. 7º contém outras bases além do consentimento.","A base legal não afasta os princípios do art. 6º.","Transparência e finalidade continuam relevantes.","O art. 7º, II, contempla obrigação legal ou regulatória, articulada ao regime público.","A natureza do banco não elimina a necessidade de base e finalidade."],
+      "explanation":"Para dados comuns, o art. 7º, II, permite tratamento necessário ao cumprimento de obrigação legal ou regulatória. No Poder Público, deve-se examinar também o art. 23. Não se exige consentimento em todas as operações nem se presume autorização irrestrita.",
+      "card":{"front":"Qual erro há em exigir consentimento para toda operação de uma autarquia?","back":"O consentimento é uma entre várias bases. Uma obrigação legal pode sustentar o tratamento; finalidade pública, necessidade, transparência e segurança continuam exigíveis."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, arts. 6º, 7º, II, e 23"}
+    },
+    {
+      "id":"sim-dig-03","version":"1.0","semanticKey":"lgpd-dado-sensivel-saude","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s03","curricularId":"ADM-64b","nature":"autoral","title":"Dados pessoais sensíveis",
+      "stem":"Uma base identifica cada pessoa pelo nome e registra seu diagnóstico médico. Para definir o regime da LGPD, qual característica é decisiva?",
+      "options":["Diagnóstico vinculado a pessoa identificada é dado pessoal sensível.","Só há dado sensível quando o diagnóstico é publicado na internet.","A identificação pelo nome transforma o diagnóstico em dado anônimo.","Dados mantidos pelo Estado deixam de ser pessoais.","Dado de saúde exige apenas o regime de dados comuns do art. 7º."],"correct":0,
+      "feedback":["Informação referente à saúde ligada a pessoa natural integra o art. 5º, II.","A classificação não depende de divulgação pública.","A vinculação ao nome evidencia a identificação, em vez de anonimização.","A natureza pública do controlador não muda a classificação do dado.","Deve-se examinar o regime específico do art. 11."],
+      "explanation":"O art. 5º, II, inclui dado referente à saúde vinculado a pessoa natural. Sua coleta interna já é tratamento. A base, os limites e as salvaguardas precisam ser examinados no regime dos dados sensíveis.",
+      "card":{"front":"Quando um diagnóstico médico constitui dado sensível?","back":"Quando se refere a pessoa natural identificada ou identificável. Não é preciso publicação; o tratamento deve ser examinado à luz do art. 11 e dos princípios da LGPD."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 5º, I–II, e art. 11"}
+    },
+    {
+      "id":"sim-dig-04","version":"1.0","semanticKey":"lgpd-revisao-automatizada","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s09","curricularId":"ADM-64b","nature":"autoral","title":"Decisão exclusivamente automatizada",
+      "stem":"Um benefício é recusado por decisão tomada unicamente com base em tratamento automatizado de dados pessoais. A decisão afeta os interesses do requerente. Qual conclusão decorre diretamente do art. 20 da LGPD?",
+      "options":["O requerente só pode pedir revisão se provar discriminação dolosa.","A decisão é automaticamente nula por utilizar tecnologia.","O titular pode solicitar revisão da decisão, observados os requisitos legais.","O órgão deve necessariamente divulgar o código-fonte integral de todo sistema.","O art. 20 exige literalmente que toda revisão seja feita por pessoa natural."],"correct":2,
+      "feedback":["O direito não depende dessa prova prévia de dolo.","O uso de automação não produz, por si, nulidade automática.","O caput prevê o direito de solicitar revisão nessas condições.","O § 1º trata de informações sobre critérios e procedimentos, resguardados os segredos previstos.","A redação atual do caput não contém essa exigência literal de pessoa natural."],
+      "explanation":"O art. 20 assegura solicitação de revisão de decisão unicamente automatizada que afete interesses do titular. Não se deve acrescentar ao texto atual uma exigência literal de revisor humano nem confundir informação adequada com divulgação irrestrita de código-fonte.",
+      "card":{"front":"O art. 20 da LGPD exige literalmente revisão por pessoa natural?","back":"Não na redação atual. Ele assegura solicitar revisão de decisão unicamente automatizada que afete interesses, além das informações do § 1º, observados os segredos comercial e industrial."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 20, caput e § 1º, redação da Lei 13.853/2019"}
+    },
+    {
+      "id":"sim-dig-05","version":"1.0","semanticKey":"lgpd-estatal-concorrencia","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s06","curricularId":"ADM-64b","nature":"autoral","title":"Empresa estatal e regime de tratamento",
+      "stem":"Uma sociedade de economia mista atua em regime de concorrência, sujeita ao art. 173 da Constituição. Na operação comercial descrita, qual regime o art. 24 da LGPD determina?",
+      "options":["Regime próprio de órgão público em toda atividade, pelo controle estatal.","Dispensa de aplicação da LGPD, por se tratar de pessoa jurídica privada.","Aplicação exclusiva da Lei de Acesso à Informação.","Tratamento idêntico ao de órgão público se houver qualquer participação da União.","O mesmo tratamento dispensado às pessoas jurídicas de direito privado particulares."],"correct":4,
+      "feedback":["A forma de atuação concorrencial é relevante para o caput do art. 24.","A LGPD também se aplica a pessoas jurídicas privadas.","A existência de outras leis não exclui a LGPD.","Controle ou participação estatal não apagam a distinção do art. 24.","É a solução do caput; o parágrafo único distingue a execução de políticas públicas."],
+      "explanation":"O art. 24 usa critério funcional: atuação concorrencial recebe o regime privado; a operacionalização de políticas públicas, no âmbito de sua execução, recebe o tratamento do capítulo do Poder Público. Uma estatal pode exigir análise conforme a operação.",
+      "card":{"front":"Toda operação de empresa estatal recebe o regime público da LGPD?","back":"Não. O art. 24 distingue atuação concorrencial, tratada como privada, da execução de políticas públicas, tratada no âmbito do capítulo público."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 24, caput e parágrafo único"}
+    },
+    {
+      "id":"sim-dig-06","version":"1.0","semanticKey":"lgpd-compartilhamento-finalidade","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s06","curricularId":"ADM-64b","nature":"autoral","title":"Compartilhamento entre órgãos",
+      "stem":"Dois órgãos propõem compartilhar cadastros para finalidades descritas apenas como 'interesse público', sem identificar política ou atribuição legal. Qual ajuste é necessário segundo o art. 26?",
+      "options":["Basta que os dirigentes assinem um ofício de autorização genérica.","Identificar finalidades específicas de políticas públicas e atribuições legais, respeitando os princípios de proteção de dados.","Substituir a identificação da finalidade por mera promessa de segurança.","Publicar todos os cadastros para legitimar o compartilhamento.","Enviar todos os dados disponíveis, pois ambos são órgãos públicos."],"correct":1,
+      "feedback":["A forma documental não supre a finalidade específica.","O art. 26 exige finalidade específica e respeito aos princípios do art. 6º.","Segurança e finalidade são requisitos distintos.","Transparência não se confunde com exposição integral de dados.","O compartilhamento continua sujeito à necessidade e à finalidade."],
+      "explanation":"O art. 26 não contém autorização genérica para circular cadastros. O desenho da operação deve permitir identificar a política pública ou atribuição legal e demonstrar pertinência dos dados para essa finalidade.",
+      "card":{"front":"'Interesse público' genérico basta para compartilhar cadastros entre órgãos?","back":"Não. Delimite finalidade específica, política pública ou atribuição legal e dados necessários. A condição de órgão público não afasta os princípios do art. 6º."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 26, caput, e art. 6º"}
+    },
+    {
+      "id":"sim-dig-07","version":"1.0","semanticKey":"lgpd-controlador-operador","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s03","curricularId":"ADM-64b","nature":"autoral","title":"Controlador e operador",
+      "stem":"Na operação descrita, uma autarquia toma as decisões referentes ao tratamento e um fornecedor trata os dados em nome dela, seguindo essas decisões. Qual é a qualificação funcional indicada pelo art. 5º?",
+      "options":["Fornecedor controlador e autarquia operadora, pela hospedagem externa.","Ambos são necessariamente encarregados.","Autarquia titular dos dados e fornecedor autoridade nacional.","Autarquia controladora e fornecedor operador nessa operação.","Somente pessoas naturais podem ser controladoras."],"correct":3,
+      "feedback":["Hospedagem não define isoladamente quem toma as decisões.","Encarregado é figura distinta dos agentes de tratamento.","O titular é a pessoa natural a quem os dados se referem.","A classificação segue as funções efetivamente descritas no caso.","A definição contempla pessoa natural ou jurídica, pública ou privada."],
+      "explanation":"O controlador decide sobre o tratamento; o operador realiza o tratamento em nome do controlador. A conclusão vale para os fatos descritos e pode mudar se o fornecedor passar a determinar finalidade própria.",
+      "card":{"front":"Hospedar dados torna um fornecedor automaticamente controlador?","back":"Não. Examine a função real: quem decide sobre o tratamento é controlador; quem o realiza em nome dele é operador. O rótulo contratual, sozinho, não decide a operação."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 5º, V–VII"}
+    },
+    {
+      "id":"sim-dig-08","version":"1.0","semanticKey":"lgpd-seguranca-concepcao","topic":"Direito Digital · LGPD","chapterId":"lgpd-adm64b","sectionId":"lgpd-adm64b-s11","curricularId":"ADM-64b","nature":"autoral","title":"Segurança desde a concepção",
+      "stem":"Na contratação de um sistema público, a equipe propõe implantar primeiro e avaliar medidas de segurança apenas se ocorrer um incidente. Qual é a orientação diretamente compatível com o art. 46, § 2º?",
+      "options":["As medidas devem ser observadas desde a concepção do produto ou serviço até sua execução.","A segurança pode esperar pelo primeiro vazamento confirmado.","O dever alcança apenas o fornecedor, nunca a autarquia.","Um aviso de privacidade substitui controles técnicos e administrativos.","A segurança só é obrigatória em sistemas com dados sensíveis."],"correct":0,
+      "feedback":["É o marco temporal previsto no § 2º, em conexão com o dever do caput.","O dever é preventivo, não apenas reativo.","Os agentes de tratamento têm deveres que não desaparecem com a terceirização.","Informação e controles de segurança cumprem funções diferentes.","O art. 46 protege dados pessoais, com atenção proporcional aos riscos."],
+      "explanation":"A proteção deve integrar o desenho e a operação. O art. 46 exige medidas técnicas e administrativas aptas a proteger os dados, e seu § 2º determina observância desde a concepção até a execução.",
+      "card":{"front":"Quando começa o dever de observar medidas de segurança de um sistema?","back":"Desde sua concepção, continuando na execução. Não espere um incidente; escolha medidas técnicas e administrativas compatíveis com o tratamento e seus riscos."},
+      "sourceRefs":["lgpd"],"locator":{"lgpd":"LGPD, art. 46, caput e § 2º"}
+    },
+    {
+      "id":"sim-amb-01","version":"1.0","semanticKey":"ambiental-administrar-legislar","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s05","curricularId":"AMB-03","nature":"autoral","title":"Administrar e legislar",
+      "stem":"Um parecer afirma que a competência comum para proteger o meio ambiente equivale à competência de todos os entes para editar quaisquer normas gerais ambientais. Qual distinção deve ser feita?",
+      "options":["Os arts. 23 e 24 tratam apenas de competência judicial.","A proteção administrativa é reservada à União.","O art. 23 prevê competência administrativa comum; o art. 24 distribui competência legislativa concorrente.","O art. 24 afasta qualquer atuação administrativa municipal.","A competência administrativa comum torna dispensável a Constituição."],"correct":2,
+      "feedback":["Os dispositivos não distribuem competência de julgamento.","O art. 23 inclui os diferentes entes na competência comum.","A diferença entre executar e legislar impede essa equivalência automática.","O art. 23 permanece aplicável aos Municípios.","A cooperação deve respeitar a própria distribuição constitucional."],
+      "explanation":"Competência administrativa comum e competência legislativa concorrente são planos distintos. O art. 23 inclui os Municípios na proteção administrativa; o art. 24 tem caput e regras próprias para legislação, sem esgotar as competências municipais.",
+      "card":{"front":"Qual a diferença entre os arts. 23 e 24 em matéria ambiental?","back":"O art. 23 organiza atuação administrativa comum. O art. 24 distribui legislação concorrente, com normas gerais e suplementação. Não converta dever de proteger em poder legislativo irrestrito."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, arts. 23, VI–VII, e 24, VI–VIII e §§ 1º–4º"}
+    },
+    {
+      "id":"sim-amb-02","version":"1.0","semanticKey":"ambiental-normas-gerais-supervenientes","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s05","curricularId":"AMB-03","nature":"autoral","title":"Lei federal superveniente",
+      "stem":"Sem lei federal de normas gerais, um Estado legislou para atender a peculiaridades ambientais. Depois, surgiu norma geral federal incompatível com parte da lei estadual. Qual é o efeito descrito no art. 24, § 4º?",
+      "options":["Revogação integral de toda legislação estadual ambiental.","Inexistência de efeito, porque a lei estadual foi editada primeiro.","Revogação da norma federal no território estadual.","Nulidade retroativa de todo ato praticado sob a lei estadual.","Suspensão da eficácia da lei estadual no que contrariar a norma geral federal."],"correct":4,
+      "feedback":["O texto prevê suspensão de eficácia na parte contrária, não revogação integral.","A anterioridade não afasta a regra constitucional de superveniência.","A lei estadual não revoga a norma geral federal.","Esse efeito retroativo amplo não decorre do § 4º.","É a consequência delimitada pelo art. 24, § 4º."],
+      "explanation":"Na falta de normas gerais federais, o § 3º admite competência legislativa plena estadual para suas peculiaridades. A superveniência da lei federal suspende a eficácia da norma estadual apenas na incompatibilidade; não se trata de revogação automática de todo o diploma.",
+      "card":{"front":"Norma geral federal posterior revoga a lei estadual anterior?","back":"O art. 24, § 4º, fala em suspensão da eficácia da lei estadual no que for contrário. Preserve a distinção entre suspensão e revogação e delimite o conflito."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 24, §§ 3º–4º"}
+    },
+    {
+      "id":"sim-amb-03","version":"1.0","semanticKey":"ambiental-supletiva-subsidiaria","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s06","curricularId":"AMB-03","nature":"autoral","title":"Auxílio ou substituição",
+      "stem":"Um Município solicita apoio técnico a outro ente para exercer atribuição ambiental que continua sob sua responsabilidade. Sem substituição do titular da atribuição, como a LC 140 qualifica o auxílio?",
+      "options":["Atuação supletiva, pois qualquer cooperação implica substituição.","Atuação subsidiária, destinada a auxiliar quando solicitada pelo ente originariamente competente.","Avocação hierárquica obrigatória pelo ente apoiador.","Licenciamento simultâneo obrigatório por dois entes.","Intervenção federal, mesmo sem hipótese constitucional."],"correct":1,
+      "feedback":["A atuação supletiva envolve substituição nas hipóteses legais.","A descrição corresponde ao art. 2º, III.","Cooperação federativa não cria por si hierarquia entre entes.","Auxílio técnico não equivale a duplicar o licenciamento.","A hipótese não descreve intervenção constitucional."],
+      "explanation":"O art. 2º distingue atuação supletiva, com substituição, e subsidiária, com auxílio solicitado. Essa distinção permite identificar quem continua responsável pela decisão e evita presumir transferência de competência pelo simples apoio.",
+      "card":{"front":"Como distinguir atuação ambiental supletiva de subsidiária?","back":"Supletiva substitui o ente originariamente competente nas hipóteses legais. Subsidiária auxilia esse ente, quando ele solicita; apoio técnico não transfere automaticamente a atribuição."},
+      "sourceRefs":["lc140"],"locator":{"lc140":"LC 140/2011, art. 2º, II–III"}
+    },
+    {
+      "id":"sim-amb-04","version":"1.0","semanticKey":"ambiental-licenca-unico-ente","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s06","curricularId":"AMB-03","nature":"autoral","title":"Um ente licenciador",
+      "stem":"Para um mesmo empreendimento sujeito à distribuição de atribuições da LC 140, três entes reivindicam emitir licenças ambientais paralelas apenas por exercerem competência comum de proteção. Qual é a regra geral do art. 13?",
+      "options":["Cada ente emite uma licença necessária e cumulativa.","O empreendedor escolhe livremente o ente licenciador.","O maior financiador público assume sempre o licenciamento.","O licenciamento ou autorização ambiental compete a um único ente, conforme as atribuições legais.","Toda atividade com interesse público é licenciada pela União."],"correct":3,
+      "feedback":["Competência comum não impõe licenças cumulativas de todos os entes.","A definição decorre da lei, e não da livre escolha do interessado.","Financiamento não é critério geral autossuficiente da LC 140.","É a regra do art. 13, respeitada a repartição de atribuições.","Interesse público genérico não torna toda atribuição federal."],
+      "explanation":"A LC 140 separa dever comum de proteção e atribuição para licenciar. O art. 13 estabelece um único ente licenciador conforme os critérios legais. A questão não resolve regimes setoriais especiais nem elimina a participação e fiscalização dos demais entes.",
+      "card":{"front":"Competência ambiental comum exige várias licenças de entes diferentes?","back":"Não como regra da LC 140. O art. 13 prevê um único ente licenciador segundo a repartição legal; isso não exclui todas as demais formas de participação e fiscalização."},
+      "sourceRefs":["lc140"],"locator":{"lc140":"LC 140/2011, art. 13, caput e § 1º"}
+    },
+    {
+      "id":"sim-amb-05","version":"1.0","semanticKey":"ambiental-cooperacao-instrumentos","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s06","curricularId":"AMB-03","nature":"autoral","title":"Instrumentos de cooperação",
+      "stem":"Entes federativos querem formalizar apoio institucional ambiental sem presumir subordinação. Qual alternativa reúne instrumentos expressamente previstos no art. 4º da LC 140?",
+      "options":["Consórcios públicos e convênios ou acordos de cooperação técnica, observados os requisitos legais.","Apenas contratos privados de compra e venda de competência.","Somente intervenção federal e estado de defesa.","Exclusivamente ordens ministeriais hierárquicas dirigidas aos Municípios.","Renúncia definitiva às competências constitucionais por ofício."],"correct":0,
+      "feedback":["Os incisos I e II contemplam esses instrumentos.","A lei não prevê compra e venda de competências.","Medidas constitucionais excepcionais não substituem os instrumentos de cooperação.","Cooperação federativa não decorre dessa hierarquia geral.","Um ofício não elimina a distribuição constitucional de competências."],
+      "explanation":"A cooperação pode ser institucionalizada por instrumentos do art. 4º, como consórcios, convênios e acordos técnicos. Cada instrumento exige seus próprios pressupostos; enumerá-lo não dispensa a análise de quem decide e de quais ações podem ser delegadas.",
+      "card":{"front":"Que instrumentos podem organizar cooperação ambiental entre entes?","back":"Entre os previstos no art. 4º estão consórcios, convênios e acordos técnicos. A escolha do instrumento não dispensa seus requisitos nem apaga a titularidade constitucional das competências."},
+      "sourceRefs":["lc140"],"locator":{"lc140":"LC 140/2011, art. 4º, I–II"}
+    },
+    {
+      "id":"sim-amb-06","version":"1.0","semanticKey":"ambiental-degradacao-urgente","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s07","curricularId":"AMB-03","nature":"autoral","title":"Proteção diante de degradação iminente",
+      "stem":"Um ente toma conhecimento de degradação ambiental iminente em empreendimento licenciado por outro. Quanto às medidas urgentes do art. 17, § 2º, qual providência cabe?",
+      "options":["Aguardar o dano consumado antes de qualquer medida.","Transferir a propriedade do empreendimento ao licenciador.","Determinar medidas para evitar, fazer cessar ou mitigar a degradação e comunicar imediatamente ao órgão competente.","Abster-se de agir porque não emitiu a licença.","Cancelar automaticamente toda licença emitida por outro ente."],"correct":2,
+      "feedback":["O dispositivo alcança iminência e ocorrência de degradação.","O dispositivo não prevê essa transferência patrimonial.","É o dever protetivo e de comunicação previsto no § 2º.","A falta de atribuição licenciadora não elimina o dever urgente descrito.","As medidas protetivas não equivalem a cancelamento automático de qualquer licença."],
+      "explanation":"O art. 17, § 2º, impõe atuação protetiva a quem conhece a iminência ou ocorrência de degradação, com comunicação imediata. A conclusão se limita às medidas urgentes e não decide, por si, toda controvérsia sobre autos de infração concorrentes.",
+      "card":{"front":"Um ente sem atribuição licenciadora deve ignorar degradação iminente?","back":"Não. O art. 17, § 2º, exige medidas para evitar, cessar ou mitigar e comunicação imediata ao competente. Não confunda essa urgência com solução automática sobre prevalência de sanções."},
+      "sourceRefs":["lc140"],"locator":{"lc140":"LC 140/2011, art. 17, § 2º; escopo restrito às medidas urgentes"}
+    },
+    {
+      "id":"sim-amb-07","version":"1.0","semanticKey":"ambiental-uniao-normas-gerais","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s05","curricularId":"AMB-03","nature":"autoral","title":"Normas gerais e suplementação",
+      "stem":"Ao examinar lei ambiental estadual, um parecer sustenta que a existência de qualquer lei federal elimina a competência suplementar dos Estados. Qual resposta corresponde ao art. 24, §§ 1º–2º?",
+      "options":["A competência federal é sempre exclusiva em toda matéria ambiental.","Estados só podem legislar após autorização em decreto federal.","A competência suplementar estadual existe apenas para editar normas penais.","Toda norma estadual prevalece sobre qualquer norma geral federal.","A União estabelece normas gerais, e isso não exclui a competência suplementar dos Estados."],"correct":4,
+      "feedback":["O dispositivo examinado institui competência concorrente.","O § 2º não condiciona essa competência a decreto.","Não é esse o objeto da competência suplementar do art. 24.","A suplementação precisa ser compatível com a distribuição constitucional.","Essa é a articulação prevista nos dois parágrafos."],
+      "explanation":"A legislação concorrente combina normas gerais federais e competência suplementar estadual. A resposta não autoriza qualquer diferença estadual: o conflito precisa ser identificado no conteúdo e no alcance da norma geral.",
+      "card":{"front":"Lei federal sobre matéria ambiental elimina toda suplementação estadual?","back":"Não. O art. 24, §§ 1º–2º, articula normas gerais da União e suplementação dos Estados. Examine se a regra estadual suplementa ou contradiz a norma geral aplicável."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 24, VI–VIII e §§ 1º–2º"}
+    },
+    {
+      "id":"sim-amb-08","version":"1.0","semanticKey":"ambiental-licenciamento-conceito","topic":"Direito Ambiental · Competências","chapterId":"amb-03","sectionId":"amb-03-s06","curricularId":"AMB-03","nature":"autoral","title":"Licenciamento como procedimento",
+      "stem":"Uma nota confunde o procedimento de licenciamento com a própria licença final e afirma que só atividades comprovadamente poluidoras podem ser alcançadas. Como corrigir a definição à luz do art. 2º, I, da LC 140?",
+      "options":["Licenciamento é apenas o pagamento de uma taxa depois do início da atividade.","É procedimento administrativo destinado a licenciar atividades efetiva ou potencialmente poluidoras, utilizadoras de recursos ambientais ou capazes de causar degradação, nos termos legais.","Licenciamento é sentença judicial que substitui a ação administrativa.","O procedimento só existe depois da ocorrência de dano ambiental.","Licenciamento é sinônimo de auto de infração e só pode ser punitivo."],"correct":1,
+      "feedback":["A definição não se reduz a taxa nem pressupõe atividade iniciada.","O dispositivo define procedimento e inclui potencial de poluição ou degradação.","Trata-se de procedimento administrativo.","Sua lógica inclui atuação preventiva.","Licenciamento e sanção têm funções distintas."],
+      "explanation":"A LC 140 define o licenciamento como procedimento administrativo. A licença é um ato no contexto desse procedimento. A prevenção alcança o potencial de poluição ou degradação, sem exigir dano já consumado; a exigibilidade concreta depende do regime aplicável.",
+      "card":{"front":"É preciso dano ambiental consumado para existir licenciamento?","back":"Não. O procedimento tem função preventiva e pode alcançar atividades potencialmente poluidoras ou capazes de degradar, segundo o regime aplicável. Diferencie procedimento, licença e sanção."},
+      "sourceRefs":["lc140"],"locator":{"lc140":"LC 140/2011, art. 2º, I"}
+    },
+    {
+      "id":"sim-adm-01","version":"1.0","semanticKey":"agentes-concurso-emprego","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s06","curricularId":"ADM-54","nature":"autoral","title":"Concurso para emprego público",
+      "stem":"Uma entidade da Administração afirma que o regime contratual de emprego público, por si só, permite admitir empregados permanentes sem concurso. Qual é a regra constitucional pertinente?",
+      "options":["Concurso alcança apenas cargos estatutários.","Contrato de trabalho elimina todas as regras do art. 37.","A exigência depende exclusivamente da escolha do dirigente.","O art. 37, II, exige concurso para cargo ou emprego público, ressalvada a hipótese constitucional de cargo em comissão.","A simples indicação política equivale a concurso."],"correct":3,
+      "feedback":["O inciso II menciona cargo e emprego público.","O regime trabalhista não afasta os requisitos constitucionais.","O dirigente não pode dispensar requisito constitucional por preferência.","A Constituição não limita a regra aos vínculos estatutários.","Indicação não substitui a aprovação constitucionalmente exigida."],
+      "explanation":"O vínculo contratual não torna o ingresso puramente privado. O art. 37, II, contempla cargo e emprego. A ressalva de cargos em comissão possui pressupostos próprios e não autoriza converter qualquer necessidade permanente em contratação livre.",
+      "card":{"front":"Emprego público regido pela CLT dispensa concurso por ser contratual?","back":"Não. O art. 37, II, abrange cargo e emprego público. A forma contratual não afasta o concurso nem autoriza ampliar as exceções constitucionais."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, caput e II"}
+    },
+    {
+      "id":"sim-adm-02","version":"1.0","semanticKey":"agentes-funcao-confianca-efetivo","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s09","curricularId":"ADM-54","nature":"autoral","title":"Função de confiança",
+      "stem":"Uma autarquia pretende atribuir função de confiança a pessoa sem cargo efetivo. Qual obstáculo decorre diretamente do art. 37, V?",
+      "options":["Funções de confiança são exercidas exclusivamente por servidores ocupantes de cargo efetivo.","Funções de confiança são acessíveis a qualquer pessoa, sem restrição.","A exclusividade de efetivos alcança apenas contratos de terceirização.","O dispositivo exige apenas que a pessoa tenha diploma de Direito.","A função de confiança transforma automaticamente o nomeado em servidor efetivo."],"correct":0,
+      "feedback":["É a reserva estabelecida pelo inciso V.","Confunde função de confiança com regras próprias de cargos em comissão.","Não é esse o objeto do inciso V.","O requisito indicado não substitui a reserva constitucional.","O exercício da função não substitui a forma de ingresso no cargo efetivo."],
+      "explanation":"Função de confiança e cargo em comissão não são equivalentes. A primeira é exclusiva de ocupantes de cargo efetivo. Ambos se destinam apenas a direção, chefia e assessoramento, mas os requisitos de preenchimento não são idênticos.",
+      "card":{"front":"Pessoa sem cargo efetivo pode exercer função de confiança?","back":"Não segundo o art. 37, V. A função é exclusiva de ocupante de cargo efetivo. Diferencie-a do cargo em comissão, que tem regras próprias de preenchimento."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, V"}
+    },
+    {
+      "id":"sim-adm-03","version":"1.0","semanticKey":"agentes-comissao-atribuicoes","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s09","curricularId":"ADM-54","nature":"autoral","title":"Atribuições dos cargos em comissão",
+      "stem":"A proposta cria cargo em comissão para executar apenas tarefas técnicas rotineiras, sem direção, chefia ou assessoramento. Qual avaliação decorre do art. 37, V?",
+      "options":["A denominação 'comissão' basta para tornar o cargo constitucional.","Todo trabalho técnico precisa ser realizado por cargo em comissão.","A existência de orçamento dispensa examinar as atribuições.","A livre exoneração permite qualquer espécie de tarefa permanente.","O desenho contraria a destinação constitucional restrita a direção, chefia e assessoramento."],"correct":4,
+      "feedback":["É necessário examinar as atribuições efetivas.","O inciso V não impõe essa forma de provimento para tarefas técnicas.","Viabilidade orçamentária não substitui compatibilidade constitucional.","Livre exoneração não amplia o objeto constitucional do cargo.","Os fatos excluem precisamente as atribuições permitidas pelo dispositivo."],
+      "explanation":"O exame recai sobre o conteúdo das atribuições, não apenas sobre o nome do cargo. O art. 37, V, restringe funções de confiança e cargos em comissão a direção, chefia e assessoramento. A hipótese foi delimitada sem qualquer dessas funções.",
+      "card":{"front":"O nome 'cargo em comissão' legitima tarefas apenas técnicas e rotineiras?","back":"Não. Examine as atribuições reais. O art. 37, V, reserva a destinação a direção, chefia e assessoramento; o nome e a livre exoneração não suprem esse requisito."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, V"}
+    },
+    {
+      "id":"sim-adm-04","version":"1.0","semanticKey":"agentes-temporario-necessidade","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s10","curricularId":"ADM-54","nature":"autoral","title":"Contratação temporária",
+      "stem":"O gestor quer justificar contratação por prazo determinado apenas porque o contrato terá data final. Qual requisito constitucional adicional precisa ser investigado?",
+      "options":["Basta a vontade administrativa de economizar.","A necessidade temporária de excepcional interesse público, nas hipóteses estabelecidas em lei.","Qualquer necessidade permanente, sem exame das circunstâncias.","Somente a assinatura do interessado em termo de ciência.","A inexistência de candidatos com vínculo privado."],"correct":1,
+      "feedback":["Economia não substitui a hipótese constitucional.","É o requisito do art. 37, IX, além do simples prazo contratual.","A natureza e as circunstâncias da necessidade precisam ser examinadas.","A concordância individual não supre requisito constitucional.","Não é esse o critério previsto no inciso IX."],
+      "explanation":"Temporalidade do contrato e temporalidade da necessidade não se confundem. O art. 37, IX, exige necessidade temporária de excepcional interesse público e previsão legal das hipóteses; a qualificação de um caso concreto requer examinar esses pressupostos.",
+      "card":{"front":"Um contrato com data final prova necessidade temporária?","back":"Não. O art. 37, IX, exige necessidade temporária de excepcional interesse público e hipótese legal. Investigue a necessidade concreta, além da duração escrita no contrato."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, IX"}
+    },
+    {
+      "id":"sim-adm-05","version":"1.0","semanticKey":"agentes-acumulacao-magisterio-atual","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s12","curricularId":"ADM-54","nature":"autoral","title":"Acumulação com magistério após a EC 138",
+      "stem":"Na redação atual do art. 37, XVI, b, um cargo de professor é acumulado com outro cargo que não tem natureza técnica ou científica. Qual análise constitucional corresponde ao texto após a EC 138/2025?",
+      "options":["A acumulação é proibida apenas porque o segundo cargo não é técnico ou científico.","Toda restrição de horário foi eliminada pela emenda.","A alínea b admite outro cargo de qualquer natureza, preservadas a compatibilidade de horários e as demais condições constitucionais.","O segundo cargo deve necessariamente ser outro cargo de professor.","A emenda eliminou o teto constitucional para toda acumulação."],"correct":2,
+      "feedback":["Repete requisito da redação anterior, alterado pela EC 138/2025.","A compatibilidade de horários permanece exigida no inciso XVI.","O novo texto amplia a natureza do outro cargo sem eliminar as condições do inciso.","Dois cargos de professor são hipótese da alínea a, não limite da atual alínea b.","O inciso XVI preserva a referência ao teto do inciso XI."],
+      "explanation":"A EC 138/2025 alterou a alínea b para admitir um cargo de professor com outro de qualquer natureza. A atualização não torna toda acumulação automática: é necessário examinar compatibilidade de horários e as condições constitucionais aplicáveis. Materiais antigos que exigem sempre natureza técnica ou científica precisam ser situados no tempo.",
+      "card":{"front":"Após a EC 138/2025, o outro cargo acumulado com magistério precisa ser técnico ou científico?","back":"A atual alínea b admite outro cargo de qualquer natureza. Permanecem compatibilidade de horários e as demais condições constitucionais; diferencie a redação atual daquela usada em provas antigas."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, XVI, caput e alínea b, redação da EC 138/2025"}
+    },
+    {
+      "id":"sim-adm-06","version":"1.0","semanticKey":"agentes-remuneracao-lei","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s12","curricularId":"ADM-54","nature":"autoral","title":"Reserva legal remuneratória",
+      "stem":"Uma autarquia pretende criar, por portaria sem lei autorizadora, vantagem remuneratória para seus servidores. Invoca apenas o princípio da eficiência. Qual é o fundamento decisivo para a análise?",
+      "options":["Eficiência permite criar qualquer vantagem por ato infralegal.","A portaria possui a mesma posição hierárquica da Constituição.","Toda vantagem funcional é independente de previsão legal.","A assinatura do dirigente supre a iniciativa legislativa.","O art. 37, X, exige lei específica para fixar ou alterar remuneração, observada a iniciativa privativa."],"correct":4,
+      "feedback":["O princípio não afasta a reserva legal.","Portaria não ocupa essa posição normativa.","A afirmação contraria o inciso X para a vantagem remuneratória descrita.","O ato do dirigente não substitui a lei exigida.","A reserva legal impede a criação originária descrita no caso."],
+      "explanation":"O art. 37, X, exige lei específica, respeitada a iniciativa privativa. Isso não impede todo ato de execução de lei remuneratória; impede, na hipótese, a criação originária de vantagem por portaria sem suporte legal.",
+      "card":{"front":"Eficiência administrativa permite instituir vantagem remuneratória por portaria?","back":"Não sem a lei específica exigida pelo art. 37, X, e a iniciativa cabível. Diferencie criação originária da vantagem e execução de uma vantagem já prevista em lei."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, caput e X"}
+    },
+    {
+      "id":"sim-adm-07","version":"1.0","semanticKey":"agentes-validade-concurso","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s06","curricularId":"ADM-54","nature":"autoral","title":"Prazo de validade do concurso",
+      "stem":"Um edital fixa validade de um ano. O gestor quer prorrogá-la uma vez por dois anos, alegando que dois anos é sempre o prazo de prorrogação constitucional. Qual é a regra correta?",
+      "options":["A validade pode ser de até dois anos, prorrogável uma vez por período igual ao originalmente fixado.","Todo concurso deve ter validade inicial obrigatória de dois anos.","A prorrogação pode ocorrer indefinidamente.","Uma validade inicial de um ano só pode ser prorrogada por cinco anos.","A Constituição proíbe qualquer prorrogação."],"correct":0,
+      "feedback":["O art. 37, III, prevê até dois anos e uma prorrogação por igual período.","O prazo de dois anos é limite, não duração mínima obrigatória.","A prorrogação constitucional é única.","Esse prazo não decorre do inciso III.","O dispositivo admite uma prorrogação."],
+      "explanation":"O art. 37, III, estabelece validade de até dois anos, prorrogável uma vez por igual período. Se o edital fixou um ano, a prorrogação constitucionalmente descrita é por outro ano, sem automatismo quanto à decisão de prorrogar.",
+      "card":{"front":"Concurso com validade inicial de um ano pode ser prorrogado por dois, invocando o art. 37, III?","back":"Não. A Constituição admite uma prorrogação por igual período: no exemplo, outro ano. 'Até dois anos' é o limite da validade inicial, não prazo fixo de toda prorrogação."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, III"}
+    },
+    {
+      "id":"sim-adm-08","version":"1.0","semanticKey":"agentes-acumulacao-empregos-estatais","topic":"Direito Administrativo · Agentes públicos","chapterId":"adm-54","sectionId":"adm-54-s12","curricularId":"ADM-54","nature":"autoral","title":"Acumulação em empregos de estatais",
+      "stem":"Um parecer afirma que a proibição constitucional de acumulação remunerada jamais alcança empregos em empresas públicas ou sociedades de economia mista, porque são vínculos de CLT. Como examinar essa afirmação?",
+      "options":["Ela procede, pois somente cargos estatutários entram no art. 37.","Ela procede sempre que as duas entidades forem de entes federativos diferentes.","O regime de CLT permite qualquer número de vínculos remunerados.","Ela contraria o art. 37, XVII, que estende a proibição a empregos e funções nas entidades indicadas, preservadas as exceções constitucionais cabíveis.","O inciso XVII dispensa o exame de compatibilidade de horários."],"correct":3,
+      "feedback":["O inciso XVII amplia expressamente o alcance da vedação.","A diferença entre entes não cria dispensa geral dessa regra.","O regime trabalhista não elimina a restrição constitucional.","É necessário examinar a extensão da vedação e eventual exceção constitucional.","A extensão da regra não afasta os requisitos das exceções do inciso XVI."],
+      "explanation":"O art. 37, XVII, estende a proibição de acumular a empregos e funções e inclui, entre outras, empresas públicas e sociedades de economia mista. A CLT não é dispensa geral. A conclusão sobre vínculos concretos exige investigar a hipótese constitucional de acumulação e suas condições.",
+      "card":{"front":"Empregos em estatais ficam fora da vedação de acumulação por serem de CLT?","back":"Não. O art. 37, XVII, estende a vedação a empregos e funções das entidades indicadas. Investigue a exceção constitucional e os horários; regime trabalhista não basta para afastar a restrição."},
+      "sourceRefs":["cf"],"locator":{"cf":"CF, art. 37, XVI–XVII"}
+    }
+  ]
+}

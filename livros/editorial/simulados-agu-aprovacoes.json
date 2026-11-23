@@ -1,0 +1,173 @@
+{
+  "schema": "agu-simulado-approvals-v1",
+  "records": [
+    {
+      "id": "sim-dig-01",
+      "contentSha256": "7c47002be50f092d0a055e52473a462585b51a7de3b0f73c1e974d47003bde5f",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-02",
+      "contentSha256": "8a7740246b4e1974fac519b5385d51103c42d965a1a61126512555cea231583f",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-03",
+      "contentSha256": "e6a563a510c23b4c7614bec3523d00efd1af423250bc36a9e7f1c95c2faa00bb",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-04",
+      "contentSha256": "9580e65a92addd5ef0768387d1deb7c4bf7d9827761b3013f4b73ae4f4ee6309",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-05",
+      "contentSha256": "f7dbd68acf12c68d701a2728411fb2a5f4984b99a1b5c9a0c9b084531ef1064e",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-06",
+      "contentSha256": "37772dc9320d6cc8ceba7143b1fc09a8d5d7c2e196bb848a93c473196b930bc7",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-07",
+      "contentSha256": "ae45f9e5366dde3d6618f7edcebd13ec6f588f084cf1badd34d6f37fe8a73adb",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-dig-08",
+      "contentSha256": "f7fcd9fc9084b2f4591996e2f5de4fd53924a21151cf551f20a9b3d88e0d5ba9",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-01",
+      "contentSha256": "b1c19a6db2823d66b3eca1b7ea36c1931e4e71effd6e3fd76540c4ac975a5866",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-02",
+      "contentSha256": "5b91f74e6ba9535d1e35754e23c0a3c9eeecbb05314d1b68df41f587cbe55c92",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-03",
+      "contentSha256": "3fb9b51d82ef5c9d16b0a482100809e8c648e3dd6f074608a5941bc47ef150bf",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-04",
+      "contentSha256": "a2014a238c05cd5075148bb0668a09508ed673901b27905a82da269a205539fe",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-05",
+      "contentSha256": "84d67b8eb654d14264ecfd5653f3a03be3e0b40880a1185946af122dd54cf832",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-06",
+      "contentSha256": "ab3658b7d2110fdb8291c004a361680e9efd9b9e1a6c7236bca61ba9acdb4815",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-07",
+      "contentSha256": "57c8bc9b5378406549861b8aab7b0119e22ef38f6b9279076666d406290eacb7",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-amb-08",
+      "contentSha256": "49c93b49c324a6dfe7cff979e0dc66f4c0ae03d2f7d39cb61eaaf0f5f65fae3d",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-01",
+      "contentSha256": "1859dd6aedfde4f98b33bf3f54843134df642b766bf7653776c2c19ede69c7d3",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-02",
+      "contentSha256": "f59dd889a31bd75c9d82c2a0b698879952326ffbdf9562015006c3fffbd5d738",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-03",
+      "contentSha256": "913407be0204c0e7a43dbef7397720d110896feb46fb5a589326b53acb73a1a1",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-04",
+      "contentSha256": "bfaf6b8a0f2a8e94923fbce32ed5ab3fb9553b6f9d18380c45daad631d5b8c84",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-05",
+      "contentSha256": "1383b8ff2cf3f43d2d97e073869e73c0f762c5887a9dd683f66afb3c833fa6cd",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-06",
+      "contentSha256": "f35433290bb9e8776be60300cbbbda4f5d6f43f651a67977584e31c82e0d8b11",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-07",
+      "contentSha256": "a61a2f2259071e19f4d2155d795935d6eac5005abb5ecfc7906c4f20f772d41c",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    },
+    {
+      "id": "sim-adm-08",
+      "contentSha256": "44baa821f65b0e37b7f3c8e20154bb711a614752c9e33c7aaddb1004a0395ec1",
+      "reviewer": "Codex — conferência editorial e normativa pontual assistida",
+      "at": "2026-11-23",
+      "scope": "Questão autoral, alternativas, fundamento, cartão e vínculo com seção conferidos nesta execução. Não é revisão humana independente nem certificação integral."
+    }
+  ]
+}
