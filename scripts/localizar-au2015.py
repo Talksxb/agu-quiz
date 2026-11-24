@@ -10,9 +10,11 @@ assert len(pages)==99, f'pages={len(pages)}'
 def attr(s,k):
     return float(re.search(r'\b'+k+r'="([^"]+)"',s).group(1))
 def decode_number(s):
-    # A fonte de numeração desse PDF usa código 1 para 0, 2 para 1, ..., 10 para 9.
+    # Poppler bbox reports 18..27 for digits; some other extractors report 1..10.
     # Nunca se aplica a texto do enunciado, apenas palavras na margem do número.
     s=html.unescape(s).strip(' \r')
+    if 1<=len(s)<=3 and all(18<=ord(c)<=27 for c in s):
+        return int(''.join(str(ord(c)-18) for c in s))
     if 1<=len(s)<=3 and all(1<=ord(c)<=10 for c in s):
         return int(''.join(str(ord(c)-1) for c in s))
     if re.fullmatch(r'[0-9]{1,3}',s):return int(s)
@@ -25,7 +27,7 @@ for i,(attrs,body) in enumerate(pages,1):
     candidates=[]
     for a,w in words:
         x=attr(a,'xMin')/width;y=attr(a,'yMin')
-        if x>.105:continue
+        if not .035<=x<=.065:continue
         num=decode_number(w)
         if num is not None:candidates.append((y,x,num,[ord(c) for c in html.unescape(w)]))
     candidates.sort()
