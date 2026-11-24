@@ -29,7 +29,9 @@ jobs:
           curl -fL --retry 2 --max-time 60 'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf' -o "$RUNNER_TEMP/gabarito2015.pdf"
           sha256sum "$RUNNER_TEMP/agu2015.pdf" "$RUNNER_TEMP/gabarito2015.pdf"
           echo "9b2ebbe52c3cce634d144239f158efc663689ea087f44bcd9c6fd94c4198c9bd  $RUNNER_TEMP/gabarito2015.pdf" | sha256sum -c
-          node -e 'const fs=require("fs"),c=require("crypto"),p="dados/questoes-agu-2015-integridade.json",h=c.createHash("sha256").update(fs.readFileSync(process.env.RUNNER_TEMP+"/agu2015.pdf")).digest("hex"),o=JSON.parse(fs.readFileSync(p));if(o.sha256&&o.sha256!==h)throw Error("hash divergente");fs.writeFileSync(p,JSON.stringify({sha256:h}));console.log("AU2015_SHA256="+h)'
+          echo '7ef10bc57269eb0c712096e6d326e7fdc48084c6fab5614d21d328a86d79530c  '"$RUNNER_TEMP/agu2015.pdf" | sha256sum -c
+          command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y poppler-utils)
+          python3 scripts/localizar-au2015.py "$RUNNER_TEMP/agu2015.pdf" dados/questoes-agu-2015-integridade.json
       - run: npx playwright install --with-deps chromium
       - run: AGU2015_PDF="$RUNNER_TEMP/agu2015.pdf" node tests/questoes-agu-002-browser.cjs
       - uses: actions/upload-artifact@v4
