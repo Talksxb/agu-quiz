@@ -150,6 +150,8 @@ jobs:
         run: node tests/simulados-agu-001-browser.cjs
       - name: INTERFACE-AGU-001 — topo, navegação móvel, reflow e histórico preservado
         run: node tests/interface-agu-001-browser.cjs
+      - name: INTERFACE-AGU-002 — leitor, painel ativo, posição, foco e zoom
+        run: node tests/interface-agu-002-browser.cjs
       - name: LEIT-META-002 — leitor real em Chromium, acessibilidade e viewports móveis
         run: node tests/leitura-meta-002-browser.cjs
       - name: MÉTODO-AGU-001 — quatro capítulos, atividades, legado e acessibilidade móvel
@@ -244,6 +246,7 @@ jobs:
           path: |
             tests/artifacts-simulados-agu/
             tests/artifacts-interface-agu-001/
+            tests/artifacts-interface-agu-002/
             tests/artifacts-metodo-agu/
             tests/artifacts-metodo-agu-003/
             tests/artifacts-leit-meta/*.json
