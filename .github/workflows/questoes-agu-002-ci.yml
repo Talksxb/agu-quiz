@@ -1,0 +1,44 @@
+name: QUESTOES-AGU-002 · AU2015 e banco integrado
+on:
+  pull_request:
+    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  questoes2015:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/questoes-agu-002.cjs
+      - run: npm install --no-save --ignore-scripts playwright axe-core
+      - name: Verificar release oficial PDF.js 6.5.438
+        run: |
+          curl -fL --retry 2 --max-time 120 'https://github.com/mozilla/pdf.js/releases/download/v6.5.438/pdfjs-6.5.438-dist.zip' -o "$RUNNER_TEMP/pdfjs-release.zip"
+          echo "fcbe9ba21d9911843e3502adc178a7f549a524a4055f887bedc942e5490c6ba1  $RUNNER_TEMP/pdfjs-release.zip" | sha256sum -c
+          mkdir -p "$RUNNER_TEMP/pdfjs-release"
+          unzip -q "$RUNNER_TEMP/pdfjs-release.zip" -d "$RUNNER_TEMP/pdfjs-release"
+          PDFJS_RELEASE_DIR="$RUNNER_TEMP/pdfjs-release" node scripts/preparar-pdfjs.cjs
+      - name: PDF oficial e gabarito temporários
+        run: |
+          curl -fL --retry 2 --max-time 120 'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/187AGU_001_07.pdf' -o "$RUNNER_TEMP/agu2015.pdf"
+          curl -fL --retry 2 --max-time 60 'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf' -o "$RUNNER_TEMP/gabarito2015.pdf"
+          sha256sum "$RUNNER_TEMP/agu2015.pdf" "$RUNNER_TEMP/gabarito2015.pdf"
+          echo "9b2ebbe52c3cce634d144239f158efc663689ea087f44bcd9c6fd94c4198c9bd  $RUNNER_TEMP/gabarito2015.pdf" | sha256sum -c
+          echo '7ef10bc57269eb0c712096e6d326e7fdc48084c6fab5614d21d328a86d79530c  '"$RUNNER_TEMP/agu2015.pdf" | sha256sum -c
+          command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y poppler-utils)
+          python3 scripts/localizar-au2015.py "$RUNNER_TEMP/agu2015.pdf" dados/questoes-agu-2015-integridade.json
+      - run: npx playwright install --with-deps chromium
+      - run: AGU2015_PDF="$RUNNER_TEMP/agu2015.pdf" node tests/questoes-agu-002-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: questoes-agu-002-qa
+          path: |
+            tests/artifacts-questoes-agu-002/antes-*.png
+            tests/artifacts-questoes-agu-002/axe.json
+          if-no-files-found: warn

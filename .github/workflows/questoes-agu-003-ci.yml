@@ -1,0 +1,59 @@
+name: QUESTOES-AGU-003 · PF2023 e comentários
+on:
+  pull_request:
+    branches: [main, feat/questoes-agu-002]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/questoes-agu-003.cjs
+      - run: npm install --no-save --ignore-scripts playwright axe-core
+      - name: PDF oficial temporário e manifesto
+        run: |
+          curl -fL --retry 2 --max-time 120 'https://cdn.cebraspe.org.br/concursos/agu_22_procurador_federal/arquivos/806_AGU_PF_001_01.PDF' -o "$RUNNER_TEMP/pf2023.pdf"
+          curl -fL --retry 2 --max-time 60 'https://cdn.cebraspe.org.br/concursos/agu_22_procurador_federal/arquivos/GAB_DEFINITIVO_806_AGU_PF_001_01.PDF' -o "$RUNNER_TEMP/pf2023-gab.pdf"
+          command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y poppler-utils)
+          python3 scripts/verificar-pf2023.py "$RUNNER_TEMP/pf2023.pdf" "$RUNNER_TEMP/pf2023-gab.pdf" dados/questoes-agu-pf-2023-integridade.json
+      - run: npx playwright install --with-deps chromium
+      - run: PF2023_PDF="$RUNNER_TEMP/pf2023.pdf" node tests/questoes-agu-003-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: questoes-agu-003-qa
+          path: tests/artifacts-questoes-agu-003/
+          if-no-files-found: warn
+
+  publicado:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --ignore-scripts playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Cadernos oficiais temporários
+        run: |
+          curl -fL --retry 2 --max-time 120 'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/187AGU_001_07.pdf' -o "$RUNNER_TEMP/au2015.pdf"
+          curl -fL --retry 2 --max-time 120 'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF' -o "$RUNNER_TEMP/au2023.pdf"
+          curl -fL --retry 2 --max-time 120 'https://cdn.cebraspe.org.br/concursos/agu_22_procurador_federal/arquivos/806_AGU_PF_001_01.PDF' -o "$RUNNER_TEMP/pf2023.pdf"
+      - name: Verificar bytes e resolver na URL real
+        run: AGU2015_PDF="$RUNNER_TEMP/au2015.pdf" AGU2023_PDF="$RUNNER_TEMP/au2023.pdf" PF2023_PDF="$RUNNER_TEMP/pf2023.pdf" node tests/questoes-agu-publicado.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: questoes-agu-publicado
+          path: tests/artifacts-questoes-publicado/
+          if-no-files-found: warn

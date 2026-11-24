@@ -25,6 +25,8 @@ function validateRecord(key,obj){
  switch(key){
  case 'agu_livros_reader_v1':return root.AGUMethodProgress?.validate(obj)===true;
  case 'agu_quiz_mvp1_2026':{
+  if(obj.questionBank!==undefined){const p=obj.questionBank,validId=x=>typeof x==='string'&&(/^PF-2023-P1-Q(?:00[1-9]|0[1-9]\d|100)$/.test(x)||/^AGU-2023-P1-Q(?:00[1-9]|0[1-9]\d|100)$/.test(x)||/^AGU-2015-187AGU-001-07-Q(?:00[1-9]|0[1-9]\d|1\d\d|200)$/.test(x));if(!isObj(p)||p.version!==2||![2015,2023,'pf2023'].includes(p.year)||!isObj(p.positions)||(p.positions.pf2023===undefined?p.year==='pf2023':!Number.isInteger(p.positions.pf2023)||p.positions.pf2023<1||p.positions.pf2023>100)||![2015,2023].every(y=>Number.isInteger(p.positions[y])&&p.positions[y]>=1&&p.positions[y]<=(y===2015?200:100))||!Array.isArray(p.favorites)||p.favorites.length>400||new Set(p.favorites).size!==p.favorites.length||!p.favorites.every(validId)||!isObj(p.notes)||Object.keys(p.notes).length>400||!Object.entries(p.notes).every(([k,v])=>validId(k)&&isObj(v)&&typeof v.text==='string'&&v.text.length<=1000&&['','norma','conceito','fato','aplicacao','tecnica'].includes(v.kind)&&['','facil','media','dificil'].includes(v.difficulty)))return false}
+
   if(obj.version!==1||!isObj(obj.topic)||!capArr(obj.answers)||!capArr(obj.sessions)||!capArr(obj.reviews)||!capArr(obj.notebook))return false;
   const hasUniqueIds=arr=>new Set(arr.map(x=>x.id)).size===arr.length;
   const date=x=>typeof x==='string'&&Number.isFinite(Date.parse(x));

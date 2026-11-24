@@ -77,6 +77,7 @@ async function main(){
  await p.goto(origin,{waitUntil:'load'});
  // Uma tentativa real de 2023 no fluxo A–E, preservada no armazenamento principal.
  await p.evaluate(()=>window.setView('officialExam'));
+ await p.getByRole('button',{name:'Modo de referência anterior'}).click();
  await p.locator('#officialselect').selectOption('AGU-2023-P1-Q001');
  await p.getByRole('button',{name:'A',exact:true}).click();
  await p.getByRole('button',{name:'Conferir com gabarito definitivo'}).click();

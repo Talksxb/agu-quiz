@@ -1,0 +1,10 @@
+[
+  {
+    "before": "  const year=r.year===2015?2015:2023;\n  const qid=(year===2023?'AGU-2023-P1-Q':'AGU-2015-187AGU-001-07-Q')+String(r.n).padStart(3,'0');\n  const legacy=year===2023?OFFICIAL_AGU_2023.find(x=>x.id===qid):null;\n  const entry={id:crypto.randomUUID(),question:qid,topic:legacy?'CON/Constituição e poder constituinte':'OUT/Questões oficiais',curricular_id:legacy?.curricular_id||null,date:now(),selected:letter,correct:letter===r.key,origin:'oficial_cebraspe_'+year,sourceStatus:'gabarito_oficial_definitivo_sem_revisao_juridica_atual',legalEvidence:year===2023?'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF':'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf',originalQuestionNumber:r.n};\n",
+    "after": "  const pf=r.year==='pf2023',year=r.year===2015?2015:2023;\n  const qid=(pf?'PF-2023-P1-Q':year===2023?'AGU-2023-P1-Q':'AGU-2015-187AGU-001-07-Q')+String(r.n).padStart(3,'0');\n  const legacy=!pf&&year===2023?OFFICIAL_AGU_2023.find(x=>x.id===qid):null;\n  const entry={id:crypto.randomUUID(),question:qid,topic:legacy?'CON/Constituição e poder constituinte':'OUT/Questões oficiais',curricular_id:legacy?.curricular_id||null,date:now(),selected:letter,correct:letter===r.key,origin:pf?'oficial_cebraspe_pf2023':'oficial_cebraspe_'+year,sourceStatus:'gabarito_oficial_definitivo_sem_revisao_juridica_atual',legalEvidence:pf?'https://cdn.cebraspe.org.br/concursos/agu_22_procurador_federal/arquivos/GAB_DEFINITIVO_806_AGU_PF_001_01.PDF':year===2023?'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF':'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf',originalQuestionNumber:r.n};\n"
+  },
+  {
+    "before": "<script src=\"questoes-agu-bank.js?v=20261124-q01\"></script>",
+    "after": "<script src=\"dados/questoes-agu-pf-2023.js?v=20261124-q03\"></script>\n<script src=\"dados/questoes-agu-comentarios.js?v=20261124-q03\"></script>\n<script src=\"questoes-agu-bank.js?v=20261124-q03\"></script>"
+  }
+]

@@ -1,7 +1,7 @@
 name: AGU Quiz · Integridade, estudo e acessibilidade
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002]
   push:
     branches: [main]
     paths:
