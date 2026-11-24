@@ -1,7 +1,7 @@
 name: QUESTOES-AGU-001 · PDF local e responsividade
 on:
   pull_request:
-    branches: [main, feat/questoes-agu-001]
+    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002]
   workflow_dispatch:
 permissions:
   contents: read

@@ -5,3 +5,5 @@
 3. QUESTOES-AGU-003 — integração pedagógica, comentários, PF e consolidação.
 
 - 24/11/2026 — 002: 300 referências, PDFs AU2015/AU2023 e navegação local aprovados em CI dedicada, 200 localizadores fixados; publicação e revisão de fidelidade pendentes. PRs #90/#91.
+
+- 24/11/2026 — 003: catálogo PF2023 e quatro comentários pontuais implementados; validação/publicação condicionadas a evidência.
