@@ -73,6 +73,7 @@ select,input{max-width:100%}
 <script src="backup-local-s20.js?v=20261123-metodo03"></script>
 <script src="meu-estudo.js?v=20261115-leg12"></script>
 <script src="dados/questoes-agu-2023.js?v=20261124-q01"></script>
+<script src="dados/questoes-agu-2015.js?v=20261124-q02"></script>
 <script src="questoes-agu-bank.js?v=20261124-q01"></script>
 <script>
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -346,11 +347,12 @@ const AUTHOR_AUDIT_DATE='2026-11-10';
 let officialPick=OFFICIAL_AGU_2023[0].id,officialChoice='',officialShown=false;
 function openAudited2015(id='of-2015-adv-048'){const q=window.AGUQuestions18?.all?.().find(x=>x.id===id);if(!q)return false;setView('legal');window.AGULegal?.unit(q.deviceId);window.AGULegal?.tab('questoes');return window.AGUQuestions18?.choose(id)}
 function officialExam(){
- if(window.AGUQuestionBank)return window.AGUQuestionBank.page({answers:data.answers,demo,refresh:render,record:(r,letter,confidence)=>{
+ if(window.AGUQuestionBank)return window.AGUQuestionBank.page({answers:data.answers,demo,refresh:render,preferences:data.questionBank,savePrefs:p=>{if(demo)return;const old=data.questionBank;data.questionBank=p;try{persist()}catch(e){if(old===undefined)delete data.questionBank;else data.questionBank=old;throw e}},record:(r,letter,confidence)=>{
   if(demo)return;
-  const qid='AGU-2023-P1-Q'+String(r.n).padStart(3,'0');
-  const legacy=OFFICIAL_AGU_2023.find(x=>x.id===qid);
-  const entry={id:crypto.randomUUID(),question:qid,topic:legacy?'CON/Constituição e poder constituinte':'OUT/Questões oficiais',curricular_id:legacy?.curricular_id||null,date:now(),selected:letter,correct:letter===r.key,origin:'oficial_cebraspe_2023',sourceStatus:'gabarito_oficial_definitivo_sem_revisao_juridica_atual',legalEvidence:'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF',originalQuestionNumber:r.n};
+  const year=r.year===2015?2015:2023;
+  const qid=(year===2023?'AGU-2023-P1-Q':'AGU-2015-187AGU-001-07-Q')+String(r.n).padStart(3,'0');
+  const legacy=year===2023?OFFICIAL_AGU_2023.find(x=>x.id===qid):null;
+  const entry={id:crypto.randomUUID(),question:qid,topic:legacy?'CON/Constituição e poder constituinte':'OUT/Questões oficiais',curricular_id:legacy?.curricular_id||null,date:now(),selected:letter,correct:letter===r.key,origin:'oficial_cebraspe_'+year,sourceStatus:'gabarito_oficial_definitivo_sem_revisao_juridica_atual',legalEvidence:year===2023?'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF':'https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/Gab_Definitivo_187AGU_001_07_SUPER-A4.pdf',originalQuestionNumber:r.n};
   if(confidence)entry.confidence=confidence;
   data.answers.push(entry);try{persist()}catch(e){data.answers.pop();throw e}
  }});
