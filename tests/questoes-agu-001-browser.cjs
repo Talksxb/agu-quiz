@@ -12,6 +12,7 @@ for(const width of [320,360,390,430,768,1280]){
  await p.locator('#aq-confirm').check();await p.locator('#aq-file').setInputFiles(pdf);
  await p.locator('#aq-pdf canvas').waitFor({timeout:90000});
  assert((await p.locator('#aq-status').textContent()).includes('100 cabeçalhos'));
+ if(width===390){for(let n=1;n<=100;n++){await p.locator('#aq-number').selectOption(String(n));await p.locator('#aq-pdf canvas').waitFor({timeout:30000});assert((await p.locator('#aq-title').textContent()).includes('Questão '+n));await p.waitForFunction(()=>document.getElementById('aq-page-label')?.textContent.includes('PDF · página'));if([7,25,30,41,50,54,81].includes(n))assert.equal(await p.locator('#aq-submit').count(),0)}await p.locator('#aq-number').selectOption('1');await p.locator('#aq-pdf canvas').waitFor()}
  await p.screenshot({path:path.join(out,'prova-'+width+'.png'),fullPage:true});
  assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow após importar '+width);
  await p.locator('input[name="aq-answer"][value="A"]').check();await p.locator('#aq-submit').click();
