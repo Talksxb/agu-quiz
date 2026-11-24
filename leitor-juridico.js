@@ -191,15 +191,15 @@ function mobile(t,restoreKeyboardFocus=false){
  if(narrow&&from!==t&&typeof document!=='undefined'&&document.getElementById('agu-reader'))panelScroll.set(state.article+'|'+from,Math.max(0,root.scrollY||0));
  state.mobile=t;save();root.render?.();
  if(restoreKeyboardFocus&&typeof document!=='undefined')document.querySelectorAll?.('#agu-reader .agu-mobile button')?.[panels.indexOf(t)]?.focus?.({preventScroll:true});
- if(narrow&&from!==t&&typeof root.requestAnimationFrame==='function')root.requestAnimationFrame(()=>{
-  const reader=document.getElementById('agu-reader');if(!reader)return;
-  // A busca pode focar o dispositivo antes deste frame: nunca rolar para fora do foco real.
-  const destination=reader.querySelector(t==='index'?'.agu-index':t==='text'?'.agu-document':'.agu-related');
-  if(destination?.contains(document.activeElement))return;
-  const restored=panelScroll.get(state.article+'|'+t);
-  const start=Math.max(0,reader.getBoundingClientRect().top+(root.scrollY||0)-8);
-  root.scrollTo?.(0,restored===undefined?start:restored);
- });
+ // Restaurar no próprio ciclo de troca: focos posteriores (como resultado de busca) têm prioridade.
+ if(narrow&&from!==t&&typeof document!=='undefined'){
+  const reader=document.getElementById('agu-reader');
+  if(reader){
+   const restored=panelScroll.get(state.article+'|'+t);
+   const start=Math.max(0,reader.getBoundingClientRect().top+(root.scrollY||0)-8);
+   root.scrollTo?.(0,restored===undefined?start:restored);
+  }
+ }
 }
 function step(n,restoreKeyboardFocus=false){const law=current()?.law,list=law?.articles||[];const i=list.findIndex(a=>a.id===state.article);if(i<0||i+n<0||i+n>=list.length)return false;article(list[i+n].id);if(restoreKeyboardFocus&&typeof document!=='undefined'){const btn=document.querySelector?.('#agu-reader .agu-document .agu-step-'+(n<0?'prev':'next'))||document.querySelectorAll?.('#agu-reader .agu-document button.agu-light')?.[n<0?0:1];if(btn&&!btn.disabled)btn.focus?.({preventScroll:false});else focusAfter('#agu-reader .agu-document h2',true)}return true}
 function note(restoreKeyboardFocus=false){const e=document.getElementById('agu-legal-note');if(!e)return;state.notes[state.unit]=e.value.slice(0,14000);save();root.render?.();if(restoreKeyboardFocus)focusAfter('#agu-save-note',true)}
