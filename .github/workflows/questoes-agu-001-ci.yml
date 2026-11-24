@@ -15,8 +15,14 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/questoes-agu-001.cjs
-      - run: npm install --no-save --ignore-scripts pdfjs-dist@6.5.438 playwright axe-core
-      - run: node scripts/preparar-pdfjs.cjs
+      - run: npm install --no-save --ignore-scripts playwright axe-core
+      - name: Verificar release oficial PDF.js 6.5.438
+        run: |
+          curl -fL --retry 2 --max-time 120 'https://github.com/mozilla/pdf.js/releases/download/v6.5.438/pdfjs-6.5.438-dist.zip' -o "$RUNNER_TEMP/pdfjs-release.zip"
+          echo "fcbe9ba21d9911843e3502adc178a7f549a524a4055f887bedc942e5490c6ba1  $RUNNER_TEMP/pdfjs-release.zip" | sha256sum -c
+          mkdir -p "$RUNNER_TEMP/pdfjs-release"
+          unzip -q "$RUNNER_TEMP/pdfjs-release.zip" -d "$RUNNER_TEMP/pdfjs-release"
+          PDFJS_RELEASE_DIR="$RUNNER_TEMP/pdfjs-release" node scripts/preparar-pdfjs.cjs
       - run: npx playwright install --with-deps chromium
       - name: Caderno oficial temporário (não publicar nem arquivar)
         run: curl -fL --retry 2 --max-time 90 'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF' -o "${RUNNER_TEMP}/agu2023.pdf" && sha256sum "${RUNNER_TEMP}/agu2023.pdf"
