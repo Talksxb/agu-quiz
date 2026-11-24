@@ -193,6 +193,9 @@ function mobile(t,restoreKeyboardFocus=false){
  if(restoreKeyboardFocus&&typeof document!=='undefined')document.querySelectorAll?.('#agu-reader .agu-mobile button')?.[panels.indexOf(t)]?.focus?.({preventScroll:true});
  if(narrow&&from!==t&&typeof root.requestAnimationFrame==='function')root.requestAnimationFrame(()=>{
   const reader=document.getElementById('agu-reader');if(!reader)return;
+  // A busca pode focar o dispositivo antes deste frame: nunca rolar para fora do foco real.
+  const destination=reader.querySelector(t==='index'?'.agu-index':t==='text'?'.agu-document':'.agu-related');
+  if(destination?.contains(document.activeElement))return;
   const restored=panelScroll.get(state.article+'|'+t);
   const start=Math.max(0,reader.getBoundingClientRect().top+(root.scrollY||0)-8);
   root.scrollTo?.(0,restored===undefined?start:restored);
