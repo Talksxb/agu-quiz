@@ -65,6 +65,20 @@ async function run(){
     assert.equal(await p.evaluate(()=>AGULegal.peek().notes[AGULegal.peek().unit]),'Anotação sintética INTERFACE-AGU-002');
     await p.evaluate(()=>AGULegal.mobile('text',true));
     assert.equal(await p.locator('.agu-document').isVisible(),true);
+    // Regressão S32: abrir resultado de busca deve manter a unidade focada e visível.
+    await buttons.nth(0).click();
+    await p.locator('#agu-reader .agu-s17-search > button').press('Enter');
+    await p.locator('#agu-search-q').fill('art. 13');
+    await p.locator('#agu-search-q').press('Enter');
+    const result=p.locator('#agu-reader .agu-s17-result').filter({hasText:'Lei nº 9.784/1999 · Art. 13 · I'}).first();
+    await result.press('Enter');
+    await p.evaluate(()=>new Promise(ok=>requestAnimationFrame(()=>requestAnimationFrame(ok))));
+    const found=await p.evaluate(()=>{
+     const el=document.activeElement,r=el.getBoundingClientRect();
+     return {focused:el.classList.contains('agu-unit')&&el.classList.contains('selected'),visible:r.top<innerHeight&&r.bottom>0,unit:AGULegal.peek().unit};
+    });
+    assert.ok(found.focused&&found.visible,'resultado da busca conserva dispositivo focado e visível '+JSON.stringify(found));
+    assert.equal(found.unit,'L9784:art13:I');
    }else{
     assert.equal(await p.locator('.agu-mobile').isVisible(),false,'desktop mantém três painéis');
     assert.equal(await p.locator('.agu-index').isVisible(),true);
