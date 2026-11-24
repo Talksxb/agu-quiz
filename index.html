@@ -43,7 +43,7 @@ select,input{max-width:100%}
 .today-links{margin-bottom:12px}.today-links button{min-height:44px}
 /* LEG13: a Home deve manter o botão de retomada legível ao ampliar a fonte. */
 @media(max-width:530px){.daily-mission .primary{white-space:normal;overflow-wrap:anywhere;line-height:1.35}}
-</style><link rel="stylesheet" href="baralhos-ux.css?v=20261115-ux02"><link rel="stylesheet" href="interface-agu.css?v=20261123-ui01"></head><body><a class="skip-link" href="#main">Ir para o conteúdo</a><div class="app"><div class="mobile-brand" aria-hidden="true"><b>AGU</b><span>Seu espaço de estudo</span></div><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
+</style><link rel="stylesheet" href="baralhos-ux.css?v=20261115-ux02"><link rel="stylesheet" href="interface-agu.css?v=20261123-ui01"><link rel="stylesheet" href="questoes-agu-bank.css?v=20261124-q01"></head><body><a class="skip-link" href="#main">Ir para o conteúdo</a><div class="app"><div class="mobile-brand" aria-hidden="true"><b>AGU</b><span>Seu espaço de estudo</span></div><aside class="side" aria-label="Navegação principal"><div class="brand">AGU <small>PLATAFORMA DE ESTUDO</small></div>
 <button class="nav active" data-view="dashboard"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Início</span></button>
 <button class="nav" data-view="study"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4Z"/><path d="M20 4h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h3Z"/></svg><span>Estudar</span></button>
 <button class="nav" data-view="library" aria-label="Biblioteca Inteligente"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h4v16H4zM11 4h4v16h-4zM17 5l3-1 3 15-3 1Z"/></svg><span>Biblioteca<span class="nav-label-long"> Inteligente</span></span></button>
@@ -72,6 +72,8 @@ select,input{max-width:100%}
 <script src="metodo-agu-progresso.js"></script>
 <script src="backup-local-s20.js?v=20261123-metodo03"></script>
 <script src="meu-estudo.js?v=20261115-leg12"></script>
+<script src="dados/questoes-agu-2023.js?v=20261124-q01"></script>
+<script src="questoes-agu-bank.js?v=20261124-q01"></script>
 <script>
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const D=[['ADM','Direito Administrativo',['Organização administrativa','Atos administrativos','Poderes administrativos','Processo administrativo','Licitações e contratos','Responsabilidade civil do Estado']],['CON','Direito Constitucional',['Constituição e poder constituinte','Direitos fundamentais','Organização do Estado','Separação de poderes','Controle de constitucionalidade','Funções essenciais à Justiça']],['FIN','Direito Financeiro',['PPA, LDO e LOA','Receitas e despesas públicas','Lei de Responsabilidade Fiscal','Créditos adicionais','Controle financeiro']],['PC','Direito Processual Civil',['Normas fundamentais','Competência e sujeitos processuais','Tutela provisória','Sentença e coisa julgada','Recursos e precedentes','Fazenda Pública em juízo']],['TRIB','Direito Tributário',['Competências tributárias','Obrigação e crédito tributário','Lançamento e extinção']],['CIV','Direito Civil',['LINDB','Obrigações e contratos']],['EMP','Direito Empresarial',['Sociedades','Recuperação e falência']],['TRAB','Direito do Trabalho',['Relação de emprego','Responsabilidade estatal']],['PREV','Direito Previdenciário',['Seguridade social','RGPS e RPPS']],['INT','Direito Internacional',['Tratados','Responsabilidade internacional']],['AMB','Direito Ambiental',['Princípios e competências','Licenciamento ambiental']],['ECO','Direito Econômico',['Regulação','Concorrência']],['DH','Direitos Humanos',['Sistemas de proteção','Tutela coletiva']],['OUT','Complementares — a auditar',['Demais tópicos condicionados ao edital']]];
@@ -344,6 +346,17 @@ const AUTHOR_AUDIT_DATE='2026-11-10';
 let officialPick=OFFICIAL_AGU_2023[0].id,officialChoice='',officialShown=false;
 function openAudited2015(id='of-2015-adv-048'){const q=window.AGUQuestions18?.all?.().find(x=>x.id===id);if(!q)return false;setView('legal');window.AGULegal?.unit(q.deviceId);window.AGULegal?.tab('questoes');return window.AGUQuestions18?.choose(id)}
 function officialExam(){
+ if(window.AGUQuestionBank)return window.AGUQuestionBank.page({answers:data.answers,demo,refresh:render,record:(r,letter,confidence)=>{
+  if(demo)return;
+  const qid='AGU-2023-P1-Q'+String(r.n).padStart(3,'0');
+  const legacy=OFFICIAL_AGU_2023.find(x=>x.id===qid);
+  const entry={id:crypto.randomUUID(),question:qid,topic:legacy?'CON/Constituição e poder constituinte':'OUT/Questões oficiais',curricular_id:legacy?.curricular_id||null,date:now(),selected:letter,correct:letter===r.key,origin:'oficial_cebraspe_2023',sourceStatus:'gabarito_oficial_definitivo_sem_revisao_juridica_atual',legalEvidence:'https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF',originalQuestionNumber:r.n};
+  if(confidence)entry.confidence=confidence;
+  data.answers.push(entry);try{persist()}catch(e){data.answers.pop();throw e}
+ }});
+ return legacyOfficialExam();
+}
+function legacyOfficialExam(){
  let item=OFFICIAL_AGU_2023.find(x=>x.id===officialPick)||OFFICIAL_AGU_2023[0];
  let previous=data.answers.filter(a=>a.question===item.id&&a.origin==='oficial_cebraspe_2023');
  let opts=['A','B','C','D','E'];
