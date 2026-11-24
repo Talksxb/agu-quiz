@@ -4,7 +4,7 @@
 const EXAM='https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF';
 const KEY='https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF';
 const STORE='agu_question_bank_preferences_v1';
-const VERSION='4.10.38';
+const VERSION='6.5.438';
 const EXAM_SHA256='943ca40b0f79266b63ed7d677ba797ce1d6bc626c422592eceb321246ecdd196';
 const id=n=>'AGU-2023-P1-Q'+String(n).padStart(3,'0');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -38,7 +38,7 @@ if(typeof module==='object'){module.exports={indexPages,id};return}
 const rows=root.AGUQuestionCatalog||[];
 let pref={n:1,favorites:[]};
 try{const p=JSON.parse(localStorage.getItem(STORE)||'null');if(p&&Number.isInteger(p.n)&&p.n>=1&&p.n<=100&&Array.isArray(p.favorites))pref={n:p.n,favorites:[...new Set(p.favorites.filter(n=>Number.isInteger(n)&&n>=1&&n<=100))]}}catch{}
-let ctx, pdf=null, markers=[], hash='', n=pref.n, choice='', confidence='', shown=false, filter='all', discipline='all', topic='all', status='', busy=false, renderSeq=0, loadingTask=null, wide=false, zoom=1, pageOffset=0;
+let ctx, pdf=null, markers=[], hash='', n=pref.n, choice='', confidence='', shown=false, filter='all', discipline='all', topic='all', status='', busy=false, renderSeq=0, loadingTask=null, activeTask=null, wide=false, zoom=1, pageOffset=0;
 const savePref=()=>{if(ctx?.demo)return;try{localStorage.setItem(STORE,JSON.stringify({n,favorites:pref.favorites}))}catch{status='Preferências não salvas: armazenamento indisponível.'}};
 const last=()=>{const m=new Map();for(const a of ctx.answers||[]){if(a.origin==='oficial_cebraspe_2023'&&/^AGU-2023-P1-Q\d{3}$/.test(a.question)&&typeof a.correct==='boolean')m.set(a.question,a)}return m};
 const getFiltered=()=>{const map=last();return rows.filter(r=>(discipline==='all'||r.discipline===discipline)&&(topic==='all'||r.code===topic)&&(filter==='all'||(filter==='new'&&!map.has(id(r.n))&&r.key!=='X')||(filter==='wrong'&&map.get(id(r.n))?.correct===false&&r.key!=='X')||(filter==='favorite'&&pref.favorites.includes(r.n))||(filter==='annulled'&&r.key==='X')))};
@@ -62,7 +62,7 @@ async function importPDF(file,confirmed){
   const lib=await import('./vendor/pdfjs/pdf.mjs');
   if(lib.version!==VERSION)throw Error('Versão do leitor inesperada.');
   lib.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.mjs',document.baseURI).href;
-  loadingTask=lib.getDocument({data:bytes.slice(),isEvalSupported:false,disableFontFace:false,enableXfa:false,stopAtErrors:true});
+  loadingTask=lib.getDocument({data:bytes.slice(),isEvalSupported:false,disableFontFace:false,enableXfa:false,stopAtErrors:true,disableWorkerRendering:true,useWasm:false});
   candidate=await loadingTask.promise;
   if(candidate.numPages!==20)throw Error('O caderno esperado tem 20 páginas.');
   const meta=await candidate.getMetadata();
@@ -74,9 +74,9 @@ async function importPDF(file,confirmed){
   }
   if(!/804_AGU_ADVOGADO_001_01|804001_01N434893/i.test(identity)||!/CEBRASPE/i.test(identity))throw Error('Identificador e banca do caderno não reconhecidos.');
   const positions=indexPages(pages);
-  const old=pdf;pdf=candidate;candidate=null;markers=positions;hash=digest;choice='';confidence='';shown=false;pageOffset=0;wide=false;zoom=1;status='100 cabeçalhos localizados. SHA-256 idêntico ao PDF oficial baixado no teste de 24/11/2026.';
+  const old=activeTask;activeTask=loadingTask;pdf=candidate;candidate=null;markers=positions;hash=digest;choice='';confidence='';shown=false;pageOffset=0;wide=false;zoom=1;status='100 cabeçalhos localizados. SHA-256 idêntico ao PDF oficial baixado no teste de 24/11/2026.';
   if(old)await old.destroy();
- }catch(e){status='Importação recusada: '+String(e.message||e).slice(0,220);if(candidate)await candidate.destroy().catch(()=>{});else if(loadingTask)await loadingTask.destroy().catch(()=>{})}
+ }catch(e){status='Importação recusada: '+String(e.message||e).slice(0,220);if(loadingTask&&loadingTask!==activeTask)await loadingTask.destroy().catch(()=>{})}
  finally{busy=false;loadingTask=null;refresh('aq-status')}
 }
 async function draw(){

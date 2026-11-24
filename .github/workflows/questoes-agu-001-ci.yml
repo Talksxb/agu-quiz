@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/questoes-agu-001.cjs
-      - run: npm install --no-save --ignore-scripts pdfjs-dist@4.10.38 playwright axe-core
+      - run: npm install --no-save --ignore-scripts pdfjs-dist@6.5.438 playwright axe-core
       - run: node scripts/preparar-pdfjs.cjs
       - run: npx playwright install --with-deps chromium
       - name: Caderno oficial temporário (não publicar nem arquivar)
