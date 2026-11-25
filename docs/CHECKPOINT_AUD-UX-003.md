@@ -18,7 +18,7 @@ Contrato Node: onze categorias quando disponíveis; validação original; captur
 
 Chromium 158.0.8127.0: nova jornada em 320/360/390/430/1280, 6.025 s. Questão errada e corrigida, retorno por URL, filtros vazios, abertura sem resposta automática, cópia completa real, restauração em perfil independente e preservação de planejamento preexistente. Dez scans axe com reconferência de alvos: zero violações ou inconclusivos restantes.
 
-As contagens históricas dos testes de nove categorias excluem explicitamente a adição conhecida, e um teste próprio exige as onze categorias reais. As fixtures históricas permanecem imutáveis; deltas exatos restituem HTML/backup anteriores. Nenhum teste funcional foi removido.
+As contagens históricas dos testes de nove categorias excluem explicitamente a adição conhecida, e um teste próprio exige as onze categorias reais. As fixtures históricas permanecem imutáveis; deltas exatos restituem HTML/backup anteriores. Nenhum teste funcional foi removido. A primeira CI interrompeu no LEG07 por contar a nova categoria como uma das nove históricas (10 ≠ 9 após excluir livros). LEG06 e LEG07 agora excluem explicitamente as duas adições conhecidas, como LEG08; as nove categorias originais continuam exigidas e a rotina AUD-UX-003 exige as onze no aplicativo. LEG06 e LEG07 reexecutadas em Chromium nas cinco larguras com sucesso.
 
 Sete questões vigentes, 400 referências históricas e gabaritos mantidos; nenhum enunciado novo ou fonte jurídica alterada. Sem teste de Android físico/TalkBack. Conteúdo de provas continua excluído/mascarado nos artefatos, conforme workflows anteriores. CI do HEAD exato será registrada na PR, sem promover pendências a aprovação.
 
