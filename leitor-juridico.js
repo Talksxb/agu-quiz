@@ -362,3 +362,86 @@ if(typeof document!=='undefined'&&!document.getElementById('agu-reader-style')){
 root.AGULegal={page,article,openLaw,showLawPicker,filterLawMatter,gotoArticle,chapter,boundary,unit,tab,mobile,step,note,exportData,filter,notebookSave,notebookSaveStudy,notebookSaveQuestion,notebookSaveCard,notebookFilter,notebookEdit,notebookCancel,notebookSetStatus,notebookCanOpenOrigin,notebookOrigin,peek:()=>JSON.parse(JSON.stringify(state)),stats:()=>({laws:laws.length,articles:articles.length,units:byUnit.size,relations:getRelations().length}),relations:getRelations};
 })(window);
 
+
+/* UX-AGU-005 — camada reversível de apresentação; nenhuma nova chave de armazenamento. */
+(function(root){
+'use strict';
+const legal=root.AGULegal;if(!legal)return;
+let immersive=false,sizeOpen=false,libraryQuery='',indexQuery='',indexLaw='',libraryY=null;
+const page=legal.page,article=legal.article,mobile=legal.mobile,tab=legal.tab,filter=legal.filter;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const doc=()=>typeof document==='undefined'?null:document;
+const reader=()=>doc()?.getElementById?.('agu-reader');
+const wide=()=>!root.matchMedia?.('(max-width:1100px)')?.matches;
+const scrolls=new Map();
+const key=panel=>legal.peek().article+'|'+panel;
+function focus(selector){doc()?.querySelector?.(selector)?.focus?.({preventScroll:true})}
+function toolbar(){
+ const size=root.AGUConsolidation?.peek()?.size||100;
+ return '<div class="agu-ux-toolbar" role="group" aria-label="Ferramentas de leitura"><button type="button" id="agu-ux-immersive" class="agu-light" aria-pressed="'+immersive+'" onclick="AGUReaderUX.toggle()">'+(immersive?'Sair do modo imersivo':'Modo imersivo')+'</button><button type="button" class="agu-light" id="agu-ux-aa" aria-expanded="'+sizeOpen+'" aria-controls="agu-ux-size-box" onclick="AGUReaderUX.sizePanel()">Aa</button><button type="button" class="agu-light" onclick="AGUReaderUX.source()">Fonte e versão</button></div><div id="agu-ux-size-box"'+(sizeOpen?'':' hidden')+'><label for="agu-ux-size">Tamanho do texto jurídico (Aa)</label><select id="agu-ux-size" onchange="AGUReaderUX.size(this.value)">'+[[90,'Compacto'],[100,'Padrão'],[115,'Ampliado'],[130,'Extra amplo']].map(([n,l])=>'<option value="'+n+'"'+(n===size?' selected':'')+'>'+l+'</option>').join('')+'</select></div>';
+}
+const context='<div class="agu-ux-context" role="group" aria-label="Atalhos deste dispositivo"><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'juris\')">Jurisprudência</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'questoes\')">Questões</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'caderno\')">Caderno</button></div>';
+legal.page=function(){
+ let html=page();
+ if(!html.includes('id="agu-reader"'))return html;
+ html=html.replace('id="agu-reader"','id="agu-reader" data-immersive="'+immersive+'"').replace('<div class="agu-mobile"',toolbar()+'<div class="agu-mobile"').replace('<div class="agu-paper-context">',context+'<div class="agu-paper-context">');
+ if(immersive)html=html.replace(/(<div class="agu-selected-matters"[^>]*>.*?<\/div><p class="agu-muted">Etiquetas da norma, sem certificação curricular dos artigos\.<\/p>)/,'<details class="agu-ux-metadata"><summary>Matérias e classificação editorial</summary>$1</details>');
+ return html;
+};
+function toggle(){const el=reader();if(!el)return;const y=root.scrollY||0;immersive=!immersive;
+ // O modo não muda a seleção, o painel nem os registros do leitor.
+ root.render?.();focus('#agu-ux-immersive');root.scrollTo?.(0,y);
+}
+function sizePanel(){sizeOpen=!sizeOpen;const b=doc()?.getElementById?.('agu-ux-size-box'),a=doc()?.getElementById?.('agu-ux-aa');if(b)b.hidden=!sizeOpen;a?.setAttribute('aria-expanded',String(sizeOpen));if(sizeOpen)focus('#agu-ux-size');else focus('#agu-ux-aa')}
+function size(value){const y=root.scrollY||0;root.AGUConsolidation?.textSize(value,false);focus('#agu-ux-size');root.scrollTo?.(0,y)}
+function source(){if(legal.peek().mobile!=='text')legal.mobile('text',false);const d=reader()?.querySelector('.agu-document details.agu-notice');if(d){d.open=true;d.querySelector('summary')?.focus();d.scrollIntoView({block:'nearest'})}else reader()?.querySelector('.agu-document a')?.focus()}
+function contextOpen(t){if(legal.peek().mobile==='text')legal.mobile('related',false);legal.tab(t,true)}
+legal.mobile=function(t,restore=false){
+ if(immersive&&wide()&&reader()&&['index','text','related'].includes(t)&&t!==legal.peek().mobile){
+  scrolls.set(key(legal.peek().mobile),root.scrollY||0);mobile(t,restore);root.scrollTo?.(0,scrolls.get(key(t))||0);
+ }else mobile(t,restore);
+};
+legal.tab=function(t,restore=false){if(immersive&&reader()&&legal.peek().mobile==='text'&&['juris','questoes','caderno','flashcards','comentarios','estudo','para_caderno'].includes(t))legal.mobile('related',false);return tab(t,restore)};
+legal.article=function(id,restore=false){if(immersive&&wide()&&restore){article(id,false);focus('#agu-reader .agu-document h2');reader()?.querySelector('.agu-document h2')?.scrollIntoView({block:'nearest'})}else return article(id,restore)};
+legal.filter=function(value){indexQuery=String(value);indexLaw=reader()?.dataset.law||'';return filter(value)};
+const normal=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+function applyLibrary(stack){const term=normal(libraryQuery),items=[...stack.querySelectorAll('.hub-tiles>.hub-entry')];let count=0;
+ for(const item of items){item.hidden=!normal(item.textContent).includes(term);if(!item.hidden)count++}
+ stack.querySelector('#agu-ux-library-result').textContent=count+' material(is) disponível(is)'+(count?'':'. Altere a busca.');
+}
+function enhance(){
+ const d=doc(),el=reader();
+ if(el){const input=el.querySelector('#agu-law-filter');if(input&&indexLaw===el.dataset.law&&indexQuery){input.value=indexQuery;filter(indexQuery)}return}
+ const stack=d?.querySelector('#main .hub-stack');if(!stack||!stack.querySelector('.hub-book')||stack.querySelector('#agu-ux-library-search'))return;
+ const box=d.createElement('div');box.className='agu-ux-library-search';box.innerHTML='<label for="agu-ux-library-search">Buscar no acervo</label><input id="agu-ux-library-search" type="search" placeholder="Legislação, capítulos, questões…"><p id="agu-ux-library-result" role="status"></p>';
+ stack.querySelector('.hub-tiles').before(box);const input=box.querySelector('input');input.value=libraryQuery;input.addEventListener('input',()=>{libraryQuery=input.value;applyLibrary(stack)});applyLibrary(stack);
+ stack.querySelector('.hub-tiles').addEventListener('click',()=>{libraryY=root.scrollY||0},{capture:true});
+ if(libraryY!==null){root.scrollTo?.(0,libraryY);libraryY=null}
+}
+root.AGUReaderUX={toggle,sizePanel,size,source,context:contextOpen};
+function init(){const d=doc(),main=d?.getElementById?.('main');if(!main||typeof root.MutationObserver!=='function')return;new root.MutationObserver(enhance).observe(main,{childList:true});enhance()}
+if(doc()?.addEventListener){if(doc().readyState==='loading')doc().addEventListener('DOMContentLoaded',init,{once:true});else init()}
+if(doc()?.createElement&&!doc().getElementById?.('agu-ux005-style')){
+ const style=doc().createElement('style');style.id='agu-ux005-style';style.textContent=`
+#agu-reader .agu-ux-toolbar,#agu-reader .agu-ux-context{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+#agu-reader .agu-ux-toolbar button,#agu-reader .agu-ux-context button{min-height:44px;flex:1 1 auto;white-space:normal;overflow-wrap:anywhere}
+#agu-reader .agu-ux-toolbar [aria-pressed=true]{background:#633c69;color:white;border-color:#633c69}
+#agu-reader #agu-ux-size-box{padding:12px;border:1px solid #e0d9df;border-radius:10px;background:#f8f6f2;margin-bottom:12px}
+#agu-reader #agu-ux-size-box label{display:block}#agu-reader #agu-ux-size-box select{width:100%;min-height:44px}
+#agu-reader .agu-ux-metadata{margin-bottom:8px}#agu-reader .agu-ux-metadata summary{cursor:pointer;min-height:44px;padding:10px 0}
+#agu-reader[data-immersive=true] .agu-columns{display:block}
+#agu-reader[data-immersive=true] .agu-pane{width:100%;max-width:78ch;margin:0 auto 12px;position:static;max-height:none}
+#agu-reader[data-immersive=true] .agu-mobile{display:flex;gap:6px;margin:8px 0 12px}
+#agu-reader[data-immersive=true] .agu-mobile button{flex:1 1 0;min-width:44px;min-height:48px}
+#agu-reader[data-immersive=true][data-mobile=text] .agu-index,#agu-reader[data-immersive=true][data-mobile=text] .agu-related,#agu-reader[data-immersive=true][data-mobile=index] .agu-document,#agu-reader[data-immersive=true][data-mobile=index] .agu-related,#agu-reader[data-immersive=true][data-mobile=related] .agu-document,#agu-reader[data-immersive=true][data-mobile=related] .agu-index{display:none}
+#agu-reader[data-immersive=true] .agu-document .agu-unit{border-left-width:2px;padding-inline:10px}
+#agu-reader[data-immersive=true] .agu-document .agu-unit p{line-height:1.85}
+#main .agu-ux-library-search{padding:12px;background:#fff;border:1px solid #e0d9df;border-radius:14px}
+#main .agu-ux-library-search label{display:block;color:#29262d}
+#main .agu-ux-library-search input{width:100%;min-height:44px}
+#main .agu-ux-library-search p{margin:8px 0 0;color:#5d535e}
+#main .hub-tiles>.hub-entry[hidden]{display:none!important}
+@media(max-width:1100px){#agu-reader[data-immersive=true] .agu-pane{max-width:100%}#agu-reader[data-immersive=true] .agu-mobile{background:#f8f6f2}}
+`;doc().head?.appendChild(style)
+}
+})(window);
