@@ -15,8 +15,8 @@ async function main(){
  const browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.AGU_CHROMIUM_BIN||undefined});
  const evidence=[];
  try{
-  for(const width of [320,390,768,1280]){
-   const ctx=await browser.newContext({viewport:{width,height:844},hasTouch:width<900});
+  for(const width of [320,390,430,768,980,1100,1280]){
+   const ctx=await browser.newContext({viewport:{width,height:844},hasTouch:width<=1100});
    const page=await ctx.newPage(),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url,{waitUntil:'load'});await page.evaluate(()=>setView('library'));
@@ -24,7 +24,43 @@ async function main(){
    assert.equal(await tile.isVisible(),true);
    await tile.click();await page.waitForURL(/livros-agu\.html$/);
    assert.equal(await page.getByRole('button',{name:/Competências e Cooperação Ambiental/}).isEnabled(),true);
+   await page.locator('#ux-book-search').fill('lgpd');
+   assert.equal(await page.locator('#cards button[data-book]:visible').count(),1,'busca restringe capítulos publicados');
    await page.getByRole('button',{name:/LGPD.*Administração Pública/}).click();
+   await page.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='lgpd-adm64b');
+   await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
+   assert.equal(await page.locator('#ux-book-search').inputValue(),'lgpd','busca conservada ao retornar');
+   assert.equal(await page.locator('#cards button[data-book]:visible').count(),1);
+   await page.getByRole('button',{name:/LGPD.*Administração Pública/}).click();
+   await page.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='lgpd-adm64b');
+   const mode=page.locator('#ux-book-immersive');
+   await mode.press('Enter');
+   assert.equal(await mode.getAttribute('aria-pressed'),'true');
+   assert.equal(await page.locator('#ux-book-index').evaluate(e=>e.open),false);
+   assert.equal(await page.locator('#read-full').isVisible(),true);
+   await page.locator('#ux-book-show-index').click();
+   assert.equal(await page.locator('#page').isVisible(),true);
+   await page.locator('#ux-book-aa').click();
+   assert.equal(await page.locator('#reading-size').evaluate(e=>e===document.activeElement),true);
+   await page.locator('#reading-size').press('End');
+   assert.equal(await page.locator('#reading-size').inputValue(),'28');
+   await page.locator('#reading-size').press('Home');
+   for(let i=0;i<2;i++)await page.locator('#reading-size').press('ArrowRight');
+   assert.equal(await page.locator('#reading-size').inputValue(),'20');
+   await page.locator('#page').selectOption('0');
+   const doneBefore=await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_livros_reader_v1')||'{}')['lgpd-adm64b']?.done||[]);
+   await page.locator('#ux-book-next').click();
+   assert.equal(await page.locator('#page').inputValue(),'1');
+   assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_livros_reader_v1')||'{}')['lgpd-adm64b']?.done||[]),doneBefore,'navegação não conclui seção');
+   const fontBefore=await page.locator('#read-full').evaluate(e=>parseFloat(getComputedStyle(e).fontSize));
+   const zoom=await page.addStyleTag({content:':root{font-size:200%}'});
+   assert.ok(await page.locator('#read-full').evaluate((e,n)=>parseFloat(getComputedStyle(e).fontSize)>=n*1.99,fontBefore),'texto do livro realmente ampliado');
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'livro imersivo sem overflow em texto ampliado');
+   await zoom.evaluate(e=>e.remove());
+   await page.screenshot({path:path.join(ART,'ux005-livro-imersivo-'+width+'.png'),fullPage:false});
+   await mode.click();
+   assert.equal(await mode.getAttribute('aria-pressed'),'false');
+   await page.locator('#page').selectOption('0');
    await page.waitForFunction(()=>document.querySelector('#book-title')?.textContent==='LGPD aplicada à Administração Pública');
    assert.equal(await page.locator('#read-full').isVisible(),true);
    assert.match(await page.locator('#read-full').innerText(),/LGPD aplicada à Administração Pública/);
