@@ -45,7 +45,7 @@ async function main(){
  for(const width of [320,360,390,430,1280]){
   const config={viewport:{width,height:900},hasTouch:width<=430,reducedMotion:'reduce',timezoneId:'America/Sao_Paulo',acceptDownloads:true};
   const old=await browser.newContext(config),op=await old.newPage();
-  await op.route('**/revisao-inteligente.js',r=>r.fulfill({status:200,contentType:'application/javascript',body:baseline}));
+  await op.route(url=>url.pathname.endsWith('/revisao-inteligente.js'),r=>r.fulfill({status:200,contentType:'application/javascript',body:baseline}));
   await open(op,base);
   const oldY=await op.getByRole('button',{name:'Iniciar seleção automática',exact:true}).evaluate(x=>x.getBoundingClientRect().y);
   await op.evaluate(()=>AGUReview.go('flashcard'));
