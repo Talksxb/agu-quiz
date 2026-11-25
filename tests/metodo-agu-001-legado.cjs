@@ -11,7 +11,10 @@ module.exports.reverseReviewA11y=function(js){
  const before="<div class=\"agu-deck-surface agu-deck-back\" aria-label=\"Verso do cartão\">",after="<div class=\"agu-deck-surface agu-deck-back\" role=\"group\" aria-label=\"Verso do cartão\">";
  assert.equal(js.split(after).length,2,'Papel ARIA do verso deve ser único');
  assert.equal(js.includes(before),false,'Verso genérico antigo não deve coexistir');
- const restored=js.replace(after,before);
+ const filterBefore="<div class=\"agu-deck-filters\" aria-label=\"Filtrar baralhos\">",filterAfter="<div class=\"agu-deck-filters\" role=\"group\" aria-label=\"Filtrar baralhos\">";
+ assert.equal(js.split(filterAfter).length,2,'Papel ARIA dos filtros deve ser único');
+ assert.equal(js.includes(filterBefore),false,'Filtro genérico antigo não deve coexistir');
+ const restored=js.replace(filterAfter,filterBefore).replace(after,before);
  assert.equal(hash(restored),require('./fixtures/metodo-agu/review-delta.json').after,'Motor fora do delta semântico autorizado');
  return restored;
 };

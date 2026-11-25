@@ -76,7 +76,7 @@ async function main(){
      access.unresolved=access.afterScroll.filter(x=>x.status!=='passed');
      fs.writeFileSync(path.join(OUT,'axe-'+label+'-'+width+'.json'),JSON.stringify(access,null,2)+'\\n');
      console.log('UX_AGU_006_AXE_RECHECK',JSON.stringify({label,width,initialRules:access.incomplete.length,targets:access.afterScroll.length,passed:access.afterScroll.filter(x=>x.status==='passed').length,unresolved:access.unresolved}));
-     assert.deepEqual(access.unresolved,[],label+' axe unresolved '+width);
+     // Preserve every unresolved target for the terminal blocking assertion; do not stop other accessibility scans.
 
     }
     if(!baseline&&zoom){
@@ -113,6 +113,8 @@ async function main(){
    await act(btn('Pausar e voltar'));
    stage='revisao';
    await act(btn('Flashcards'),true);
+   assert.equal(await p.locator('.agu-deck-filters').getAttribute('role'),'group','filtros com papel semântico explícito');
+   assert.equal(await p.getByRole('group',{name:'Filtrar baralhos',exact:true}).count(),1,'filtros nomeados acessivelmente');
    assert.equal(await p.locator('.feedback').count(),0);
    await scan('revisao-hipotese', 'button[onclick^="AGUReview.reveal("]');
    await act(btn('Mostrar resposta'),true);
@@ -189,6 +191,8 @@ async function main(){
    await ctx.close();
   }
   fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify(results,null,2)+'\n');
+  const remaining=results.flatMap(r=>r.scans.flatMap(s=>(s.access?.unresolved||[]).map(x=>({width:r.width,label:s.label,...x}))));
+  assert.deepEqual(remaining,[],'UX-AGU-006: zero alvos axe inconclusivos em todos os estados escaneados');
   console.log('UX_AGU_006_BROWSER_OK',JSON.stringify(results.map(x=>({width:x.width,baseline:x.baseline,actions:x.actions,scans:x.scans.length,axeIncomplete:x.scans.flatMap(s=>s.access?.incomplete||[]).length,axeTargetsRechecked:x.scans.flatMap(s=>s.access?.afterScroll||[]).length,axeUnresolved:x.scans.flatMap(s=>s.access?.unresolved||[]).length}))));
  }finally{await browser.close();if(server)server.close()}
 }
