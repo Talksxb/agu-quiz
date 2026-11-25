@@ -238,12 +238,15 @@ jobs:
         run: node tests/sprint35-browser.cjs
       - name: LEG-01 — leitor legado e expansão sintética
         run: node tests/leg01-browser.cjs
+      - name: UX-AGU-006 — jornadas integradas, comparação CSS, teclado, toque, zoom e axe
+        run: node tests/ux-agu-006-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-ux-agu-006/
             tests/artifacts-simulados-agu/
             tests/artifacts-interface-agu-001/
             tests/artifacts-interface-agu-002/
