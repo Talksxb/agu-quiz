@@ -1,0 +1,401 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-11",
+  "editorialId": "LIVRO-AMB-008",
+  "title": "Crimes contra o meio ambiente",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.1",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-11.md",
+  "readerPath": "livros/amb-11.json",
+  "reader": {
+    "id": "amb-11",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-11",
+    "title": "Crimes contra o meio ambiente",
+    "edition": "LIVRO-AMB-008 · edição pública 1.1 · 25/11/2026 (fontes jurídicas de 22/11/2026)",
+    "source": "livros/fontes/amb-11.md; derivado do original LIVRO-AMB-008_CAPITULO_INTEGRAL.md (SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa)",
+    "source_format": "markdown",
+    "verification": "AMB-11; conferência jurídica pontual declarada na edição original 22/11/2026. Auditoria integral não certificada, domínio não avaliado; sem reconferência exaustiva em 25/11/2026.",
+    "transcription_note": "Publicação autorizada em 25/11/2026; somente dados de auditoria privada e texto de acesso público foram ajustados. A obra original entregue ao estudante permanece preservada. Tabelas Markdown são apresentadas textualmente; PDF original não integrado."
+  },
+  "curricularIds": [
+    "AMB-11"
+  ],
+  "dates": {
+    "edition": "2026-11-25",
+    "legalConsultation": "Fontes conferidas pontualmente na obra original em 22/11/2026; não revalidadas integralmente nesta publicação",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-25"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Retificações do edital ainda não exaustivamente inventariadas",
+      "Cadeia intertemporal e jurisprudencial de todos os tipos não exaurida",
+      "Nenhuma nova conferência jurídica completa durante esta transposição",
+      "Não confundir publicação, certificação curricular ou domínio pedagógico"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb-11-s01",
+      "marker": "01",
+      "title": "Identificação e governança da edição"
+    },
+    {
+      "id": "amb-11-s02",
+      "marker": "02",
+      "title": "Mapa editorial de cobertura e limite"
+    },
+    {
+      "id": "amb-11-s03",
+      "marker": "03",
+      "title": "Abertura — a fábrica licenciada, o rio poluído e a floresta derrubada"
+    },
+    {
+      "id": "amb-11-s04",
+      "marker": "04",
+      "title": "1. Fundamento constitucional e estrutura da tutela penal"
+    },
+    {
+      "id": "amb-11-s05",
+      "marker": "05",
+      "title": "2. Princípios penais, tipicidade e relação com a administração sancionadora"
+    },
+    {
+      "id": "amb-11-s06",
+      "marker": "06",
+      "title": "3. Pessoas físicas e jurídicas: autoria, decisão e responsabilidade"
+    },
+    {
+      "id": "amb-11-s07",
+      "marker": "07",
+      "title": "4. Crimes contra a fauna: entre proteção ecológica e bem-estar animal"
+    },
+    {
+      "id": "amb-11-s08",
+      "marker": "08",
+      "title": "5. Crimes contra a flora: proteção da função ecológica da vegetação"
+    },
+    {
+      "id": "amb-11-s09",
+      "marker": "09",
+      "title": "6. Poluição, recursos minerais, substâncias perigosas e licenciamento"
+    },
+    {
+      "id": "amb-11-s10",
+      "marker": "10",
+      "title": "7. Ordenamento urbano e patrimônio cultural (arts. 62–65)"
+    },
+    {
+      "id": "amb-11-s11",
+      "marker": "11",
+      "title": "8. Crimes contra a administração ambiental: agentes e documentos"
+    },
+    {
+      "id": "amb-11-s12",
+      "marker": "12",
+      "title": "9. Penas, dosimetria e consequências jurídicas"
+    },
+    {
+      "id": "amb-11-s13",
+      "marker": "13",
+      "title": "10. Processo penal ambiental: investigação, prova e soluções consensuais"
+    },
+    {
+      "id": "amb-11-s14",
+      "marker": "14",
+      "title": "11. Quatro esferas que parecem uma só — quadro comparativo"
+    },
+    {
+      "id": "amb-11-s15",
+      "marker": "15",
+      "title": "12. Competência penal e atribuições: não confundir interesse ecológico com interesse processual federal"
+    },
+    {
+      "id": "amb-11-s16",
+      "marker": "16",
+      "title": "13. Dano civil, reparação e autonomia das pretensões"
+    },
+    {
+      "id": "amb-11-s17",
+      "marker": "17",
+      "title": "14. Direito intertemporal — quadro de reformas que mudam a resposta"
+    },
+    {
+      "id": "amb-11-s18",
+      "marker": "18",
+      "title": "15. Caso AGU integralmente resolvido: a indústria, o rio e a floresta"
+    },
+    {
+      "id": "amb-11-s19",
+      "marker": "19",
+      "title": "16. Questão oficial de Advogado da União (2023) — conferência e comentário"
+    },
+    {
+      "id": "amb-11-s20",
+      "marker": "20",
+      "title": "17. Questões autorais comentadas — aplicação e transferência"
+    },
+    {
+      "id": "amb-11-s21",
+      "marker": "21",
+      "title": "18. Síntese de leitura: dez distinções indispensáveis"
+    },
+    {
+      "id": "amb-11-s22",
+      "marker": "22",
+      "title": "19. Recuperação ativa — perguntas e respostas afastadas"
+    },
+    {
+      "id": "amb-11-s23",
+      "marker": "23",
+      "title": "20. Fontes oficiais rastreáveis, verificação e lacunas"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-11",
+      "subitem": "Crimes contra o meio ambiente.",
+      "sections": [
+        "amb-11-s01",
+        "amb-11-s02",
+        "amb-11-s03",
+        "amb-11-s04",
+        "amb-11-s05",
+        "amb-11-s06",
+        "amb-11-s07",
+        "amb-11-s08",
+        "amb-11-s09",
+        "amb-11-s10",
+        "amb-11-s11",
+        "amb-11-s12",
+        "amb-11-s13",
+        "amb-11-s14",
+        "amb-11-s15",
+        "amb-11-s16",
+        "amb-11-s17",
+        "amb-11-s18",
+        "amb-11-s19",
+        "amb-11-s20",
+        "amb-11-s21",
+        "amb-11-s22",
+        "amb-11-s23"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "amb11-f01",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "Edital do certame:: Cebraspe, Edital nº 1/2022, item 17.2.1, Direito Ambiental nº 11, p. impressa 42, exame do PDF e imagem da página: . Retificações nº 2 e 5/2023: cotejo pontual previamente document",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f02",
+      "url": "https://www2.camara.leg.br/atividade-legislativa/legislacao/constituicao1988",
+      "locator": "CF:: texto de referência da Câmara atualizado em 2026 (art. 5º, XXXIX/XL; arts. 22, 23, 24, 109, 129, 131, 144, 225): . Fundamentos constitucionais interpretados sem atribuir valor vinc",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f03",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1998/lei-9605-12-fevereiro-1998-365397-normaatualizada-pl.html",
+      "locator": "Lei 9.605/1998:: Câmara, texto consolidado **efetivamente aberto**, arts. 2–3, 6–15, 20–29, 32–69-A, 70–76, com notas de alterações: . O exame foi focalizado nos tipos decisivos, sem reconstrução d",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f04",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15190-8-agosto-2025-797833-normaatualizada-pl.html",
+      "locator": "Lei 15.190/2025:: Câmara, art. 62 (Lei 9.605, arts. 60 e 67), art. 67 (vigência) e registros de promulgação pós-veto: . Status: confirmada redação penal de 2026; **a transição de todos os dispositiv",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f05",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15150-16-junho-2025-797610-publicacaooriginal-175672-pl.html",
+      "locator": "Lei 15.150/2025:: inclusão do art. 32, § 1º-B, conferida na consolidação da Lei 9.605 e ficha normativa do lote: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f06",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2026/lei-15355-11-marco-2026-798799-publicacaooriginal-178409-pl.html",
+      "locator": "Lei 15.355/2026:: art. 18, acréscimo ao art. 32, § 1º-C, em publicação original e consolidação da Lei 9.605: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f07",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15299-22-dezembro-2025-798528-publicacaooriginal-177502-pl.html",
+      "locator": "Lei 15.299/2025:: art. 2º, art. 49, § 2º, conferido por fonte legislativa e consolidação: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f08",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2024/lei-14944-31-julho-2024-796016-publicacaooriginal-172511-pl.html",
+      "locator": "Lei 14.944/2024:: art. 44 e nova redação do art. 41 da Lei 9.605, conferida na consolidação: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f09",
+      "url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=244969&ori=1",
+      "locator": "STF, RE 548.181/PR: , Primeira Turma, rel. Min. Rosa Weber, **06/08/2013**, afastamento da exigência de dupla imputação; notícia oficial contemporânea e registro processual:  e . **Alcance:** inexistê",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f10",
+      "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/05052024-A-responsabilidade-penal-das-pessoas-juridicas-segundo-o-STJ.aspx",
+      "locator": "STJ: , retrospectiva oficial da responsabilidade penal da PJ, **05/05/2024**, com referência ao **RMS 39.173/BA**, EAREsp 1.439.565 e AREsp 1.621.911: . **Alcance:** orientação jurispru",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f11",
+      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&num_processo_classe=2205709&sg_classe=REsp&tipo_pesquisa=T",
+      "locator": "STJ, Tema Repetitivo 1.377: , **REsp 2.205.709/MG**, Terceira Seção, rel. Min. Joel Ilan Paciornik, **08/10/2025**, DJEN **29/10/2025**, ficha oficial e notícia:  e .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f12",
+      "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=648",
+      "locator": "STF, Tema 648: , **RE 835.558/SP**, Plenário, **09/02/2017**, trânsito **12/09/2017**, página oficial de repercussão geral: . **Alcance:** transnacionalidade de crimes envolvendo fauna nas hipóte",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f13",
+      "url": "https://processo.stj.jus.br/jurisprudencia/externo/informativo/?acao=pesquisar&aplicacao=informativo&livre=%40CNOT%3D%27021492%27",
+      "locator": "STJ, AgRg no CC 206.862/SC: , Terceira Seção, rel. Min. Joel Ilan Paciornik, **18/02/2025**, DJEN **24/02/2025**, informativo 848: . **Status:** orientação histórica de 2025, cotejada com precedente posterior",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f14",
+      "url": "https://scon.stj.jus.br/SCON/GetInteiroTeorDoAcordao?dt_publicacao=13%2F03%2F2026&num_registro=202504535912",
+      "locator": "STJ, AgRg no CC 217.888/PR: , Terceira Seção, rel. Min. Ribeiro Dantas, **05/03/2026**, DJEN **13/03/2026**, íntegra oficial **efetivamente aberta e primeira página conferida por imagem**: . **Alcance:** pres",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f15",
+      "url": "https://scon.stj.jus.br/SCON/pesquisar.jsp?O=JT&b=ACOR&i=1&livre=%28%28%27ERESP%27.clas.+e+%40num%3D%271318051%27%29+ou+%28%27EREsp%27+adj+%271318051%27%29.suce.%29",
+      "locator": "STJ, EREsp 1.318.051/RJ: , Primeira Seção, rel. Min. Mauro Campbell Marques, **08/05/2019**, DJe **12/06/2019**, responsabilidade **subjetiva** em sanção administrativa; evidência verificada historicamente",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f16",
+      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&num_processo_classe=1962089&sg_classe=REsp&tipo_pesquisa=T",
+      "locator": "STJ, Tema Repetitivo 1.204: , **REsp 1.953.359/SP e REsp 1.962.089/MS**, Primeira Seção, **13/09/2023**, DJe **26/09/2023**, obrigações ambientais *propter rem*: . **Status desta edição:** evidência histórica",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f17",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del3689.htm",
+      "locator": "Código Penal, CPP, Lei 9.099/1995, Lei 7.347/1985, PNMA, LC 73/1993, LC 140/2011, Lei 9.985/2000, Lei 12.651/2012, Lei 12.305/2010, Lei 10.480/2002, Decreto 6.514/2008 e Lei 8.176/1991:: bases de enquadramento complementar; as passagens centrais sobre art. 28-A CPP e Lei 9.099 foram cotejadas em portais oficiais, mas **não se alega cotejo completo de cada artigo e ",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb-11-caso",
+      "type": "aplicar",
+      "sectionId": "amb-11-s18",
+      "title": "Caso AGU: formular estratégia antes de conferir solução",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb-11-s18",
+          "start": "### Fatos e delimitação",
+          "end": "### Questão jurídica e normas incidentes"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb-11-s18",
+          "start": "### Questão jurídica e normas incidentes"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb-11-s22",
+      "title": "Recuperação ativa — dez perguntas comentadas",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb-11-s22",
+          "start": "**Perguntas (responder sem consulta",
+          "end": "**Respostas para conferência posterior:**"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb-11-s22",
+          "start": "**Respostas para conferência posterior:**",
+          "end": "**Teste de transferência ainda não realizado:**"
+        }
+      ]
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Marcadores técnicos adicionados e referência documental privada suprimida na edição pública; argumentação jurídica preservada. O original permanece identificado pelo SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa.",
+    "Tabelas permanecem no Markdown; a tela não reproduz a paginação PDF nem os quadros CSV da entrega original."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "inputSha256": "17bec85085c28f4fda16ad12c731240cfc28bb16559dd6489f0a95182d60b7ca",
+    "record": "Autorização expressa do usuário de 25/11/2026 para publicar LIVRO-AMB-008 e outros livros elegíveis. Esta aprovação limita-se ao ingresso editorial da versão pública de escopo jurídico delimitado; nenhuma certificação curricular ou aprovação de cartões novos foi atribuída."
+  }
+}
