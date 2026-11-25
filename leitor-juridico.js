@@ -380,7 +380,7 @@ function toolbar(){
  const size=root.AGUConsolidation?.peek()?.size||100;
  return '<div class="agu-ux-toolbar" role="group" aria-label="Ferramentas de leitura"><button type="button" id="agu-ux-immersive" class="agu-light" aria-pressed="'+immersive+'" onclick="AGUReaderUX.toggle()">'+(immersive?'Sair do modo imersivo':'Modo imersivo')+'</button><button type="button" class="agu-light" id="agu-ux-aa" aria-expanded="'+sizeOpen+'" aria-controls="agu-ux-size-box" onclick="AGUReaderUX.sizePanel()">Aa</button><button type="button" class="agu-light" onclick="AGUReaderUX.source()">Fonte e versão</button></div><div id="agu-ux-size-box"'+(sizeOpen?'':' hidden')+'><label for="agu-ux-size">Tamanho do texto jurídico (Aa)</label><select id="agu-ux-size" onchange="AGUReaderUX.size(this.value)">'+[[90,'Compacto'],[100,'Padrão'],[115,'Ampliado'],[130,'Extra amplo']].map(([n,l])=>'<option value="'+n+'"'+(n===size?' selected':'')+'>'+l+'</option>').join('')+'</select></div>';
 }
-const context='<div class="agu-ux-context" role="group" aria-label="Atalhos deste dispositivo"><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'juris\')">Jurisprudência</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'questoes\')">Questões</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'caderno\')">Caderno</button></div>';
+const context='<div class="agu-ux-context" role="group" aria-label="Atalhos deste dispositivo"><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'juris\')">Ver jurisprudência</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'questoes\')">Ver questões</button><button type="button" class="agu-light" onclick="AGUReaderUX.context(\'caderno\')">Ver caderno</button></div>';
 legal.page=function(){
  let html=page();
  if(!html.includes('id="agu-reader"'))return html;
@@ -403,6 +403,7 @@ legal.mobile=function(t,restore=false){
 };
 legal.tab=function(t,restore=false){if(immersive&&reader()&&legal.peek().mobile==='text'&&['juris','questoes','caderno','flashcards','comentarios','estudo','para_caderno'].includes(t))legal.mobile('related',false);return tab(t,restore)};
 legal.article=function(id,restore=false){if(immersive&&wide()&&restore){article(id,false);focus('#agu-reader .agu-document h2');reader()?.querySelector('.agu-document h2')?.scrollIntoView({block:'nearest'})}else return article(id,restore)};
+for(const name of ['openLaw','gotoArticle','chapter','boundary']){const original=legal[name];legal[name]=function(...args){const result=original(...args);if(immersive&&wide()&&reader()?.dataset.mobile==='text'){focus('#agu-reader .agu-document h2');reader()?.querySelector('.agu-document h2')?.scrollIntoView({block:'nearest'})}return result}}
 legal.filter=function(value){indexQuery=String(value);indexLaw=reader()?.dataset.law||'';return filter(value)};
 const normal=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 function applyLibrary(stack){const term=normal(libraryQuery),items=[...stack.querySelectorAll('.hub-tiles>.hub-entry')];let count=0;
