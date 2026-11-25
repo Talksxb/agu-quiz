@@ -5,6 +5,12 @@ const delta=require('./fixtures/interface-agu-002-delta.json');
 const hash=x=>crypto.createHash('sha256').update(x).digest('hex');
 module.exports=function readerBeforeInterface002(){
  let source=fs.readFileSync(path.join(__dirname,'..','leitor-juridico.js'),'utf8');
+ const ux=require('./fixtures/ux-agu-005-reader-delta.json');
+ const blob=s=>crypto.createHash('sha1').update('blob '+Buffer.byteLength(s)+'\0').update(s).digest('hex');
+ assert.equal(blob(source),ux.afterBlob,'leitor atual fora do delta UX-AGU-005');
+ assert.ok(source.endsWith(ux.appended),'camada UX-AGU-005 deve ser exatamente aditiva');
+ source=source.slice(0,-ux.appended.length);
+ assert.equal(blob(source),ux.beforeBlob,'leitor 003 restituído byte a byte');
  const next=require('./fixtures/interface-agu-003-delta.json');
  assert.equal(hash(source),next.afterSha256,'leitor atual fora do delta INTERFACE-AGU-003');
  assert.equal(source.split(next.addedCss).length,2,'bloco visual 003 único');
