@@ -131,7 +131,7 @@ async function main(){
    await p.reload();
    assert.equal(await p.evaluate(()=>AGUCaderno.peek().records.length),count+1);
    assert.equal(await p.evaluate(()=>AGULegal.peek().forNotebook.length),beforeMark+1);
-   assert.equal(await p.evaluate(()=>AGUStudy.peek().sessions.filter(s=>s.id===session.id).length),1);
+   assert.equal(await p.evaluate(id=>AGUStudy.peek().sessions.filter(s=>s.id===id).length,session.id),1);
    const reviewBytes=await p.evaluate(k=>localStorage.getItem(k),REVIEW);
    stage='vigente';
    await p.goto(new URL('questoes-vigentes.html',base).href);
