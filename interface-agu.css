@@ -267,7 +267,7 @@ h3 { font-size: 1rem; line-height: 1.5; }
 #main :is(.card,.agu-ctx-box,.aq-card):has(> .question-title){min-width:0;overflow-wrap:anywhere}
 #main .question-title{font-size:clamp(1.125rem,2.2vw,1.5rem);line-height:1.6;overflow-wrap:anywhere}
 #main .feedback{border-radius:var(--ui-radius-control);padding:var(--ui-space-4);line-height:1.75;overflow-wrap:anywhere}
-#main .feedback:not(.bad){background:#eef6f2;border-left-color:#24634d}
+#main .feedback:not(.bad){background:var(--ui-neutral);border-left-color:var(--ui-accent)}
 #main .feedback.bad{background:var(--ui-review-bg);border-left-color:var(--ui-review)}
 #main .feedback :is(p,summary){font-size:1rem;line-height:1.65}
 #main .agu-card-detail{border-color:var(--ui-line);padding:var(--ui-space-2) 0}
