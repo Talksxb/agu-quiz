@@ -1,0 +1,2 @@
+# GOV-AGU-006 — suporte técnico a C/E e A–E
+25/11/2026. Nenhuma questão nova oficial incluída; 7 questões existentes e chave local intactas. Fila privada de 200 referências em GOV-AGU-006, PR424. Admissibilidade de reprodução 2023 pendente; suporte técnico em mesmo módulo, com alternativas, metadados específicos por certame e portão de elegibilidade. Fixture exclusivamente sintético sob tests, não integra dataset público de resolução. Smoke de produção inclui regressão dos sete itens e fixture injetado exclusivamente no navegador efêmero. CI e deploy a confirmar.
