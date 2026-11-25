@@ -32,6 +32,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Resolver na URL pública em perfil efêmero
         run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-003-browser.cjs
+      - name: Resolver lote ampliado e preservar histórico anterior
+        run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-004-browser.cjs
       - name: Conferir entrada pelo banco
         run: |
           node - <<'NODE'
