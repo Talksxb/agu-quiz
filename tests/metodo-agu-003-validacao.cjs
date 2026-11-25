@@ -91,7 +91,7 @@ test('registros legados compatíveis e campos desconhecidos permanecem utilizáv
  const legacy={page:2,done:[0],updated:at,extra:{nota:'texto',opcao:true}};assert.equal(P.validate({'adm-53':legacy}),true);assert.equal(P.active(legacy,reference.edition),legacy);const next=P.prepare(legacy,reference.edition);assert.deepEqual(copy(next.extra),legacy.extra);assert.equal(next.page,2);assert.equal(next.mastery,undefined);
 });
 test('referências do backup são geradas dos quatro índices publicados',()=>{
- assert.equal(Object.keys(references).length,4);for(const [id,r] of Object.entries(references)){const m=JSON.parse(fs.readFileSync(path.join(ROOT,'livros/metodo/'+id+'.json')));assert.equal(r.edition,m.edition);assert.deepEqual(copy(r.sections),m.sections.map(s=>s.id));assert.deepEqual(copy(r.activities),m.activities.map(a=>a.id));}
+ assert.equal(Object.keys(references).length,5);for(const [id,r] of Object.entries(references)){const m=JSON.parse(fs.readFileSync(path.join(ROOT,'livros/metodo/'+id+'.json')));assert.equal(r.edition,m.edition);assert.deepEqual(copy(r.sections),m.sections.map(s=>s.id));assert.deepEqual(copy(r.activities),m.activities.map(a=>a.id));}
  assert.equal(B.validateRecord(KEY,{}),true);assert.equal(B.capture().items[KEY],undefined);
 });
 console.log('METODO_AGU_003_NODE_OK',JSON.stringify({tests:count,categories:10,legacyCategories:9,physicalAndroid:false}));

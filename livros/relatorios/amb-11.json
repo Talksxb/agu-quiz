@@ -1,0 +1,129 @@
+{
+  "id": "amb-11",
+  "edition": "1.1",
+  "sourceSha256": "8d1cd408e186b644b261109761d9a0c14db70c5d7073c6bcf069696b6261ef94",
+  "inputSha256": "17bec85085c28f4fda16ad12c731240cfc28bb16559dd6489f0a95182d60b7ca",
+  "sections": [
+    {
+      "id": "amb-11-s01",
+      "sha256": "3f0784f8eb8d3d9b7496c125d1db8da6ba0bc7600bc943a6ae9a791c83989cd2",
+      "characters": 847
+    },
+    {
+      "id": "amb-11-s02",
+      "sha256": "a769c1d10b292674131ffbe844c9d21632b0f1da1be02c36dcaa49e69ff58cc7",
+      "characters": 1946
+    },
+    {
+      "id": "amb-11-s03",
+      "sha256": "379d7fcc87fb6a54a73c420176cf53ba467eaa463a9094b5c493aaa6dd536780",
+      "characters": 1747
+    },
+    {
+      "id": "amb-11-s04",
+      "sha256": "ed90971e01435fb9cae8b25c9736fca500206ac94b4f36d3b687e54260fd4b3c",
+      "characters": 2916
+    },
+    {
+      "id": "amb-11-s05",
+      "sha256": "1a8c0f4611486437424e9448ce099dee7938c213b1dfde966617645211aaf065",
+      "characters": 3491
+    },
+    {
+      "id": "amb-11-s06",
+      "sha256": "398f11ac6c74bbf7baeefedab07a6a0f7178805070b0992fe2e4481e6c4b9072",
+      "characters": 4184
+    },
+    {
+      "id": "amb-11-s07",
+      "sha256": "1f995032950f5f4a964e5444adf41c22d1d926d837a0e5973ac4b962dff13ecc",
+      "characters": 5211
+    },
+    {
+      "id": "amb-11-s08",
+      "sha256": "3d574765a7d5f4b18afe80c3418f3b92193c0acf9aae4f778a6443cd757bfea4",
+      "characters": 5856
+    },
+    {
+      "id": "amb-11-s09",
+      "sha256": "8b37cc7fc0508af82ffcd90fcf5ee1dacfc035765e6ef0c9a1f6b47e32447116",
+      "characters": 7322
+    },
+    {
+      "id": "amb-11-s10",
+      "sha256": "24d9a6723b6f3fd72e3ef219a959917ce3427b0c22378ef01fbb30c327fc558d",
+      "characters": 2299
+    },
+    {
+      "id": "amb-11-s11",
+      "sha256": "e9713e11443db3e04a062bab7a3be09615727a814c5de2adaaf35e8cbd2e3ad8",
+      "characters": 3319
+    },
+    {
+      "id": "amb-11-s12",
+      "sha256": "0f70ae067421705c1138b13e00e3672cb859908139bf4baa9ff2dfdf8cf57945",
+      "characters": 3570
+    },
+    {
+      "id": "amb-11-s13",
+      "sha256": "562d120774425a2fed8bcf64745a8a760eda4e8e4ce746bd733d50d413b22782",
+      "characters": 4088
+    },
+    {
+      "id": "amb-11-s14",
+      "sha256": "151823e372bca2ae6f0f9243891a611dde3edb6223afed6fd443656f76b4c235",
+      "characters": 2280
+    },
+    {
+      "id": "amb-11-s15",
+      "sha256": "7d0b30cc830d0276af47639d45720381aa379ee244cf5474e18ee46e9193fa1c",
+      "characters": 4617
+    },
+    {
+      "id": "amb-11-s16",
+      "sha256": "f1602285d98fb1c31f5532a25e5bf876cc2bc41c184c663f4c70c32fe366f0f2",
+      "characters": 1775
+    },
+    {
+      "id": "amb-11-s17",
+      "sha256": "5b2e5152fa8b18b5f99f8b3b7f94fb4df924645d2ec811ea75db99fb2ccb51f3",
+      "characters": 2870
+    },
+    {
+      "id": "amb-11-s18",
+      "sha256": "8d6c62929cf5bd24e1b83ef1e18fc8be8cb930326540684f7a8f61e09da262da",
+      "characters": 9141
+    },
+    {
+      "id": "amb-11-s19",
+      "sha256": "400a93244689ae4e654136e5bd4772fb6becb36428c7c13b7674ceb5f37c626d",
+      "characters": 2277
+    },
+    {
+      "id": "amb-11-s20",
+      "sha256": "8860e3e6b2ea9b0f1cf9fd85e97573d3f280a6498edf535bcec3c8a30740c142",
+      "characters": 7867
+    },
+    {
+      "id": "amb-11-s21",
+      "sha256": "a96f26a9a8089cab8d7dc43fd410771969d88725a6594616711c83244486b944",
+      "characters": 1533
+    },
+    {
+      "id": "amb-11-s22",
+      "sha256": "63469adb9c5bf01579fcb75e82cf54a7069e96bfbdc623cb5a31d94659d16178",
+      "characters": 4273
+    },
+    {
+      "id": "amb-11-s23",
+      "sha256": "e91c28b71290d45626dbc8b4422f6ae67aaa371297dab8ecc8d9d5294db0c1c6",
+      "characters": 9039
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Marcadores técnicos adicionados e referência documental privada suprimida na edição pública; argumentação jurídica preservada. O original permanece identificado pelo SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa.",
+    "Tabelas permanecem no Markdown; a tela não reproduz a paginação PDF nem os quadros CSV da entrega original."
+  ],
+  "resources": []
+}
