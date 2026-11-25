@@ -97,7 +97,7 @@ function init(){
  cards.before(search);$('ux-book-search').addEventListener('input',e=>{query=e.target.value;filter()});
  new MutationObserver(filter).observe(cards,{childList:true});filter();
  cards.addEventListener('click',e=>{const b=e.target.closest('button[data-book]');if(b){lastBook=b.dataset.book;catalogY=root.scrollY||0}},{capture:true});
- $('back-catalog').addEventListener('click',()=>{setImmersive(false);filter();if(lastBook)root.scrollTo(0,catalogY)});
+ $('back-catalog').addEventListener('click',()=>{position=null;setImmersive(false);filter();if(lastBook)root.scrollTo(0,catalogY)});
  const settings=study.querySelector('details'),controls=study.querySelector(':scope > .controls'),stats=study.querySelector(':scope > .stats'),progress=study.querySelector(':scope > .progress');
  const index=document.createElement('details');index.id='ux-book-index';index.open=true;const is=document.createElement('summary');is.textContent='Índice e apresentação';index.append(is);controls.before(index);index.append(controls);
  const metrics=document.createElement('details');metrics.id='ux-book-metrics';metrics.open=true;const ms=document.createElement('summary');ms.textContent='Tempo e progresso';metrics.append(ms);stats.before(metrics);metrics.append(stats,progress);
@@ -109,7 +109,7 @@ function init(){
  tools.append(mode,aa,ix,next);study.prepend(tools);
  // Retorno à leitura mantém a seção e a posição efêmera, sem marcar conclusão.
  $('method-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-method-activity]');if(b&&b.dataset.methodActivity!=='estudar'&&!study.hidden)position=snapshot()},{capture:true});
- $('method-tabs').addEventListener('click',e=>{if(e.target.closest('[data-method-activity="estudar"]'))root.requestAnimationFrame(()=>restore(position))});
+ $('method-tabs').addEventListener('click',e=>{if(e.target.closest('[data-method-activity="estudar"]')&&position){const saved=position;position=null;root.requestAnimationFrame(()=>restore(saved))}});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })(window);
