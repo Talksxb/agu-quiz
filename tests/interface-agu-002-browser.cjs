@@ -20,8 +20,8 @@ async function run(){
  const browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.AGU_CHROMIUM_BIN||undefined});
  const results=[];
  try{
-  for(const width of [320,390,430,768,1280]){
-   const mobile=width<=850,ctx=await browser.newContext({viewport:{width,height:900},hasTouch:mobile,isMobile:mobile,reducedMotion:'reduce',timezoneId:'America/Sao_Paulo'});
+  for(const width of [320,390,430,768,980,1100,1280]){
+   const mobile=width<=1100,ctx=await browser.newContext({viewport:{width,height:900},hasTouch:mobile,isMobile:mobile,reducedMotion:'reduce',timezoneId:'America/Sao_Paulo'});
    const p=await ctx.newPage(),errors=[];
    p.on('pageerror',e=>errors.push(e.message));
    await p.addInitScript(value=>localStorage.setItem('agu_quiz_mvp1_2026',value),fixture);
@@ -36,6 +36,14 @@ async function run(){
     const buttons=p.locator('#agu-reader .agu-mobile button');
     assert.deepEqual(await buttons.evaluateAll(es=>es.map(e=>e.getAttribute('aria-pressed'))),['false','true','false'],'estado visível do painel ativo');
     assert.equal(await p.locator('.agu-document').isVisible(),true);
+    const readerGeometry=await p.evaluate(()=>{
+     const doc=document.querySelector('#agu-reader .agu-document'),unit=doc.querySelector('.agu-unit p');
+     const active=document.querySelector('#agu-reader .agu-mobile button[aria-pressed=true]');
+     return {documentWidth:doc.getBoundingClientRect().width,viewport:innerWidth,font:parseFloat(getComputedStyle(unit).fontSize),accent:getComputedStyle(active).backgroundColor};
+    });
+    assert.ok(readerGeometry.documentWidth>=innerWidth*.85,'leitura ocupa a largura móvel '+width+' '+JSON.stringify(readerGeometry));
+    assert.ok(readerGeometry.font>=18,'texto legal com fonte de pelo menos 18px '+JSON.stringify(readerGeometry));
+    assert.equal(readerGeometry.accent,'rgb(99, 60, 105)','nova identidade no painel ativo');
     await buttons.nth(0).click();
     assert.deepEqual(await buttons.evaluateAll(es=>es.map(e=>e.getAttribute('aria-pressed'))),['true','false','false']);
     assert.equal(await p.locator('.agu-index').isVisible(),true);
