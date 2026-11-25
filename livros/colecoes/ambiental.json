@@ -2,7 +2,7 @@
   "schema": "agu-collection-v1",
   "id": "ambiental",
   "title": "Direito Ambiental",
-  "planningNote": "Sequência técnica proposta em MÉTODO-AGU-001: nove obras, com agrupamentos explícitos AMB-01/02 e AMB-09/10; livre navegação. Produção de AMB-04 e AMB-05 declarada nos handoffs consultados, sem publicação.",
+  "planningNote": "Plano original de nove obras preservado; o manuscrito de nome LIVRO-AMB-008 (AMB-11) foi adicionado como décima entrada pública, sem renomear a reserva homônima AMB-09/10 ou declarar que tais temas foram produzidos.",
   "program": {
     "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
     "locator": "17.2.1, Direito Ambiental, página impressa 42",
@@ -221,27 +221,39 @@
     },
     {
       "editorialId": "LIVRO-AMB-008",
-      "chapterId": "amb-11",
-      "title": "Crimes contra o meio ambiente",
+      "chapterId": null,
+      "title": "Florestas, APPs e unidades de conservação",
       "order": 8,
       "curricular": [
         {
-          "id": "AMB-11",
+          "id": "AMB-09",
           "subitems": [
-            "Crimes contra o meio ambiente."
+            "Proteção às florestas."
           ],
-          "coverage": "delimitada_no_capitulo_publico"
+          "coverage": "planejada_nao_contabilizar"
+        },
+        {
+          "id": "AMB-10",
+          "subitems": [
+            "Áreas de preservação permanente e unidades de conservação."
+          ],
+          "coverage": "planejada_nao_contabilizar"
         }
       ],
       "connections": [],
       "status": {
-        "production": "produzido",
-        "review": "aprovado_para_publicacao_escopo_delimitado",
-        "publication": "publicado"
+        "production": "planejado",
+        "review": "pendente",
+        "publication": "nao_publicado"
       },
-      "edition": "1.1",
-      "evidence": "Obra de 22/11/2026, SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa; edição pública de 25/11/2026 com controle de proveniência, redigindo dados privados.",
-      "resources": null
+      "edition": null,
+      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "resources": null,
+      "preexistingIdCollision": {
+        "status": "preservado_sem_publicacao",
+        "conflict": "Identificador homônimo estava reservado a AMB-09/10 antes da obra AMB-11",
+        "publishedRecord": "LIVRO-AMB-008-AMB11"
+      }
     },
     {
       "editorialId": "LIVRO-AMB-009",
@@ -266,6 +278,32 @@
       "edition": null,
       "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
       "resources": null
+    },
+    {
+      "editorialId": "LIVRO-AMB-008-AMB11",
+      "chapterId": "amb-11",
+      "title": "Crimes contra o meio ambiente",
+      "order": 10,
+      "curricular": [
+        {
+          "id": "AMB-11",
+          "subitems": [
+            "Crimes contra o meio ambiente."
+          ],
+          "coverage": "delimitada_no_capitulo_publico"
+        }
+      ],
+      "connections": [],
+      "status": {
+        "production": "produzido",
+        "review": "aprovado_para_publicacao_escopo_delimitado",
+        "publication": "publicado"
+      },
+      "edition": "1.1",
+      "evidence": "Obra de 22/11/2026, SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa; edição pública de 25/11/2026 com controle de proveniência, redigindo dados privados.",
+      "resources": null,
+      "canonicalEditorialId": "LIVRO-AMB-008",
+      "reconciliation": "Obra efetivamente escrita LIVRO-AMB-008 com ID AMB-11; slot distinto preserva a reserva editorial anterior AMB-09/10."
     }
   ]
 }
