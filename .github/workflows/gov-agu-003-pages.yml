@@ -34,6 +34,8 @@ jobs:
         run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-003-browser.cjs
       - name: Resolver lote ampliado e preservar histórico anterior
         run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-004-browser.cjs
+      - name: Testar múltipla escolha com fixture exclusivamente sintético
+        run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-006-browser.cjs
       - name: Conferir entrada pelo banco
         run: |
           node - <<'NODE'
