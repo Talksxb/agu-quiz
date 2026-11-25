@@ -16,7 +16,7 @@ for(const w of works){
  const all=b.pages.map(p=>p.text).join('\n');
  assert.ok(all.includes(w.start));assert.ok(all.toLowerCase().includes(w.end.toLowerCase()));
  assert.ok(all.trim().split(/\s+/).length>=w.minWords,'volume do capítulo deve ser preservado');
- assert.match(b.verification,/sem certificação integral/i);
+ assert.match(b.verification,/(?:sem certificação integral|auditoria integral não certificada)/i,'o leitor deve declarar expressamente ausência de certificação integral');
 }
 const html=get('livros-agu.html'),main=get('index.html'),lab=get('laboratorio-leitura.html');
 assert.match(html,/lang="pt-BR"/);
