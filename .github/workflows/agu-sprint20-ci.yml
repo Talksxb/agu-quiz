@@ -1,7 +1,7 @@
 name: AGU Quiz · Integridade, estudo e acessibilidade
 on:
   pull_request:
-    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002]
+    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002, 'work/aud-ux-*']
   push:
     branches: [main]
     paths:
@@ -146,6 +146,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: AUD-UX-002 — filtros, assunto, retomada e acessibilidade
+        run: node tests/aud-ux-002-browser.cjs
       - name: AUD-UX-001 — atalho, fila original, cinco larguras, acessibilidade e backup
         run: node tests/aud-ux-001-browser.cjs
       - name: SIMULADOS-AGU-001 — móvel, retomada, correção, cartões e axe
@@ -248,6 +250,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-aud-ux-002/
             tests/artifacts-aud-ux-001/
             tests/artifacts-ux-agu-006/
             tests/artifacts-simulados-agu/

@@ -1,7 +1,7 @@
 name: QUESTOES-AGU-002 · AU2015 e banco integrado
 on:
   pull_request:
-    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002]
+    branches: [main, feat/questoes-agu-001, feat/questoes-agu-002, 'work/aud-ux-*']
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,7 +1,7 @@
 name: GOV-AGU-003 · treino vigente
 on:
   pull_request:
-    branches: [main]
+    branches: [main, 'work/aud-ux-*']
     paths: ['questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js','tests/gov-agu-003*','tests/gov-agu-006*','.github/workflows/gov-agu-003.yml']
   push:
     branches: [main]

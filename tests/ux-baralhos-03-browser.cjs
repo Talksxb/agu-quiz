@@ -1,5 +1,6 @@
 /* UX03 — cinco larguras reais de Chromium, apenas perfil efêmero e sintético. */
 'use strict';
+async function advanced(p){if(!await p.locator('#agu-deck-filter-status').isVisible())await p.locator('#agu-deck-options > summary').click()}
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-ux-baralhos-03');
@@ -40,8 +41,9 @@ async function main(){
   const planBefore=await page.evaluate(key=>localStorage.getItem(key),PLAN);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
-  await page.locator('#agu-deck-filter-status').selectOption('sem_data');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('sem_data');
   assert.match(await page.locator('.agu-deck-filter-result').innerText(),/1 baralho · 1 cartão selecionável/);
+  await page.locator('.agu-deck-filter-result + details > summary').click();
   assert.match(await page.locator('.agu-deck-help').first().innerText(),/importadas/);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho (1)'}).click();
   assert.match(await page.locator('.agu-deck-study-state').innerText(),/Histórico importado · sem agendamento local/);
@@ -79,10 +81,11 @@ async function main(){
    axeResult=await page.evaluate(()=>axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
    assert.equal(axeResult.violations.length,0,'axe '+width+': '+axeResult.violations.map(x=>x.id).join(','));
    await page.locator('#agu-deck-library').screenshot({path:path.join(OUT,'sessao-'+width+'.png')});
-   fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify({violations:axeResult.violations,incomplete:axeResult.incomplete,passes:axeResult.passes.map(x=>x.id)},null,2));
+   axeResult.strictRecheck=await require('./aud-ux-browser-utils.cjs').scan(page);
+   fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify({violations:axeResult.violations,incomplete:axeResult.incomplete,passes:axeResult.passes.map(x=>x.id),strictRecheck:axeResult.strictRecheck},null,2));
   }
   assert.deepEqual(errors,[]);
-  results.push({width,attempts:2,importedWithoutSchedule:true,plannerUnchanged:true,backup:true,keyboard:true,overflow:false,axe:axeResult&&{violations:0,incomplete:axeResult.incomplete.length}});
+  results.push({width,attempts:2,importedWithoutSchedule:true,plannerUnchanged:true,backup:true,keyboard:true,overflow:false,axe:axeResult&&{violations:0,incomplete:axeResult.incomplete.length,unresolvedAfterScroll:0}});
   await context.close();
  }
  fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify({target:origin,chromium:browser.version(),results},null,2));

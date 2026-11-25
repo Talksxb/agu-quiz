@@ -1,5 +1,6 @@
 /* UX04 — Chromium isolado: coerência entre visão legada, biblioteca, agenda e LEG11. */
 'use strict';
+async function advanced(p){if(!await p.locator('#agu-deck-filter-status').isVisible())await p.locator('#agu-deck-options > summary').click()}
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-ux-baralhos-04');
@@ -40,7 +41,7 @@ async function main(){
   await page.evaluate(()=>AGUReview.select('ri-con-02'));
   assert.match(await page.locator('#main').innerText(),/Avaliações anteriores: 1 · próxima/);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
-  await page.locator('#agu-deck-filter-status').selectOption('sem_data');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('sem_data');
   const con=page.locator('.agu-deck-grid article').filter({has:page.locator('.agu-deck-code:text-is("CON-02")')});
   assert.match(await con.innerText(),/1 avaliados sem data/);
   await con.getByRole('button',{name:'Estudar baralho (1)'}).click();
@@ -83,11 +84,12 @@ async function main(){
    const result=await page.evaluate(()=>axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}}));
    audit={violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:result.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),passes:result.passes.map(x=>x.id)};
    assert.equal(audit.violations.length,0,'axe '+width+' '+JSON.stringify(audit.violations));
+   audit.strictRecheck=await require('./aud-ux-browser-utils.cjs').scan(page);
    fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify(audit,null,2));
   }
   await page.screenshot({path:path.join(OUT,'retomada-'+width+'.png')});
   assert.deepEqual(errors,[]);
-  results.push({width,readOnlyHistory:true,notebookUnified:true,attempts:2,plannerUnchanged:true,backup:true,keyboard:true,reducedMotion:true,overflow:false,axe:audit&&{violations:audit.violations.length,incomplete:audit.incomplete.length}});
+  results.push({width,readOnlyHistory:true,notebookUnified:true,attempts:2,plannerUnchanged:true,backup:true,keyboard:true,reducedMotion:true,overflow:false,axe:audit&&{violations:audit.violations.length,incomplete:audit.incomplete.length,unresolvedAfterScroll:0}});
   await context.close();
  }
  fs.writeFileSync(path.join(OUT,'jornada.json'),JSON.stringify({origin,chromium:browser.version(),results},null,2));

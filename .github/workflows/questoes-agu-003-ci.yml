@@ -1,7 +1,7 @@
 name: QUESTOES-AGU-003 · PF2023 e comentários
 on:
   pull_request:
-    branches: [main, feat/questoes-agu-002]
+    branches: [main, feat/questoes-agu-002, 'work/aud-ux-*']
   push:
     branches: [main]
   workflow_dispatch:
