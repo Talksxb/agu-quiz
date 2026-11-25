@@ -12,6 +12,8 @@ Leitura editorial nesta sprint: identificação, metadados, estrutura, seções,
 
 ## Estado dos repositórios e da publicação
 
+**Atualização de 25/11 durante AUD-UX-002–004:** o levantamento abaixo registra o estado inicial. Outra execução integrou LIVRO-AMB-008 como `amb-11` na [PR #108](https://github.com/Talksxb/agu-quiz/pull/108), main `81070b45e8f28d02a83bf89c330d5b38d788d72d`. O catálogo passou de quatro para cinco capítulos; sete dos oito manuscritos recuperados seguem pendentes de integração. Nenhum manuscrito foi importado por esta execução de UX. A confirmação de Pages da publicação concorrente fica na PR #109.
+
 - Quiz: `Talksxb/agu-quiz/main`, **e5436bb071afe0967d29665c0ad042beb084ee13**, consultada em 25/11. PR #104 integrada. CI da base: run **45635744167**, sucesso. Foram examinadas **99 referências remotas** disponíveis no clone, caminhos de `livros/` e `docs/`, e histórico de AMB-03/coleção.
 - Auditoria privada, somente leitura: `main` **c388975985db2f5684deb30bdcc5566edd90af0a**. Protocolo, estado, handoff, IDs da matriz original e recortes normativos AMB-002/003/004 consultados. Estado observado: checkpoint geral **AUD03-043**, último normativo **NORM-PEN-030**, corte histórico 04/11/2026, `ultimo_lote_certificado=null`. O comando AUD03-046 em outro chat não comprova sua incorporação à main. Nenhum arquivo privado ou matriz foi copiado ao Quiz.
 - Catálogos públicos inspecionados: `livros/editorial/catalogo.json`, `livros/catalogo.json`, `livros/colecoes/ambiental.json`. Quatro capítulos ativos no catálogo geral; em Ambiental, somente a edição antiga `amb-03`. Não há registro ativo dos oito manuscritos atuais.

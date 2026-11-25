@@ -38,8 +38,8 @@
     ]
   },
   "dados/metodo-agu-referencias.js": {
-    "before": "26c46a198a253cb28a4f494986b3d134fc552ecbe0b11fffd30e35e02d87dc7e",
-    "after": "db7e38fff23c7547a3e6873b235e72cc1ebe25be94d3effd74f127d91e7afa2e",
+    "before": "288a04f82d22476ccf7f7f75eb603b4ce3e6dde61474ae3cf9159f5537557d2c",
+    "after": "2587a29251552b744073e800c87bf85e1352ce4c316abe8ff6e0e3af7d6c036f",
     "changes": [
       {
         "before": "",
@@ -56,6 +56,10 @@
       {
         "before": "",
         "after": "      \"curricularIds\": [\n        \"AMB-03\"\n      ],\n"
+      },
+      {
+        "before": "",
+        "after": "      \"curricularIds\": [\n        \"AMB-11\"\n      ],\n"
       }
     ]
   }

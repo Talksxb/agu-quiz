@@ -131,6 +131,42 @@ window.AGU_METHOD_BOOK_REFERENCES = {
         "amb-03-caso",
         "amb-03-recuperacao"
       ]
+    },
+    "amb-11": {
+      "title": "Crimes contra o meio ambiente",
+      "edition": "1.1",
+      "curricularIds": [
+        "AMB-11"
+      ],
+      "sections": [
+        "amb-11-s01",
+        "amb-11-s02",
+        "amb-11-s03",
+        "amb-11-s04",
+        "amb-11-s05",
+        "amb-11-s06",
+        "amb-11-s07",
+        "amb-11-s08",
+        "amb-11-s09",
+        "amb-11-s10",
+        "amb-11-s11",
+        "amb-11-s12",
+        "amb-11-s13",
+        "amb-11-s14",
+        "amb-11-s15",
+        "amb-11-s16",
+        "amb-11-s17",
+        "amb-11-s18",
+        "amb-11-s19",
+        "amb-11-s20",
+        "amb-11-s21",
+        "amb-11-s22",
+        "amb-11-s23"
+      ],
+      "activities": [
+        "amb-11-caso",
+        "amb-11-recuperacao"
+      ]
     }
   }
 };
