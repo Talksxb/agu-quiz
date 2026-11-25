@@ -25,7 +25,7 @@
   },
   "questoes-vigentes.js": {
     "before": "9d0d2ce5a3b1e9dcaf4650cce4e1de71e34a2345888088d64839f01295c0d48a",
-    "after": "e2751bee20abbd58d30dbdc4b9793347b1036cef14fe75df10ebf5eb421ed55f",
+    "after": "3e3899aed0a3be1d64b0653dc04418149c2ab889904c7d71c65ac1def84025b8",
     "changes": [
       {
         "before": "if(typeof module==='object'){module.exports={eligible,grade,validHistory,latest,KEY,choices};return}\n",
@@ -33,7 +33,7 @@
       },
       {
         "before": "",
-        "after": "const params=new URLSearchParams(root.location.search);\nfilter=params.get('situacao')==='erros'?'wrong':'all';\nif(items.some(q=>q.discipline===params.get('disciplina')))discipline=params.get('disciplina');\nconst resumeId=params.get('questao');\n"
+        "after": "const params=new URLSearchParams(root.location.search);\nconst requestedStatus=params.get('situacao');\nfilter=requestedStatus==='erros'?'wrong':requestedStatus==='nao-resolvidas'?'new':'all';\nif(items.some(q=>q.discipline===params.get('disciplina')))discipline=params.get('disciplina');\nconst resumeId=params.get('questao');\n"
       },
       {
         "before": "",
@@ -41,7 +41,7 @@
       },
       {
         "before": "",
-        "after": " const route=new URL(root.location.href);\n if(q)route.searchParams.set('questao',q.id);else route.searchParams.delete('questao');\n if(filter==='wrong')route.searchParams.set('situacao','erros');else route.searchParams.delete('situacao');\n if(discipline!=='all')route.searchParams.set('disciplina',discipline);else route.searchParams.delete('disciplina');\n root.history.replaceState(null,'',route.pathname+route.search+route.hash);\n"
+        "after": " const route=new URL(root.location.href);\n if(q)route.searchParams.set('questao',q.id);else route.searchParams.delete('questao');\n if(filter==='wrong'||filter==='new')route.searchParams.set('situacao',filter==='wrong'?'erros':'nao-resolvidas');else route.searchParams.delete('situacao');\n if(discipline!=='all')route.searchParams.set('disciplina',discipline);else route.searchParams.delete('disciplina');\n root.history.replaceState(null,'',route.pathname+route.search+route.hash);\n"
       },
       {
         "before": " '<section class=\"card backup\"><h2>Histórico local do treino</h2><p id=\"vig-notice\" role=\"status\">'+esc(notice)+'</p><div class=\"actions\"><button id=\"vig-export\">Exportar histórico (JSON)</button><label>Importar backup <input id=\"vig-import\" type=\"file\" accept=\".json,application/json\"></label></div><p class=\"source\">A importação combina tentativas válidas por ID, sem apagar as atuais. Nenhum dado é enviado ao servidor.</p></section>';\n",

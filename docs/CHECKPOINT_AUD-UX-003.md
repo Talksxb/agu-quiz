@@ -25,3 +25,7 @@ Sete questões vigentes, 400 referências históricas e gabaritos mantidos; nenh
 ## Continuidade
 
 AUD-UX-004: recursos por ID, com livros já aprovados, flashcards, legislação e questões existentes. Não importar os oito manuscritos ambientais pendentes nem exportar a matriz privada. A execução já está autorizada, em PR dependente própria.
+
+## Revisão para integração
+
+A revisão reproduziu a perda do filtro “Não resolvidas” na URL: o teste esperado `situacao=nao-resolvidas` recebeu `null`. O parser e a geração da URL agora preservam esse terceiro estado após recarga. A nova assertiva exige filtro, questão e quantidade de tentativas idênticos após recarga, mantendo os casos de erro/correção e backup. O delta exato de fonte foi atualizado; gabaritos, elegibilidade e histórico não mudaram. Os resultados finais do HEAD integrado são registrados na PR.
