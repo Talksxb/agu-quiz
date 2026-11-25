@@ -1,7 +1,7 @@
 /* Reprodução didática autorizada pelo caderno oficial; apenas itens aprovados. */
 (function(root){const data={
   "schema": 1,
-  "lot": "GOV-AGU-004",
+  "lot": "GOV-AGU-005",
   "reviewedAt": "2026-11-25",
   "source": {
     "organizer": "CESPE/Cebraspe",
@@ -180,6 +180,86 @@
       ],
       "scope": "CPC e acórdão STJ consultados; a AO 1.757 consta da auditoria anterior e do índice oficial STF, mas o inteiro teor não foi recuperado nesta sessão. Não exaurida a jurisprudência sobre atribuições internas.",
       "provenance": "AUD02-Q-257, S18 e GOV-AGU-003; contexto e assertiva visualmente conferidos no caderno oficial pp.31–32; gabarito visual prévio."
+    },
+    {
+      "id": "AGU-2015-187AGU-001-07-Q012",
+      "n": 12,
+      "discipline": "Administrativo",
+      "code": "ADM-25",
+      "curricularStatus": "referencial_nao_homologado",
+      "historicalKey": "C",
+      "currentKey": "C",
+      "status": "atualizada_sem_mudanca_de_resposta",
+      "reviewedAt": "2026-11-25",
+      "pages": [
+        10,
+        11
+      ],
+      "command": "A propósito das licitações, dos contratos, dos convênios e do sistema de registro de preços, julgue os itens a seguir com base nas orientações normativas da AGU.",
+      "stem": "Se a União, por intermédio de determinado órgão federal situado em um estado da Federação, celebrar convênio cuja execução envolva a alocação de créditos de leis orçamentárias subsequentes, a consequente indicação do crédito orçamentário do respectivo empenho para atender aos exercícios posteriores dispensará a elaboração de termo aditivo, bem como a prévia aprovação pela consultoria jurídica da União no mencionado estado.",
+      "abbreviations": "AGU: Advocacia-Geral da União.",
+      "historical": "A ON AGU 40/2014 admitia apostila para indicação de crédito e empenho dos exercícios posteriores, dispensando exame e aprovação jurídicos prévios dessa medida. A questão foi julgada certa.",
+      "current": "A Portaria AGU 233, de 3/7/2024, reeditou a ON 40, mantendo a possibilidade de apostila por exercício e a dispensa de exame jurídico prévio dessa providência. As referências atuais incluem o art. 136 da Lei 14.133/2021 e art. 8, §§ 1º e 2º, do Decreto 11.531/2023. O art. 136, IV, admite apostilamento de empenho de dotações quando não há alteração contratual.",
+      "application": "Não confundir registro de créditos e empenhos já abrangidos pelo ajuste com alteração substancial de objeto, valor ou obrigações. A dispensa de análise jurídica da apostila não é dispensa geral de exame jurídico de convênios ou de seus aditivos.",
+      "sources": [
+        {
+          "label": "AGU, ON 40/2014, redação vigente",
+          "url": "https://www.gov.br/agu/pt-br/composicao/cgu/cgu/onsagu"
+        },
+        {
+          "label": "Portaria AGU 233/2024, DOU 04/07/2024, seção 1, p.31",
+          "url": "https://pesquisa.in.gov.br/imprensa/servlet/INPDFViewer?captchafield=firstAccess&data=04%2F07%2F2024&jornal=515&pagina=31"
+        },
+        {
+          "label": "Lei 14.133/2021, art.136, IV",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm"
+        },
+        {
+          "label": "Decreto 11.531/2023, art.8",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11531.htm"
+        }
+      ],
+      "scope": "Cotejo da orientação específica; não certifica a íntegra do regime de convênios.",
+      "provenance": "AUD02-Q-221; comando p.10 e assertiva p.11 da variante 07 visualmente conferidos em 25/11/2026; confirmação adicional na variante 01 oficial p.2. Gabarito histórico recuperado do índice AUD02-029."
+    },
+    {
+      "id": "AGU-2015-187AGU-001-07-Q022",
+      "n": 22,
+      "discipline": "Administrativo",
+      "code": "ADM-58",
+      "curricularStatus": "referencial_nao_homologado",
+      "historicalKey": "E",
+      "currentKey": "E",
+      "status": "atualizada_sem_mudanca_de_resposta",
+      "reviewedAt": "2026-11-25",
+      "pages": [
+        17
+      ],
+      "command": "Julgue os itens a seguir, referentes a agentes públicos.",
+      "stem": "Se determinado agente público responder ação de improbidade administrativa por desvio de recursos públicos, um eventual acordo ou uma eventual transação entre as partes envolvidas no processo estarão condicionados ao ressarcimento integral dos recursos públicos ao erário antes da sentença.",
+      "historical": "Em 11/10/2015, o art. 17, § 1º, da Lei 8.429/1992 vedava transação, acordo ou conciliação nas ações de improbidade. Não bastava condicionar um acordo ao pagamento prévio do dano. Gabarito E.",
+      "current": "O art. 17-B, I e II, da LIA, incluído pela Lei 14.230/2021, admite ANPC com ressarcimento integral do dano e reversão da vantagem indevida. O § 4º permite celebração na investigação, na ação ou na execução da sentença. Portanto, inexiste a condição temporal absoluta de ressarcimento antes da sentença. Nas ADIs 7042 e 7043 o STF restabeleceu legitimidade concorrente e disjuntiva do MP e das pessoas jurídicas interessadas. O STJ, REsp 2.263.884-SE, 1ª Turma, j. 02/06/2026, Informativo Extraordinário 31, reconheceu compromisso de integral reparação limitado à contribuição causal mensurável de cada agente em concurso e controle judicial formal e substancial do acordo.",
+      "application": "Distinguir obrigação de ressarcir de pagamento integral anterior à sentença. Acordo exige homologação judicial e respeito ao interesse público. Não generalizar a limitação causal para casos sem participação individual mensurável. Não confundir ANPC com ANPP.",
+      "sources": [
+        {
+          "label": "Lei 8.429/1992, redação original, art.17 §1º",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/1992/lei-8429-2-junho-1992-357452-publicacaooriginal-1-pl.html"
+        },
+        {
+          "label": "LIA vigente, arts.17-B e 17-C §2º",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l8429compilada.htm"
+        },
+        {
+          "label": "STF, ADIs 7042 e 7043, Informativo 1066",
+          "url": "https://www.stf.jus.br/arquivo/informativo/documento/informativo1066.htm"
+        },
+        {
+          "label": "STJ, REsp 2.263.884-SE, Informativo Extraordinário 31, 14/07/2026",
+          "url": "https://scon.stj.jus.br/jurisprudencia/externo/informativo/?acao=pesquisarumaedicao&livre=%270031E%27.cod."
+        }
+      ],
+      "scope": "Fundamento decisivo e precedente superveniente conferidos; não exaurida toda a jurisprudência de ANPC. Não inferir aplicação retroativa indistinta.",
+      "provenance": "AUD02-Q-231; literal e comando da variante 07 p.17 indexados, captura p.17 indisponível; cotejo visual na variante 01 oficial p.2, coincidente. Gabarito histórico confirmado no índice e registro AUD02-021."
     }
   ]
 };if(typeof module==='object')module.exports=data;else root.AGUCurrentQuestions=data;})(typeof window==='undefined'?globalThis:window);
