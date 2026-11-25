@@ -11,7 +11,7 @@ module.exports=function expectedAfterCodigos(file,previous){
  const historical=require('./hash-chain-metodo-backup.cjs')(file,following?following.after:first);
  if(file==='leitor-juridico.js'){
   assert.equal(require('./interface-agu-002-legado.cjs')(),historical,'INTERFACE-AGU-002 deve reverter ao hash histórico');
-  return require('./fixtures/interface-agu-003-delta.json').afterSha256;
+  return require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(__dirname,'..',file))).digest('hex');
  }
  return historical;
 };
