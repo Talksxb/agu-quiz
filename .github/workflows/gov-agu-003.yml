@@ -2,10 +2,10 @@ name: GOV-AGU-003 · treino vigente
 on:
   pull_request:
     branches: [main]
-    paths: ['questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js','tests/gov-agu-003*','.github/workflows/gov-agu-003.yml']
+    paths: ['questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js','tests/gov-agu-003*','tests/gov-agu-006*','.github/workflows/gov-agu-003.yml']
   push:
     branches: [main]
-    paths: ['questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js','tests/gov-agu-003*','.github/workflows/gov-agu-003.yml']
+    paths: ['questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js','tests/gov-agu-003*','tests/gov-agu-006*','.github/workflows/gov-agu-003.yml']
 permissions:
   contents: read
 jobs:
@@ -25,3 +25,4 @@ jobs:
           for i in {1..20}; do curl -fsS http://127.0.0.1:8765/questoes-vigentes.html >/dev/null && break; sleep 1; done
           node tests/gov-agu-003-browser.cjs
           node tests/gov-agu-004-browser.cjs
+          node tests/gov-agu-006-browser.cjs
