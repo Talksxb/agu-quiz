@@ -1,5 +1,6 @@
 /* UX-BARALHOS-02 — Chromium, contextos virgens e avaliações sintéticas. */
 'use strict';
+async function advanced(p){if(!await p.locator('#agu-deck-filter-status').isVisible())await p.locator('#agu-deck-options > summary').click()}
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-ux-baralhos-02');
@@ -36,16 +37,16 @@ async function main(){
   assert.match(await con.innerText(),/1 vencidos/);assert.match(await con.innerText(),/1 vencem hoje/);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
-  await page.locator('#agu-deck-filter-status').selectOption('vencidos');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('vencidos');
   assert.match(await page.locator('.agu-deck-filter-result').innerText(),/1 baralho · 1 cartão selecionável/);
-  await page.locator('#agu-deck-filter-status').selectOption('futuros');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('futuros');
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
   assert.ok(await page.getByText('Nenhum cartão corresponde à combinação de filtros').isVisible());
   await page.getByRole('button',{name:'Limpar filtros'}).click();
   assert.equal(await page.locator('.agu-deck-grid article').count(),11);
   await page.locator('#agu-deck-filter-discipline').selectOption('CON');
   await page.locator('#agu-deck-filter-topic').fill('CON-02');await page.locator('#agu-deck-filter-topic').press('Tab');
-  await page.locator('#agu-deck-filter-status').selectOption('pendentes');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('pendentes');
   assert.match(await page.locator('.agu-deck-filter-result').innerText(),/2 cartões selecionáveis/);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
   assert.equal(await page.locator('.agu-deck-grid article').count(),0);
@@ -64,7 +65,7 @@ async function main(){
   await page.getByRole('button',{name:'Próximo →'}).click();
   await page.getByRole('button',{name:'Pausar e voltar'}).click();
   const original=await page.evaluate(k=>localStorage.getItem(k),KEY);
-  await page.locator('#agu-deck-filter-status').selectOption('hoje');
+  await advanced(page);await page.locator('#agu-deck-filter-status').selectOption('hoje');
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Escolher sessão'}).click();
   assert.ok(await page.getByText('Escolha como continuar').isVisible());
   assert.equal(await page.evaluate(k=>localStorage.getItem(k),KEY),original,'escolha não grava histórico');
@@ -108,7 +109,7 @@ async function main(){
   assert.equal(await page.evaluate(()=>AGUReview.attemptsInfo().length),2);
   await page.getByRole('button',{name:'Pausar e voltar'}).click();
   await page.getByRole('button',{name:'Limpar filtros'}).click();
-  await page.locator('#agu-deck-filter-difficulty').selectOption('original:4');
+  await advanced(page);await page.locator('#agu-deck-filter-difficulty').selectOption('original:4');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);
   await page.locator('.agu-deck-grid article').getByRole('button',{name:'Estudar baralho'}).click();
   assert.ok(await page.getByText('Escolha como continuar').isVisible());

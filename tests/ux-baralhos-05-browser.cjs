@@ -1,5 +1,6 @@
 /* UX05 — Chromium isolado: histórico longo, LEG11/12 e limites sem Android físico. */
 'use strict';
+async function advanced(p){if(!await p.locator('#agu-deck-filter-status').isVisible())await p.locator('#agu-deck-options > summary').click()}
 const {chromium}=require('playwright');
 const axe=require('axe-core');
 const assert=require('node:assert/strict');
@@ -46,11 +47,11 @@ async function main(){
   assert.equal(await p.evaluate(()=>AGUReview.deckList().find(x=>x.code==='CON-02').noDate),1);
   const states=['vencidos','hoje','futuros','sem_data','ineditos'];
   for(const status of states){
-   await p.locator('#agu-deck-filter-status').selectOption(status);
+   await advanced(p);await p.locator('#agu-deck-filter-status').selectOption(status);
    assert.ok((await p.locator('.agu-deck-grid article').count())>0,'estado '+status+' tem subconjunto');
   }
   assert.equal(await p.evaluate(({review})=>localStorage.getItem(review),{review:REVIEW}),before.review);
-  await p.locator('#agu-deck-filter-status').selectOption('sem_data');
+  await advanced(p);await p.locator('#agu-deck-filter-status').selectOption('sem_data');
   const con=p.locator('.agu-deck-grid article').filter({has:p.locator('.agu-deck-code:text-is("CON-02")')});
   assert.match(await con.innerText(),/1 avaliados sem data/);
   await con.getByRole('button',{name:'Estudar baralho (1)'}).click();
@@ -80,7 +81,7 @@ async function main(){
   await p.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await p.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
   assert.equal(await p.evaluate(()=>AGUReview.deckSession().status),'em_andamento');
-  await p.locator('#agu-deck-filter-status').selectOption('todos');
+  await advanced(p);await p.locator('#agu-deck-filter-status').selectOption('todos');
   await p.locator('.agu-deck-grid article').filter({has:p.locator('.agu-deck-code:text-is("CON-02")')}).getByRole('button',{name:'Escolher sessão'}).click();
   assert.match(await p.locator('#agu-deck-choice').innerText(),/Escolha como continuar/);
   await p.getByRole('button',{name:'Iniciar nova seleção (2)'}).click();
