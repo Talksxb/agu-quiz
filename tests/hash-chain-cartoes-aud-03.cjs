@@ -11,7 +11,11 @@ module.exports=function afterCartoes03(file,previous){
   assert.equal(previous,delta.reviewBeforeSha256,'CARTOES03 motor: main integrada divergiu');
   const method=require('./fixtures/metodo-agu/review-delta.json');
   assert.equal(delta.reviewAfterSha256,method.before,'MÉTODO parte do motor histórico exato');
-  return method.after;
+  const source=fs.readFileSync(path.join(__dirname,'..',file),'utf8');
+  const restored=require('./metodo-agu-001-legado.cjs').reverseReviewA11y(source);
+  const hash=s=>require('node:crypto').createHash('sha256').update(s).digest('hex');
+  assert.equal(hash(restored),method.after,'UX-AGU-006: revisão original restituída');
+  return hash(source);
  }
  return previous;
 };

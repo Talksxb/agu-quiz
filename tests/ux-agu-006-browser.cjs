@@ -101,6 +101,8 @@ async function main(){
    await act(face,true);
    assert.equal(await p.evaluate(()=>AGUReview.attemptsInfo().length),initial);
    assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-deck-rating-errei');
+   assert.equal(await p.locator('.agu-deck-back').getAttribute('role'),'group','verso com papel semântico explícito');
+   assert.equal(await p.getByRole('group',{name:'Verso do cartão',exact:true}).count(),1,'verso nomeado acessivelmente');
    await scan('baralho-verso','.agu-deck-back');
    await act(btn('Lembrei'),true);
    assert.equal(await p.evaluate(()=>AGUReview.attemptsInfo().length),initial+1);
