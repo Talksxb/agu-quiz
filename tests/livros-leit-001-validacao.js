@@ -24,7 +24,7 @@ assert.match(html,/agu_livros_reader_v1/);
 assert.match(html,/Direito Ambiental/);
 assert.match(html, /data-book="amb-03"/,'Capítulo Ambiental precisa estar habilitado');
 assert.match(html, /data-book="amb-11"/,'AMB-11 precisa estar habilitado');
-assert.match(html, /"amb-11":"livros\\/amb-11\\.json"/,'Manifest AMB-11 inválido');
+assert.ok(html.includes('"amb-11":"livros/amb-11.json"'),'Manifest AMB-11 inválido');
 assert.match(html, /"amb-03":"livros\/amb-03\.json"/);
 assert.match(html, /id="original-link"/);
 const original=get('livros/livro-amb-001-original.html');
