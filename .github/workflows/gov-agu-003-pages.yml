@@ -1,0 +1,40 @@
+name: GOV-AGU-003 · smoke de produção
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/gov-agu-003-pages.yml','questoes-vigentes*','dados/questoes-vigentes*','questoes-agu-bank.js']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publicado:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Conferir bytes de produção
+        run: |
+          set -eu
+          base=https://talksxb.github.io/agu-quiz
+          for attempt in $(seq 1 30); do
+            ok=1
+            for path in questoes-vigentes.html questoes-vigentes.js questoes-vigentes.css dados/questoes-vigentes-gov003.js questoes-agu-bank.js; do
+              if ! curl -fsSL --max-time 15 "$base/$path?gov=$GITHUB_SHA-$attempt" -o "$RUNNER_TEMP/gov-published" || ! cmp -s "$path" "$RUNNER_TEMP/gov-published"; then ok=0; break; fi
+            done
+            if [ "$ok" = 1 ]; then echo "GOV-AGU-003 PAGES_BYTES_OK $GITHUB_SHA"; exit 0; fi
+            sleep 10
+          done
+          exit 1
+      - run: npm install --no-save --ignore-scripts playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Resolver na URL pública em perfil efêmero
+        run: GOV_URL=https://talksxb.github.io/agu-quiz/questoes-vigentes.html node tests/gov-agu-003-browser.cjs
+      - name: Conferir entrada pelo banco
+        run: |
+          node - <<'NODE'
+          const {chromium}=require('playwright'),assert=require('node:assert/strict');
+          (async()=>{const b=await chromium.launch();try{const p=await b.newPage({viewport:{width:390,height:844}});await p.goto('https://talksxb.github.io/agu-quiz/');await p.evaluate(()=>setView('officialExam'));await p.getByRole('link',{name:'Abrir treino de direito vigente'}).click();await p.locator('#vig-stem').waitFor();assert(p.url().includes('questoes-vigentes.html'));console.log('GOV-AGU-003 ENTRADA_BANCO_OK');}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});
+          NODE
