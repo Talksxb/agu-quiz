@@ -1,0 +1,12 @@
+# GOV-AGU-004 — ampliação do lote vigente (25/11/2026)
+Retomada: GOV-AGU-003 encerrada no privado, AGU Quiz main e2b7bc950e05a85ba56a8ee7084ceb34ce9f225c. Q196 preservada literalmente no dataset e no histórico; zero novos tópicos certificados. Lote candidato Q6/7/9/48, com chaves históricas E/C/E/C já verificadas visualmente no GOV-AGU-003; autorização didática e variante 187AGU_001_07 preservadas.
+## Cotejo editorial
+Caderno oficial indexado pp.8–10 e 31–32: https://cdn.cebraspe.org.br/concursos/AGU_15_ADV/arquivos/187AGU_001_07.pdf. Visual p.8 (contexto Q6), p.10 (Q9) e pp.31–32 (Q48). A captura visual p.9 falhou novamente. Cotejo independente da reprodução do caderno convencional 187AGU_001_01 p.1 (https://arquivos.qconcursos.com/prova/arquivo_prova/45114/cespe-2015-agu-advogado-da-uniao-prova.pdf): itens 6/7/9, comandos e contextos coincidem integralmente com o texto indexado oficial da variante 07. Espelho usado exclusivamente para cotejo visual, não como fonte de gabarito nem de comentário.
+## Fundamento decisivo
+- Q6 ADM-17, AUD02-Q-215: Lei 9.784/1999 art.50 I/§1, texto vigente da Câmara consultado. E mantido.
+- Q7 ADM-27, AUD02-Q-216: CF art.49 V e 87 parágrafo único II, texto vigente da Câmara. C mantido.
+- Q9 ADM-27, AUD02-Q-218: CF art.37 X; STF Informativo 1191, ARE 1524795 Tema 1427, tese e resumo oficiais consultados, link do andamento retornou 400. E mantido. Sem exaurimento do inteiro teor/embargos; não extrapolar efeitos remuneratórios.
+- Q48 AGU-04, AUD02-Q-257: CF131, LC73 art.1 e CPC2015 arts.75 I e 287 parágrafo único III, consultados. STJ EDcl no AgInt no REsp1603300/MG, DJe 02/05/2017, inteiro teor oficial p.3, distingue procurador público ex lege de advogado particular. AO1757 consta de S18 e índice do STF, abertura retorna 404; sem nova certificação do acórdão. C mantido com suporte normativo e jurisprudencial independente.
+IDs curriculares referenciais, sem homologação integral. Os comentários são autorais; fontes públicas indicadas. Sem republicar comentários de terceiros, sem auditoria nova de Q196.
+## Implementação
+Mesmo dataset, mesma página e chave local; Q196 permanece primeira para preservar fluxo anterior. Novo teste dos cinco itens, navegação, disciplina, literal/contexto, persistência da tentativa piloto e smoke de produção. Atualização de cache do dataset. CI e deploy a confirmar; não declarar publicação antes de sucesso.
