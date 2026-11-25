@@ -1,0 +1,708 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-11",
+  "editorialId": "LIVRO-AMB-008",
+  "title": "Crimes contra o meio ambiente",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.1",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-11.md",
+  "readerPath": "livros/amb-11.json",
+  "reader": {
+    "id": "amb-11",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-11",
+    "title": "Crimes contra o meio ambiente",
+    "edition": "LIVRO-AMB-008 · edição pública 1.1 · 25/11/2026 (fontes jurídicas de 22/11/2026)",
+    "source": "livros/fontes/amb-11.md; derivado do original LIVRO-AMB-008_CAPITULO_INTEGRAL.md (SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa)",
+    "source_format": "markdown",
+    "verification": "AMB-11; conferência jurídica pontual declarada na edição original 22/11/2026. Auditoria integral não certificada, domínio não avaliado; sem reconferência exaustiva em 25/11/2026.",
+    "transcription_note": "Publicação autorizada em 25/11/2026; somente dados de auditoria privada e texto de acesso público foram ajustados. A obra original entregue ao estudante permanece preservada. Tabelas Markdown são apresentadas textualmente; PDF original não integrado."
+  },
+  "curricularIds": [
+    "AMB-11"
+  ],
+  "dates": {
+    "edition": "2026-11-25",
+    "legalConsultation": "Fontes conferidas pontualmente na obra original em 22/11/2026; não revalidadas integralmente nesta publicação",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-25"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Retificações do edital ainda não exaustivamente inventariadas",
+      "Cadeia intertemporal e jurisprudencial de todos os tipos não exaurida",
+      "Nenhuma nova conferência jurídica completa durante esta transposição",
+      "Não confundir publicação, certificação curricular ou domínio pedagógico"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb-11-s01",
+      "marker": "01",
+      "title": "Identificação e governança da edição",
+      "page": 0,
+      "sha256": "3f0784f8eb8d3d9b7496c125d1db8da6ba0bc7600bc943a6ae9a791c83989cd2",
+      "headings": [
+        {
+          "id": "amb-11-s01-h1",
+          "level": 1,
+          "title": "AGU | LIVRO-AMB-008 — Crimes contra o meio ambiente"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s02",
+      "marker": "02",
+      "title": "Mapa editorial de cobertura e limite",
+      "page": 1,
+      "sha256": "a769c1d10b292674131ffbe844c9d21632b0f1da1be02c36dcaa49e69ff58cc7",
+      "headings": [
+        {
+          "id": "amb-11-s02-h1",
+          "level": 2,
+          "title": "Mapa editorial de cobertura e limite"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s03",
+      "marker": "03",
+      "title": "Abertura — a fábrica licenciada, o rio poluído e a floresta derrubada",
+      "page": 2,
+      "sha256": "379d7fcc87fb6a54a73c420176cf53ba467eaa463a9094b5c493aaa6dd536780",
+      "headings": [
+        {
+          "id": "amb-11-s03-h1",
+          "level": 2,
+          "title": "Abertura — a fábrica licenciada, o rio poluído e a floresta derrubada"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s04",
+      "marker": "04",
+      "title": "1. Fundamento constitucional e estrutura da tutela penal",
+      "page": 3,
+      "sha256": "ed90971e01435fb9cae8b25c9736fca500206ac94b4f36d3b687e54260fd4b3c",
+      "headings": [
+        {
+          "id": "amb-11-s04-h1",
+          "level": 2,
+          "title": "1. Fundamento constitucional e estrutura da tutela penal"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s05",
+      "marker": "05",
+      "title": "2. Princípios penais, tipicidade e relação com a administração sancionadora",
+      "page": 4,
+      "sha256": "1a8c0f4611486437424e9448ce099dee7938c213b1dfde966617645211aaf065",
+      "headings": [
+        {
+          "id": "amb-11-s05-h1",
+          "level": 2,
+          "title": "2. Princípios penais, tipicidade e relação com a administração sancionadora"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s06",
+      "marker": "06",
+      "title": "3. Pessoas físicas e jurídicas: autoria, decisão e responsabilidade",
+      "page": 5,
+      "sha256": "398f11ac6c74bbf7baeefedab07a6a0f7178805070b0992fe2e4481e6c4b9072",
+      "headings": [
+        {
+          "id": "amb-11-s06-h1",
+          "level": 2,
+          "title": "3. Pessoas físicas e jurídicas: autoria, decisão e responsabilidade"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s07",
+      "marker": "07",
+      "title": "4. Crimes contra a fauna: entre proteção ecológica e bem-estar animal",
+      "page": 6,
+      "sha256": "1f995032950f5f4a964e5444adf41c22d1d926d837a0e5973ac4b962dff13ecc",
+      "headings": [
+        {
+          "id": "amb-11-s07-h1",
+          "level": 2,
+          "title": "4. Crimes contra a fauna: entre proteção ecológica e bem-estar animal"
+        },
+        {
+          "id": "amb-11-s07-h2",
+          "level": 3,
+          "title": "4.1 Fauna silvestre, comércio e caça (arts. 29–31)"
+        },
+        {
+          "id": "amb-11-s07-h3",
+          "level": 3,
+          "title": "4.2 Maus-tratos (art. 32) e as novas hipóteses"
+        },
+        {
+          "id": "amb-11-s07-h4",
+          "level": 3,
+          "title": "4.3 Fauna aquática e pesca (arts. 33–37)"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s08",
+      "marker": "08",
+      "title": "5. Crimes contra a flora: proteção da função ecológica da vegetação",
+      "page": 7,
+      "sha256": "3d574765a7d5f4b18afe80c3418f3b92193c0acf9aae4f778a6443cd757bfea4",
+      "headings": [
+        {
+          "id": "amb-11-s08-h1",
+          "level": 2,
+          "title": "5. Crimes contra a flora: proteção da função ecológica da vegetação"
+        },
+        {
+          "id": "amb-11-s08-h2",
+          "level": 3,
+          "title": "5.1 Floresta em APP, Mata Atlântica e unidades de conservação"
+        },
+        {
+          "id": "amb-11-s08-h3",
+          "level": 3,
+          "title": "5.2 Extração, comércio da madeira e regeneração"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s09",
+      "marker": "09",
+      "title": "6. Poluição, recursos minerais, substâncias perigosas e licenciamento",
+      "page": 8,
+      "sha256": "8b37cc7fc0508af82ffcd90fcf5ee1dacfc035765e6ef0c9a1f6b47e32447116",
+      "headings": [
+        {
+          "id": "amb-11-s09-h1",
+          "level": 2,
+          "title": "6. Poluição, recursos minerais, substâncias perigosas e licenciamento"
+        },
+        {
+          "id": "amb-11-s09-h2",
+          "level": 3,
+          "title": "6.1 O que se deve provar no crime de poluição (art. 54)"
+        },
+        {
+          "id": "amb-11-s09-h3",
+          "level": 3,
+          "title": "6.2 Recursos minerais, resíduos e produtos de risco (arts. 55–58)"
+        },
+        {
+          "id": "amb-11-s09-h4",
+          "level": 3,
+          "title": "6.3 O delito autônomo de operar sem licença (art. 60)"
+        },
+        {
+          "id": "amb-11-s09-h5",
+          "level": 3,
+          "title": "6.4 Disseminação de doenças e espécies danosas (art. 61)"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s10",
+      "marker": "10",
+      "title": "7. Ordenamento urbano e patrimônio cultural (arts. 62–65)",
+      "page": 9,
+      "sha256": "24d9a6723b6f3fd72e3ef219a959917ce3427b0c22378ef01fbb30c327fc558d",
+      "headings": [
+        {
+          "id": "amb-11-s10-h1",
+          "level": 2,
+          "title": "7. Ordenamento urbano e patrimônio cultural (arts. 62–65)"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s11",
+      "marker": "11",
+      "title": "8. Crimes contra a administração ambiental: agentes e documentos",
+      "page": 10,
+      "sha256": "e9713e11443db3e04a062bab7a3be09615727a814c5de2adaaf35e8cbd2e3ad8",
+      "headings": [
+        {
+          "id": "amb-11-s11-h1",
+          "level": 2,
+          "title": "8. Crimes contra a administração ambiental: agentes e documentos"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s12",
+      "marker": "12",
+      "title": "9. Penas, dosimetria e consequências jurídicas",
+      "page": 11,
+      "sha256": "0f70ae067421705c1138b13e00e3672cb859908139bf4baa9ff2dfdf8cf57945",
+      "headings": [
+        {
+          "id": "amb-11-s12-h1",
+          "level": 2,
+          "title": "9. Penas, dosimetria e consequências jurídicas"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s13",
+      "marker": "13",
+      "title": "10. Processo penal ambiental: investigação, prova e soluções consensuais",
+      "page": 12,
+      "sha256": "562d120774425a2fed8bcf64745a8a760eda4e8e4ce746bd733d50d413b22782",
+      "headings": [
+        {
+          "id": "amb-11-s13-h1",
+          "level": 2,
+          "title": "10. Processo penal ambiental: investigação, prova e soluções consensuais"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s14",
+      "marker": "14",
+      "title": "11. Quatro esferas que parecem uma só — quadro comparativo",
+      "page": 13,
+      "sha256": "151823e372bca2ae6f0f9243891a611dde3edb6223afed6fd443656f76b4c235",
+      "headings": [
+        {
+          "id": "amb-11-s14-h1",
+          "level": 2,
+          "title": "11. Quatro esferas que parecem uma só — quadro comparativo"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s15",
+      "marker": "15",
+      "title": "12. Competência penal e atribuições: não confundir interesse ecológico com interesse processual federal",
+      "page": 14,
+      "sha256": "7d0b30cc830d0276af47639d45720381aa379ee244cf5474e18ee46e9193fa1c",
+      "headings": [
+        {
+          "id": "amb-11-s15-h1",
+          "level": 2,
+          "title": "12. Competência penal e atribuições: não confundir interesse ecológico com interesse processual federal"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s16",
+      "marker": "16",
+      "title": "13. Dano civil, reparação e autonomia das pretensões",
+      "page": 15,
+      "sha256": "f1602285d98fb1c31f5532a25e5bf876cc2bc41c184c663f4c70c32fe366f0f2",
+      "headings": [
+        {
+          "id": "amb-11-s16-h1",
+          "level": 2,
+          "title": "13. Dano civil, reparação e autonomia das pretensões"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s17",
+      "marker": "17",
+      "title": "14. Direito intertemporal — quadro de reformas que mudam a resposta",
+      "page": 16,
+      "sha256": "5b2e5152fa8b18b5f99f8b3b7f94fb4df924645d2ec811ea75db99fb2ccb51f3",
+      "headings": [
+        {
+          "id": "amb-11-s17-h1",
+          "level": 2,
+          "title": "14. Direito intertemporal — quadro de reformas que mudam a resposta"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s18",
+      "marker": "18",
+      "title": "15. Caso AGU integralmente resolvido: a indústria, o rio e a floresta",
+      "page": 17,
+      "sha256": "8d6c62929cf5bd24e1b83ef1e18fc8be8cb930326540684f7a8f61e09da262da",
+      "headings": [
+        {
+          "id": "amb-11-s18-h1",
+          "level": 2,
+          "title": "15. Caso AGU integralmente resolvido: a indústria, o rio e a floresta"
+        },
+        {
+          "id": "amb-11-s18-h2",
+          "level": 3,
+          "title": "Fatos e delimitação"
+        },
+        {
+          "id": "amb-11-s18-h3",
+          "level": 3,
+          "title": "Questão jurídica e normas incidentes"
+        },
+        {
+          "id": "amb-11-s18-h4",
+          "level": 3,
+          "title": "Competências e estratégia institucional"
+        },
+        {
+          "id": "amb-11-s18-h5",
+          "level": 3,
+          "title": "Objeção forte e resposta"
+        },
+        {
+          "id": "amb-11-s18-h6",
+          "level": 3,
+          "title": "Conclusão jurídica e proposta de encaminhamento"
+        },
+        {
+          "id": "amb-11-s18-h7",
+          "level": 3,
+          "title": "Minuta demonstrativa — conclusão de nota jurídica (não é peça real)"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s19",
+      "marker": "19",
+      "title": "16. Questão oficial de Advogado da União (2023) — conferência e comentário",
+      "page": 18,
+      "sha256": "400a93244689ae4e654136e5bd4772fb6becb36428c7c13b7674ceb5f37c626d",
+      "headings": [
+        {
+          "id": "amb-11-s19-h1",
+          "level": 2,
+          "title": "16. Questão oficial de Advogado da União (2023) — conferência e comentário"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s20",
+      "marker": "20",
+      "title": "17. Questões autorais comentadas — aplicação e transferência",
+      "page": 19,
+      "sha256": "8860e3e6b2ea9b0f1cf9fd85e97573d3f280a6498edf535bcec3c8a30740c142",
+      "headings": [
+        {
+          "id": "amb-11-s20-h1",
+          "level": 2,
+          "title": "17. Questões autorais comentadas — aplicação e transferência"
+        },
+        {
+          "id": "amb-11-s20-h2",
+          "level": 3,
+          "title": "Questão 1 — Pessoa jurídica, falsa premissa de dupla imputação"
+        },
+        {
+          "id": "amb-11-s20-h3",
+          "level": 3,
+          "title": "Questão 2 — Licenciamento de 2026"
+        },
+        {
+          "id": "amb-11-s20-h4",
+          "level": 3,
+          "title": "Questão 3 — Poluição e prova"
+        },
+        {
+          "id": "amb-11-s20-h5",
+          "level": 3,
+          "title": "Questão 4 — Multa e recomposição"
+        },
+        {
+          "id": "amb-11-s20-h6",
+          "level": 3,
+          "title": "Questão 5 — Competência federal em 2026"
+        },
+        {
+          "id": "amb-11-s20-h7",
+          "level": 3,
+          "title": "Questão 6 — Art. 49, § 2º, e limites de exceção"
+        },
+        {
+          "id": "amb-11-s20-h8",
+          "level": 3,
+          "title": "Questão 7 — Servidor licenciador e dolo"
+        },
+        {
+          "id": "amb-11-s20-h9",
+          "level": 3,
+          "title": "Questão 8 — Transação penal, ANPP e TAC"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s21",
+      "marker": "21",
+      "title": "18. Síntese de leitura: dez distinções indispensáveis",
+      "page": 20,
+      "sha256": "a96f26a9a8089cab8d7dc43fd410771969d88725a6594616711c83244486b944",
+      "headings": [
+        {
+          "id": "amb-11-s21-h1",
+          "level": 2,
+          "title": "18. Síntese de leitura: dez distinções indispensáveis"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s22",
+      "marker": "22",
+      "title": "19. Recuperação ativa — perguntas e respostas afastadas",
+      "page": 21,
+      "sha256": "63469adb9c5bf01579fcb75e82cf54a7069e96bfbdc623cb5a31d94659d16178",
+      "headings": [
+        {
+          "id": "amb-11-s22-h1",
+          "level": 2,
+          "title": "19. Recuperação ativa — perguntas e respostas afastadas"
+        }
+      ]
+    },
+    {
+      "id": "amb-11-s23",
+      "marker": "23",
+      "title": "20. Fontes oficiais rastreáveis, verificação e lacunas",
+      "page": 22,
+      "sha256": "e91c28b71290d45626dbc8b4422f6ae67aaa371297dab8ecc8d9d5294db0c1c6",
+      "headings": [
+        {
+          "id": "amb-11-s23-h1",
+          "level": 2,
+          "title": "20. Fontes oficiais rastreáveis, verificação e lacunas"
+        },
+        {
+          "id": "amb-11-s23-h2",
+          "level": 3,
+          "title": "Lacunas remanescentes e controle de futuras atualizações"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-11",
+      "subitem": "Crimes contra o meio ambiente.",
+      "sections": [
+        "amb-11-s01",
+        "amb-11-s02",
+        "amb-11-s03",
+        "amb-11-s04",
+        "amb-11-s05",
+        "amb-11-s06",
+        "amb-11-s07",
+        "amb-11-s08",
+        "amb-11-s09",
+        "amb-11-s10",
+        "amb-11-s11",
+        "amb-11-s12",
+        "amb-11-s13",
+        "amb-11-s14",
+        "amb-11-s15",
+        "amb-11-s16",
+        "amb-11-s17",
+        "amb-11-s18",
+        "amb-11-s19",
+        "amb-11-s20",
+        "amb-11-s21",
+        "amb-11-s22",
+        "amb-11-s23"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "amb11-f01",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "Edital do certame:: Cebraspe, Edital nº 1/2022, item 17.2.1, Direito Ambiental nº 11, p. impressa 42, exame do PDF e imagem da página: . Retificações nº 2 e 5/2023: cotejo pontual previamente document",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f02",
+      "url": "https://www2.camara.leg.br/atividade-legislativa/legislacao/constituicao1988",
+      "locator": "CF:: texto de referência da Câmara atualizado em 2026 (art. 5º, XXXIX/XL; arts. 22, 23, 24, 109, 129, 131, 144, 225): . Fundamentos constitucionais interpretados sem atribuir valor vinc",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f03",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1998/lei-9605-12-fevereiro-1998-365397-normaatualizada-pl.html",
+      "locator": "Lei 9.605/1998:: Câmara, texto consolidado **efetivamente aberto**, arts. 2–3, 6–15, 20–29, 32–69-A, 70–76, com notas de alterações: . O exame foi focalizado nos tipos decisivos, sem reconstrução d",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f04",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15190-8-agosto-2025-797833-normaatualizada-pl.html",
+      "locator": "Lei 15.190/2025:: Câmara, art. 62 (Lei 9.605, arts. 60 e 67), art. 67 (vigência) e registros de promulgação pós-veto: . Status: confirmada redação penal de 2026; **a transição de todos os dispositiv",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f05",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15150-16-junho-2025-797610-publicacaooriginal-175672-pl.html",
+      "locator": "Lei 15.150/2025:: inclusão do art. 32, § 1º-B, conferida na consolidação da Lei 9.605 e ficha normativa do lote: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f06",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2026/lei-15355-11-marco-2026-798799-publicacaooriginal-178409-pl.html",
+      "locator": "Lei 15.355/2026:: art. 18, acréscimo ao art. 32, § 1º-C, em publicação original e consolidação da Lei 9.605: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f07",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15299-22-dezembro-2025-798528-publicacaooriginal-177502-pl.html",
+      "locator": "Lei 15.299/2025:: art. 2º, art. 49, § 2º, conferido por fonte legislativa e consolidação: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f08",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2024/lei-14944-31-julho-2024-796016-publicacaooriginal-172511-pl.html",
+      "locator": "Lei 14.944/2024:: art. 44 e nova redação do art. 41 da Lei 9.605, conferida na consolidação: .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f09",
+      "url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=244969&ori=1",
+      "locator": "STF, RE 548.181/PR: , Primeira Turma, rel. Min. Rosa Weber, **06/08/2013**, afastamento da exigência de dupla imputação; notícia oficial contemporânea e registro processual:  e . **Alcance:** inexistê",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f10",
+      "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/05052024-A-responsabilidade-penal-das-pessoas-juridicas-segundo-o-STJ.aspx",
+      "locator": "STJ: , retrospectiva oficial da responsabilidade penal da PJ, **05/05/2024**, com referência ao **RMS 39.173/BA**, EAREsp 1.439.565 e AREsp 1.621.911: . **Alcance:** orientação jurispru",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f11",
+      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&num_processo_classe=2205709&sg_classe=REsp&tipo_pesquisa=T",
+      "locator": "STJ, Tema Repetitivo 1.377: , **REsp 2.205.709/MG**, Terceira Seção, rel. Min. Joel Ilan Paciornik, **08/10/2025**, DJEN **29/10/2025**, ficha oficial e notícia:  e .",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f12",
+      "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=648",
+      "locator": "STF, Tema 648: , **RE 835.558/SP**, Plenário, **09/02/2017**, trânsito **12/09/2017**, página oficial de repercussão geral: . **Alcance:** transnacionalidade de crimes envolvendo fauna nas hipóte",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f13",
+      "url": "https://processo.stj.jus.br/jurisprudencia/externo/informativo/?acao=pesquisar&aplicacao=informativo&livre=%40CNOT%3D%27021492%27",
+      "locator": "STJ, AgRg no CC 206.862/SC: , Terceira Seção, rel. Min. Joel Ilan Paciornik, **18/02/2025**, DJEN **24/02/2025**, informativo 848: . **Status:** orientação histórica de 2025, cotejada com precedente posterior",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f14",
+      "url": "https://scon.stj.jus.br/SCON/GetInteiroTeorDoAcordao?dt_publicacao=13%2F03%2F2026&num_registro=202504535912",
+      "locator": "STJ, AgRg no CC 217.888/PR: , Terceira Seção, rel. Min. Ribeiro Dantas, **05/03/2026**, DJEN **13/03/2026**, íntegra oficial **efetivamente aberta e primeira página conferida por imagem**: . **Alcance:** pres",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f15",
+      "url": "https://scon.stj.jus.br/SCON/pesquisar.jsp?O=JT&b=ACOR&i=1&livre=%28%28%27ERESP%27.clas.+e+%40num%3D%271318051%27%29+ou+%28%27EREsp%27+adj+%271318051%27%29.suce.%29",
+      "locator": "STJ, EREsp 1.318.051/RJ: , Primeira Seção, rel. Min. Mauro Campbell Marques, **08/05/2019**, DJe **12/06/2019**, responsabilidade **subjetiva** em sanção administrativa; evidência verificada historicamente",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f16",
+      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&num_processo_classe=1962089&sg_classe=REsp&tipo_pesquisa=T",
+      "locator": "STJ, Tema Repetitivo 1.204: , **REsp 1.953.359/SP e REsp 1.962.089/MS**, Primeira Seção, **13/09/2023**, DJe **26/09/2023**, obrigações ambientais *propter rem*: . **Status desta edição:** evidência histórica",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    },
+    {
+      "id": "amb11-f17",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del3689.htm",
+      "locator": "Código Penal, CPP, Lei 9.099/1995, Lei 7.347/1985, PNMA, LC 73/1993, LC 140/2011, Lei 9.985/2000, Lei 12.651/2012, Lei 12.305/2010, Lei 10.480/2002, Decreto 6.514/2008 e Lei 8.176/1991:: bases de enquadramento complementar; as passagens centrais sobre art. 28-A CPP e Lei 9.099 foram cotejadas em portais oficiais, mas **não se alega cotejo completo de cada artigo e ",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Fonte declarada na edição original de 22/11/2026. Migração não constitui reconferência exaustiva.",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb-11-caso",
+      "type": "aplicar",
+      "sectionId": "amb-11-s18",
+      "title": "Caso AGU: formular estratégia antes de conferir solução",
+      "nature": "autoral",
+      "prompt": "### Fatos e delimitação\n\nA empresa **Mineração Rio Claro S.A.**, pessoa jurídica privada, recebeu licença estadual para uma primeira etapa de processamento. Em **abril de 2026**, inicia ampliação da planta sem a licença exigível. Há documentos de que a diretoria aprovou o início da operação antes da análise ambiental. A obra provoca supressão de cerca de 10 hectares de **floresta efetivamente caracterizada como de APP** em margem de curso d'água, e caminhões transportam madeira sem documento ambiental exigível. Em **maio**, efluentes oleosos atingem o rio, gerando risco documentado à saúde de comunidade próxima e mortandade de peixes. Um relatório ambiental omitiu medições relevantes; o engenheiro afirma que apenas aplicou método estatístico diferente. O Ibama lavra auto por infração ambiental e embarga área, o órgão estadual inicia processo de revisão do licenciamento e o Ministério Público recebe notícia do fato. Há indício, ainda não comprovado, de repercussão em bem ou serviço federal associado a trecho do curso hídrico.\n\nA empresa sustenta que multa administrativa, compromisso de recuperação e licença corretiva deveriam encerrar o assunto. Um dos diretores diz que não visitou o local e não pode responder por conduta operacional. O órgão estadual questiona a competência autuante federal. A consultoria jurídica da União precisa orientar providências de proteção do interesse federal sem declarar culpados por antecipação.",
+      "answer": "### Questão jurídica e normas incidentes\n\n1. **Flora:** apurar art. 38 (destruição/dano de floresta em APP), art. 39 se corte de árvores como fato distinto ou absorvido, e art. 46 quanto a transporte/guarda de madeira sem documento devido. Levantamento geoespacial e classificação vegetal são essenciais; não basta chamar a área de “verde”.\n2. **Licenciamento e poluição:** apurar art. 60 para a ampliação sem licença exigível. Como o fato é posterior a **04/02/2026**, aplica-se, em princípio, a redação de art. 60 da Lei 15.190/2025, incluindo avaliação de majorante **somente se o licenciamento do empreendimento exigia EIA**. Para o lançamento de efluentes, avaliar art. 54, seus parágrafos e eventual art. 33, sem duplicar materialidade de mortandade por mera justaposição de números. Tema 1.377 permite demonstrar potencialidade para saúde por prova idônea, mas autoria e capacidade lesiva continuam necessárias.\n3. **Documentos e agentes públicos:** art. 69-A só se justifica se o relatório era materialmente falso/enganoso, inclusive omissão relevante, com elemento subjetivo conforme figura imputada; divergência técnica honesta não basta. Se licença posterior vier a ser concedida ilegalmente por agente público, art. 67 exige ciência e dolo próprios, não mera nulidade.\n4. **Pessoa jurídica e dirigentes:** o art. 3º demanda decisão organizacional de representante/órgão colegiado **no interesse/benefício** da companhia. Para cada diretor, engenheiro e operador, reconstruir poder decisório, dever de agir, dolo ou culpa típica e nexo. A sociedade pode ser investigada sem denúncia simultânea de pessoa natural, por força do RE 548.181, mas a independência processual não dispensa prova institucional.\n5. **Infrações e reparação:** autos de infração podem ser juridicamente sustentáveis mediante competência, tipicidade administrativa, autoria e rito. Mesmo que a empresa pague multa, subsiste dever de recuperar APP, restaurar funções ecológicas, neutralizar poluentes e, conforme prova, indenizar danos residuais/interinos. Licença corretiva é mecanismo regulatório, não anistia penal ou civil.\n\n### Competências e estratégia institucional\n\n**Primeira providência: preservar e segmentar prova.** Recomenda-se articular, pelos canais competentes, cópia autenticada do processo de licenciamento, versões de laudos, registros do sistema de monitoramento, decisões societárias, autorizações para supressão vegetal, documentos florestais, fotos multitemporais, cadeia de custódia de água/solo/fauna, resultados laboratoriais e informações sobre o bem afetado. Paralelamente, verificar a competência do Ibama à luz da LC 140/2011 e atos incidentes, inclusive eventual risco de autuações repetidas sobre o mesmo fato, sem ordenar cancelamento de auto apenas porque houve fiscalização estadual.\n\n**Segunda providência: determinar o foro e titularidade da investigação criminal.** O simples fato de existir auto do Ibama ou área de APP **não basta** para Justiça Federal. Se houver prova de dano direto a bem, serviço ou interesse federal (por exemplo, unidade federal ou patrimônio federal juridicamente caracterizado), ou transnacionalidade constitucionalmente relevante, analisar competência federal e atribuição da PF/MPF. Se não houver, a responsabilização penal tende a tramitar na Justiça Estadual, com Polícia Civil e MP estadual. A AGU não escolhe o órgão acusador por conveniência; pode encaminhar informação técnica ao órgão competente e cooperar com requisições legítimas.\n\n**Terceira providência: ação civil ou tutela cautelar, quando houver legitimação e interesse da União.** A AGU avalia tutela inibitória para interromper lançamento contaminante e novas supressões; obrigação de apresentar e executar PRAD/planos de remediação com garantias; recuperação in natura; monitoramento continuado; e eventual indenização residual. Se o interesse for de autarquia federal, a atuação contenciosa ocorre na estrutura competente, em regra PGF, conforme representação legal. O MP pode propor ACP própria; a atuação federal deve ser coordenada para evitar conflito de pretensões e dupla cobrança do mesmo dano, sem subordinação de funções.\n\n**Quarta providência: controlar legalidade e contraditório.** A Administração deve motivar medidas de embargo e sanções, assegurar contraditório nos momentos legais e diferenciar providência urgente preventiva de sanção punitiva. Erro em um auto não torna o empreendimento ambientalmente regular; licitude da fiscalização não comprova crime. A consultoria jurídica poderá recomendar revisão motivada de decisão de licenciamento, corrigir vício, solicitar nova avaliação de impacto ou defender ato válido com base no processo, jamais ocultar indícios materiais por lealdade a agente público.\n\n### Objeção forte e resposta\n\n**Objeção:** “A licença estadual era suficiente, os danos foram contidos, o art. 54 exige prova pericial de doença humana e a empresa não pode ser ré sem diretor denunciado; a autuação federal duplicou a estadual.”\n\n**Resposta:** cada premissa requer aferição. É preciso cotejar objeto, fase e escopo da licença; art. 60 admite crime de operar sem autorização exigível ou contrariando normas específicas e, em 2026, possui nova pena. O Tema 1.377 não exige doença humana real nem perícia técnica como condição universal para a **primeira parte** do caput do art. 54, mas exige potencialidade comprovada por meio idôneo. A empresa pode responder penalmente autonomamente (RE 548.181), desde que existam elementos do art. 3º. A alegação de duplicidade administrativa demanda examinar autoridades, fatos e competência concreta, não anular automaticamente todas as providências. Por outro lado, o argumento defensivo pode ser **procedente** se o estudo demonstrar licenciamento suficiente, ausência de potencialidade relevante, inexistência de decisão institucional ou auto lavrado por autoridade sem competência: cada uma dessas hipóteses pode mudar o resultado específico.\n\n### Conclusão jurídica e proposta de encaminhamento\n\nNão se recomenda declarar previamente crime ou responsabilidade pessoal dos diretores. Recomenda-se **instaurar análise jurídica compartimentada**, acionar medidas de prevenção e reparação cabíveis, proteger vestígios, remeter notícia fundamentada à autoridade investigativa/MP com atribuição correta, revisar atos de licenciamento se houver suporte e documentar a reparação exigível independentemente de sanções. O objeto consultivo da AGU é a **juridicidade da conduta e da atuação federal**, inclusive reconhecer quando não existe interesse federal suficiente para ação ou quando ato estatal deve ser revisto.\n\n### Minuta demonstrativa — conclusão de nota jurídica (não é peça real)\n\n> Diante dos elementos ainda preliminares, opina-se pela manutenção das medidas protetivas que encontrem amparo em competência, motivação e risco devidamente documentado; pela instrução técnica complementar da supressão vegetal, das emissões e do nexo ecológico; pela preservação dos documentos societários e dos processos de licenciamento; pela análise da tutela civil reparatória no âmbito das pessoas jurídicas federais legitimadas; e pelo encaminhamento da notícia criminal ao Ministério Público e à autoridade de polícia judiciária competentes após exame dos critérios constitucionais de competência. Consigna-se que a responsabilidade criminal de agentes e da sociedade depende de imputação individual/institucional típica, sem presunção derivada de autuação, cargo ou pagamento de multa. O controle de legalidade das sanções administrativas e das licenças deve prosseguir em procedimento próprio, garantidas as defesas cabíveis."
+    },
+    {
+      "id": "amb-11-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb-11-s22",
+      "title": "Recuperação ativa — dez perguntas comentadas",
+      "nature": "autoral",
+      "prompt": "**Perguntas (responder sem consulta em sessão posterior; esta leitura não avalia desempenho):**\n\nR1. Uma empresa responde penalmente se o promotor não consegue denunciar pessoa física? Quais são os requisitos que ainda restam?  \nR2. Que dois dados técnico-jurídicos são indispensáveis para distinguir art. 38 de supressão de qualquer vegetação em APP?  \nR3. Em quais limites o STJ dispensou exame pericial no art. 54 e o que deve continuar provado?  \nR4. O que muda com art. 60 após a Lei 15.190/2025 para fato ocorrido em maio de 2026?  \nR5. Que raciocínio penal intertemporal se aplica a concessão **culposa** de licença irregular ocorrida em 2024 após mudança do art. 67 em 2026?  \nR6. Quando o corte de espécie ameaçada pode cair na Justiça Federal e qual ressalva recente deve ser conhecida?  \nR7. O que precisa ser distinguido entre infração administrativa, obrigação de reparar e crime se um terceiro adquire imóvel desmatado?  \nR8. Quais os requisitos específicos de composição ecológica na transação penal e na suspensão condicional do processo?  \nR9. Qual o papel legítimo da AGU quando encontra possível fraude em laudo ambiental de empreendimento privado?  \nR10. Por que art. 49, § 2º, não autoriza suprimir floresta em APP depois de 45 dias sem resposta administrativa?",
+      "answer": "**Respostas para conferência posterior:**\n\n**R1.** Sim, a ausência de persecução concomitante de pessoa física não impede isoladamente a ação contra pessoa jurídica (RE 548.181); deve-se demonstrar fato típico, decisão de representante/órgão colegiado no interesse ou benefício (art. 3º), vinculação e prova idônea, sem responsabilidade automática.  \n**R2.** A caracterização técnico-ecológica da formação como **floresta**, mesmo em formação, e o enquadramento **jurídico-espacial** como área de preservação permanente com conduta lesiva típica.  \n**R3.** Primeira parte do caput do art. 54; não requer dano efetivo à saúde nem perícia necessariamente, mas conduta, autoria, nexo e potencialidade em níveis relevantes devem ser demonstrados por meio idôneo (Tema 1.377).  \n**R4.** Exame da redação em vigor em 04/02/2026: detenção de 6 meses a 2 anos, ou multa, ou ambas; majorante até o dobro **se sujeito a EIA**, com prova da exigência; observar natureza do empreendimento e licenciamento real.  \n**R5.** A supressão da modalidade culposa na redação de 2026 pode configurar **lei benéfica** para fatos antes abrangidos, demandando cotejo da conduta e de eventuais outros crimes, sem condenar por culpa sob novo tipo doloso.  \n**R6.** Quando há transnacionalidade ou ofensa direta a bem/serviço/interesse federal; STF Tema 648 cobre crime transnacional com fauna especificada. STJ AgRg CC 217.888/PR (2026) afastou federalização por mera inclusão da **flora** em lista nacional, embora precedente de 2025 tenha entendimento mais amplo.  \n**R7.** O atual proprietário pode ter dever de reparação *propter rem* (Tema 1.204), mas não é automaticamente autor do crime nem sujeito a sanção administrativa pelo ato alheio; cada esfera tem fundamento e prova próprios.  \n**R8.** Transação penal: prévia composição do dano ambiental, salvo comprovada impossibilidade (art. 27). Suspensão processual: laudo de reparação e mecanismos próprios de prorrogação, ao fim, para extinção da punibilidade (art. 28).  \n**R9.** Preservar documentos, avaliar a legalidade e a tutela civil no âmbito da União/entidades federais, encaminhar notícia às autoridades com atribuição, cooperar tecnicamente sem oferecer denúncia criminal ou garantir resultado punitivo.  \n**R10.** Porque a exceção está normativamente situada no **art. 49** e supõe risco de acidente atestado, requerimento específico, silêncio e prazo, não abrange por analogia art. 38, UCs ou regimes de supressão vegetal distintos."
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Marcadores técnicos adicionados e referência documental privada suprimida na edição pública; argumentação jurídica preservada. O original permanece identificado pelo SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa.",
+    "Tabelas permanecem no Markdown; a tela não reproduz a paginação PDF nem os quadros CSV da entrega original."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "inputSha256": "17bec85085c28f4fda16ad12c731240cfc28bb16559dd6489f0a95182d60b7ca",
+    "record": "Autorização expressa do usuário de 25/11/2026 para publicar LIVRO-AMB-008 e outros livros elegíveis. Esta aprovação limita-se ao ingresso editorial da versão pública de escopo jurídico delimitado; nenhuma certificação curricular ou aprovação de cartões novos foi atribuída."
+  },
+  "inputSha256": "17bec85085c28f4fda16ad12c731240cfc28bb16559dd6489f0a95182d60b7ca",
+  "sourceSha256": "8d1cd408e186b644b261109761d9a0c14db70c5d7073c6bcf069696b6261ef94",
+  "reviewCards": []
+}

@@ -60,6 +60,17 @@
           "reader": "livros/amb-03.json",
           "method": "livros/metodo/amb-03.json",
           "status": "publicado"
+        },
+        {
+          "id": "amb-11",
+          "title": "Crimes contra o meio ambiente",
+          "edition": "1.1",
+          "curricularIds": [
+            "AMB-11"
+          ],
+          "reader": "livros/amb-11.json",
+          "method": "livros/metodo/amb-11.json",
+          "status": "publicado"
         }
       ]
     }

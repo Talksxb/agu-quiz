@@ -4,7 +4,8 @@
     "livros/editorial/lgpd-adm64b.json",
     "livros/editorial/adm-53.json",
     "livros/editorial/adm-54.json",
-    "livros/editorial/amb-03.json"
+    "livros/editorial/amb-03.json",
+    "livros/editorial/amb-11.json"
   ],
   "collections": [
     "livros/colecoes/ambiental.json"
