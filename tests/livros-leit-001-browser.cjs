@@ -52,7 +52,9 @@ async function main(){
    await page.locator('#ux-book-next').click();
    assert.equal(await page.locator('#page').inputValue(),'1');
    assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_livros_reader_v1')||'{}')['lgpd-adm64b']?.done||[]),doneBefore,'navegação não conclui seção');
-   const zoom=await page.addStyleTag({content:'#book{font-size:200%}'});
+   const fontBefore=await page.locator('#read-full').evaluate(e=>parseFloat(getComputedStyle(e).fontSize));
+   const zoom=await page.addStyleTag({content:':root{font-size:200%}'});
+   assert.ok(await page.locator('#read-full').evaluate((e,n)=>parseFloat(getComputedStyle(e).fontSize)>=n*1.99,fontBefore),'texto do livro realmente ampliado');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'livro imersivo sem overflow em texto ampliado');
    await zoom.evaluate(e=>e.remove());
    await page.screenshot({path:path.join(ART,'ux005-livro-imersivo-'+width+'.png'),fullPage:false});
