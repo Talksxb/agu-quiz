@@ -1,0 +1,62 @@
+{
+  "index.html": {
+    "before": "395c07d355f002b8bc6815d93b26d6913047c3113bdf7dd9397116556a926f05",
+    "after": "39cd28d0b8015acd6601aaed25bb395f3949ab0fb7e9d79b757998629ad5895b",
+    "changes": [
+      {
+        "before": "",
+        "after": "<script src=\"recursos-curriculares.js\"></script>\n"
+      },
+      {
+        "before": "  if(typeof x.id!=='string'||!/^[A-Z]+(?:-[A-Z]+)*-\\d{2,3}$/.test(x.id)||ids.has(x.id))throw Error('Identificador inválido ou repetido: '+x.id);\n",
+        "after": "  if(typeof x.id!=='string'||!/^[A-Z]+(?:-[A-Z]+)*-\\d{2,3}[a-z]?$/.test(x.id)||ids.has(x.id))throw Error('Identificador inválido ou repetido: '+x.id);\n"
+      },
+      {
+        "before": "function curriculum(){return heading('Mapa curricular','Matriz ampla de planejamento · aderência integral ao edital pendente de auditoria')+`<div class=\"tabrow\">${D.map(d=>`<button class=\"tab ${d[0]===selectedDisc?'active':''}\" onclick=\"selectedDisc='${d[0]}';render()\">${d[0]}</button>`).join('')}</div>`+D.filter(d=>d[0]===selectedDisc).map(d=>`<div class=\"card\"><h2>${d[1]}</h2>${d[2].map(t=>{let id=topicId(d[0],t),s=info(id);return `<div class=\"topic\"><div><strong>${esc(t)}</strong><div class=\"small muted\">${(Q.filter(x=>x.topic===id).length)} desafio(s) disponível(is) no MVP · ${s.evidence||0} evidências</div></div><div class=\"btnrow\" style=\"margin:0\"><span class=\"status ${s.state==='Domínio demonstrado'?'done':s.state==='Revisão necessária'?'review':''}\">${s.state}</span><button class=\"secondary\" ${Q.some(q=>q.topic===id)?`onclick=\"startQuiz('${id}')\"`:'disabled title=\"Questões ainda não incluídas\"'}>${Q.some(q=>q.topic===id)?'Estudar':'Pendente'}</button></div></div>`}).join('')}</div>`).join('')+`<p class=\"note\">Os tópicos de disciplinas adicionais são marcadores de escopo, não uma declaração de cobertura integral validada do edital. Questões sem fonte atual verificada são rotuladas como hipóteses pedagógicas.</p>`}\n",
+        "after": "function curriculum(){return heading('Mapa curricular','Recursos por ID e mapa legado de planejamento')+window.AGUCurriculum.panel(matrix)+`<div class=\"tabrow\">${D.map(d=>`<button class=\"tab ${d[0]===selectedDisc?'active':''}\" onclick=\"selectedDisc='${d[0]}';render()\">${d[0]}</button>`).join('')}</div>`+D.filter(d=>d[0]===selectedDisc).map(d=>`<div class=\"card\"><h2>${d[1]}</h2>${d[2].map(t=>{let id=topicId(d[0],t),s=info(id);return `<div class=\"topic\"><div><strong>${esc(t)}</strong><div class=\"small muted\">${(Q.filter(x=>x.topic===id).length)} desafio(s) disponível(is) no MVP · ${s.evidence||0} evidências locais de aprendizagem (não auditoria)</div></div><div class=\"btnrow\" style=\"margin:0\"><span class=\"status ${s.state==='Domínio demonstrado'?'done':s.state==='Revisão necessária'?'review':''}\">${s.state==='Não iniciado'?'Sem estudo registrado neste navegador':s.state}</span><button class=\"secondary\" ${Q.some(q=>q.topic===id)?`onclick=\"startQuiz('${id}')\"`:'disabled title=\"Questões ainda não incluídas\"'}>${Q.some(q=>q.topic===id)?'Treinar desafio autoral':'Sem desafio autoral'}</button></div></div>`}).join('')}</div>`).join('')+`<p class=\"note\">Os tópicos de disciplinas adicionais são marcadores de escopo, não uma declaração de cobertura integral validada do edital. Questões sem fonte atual verificada são rotuladas como hipóteses pedagógicas.</p>`}\n"
+      }
+    ]
+  },
+  "backup-local-s20.js": {
+    "before": "980577339d848f83303d125f54b8810aa1e35246c89a65da8821108e3f69bc61",
+    "after": "11a29920f5d20c03af9b32f77b1f94ef84a613119ba0b34783d98c1f2b807ed8",
+    "changes": [
+      {
+        "before": " case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length>0&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)*-\\d{2,3}$/.test(v));\n",
+        "after": " case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length>0&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)*-\\d{2,3}[a-z]?$/.test(v));\n"
+      }
+    ]
+  },
+  "scripts/metodo-agu.cjs": {
+    "before": "6adf720ccbcdea9a0bbd674a61acb4635c4e10fe2678465934164545590963df",
+    "after": "1cdabc77cb2db48d4a3386c0da37a69b7140b57fadced2cfd495ec1a76b76ba9",
+    "changes": [
+      {
+        "before": " emit('dados/metodo-agu-referencias.js','/* Gerado dos índices publicados; não contém dados do estudante. */\\nwindow.AGU_METHOD_BOOK_REFERENCES = '+JSON.stringify({schema:'agu-method-book-references-v1',chapters:Object.fromEntries(all.map(c=>[c.m.id,{title:c.m.title,edition:c.m.edition,sections:c.data.sections.map(s=>s.id),activities:c.data.activities.map(a=>a.id)}]))},null,2)+';\\n');\n",
+        "after": " emit('dados/metodo-agu-referencias.js','/* Gerado dos índices publicados; não contém dados do estudante. */\\nwindow.AGU_METHOD_BOOK_REFERENCES = '+JSON.stringify({schema:'agu-method-book-references-v1',chapters:Object.fromEntries(all.map(c=>[c.m.id,{title:c.m.title,edition:c.m.edition,curricularIds:c.m.curricularIds,sections:c.data.sections.map(s=>s.id),activities:c.data.activities.map(a=>a.id)}]))},null,2)+';\\n');\n"
+      }
+    ]
+  },
+  "dados/metodo-agu-referencias.js": {
+    "before": "26c46a198a253cb28a4f494986b3d134fc552ecbe0b11fffd30e35e02d87dc7e",
+    "after": "db7e38fff23c7547a3e6873b235e72cc1ebe25be94d3effd74f127d91e7afa2e",
+    "changes": [
+      {
+        "before": "",
+        "after": "      \"curricularIds\": [\n        \"ADM-64b\"\n      ],\n"
+      },
+      {
+        "before": "",
+        "after": "      \"curricularIds\": [\n        \"ADM-53\"\n      ],\n"
+      },
+      {
+        "before": "",
+        "after": "      \"curricularIds\": [\n        \"ADM-54\"\n      ],\n"
+      },
+      {
+        "before": "",
+        "after": "      \"curricularIds\": [\n        \"AMB-03\"\n      ],\n"
+      }
+    ]
+  }
+}

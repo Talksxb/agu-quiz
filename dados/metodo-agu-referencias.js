@@ -5,6 +5,9 @@ window.AGU_METHOD_BOOK_REFERENCES = {
     "lgpd-adm64b": {
       "title": "LGPD aplicada à Administração Pública",
       "edition": "2.0",
+      "curricularIds": [
+        "ADM-64b"
+      ],
       "sections": [
         "lgpd-adm64b-s01",
         "lgpd-adm64b-s02",
@@ -39,6 +42,9 @@ window.AGU_METHOD_BOOK_REFERENCES = {
     "adm-53": {
       "title": "Responsabilidade patrimonial do Estado no Direito brasileiro",
       "edition": "1.0",
+      "curricularIds": [
+        "ADM-53"
+      ],
       "sections": [
         "adm-53-s01",
         "adm-53-s02",
@@ -69,6 +75,9 @@ window.AGU_METHOD_BOOK_REFERENCES = {
     "adm-54": {
       "title": "Agentes públicos e a natureza dos vínculos com o Estado",
       "edition": "1.0",
+      "curricularIds": [
+        "ADM-54"
+      ],
       "sections": [
         "adm-54-s01",
         "adm-54-s02",
@@ -96,6 +105,9 @@ window.AGU_METHOD_BOOK_REFERENCES = {
     "amb-03": {
       "title": "Competências e Cooperação Ambiental",
       "edition": "1.0",
+      "curricularIds": [
+        "AMB-03"
+      ],
       "sections": [
         "amb-03-s01",
         "amb-03-s02",
