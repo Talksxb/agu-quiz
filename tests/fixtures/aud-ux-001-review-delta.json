@@ -1,0 +1,22 @@
+{
+  "before": "02b04c35522a1d8dae020433c8957c297dd960990a573cb81943e0c82f010f0d",
+  "after": "008caa0d193d7c58870fdfd56e0191c7820b7789ada5676b36ddca392723ebf3",
+  "changes": [
+    {
+      "before": "",
+      "after": "// AUD-UX-001: atalho de apresentação para a fila original, sem criar sessão ou agenda.\nfunction reviewNow(keyboard=false){\n if(!candidates('flashcard',1).length)return false;\n go('flashcard');\n global.document?.querySelector?.('#agu-review-active')?.scrollIntoView?.({block:'start'});\n focusAfter('#agu-review-active button[onclick^=\"AGUReview.reveal(\"]',keyboard);\n return true;\n}\n"
+    },
+    {
+      "before": "",
+      "after": "  (!activeSession?'<div class=\"card agu-deck-quick-start\"><div class=\"btnrow\"><button id=\"agu-review-now\" type=\"button\" class=\"primary\" '+(candidates('flashcard',1).length?'':'disabled ')+'onclick=\"AGUReview.reviewNow(event.detail===0)\">Revisar agora</button></div><p class=\"small muted\">'+decks.reduce((n,d)=>n+d.overdue,0)+' vencidos · '+decks.reduce((n,d)=>n+d.todayDue,0)+' vencem hoje · '+decks.reduce((n,d)=>n+d.new,0)+' inéditos. A fila existente considera prazos e erros, incluindo avaliações sem data. Nenhuma abertura conta como avaliação.</p>'+(!candidates('flashcard',1).length?'<p class=\"small muted\">Nenhum cartão disponível na fila agora. Escolha um baralho abaixo para estudo livre.</p>':'')+'</div>':'')+\n"
+    },
+    {
+      "before": " (active&&currentMode!=='deck'?'<div class=\"card\"><div class=\"split\"><span class=\"chip\">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class=\"chip\">Avaliações anteriores: '+priorCount+' · '+legacyDue+'</span></div>'+cardHTML(active)+\n",
+      "after": " (active&&currentMode!=='deck'?'<div class=\"card\" id=\"agu-review-active\"><div class=\"split\"><span class=\"chip\">'+esc(active.kind==='flashcard'?'Recuperação ativa':'Questão oficial')+'</span><span class=\"chip\">Avaliações anteriores: '+priorCount+' · '+legacyDue+'</span></div>'+cardHTML(active)+\n"
+    },
+    {
+      "before": "global.AGUReview={page,go,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};\n",
+      "after": "global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};\n"
+    }
+  ]
+}
