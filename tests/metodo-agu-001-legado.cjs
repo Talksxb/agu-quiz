@@ -8,6 +8,7 @@ module.exports.review=function(js){js=module.exports.reverseReviewA11y(js);const
 
 // UX-AGU-006-A11Y-001: somente o papel semântico do verso, reversível byte a byte.
 module.exports.reverseReviewA11y=function(js){
+ js=require('./aud-ux-001-legado.cjs')(js);
  const before="<div class=\"agu-deck-surface agu-deck-back\" aria-label=\"Verso do cartão\">",after="<div class=\"agu-deck-surface agu-deck-back\" role=\"group\" aria-label=\"Verso do cartão\">";
  assert.equal(js.split(after).length,2,'Papel ARIA do verso deve ser único');
  assert.equal(js.includes(before),false,'Verso genérico antigo não deve coexistir');

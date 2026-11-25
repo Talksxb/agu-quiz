@@ -146,6 +146,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: AUD-UX-001 — atalho, fila original, cinco larguras, acessibilidade e backup
+        run: node tests/aud-ux-001-browser.cjs
       - name: SIMULADOS-AGU-001 — móvel, retomada, correção, cartões e axe
         run: node tests/simulados-agu-001-browser.cjs
       - name: INTERFACE-AGU-001 — topo, navegação móvel, reflow e histórico preservado
@@ -246,6 +248,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-aud-ux-001/
             tests/artifacts-ux-agu-006/
             tests/artifacts-simulados-agu/
             tests/artifacts-interface-agu-001/
