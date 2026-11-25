@@ -221,33 +221,26 @@
     },
     {
       "editorialId": "LIVRO-AMB-008",
-      "chapterId": null,
-      "title": "Florestas, APPs e unidades de conservação",
+      "chapterId": "amb-11",
+      "title": "Crimes contra o meio ambiente",
       "order": 8,
       "curricular": [
         {
-          "id": "AMB-09",
+          "id": "AMB-11",
           "subitems": [
-            "Proteção às florestas."
+            "Crimes contra o meio ambiente."
           ],
-          "coverage": "planejada_nao_contabilizar"
-        },
-        {
-          "id": "AMB-10",
-          "subitems": [
-            "Áreas de preservação permanente e unidades de conservação."
-          ],
-          "coverage": "planejada_nao_contabilizar"
+          "coverage": "delimitada_no_capitulo_publico"
         }
       ],
       "connections": [],
       "status": {
-        "production": "planejado",
-        "review": "pendente",
-        "publication": "nao_publicado"
+        "production": "produzido",
+        "review": "aprovado_para_publicacao_escopo_delimitado",
+        "publication": "publicado"
       },
-      "edition": null,
-      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
+      "edition": "1.1",
+      "evidence": "Obra de 22/11/2026, SHA-256 e431ccbf1def7175d0bbee965b85d56d21801911546d1c9be972fa29d6856daa; edição pública de 25/11/2026 com controle de proveniência, redigindo dados privados.",
       "resources": null
     },
     {
