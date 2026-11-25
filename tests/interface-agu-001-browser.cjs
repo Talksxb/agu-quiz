@@ -20,6 +20,8 @@ const currentCss=fs.readFileSync(path.join(ROOT,'interface-agu.css'),'utf8');
 const marker="/* UX-AGU-004 — sistema visual compartilhado;";
 assert.equal(currentCss.split(marker).length,2,'delta visual 004 único');
 const baselineCss=currentCss.split(marker)[0].replace(/\n$/,'');
+const oldBlob=require('node:crypto').createHash('sha1').update('blob '+Buffer.byteLength(baselineCss)+'\0').update(baselineCss).digest('hex');
+assert.equal(oldBlob,'8519013a7ab1abfb7612216bc5522ab91ee8a8ad','CSS 003 restituído byte a byte');
 const fixture = JSON.stringify({version:1,created:'2026-11-20T12:00:00Z',topic:{},answers:[],sessions:[],reviews:[],notebook:[],seed:false});
 async function main() {
   fs.mkdirSync(OUT, {recursive:true});
@@ -75,7 +77,7 @@ async function main() {
       }
       const design=await page.evaluate(()=>{
         const root=getComputedStyle(document.documentElement),token=n=>root.getPropertyValue('--ui-'+n).trim();
-        const rgb=x=>x.startsWith('#')?[1,3,5].map(i=>parseInt(x.slice(i,i+2),16)):x.match(/[\d.]+/g).slice(0,3).map(Number);
+        const rgb=x=>x.startsWith('#')?(x.length===4?[1,2,3].map(i=>parseInt(x[i]+x[i],16)):[1,3,5].map(i=>parseInt(x.slice(i,i+2),16))):x.match(/[\d.]+/g).slice(0,3).map(Number);
         const lum=x=>rgb(x).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
         const ratio=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
         const button=document.querySelector('#continue-study'),cs=getComputedStyle(button);
