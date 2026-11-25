@@ -93,6 +93,9 @@ function setImmersive(value){
 }
 function init(){
  const cards=$('cards'),catalog=$('catalog'),study=$('study-panel');if(!cards||!catalog||!study||$('ux-book-search'))return;
+ const style=document.documentElement.style;
+ function relativeSize(){const px=parseFloat(style.getPropertyValue('--reading-size'))||20,rem=px/16+'rem';if(style.getPropertyValue('--ux-reading-size')!==rem)style.setProperty('--ux-reading-size',rem)}
+ new MutationObserver(relativeSize).observe(document.documentElement,{attributes:true,attributeFilter:['style']});relativeSize();
  const search=document.createElement('div');search.className='ux-book-search';search.innerHTML='<label for="ux-book-search">Buscar capítulos e disciplinas</label><input type="search" id="ux-book-search" placeholder="Ex.: agentes públicos"><p role="status" id="ux-book-results"></p>';
  cards.before(search);$('ux-book-search').addEventListener('input',e=>{query=e.target.value;filter()});
  new MutationObserver(filter).observe(cards,{childList:true});filter();
