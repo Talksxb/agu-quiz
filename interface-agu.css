@@ -234,3 +234,72 @@ h3 { font-size: 1rem; line-height: 1.5; }
  .side .nav.active{border-color:#b6a0be;background:var(--ui-accent-soft);color:var(--ui-accent-text)}
 }
 @media(max-width:360px){.daily-mission{padding:14px}.today-summary p{padding:10px 8px}}
+
+/* UX-AGU-006 — linguagem de estudo comum; somente apresentação.
+   A etapa, resposta, agenda, origem e confirmação continuam sob os motores originais. */
+.main :is(.agu-deck-session,.agu-deck-resume,.agu-deck-choice){border-radius:var(--ui-radius-card);min-width:0;overflow-wrap:anywhere}
+.main .agu-deck-session-head{gap:var(--ui-space-3)}
+.main .agu-deck-session-head h2{line-height:1.35}
+.main .agu-deck-study-state{gap:var(--ui-space-2)}
+.main .agu-deck-study-state>*{max-width:100%;overflow-wrap:anywhere}
+.main .agu-deck-session :is(.agu-deck-surface,.agu-deck-rated){border-radius:var(--ui-radius-card);overflow-wrap:anywhere}
+.main .agu-deck-surface{padding:clamp(16px,3vw,30px)}
+.main .agu-deck-front{border:2px solid var(--ui-accent);box-shadow:0 4px 16px #3e2b430e}
+.main .agu-deck-front .question-title{font-size:clamp(1.25rem,2.4vw,1.75rem);line-height:1.45}
+.main .agu-deck-back .question-title{font-size:clamp(1.125rem,2.2vw,1.5rem);line-height:1.5}
+.main .agu-deck-back p{font-size:1rem;line-height:1.75}
+.main .agu-deck-session .btnrow{gap:var(--ui-space-2)}
+.main .agu-deck-session .btnrow button{min-height:var(--ui-touch);max-width:100%;white-space:normal}
+.main .agu-deck-session [id^="agu-deck-rating-"]{flex:1 1 6rem;min-width:min(100%,6rem);font-weight:650}
+.main .agu-deck-session .agu-deck-front:focus-visible{outline:3px solid var(--ui-focus);outline-offset:3px}
+.main .agu-deck-resume{border-left:4px solid var(--ui-accent)}
+.main .agu-deck-resume .primary{min-height:48px}
+.main .agu-deck-session .agu-deck-flip-tip{font-size:.875rem;line-height:1.5}
+@media(prefers-color-scheme:light){
+ .main .agu-deck-session{background:var(--ui-canvas);border-color:var(--ui-line)}
+ .main .agu-deck-front{background:var(--ui-surface);color:var(--ui-ink)}
+ .main .agu-deck-flip-tip{color:var(--ui-accent-text)}
+ .main .agu-deck-back{background:var(--ui-surface);color:var(--ui-ink)}
+ .main .agu-deck-resume{background:var(--ui-accent-soft)}
+}
+/* Recuperação e correção: destaque na pergunta, resposta apenas quando o motor a revela.
+   Verde/âmbar/vermelho existentes não são substituídos por uma indicação genérica de acerto. */
+#main :is(.card,.agu-ctx-box,.aq-card):has(> .question-title){min-width:0;overflow-wrap:anywhere}
+#main .question-title{font-size:clamp(1.125rem,2.2vw,1.5rem);line-height:1.6;overflow-wrap:anywhere}
+#main .feedback{border-radius:var(--ui-radius-control);padding:var(--ui-space-4);line-height:1.75;overflow-wrap:anywhere}
+#main .feedback:not(.bad){background:var(--ui-neutral);border-left-color:var(--ui-accent)}
+#main .feedback.bad{background:var(--ui-review-bg);border-left-color:var(--ui-review)}
+#main .feedback :is(p,summary){font-size:1rem;line-height:1.65}
+#main .agu-card-detail{border-color:var(--ui-line);padding:var(--ui-space-2) 0}
+#main .agu-card-detail summary{color:var(--ui-accent-text);min-height:var(--ui-touch);padding:8px 0;overflow-wrap:anywhere}
+#main .agu-card-detail p{line-height:1.7;overflow-wrap:anywhere}
+#main .options .option{min-height:var(--ui-touch);white-space:normal;overflow-wrap:anywhere}
+#main .btnrow button[onclick^="AGUReview.rate("]{min-height:var(--ui-touch);white-space:normal}
+#main .aq-bank .aq-feedback{line-height:1.7;overflow-wrap:anywhere}
+#main .aq-bank .aq-error{border:1px solid var(--ui-line);border-radius:var(--ui-radius-card);padding:var(--ui-space-4)}
+#main .aq-bank .aq-error textarea{font-size:1rem}
+#main .aq-bank .aq-nav button{min-width:0}
+#main .aq-bank .aq-options .aq-option{overflow-wrap:anywhere;min-height:48px}
+/* Caderno e Estudo integrado: contexto e origem visíveis; ações explícitas permanecem independentes. */
+#main #agu-reader .agu-related .agu-ctx-box{border-color:var(--ui-line);border-radius:var(--ui-radius-card);min-width:0}
+#main #agu-reader .agu-related .agu-ctx-box :is(p,textarea){line-height:1.65;overflow-wrap:anywhere}
+#main #agu-reader .agu-related :is(.agu-ctx-box,.agu-paper-item) :is(label,summary){color:var(--ui-ink)}
+#main #agu-reader .agu-related .agu-ctx-box summary{min-height:44px;padding-block:8px}
+#main #agu-reader .agu-related .agu-ctx-box textarea{font-size:1rem}
+#main #agu-reader .agu-related .agu-paper-item{border:1px solid var(--ui-line);border-left:4px solid var(--ui-accent);border-radius:var(--ui-radius-control);background:var(--ui-surface)}
+#main #agu-reader .agu-related .agu-paper-item .agu-muted{color:var(--ui-muted);line-height:1.6}
+#main #agu-reader .agu-related .agu-tabs button[data-agu-study-stage]{min-height:44px;white-space:normal;overflow-wrap:anywhere}
+#main #agu-reader .agu-related .agu-tabs button[data-agu-study-stage][aria-pressed=true]{background:var(--ui-accent);color:white;border-color:var(--ui-accent)}
+#main #agu-reader .agu-related :is(.agu-primary,.agu-light){min-height:44px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+#main .card:has(#nbtopic) textarea{font-size:1rem;line-height:1.65}
+#main .card:has(#nbtopic) .btnrow .primary{min-height:48px}
+#main .card:has(#nbtopic) + .card .history{border-color:var(--ui-line);overflow-wrap:anywhere}
+#main .card:has(#nbtopic) + .card .empty{border:1px dashed var(--ui-control-line)}
+@media(max-width:530px){
+ .main .agu-deck-session{padding:12px}
+ .main .agu-deck-session-head>div{min-width:0}
+ .main .agu-deck-session-head>button{max-width:100%;white-space:normal}
+ .main .agu-deck-session [id^="agu-deck-rating-"]{flex-basis:calc(50% - 8px)}
+ #main .feedback,#main .aq-bank .aq-error{padding:12px}
+ #main #agu-reader .agu-related .agu-ctx-box{padding:10px}
+}
