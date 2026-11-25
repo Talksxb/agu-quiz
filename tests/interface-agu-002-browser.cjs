@@ -41,7 +41,7 @@ async function run(){
      const active=document.querySelector('#agu-reader .agu-mobile button[aria-pressed=true]');
      return {documentWidth:doc.getBoundingClientRect().width,viewport:innerWidth,font:parseFloat(getComputedStyle(unit).fontSize),accent:getComputedStyle(active).backgroundColor};
     });
-    assert.ok(readerGeometry.documentWidth>=innerWidth*.85,'leitura ocupa a largura móvel '+width+' '+JSON.stringify(readerGeometry));
+    assert.ok(readerGeometry.documentWidth>=readerGeometry.viewport*.85,'leitura ocupa a largura móvel '+width+' '+JSON.stringify(readerGeometry));
     assert.ok(readerGeometry.font>=18,'texto legal com fonte de pelo menos 18px '+JSON.stringify(readerGeometry));
     assert.equal(readerGeometry.accent,'rgb(99, 60, 105)','nova identidade no painel ativo');
     await buttons.nth(0).click();
