@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: AUD-UX-003 — contrato único e backup do treino vigente
+        run: node tests/aud-ux-003-validacao.cjs
       - name: Node.js runtime
         run: node --version
       - name: SIMULADOS-AGU-001 — questões, cronômetro, correção, versões e preservação
@@ -146,6 +148,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: AUD-UX-003 — questões, erros, URL e backup nas cinco larguras
+        run: node tests/aud-ux-003-browser.cjs
       - name: AUD-UX-002 — filtros, assunto, retomada e acessibilidade
         run: node tests/aud-ux-002-browser.cjs
       - name: AUD-UX-001 — atalho, fila original, cinco larguras, acessibilidade e backup
@@ -250,6 +254,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-aud-ux-003/
             tests/artifacts-aud-ux-002/
             tests/artifacts-aud-ux-001/
             tests/artifacts-ux-agu-006/

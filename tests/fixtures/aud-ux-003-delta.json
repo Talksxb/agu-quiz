@@ -1,0 +1,62 @@
+{
+  "index.html": {
+    "before": "617fc7e5880b0fb209f375262c177f90d73bcef487ec67fb7fd6bf8796a955ca",
+    "after": "395c07d355f002b8bc6815d93b26d6913047c3113bdf7dd9397116556a926f05",
+    "changes": [
+      {
+        "before": "",
+        "after": "<script src=\"dados/questoes-vigentes-gov003.js\"></script>\n<script src=\"questoes-vigentes.js\"></script>\n"
+      }
+    ]
+  },
+  "backup-local-s20.js": {
+    "before": "85bf6b699e69dd82d9b7fc46a24d96de6e3b5eaf329a441a69c09b2e8cf59fa6",
+    "after": "980577339d848f83303d125f54b8810aa1e35246c89a65da8821108e3f69bc61",
+    "changes": [
+      {
+        "before": "",
+        "after": "// AUD-UX-003: categoria do histórico já existente; mesma validação do treino.\nif(root.AGUVigenteContract&&Array.isArray(root.AGUCurrentQuestions?.items))entries.push(['agu_gov_003_treino_vigente_v1','Questões oficiais · treino vigente']);\n"
+      },
+      {
+        "before": "",
+        "after": " case 'agu_gov_003_treino_vigente_v1':return root.AGUVigenteContract?.validHistory(obj,root.AGUCurrentQuestions?.items||[])===true;\n"
+      }
+    ]
+  },
+  "questoes-vigentes.js": {
+    "before": "9d0d2ce5a3b1e9dcaf4650cce4e1de71e34a2345888088d64839f01295c0d48a",
+    "after": "e2751bee20abbd58d30dbdc4b9793347b1036cef14fe75df10ebf5eb421ed55f",
+    "changes": [
+      {
+        "before": "if(typeof module==='object'){module.exports={eligible,grade,validHistory,latest,KEY,choices};return}\n",
+        "after": "const contract={eligible,grade,validHistory,latest,KEY,choices};\nroot.AGUVigenteContract=contract;\nif(typeof module==='object'){module.exports=contract;return}\n"
+      },
+      {
+        "before": "",
+        "after": "const params=new URLSearchParams(root.location.search);\nfilter=params.get('situacao')==='erros'?'wrong':'all';\nif(items.some(q=>q.discipline===params.get('disciplina')))discipline=params.get('disciplina');\nconst resumeId=params.get('questao');\n"
+      },
+      {
+        "before": "",
+        "after": "position=Math.max(0,filtered().findIndex(q=>q.id===resumeId));\n"
+      },
+      {
+        "before": "",
+        "after": " const route=new URL(root.location.href);\n if(q)route.searchParams.set('questao',q.id);else route.searchParams.delete('questao');\n if(filter==='wrong')route.searchParams.set('situacao','erros');else route.searchParams.delete('situacao');\n if(discipline!=='all')route.searchParams.set('disciplina',discipline);else route.searchParams.delete('disciplina');\n root.history.replaceState(null,'',route.pathname+route.search+route.hash);\n"
+      },
+      {
+        "before": " '<section class=\"card backup\"><h2>Histórico local do treino</h2><p id=\"vig-notice\" role=\"status\">'+esc(notice)+'</p><div class=\"actions\"><button id=\"vig-export\">Exportar histórico (JSON)</button><label>Importar backup <input id=\"vig-import\" type=\"file\" accept=\".json,application/json\"></label></div><p class=\"source\">A importação combina tentativas válidas por ID, sem apagar as atuais. Nenhum dado é enviado ao servidor.</p></section>';\n",
+        "after": " '<section class=\"card backup\"><h2>Histórico local do treino</h2><p>A questão e os filtros ficam no endereço desta página para retomada após recarga. Abrir uma questão não registra resposta.</p><p><a href=\"index.html?abrir=backup\">Abrir backup completo do AGU Quiz</a></p><p id=\"vig-notice\" role=\"status\">'+esc(notice)+'</p><div class=\"actions\"><button id=\"vig-export\">Exportar histórico (JSON)</button><label>Importar backup <input id=\"vig-import\" type=\"file\" accept=\".json,application/json\"></label></div><p class=\"source\">A importação combina tentativas válidas por ID, sem apagar as atuais. Nenhum dado é enviado ao servidor.</p></section>';\n"
+      }
+    ]
+  },
+  "questoes-agu-bank.js": {
+    "before": "8d2743c287dd5c2ad95d67d62b57ea033e4797f7829958b14c89f77f08d248ec",
+    "after": "2bff3304a6dd1e8fab363f1d607c691df1c8dc5a3842cff026830a42c8310944",
+    "changes": [
+      {
+        "before": " '<section class=\"aq-card\"><h2>Questões oficiais · direito vigente</h2><p>Resolva o lote verificado diretamente, sem importar PDF. Histórico e pontuação separados das provas antigas.</p><a href=\"questoes-vigentes.html\">Abrir treino de direito vigente</a></section><p class=\"aq-small\">400 referências oficiais · 381 válidas · 19 anuladas. 24 questões autorais em módulo separado.</p><div class=\"aq-stats\"><div><b>'+ (pdf?markers.length:0)+'</b><span>Itens locais nesta prova</span></div><div><b>'+done.length+'</b><span>Resolvidas</span></div><div><b>'+hits+'</b><span>Acertos</span></div><div><b>'+(done.length-hits)+'</b><span>Erros</span></div></div>'+\n '<section class=\"aq-card\"><label>Prova '+sel('aq-year',[['2023','Advogado da União · 2023 · 100'],['2015','Advogado da União · 2015 · 200'],['pf2023','Procurador Federal · 2023 · 100']],String(year),'AGUQuestionBank.year(this.value===&quot;pf2023&quot;?this.value:Number(this.value))')+'</label><h2>'+esc(examName(year))+'</h2><p>'+exam.count+' referências oficiais · '+valid.length+' válidas · '+(exam.count-valid.length)+' anuladas. '+(pdf?'PDF carregado nesta sessão.':'Importe uma vez por sessão para ler o conteúdo original.')+'</p>'+\n",
+        "after": " '<section class=\"aq-card\"><h2>Questões oficiais · direito vigente</h2><p>Resolva o lote verificado diretamente, sem importar PDF. Histórico e pontuação separados das provas antigas.</p><div class=\"aq-nav\"><a href=\"questoes-vigentes.html\">Abrir treino de direito vigente</a><a href=\"questoes-vigentes.html?situacao=erros\">Rever erros do treino vigente</a></div></section><p class=\"aq-small\">400 referências oficiais · 381 não anuladas · 19 anuladas. 24 questões autorais em módulo separado.</p><div class=\"aq-stats\"><div><b>'+ (pdf?markers.length:0)+'</b><span>Itens locais nesta prova</span></div><div><b>'+done.length+'</b><span>Resolvidas</span></div><div><b>'+hits+'</b><span>Acertos</span></div><div><b>'+(done.length-hits)+'</b><span>Erros</span></div></div>'+\n '<section class=\"aq-card\"><label>Prova '+sel('aq-year',[['2023','Advogado da União · 2023 · 100'],['2015','Advogado da União · 2015 · 200'],['pf2023','Procurador Federal · 2023 · 100']],String(year),'AGUQuestionBank.year(this.value===&quot;pf2023&quot;?this.value:Number(this.value))')+'</label><h2>'+esc(examName(year))+'</h2><p>'+exam.count+' referências oficiais · '+valid.length+' não anuladas · '+(exam.count-valid.length)+' anuladas. '+(pdf?'PDF carregado nesta sessão.':'Importe nesta sessão para ler o original. Após recarregar, importe novamente; suas respostas continuam salvas.')+'</p>'+\n"
+      }
+    ]
+  }
+}
