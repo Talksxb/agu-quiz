@@ -1,0 +1,94 @@
+{
+  "id": "amb-06",
+  "edition": "1.1",
+  "sourceSha256": "e6eb89f75327f872b3ae3228aa53955f7a9f995072e0011fb36ce73b942842a0",
+  "inputSha256": "912eaac70b7e90b502e9c649e9789d488731c7485480d7d42954d66fe144c923",
+  "sections": [
+    {
+      "id": "amb-06-s01",
+      "sha256": "16f4d9fc3e6abe8713e15685a59a0e8060a1ca2bf243c17b2ca2c1f1385e8e76",
+      "characters": 1124
+    },
+    {
+      "id": "amb-06-s02",
+      "sha256": "fbb3806d888fbbed5b784c784e19dec2915779f1353c625b5e6e706e5d938b10",
+      "characters": 1154
+    },
+    {
+      "id": "amb-06-s03",
+      "sha256": "86a8b7f4c6e6b87b67decb5eecbee723fd28f84eecdaa0bc08c44144b8a143b4",
+      "characters": 1635
+    },
+    {
+      "id": "amb-06-s04",
+      "sha256": "de8bf21da1426bff7843b773544fdc7002ecb3fce7c32329cdafc1d1cb505001",
+      "characters": 2469
+    },
+    {
+      "id": "amb-06-s05",
+      "sha256": "6d6034cae7356ad607c27e0da72dea70996927da12b48e964d6805a4bdf3bff5",
+      "characters": 5485
+    },
+    {
+      "id": "amb-06-s06",
+      "sha256": "37d25f55164a168cf170f24fff75f483a326de2e2cc3df4edef66ed501950d9a",
+      "characters": 7911
+    },
+    {
+      "id": "amb-06-s07",
+      "sha256": "86bc2256d88bd456915fc3bbddfef8595e3a1514dc46c57d77d8001fdfe7bf50",
+      "characters": 2993
+    },
+    {
+      "id": "amb-06-s08",
+      "sha256": "40c32f4ab0999a26ff30c504a44352d0d856b11d12c0f1e7e6b05379ddbb922e",
+      "characters": 7466
+    },
+    {
+      "id": "amb-06-s09",
+      "sha256": "c4a3425c1041d3f7adc996ba7d4c65ccdb99fc85075a174d2de86e0675db5c47",
+      "characters": 10526
+    },
+    {
+      "id": "amb-06-s10",
+      "sha256": "af0b1187cdc2d88f6b2acaa97d6c7351dc325ff289a49c83763256a00dcc3a4d",
+      "characters": 4444
+    },
+    {
+      "id": "amb-06-s11",
+      "sha256": "b86f9e157b9cc317dfe1d5b33adc67babcfa6855d1b48cea2209ab0a91174891",
+      "characters": 3938
+    },
+    {
+      "id": "amb-06-s12",
+      "sha256": "274d22c779ca44621a2e7ed515acf406e08c0b164669245b2b116b5e272a29f3",
+      "characters": 13020
+    },
+    {
+      "id": "amb-06-s13",
+      "sha256": "98ea178b1407e537b25600492bfc716e072f49c68943452edb3360895567fbf8",
+      "characters": 4090
+    },
+    {
+      "id": "amb-06-s14",
+      "sha256": "00e912c1690128d4541618dd87dfb0d559de4c5267578053d93a80610eafc96b",
+      "characters": 2527
+    },
+    {
+      "id": "amb-06-s15",
+      "sha256": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d",
+      "characters": 3761
+    },
+    {
+      "id": "amb-06-s16",
+      "sha256": "5f3f78f87720b892737ea36dcfb96ea193d08596a121cc6d21917e17ee6ba0ed",
+      "characters": 7236
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Fonte original preservada integralmente nas 16 seções salvo retirada de referências internas de auditoria e identificação da edição pública; o original possui SHA-256 f1dcb7d783f32b107118982c17341ca2d01d8fa9e8688eb77f38847e2d735d17.",
+    "Os três esquemas Mermaid permanecem fontes editáveis e não são renderizados automaticamente pelo leitor; PDF original não é réplica visual do JSON e não foi incorporado ao Pages."
+  ],
+  "resources": []
+}
