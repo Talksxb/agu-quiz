@@ -1,0 +1,653 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-08",
+  "editorialId": "LIVRO-AMB-006",
+  "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.1",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-08.md",
+  "readerPath": "livros/amb-08.json",
+  "reader": {
+    "id": "amb-08",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-08",
+    "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+    "edition": "LIVRO-AMB-006 · edição pública 1.1 · 26/11/2026 (original de 22/11/2026)",
+    "source": "LIVRO-AMB-006_AMB-08_LEITURA_COMPLETA.md, original SHA-256 bdffa0fdf1950362239d66a71b2f2e1f5fdcff0e6129070ecd6475031d750e09",
+    "source_format": "markdown",
+    "verification": "Conferência jurídico-editorial pontual, não certificação curricular ou domínio",
+    "transcription_note": "Edição pública derivada do original 1.0: removidos identificadores/links privados e adicionado aparato editorial; livro permanece integral, questões autorais não são oficiais; diagramas e PDF não importados no leitor desta edição."
+  },
+  "curricularIds": [
+    "AMB-08"
+  ],
+  "dates": {
+    "edition": "2026-11-26",
+    "legalConsultation": "Conferências pontuais 2026-11-26 (Decreto 13.014/2026 e SisGen 3.0); demais fontes declaradas na obra em 2026-11-22",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-26"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Retificacoes integrais do edital ainda nao inventariadas",
+      "Jurisprudencia STF/STJ especifica de ABS e CTA sem inventario exaustivo",
+      "Atos CGen e sequencia de vigencia nao reconstituidos exaustivamente",
+      "SisGen 3.0 ainda em ambientacao e sujeito a atualizacoes operacionais",
+      "PDF da edicao de origem e diagramas Mermaid nao servidos como assets de navegador",
+      "Questoes oficiais nao importadas e dominio nao aferido"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb08-s00",
+      "marker": "00",
+      "title": "Abertura e problema gerador",
+      "page": 0,
+      "sha256": "be49fa738de1c391fd4b17ce7248eed974ebc0e39d6b2a78028a502e4272f5c1",
+      "headings": [
+        {
+          "id": "amb08-s00-h1",
+          "level": 1,
+          "title": "AGU | LIVRO-AMB-006 — Biodiversidade, Acesso e Conhecimento Tradicional"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s01",
+      "marker": "01",
+      "title": "1. Mapa do edital e percurso de leitura",
+      "page": 1,
+      "sha256": "5aaceab82f51f0c9377b26b17083f33605f4177532f5ddb0236256f2b3db8f0d",
+      "headings": [
+        {
+          "id": "amb08-s01-h1",
+          "level": 2,
+          "title": "1. Mapa do edital e percurso de leitura"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s02",
+      "marker": "02",
+      "title": "2. O que a biodiversidade protege: uma arquitetura em três escalas",
+      "page": 2,
+      "sha256": "131a42d4fb8e4de5698c5e267c3ab2e5fa9e0ff53530b334a1c6a072b3840db0",
+      "headings": [
+        {
+          "id": "amb08-s02-h1",
+          "level": 2,
+          "title": "2. O que a biodiversidade protege: uma arquitetura em três escalas"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s03",
+      "marker": "03",
+      "title": "3. Conservação in situ, ex situ e uso sustentável",
+      "page": 3,
+      "sha256": "85697d55b828d826cba0bb6ba3e89728b5439890348b096769bbc57e8b02645e",
+      "headings": [
+        {
+          "id": "amb08-s03-h1",
+          "level": 2,
+          "title": "3. Conservação in situ, ex situ e uso sustentável"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s04",
+      "marker": "04",
+      "title": "4. Os quatro objetos jurídicos que mais se confundem",
+      "page": 4,
+      "sha256": "c0e9e29c6291ebb909af56423df53d2c6a981542bfd2047331b45bb551e28791",
+      "headings": [
+        {
+          "id": "amb08-s04-h1",
+          "level": 2,
+          "title": "4. Os quatro objetos jurídicos que mais se confundem"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s05",
+      "marker": "05",
+      "title": "5. A arquitetura internacional: CDB, Nagoia e instrumentos especiais",
+      "page": 5,
+      "sha256": "8d800d02b04bceb3782e54b23d8b8442033e47725b090085ebdf3263829a5d1e",
+      "headings": [
+        {
+          "id": "amb08-s05-h1",
+          "level": 2,
+          "title": "5. A arquitetura internacional: CDB, Nagoia e instrumentos especiais"
+        },
+        {
+          "id": "amb08-s05-h2",
+          "level": 3,
+          "title": "5.1. Convenção sobre Diversidade Biológica — três objetivos articulados"
+        },
+        {
+          "id": "amb08-s05-h3",
+          "level": 3,
+          "title": "5.2. Protocolo de Nagoia — acesso, repartição e cumprimento"
+        },
+        {
+          "id": "amb08-s05-h4",
+          "level": 3,
+          "title": "5.3. Instrumentos internacionais complementares"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s06",
+      "marker": "06",
+      "title": "6. Política Nacional da Biodiversidade e políticas brasileiras associadas",
+      "page": 6,
+      "sha256": "8c96e8e7e3666a1219ebf930a1b41bb30971da75a90fc38102e256e50f5b0a49",
+      "headings": [
+        {
+          "id": "amb08-s06-h1",
+          "level": 2,
+          "title": "6. Política Nacional da Biodiversidade e políticas brasileiras associadas"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s07",
+      "marker": "07",
+      "title": "7. Lei 13.123/2015: natureza, incidência, exclusões e mudança histórica",
+      "page": 7,
+      "sha256": "8eec81e89119730ed4827f5f85ab4a35be120db9a702db22d8f5e1debb3e2027",
+      "headings": [
+        {
+          "id": "amb08-s07-h1",
+          "level": 2,
+          "title": "7. Lei 13.123/2015: natureza, incidência, exclusões e mudança histórica"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s08",
+      "marker": "08",
+      "title": "8. Conhecimento tradicional associado: natureza coletiva e consentimento",
+      "page": 8,
+      "sha256": "e23f0b51b9aa300f3bee373374806a99ac45d5b782b8f967b92c888dfdfaf486",
+      "headings": [
+        {
+          "id": "amb08-s08-h1",
+          "level": 2,
+          "title": "8. Conhecimento tradicional associado: natureza coletiva e consentimento"
+        },
+        {
+          "id": "amb08-s08-h2",
+          "level": 3,
+          "title": "8.1. Quem são os titulares e por que a titularidade não depende de patente"
+        },
+        {
+          "id": "amb08-s08-h3",
+          "level": 3,
+          "title": "8.2. Consentimento prévio informado não é “assinatura genérica”"
+        },
+        {
+          "id": "amb08-s08-h4",
+          "level": 3,
+          "title": "8.3. Origem não identificável e exceção agrícola"
+        },
+        {
+          "id": "amb08-s08-h5",
+          "level": 3,
+          "title": "8.4. Rastreabilidade, sigilo e prova da origem"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s09",
+      "marker": "09",
+      "title": "9. Acesso, remessa, envio, pesquisa e desenvolvimento tecnológico",
+      "page": 9,
+      "sha256": "f704282aabfdf81c9e313e4851cd6cb37d2fad2284944a0c0c304ad48c37c4db",
+      "headings": [
+        {
+          "id": "amb08-s09-h1",
+          "level": 2,
+          "title": "9. Acesso, remessa, envio, pesquisa e desenvolvimento tecnológico"
+        },
+        {
+          "id": "amb08-s09-h2",
+          "level": 3,
+          "title": "9.1. Qual é o fato que caracteriza acesso?"
+        },
+        {
+          "id": "amb08-s09-h3",
+          "level": 3,
+          "title": "9.2. Quem pode realizar acesso?"
+        },
+        {
+          "id": "amb08-s09-h4",
+          "level": 3,
+          "title": "9.3. Cadastro no SisGen: prazo relativo aos eventos legalmente previstos"
+        },
+        {
+          "id": "amb08-s09-h5",
+          "level": 3,
+          "title": "9.4. Remessa é transferência de responsabilidade; envio é prestação de serviços"
+        },
+        {
+          "id": "amb08-s09-h6",
+          "level": 3,
+          "title": "9.5. Lei de 2026: termo de associação para cadastro de pessoa jurídica estrangeira"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s10",
+      "marker": "10",
+      "title": "10. Produto acabado, material reprodutivo e repartição de benefícios",
+      "page": 10,
+      "sha256": "139dafe1ea232395b95ff8468da95f1aa532b1dd336ec2f9943a0e0bad2a7f25",
+      "headings": [
+        {
+          "id": "amb08-s10-h1",
+          "level": 2,
+          "title": "10. Produto acabado, material reprodutivo e repartição de benefícios"
+        },
+        {
+          "id": "amb08-s10-h2",
+          "level": 3,
+          "title": "10.1. Da fase de pesquisa à obrigação distributiva"
+        },
+        {
+          "id": "amb08-s10-h3",
+          "level": 3,
+          "title": "10.2. Notificação do produto e momento do acordo"
+        },
+        {
+          "id": "amb08-s10-h4",
+          "level": 3,
+          "title": "10.3. Modalidades monetária e não monetária"
+        },
+        {
+          "id": "amb08-s10-h5",
+          "level": 3,
+          "title": "10.4. Três contas jurídicas distintas: PG, CTA identificável e CTA não identificável"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s11",
+      "marker": "11",
+      "title": "11. Regularização, CGen, SisGen, fiscalização e sanções",
+      "page": 11,
+      "sha256": "4fa4227290896aaba0ca754846d6da4af8eacbe3f377b8274d514bb6ab69f425",
+      "headings": [
+        {
+          "id": "amb08-s11-h1",
+          "level": 2,
+          "title": "11. Regularização, CGen, SisGen, fiscalização e sanções"
+        },
+        {
+          "id": "amb08-s11-h2",
+          "level": 3,
+          "title": "11.1. Adequação e regularização históricas não são anistia universal"
+        },
+        {
+          "id": "amb08-s11-h3",
+          "level": 3,
+          "title": "11.2. Matriz operacional da instituição pública"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s12",
+      "marker": "12",
+      "title": "12. Controvérsias: ciência, mercado, soberania e justiça distributiva",
+      "page": 12,
+      "sha256": "9d7cc23761fc9e26f5df996ab3767747764ba08ec0102898b809c51479cab869",
+      "headings": [
+        {
+          "id": "amb08-s12-h1",
+          "level": 2,
+          "title": "12. Controvérsias: ciência, mercado, soberania e justiça distributiva"
+        },
+        {
+          "id": "amb08-s12-h2",
+          "level": 3,
+          "title": "12.1. Ciência pública não significa autorização ilimitada"
+        },
+        {
+          "id": "amb08-s12-h3",
+          "level": 3,
+          "title": "12.2. Soberania e cooperação internacional não são contraditórias"
+        },
+        {
+          "id": "amb08-s12-h4",
+          "level": 3,
+          "title": "12.3. Quem recebe a renda da biodiversidade?"
+        },
+        {
+          "id": "amb08-s12-h5",
+          "level": 3,
+          "title": "12.4. Desacordos sobre quem é “tradicional” e sobre o caráter coletivo"
+        },
+        {
+          "id": "amb08-s12-h6",
+          "level": 3,
+          "title": "12.5. Conhecimento tradicional, tecnologia e proteção concorrencial"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s13",
+      "marker": "13",
+      "title": "13. Jurisprudência do STF e do STJ: o que foi efetivamente verificado",
+      "page": 13,
+      "sha256": "75b76d7eb7fef9de0f3916624fabf6e33bc5fc34cf7f51e1e7471b7a170a2437",
+      "headings": [
+        {
+          "id": "amb08-s13-h1",
+          "level": 2,
+          "title": "13. Jurisprudência do STF e do STJ: o que foi efetivamente verificado"
+        },
+        {
+          "id": "amb08-s13-h2",
+          "level": 3,
+          "title": "13.1. STF — ADI 3.239/DF, Plenário, 08/02/2018"
+        },
+        {
+          "id": "amb08-s13-h3",
+          "level": 3,
+          "title": "13.2. STF — RE 1.017.365/SC, Tema 1.031 da repercussão geral"
+        },
+        {
+          "id": "amb08-s13-h4",
+          "level": 3,
+          "title": "13.3. STJ — Súmula 613, Primeira Seção, julgamento de 09/05/2018"
+        },
+        {
+          "id": "amb08-s13-h5",
+          "level": 3,
+          "title": "13.4. STJ — Súmula 623, Primeira Seção, 12/12/2018"
+        },
+        {
+          "id": "amb08-s13-h6",
+          "level": 3,
+          "title": "13.5. STJ — Súmula 629, Primeira Seção, 12/12/2018"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s14",
+      "marker": "14",
+      "title": "14. Caso AGU integralmente resolvido — pesquisa financiada pela União e produto comercial",
+      "page": 14,
+      "sha256": "a43e0a13640364c032c087fc5a2b43540628740861fc70dbd654ccb0aaa1e63f",
+      "headings": [
+        {
+          "id": "amb08-s14-h1",
+          "level": 2,
+          "title": "14. Caso AGU integralmente resolvido — pesquisa financiada pela União e produto comercial"
+        },
+        {
+          "id": "amb08-s14-h2",
+          "level": 3,
+          "title": "14.1. Fatos hipotéticos juridicamente relevantes"
+        },
+        {
+          "id": "amb08-s14-h3",
+          "level": 3,
+          "title": "14.2. Delimitação da consulta e competência"
+        },
+        {
+          "id": "amb08-s14-h4",
+          "level": 3,
+          "title": "14.3. Manifestação jurídica — fundamentação e dispositivo proposto"
+        },
+        {
+          "id": "amb08-s14-h5",
+          "level": 3,
+          "title": "14.4. Objeções fortes à manifestação — e respostas"
+        },
+        {
+          "id": "amb08-s14-h6",
+          "level": 3,
+          "title": "14.5. Conclusão da manifestação"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s15",
+      "marker": "15",
+      "title": "15. Quadro final de relações e contraexemplos de prova",
+      "page": 15,
+      "sha256": "e663de0035a12c84f16d74accad2341ca0362614b5afa87956f7c7454f10b462",
+      "headings": [
+        {
+          "id": "amb08-s15-h1",
+          "level": 2,
+          "title": "15. Quadro final de relações e contraexemplos de prova"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s16",
+      "marker": "16",
+      "title": "16. Síntese de consolidação",
+      "page": 16,
+      "sha256": "f8e9f96a6eeead858371584232ba6d1ebd295c524d716d252b0f735cc1cf87c4",
+      "headings": [
+        {
+          "id": "amb08-s16-h1",
+          "level": 2,
+          "title": "16. Síntese de consolidação"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s17",
+      "marker": "17",
+      "title": "17. Questões autorais de treino — não são questões oficiais",
+      "page": 17,
+      "sha256": "eb9f8e911ff55e5140ede595962e0fcdfd5520e5b643f30725a05bfca48ca3e7",
+      "headings": [
+        {
+          "id": "amb08-s17-h1",
+          "level": 2,
+          "title": "17. Questões autorais de treino — não são questões oficiais"
+        },
+        {
+          "id": "amb08-s17-h2",
+          "level": 3,
+          "title": "Enunciados — julgue certo (C) ou errado (E)"
+        },
+        {
+          "id": "amb08-s17-h3",
+          "level": 3,
+          "title": "Gabarito comentado das questões autorais"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s18",
+      "marker": "18",
+      "title": "18. Recuperação ativa — para outra sessão, sem interrupção da leitura",
+      "page": 18,
+      "sha256": "ffde5664ff26f8d6e8a0ccb8b71bd26ace9f04c432952dfce1feaf66840f0a2f",
+      "headings": [
+        {
+          "id": "amb08-s18-h1",
+          "level": 2,
+          "title": "18. Recuperação ativa — para outra sessão, sem interrupção da leitura"
+        },
+        {
+          "id": "amb08-s18-h2",
+          "level": 3,
+          "title": "Respostas orientadoras de recuperação — consultar somente após tentar"
+        }
+      ]
+    },
+    {
+      "id": "amb08-s19",
+      "marker": "19",
+      "title": "19. Fontes oficiais, atualização jurídica e rastreabilidade",
+      "page": 19,
+      "sha256": "13ab1ecea13d59931af697189616d808953c741756ec1a8a3a5f9733f9e32a39",
+      "headings": [
+        {
+          "id": "amb08-s19-h1",
+          "level": 2,
+          "title": "19. Fontes oficiais, atualização jurídica e rastreabilidade"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-08",
+      "subitem": "Biodiversidade. Principais instrumentos de proteção internacional. Acesso. Política nacional. Proteção jurídica do conhecimento tradicional associado.",
+      "sections": [
+        "amb08-s00",
+        "amb08-s01",
+        "amb08-s02",
+        "amb08-s03",
+        "amb08-s04",
+        "amb08-s05",
+        "amb08-s06",
+        "amb08-s07",
+        "amb08-s08",
+        "amb08-s09",
+        "amb08-s10",
+        "amb08-s11",
+        "amb08-s12",
+        "amb08-s13",
+        "amb08-s14",
+        "amb08-s15",
+        "amb08-s16",
+        "amb08-s17",
+        "amb08-s18",
+        "amb08-s19"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "edital-agu",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "Edital 1/2022, item 17.2.1, Direito Ambiental n. 8, pagina 42",
+      "consultedAt": "2026-11-22",
+      "status": "confirmado_pontualmente",
+      "scope": "Transcricao literal registrada pela edicao original; inventario de retificacoes nao exaustivo",
+      "revision": "1"
+    },
+    {
+      "id": "lei-biodiversidade",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13123.htm",
+      "locator": "Lei 13.123/2015, arts. 2, 8-12, 17-25, 37-43",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Regime central identificado; cadeia de alteracoes e atos CGen nao exauridos",
+      "revision": "1"
+    },
+    {
+      "id": "decreto-8772",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/2016/decreto-8772-11-maio-2016-783077-normaatualizada-pe.html",
+      "locator": "Decreto 8.772/2016, especialmente arts. 12, 17, 22 e 22-B a 22-E",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Regulamento examinado pela edicao original e ajustado pelo Decreto 13.014/2026",
+      "revision": "1"
+    },
+    {
+      "id": "decreto-13014",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/d13014.htm",
+      "locator": "Decreto 13.014/2026, art. 1 e disciplina dos arts. 22-B a 22-E",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Termo de associacao cadastral sem colaboracao cientifica e APBio; verificacao pontual",
+      "revision": "1"
+    },
+    {
+      "id": "cdb",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/1998/decreto-2519-16-marco-1998-437336-publicacaooriginal-1-pe.html",
+      "locator": "Decreto 2.519/1998, anexo CDB arts. 1, 2, 8, 9, 10, 15",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Tratado incorporado; aplicacao e status internacional pormenorizados fora do recorte",
+      "revision": "1"
+    },
+    {
+      "id": "nagoya",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/2023/decreto-11865-27-dezembro-2023-795174-publicacaooriginal-170656-pe.html",
+      "locator": "Decreto 11.865/2023, anexo Protocolo de Nagoya e declaracoes brasileiras",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Vigencia e declaracoes da edicao original, com reserva de revalidacao por Estado",
+      "revision": "1"
+    },
+    {
+      "id": "pnb",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto/2002/d4339.htm",
+      "locator": "Decreto 4.339/2002, anexo Politica Nacional da Biodiversidade",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Diretrizes e componentes da politica nacional; atos posteriores nao inventariados",
+      "revision": "1"
+    },
+    {
+      "id": "sisgen3",
+      "url": "https://www.gov.br/mma/pt-br/assuntos/bioeconomia/patrimonio-genetico/sisgen-2/sisgen-3.0",
+      "locator": "MMA, pagina SisGen 3.0 e Resolucao CGen 53/2026",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Ambientacao de software nao significa disponibilizacao oficial para efeitos de prazo",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb08-caso-agu",
+      "type": "aplicar",
+      "sectionId": "amb08-s14",
+      "title": "Caso AGU — hipotese e fundamentacao",
+      "nature": "autoral",
+      "prompt": "### 14.1. Fatos hipotéticos juridicamente relevantes\n\nUma **universidade federal (UFViva)** celebra projeto de pesquisa financiado por agência federal de fomento sobre microrganismos brasileiros e plantas medicinais de um território tradicional. A equipe visita uma comunidade identificável, entrevista detentores de conhecimento sobre propriedade anti-inflamatória de certa planta e recebe amostras de material. Não há protocolo de consentimento concluído; os pesquisadores guardam um documento genérico de autorização para entrevistas acadêmicas assinado por um participante individual. Um laboratório parceiro estrangeiro recebe amostras para sequenciamento, desenvolve nova formulação e, posteriormente, a empresa **BioNova Ltd.**, sediada no exterior, licencia técnica desenvolvida com dados do projeto. A universidade publica artigo e protocola pedido de patente antes de verificar comprovante cadastral no SisGen. BioNova anuncia cosmético de uso final, cuja ação funcional e campanha mercadológica destacam o extrato pesquisado; há negociação para fabricação fora do Brasil e distribuição no país. A comunidade pede suspensão do uso de seu saber e compartilhamento de resultados. A agência de fomento teme perda de investimentos e solicita manifestação da AGU.\n\nSão **fatos hipotéticos**. Não se presume ilícito definitivo, prejuízo ambiental, montante de receitas, validade da patente, qualidade de remessa ou existência de colaboração científica sem prova. O objetivo é propor diligência e decisão juridicamente defensável, não condenar a universidade por ficção.\n\n### 14.2. Delimitação da consulta e competência\n\nPergunta central: **pode a universidade permitir continuidade e exploração comercial sem conferir as exigências de CTA, cadastro, remessa e repartição?** A resposta é negativa. O financiamento da União não cria exceção à lei; ao contrário, integra dever de gestão de riscos, legalidade, probidade e proteção dos interesses públicos envolvidos.\n\nA representação e consultoria jurídica da universidade e de entidades federais envolvidas exigem identificar órgãos e competências dentro da estrutura da AGU, inclusive consultoria da entidade federal, ministério competente e procuradoria especializada conforme vínculo institucional. A AGU não substitui CGen, órgão de fiscalização, comunidade nem INPI. Pode orientar formalmente, exigir documentação contratual, prevenir dano, avaliar suspensão de atos da entidade, recomendar comunicação às autoridades competentes e defender juridicamente decisões administrativas, sempre com suporte fático.\n\nA **solução depende de separar cinco planos**: (1) legalidade ambiental da coleta e ingresso em área; (2) acesso ao PG; (3) acesso ao CTA e legitimidade do consentimento; (4) cooperação e transferência internacional; (5) notificação, benefício e PI na fase comercial. Um “parecer único de conformidade” sem verificação desses planos seria insuficiente.",
+      "answer": "### 14.3. Manifestação jurídica — fundamentação e dispositivo proposto\n\n**I — Patrimônio genético.** A pesquisa sobre amostras de organismos brasileiros para descobrir propriedades e desenvolver formulação pode caracterizar acesso ao patrimônio genético nos termos dos arts. 1º, 2º, I e VIII, 3º e 11 da Lei 13.123. É necessária documentação da proveniência, data de cada atividade, cadeia de custódia e relações entre a amostra e os produtos. Exige-se analisar o cadastro do art. 12, sobretudo antes da **divulgação científica e do pedido de patente**, acontecimentos já consumados no enunciado. A existência de concessão de fomento ou de permissão de coleta, isoladamente, não comprova cadastro.\n\n**II — Conhecimento tradicional identificável.** O testemunho sobre propriedades da planta, quando aproveitado para orientar pesquisa ou desenvolvimento, constitui hipótese relevante de CTA (art. 2º, II e IX). A comunidade é, ao menos, **potencial provedor identificável**. Entrevista autorizada genericamente por um indivíduo não equivale necessariamente ao **consentimento prévio informado** coletivamente regular do art. 9º. É preciso conferir regras internas, representação, instrumento escolhido pela comunidade, explicação das finalidades e grau real de utilização do saber. Recomenda-se **interromper novos atos de acesso e divulgação de CTA potencialmente irregular**, resguardar amostras e documentos e abrir processo de diálogo com os titulares e órgãos competentes, sem apagar registros nem impor termo de quitação.\n\n**III — Cadastro, remessa e parceiro estrangeiro.** A universidade deve verificar se houve verdadeira **remessa** com transferência de responsabilidade ou **envio** para serviço, distinguindo arts. 2º XIII e XXX, 11, § 2º, 12 e 15, além das condições contratuais. A referência a laboratório parceiro que fez desenvolvimento próprio indica possível colaboração científica/remessa, mas não permite concluir automaticamente. Se houver pessoa jurídica estrangeira titular de acesso, é essencial examinar associação à instituição brasileira, seus registros e o **Decreto 13.014/2026**. O termo de associação do art. 22-B **só cobre hipótese de inexistência de colaboração científica** e não cura o acesso anterior a CTA sem consentimento; participação na APBio é facultativa.\n\n**IV — Patente e dever contratual.** O pedido de PI não se valida por ser público o titular do projeto: exige cadastro anterior nos eventos legalmente previstos (art. 12, § 2º), conformidade contratual com parceiros e reconhecimento de contribuições comunitárias. A assessoria jurídica deve examinar documentos submetidos ao INPI, limites de divulgação do segredo e hipótese de revisão de contratos. **Não se afirma nulidade automática da patente** sem procedimento e base normativa específica. Recomenda-se suspender novos pedidos, cessões ou licenças vinculados ao material controvertido enquanto faltar verificação essencial, sem impedir atividades de conservação e segurança da pesquisa.\n\n**V — Exploração econômica e repartição.** O cosmético de uso final cuja propriedade funcional e apelo comercial dependem do extrato provavelmente se enquadra em **produto acabado com elemento principal de agregação de valor** (arts. 2º, XVI e XVIII, e 17). Deve-se identificar fabricante, exploração efetiva, receitas e eventual início das vendas. Notificação ao CGen **antes** da exploração econômica e acordo/distribuição de benefícios devem obedecer aos arts. 16 a 26. Se o CTA de origem identificável for utilizado, há **negociação com o provedor e depósito ao FNRB para outros detentores** (art. 24), observada a regra que dispensa dupla repartição relativa ao mesmo PG (art. 25, § 3º). Não é juridicamente correto fixar valor final sem saber receitas e enquadramento, nem exigir “1% + 0,5%” como soma automática. A fabricação estrangeira não basta para excluir o regime, e a responsabilidade de agentes da cadeia deve ser examinada à luz do art. 17, § 7º.\n\n**VI — Medidas de integridade e competência.** Determina-se, no âmbito da atuação jurídico-consultiva, solicitar **inventário cronológico** de atividades, documentação de consentimento, comprovantes SisGen, termos de transferência, contratos de pesquisa, patentes, informações de produto/receita e evidências ambientais de coleta; propor atuação da unidade técnica e, quando necessário, consulta formal aos órgãos competentes. É cabível adotar cautelas proporcionais quanto a novas remessas, divulgações ou comercialização em contratos sob controle da entidade até suprir os requisitos; não se recomenda destruição de amostras nem interrupção geral de pesquisa legal sem motivação. Eventual autuação pertence à autoridade legalmente competente, com contraditório e devido processo.\n\n### 14.4. Objeções fortes à manifestação — e respostas\n\n**Objeção 1: “Foi apenas pesquisa de interesse público; benefício só existirá se houver venda.”** Parcialmente correta: obrigação monetária distributiva normalmente depende de exploração enquadrada, não de artigo científico isolado. Inadequada para negar **cadastro, consentimento prévio** ou regras de remessa e divulgação. Os fatos devem ser segmentados por etapa.\n\n**Objeção 2: “O conhecimento estava em artigo e não é exclusivo de uma comunidade.”** Publicação é fonte secundária expressamente contemplada no conceito legal de acesso a CTA; conhecimento compartilhado pode ter pelo menos uma origem identificável. É necessário instruir a prova da origem em vez de presumir caráter não identificável.\n\n**Objeção 3: “A universidade autorizou o uso do acervo e é parte do Estado soberano.”** A entidade pode dispor dos direitos patrimoniais e materiais de que efetivamente seja titular, mas não substitui direitos coletivos alheios, consulta ou obrigações específicas. Soberania pública não é cessão universal de CTA.\n\n**Objeção 4: “A empresa estrangeira se cadastrará por termo de associação e estará tudo regular.”** A disciplina de 2026 permite **uma modalidade cadastral delimitada**. Se havia colaboração científica, aplica-se a exclusão do art. 22-C; se havia CTA identificável sem consentimento, o termo não supre o vício; e eventual obrigação de notificação e repartição persiste.\n\n**Objeção 5: “Suspender tudo destrói investimento público e inviabiliza inovação.”** A AGU não deve impor paralisia desproporcional. A medida recomendada distingue **atividades de conservação e pesquisa lícita** de novos atos de uso, publicação, remessa e exploração do material controvertido; define prazos administrativos, preserva evidências e busca solução participativa. Pode haver regularização de atos quando a lei e as autoridades o admitam, mas sem afirmar cura automática do consentimento.\n\n**Objeção 6: “Já houve depósito ao FNRB; nada é devido à comunidade.”** Para CTA identificável, a repartição tem **acordo com provedor** e parcela adicional ao FNRB para demais detentores, ressalvadas hipóteses legais, comprovadas por documentos. A simples comprovação de pagamento não demonstra que a modalidade e o destinatário foram corretos.\n\n### 14.5. Conclusão da manifestação\n\n**Opina-se**, diante dos fatos hipotéticos, **pela não autorização de nova exploração comercial do produto e de novos atos irreversíveis de transferência ou proteção de tecnologia vinculados ao CTA controvertido até conclusão de verificação essencial**, sem prejulgar responsabilidade dos envolvidos. Deve ser instaurado procedimento administrativo instruído por cronologia de acesso, análise da origem e consentimento, auditoria cadastral, classificação de remessa/envio, revisão contratual e exame da incidência de repartição por produto. Os órgãos competentes serão provocados se surgirem irregularidades ou dúvidas dependentes de decisão regulatória. Recomenda-se canal de participação efetiva dos provedores e solução contratual transparente, contemplando reconhecimento cultural, repartição justa e proteção da continuidade da pesquisa lícita.\n\nA decisão é juridicamente **revisável à luz das provas**: se ficar demonstrado que nenhuma informação comunitária foi utilizada na pesquisa/desenvolvimento, o capítulo de CTA pode mudar; se o produto não for acabado ou seu componente não for elemento principal de agregação de valor, muda o dever de benefício; se a entidade estrangeira era mera prestadora de serviços, muda a classificação do transporte. A existência de condicionantes jurídicas não autoriza fingir que resultados e fatos técnicos já foram provados."
+    },
+    {
+      "id": "amb08-questoes",
+      "type": "recuperar",
+      "sectionId": "amb08-s17",
+      "title": "Questoes autorais comentadas",
+      "nature": "autoral",
+      "prompt": "### Enunciados — julgue certo (C) ou errado (E)\n\n**Q1.** A biodiversidade, na definição da CDB, corresponde exclusivamente à variedade de espécies, de modo que a conservação genética intrapopulacional e a conectividade de ecossistemas não integram o objeto protegido.\n\n**Q2.** A conservação de patrimônio genético em banco ex situ pode ser medida legítima de conservação, mas não afasta, por si só, as exigências de acesso ou a necessidade de proteger o ecossistema de origem.\n\n**Q3.** Na Lei 13.123/2015, acesso ao patrimônio genético só existe quando o pesquisador obtém sequência de DNA, pois moléculas resultantes do metabolismo não integram a definição legal.\n\n**Q4.** A circunstância de conhecimento tradicional constar de publicação científica não impede seu enquadramento como CTA; para definir a necessidade de consentimento, é decisivo verificar se sua origem pode ser vinculada a ao menos uma comunidade ou detentor coletivo legalmente reconhecido.\n\n**Q5.** Diante de CTA de origem identificável, bastará cadastro no SisGen; o consentimento prévio informado será necessário apenas quando houver produto comercializado.\n\n**Q6.** O art. 12, § 2º, da Lei 13.123/2015 prevê eventos diante dos quais o cadastro deve ser anterior, como divulgação de resultados de pesquisa e requerimento de direito de propriedade intelectual; isso não equivale a uma regra universal de cadastro necessariamente anterior ao início de toda pesquisa.\n\n**Q7.** O envio de amostra para serviço no exterior e a remessa de amostra ao exterior são categorias juridicamente distintas, sendo relevante a permanência ou transferência de responsabilidade pela amostra.\n\n**Q8.** A Lei 13.123/2015 exige automaticamente que todo instituto de pesquisa pague 1% de suas receitas anuais pela realização de investigação acadêmica sobre espécies brasileiras.\n\n**Q9.** Quando o produto acabado deriva de CTA de origem identificável, a Lei 13.123 contempla negociação com o provedor e destinação monetária ao FNRB para outros detentores, além de impedir que se imponha automaticamente repartição duplicada pelo mesmo PG acessado.\n\n**Q10.** O Decreto 13.014/2026 permitiu o termo de associação para fins de cadastro, inclusive quando existe colaboração científica efetiva entre a empresa estrangeira e a instituição nacional; a adesão à APBio tornou-se compulsória.\n\n**Q11.** O STF, ao julgar a ADI 3239/DF, estabeleceu os percentuais obrigatórios de repartição de benefícios da Lei 13.123/2015, razão pela qual o acordo previsto no art. 24 perdeu validade.\n\n**Q12.** Em pesquisa financiada pela União com uso de CTA identificável, o interesse público no avanço tecnológico autoriza desconsiderar o protocolo comunitário, desde que o pesquisador tenha autorização de coleta do órgão ambiental.",
+      "answer": "### Gabarito comentado das questões autorais\n\n**Q1 — E.** A CDB reconhece diversidade **dentro** de espécies, **entre** espécies e **de ecossistemas**. A omissão de variabilidade genética e da dinâmica de ambientes altera conceito básico do edital. Ver CDB art. 2º e seção 2.\n\n**Q2 — C.** Conservação ex situ complementa a in situ e não requalifica automaticamente origem de patrimônio genético. O art. 14 da Lei 13.123 orienta preferência pela conservação de amostras no território nacional nas condições indicadas. É falso supor que museus e bancos de sementes conferem licença irrestrita de uso e remessa.\n\n**Q3 — E.** Art. 2º, I, da Lei 13.123 inclui **informação de origem genética e substâncias oriundas do metabolismo**. Não se exige sequenciamento como condição universal de incidência, embora sejam necessários os fatos que caracterizam acesso.\n\n**Q4 — C.** O art. 2º, IX, inclui acesso ao CTA a partir de **fontes secundárias**; origem não identificável exige não ser possível ligar o saber a pelo menos uma comunidade ou titular contemplado. A existência de múltiplos titulares não exclui a identificação.\n\n**Q5 — E.** Consentimento é **prévio ao acesso** de CTA identificável (art. 9º). O cadastro é outro instrumento e não legitima uso cultural anterior. Repartição por produto é etapa posterior, quando cabível.\n\n**Q6 — C.** A assertiva reproduz a distinção temporal do art. 12, § 2º. Para respostas completas, ressalvar a exigência de consentimento prévio e eventuais autorizações específicas de art. 13. Publicar antes do cadastro, quando a lei exige antecedência, não se justifica por ter iniciado legitimamente a pesquisa.\n\n**Q7 — C.** O conceito de remessa (art. 2º, XIII) envolve transferência de responsabilidade para destinatária. O envio para serviço (art. 2º, XXX) mantém responsabilidade com usuário que realiza acesso no Brasil. Titulação contratual deve refletir a realidade.\n\n**Q8 — E.** A repartição dos arts. 17–21 incide sobre **exploração econômica de produto acabado ou material reprodutivo** enquadrado, com sujeitos e isenções próprios, e não sobre “receitas de qualquer instituto de pesquisa”. O referencial de 1% está ligado à **receita líquida anual da exploração econômica relevante**, não ao orçamento de pesquisa.\n\n**Q9 — C.** Arts. 24 e 25, especialmente art. 24, §§ 2º–5º, e art. 25, § 3º. Não confundir a negociação do provedor com depósito ao FNRB. Não concluir que acordo individual e percentuais aplicam-se de maneira idêntica a todo material genético.\n\n**Q10 — E.** A ausência de colaboração científica é requisito do art. **22-B** acrescentado em 2026; o art. **22-C** exclui hipóteses com colaboração e certas relações econômicas; a APBio do art. **22-D** tem adesão **facultativa**.\n\n**Q11 — E.** A ADI 3239 tratou de decreto de titulação de terras quilombolas. Os percentuais e modelos de repartição derivam da **Lei 13.123** e de seus atos, e não dessa decisão constitucional. É um erro de transposição de precedentes.\n\n**Q12 — E.** Coleta ambiental, termo de fomento, autorização do pesquisador e consentimento do provedor são categorias distintas. A universidade deve cumprir art. 9º, protocolo comunitário aplicável e demais regras, além de deveres de governança pública."
+    },
+    {
+      "id": "amb08-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb08-s18",
+      "title": "Recuperacao ativa independente",
+      "nature": "autoral",
+      "prompt": "## 18. Recuperação ativa — para outra sessão, sem interrupção da leitura\n\nEstas perguntas **não foram apresentadas como avaliação durante a leitura**. Quando retomar a unidade, recomenda-se tentar respondê-las sem consultar o capítulo, em voz alta ou no Caderno físico, e só então conferir a seção seguinte. Ler o gabarito não equivale a demonstrar domínio.\n\n1. Em um laboratório que estuda uma planta, qual é a diferença entre recurso biológico, patrimônio genético, amostra e CTA?\n2. O que cada um dos três objetivos da CDB acrescenta ao direito brasileiro? Onde se situa Nagoia?\n3. Por que a origem ex situ não significa que o patrimônio genético perdeu toda conexão com o Brasil?\n4. Em que momento há consentimento prévio obrigatório, e como ele pode ser comprovado?\n5. Qual é o erro em confundir “CTA compartilhado por várias comunidades” com “CTA de origem não identificável”?\n6. Quais eventos exigem que o cadastro SisGen seja anterior? Isso impede toda pesquisa antes do cadastro?\n7. Quando uma amostra deixa de ser “envio para serviço” e passa a remessa juridicamente relevante?\n8. Por que “1%” não serve como resposta padrão para toda atividade científica e toda forma de CTA?\n9. O que mudou em 2026 com o art. 22-B e com a APBio? Qual a exclusão principal?\n10. No caso da UFViva, que documentos e medidas você solicitaria antes de autorizar a exploração comercial, e qual objeção mais forte enfrentaria?",
+      "answer": "### Respostas orientadoras de recuperação — consultar somente após tentar\n\n**R1.** Recurso biológico é material/organismo útil; amostra é suporte físico; PG é informação genética/metabólica juridicamente relevante; CTA é prática/informação de titular tradicional sobre propriedades/usos do PG. Os quatro regimes podem se cruzar sem se confundirem.\n\n**R2.** Conservação, uso sustentável e repartição de benefícios compõem os três objetivos da CDB; Nagoia detalha ABS, acesso e mecanismos de conformidade, respeitada implementação nacional e declarações brasileiras.\n\n**R3.** A Lei 13.123 considera amostras conservadas ex situ, desde que originariamente encontradas in situ nas condições territoriais legais. Importam origem, atos novos de acesso e datas, não apenas local atual da coleção.\n\n**R4.** CTA de origem identificável exige consentimento **antes do acesso**; instrumentos do art. 9º, § 1º, são escolhidos pelos titulares dentro das regras legais e regulamentares, com respeito a usos e protocolos.\n\n**R5.** A lei considera não identificável somente quando não se pode vincular origem a ao menos um titular coletivo pertinente. Múltiplas origens possíveis não permitem classificar automaticamente como anônimo; há presunção legal de outros detentores para repartição.\n\n**R6.** Cadastro antecede remessa, requerimento de PI, comercialização de produto intermediário, divulgação de resultados e notificação do produto final/material reprodutivo, art. 12, § 2º. Não é regra de autorização prévia universal do primeiro ato de pesquisa; ressalvar consentimento e permissões especiais.\n\n**R7.** Quando a destinatária estrangeira assume responsabilidade pela amostra para acesso, em lugar de mera prestação de serviço mantendo usuário brasileiro a responsabilidade. Examinar contrato e atos reais, não rótulo.\n\n**R8.** Benefício está ligado à exploração enquadrada do produto acabado/material reprodutivo; sujeitos, isenções e modos variam. PG usa art. 20; CTA não identificável art. 23; CTA identificável envolve negociação art. 24 e parcela ao FNRB; art. 25 afasta duplicidade automática de PG.\n\n**R9.** Art. 22-B viabiliza termo de associação cadastral de PJ estrangeira sem colaboração científica; art. 22-C exclui colaboração; art. 22-D cria APBio de participação voluntária, não uma condição do cadastro.\n\n**R10.** Evidência de proveniência, cronologia, CTA, consentimento, SisGen, TTM ou envio, contratos, patente, produto e receita; pausa proporcional de novos atos controvertidos, escuta da comunidade, consulta à autoridade competente, eventual correção e repartição. Enfrentar tensão entre inovação/fomento e direitos coletivos sem escolher uma presunção absoluta.\n\n**Prova de transferência sugerida para estudo futuro:** uma variedade local crioula é pesquisada para melhoramento agrícola por instituição estrangeira com associação a centro brasileiro e é comercializada como material reprodutivo. Distinguir exceção de consentimento do art. 9º, § 3º, requisitos para acesso por PJ estrangeira, hipóteses de incidência do art. 18 e alteração de 2026. Esta prova **não foi aplicada ou avaliada** nesta edição."
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Edição publica preserva a prosa e separa as secoes por marcadores estáveis. Alterações textuais de privacidade e metadados documentadas em relatorio.",
+    "As tabelas Markdown permanecem textuais; PDF original e diagramas editaveis não foram convertidos para ativos SVG nesta publicação."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Revisao editorial assistida e delimitada em 26/11/2026: integridade textual conferida por fonte SHA-256; termos juridicos decisivos confrontados pontualmente (Lei 13.123, Decreto 13.014, SisGen 3.0); links privados suprimidos; sem certificacao ampla nem aprovacao humana externa simulada. Integracao sujeita a CI do HEAD e validacao publica posterior.",
+    "inputSha256": "d668885f6b806c9d167b5333e718d92c5a3befe4ead803e18bbe4774863c86e8"
+  },
+  "inputSha256": "d668885f6b806c9d167b5333e718d92c5a3befe4ead803e18bbe4774863c86e8",
+  "sourceSha256": "15a1b5a1e82b4c4a0c3711e0261e3caab0e8f97bc413142f980175aa61a74256",
+  "reviewCards": []
+}

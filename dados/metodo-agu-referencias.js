@@ -196,6 +196,40 @@ window.AGU_METHOD_BOOK_REFERENCES = {
         "amb-06-caso",
         "amb-06-recuperacao"
       ]
+    },
+    "amb-08": {
+      "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+      "edition": "1.1",
+      "curricularIds": [
+        "AMB-08"
+      ],
+      "sections": [
+        "amb08-s00",
+        "amb08-s01",
+        "amb08-s02",
+        "amb08-s03",
+        "amb08-s04",
+        "amb08-s05",
+        "amb08-s06",
+        "amb08-s07",
+        "amb08-s08",
+        "amb08-s09",
+        "amb08-s10",
+        "amb08-s11",
+        "amb08-s12",
+        "amb08-s13",
+        "amb08-s14",
+        "amb08-s15",
+        "amb08-s16",
+        "amb08-s17",
+        "amb08-s18",
+        "amb08-s19"
+      ],
+      "activities": [
+        "amb08-caso-agu",
+        "amb08-questoes",
+        "amb08-recuperacao"
+      ]
     }
   }
 };

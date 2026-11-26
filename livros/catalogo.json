@@ -82,6 +82,17 @@
           "reader": "livros/amb-06.json",
           "method": "livros/metodo/amb-06.json",
           "status": "publicado"
+        },
+        {
+          "id": "amb-08",
+          "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+          "edition": "1.1",
+          "curricularIds": [
+            "AMB-08"
+          ],
+          "reader": "livros/amb-08.json",
+          "method": "livros/metodo/amb-08.json",
+          "status": "publicado"
         }
       ]
     }
