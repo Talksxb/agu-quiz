@@ -11,5 +11,22 @@ const fixture={disciplinas:disciplines,itens:disciplines.flatMap(d=>Array.from({
 for(const id of ['ADM-18a','ADM-18b','ADM-64a','ADM-64b']){fixture.itens[0].id=id;assert.equal(z.validateMatrix(fixture),true)}
 env.AGUValidateMatrix=z.validateMatrix;vm.runInContext(fs.readFileSync(path.join(ROOT,'backup-local-s20.js'),'utf8'),env);assert.equal(env.AGUBackup20.validateRecord('agu_quiz_curriculo_repo_v1',fixture),true);for(const id of ['ADM-18a','ADM-18b','ADM-64a','ADM-64b'])assert.equal(env.AGUBackup20.validateRecord('agu_quiz_mapeamento_questoes_v1',{'questao-sintetica':id}),true);assert.equal(env.AGUBackup20.validateRecord('agu_quiz_mapeamento_questoes_v1',{'questao-sintetica':'ADM-64<script>'}),false);
 fixture.itens[0].id='ADM-64<script>';assert.throws(()=>z.validateMatrix(fixture));fixture.itens[0].id=fixture.itens[1].id;assert.throws(()=>z.validateMatrix(fixture));
-for(const file of Object.keys(require('./fixtures/aud-ux-004-delta.json'))){const s=fs.readFileSync(path.join(ROOT,file),'utf8');require('./aud-ux-004-legado.cjs')(s,file);assert.throws(()=>require('./aud-ux-004-legado.cjs')(s+'\n',file));}
+// PUB-LIVROS AMB-06: prova diferencial cumulativa, sem alterar o snapshot AUD-UX-004.
+// Exige os bytes exatos da nova referência e reconstrói os bytes AUD-UX-004 removendo somente o capítulo acrescentado.
+for(const file of Object.keys(require('./fixtures/aud-ux-004-delta.json'))){
+ const s=fs.readFileSync(path.join(ROOT,file),'utf8');
+ if(file==='dados/metodo-agu-referencias.js'){
+  const crypto=require('node:crypto'),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
+  assert.equal(sha(s),'d01ba217bc465335829735ba60b00d0d209ebcd2397a1fa9c36c69e094e700aa','Hash da entrada AMB-06 fora da edição revista');
+  const suffix=/,\n    "amb-06": \{[\s\S]*?\n    \}\n  \}\n\};\n$/;
+  assert.match(s,suffix,'Acréscimo do AMB-06 deve ser o bloco final único');
+  const restored=s.replace(suffix,'\n  }\n};\n');
+  assert.equal(sha(restored),require('./fixtures/aud-ux-004-delta.json')[file].after,'Diferença excedeu o bloco aprovado AMB-06');
+  require('./aud-ux-004-legado.cjs')(restored,file);
+  assert.throws(()=>{const wrong=s+'\n';assert.equal(sha(wrong),'d01ba217bc465335829735ba60b00d0d209ebcd2397a1fa9c36c69e094e700aa')});
+ }else{
+  require('./aud-ux-004-legado.cjs')(s,file);
+  assert.throws(()=>require('./aud-ux-004-legado.cjs')(s+'\n',file));
+ }
+}
 console.log('AUD_UX_004_NODE_OK: IDs exatos, seis livros aprovados, sete vigentes, 397 vínculos referenciais, sufixos e validação sem matriz privada no pacote');
