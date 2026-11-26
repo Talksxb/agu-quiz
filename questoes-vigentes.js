@@ -29,7 +29,8 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const safeUrl=u=>typeof u==='string'&&u.startsWith('https://')?esc(u):'#';
 const save=v=>{if(!validHistory(v,items))throw Error('Histórico inválido');localStorage.setItem(KEY,JSON.stringify(v));history=v};
 const params=new URLSearchParams(root.location.search);
-filter=params.get('situacao')==='erros'?'wrong':'all';
+const requestedStatus=params.get('situacao');
+filter=requestedStatus==='erros'?'wrong':requestedStatus==='nao-resolvidas'?'new':'all';
 if(items.some(q=>q.discipline===params.get('disciplina')))discipline=params.get('disciplina');
 const resumeId=params.get('questao');
 const filtered=()=>{const m=latest(history);return items.filter(q=>(discipline==='all'||q.discipline===discipline)&&(filter==='all'||filter==='new'&&!m.has(q.id)||filter==='wrong'&&m.get(q.id)?.correct===false))};
@@ -39,7 +40,7 @@ function render(focus){
  const list=filtered(),m=latest(history),q=list[position];if(!q&&list.length){position=0;reset();return render(focus)}
  const route=new URL(root.location.href);
  if(q)route.searchParams.set('questao',q.id);else route.searchParams.delete('questao');
- if(filter==='wrong')route.searchParams.set('situacao','erros');else route.searchParams.delete('situacao');
+ if(filter==='wrong'||filter==='new')route.searchParams.set('situacao',filter==='wrong'?'erros':'nao-resolvidas');else route.searchParams.delete('situacao');
  if(discipline!=='all')route.searchParams.set('disciplina',discipline);else route.searchParams.delete('disciplina');
  root.history.replaceState(null,'',route.pathname+route.search+route.hash);
  const hits=[...m.values()].filter(a=>a.correct).length;

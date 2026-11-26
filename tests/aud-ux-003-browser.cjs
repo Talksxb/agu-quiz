@@ -12,6 +12,7 @@ let browser,server;const results=[],started=Date.now();
   await p.getByRole('radio',{name:wrong==='C'?'Certo':'Errado',exact:true}).check();await p.locator('#vig-submit').press('Enter');assert.match(await p.locator('#vig-feedback').innerText(),/Resposta incorreta/);
   assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).attempts.length,key),1);
   await p.locator('#vig-next').press('Enter');const url=p.url(),title=await p.locator('#vig-title').innerText();await p.reload();assert.equal(await p.locator('#vig-title').innerText(),title);assert.equal(p.url(),url);assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).attempts.length,key),1);
+  await p.locator('#vig-filter').selectOption('new');assert.equal(new URL(p.url()).searchParams.get('situacao'),'nao-resolvidas');const unansweredTitle=await p.locator('#vig-title').innerText();await p.reload();assert.equal(await p.locator('#vig-filter').inputValue(),'new');assert.equal(await p.locator('#vig-title').innerText(),unansweredTitle);assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).attempts.length,key),1);
   await p.goto(server.base+'questoes-vigentes.html?situacao=erros&questao=nao-existe');assert.match(await p.locator('#vig-title').innerText(),new RegExp('Questão '+q.n+' · 1 de 1'));
   const scans={question:await u.scan(p)};
   if(width<500)await p.getByRole('radio',{name:q.currentKey==='E'?'Errado':'Certo',exact:true}).tap();else await p.getByRole('radio',{name:q.currentKey==='E'?'Errado':'Certo',exact:true}).check();

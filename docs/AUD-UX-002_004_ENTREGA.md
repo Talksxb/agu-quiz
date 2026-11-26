@@ -1,5 +1,7 @@
 # AUD-UX-002–004 — Entrega e continuidade
 
+**Marco documental:** relatório da preparação das PRs, anterior ao pedido posterior de integração. As contagens de publicação e as estimativas abaixo correspondem a esse marco. A revisão, os merges e os gates pós-integração de #105 → #106 → #107 → #109 estão registrados nas respectivas PRs, que documentam o estado operacional posterior.
+
 25/11/2026. Escopo autorizado: três sprints consecutivas, sem merge/publicação. A AUD-UX-001 está documentada na PR #105. Os checkpoints desta sequência registram comportamento, regressões e limitações; os resultados remotos finais constam das respectivas PRs.
 
 | Sprint | Entrega técnica | Verificação | PR/base |
