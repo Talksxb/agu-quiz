@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),path=require('path'),ROOT=path.resolve(__dirname,'..'),reverse=require('./backlog-adm-001-legado.cjs');
+const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8'),html=read('index.html');
+function boot(s,extra){const z={};z.window=z;vm.createContext(z);if(extra)vm.runInContext(read('dados/questoes-autorais-backlog-adm001.js'),z);const a=s.indexOf('const $=s=>');vm.runInContext(s.slice(a,s.indexOf("const STORE=",a)),z);return {z,rows:JSON.parse(vm.runInContext('JSON.stringify(Q)',z))}}
+const old=boot(reverse(html,'index.html')),now=boot(html,true);assert.equal(old.rows.length,40);assert.equal(now.rows.length,44);assert.equal(new Set(now.rows.map(q=>q.id)).size,44);assert.deepEqual(now.rows.filter(q=>!q.id.startsWith('bkl-')),old.rows,'quarenta originais preservadas integralmente');
+const rows=now.rows.filter(q=>q.id.startsWith('bkl-'));assert.deepEqual(rows.map(q=>q.right),[1,0,1,0]);assert.deepEqual(rows.map(q=>q.curricularIds[0]),['ADM-26','ADM-26','ADM-25','ADM-25']);for(const q of rows){assert.equal(q.style,'autoral_estilo_cebraspe');assert.equal(q.source.verified,'2026-11-26');assert.ok(q.why.startsWith(q.right?'ERRADO.':'CERTO.'));assert.ok(q.source.url.startsWith('https://'));assert.equal(q.type,'ce');assert.deepEqual(q.opts,['Certo','Errado']);assert.ok(q.evidence.limit.length>50)}
+assert.equal(now.z.AGUAuthoredQuestions.count(),44);assert.equal(now.z.AGUAuthoredQuestions.forCode('ADM-25').length,2);assert.equal(now.z.AGUAuthoredQuestions.forCode('ADM-2').length,0);assert.equal(now.z.AGUAuthoredQuestions.open('nao-existe'),false);
+for(const [f]of Object.entries(require('./fixtures/backlog-adm-001.json'))){const s=read(f);reverse(s,f);assert.throws(()=>reverse(s+'\n',f))}
+console.log('BACKLOG_ADM_001_NODE_OK: 40 preservadas + 4 novas, 2 por ID real, gabaritos e fontes pontuais, sem normalização de IDs por prefixo');
