@@ -2,7 +2,7 @@
   "schema": "agu-collection-v1",
   "id": "ambiental",
   "title": "Direito Ambiental",
-  "planningNote": "Plano original de nove obras preservado; o manuscrito de nome LIVRO-AMB-008 (AMB-11) foi adicionado como décima entrada pública, sem renomear a reserva homônima AMB-09/10 ou declarar que tais temas foram produzidos.",
+  "planningNote": "Plano original de nove obras preservado; o manuscrito de nome LIVRO-AMB-008 (AMB-11) foi adicionado como décima entrada pública, sem renomear a reserva homônima AMB-09/10 ou declarar que tais temas foram produzidos. Publicação do manuscrito real LIVRO-AMB-004/AMB-06 desambiguada como LIVRO-AMB-004-AMB06; preservados slots históricos LIVRO-AMB-004 (AMB-01/02) e LIVRO-AMB-005 (AMB-06).",
   "program": {
     "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
     "locator": "17.2.1, Direito Ambiental, página impressa 42",
@@ -304,6 +304,40 @@
       "resources": null,
       "canonicalEditorialId": "LIVRO-AMB-008",
       "reconciliation": "Obra efetivamente escrita LIVRO-AMB-008 com ID AMB-11; slot distinto preserva a reserva editorial anterior AMB-09/10."
+    },
+    {
+      "editorialId": "LIVRO-AMB-004-AMB06",
+      "chapterId": "amb-06",
+      "title": "SISNAMA, PNMA, Política Energética e Saneamento",
+      "order": 11,
+      "curricular": [
+        {
+          "id": "AMB-06",
+          "subitems": [
+            "Sistema nacional do meio ambiente.",
+            "Política nacional do meio ambiente.",
+            "Política Energética.",
+            "Política de Saneamento."
+          ],
+          "coverage": "delimitada_no_capitulo_publico"
+        }
+      ],
+      "connections": [
+        "AMB-03",
+        "AMB-04",
+        "AMB-05",
+        "AMB-07"
+      ],
+      "status": {
+        "production": "produzido",
+        "review": "aprovado_para_publicacao_escopo_delimitado",
+        "publication": "publicado"
+      },
+      "edition": "1.1",
+      "evidence": "Original Markdown SHA-256 f1dcb7d783f32b107118982c17341ca2d01d8fa9e8688eb77f38847e2d735d17; edição pública SHA-256 e6eb89f75327f872b3ae3228aa53955f7a9f995072e0011fb36ce73b942842a0; fontes pontualmente revisitadas 26/11/2026",
+      "resources": "livros/metodo/amb-06.json",
+      "canonicalEditorialId": "LIVRO-AMB-004",
+      "reconciliation": "Registro desambiguado sem sobrescrever planejamentos antigos."
     }
   ]
 }
