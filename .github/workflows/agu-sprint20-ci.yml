@@ -152,6 +152,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: UX-LEITOR-ARTIGOS-001 — lista, foco, filtros e backup em cinco larguras
+        run: node tests/ux-leitor-artigos-001-browser.cjs
       - name: AUD-UX-004 — recursos exatos, teclado, sessão e proteção do PDF
         run: node tests/aud-ux-004-browser.cjs
       - name: AUD-UX-003 — questões, erros, URL e backup nas cinco larguras
@@ -260,6 +262,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-ux-leitor-artigos-001/
             tests/artifacts-aud-ux-004/
             tests/artifacts-aud-ux-003/
             tests/artifacts-aud-ux-002/
