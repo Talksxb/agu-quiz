@@ -15,6 +15,8 @@ const entries=[
  ['agu_quiz_mapeamento_questoes_v1','Mapeamento curricular pessoal'],
  ['agu_livros_reader_v1','Percurso do Método AGU']
 ];
+// AUD-UX-003: categoria do histórico já existente; mesma validação do treino.
+if(root.AGUVigenteContract&&Array.isArray(root.AGUCurrentQuestions?.items))entries.push(['agu_gov_003_treino_vigente_v1','Questões oficiais · treino vigente']);
 const keys=new Set(entries.map(x=>x[0]));
 const isObj=x=>x&&typeof x==='object'&&!Array.isArray(x);
 const capArr=(v,n=20000)=>Array.isArray(v)&&v.length<=n;
@@ -23,6 +25,7 @@ const fileBytes=value=>new Blob([value]).size;
 function validateRecord(key,obj){
  if(!isObj(obj))return false;
  switch(key){
+ case 'agu_gov_003_treino_vigente_v1':return root.AGUVigenteContract?.validHistory(obj,root.AGUCurrentQuestions?.items||[])===true;
  case 'agu_livros_reader_v1':return root.AGUMethodProgress?.validate(obj)===true;
  case 'agu_quiz_mvp1_2026':{
   if(obj.questionBank!==undefined){const p=obj.questionBank,validId=x=>typeof x==='string'&&(/^PF-2023-P1-Q(?:00[1-9]|0[1-9]\d|100)$/.test(x)||/^AGU-2023-P1-Q(?:00[1-9]|0[1-9]\d|100)$/.test(x)||/^AGU-2015-187AGU-001-07-Q(?:00[1-9]|0[1-9]\d|1\d\d|200)$/.test(x));if(!isObj(p)||p.version!==2||![2015,2023,'pf2023'].includes(p.year)||!isObj(p.positions)||(p.positions.pf2023===undefined?p.year==='pf2023':!Number.isInteger(p.positions.pf2023)||p.positions.pf2023<1||p.positions.pf2023>100)||![2015,2023].every(y=>Number.isInteger(p.positions[y])&&p.positions[y]>=1&&p.positions[y]<=(y===2015?200:100))||!Array.isArray(p.favorites)||p.favorites.length>400||new Set(p.favorites).size!==p.favorites.length||!p.favorites.every(validId)||!isObj(p.notes)||Object.keys(p.notes).length>400||!Object.entries(p.notes).every(([k,v])=>validId(k)&&isObj(v)&&typeof v.text==='string'&&v.text.length<=1000&&['','norma','conceito','fato','aplicacao','tecnica'].includes(v.kind)&&['','facil','media','dificil'].includes(v.difficulty)))return false}

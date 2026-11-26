@@ -17,7 +17,9 @@ function validHistory(value,items){
  return value.attempts.every(a=>a&&typeof a.id==='string'&&a.id.length<=100&&map.has(a.question)&&typeof a.correct==='boolean'&&grade(map.get(a.question),a.selected)!==null&&a.correct===grade(map.get(a.question),a.selected)&&typeof a.date==='string'&&Number.isFinite(Date.parse(a.date)))&&new Set(value.attempts.map(a=>a.id)).size===value.attempts.length;
 }
 function latest(history){const m=new Map();for(const a of history.attempts){if(!m.has(a.question)||Date.parse(a.date)>=Date.parse(m.get(a.question).date))m.set(a.question,a)}return m}
-if(typeof module==='object'){module.exports={eligible,grade,validHistory,latest,KEY,choices};return}
+const contract={eligible,grade,validHistory,latest,KEY,choices};
+root.AGUVigenteContract=contract;
+if(typeof module==='object'){module.exports=contract;return}
 const data=root.AGUCurrentQuestions, host=document.getElementById('vig-app');if(!host)return;
 const items=(data?.items||[]).filter(eligible);
 if(!items.length){host.textContent='Nenhum item aprovado disponível.';return}
@@ -26,10 +28,21 @@ try{const raw=localStorage.getItem(KEY);if(raw){const v=JSON.parse(raw);if(valid
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl=u=>typeof u==='string'&&u.startsWith('https://')?esc(u):'#';
 const save=v=>{if(!validHistory(v,items))throw Error('Histórico inválido');localStorage.setItem(KEY,JSON.stringify(v));history=v};
+const params=new URLSearchParams(root.location.search);
+const requestedStatus=params.get('situacao');
+filter=requestedStatus==='erros'?'wrong':requestedStatus==='nao-resolvidas'?'new':'all';
+if(items.some(q=>q.discipline===params.get('disciplina')))discipline=params.get('disciplina');
+const resumeId=params.get('questao');
 const filtered=()=>{const m=latest(history);return items.filter(q=>(discipline==='all'||q.discipline===discipline)&&(filter==='all'||filter==='new'&&!m.has(q.id)||filter==='wrong'&&m.get(q.id)?.correct===false))};
+position=Math.max(0,filtered().findIndex(q=>q.id===resumeId));
 function reset(){choice='';shown=false}
 function render(focus){
  const list=filtered(),m=latest(history),q=list[position];if(!q&&list.length){position=0;reset();return render(focus)}
+ const route=new URL(root.location.href);
+ if(q)route.searchParams.set('questao',q.id);else route.searchParams.delete('questao');
+ if(filter==='wrong'||filter==='new')route.searchParams.set('situacao',filter==='wrong'?'erros':'nao-resolvidas');else route.searchParams.delete('situacao');
+ if(discipline!=='all')route.searchParams.set('disciplina',discipline);else route.searchParams.delete('disciplina');
+ root.history.replaceState(null,'',route.pathname+route.search+route.hash);
  const hits=[...m.values()].filter(a=>a.correct).length;
  const src=q?.source||data.source;
  const multiple=q?.format==='multiple_choice';
@@ -40,7 +53,7 @@ function render(focus){
  (q?'<section class="card"><p class="eyebrow">'+esc(src.organizer)+' · '+esc(src.contest)+' · '+esc(src.date.slice(0,4))+' · '+esc(q.code)+'</p><h2 tabindex="-1" id="vig-title">Questão '+q.n+' · '+(position+1)+' de '+list.length+'</h2><p class="source">Fonte: '+esc(src.contest)+' · '+esc(src.variant)+' · página '+q.pages.join(', ')+' · '+esc(src.license)+'</p><p><a href="'+safeUrl(src.examUrl)+'#page='+q.pages[0]+'" target="_blank" rel="noopener noreferrer">Consultar caderno original</a></p><p class="stem">'+esc(q.command)+'</p><p class="stem" id="vig-stem">'+esc(q.stem)+'</p><p class="source">'+esc(q.abbreviations||'')+'</p><form id="vig-form"><fieldset class="'+(multiple?'multiple-choice':'')+'" '+(shown?'disabled':'')+'><legend>'+(multiple?'Assinale a alternativa correta':'Julgue a assertiva')+'</legend>'+radios(q)+'</fieldset><button type="submit" class="primary" id="vig-submit" '+(!choice||shown?'disabled':'')+'>Responder</button></form>'+
  (shown?'<div id="vig-feedback" tabindex="-1" class="feedback" role="status"><strong>'+(grade(q,choice)?'Resposta correta':'Resposta incorreta')+'</strong><p>Gabarito oficial e direito atual: '+esc(answerLabel(q))+'.</p><h3>Na época da prova</h3><p>'+esc(q.historical)+'</p><h3>Direito vigente</h3><p>'+esc(q.current)+'</p><h3>Aplicação em nova prova</h3><p>'+esc(q.application)+'</p><p class="source">'+esc(q.scope)+'</p><ul>'+q.sources.map(s=>'<li><a href="'+safeUrl(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.label)+'</a></li>').join('')+'<li><a href="'+safeUrl(src.keyUrl)+'" target="_blank" rel="noopener noreferrer">Gabarito definitivo oficial</a></li></ul></div>':'')+
  '<div class="actions"><button id="vig-prev" '+(position===0?'disabled':'')+'>Anterior</button><button id="vig-next" '+(position>=list.length-1?'disabled':'')+'>Próxima</button><button id="vig-retry" '+(!shown?'disabled':'')+'>Refazer</button></div></section>':'<section class="card"><p>Nenhuma questão neste filtro.</p><button id="vig-all">Ver todas</button></section>')+
- '<section class="card backup"><h2>Histórico local do treino</h2><p id="vig-notice" role="status">'+esc(notice)+'</p><div class="actions"><button id="vig-export">Exportar histórico (JSON)</button><label>Importar backup <input id="vig-import" type="file" accept=".json,application/json"></label></div><p class="source">A importação combina tentativas válidas por ID, sem apagar as atuais. Nenhum dado é enviado ao servidor.</p></section>';
+ '<section class="card backup"><h2>Histórico local do treino</h2><p>A questão e os filtros ficam no endereço desta página para retomada após recarga. Abrir uma questão não registra resposta.</p><p><a href="index.html?abrir=backup">Abrir backup completo do AGU Quiz</a></p><p id="vig-notice" role="status">'+esc(notice)+'</p><div class="actions"><button id="vig-export">Exportar histórico (JSON)</button><label>Importar backup <input id="vig-import" type="file" accept=".json,application/json"></label></div><p class="source">A importação combina tentativas válidas por ID, sem apagar as atuais. Nenhum dado é enviado ao servidor.</p></section>';
  const by=id=>document.getElementById(id);
  by('vig-discipline').onchange=e=>{discipline=e.target.value;position=0;reset();render('vig-discipline')};
  by('vig-filter').onchange=e=>{filter=e.target.value;position=0;reset();render('vig-filter')};

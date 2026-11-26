@@ -39,7 +39,7 @@ check('quatro origens validadas: só duas pendentes, inclusive topic:null, sem d
  const b=boot(new Map([[KEY,JSON.stringify(reader)]])),raw=b.store.get(KEY);
  assert.equal(b.e.AGUBackup20.validateRecord(KEY,reader),true);assert.equal(b.e.AGUHome.notebookPending(),2);
  assert.match(b.e.AGUHome.panel(),/2 marcações pendentes/);assert.doesNotMatch(b.e.AGUHome.panel(),/Motivo versus finalidade/);
- assert.equal(b.store.get(KEY),raw);assert.equal(b.writes(),0);assert.equal(b.e.AGUBackup20.keys().filter(x=>x.key!=='agu_livros_reader_v1').length,9);
+ assert.equal(b.store.get(KEY),raw);assert.equal(b.writes(),0);assert.equal(b.e.AGUBackup20.keys().filter(x=>!['agu_livros_reader_v1','agu_gov_003_treino_vigente_v1'].includes(x.key)).length,9);
 });
 check('atalho navega à lista única e volta à Home com foco, sem alterar revisão, plano, estudo ou notas',()=>{
  const b=boot(new Map([[KEY,JSON.stringify(reader)]])),raw=b.store.get(KEY),other=[b.store.get(REVIEW),b.store.get(PLAN),b.store.get(STUDY)];
