@@ -5,6 +5,7 @@ const delta=require('./fixtures/interface-agu-002-delta.json');
 const hash=x=>crypto.createHash('sha256').update(x).digest('hex');
 module.exports=function readerBeforeInterface002(){
  let source=fs.readFileSync(path.join(__dirname,'..','leitor-juridico.js'),'utf8');
+ source=require('./ux-leitor-artigos-001-legado.cjs')(source);
  const ux=require('./fixtures/ux-agu-005-reader-delta.json');
  const blob=s=>crypto.createHash('sha1').update('blob '+Buffer.byteLength(s)+'\0').update(s).digest('hex');
  assert.equal(blob(source),ux.afterBlob,'leitor atual fora do delta UX-AGU-005');
