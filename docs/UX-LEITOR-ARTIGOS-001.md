@@ -9,3 +9,7 @@ A camada é estritamente aditiva e sua retirada restitui o leitor anterior byte 
 Validação local: 52/52 comandos Node, incluindo integridade de questões, acervo e backups. Chromium 158.0.8127.0 em 320/360/390/430/1280: botões superior/inferior, toque emulado, Enter/Espaço, foco, LINDB, CC art. 1.000, busca preservada, modo imersivo, preservação de registros, restauração em perfil sintético independente e dez scans axe sem violações/inconclusivos remanescentes após reconferência. Rotina nova: 8,528 s. Sem Android físico/TalkBack. CI do HEAD e eventual publicação ficam registradas na PR.
 
 O backlog da segunda imagem é tratado em BACKLOG-ADM-001: quatro questões autorais pontualmente verificadas para ADM-25 e ADM-26, preservando o banco anterior e o motor existente. Não produz novos livros e não interfere em Constitucional.
+
+## Regressão identificada pela CI
+
+S30 detectou que a ação nova no rodapé vinha antes de “Próximo artigo” na ordem de Tab. A ação foi movida para depois dos dois controles de sequência. O teste antigo foi mantido integralmente; a correção preserva sua navegação esperada, sem remover o novo acesso à lista.
