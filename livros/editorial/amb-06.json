@@ -1,0 +1,514 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-06",
+  "editorialId": "LIVRO-AMB-004-AMB06",
+  "title": "SISNAMA, PNMA, Política Energética e Saneamento",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.1",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-06.md",
+  "readerPath": "livros/amb-06.json",
+  "reader": {
+    "id": "amb-06",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-06",
+    "title": "SISNAMA, PNMA, Política Energética e Saneamento",
+    "edition": "LIVRO-AMB-004 · edição pública 1.1 (26/11/2026), original 1.0 (22/11/2026)",
+    "source": "LIVRO-AMB-004_AMB-06_CAPITULO.md; fonte canônica pública derivada com redigitação de metadados internos",
+    "source_format": "markdown",
+    "verification": "Verificação pontual (26/11/2026); não certificação integral nem domínio pedagógico",
+    "transcription_note": "16 blocos originais mantidos em ordem; edição pública altera somente aparato de proveniência privada e identificação da edição. Tabelas Markdown textuais; Mermaid disponível em arquivos-fonte; PDF original não publicado."
+  },
+  "curricularIds": [
+    "AMB-06"
+  ],
+  "dates": {
+    "edition": "2026-11-26",
+    "legalConsultation": "2026-11-26: fontes legais principais e STF pontualmente conferidos; demais fontes preservam consultas da edição de 22/11/2026; sem inventário exaustivo",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-26"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Alterações setoriais de 2026 da Lei 9.478/1997 sem auditoria integral",
+      "Jurisprudência de STF/STJ/TCU setorial não exaurida",
+      "Transições e ações relativas à Lei Geral de Licenciamento Ambiental ainda demandam atualização",
+      "Retificações do edital além de 2 e 5/2023 não inventariadas integralmente",
+      "Nenhum resultado de estudo do aluno foi medido; certificação curricular integral não emitida"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb-06-s01",
+      "marker": "01",
+      "title": "Abertura e identificação"
+    },
+    {
+      "id": "amb-06-s02",
+      "marker": "02",
+      "title": "Mapa de cobertura e delimitação"
+    },
+    {
+      "id": "amb-06-s03",
+      "marker": "03",
+      "title": "Abertura — um programa federal pode integrar tudo sem decidir tudo?"
+    },
+    {
+      "id": "amb-06-s04",
+      "marker": "04",
+      "title": "1. Fundamento constitucional e diferenças entre política, sistema, órgão e instrumento"
+    },
+    {
+      "id": "amb-06-s05",
+      "marker": "05",
+      "title": "2. SISNAMA — estrutura, trabalho federativo e limites da coordenação"
+    },
+    {
+      "id": "amb-06-s06",
+      "marker": "06",
+      "title": "3. PNMA — objetivos, princípios legais, conceitos e instrumentos"
+    },
+    {
+      "id": "amb-06-s07",
+      "marker": "07",
+      "title": "4. CONAMA — poder normativo infralegal e limites"
+    },
+    {
+      "id": "amb-06-s08",
+      "marker": "08",
+      "title": "5. Política energética — segurança, transição e controle ambiental"
+    },
+    {
+      "id": "amb-06-s09",
+      "marker": "09",
+      "title": "6. Política de saneamento — titularidade, regionalização, metas e regulação"
+    },
+    {
+      "id": "amb-06-s10",
+      "marker": "10",
+      "title": "7. Como as políticas dialogam: planejamento, orçamento, regulação e controle"
+    },
+    {
+      "id": "amb-06-s11",
+      "marker": "11",
+      "title": "8. Jurisprudência selecionada — força, alcance e distinções"
+    },
+    {
+      "id": "amb-06-s12",
+      "marker": "12",
+      "title": "9. Caso AGU resolvido — programa federal integrado de energia e saneamento"
+    },
+    {
+      "id": "amb-06-s13",
+      "marker": "13",
+      "title": "10. Questões autorais comentadas — treino não oficial"
+    },
+    {
+      "id": "amb-06-s14",
+      "marker": "14",
+      "title": "11. Síntese final — reconstruir a decisão, não decorar siglas"
+    },
+    {
+      "id": "amb-06-s15",
+      "marker": "15",
+      "title": "12. Recuperação ativa — para ser feita depois da leitura"
+    },
+    {
+      "id": "amb-06-s16",
+      "marker": "16",
+      "title": "13. Proveniência e trilha de atualização"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-06",
+      "subitem": "Sistema nacional do meio ambiente.",
+      "sections": [
+        "amb-06-s04",
+        "amb-06-s05",
+        "amb-06-s07",
+        "amb-06-s11"
+      ],
+      "status": "delimitado"
+    },
+    {
+      "curricularId": "AMB-06",
+      "subitem": "Política nacional do meio ambiente.",
+      "sections": [
+        "amb-06-s04",
+        "amb-06-s06",
+        "amb-06-s07",
+        "amb-06-s11"
+      ],
+      "status": "delimitado"
+    },
+    {
+      "curricularId": "AMB-06",
+      "subitem": "Política Energética.",
+      "sections": [
+        "amb-06-s08",
+        "amb-06-s10",
+        "amb-06-s12"
+      ],
+      "status": "delimitado"
+    },
+    {
+      "curricularId": "AMB-06",
+      "subitem": "Política de Saneamento.",
+      "sections": [
+        "amb-06-s09",
+        "amb-06-s10",
+        "amb-06-s11",
+        "amb-06-s12"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "amb06-edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "17.2.1, Direito Ambiental 6, p. 42",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Escopo literal; retificações 2 e 5/2023 cotejadas na obra, inventário de outros atos pendente",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-cf88",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm",
+      "locator": "arts. 20, 21, 23, 24, 25 §3º, 30, 170, 175, 177, 225",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Normas constitucionais de base; exame de eficácia e evolução incompleto",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-pnma",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1980-1987/lei-6938-31-agosto-1981-366135-normaatualizada-pl.html",
+      "locator": "arts. 2º, 3º, 4º, 6º, 8º, 9º, 10",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "SISNAMA e instrumentos; confirmada alteração do art. 2º, XI, em fonte atualizada",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-lei15512",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2026/lei-15512-22-setembro-2026-800007-publicacaooriginal-181452-pl.html",
+      "locator": "alteração do art. 2º da Lei 6.938/1981",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Acréscimo de princípio da PNMA em 2026",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-lc140",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+      "locator": "arts. 7º–9º, 13 e 17",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Repartição do licenciamento e fiscalização; cotejo de cada situação concreta não exaurido",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-lgl",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15190.htm",
+      "locator": "regime geral de licenciamento; alterações da PNMA",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Regime da Lei 15.190/2025; transições e controle concentrado demandam revalidação",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-petroleo",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1997/lei-9478-6-agosto-1997-365401-normaatualizada-pl.html",
+      "locator": "arts. 1º, 2º, 8º; alterações setoriais em 2025–2026",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Política energética e ANP; cadeia completa de alterações não reconstruída",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-lc225",
+      "url": "https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-225-8-janeiro-2026-798639-publicacaooriginal-177736-pl.html",
+      "locator": "mudanças sobre Lei 9.478/1997",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Ato localizado; alcance temporal setorial não exaurido",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-lei15348",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2026/lei-15348-13-fevereiro-2026-798716-publicacaooriginal-178121-pl.html",
+      "locator": "alterações em Lei 9.478/1997; GLP e cozimento limpo",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Mudança identificada, sem auditoria integral de dispositivos",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-saneamento",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2007/lei-11445-5-janeiro-2007-549031-normaatualizada-pl.html",
+      "locator": "arts. 3º, 8º–11, 11-B, 50",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Regra geral de titularidade e metas 99%/90% até 2033, ressalvadas hipóteses legais",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-marco",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14026.htm",
+      "locator": "alteração do marco de saneamento da Lei 11.445/2007",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Reforma e efeitos, jurisprudência e transições não exauridos",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-ana",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9984.htm",
+      "locator": "arts. 3º e 4º-A",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Regulação de referência da ANA no saneamento",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-adi1842",
+      "url": "https://portal.stf.jus.br/jurisprudencia/obterInteiroTeor.asp?classe=ADI&numero=1842",
+      "locator": "ADI 1842/RJ, titularidade e governança integrada",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Ratio sobre titularidade compartilhada, modulação e todos dispositivos não inventariados",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-adis6492",
+      "url": "https://www.stf.jus.br/arquivo/informativo/documento/informativo1040.htm",
+      "locator": "ADIs 6492, 6536, 6583 e 6882/DF, Plenário, 02/12/2021",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Constitucionalidade do marco de saneamento no recorte de julgamento",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-adpfs747",
+      "url": "https://portal.stf.jus.br/noticias/verNoticiaDetalhe.asp?idConteudo=478437&tip=UN",
+      "locator": "ADPFs 747, 748 e 749; Resoluções CONAMA",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Resultado central, não exauridos desdobramentos recentes",
+      "revision": "1"
+    },
+    {
+      "id": "amb06-adpf708",
+      "url": "https://portal.stf.jus.br/processos/listarProcessos.asp?classe=ADPF&numeroProcesso=708",
+      "locator": "ADPF 708, Fundo Clima",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Recorte do dever de política climática, processo e efeitos atuais a reconferir",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb-06-caso",
+      "type": "aplicar",
+      "sectionId": "amb-06-s12",
+      "title": "Caso AGU — programa integrado de energia e saneamento",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb-06-s12",
+          "start": "### 9.1. Premissas",
+          "end": "### 9.2. Parecer"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb-06-s12",
+          "start": "### 9.2. Parecer"
+        }
+      ]
+    },
+    {
+      "id": "amb-06-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb-06-s15",
+      "title": "Recuperação ativa após a leitura",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb-06-s15",
+          "start": "**Não responda",
+          "end": "### Guia de respostas"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb-06-s15",
+          "start": "### Guia de respostas"
+        }
+      ]
+    }
+  ],
+  "propositions": [
+    {
+      "id": "amb06-livro-flc-001",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-pnma"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-01",
+      "front": "Qual distinção entre PNMA e SISNAMA?",
+      "back": "PNMA = fins, princípios legais e instrumentos; SISNAMA = rede de órgãos que implementam a política.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-002",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-pnma"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-02",
+      "front": "Qual o papel jurídico do CONAMA?",
+      "back": "Órgão consultivo/deliberativo do SISNAMA; pode detalhar padrões e critérios em competência legal, sem revogar leis.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-003",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-lc140"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-03",
+      "front": "Licença ambiental e fiscalização ambiental são idênticas?",
+      "back": "Não. A licença principal observa atribuição específica; medidas fiscalizatórias protetivas subsistem conforme a LC 140.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-004",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-lei15512"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-04",
+      "front": "A PNMA atualizada em 2026 acrescentou qual princípio ao art. 2º?",
+      "back": "Acesso prioritário de crianças e adolescentes à natureza, por Lei 15.512/2026.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-005",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-petroleo",
+        "amb06-lc140"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-05",
+      "front": "CNPE, ANP e órgão licenciador realizam a mesma decisão?",
+      "back": "Não. CNPE formula diretrizes; ANP regula setores de petróleo/gás/biocombustíveis; órgão ambiental competente avalia licença.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-006",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-saneamento"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-06",
+      "front": "Água e esgoto: quais as metas contratuais gerais até 2033?",
+      "back": "99% de atendimento com água potável e 90% com coleta/tratamento de esgoto, conforme art. 11-B e suas condições.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-007",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-saneamento",
+        "amb06-adi1842"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-07",
+      "front": "Saneamento de interesse comum em região metropolitana é titularidade exclusiva do Estado?",
+      "back": "Não. Exige governança compartilhada com municípios participantes, sem imposição unilateral.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-008",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-ana"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-08",
+      "front": "Qual relação da ANA com o regulador infranacional?",
+      "back": "ANA edita normas de referência nacionais; a entidade reguladora infranacional exerce regulação/fiscalização concretas nos limites legais.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-009",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-saneamento"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-09",
+      "front": "Financiamento federal transfere a titularidade do saneamento?",
+      "back": "Não. É recurso sujeito a critérios, mas a titularidade segue repartição constitucional/legal.",
+      "version": "1.0"
+    },
+    {
+      "id": "amb06-livro-flc-010",
+      "sectionId": "amb-06-s15",
+      "activityId": "amb-06-recuperacao",
+      "sourceRefs": [
+        "amb06-petroleo",
+        "amb06-lc140"
+      ],
+      "category": "Direito Ambiental",
+      "cognitiveType": "recuperacao_aplicada",
+      "semanticKey": "amb06-original-10",
+      "front": "A ANP autoriza empreendimento: licença ambiental dispensada?",
+      "back": "Não automaticamente. Outorgas e licenciamento examinam objetos diferentes; eventual dispensa exige base legal específica.",
+      "version": "1.0"
+    }
+  ],
+  "visualDifferences": [
+    "Fonte original preservada integralmente nas 16 seções salvo retirada de referências internas de auditoria e identificação da edição pública; o original possui SHA-256 f1dcb7d783f32b107118982c17341ca2d01d8fa9e8688eb77f38847e2d735d17.",
+    "Os três esquemas Mermaid permanecem fontes editáveis e não são renderizados automaticamente pelo leitor; PDF original não é réplica visual do JSON e não foi incorporado ao Pages."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "inputSha256": "912eaac70b7e90b502e9c649e9789d488731c7485480d7d42954d66fe144c923",
+    "record": "Publicação autorizada pelo usuário em 26/11/2026; revisão jurídica pontual independente por cotejo de fontes oficiais de PNMA, Lei 9.478, Lei 11.445, ADI 1842, ADIs 6492/6536/6583/6882 e ADPFs 747/748/749. Deliberação editorial circunscrita à edição pública 1.1 AMB-06, com lacunas expressas e flashcards somente candidatos. Não atesta auditoria integral nem domínio."
+  }
+}
