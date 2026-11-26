@@ -1,0 +1,40 @@
+{
+  "schema": "agu-book-publication-report-v1",
+  "editorialId": "LIVRO-AMB-006",
+  "chapterId": "amb-08",
+  "curricularId": "AMB-08",
+  "editionOriginal": "1.0",
+  "editionPublic": "1.1",
+  "sourceFileOriginal": "LIVRO-AMB-006_AMB-08_LEITURA_COMPLETA.md",
+  "originalSha256": "bdffa0fdf1950362239d66a71b2f2e1f5fdcff0e6129070ecd6475031d750e09",
+  "publicMarkdownSha256": "15a1b5a1e82b4c4a0c3711e0261e3caab0e8f97bc413142f980175aa61a74256",
+  "approvedInputSha256": "d668885f6b806c9d167b5333e718d92c5a3befe4ead803e18bbe4774863c86e8",
+  "publishedAt": null,
+  "sourceDate": "2026-11-22",
+  "publicRevisionDate": "2026-11-26",
+  "status": "aprovado_editorialmente_aguardando_ci_e_pages",
+  "scope": "Revisão jurídica pontual e sanitização, sem certificação integral ou aprendizagem demonstrada",
+  "edits": [
+    "Front matter convertido para contrato editorial JSON e seções marcadas sem excluir prosa",
+    "Identificadores/URLs de auditoria privada eliminados da edição pública",
+    "Data/edição pública explicitadas; verificações pontuais de SisGen 3.0 e Decreto 13.014/2026",
+    "Colisão de IDs editoriais registrada; slot AMB-07 não alterado"
+  ],
+  "notPublishedAssets": [
+    "PDF original",
+    "Diagramas Mermaid editáveis"
+  ],
+  "reviewedReferences": [
+    "Lei 13.123/2015",
+    "Decreto 13.014/2026",
+    "Resolução CGen 53/2026 e informações públicas MMA sobre SisGen 3.0"
+  ],
+  "gaps": [
+    "Retificacoes integrais do edital ainda nao inventariadas",
+    "Jurisprudencia STF/STJ especifica de ABS e CTA sem inventario exaustivo",
+    "Atos CGen e sequencia de vigencia nao reconstituidos exaustivamente",
+    "SisGen 3.0 ainda em ambientacao e sujeito a atualizacoes operacionais",
+    "PDF da edicao de origem e diagramas Mermaid nao servidos como assets de navegador",
+    "Questoes oficiais nao importadas e dominio nao aferido"
+  ]
+}

@@ -2,7 +2,7 @@
   "schema": "agu-collection-v1",
   "id": "ambiental",
   "title": "Direito Ambiental",
-  "planningNote": "Plano original de nove obras preservado; o manuscrito de nome LIVRO-AMB-008 (AMB-11) foi adicionado como décima entrada pública, sem renomear a reserva homônima AMB-09/10 ou declarar que tais temas foram produzidos. Publicação do manuscrito real LIVRO-AMB-004/AMB-06 desambiguada como LIVRO-AMB-004-AMB06; preservados slots históricos LIVRO-AMB-004 (AMB-01/02) e LIVRO-AMB-005 (AMB-06).",
+  "planningNote": "Plano original de nove obras preservado; o manuscrito de nome LIVRO-AMB-008 (AMB-11) foi adicionado como décima entrada pública, sem renomear a reserva homônima AMB-09/10 ou declarar que tais temas foram produzidos. Publicação do manuscrito real LIVRO-AMB-004/AMB-06 desambiguada como LIVRO-AMB-004-AMB06; preservados slots históricos LIVRO-AMB-004 (AMB-01/02) e LIVRO-AMB-005 (AMB-06). A publicação LIVRO-AMB-006 com ID curricular AMB-08 utiliza o slot original LIVRO-AMB-007; reserva de AMB-07 e capítulo publicado AMB-06 preservados.",
   "program": {
     "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
     "locator": "17.2.1, Direito Ambiental, página impressa 42",
@@ -193,8 +193,8 @@
     },
     {
       "editorialId": "LIVRO-AMB-007",
-      "chapterId": null,
-      "title": "Biodiversidade e conhecimento tradicional",
+      "chapterId": "amb-08",
+      "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
       "order": 7,
       "curricular": [
         {
@@ -211,13 +211,20 @@
       ],
       "connections": [],
       "status": {
-        "production": "planejado",
-        "review": "pendente",
-        "publication": "nao_publicado"
+        "production": "produzido",
+        "review": "aprovado_para_publicacao_escopo_delimitado",
+        "publication": "publicado"
       },
-      "edition": null,
-      "evidence": "Proposta organizacional de MÉTODO-AGU-001; não é capítulo produzido",
-      "resources": null
+      "edition": "1.1",
+      "evidence": "Manuscrito recuperado por SHA-256 original bdffa0fdf1950362239d66a71b2f2e1f5fdcff0e6129070ecd6475031d750e09; versão pública com privacidade revista e hash 15a1b5a1e82b4c4a0c3711e0261e3caab0e8f97bc413142f980175aa61a74256",
+      "resources": "livros/metodo/amb-08.json",
+      "publishedRecord": "LIVRO-AMB-006 (AMB-08; edição pública 1.1)",
+      "preexistingIdCollision": {
+        "status": "preservado_sem_renomeacao",
+        "conflict": "Manifesto reservava LIVRO-AMB-006 a AMB-07 e LIVRO-AMB-007 a AMB-08; o manuscrito original recebido identifica LIVRO-AMB-006 como AMB-08",
+        "publishedEditorialId": "LIVRO-AMB-006",
+        "curricularId": "AMB-08"
+      }
     },
     {
       "editorialId": "LIVRO-AMB-008",

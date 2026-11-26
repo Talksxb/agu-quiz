@@ -1,0 +1,323 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "amb-08",
+  "editorialId": "LIVRO-AMB-006",
+  "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+  "discipline": {
+    "id": "AMB",
+    "name": "Direito Ambiental"
+  },
+  "edition": "1.1",
+  "metadataVersion": "1.0",
+  "canonical": "livros/fontes/amb-08.md",
+  "readerPath": "livros/amb-08.json",
+  "reader": {
+    "id": "amb-08",
+    "category": "Direito Ambiental",
+    "curricular_id": "AMB-08",
+    "title": "Biodiversidade, Acesso e Conhecimento Tradicional",
+    "edition": "LIVRO-AMB-006 · edição pública 1.1 · 26/11/2026 (original de 22/11/2026)",
+    "source": "LIVRO-AMB-006_AMB-08_LEITURA_COMPLETA.md, original SHA-256 bdffa0fdf1950362239d66a71b2f2e1f5fdcff0e6129070ecd6475031d750e09",
+    "source_format": "markdown",
+    "verification": "Conferência jurídico-editorial pontual, não certificação curricular ou domínio",
+    "transcription_note": "Edição pública derivada do original 1.0: removidos identificadores/links privados e adicionado aparato editorial; livro permanece integral, questões autorais não são oficiais; diagramas e PDF não importados no leitor desta edição."
+  },
+  "curricularIds": [
+    "AMB-08"
+  ],
+  "dates": {
+    "edition": "2026-11-26",
+    "legalConsultation": "Conferências pontuais 2026-11-26 (Decreto 13.014/2026 e SisGen 3.0); demais fontes declaradas na obra em 2026-11-22",
+    "auditCutoff": "2026-11-04",
+    "migration": "2026-11-26"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Retificacoes integrais do edital ainda nao inventariadas",
+      "Jurisprudencia STF/STJ especifica de ABS e CTA sem inventario exaustivo",
+      "Atos CGen e sequencia de vigencia nao reconstituidos exaustivamente",
+      "SisGen 3.0 ainda em ambientacao e sujeito a atualizacoes operacionais",
+      "PDF da edicao de origem e diagramas Mermaid nao servidos como assets de navegador",
+      "Questoes oficiais nao importadas e dominio nao aferido"
+    ]
+  },
+  "sections": [
+    {
+      "id": "amb08-s00",
+      "marker": "00",
+      "title": "Abertura e problema gerador"
+    },
+    {
+      "id": "amb08-s01",
+      "marker": "01",
+      "title": "1. Mapa do edital e percurso de leitura"
+    },
+    {
+      "id": "amb08-s02",
+      "marker": "02",
+      "title": "2. O que a biodiversidade protege: uma arquitetura em três escalas"
+    },
+    {
+      "id": "amb08-s03",
+      "marker": "03",
+      "title": "3. Conservação in situ, ex situ e uso sustentável"
+    },
+    {
+      "id": "amb08-s04",
+      "marker": "04",
+      "title": "4. Os quatro objetos jurídicos que mais se confundem"
+    },
+    {
+      "id": "amb08-s05",
+      "marker": "05",
+      "title": "5. A arquitetura internacional: CDB, Nagoia e instrumentos especiais"
+    },
+    {
+      "id": "amb08-s06",
+      "marker": "06",
+      "title": "6. Política Nacional da Biodiversidade e políticas brasileiras associadas"
+    },
+    {
+      "id": "amb08-s07",
+      "marker": "07",
+      "title": "7. Lei 13.123/2015: natureza, incidência, exclusões e mudança histórica"
+    },
+    {
+      "id": "amb08-s08",
+      "marker": "08",
+      "title": "8. Conhecimento tradicional associado: natureza coletiva e consentimento"
+    },
+    {
+      "id": "amb08-s09",
+      "marker": "09",
+      "title": "9. Acesso, remessa, envio, pesquisa e desenvolvimento tecnológico"
+    },
+    {
+      "id": "amb08-s10",
+      "marker": "10",
+      "title": "10. Produto acabado, material reprodutivo e repartição de benefícios"
+    },
+    {
+      "id": "amb08-s11",
+      "marker": "11",
+      "title": "11. Regularização, CGen, SisGen, fiscalização e sanções"
+    },
+    {
+      "id": "amb08-s12",
+      "marker": "12",
+      "title": "12. Controvérsias: ciência, mercado, soberania e justiça distributiva"
+    },
+    {
+      "id": "amb08-s13",
+      "marker": "13",
+      "title": "13. Jurisprudência do STF e do STJ: o que foi efetivamente verificado"
+    },
+    {
+      "id": "amb08-s14",
+      "marker": "14",
+      "title": "14. Caso AGU integralmente resolvido — pesquisa financiada pela União e produto comercial"
+    },
+    {
+      "id": "amb08-s15",
+      "marker": "15",
+      "title": "15. Quadro final de relações e contraexemplos de prova"
+    },
+    {
+      "id": "amb08-s16",
+      "marker": "16",
+      "title": "16. Síntese de consolidação"
+    },
+    {
+      "id": "amb08-s17",
+      "marker": "17",
+      "title": "17. Questões autorais de treino — não são questões oficiais"
+    },
+    {
+      "id": "amb08-s18",
+      "marker": "18",
+      "title": "18. Recuperação ativa — para outra sessão, sem interrupção da leitura"
+    },
+    {
+      "id": "amb08-s19",
+      "marker": "19",
+      "title": "19. Fontes oficiais, atualização jurídica e rastreabilidade"
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "AMB-08",
+      "subitem": "Biodiversidade. Principais instrumentos de proteção internacional. Acesso. Política nacional. Proteção jurídica do conhecimento tradicional associado.",
+      "sections": [
+        "amb08-s00",
+        "amb08-s01",
+        "amb08-s02",
+        "amb08-s03",
+        "amb08-s04",
+        "amb08-s05",
+        "amb08-s06",
+        "amb08-s07",
+        "amb08-s08",
+        "amb08-s09",
+        "amb08-s10",
+        "amb08-s11",
+        "amb08-s12",
+        "amb08-s13",
+        "amb08-s14",
+        "amb08-s15",
+        "amb08-s16",
+        "amb08-s17",
+        "amb08-s18",
+        "amb08-s19"
+      ],
+      "status": "delimitado"
+    }
+  ],
+  "sources": [
+    {
+      "id": "edital-agu",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "Edital 1/2022, item 17.2.1, Direito Ambiental n. 8, pagina 42",
+      "consultedAt": "2026-11-22",
+      "status": "confirmado_pontualmente",
+      "scope": "Transcricao literal registrada pela edicao original; inventario de retificacoes nao exaustivo",
+      "revision": "1"
+    },
+    {
+      "id": "lei-biodiversidade",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13123.htm",
+      "locator": "Lei 13.123/2015, arts. 2, 8-12, 17-25, 37-43",
+      "consultedAt": "2026-11-26",
+      "status": "parcial",
+      "scope": "Regime central identificado; cadeia de alteracoes e atos CGen nao exauridos",
+      "revision": "1"
+    },
+    {
+      "id": "decreto-8772",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/2016/decreto-8772-11-maio-2016-783077-normaatualizada-pe.html",
+      "locator": "Decreto 8.772/2016, especialmente arts. 12, 17, 22 e 22-B a 22-E",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Regulamento examinado pela edicao original e ajustado pelo Decreto 13.014/2026",
+      "revision": "1"
+    },
+    {
+      "id": "decreto-13014",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/d13014.htm",
+      "locator": "Decreto 13.014/2026, art. 1 e disciplina dos arts. 22-B a 22-E",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Termo de associacao cadastral sem colaboracao cientifica e APBio; verificacao pontual",
+      "revision": "1"
+    },
+    {
+      "id": "cdb",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/1998/decreto-2519-16-marco-1998-437336-publicacaooriginal-1-pe.html",
+      "locator": "Decreto 2.519/1998, anexo CDB arts. 1, 2, 8, 9, 10, 15",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Tratado incorporado; aplicacao e status internacional pormenorizados fora do recorte",
+      "revision": "1"
+    },
+    {
+      "id": "nagoya",
+      "url": "https://www2.camara.leg.br/legin/fed/decret/2023/decreto-11865-27-dezembro-2023-795174-publicacaooriginal-170656-pe.html",
+      "locator": "Decreto 11.865/2023, anexo Protocolo de Nagoya e declaracoes brasileiras",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Vigencia e declaracoes da edicao original, com reserva de revalidacao por Estado",
+      "revision": "1"
+    },
+    {
+      "id": "pnb",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto/2002/d4339.htm",
+      "locator": "Decreto 4.339/2002, anexo Politica Nacional da Biodiversidade",
+      "consultedAt": "2026-11-22",
+      "status": "parcial",
+      "scope": "Diretrizes e componentes da politica nacional; atos posteriores nao inventariados",
+      "revision": "1"
+    },
+    {
+      "id": "sisgen3",
+      "url": "https://www.gov.br/mma/pt-br/assuntos/bioeconomia/patrimonio-genetico/sisgen-2/sisgen-3.0",
+      "locator": "MMA, pagina SisGen 3.0 e Resolucao CGen 53/2026",
+      "consultedAt": "2026-11-26",
+      "status": "confirmado_pontualmente",
+      "scope": "Ambientacao de software nao significa disponibilizacao oficial para efeitos de prazo",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "amb08-caso-agu",
+      "type": "aplicar",
+      "sectionId": "amb08-s14",
+      "title": "Caso AGU — hipotese e fundamentacao",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb08-s14",
+          "start": "### 14.1.",
+          "end": "### 14.3."
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb08-s14",
+          "start": "### 14.3."
+        }
+      ]
+    },
+    {
+      "id": "amb08-questoes",
+      "type": "recuperar",
+      "sectionId": "amb08-s17",
+      "title": "Questoes autorais comentadas",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb08-s17",
+          "start": "### Enunciados",
+          "end": "### Gabarito"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb08-s17",
+          "start": "### Gabarito"
+        }
+      ]
+    },
+    {
+      "id": "amb08-recuperacao",
+      "type": "recuperar",
+      "sectionId": "amb08-s18",
+      "title": "Recuperacao ativa independente",
+      "nature": "autoral",
+      "prompt": [
+        {
+          "sectionId": "amb08-s18",
+          "start": "## 18.",
+          "end": "### Respostas orientadoras"
+        }
+      ],
+      "answer": [
+        {
+          "sectionId": "amb08-s18",
+          "start": "### Respostas orientadoras"
+        }
+      ]
+    }
+  ],
+  "propositions": [],
+  "visualDifferences": [
+    "Edição publica preserva a prosa e separa as secoes por marcadores estáveis. Alterações textuais de privacidade e metadados documentadas em relatorio.",
+    "As tabelas Markdown permanecem textuais; PDF original e diagramas editaveis não foram convertidos para ativos SVG nesta publicação."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "record": "Revisao editorial assistida e delimitada em 26/11/2026: integridade textual conferida por fonte SHA-256; termos juridicos decisivos confrontados pontualmente (Lei 13.123, Decreto 13.014, SisGen 3.0); links privados suprimidos; sem certificacao ampla nem aprovacao humana externa simulada. Integracao sujeita a CI do HEAD e validacao publica posterior.",
+    "inputSha256": "d668885f6b806c9d167b5333e718d92c5a3befe4ead803e18bbe4774863c86e8"
+  }
+}

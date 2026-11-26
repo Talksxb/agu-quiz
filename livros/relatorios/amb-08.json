@@ -1,0 +1,114 @@
+{
+  "id": "amb-08",
+  "edition": "1.1",
+  "sourceSha256": "15a1b5a1e82b4c4a0c3711e0261e3caab0e8f97bc413142f980175aa61a74256",
+  "inputSha256": "d668885f6b806c9d167b5333e718d92c5a3befe4ead803e18bbe4774863c86e8",
+  "sections": [
+    {
+      "id": "amb08-s00",
+      "sha256": "be49fa738de1c391fd4b17ce7248eed974ebc0e39d6b2a78028a502e4272f5c1",
+      "characters": 2349
+    },
+    {
+      "id": "amb08-s01",
+      "sha256": "5aaceab82f51f0c9377b26b17083f33605f4177532f5ddb0236256f2b3db8f0d",
+      "characters": 1179
+    },
+    {
+      "id": "amb08-s02",
+      "sha256": "131a42d4fb8e4de5698c5e267c3ab2e5fa9e0ff53530b334a1c6a072b3840db0",
+      "characters": 3610
+    },
+    {
+      "id": "amb08-s03",
+      "sha256": "85697d55b828d826cba0bb6ba3e89728b5439890348b096769bbc57e8b02645e",
+      "characters": 2460
+    },
+    {
+      "id": "amb08-s04",
+      "sha256": "c0e9e29c6291ebb909af56423df53d2c6a981542bfd2047331b45bb551e28791",
+      "characters": 3419
+    },
+    {
+      "id": "amb08-s05",
+      "sha256": "8d800d02b04bceb3782e54b23d8b8442033e47725b090085ebdf3263829a5d1e",
+      "characters": 6105
+    },
+    {
+      "id": "amb08-s06",
+      "sha256": "8c96e8e7e3666a1219ebf930a1b41bb30971da75a90fc38102e256e50f5b0a49",
+      "characters": 2976
+    },
+    {
+      "id": "amb08-s07",
+      "sha256": "8eec81e89119730ed4827f5f85ab4a35be120db9a702db22d8f5e1debb3e2027",
+      "characters": 2932
+    },
+    {
+      "id": "amb08-s08",
+      "sha256": "e23f0b51b9aa300f3bee373374806a99ac45d5b782b8f967b92c888dfdfaf486",
+      "characters": 6459
+    },
+    {
+      "id": "amb08-s09",
+      "sha256": "f704282aabfdf81c9e313e4851cd6cb37d2fad2284944a0c0c304ad48c37c4db",
+      "characters": 9414
+    },
+    {
+      "id": "amb08-s10",
+      "sha256": "139dafe1ea232395b95ff8468da95f1aa532b1dd336ec2f9943a0e0bad2a7f25",
+      "characters": 8282
+    },
+    {
+      "id": "amb08-s11",
+      "sha256": "4fa4227290896aaba0ca754846d6da4af8eacbe3f377b8274d514bb6ab69f425",
+      "characters": 4723
+    },
+    {
+      "id": "amb08-s12",
+      "sha256": "9d7cc23761fc9e26f5df996ab3767747764ba08ec0102898b809c51479cab869",
+      "characters": 5496
+    },
+    {
+      "id": "amb08-s13",
+      "sha256": "75b76d7eb7fef9de0f3916624fabf6e33bc5fc34cf7f51e1e7471b7a170a2437",
+      "characters": 5109
+    },
+    {
+      "id": "amb08-s14",
+      "sha256": "a43e0a13640364c032c087fc5a2b43540628740861fc70dbd654ccb0aaa1e63f",
+      "characters": 11453
+    },
+    {
+      "id": "amb08-s15",
+      "sha256": "e663de0035a12c84f16d74accad2341ca0362614b5afa87956f7c7454f10b462",
+      "characters": 1752
+    },
+    {
+      "id": "amb08-s16",
+      "sha256": "f8e9f96a6eeead858371584232ba6d1ebd295c524d716d252b0f735cc1cf87c4",
+      "characters": 1501
+    },
+    {
+      "id": "amb08-s17",
+      "sha256": "eb9f8e911ff55e5140ede595962e0fcdfd5520e5b643f30725a05bfca48ca3e7",
+      "characters": 6398
+    },
+    {
+      "id": "amb08-s18",
+      "sha256": "ffde5664ff26f8d6e8a0ccb8b71bd26ace9f04c432952dfce1feaf66840f0a2f",
+      "characters": 4537
+    },
+    {
+      "id": "amb08-s19",
+      "sha256": "13ab1ecea13d59931af697189616d808953c741756ec1a8a3a5f9733f9e32a39",
+      "characters": 8006
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Edição publica preserva a prosa e separa as secoes por marcadores estáveis. Alterações textuais de privacidade e metadados documentadas em relatorio.",
+    "As tabelas Markdown permanecem textuais; PDF original e diagramas editaveis não foram convertidos para ativos SVG nesta publicação."
+  ],
+  "resources": []
+}

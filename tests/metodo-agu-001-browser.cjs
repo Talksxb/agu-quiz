@@ -35,6 +35,25 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   // Mesma carta, mesma agenda: avaliar uma vez e observar em outro capítulo.
   await page.getByRole('button',{name:'Revisar',exact:true}).click();await page.locator('[data-card-id="aud03-flc-013"]').click();await page.locator('[onclick^="AGUReview.reveal("]').click();assert.equal(await page.evaluate(k=>localStorage.getItem(k),REVIEW),seedReview);await page.locator('button[onclick^="AGUReview.rate(\'lembrei\'"]').click();const rated=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),REVIEW);assert.equal(rated.attempts.length,1);assert.equal(rated.cards['aud03-flc-013'].seen,1);assert.deepEqual(rated.cards['ri-adm-01'],JSON.parse(seedReview).cards['ri-adm-01']);
   await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();await page.locator('[data-book="amb-03"]').click();await page.locator('#method-tabs').waitFor();await page.getByRole('button',{name:'Revisar',exact:true}).click();assert.match(await page.locator('#review-list').innerText(),/1 avaliação/);assert.equal(await page.evaluate(()=>localStorage.getItem('agu_dado_legado_fixture')),'preservar');
+  // PUB-LIVROS AMB-08: conferir acesso direto, integridade, atividade e ausencia de cartoes aprovados.
+  await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
+  assert.equal(await page.locator('[data-book="amb-08"]').count(),1,'AMB-08 deve aparecer uma vez no catalogo');
+  await page.locator('[data-book="amb-08"]').click();
+  await page.locator('#method-tabs').waitFor();const biodiversity=JSON.parse(fs.readFileSync(path.join(ROOT,'livros/amb-08.json')));
+  await page.waitForFunction(n=>document.querySelectorAll('[data-source-section]').length===n,biodiversity.pages.length);
+  assert.equal(biodiversity.pages.length,20);assert.equal(await page.locator('#book').getAttribute('data-chapter-id'),'amb-08');
+  assert.match(await page.locator('#book-status').innerText(),/edição pública 1\.1/);
+  const beforeNew=await page.evaluate(k=>localStorage.getItem(k),REVIEW);
+  await scan('amb-08 estudar');await page.getByRole('button',{name:'Aplicar',exact:true}).click();
+  assert.equal(await page.locator('.method-answer:visible').count(),0);await scan('amb-08 aplicar');
+  await page.getByRole('button',{name:'Recuperar',exact:true}).click();await page.getByRole('button',{name:'Conferir respostas',exact:true}).first().click();
+  assert.ok((await page.locator('.method-answer').first().innerText()).length>100);await scan('amb-08 recuperar');
+  await page.getByRole('button',{name:'Revisar',exact:true}).click();
+  assert.match(await page.locator('#review-list').innerText(),/Ainda não há cartões aprovados/);
+  assert.equal(await page.evaluate(k=>localStorage.getItem(k),REVIEW),beforeNew,'AMB-08 nao cria dominio por abertura');
+  await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
+  await page.goto(new URL('livros-agu.html?livro=amb-08',base).href);await page.waitForFunction(()=>document.querySelector('#book')?.dataset.chapterId==='amb-08');
+  assert.equal(new URL(page.url()).searchParams.get('livro'),'amb-08');await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
   assert.deepEqual(errors,[]);await page.screenshot({path:path.join(OUT,'metodo-'+width+'.png')});results.push({width,chapters:4,scans,legacyCards:51,ratings:1,physicalAndroid:false});await context.close();
  }
  // JSON inválido e quota sintética preservam os bytes anteriores.
