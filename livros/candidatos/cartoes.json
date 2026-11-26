@@ -130,6 +130,436 @@
       },
       "duplicateOf": null,
       "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-001",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Qual distinção entre PNMA e SISNAMA?",
+      "back": "PNMA = fins, princípios legais e instrumentos; SISNAMA = rede de órgãos que implementam a política.",
+      "sources": [
+        {
+          "id": "amb06-pnma",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/1980-1987/lei-6938-31-agosto-1981-366135-normaatualizada-pl.html",
+          "locator": "arts. 2º, 3º, 4º, 6º, 8º, 9º, 10",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "SISNAMA e instrumentos; confirmada alteração do art. 2º, XI, em fonte atualizada",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-01",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-pnma": "7b9b1cd72ac6e4a927003a26b6a951b1d59c83fe87a0c7125151401212c25337"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-002",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Qual o papel jurídico do CONAMA?",
+      "back": "Órgão consultivo/deliberativo do SISNAMA; pode detalhar padrões e critérios em competência legal, sem revogar leis.",
+      "sources": [
+        {
+          "id": "amb06-pnma",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/1980-1987/lei-6938-31-agosto-1981-366135-normaatualizada-pl.html",
+          "locator": "arts. 2º, 3º, 4º, 6º, 8º, 9º, 10",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "SISNAMA e instrumentos; confirmada alteração do art. 2º, XI, em fonte atualizada",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-02",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-pnma": "7b9b1cd72ac6e4a927003a26b6a951b1d59c83fe87a0c7125151401212c25337"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-003",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Licença ambiental e fiscalização ambiental são idênticas?",
+      "back": "Não. A licença principal observa atribuição específica; medidas fiscalizatórias protetivas subsistem conforme a LC 140.",
+      "sources": [
+        {
+          "id": "amb06-lc140",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+          "locator": "arts. 7º–9º, 13 e 17",
+          "consultedAt": "2026-11-22",
+          "status": "parcial",
+          "scope": "Repartição do licenciamento e fiscalização; cotejo de cada situação concreta não exaurido",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-03",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-lc140": "8c6c9166430e1f78f9a939077dc38c8b9441fa620410782d09481158b6ca32d6"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-004",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "A PNMA atualizada em 2026 acrescentou qual princípio ao art. 2º?",
+      "back": "Acesso prioritário de crianças e adolescentes à natureza, por Lei 15.512/2026.",
+      "sources": [
+        {
+          "id": "amb06-lei15512",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/2026/lei-15512-22-setembro-2026-800007-publicacaooriginal-181452-pl.html",
+          "locator": "alteração do art. 2º da Lei 6.938/1981",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "Acréscimo de princípio da PNMA em 2026",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-04",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-lei15512": "b935db83cfdc62dfa65ce0d918e43e742609ddc3728e214ff35b7c19df4fbaad"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-005",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "CNPE, ANP e órgão licenciador realizam a mesma decisão?",
+      "back": "Não. CNPE formula diretrizes; ANP regula setores de petróleo/gás/biocombustíveis; órgão ambiental competente avalia licença.",
+      "sources": [
+        {
+          "id": "amb06-petroleo",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/1997/lei-9478-6-agosto-1997-365401-normaatualizada-pl.html",
+          "locator": "arts. 1º, 2º, 8º; alterações setoriais em 2025–2026",
+          "consultedAt": "2026-11-26",
+          "status": "parcial",
+          "scope": "Política energética e ANP; cadeia completa de alterações não reconstruída",
+          "revision": "1"
+        },
+        {
+          "id": "amb06-lc140",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+          "locator": "arts. 7º–9º, 13 e 17",
+          "consultedAt": "2026-11-22",
+          "status": "parcial",
+          "scope": "Repartição do licenciamento e fiscalização; cotejo de cada situação concreta não exaurido",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-05",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-petroleo": "5dd82a78173d5023146a44c7a73a09669be93cdfcaafcab5483f3c5dee4ad782",
+          "amb06-lc140": "8c6c9166430e1f78f9a939077dc38c8b9441fa620410782d09481158b6ca32d6"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-006",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Água e esgoto: quais as metas contratuais gerais até 2033?",
+      "back": "99% de atendimento com água potável e 90% com coleta/tratamento de esgoto, conforme art. 11-B e suas condições.",
+      "sources": [
+        {
+          "id": "amb06-saneamento",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/2007/lei-11445-5-janeiro-2007-549031-normaatualizada-pl.html",
+          "locator": "arts. 3º, 8º–11, 11-B, 50",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "Regra geral de titularidade e metas 99%/90% até 2033, ressalvadas hipóteses legais",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-06",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-saneamento": "876104609276dd19dd293391a6391695358e41f02b417259d819beeea1d65ca2"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-007",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Saneamento de interesse comum em região metropolitana é titularidade exclusiva do Estado?",
+      "back": "Não. Exige governança compartilhada com municípios participantes, sem imposição unilateral.",
+      "sources": [
+        {
+          "id": "amb06-saneamento",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/2007/lei-11445-5-janeiro-2007-549031-normaatualizada-pl.html",
+          "locator": "arts. 3º, 8º–11, 11-B, 50",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "Regra geral de titularidade e metas 99%/90% até 2033, ressalvadas hipóteses legais",
+          "revision": "1"
+        },
+        {
+          "id": "amb06-adi1842",
+          "url": "https://portal.stf.jus.br/jurisprudencia/obterInteiroTeor.asp?classe=ADI&numero=1842",
+          "locator": "ADI 1842/RJ, titularidade e governança integrada",
+          "consultedAt": "2026-11-26",
+          "status": "parcial",
+          "scope": "Ratio sobre titularidade compartilhada, modulação e todos dispositivos não inventariados",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-07",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-saneamento": "876104609276dd19dd293391a6391695358e41f02b417259d819beeea1d65ca2",
+          "amb06-adi1842": "fa1ffc85684938fbdecf0556cc3f8cee611df298d13b60efbc5d25d8d20b424e"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-008",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Qual relação da ANA com o regulador infranacional?",
+      "back": "ANA edita normas de referência nacionais; a entidade reguladora infranacional exerce regulação/fiscalização concretas nos limites legais.",
+      "sources": [
+        {
+          "id": "amb06-ana",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9984.htm",
+          "locator": "arts. 3º e 4º-A",
+          "consultedAt": "2026-11-22",
+          "status": "parcial",
+          "scope": "Regulação de referência da ANA no saneamento",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-08",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-ana": "118180b984f94a76225799f0f404c6a7ea79344cbc5b59482c05602aa6272930"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-009",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "Financiamento federal transfere a titularidade do saneamento?",
+      "back": "Não. É recurso sujeito a critérios, mas a titularidade segue repartição constitucional/legal.",
+      "sources": [
+        {
+          "id": "amb06-saneamento",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/2007/lei-11445-5-janeiro-2007-549031-normaatualizada-pl.html",
+          "locator": "arts. 3º, 8º–11, 11-B, 50",
+          "consultedAt": "2026-11-26",
+          "status": "confirmado_pontualmente",
+          "scope": "Regra geral de titularidade e metas 99%/90% até 2033, ressalvadas hipóteses legais",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-09",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-saneamento": "876104609276dd19dd293391a6391695358e41f02b417259d819beeea1d65ca2"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "amb06-livro-flc-010",
+      "chapterId": "amb-06",
+      "sectionId": "amb-06-s15",
+      "curricularIds": [
+        "AMB-06"
+      ],
+      "front": "A ANP autoriza empreendimento: licença ambiental dispensada?",
+      "back": "Não automaticamente. Outorgas e licenciamento examinam objetos diferentes; eventual dispensa exige base legal específica.",
+      "sources": [
+        {
+          "id": "amb06-petroleo",
+          "url": "https://www2.camara.leg.br/legin/fed/lei/1997/lei-9478-6-agosto-1997-365401-normaatualizada-pl.html",
+          "locator": "arts. 1º, 2º, 8º; alterações setoriais em 2025–2026",
+          "consultedAt": "2026-11-26",
+          "status": "parcial",
+          "scope": "Política energética e ANP; cadeia completa de alterações não reconstruída",
+          "revision": "1"
+        },
+        {
+          "id": "amb06-lc140",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+          "locator": "arts. 7º–9º, 13 e 17",
+          "consultedAt": "2026-11-22",
+          "status": "parcial",
+          "scope": "Repartição do licenciamento e fiscalização; cotejo de cada situação concreta não exaurido",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "1.1",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_aplicada",
+      "category": "Direito Ambiental",
+      "semanticKey": "amb06-original-10",
+      "relation": "recuperacao_da_secao",
+      "dependencies": {
+        "sections": {
+          "amb-06-s15": "f7f5154f286f2e7ce194716359dd75b34e82612e268591e31c737230364e341d"
+        },
+        "sources": {
+          "amb06-petroleo": "5dd82a78173d5023146a44c7a73a09669be93cdfcaafcab5483f3c5dee4ad782",
+          "amb06-lc140": "8c6c9166430e1f78f9a939077dc38c8b9441fa620410782d09481158b6ca32d6"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
     }
   ]
 }
