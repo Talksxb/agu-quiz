@@ -13,3 +13,5 @@ O backlog da segunda imagem é tratado em BACKLOG-ADM-001: quatro questões auto
 ## Regressão identificada pela CI
 
 S30 detectou que a ação nova no rodapé vinha antes de “Próximo artigo” na ordem de Tab. A ação foi movida para depois dos dois controles de sequência. O teste antigo foi mantido integralmente; a correção preserva sua navegação esperada, sem remover o novo acesso à lista.
+
+A regressão S31 também exige que o primeiro Tab após o título continue em “Trocar norma”. O novo atalho fica após esse controle, preservando a sequência anterior. S30 e S31 permanecem sem alteração de suas assertivas.

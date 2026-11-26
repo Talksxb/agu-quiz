@@ -457,7 +457,7 @@ const change='<button class="agu-light agu-change-law" type="button" onclick="AG
 legal.page=function(){
  let html=page();if(!html.includes('id="agu-reader"'))return html;
  return html.replace('class="agu-pane agu-index"','id="agu-article-index" class="agu-pane agu-index"')
-  .replace(change,'<div class="agu-article-actions">'+button+change+'</div>')
+  .replace(change,'<div class="agu-article-actions">'+change+button+'</div>')
   .replace('<div><button class="agu-light agu-step-prev"','<div class="agu-article-actions"><button class="agu-light agu-step-prev"')
   .replace('>Próximo artigo →</button></div></section>','>Próximo artigo →</button>'+button+'</div></section>')
   +'<style>#agu-reader .agu-article-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}#agu-reader .agu-article-actions button{min-height:44px;max-width:100%;white-space:normal}#agu-reader .agu-article-list:focus-visible{outline:3px solid #633c69;outline-offset:3px}</style>';
