@@ -152,6 +152,32 @@ window.AGU_METHOD_BOOK_REFERENCES = {
         "amb-11-caso",
         "amb-11-recuperacao"
       ]
+    },
+    "amb-06": {
+      "title": "SISNAMA, PNMA, Política Energética e Saneamento",
+      "edition": "1.1",
+      "sections": [
+        "amb-06-s01",
+        "amb-06-s02",
+        "amb-06-s03",
+        "amb-06-s04",
+        "amb-06-s05",
+        "amb-06-s06",
+        "amb-06-s07",
+        "amb-06-s08",
+        "amb-06-s09",
+        "amb-06-s10",
+        "amb-06-s11",
+        "amb-06-s12",
+        "amb-06-s13",
+        "amb-06-s14",
+        "amb-06-s15",
+        "amb-06-s16"
+      ],
+      "activities": [
+        "amb-06-caso",
+        "amb-06-recuperacao"
+      ]
     }
   }
 };
