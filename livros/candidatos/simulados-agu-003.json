@@ -1,0 +1,202 @@
+{
+  "schema": "agu-simulado-historicos-candidatos-v1",
+  "sprint": "SIMULADOS-AGU-003",
+  "atualizadoEm": "2026-11-23",
+  "recurso": "somente_triagem_publica; nao_consumido_pelo_compilador",
+  "origem": "Caderno oficial e gabarito definitivo Cebraspe 2023; não usar dados do agu-auditoria privado",
+  "regraDePromocao": "apenas apos verificacao_legal_atual_vinculo_de_secao_qualidade_aprovacao_por_hash",
+  "quantidadeCandidatos": 4,
+  "quantidadeAptos": 0,
+  "quantidadeIntegrados": 0,
+  "preservacao": "24 itens autorais edicao 1.1, 51 cartoes historicos e sessoes existentes intocados",
+  "candidatos": [
+    {
+      "concurso": "AGU — Edital nº 1, de 26/12/2022",
+      "cargo": "Advogado da União",
+      "banca": "Cebraspe",
+      "ano": 2023,
+      "aplicacao": "2023-04-30",
+      "fase": "Prova objetiva P1, Grupo I",
+      "caderno": "804_AGU_ADVOGADO_001_01",
+      "formatoOriginal": "múltipla escolha, cinco alternativas",
+      "fonteProva": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 9 (índice 8)"
+      },
+      "fonteGabarito": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 1, gabaritos oficiais definitivos, questões 41–60"
+      },
+      "natureza": "historico",
+      "parafraseAutoral": null,
+      "adaptacaoAutoralAtual": null,
+      "anulada": false,
+      "integradaAoBanco": false,
+      "integradaAosCartoes": false,
+      "aprovacaoEditorial": "nao_aprovado",
+      "deduplicacao": "pendente_de_cotejo_semantico_e_de_hash",
+      "reusoDe51Cartoes": "avaliacao_pendente",
+      "id": "hist-2023-agu-043",
+      "questaoOriginal": 43,
+      "tema": "Omissão fiscalizatória e responsabilidade civil ambiental",
+      "gabaritoDefinitivo": "C",
+      "marcoTemporal": "2023-04-30",
+      "idCurricularProposto": "AMB-05",
+      "vinculoCurricular": "a_confirmar_literally_com_edital",
+      "capituloPublico": null,
+      "secaoPublica": null,
+      "status": "pendente",
+      "impedimentos": [
+        "Capítulo específico de responsabilidade ambiental (AMB-05) não integra o catálogo público aprovado",
+        "Ratio e alcance do precedente do STJ necessário à situação de omissão e ciência do ente municipal não reconferidos para o corte atual"
+      ],
+      "fonteAtualChecada": null
+    },
+    {
+      "concurso": "AGU — Edital nº 1, de 26/12/2022",
+      "cargo": "Advogado da União",
+      "banca": "Cebraspe",
+      "ano": 2023,
+      "aplicacao": "2023-04-30",
+      "fase": "Prova objetiva P1, Grupo I",
+      "caderno": "804_AGU_ADVOGADO_001_01",
+      "formatoOriginal": "múltipla escolha, cinco alternativas",
+      "fonteProva": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 9 (índice 8)"
+      },
+      "fonteGabarito": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 1, gabaritos oficiais definitivos, questões 41–60"
+      },
+      "natureza": "historico",
+      "parafraseAutoral": null,
+      "adaptacaoAutoralAtual": null,
+      "anulada": false,
+      "integradaAoBanco": false,
+      "integradaAosCartoes": false,
+      "aprovacaoEditorial": "nao_aprovado",
+      "deduplicacao": "pendente_de_cotejo_semantico_e_de_hash",
+      "reusoDe51Cartoes": "avaliacao_pendente",
+      "id": "hist-2023-agu-044",
+      "questaoOriginal": 44,
+      "tema": "Desmatamento em APP: sanções administrativas, civis e penais",
+      "gabaritoDefinitivo": "B",
+      "marcoTemporal": "2023-04-30",
+      "idCurricularProposto": "AMB-11",
+      "vinculoCurricular": "a_confirmar_literally_com_edital",
+      "capituloPublico": null,
+      "secaoPublica": null,
+      "status": "pendente",
+      "impedimentos": [
+        "Capítulos públicos sobre crimes ambientais e infrações ambientais não disponíveis na coleção aprovada",
+        "Conferência dos regimes administrativo, civil e penal e alterações posteriores ainda não concluída"
+      ],
+      "fonteAtualChecada": null
+    },
+    {
+      "concurso": "AGU — Edital nº 1, de 26/12/2022",
+      "cargo": "Advogado da União",
+      "banca": "Cebraspe",
+      "ano": 2023,
+      "aplicacao": "2023-04-30",
+      "fase": "Prova objetiva P1, Grupo I",
+      "caderno": "804_AGU_ADVOGADO_001_01",
+      "formatoOriginal": "múltipla escolha, cinco alternativas",
+      "fonteProva": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 9 (índice 8)"
+      },
+      "fonteGabarito": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 1, gabaritos oficiais definitivos, questões 41–60"
+      },
+      "natureza": "historico",
+      "parafraseAutoral": null,
+      "adaptacaoAutoralAtual": null,
+      "anulada": false,
+      "integradaAoBanco": false,
+      "integradaAosCartoes": false,
+      "aprovacaoEditorial": "nao_aprovado",
+      "deduplicacao": "pendente_de_cotejo_semantico_e_de_hash",
+      "reusoDe51Cartoes": "avaliacao_pendente",
+      "id": "hist-2023-agu-045",
+      "questaoOriginal": 45,
+      "tema": "Competência estadual para manejo e supressão em imóveis rurais",
+      "gabaritoDefinitivo": "B",
+      "marcoTemporal": "2023-04-30",
+      "idCurricularProposto": "AMB-03",
+      "vinculoCurricular": "capitulo_publico_id_confirmado; subitem_literal_do_edital_ainda_nao_reconferido",
+      "capituloPublico": "amb-03",
+      "edicaoCapitulo": "1.0",
+      "secaoPublica": "amb-03-s06",
+      "sha256Secao": "35ac1ffcaf4212c6a194fe27d833b606394295414125fec49cd2b17e7b9341dc",
+      "status": "pendente",
+      "impedimentos": [
+        "Seção 06 trata competência estadual residual e art. 13, §2º, mas não enuncia a regra nuclear específica do art. 8º, XVI, b, nem sua ressalva ao art. 7º, XV",
+        "Proibido aprovar adaptação por vínculo meramente temático ou modificar capítulo nesta sprint"
+      ],
+      "fonteAtualChecada": {
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm",
+        "consultadaEm": "2026-11-23",
+        "dispositivo": "art. 8º, XVI, b, com ressalva ao art. 7º, XV; distinguir art. 13, § 2º",
+        "alcance": "conferencia_pontual_do_dispositivo"
+      }
+    },
+    {
+      "concurso": "AGU — Edital nº 1, de 26/12/2022",
+      "cargo": "Advogado da União",
+      "banca": "Cebraspe",
+      "ano": 2023,
+      "aplicacao": "2023-04-30",
+      "fase": "Prova objetiva P1, Grupo I",
+      "caderno": "804_AGU_ADVOGADO_001_01",
+      "formatoOriginal": "múltipla escolha, cinco alternativas",
+      "fonteProva": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 9 (índice 8)"
+      },
+      "fonteGabarito": {
+        "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF",
+        "consultadaEm": "2026-11-23",
+        "localizador": "PDF p. 1, gabaritos oficiais definitivos, questões 41–60"
+      },
+      "natureza": "historico",
+      "parafraseAutoral": null,
+      "adaptacaoAutoralAtual": null,
+      "anulada": false,
+      "integradaAoBanco": false,
+      "integradaAosCartoes": false,
+      "aprovacaoEditorial": "nao_aprovado",
+      "deduplicacao": "pendente_de_cotejo_semantico_e_de_hash",
+      "reusoDe51Cartoes": "avaliacao_pendente",
+      "id": "hist-2023-agu-046",
+      "questaoOriginal": 46,
+      "tema": "Licenciamento, atividades impactantes e EIA constitucional",
+      "gabaritoDefinitivo": "E",
+      "marcoTemporal": "2023-04-30",
+      "idCurricularProposto": "AMB-04/AMB-07",
+      "vinculoCurricular": "a_confirmar_literally_com_edital",
+      "capituloPublico": null,
+      "secaoPublica": null,
+      "status": "pendente",
+      "impedimentos": [
+        "Capítulos específicos de licenciamento e EIA não integram catálogo público aprovado",
+        "Lei 15.190/2025, Lei 15.300/2025 e controvérsias judiciais posteriores exigem cotejo histórico e atual independente",
+        "Não transportar automaticamente o gabarito de 2023 para a legislação de 2026"
+      ],
+      "fonteAtualChecada": {
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15190.htm",
+        "consultadaEm": "2026-11-23",
+        "alcance": "identificacao_de_lei_superveniente; dispositivos_e_efeitos_especificos_pendentes"
+      }
+    }
+  ]
+}
