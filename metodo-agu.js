@@ -60,7 +60,7 @@ async function init(manifest){try{catalog=await getJSON('livros/catalogo.json');
  $('figure-close').addEventListener('click',()=>$('figure-dialog').close());$('figure-dialog').addEventListener('close',()=>zoomTrigger?.focus());$('figure-scale').addEventListener('input',resizeFigure);$('figure-orientation').addEventListener('change',resizeFigure);
  return catalog;
 }
-root.AGUMethod={init,loadBook,decorate,renderCatalog,renderReview,setActivity,resetRendering:()=>{renderedBook=''},sectionId:(index=Number($('page').value))=>current?.sections[index]?.id,indexForSectionId:id=>current?.sections.findIndex(s=>s.id===id)??-1,edition:()=>current?.edition};
+root.AGUMethod={init,loadBook,decorate,renderCatalog,renderReview,setActivity,resetRendering:()=>{renderedBook=''},sectionId:(index=Number($('page').value))=>current?.sections[index]?.id,indexForSectionId:id=>current?.sections.findIndex(s=>s.id===id)??-1,edition:()=>current?.edition,curricularIds:()=>current?.curricularIds??[]};
 // O motor original chama render() ao revelar/avaliar; somente o painel contextual é atualizado.
 root.render=()=>{if(activity==='revisar')renderReview()};
 })(window);

@@ -56,6 +56,30 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   assert.equal(new URL(page.url()).searchParams.get('livro'),'amb-08');await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
   assert.deepEqual(errors,[]);await page.screenshot({path:path.join(OUT,'metodo-'+width+'.png')});results.push({width,chapters:4,scans,legacyCards:51,ratings:1,physicalAndroid:false});await context.close();
  }
+
+ // Multi-ID sintético, injetado somente na resposta do método no teste. Nada no catálogo real é alterado.
+ for(const width of [320,1280]){
+  const context=await browser.newContext({viewport:{width,height:850}}),page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/livros/metodo/adm-53.json',async route=>{const res=await route.fetch();assert.ok(res.ok());const body=await res.json();body.curricularIds=['ADM-53','ADM-54','CON-01','CON-02','CON-03','CON-04'];await route.fulfill({response:res,json:body})});
+  await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);
+  await page.waitForFunction(()=>document.querySelector('#book-category').textContent.includes('CON-04'));
+  assert.match(await page.locator('#book-category').innerText(),/ADM-53, ADM-54, CON-01, CON-02, CON-03, CON-04/);
+  await page.evaluate(k=>{const d=JSON.parse(localStorage.getItem(k)||'{}');d['fixture-externa']={page:1,done:[0],campo:'preservar'};localStorage.setItem(k,JSON.stringify(d))},READER);
+  await page.locator('#page').selectOption('1');
+  await page.waitForFunction(k=>JSON.parse(localStorage.getItem(k)||'{}')['adm-53']?.page===1,READER);
+  await page.reload();await page.waitForFunction(()=>document.querySelector('#book-category').textContent.includes('CON-04'));
+  assert.equal(await page.locator('#page').inputValue(),'1');
+  assert.deepEqual(await page.evaluate(k=>JSON.parse(localStorage.getItem(k))['fixture-externa'],READER),{page:1,done:[0],campo:'preservar'});
+  await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+  const scan=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});
+  assert.deepEqual(scan.violations,[]);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();await page.locator('[data-book="adm-54"]').click();
+  await page.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='adm-54');
+  assert.match(await page.locator('#book-category').innerText(),/ADM-54$/);assert.ok(!(await page.locator('#book-category').innerText()).includes('CON-04'));
+  assert.deepEqual(errors,[]);results.push({multiIdFixture:true,width,scan,persistence:true,switchToSingle:true});await context.close();
+ }
+
  // JSON inválido e quota sintética preservam os bytes anteriores.
  for(const kind of ['invalido','quota']){const context=await browser.newContext(),page=await context.newPage();await page.goto(base);const original=kind==='invalido'?'{invalido':JSON.stringify(seedReader);await page.evaluate(([k,v])=>localStorage.setItem(k,v),[READER,original]);if(kind==='quota')await page.addInitScript(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota fixture','QuotaExceededError');return set.call(this,key,value)}},READER);await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);await page.locator('#method-tabs').waitFor();await page.getByRole('button',{name:'Aplicar',exact:true}).click();await page.locator('textarea[id^="draft-"]').fill('Rascunho sintético');await page.getByRole('button',{name:'Guardar rascunho',exact:true}).click();assert.equal(await page.evaluate(k=>localStorage.getItem(k),READER),original);results.push({storage:kind,preserved:true});await context.close()}
  fs.writeFileSync(path.join(OUT,'resultado.json'),JSON.stringify(results,null,2)+'\n');console.log('METODO_AGU_001_CHROMIUM_OK',JSON.stringify({widths:[320,390,768,1280],chapters:4,scans:results.flatMap(r=>r.scans||[]).length,storageAdversarial:2,androidPhysical:false}));
