@@ -123,7 +123,7 @@ function validateRecord(key,obj){
   if(typeof root.AGUValidateMatrix!=='function')return false;
   try{return root.AGUValidateMatrix(obj)===true}catch(_){return false}
  }
- case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length>0&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)*-\d{2,3}$/.test(v));
+ case 'agu_quiz_mapeamento_questoes_v1':return Object.keys(obj).length<=2500&&Object.entries(obj).every(([k,v])=>typeof k==='string'&&k.length>0&&k.length<=180&&typeof v==='string'&&/^[A-Z]+(?:-[A-Z]+)*-\d{2,3}[a-z]?$/.test(v));
  default:return false;
  }
 }
