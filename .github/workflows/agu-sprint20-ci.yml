@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: BACKLOG-ADM-001 — quatro questões, IDs e legado preservado
+        run: node tests/backlog-adm-001-validacao.cjs
       - name: AUD-UX-004 — catálogo público, identidades e validação de sufixos
         run: node tests/aud-ux-004-validacao.cjs
       - name: AUD-UX-003 — contrato único e backup do treino vigente
@@ -152,6 +154,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: BACKLOG-ADM-001 — zero para dois por assunto, resposta, revisão e backup
+        run: node tests/backlog-adm-001-browser.cjs
       - name: UX-LEITOR-ARTIGOS-001 — lista, foco, filtros e backup em cinco larguras
         run: node tests/ux-leitor-artigos-001-browser.cjs
       - name: AUD-UX-004 — recursos exatos, teclado, sessão e proteção do PDF
@@ -262,6 +266,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-backlog-adm-001/
             tests/artifacts-ux-leitor-artigos-001/
             tests/artifacts-aud-ux-004/
             tests/artifacts-aud-ux-003/
