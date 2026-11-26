@@ -1,0 +1,7 @@
+# AUD-UX-005 — reconciliação e RV-03
+
+26/11/2026. Base 38f5572410243ce31335ee16a1c073c9ab0fc7e9. UX-AGU-AUD-001 reconciliada com PRs #105, #106, #107 e #109 integradas e publicadas; não repetir. Catálogo e referências atuais: sete capítulos (incluindo AMB-06 e AMB-08), sete questões vigentes e 397 vínculos históricos. Checkpoints anteriores são históricos.
+
+Lacuna comprovada no diagnóstico AUD-UX-001, RV-03: summary().due conta itens não anulados e editorialmente elegíveis, com data <= hoje; candidates() tem ainda requisito de elegibilidade de questões adaptadas. O rótulo antigo dizia “Revisões vencidas”, embora incluísse hoje. A proposta modifica apenas o rótulo e a descrição, sem alterar contador, seleção, avaliações, agenda, histórico, backup, livros ou questões. O delta exato é revertido antes dos hashes originais AUD-UX-002/001; nenhuma fixture antiga é regravada. Teste cumulativo exige dois prazos (ontem/passado e hoje), exclui futuros, confirma contador e ausência de escrita nas cinco larguras existentes. CI no HEAD exato e gate público ainda obrigatórios.
+
+Outras lacunas a investigar separadamente: FC-04/RV-01 recomendação e dificuldades pessoais; FC-06/RV-02 sessão curta da fila geral; FC-07 ocultar verso; FC-08/QT-06 integração contextual apenas com recurso aprovado. Não presumir que todas estão abertas sem reprodução. Teste físico Android/TalkBack não realizado. Nenhuma auditoria jurídica ou produção de livro.

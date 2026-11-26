@@ -116,6 +116,19 @@ async function main(){
   await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:overdue});
   await p.reload();await p.evaluate(()=>setView('review'));const overdueBefore=await stored(p);
   await p.locator('#agu-review-now').press('Enter');assert.equal(await p.locator('#agu-review-active .question-title').innerText(),first.front);assert.deepEqual(await stored(p),overdueBefore);
+  // AUD-UX-005: um prazo anterior e um de hoje, sem incluir os demais futuros.
+  const localToday=await p.evaluate(()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')});
+  const mixed=JSON.parse(JSON.stringify(overdue));const second=cards.find(id=>id!==first.id);assert.ok(second);
+  mixed.cards[second]={stage:1,seen:1,due:localToday,errors:0,ease:'lembrei'};
+  await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:mixed});
+  await p.reload();await p.evaluate(()=>setView('review'));const mixedBefore=await stored(p);
+  // O card da métrica é o único que contém diretamente o rótulo.
+  const dueLabel=p.getByText('Revisões com prazo até hoje',{exact:true});
+  assert.equal(await dueLabel.count(),1);assert.equal(await dueLabel.locator('..').locator('.metric').innerText(),'2');
+  assert.equal(await p.evaluate(()=>AGUReview.summary().due),2);
+  assert.equal(await dueLabel.locator('..').getByText('Cartões e referências oficiais com data; não é o tamanho da fila.',{exact:true}).count(),1);
+  assert.deepEqual(await stored(p),mixedBefore);
+  console.log('AUD_UX_005_PRAZOS_OK',width);
   const imported=JSON.parse(JSON.stringify(future));delete imported.cards[first.id];
   imported.attempts=[{id:'rv-aud-ux-001-imported',itemId:first.id,kind:'flashcard',code:first.code,at:'2026-11-10T10:00:00Z',rating:'dificil',selected:null,correct:null,sourceStatus:'B_pendente_revisao_independente',due:'2026-11-11',stage:0,origin:'flashcard_autoral'}];
   await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:imported});
