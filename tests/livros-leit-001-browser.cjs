@@ -143,6 +143,26 @@ async function main(){
   assert.deepEqual(envErrors,[]);
   evidence.push({width:390,loaded:'AMB-03',sections:17,original:'HTML com SVGs',retained:'página 2',axe:0,dims:dimsEnv});
   await env.screenshot({path:path.join(ART,'livro-amb-390.png'),fullPage:false});
+  // PUB-LIVROS AMB-06: leitura completa, teclado, retomada e acessibilidade sem domínio automático.
+  await env.goto(new URL('livros-agu.html?livro=amb-06',url).href);
+  await env.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='amb-06');
+  assert.equal(await env.locator('#book-title').innerText(),'SISNAMA, PNMA, Política Energética e Saneamento');
+  assert.equal(await env.locator('#page option').count(),16,'AMB-06 preserva 16 seções');
+  await env.locator('#page').selectOption('15');
+  assert.ok((await env.locator('#read-full').innerText()).length>100,'Seção final integral acessível');
+  assert.equal(await env.evaluate(()=>JSON.parse(localStorage.getItem('agu_livros_reader_v1')||'{}')['amb-06']?.mastery),undefined,'Navegação não concede domínio');
+  await env.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
+  await env.locator('#ux-book-search').fill('SISNAMA');
+  assert.equal(await env.locator('#cards button[data-book]:visible').count(),1);
+  await env.locator('#cards button[data-book="amb-06"]').press('Enter');
+  await env.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='amb-06');
+  assert.equal(await env.locator('#page').inputValue(),'15','Retomada do índice por seção');
+  await env.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+  const violationAmb06=await env.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return r.violations.map(v=>({id:v.id,impact:v.impact}))});
+  assert.deepEqual(violationAmb06,[],'AMB-06 axe '+JSON.stringify(violationAmb06));
+  assert.ok(await env.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'AMB-06 sem overflow móvel');
+  assert.deepEqual(envErrors,[]);
+  evidence.push({width:390,loaded:'AMB-06',sections:16,readerKeyboard:true,axe:0});
   await envCtx.close();
   fs.writeFileSync(path.join(ART,'resultado.json'),JSON.stringify(evidence,null,2)+'\n');
   console.log('LIVROS_LEIT_001_CHROMIUM_OK',JSON.stringify(evidence));

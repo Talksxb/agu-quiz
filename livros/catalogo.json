@@ -71,6 +71,17 @@
           "reader": "livros/amb-11.json",
           "method": "livros/metodo/amb-11.json",
           "status": "publicado"
+        },
+        {
+          "id": "amb-06",
+          "title": "SISNAMA, PNMA, Política Energética e Saneamento",
+          "edition": "1.1",
+          "curricularIds": [
+            "AMB-06"
+          ],
+          "reader": "livros/amb-06.json",
+          "method": "livros/metodo/amb-06.json",
+          "status": "publicado"
         }
       ]
     }

@@ -1,0 +1,13 @@
+flowchart TD
+    PNMA["Política Nacional do Meio Ambiente<br/>Lei 6.938/1981"] --> SIS["SISNAMA<br/>art. 6º"]
+    SIS --> CG["Conselho de Governo<br/>órgão superior"]
+    SIS --> CON["CONAMA<br/>consultivo e deliberativo"]
+    SIS --> MMA["Órgão central federal<br/>ministério competente"]
+    SIS --> EXEC["Órgãos executores federais<br/>IBAMA e ICMBio"]
+    SIS --> EST["Órgãos seccionais<br/>estaduais/DF"]
+    SIS --> MUN["Órgãos locais<br/>municipais"]
+    CON -.-> NORM["Resoluções e critérios<br/>dentro da competência legal"]
+    PNMA --> INST["Instrumentos: padrões, zoneamento,<br/>avaliação, licença, informação e incentivos"]
+    LC["LC 140/2011<br/>cooperação federativa"] -.-> EXEC
+    LC -.-> EST
+    LC -.-> MUN

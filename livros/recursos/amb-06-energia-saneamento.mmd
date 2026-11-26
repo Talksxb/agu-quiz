@@ -1,0 +1,14 @@
+flowchart TD
+    POL["Programa federal<br/>energia e saneamento"] --> TIT["Titularidade do saneamento<br/>Lei 11.445 art. 8º"]
+    POL --> EN["Política energética<br/>Lei 9.478/1997"]
+    POL --> FIN["Planejamento e financiamento<br/>LOA, PPA, contratos, art. 50"]
+    TIT --> LOC["Interesse local<br/>Município/DF"]
+    TIT --> COM["Interesse comum<br/>Estado + municípios<br/>governança compartilhada"]
+    TIT --> REG["Regulador infranacional<br/>tarifa, serviço, fiscalização"]
+    ANA["ANA<br/>normas de referência"] -.-> REG
+    EN --> CNPE["CNPE<br/>diretrizes de política"]
+    EN --> ANP["ANP<br/>petróleo, gás e biocombustíveis"]
+    EN --> ANEEL["ANEEL<br/>eletricidade"]
+    FIN --> AMB["Licenciamento ambiental competente<br/>LC 140 + legislação aplicável"]
+    REG --> CONT["Controle e prestação de contas"]
+    AMB --> CONT

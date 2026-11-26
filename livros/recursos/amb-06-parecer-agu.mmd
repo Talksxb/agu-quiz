@@ -1,0 +1,14 @@
+flowchart TD
+    START["Projeto integrado<br/>água, esgoto, biogás, solar"] --> F1{"Há titular e governança<br/>legalmente identificados?"}
+    F1 -- "Não" --> C1["Sanear lei, colegiado,<br/>atos e representação"]
+    F1 -- "Sim" --> F2{"Delegação e regulação<br/>são válidas?"}
+    C1 --> F2
+    F2 -- "Não" --> C2["Reexaminar contrato,<br/>licitação, regulador e metas"]
+    F2 -- "Sim" --> F3{"Órgão ambiental competente,<br/>estudos e participação?"}
+    C2 --> F3
+    F3 -- "Não" --> C3["Regularizar licença,<br/>condicionantes e outorgas"]
+    F3 -- "Sim" --> F4{"Orçamento, art. 50,<br/>tarifa social e riscos?"}
+    C3 --> F4
+    F4 -- "Não" --> C4["Condicionar desembolso<br/>e revisar riscos"]
+    F4 -- "Sim" --> OK["Viabilidade condicionada<br/>com controles e monitoramento"]
+    C4 --> OK

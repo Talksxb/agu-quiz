@@ -39,6 +39,8 @@ jobs:
         run: node tests/livros-leit-001-validacao.js
       - name: MÉTODO-AGU-001 — ingestão, segurança editorial e idempotência
         run: node scripts/metodo-agu.cjs --check && node tests/metodo-agu-001-validacao.cjs
+      - name: PUB-LIVRO-AMB-004 — edição e candidatos AMB-06
+        run: node tests/pub-livro-amb-004-validacao.cjs
       - name: MÉTODO-AGU-003 — percurso no backup, compatibilidade e restauração não destrutiva
         run: node tests/metodo-agu-003-validacao.cjs
       - name: MÉTODO-AGU-004 — verificador Pages aceita bytes iguais e rejeita divergência
