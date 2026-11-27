@@ -1,5 +1,6 @@
 /* INTERFACE-AGU-002: leitor móvel, contexto, seleção, retorno e preservação local. */
 'use strict';
+const corr01=require('./ux-agu-aud-001-axe-recheck.cjs');
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(__dirname,'artifacts-interface-agu-002');
@@ -60,7 +61,9 @@ async function run(){
    assert.deepEqual(await p.evaluate(()=>({article:AGULegal.peek().article,unit:AGULegal.peek().unit})),beforeContext);
    if(width===390||width===1280){
     await p.addScriptTag({content:axe.source});
-    const violations=await p.evaluate(async()=>{const r=await axe.run(document.querySelector('#agu-reader'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return r.violations.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)}))});
+    const immersiveAccess=await p.evaluate(async()=>{const r=await axe.run(document.querySelector('#agu-reader'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)}))}});
+    const violations=immersiveAccess.violations;
+    await corr01.recheck(p,'#agu-reader',immersiveAccess,'leitor-imersivo',width);
     assert.deepEqual(violations,[],'modo imersivo axe');
    }
    await p.locator('#agu-reader').evaluate(e=>e.style.fontSize='200%');
@@ -148,9 +151,10 @@ async function run(){
     await p.addScriptTag({content:axe.source});
     access=await p.evaluate(async()=>{
      const r=await axe.run(document.querySelector('#agu-reader'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});
-     return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>v.id)};
+     return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>v.id),incompleteTargets:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))};
     });
    }
+   if(access)access.recheck=await corr01.recheck(p,'#agu-reader',access,'leitor-ampliado',width);
    await p.screenshot({path:path.join(OUT,'leitor-'+width+'.png'),fullPage:true});
    const ending=await p.evaluate(()=>({article:AGULegal.peek().article,unit:AGULegal.peek().unit}));
    await p.locator('.agu-reader-back').click();
@@ -164,6 +168,7 @@ async function run(){
    await ctx.close();
   }
   fs.writeFileSync(path.join(OUT,'relatorio.json'),JSON.stringify(results,null,2)+'\n');
+  corr01.assertResolved();
   console.log('INTERFACE_AGU_002_BROWSER_OK',JSON.stringify({profiles:results.length,zoom200:true,androidPhysical:false,talkBackPhysical:false,axeInconclusive:results.filter(x=>x.access?.incomplete?.length).length}));
  }finally{await browser.close();if(server)server.close()}
 }

@@ -1,5 +1,6 @@
 /* CARTOES-AUD-01 — jornada Chromium sintética, sem Android/TalkBack nem perfil pessoal. */
 'use strict';
+const corr01=require('./ux-agu-aud-001-axe-recheck.cjs');
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-cartoes-aud-01');
@@ -46,6 +47,7 @@ async function main(){
     const a=await axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});
     return {violations:a.violations.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),incomplete:a.incomplete.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),passed:a.passes.length};
    });
+   report.recheck=await corr01.recheck(page,'#main',report,'cartoes-aud-01',width);
    test.violationCount=report.violations.length;
    test.incompleteRules=report.incomplete.length;
    test.incompleteNodes=report.incomplete.reduce((sum,x)=>sum+x.nodes.length,0);
@@ -69,6 +71,7 @@ async function main(){
   assert.deepEqual(errors,[]);results.push(test);await context.close();
  }
  fs.writeFileSync(path.join(OUT,'resultado.json'),JSON.stringify({kind:'synthetic',origin,results},null,2));
+ corr01.assertResolved();
  console.log('CARTOES_AUD_01_BROWSER_OK',JSON.stringify({origin,chromium:browser.version(),results}));
 }
 main().catch(error=>{console.error(error.stack);process.exitCode=1}).finally(async()=>{await browser?.close();server.close()});
