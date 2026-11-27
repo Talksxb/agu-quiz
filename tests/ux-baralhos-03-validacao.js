@@ -4,7 +4,7 @@
 const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
-const ROOT=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(ROOT,x),'utf8');
+const ROOT=path.resolve(__dirname,'..'),read=x=>{const s=fs.readFileSync(path.join(ROOT,x),'utf8');return x==='catalogo-disciplinas.js'?require('./backlog-seg-001-legado.cjs')(s,x):s};
 const copy=x=>JSON.parse(JSON.stringify(x)),KEY='agu_quiz_revisao_inteligente_v1';
 const pad=n=>String(n).padStart(2,'0');
 const day=offset=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+offset);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};

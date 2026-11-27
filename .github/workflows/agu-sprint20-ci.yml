@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: BACKLOG-SEG-001 — SEG-01, quatro casos, dois cartões e legado íntegro
+        run: node tests/backlog-seg-001-validacao.cjs
       - name: BACKLOG-ADM-002 — ADM-53, 44 preservadas e quatro vínculos ao capítulo
         run: node tests/backlog-adm-002-validacao.cjs
       - name: BACKLOG-ADM-001 — quatro questões, IDs e legado preservado
@@ -156,6 +158,8 @@ jobs:
         run: npm install --no-save playwright axe-core
       - name: Instalar Chromium e dependências
         run: npx playwright install --with-deps chromium
+      - name: BACKLOG-SEG-001 — questões, cartões, erro, retomada e backup nas cinco larguras
+        run: node tests/backlog-seg-001-browser.cjs
       - name: BACKLOG-ADM-002 — resposta, erro, capítulo e backup nas cinco larguras
         run: node tests/backlog-adm-002-browser.cjs
       - name: BACKLOG-ADM-001 — zero para dois por assunto, resposta, revisão e backup
@@ -270,6 +274,7 @@ jobs:
         with:
           name: agu-s20-chromium-viewports
           path: |
+            tests/artifacts-backlog-seg-001/
             tests/artifacts-backlog-adm-002/
             tests/artifacts-backlog-adm-001/
             tests/artifacts-ux-leitor-artigos-001/
@@ -424,6 +429,10 @@ jobs:
           node -e "fetch('https://talksxb.github.io/agu-quiz/laboratorio-leitura.html').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.text()}).then(t=>{if(!t.includes('Laboratório de Leitura Jurídica'))throw Error('Conteúdo divergente'); console.log('LAB_PUBLICADO_OK')}).catch(e=>{console.error(e);process.exit(1)})"
       - name: Instalar navegador para validar a URL publicada
         run: npm install --no-save playwright axe-core && npx playwright install --with-deps chromium
+      - name: BACKLOG-SEG-001 — sessão, agenda e backup na URL publicada
+        env:
+          AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
+        run: node tests/backlog-seg-001-browser.cjs
       - name: BACKLOG-ADM-002 — casos e capítulo na URL publicada
         env:
           AGU_TEST_URL: https://talksxb.github.io/agu-quiz/
@@ -538,6 +547,7 @@ jobs:
         with:
           name: agu-work01-publicado
           path: |
+            tests/artifacts-backlog-seg-001/
             tests/artifacts-backlog-adm-002/
             tests/artifacts-simulados-agu/
             tests/artifacts-metodo-agu/

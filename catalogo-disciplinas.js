@@ -13,6 +13,8 @@ const rows=[
  ['EMP','Direito Empresarial','#72531e','#f6f0dc','#e5d6a2','#40361d'],
  ['TRAB','Direito do Trabalho','#a03c64','#faeaf0','#f2b4cf','#4e2537'],
  ['PREV','Direito Previdenciário','#396e46','#e8f4e9','#b7e1c1','#233e2b'],
+ // SEG é o prefixo dos IDs originais; PREV permanece como agrupamento legado.
+ ['SEG','Direito da Seguridade Social','#396e46','#e8f4e9','#b7e1c1','#233e2b'],
  ['INT','Direito Internacional','#285d93','#e8f1fb','#b1d7f7','#22384e'],
  ['AMB','Direito Ambiental','#3f7047','#e8f5e8','#b8e5bd','#203c29'],
  ['ECO','Direito Econômico','#806224','#f5efdc','#e5d4a0','#41371e'],

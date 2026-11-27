@@ -51,7 +51,7 @@ async function main(){
   await op.evaluate(()=>AGUReview.go('flashcard'));
   const expected=await op.locator('.question-title').last().innerText();await old.close();
   const ctx=await browser.newContext(config),p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('dialog',d=>d.accept());
-  await open(p,base);assert.match(await p.locator('.agu-deck-count').innerText(),/51 cartões · 11 baralhos/);
+  await open(p,base);assert.match(await p.locator('.agu-deck-count').innerText(),/53 cartões · 12 baralhos/);
   const before=await stored(p),button=p.locator('#agu-review-now'),y=await button.evaluate(x=>x.getBoundingClientRect().y);
   assert.ok(y>0&&y+44<900,'atalho na primeira tela '+width+' y='+y);assert.ok(y<oldY);
   assert.ok(await button.evaluate(x=>!!(x.compareDocumentPosition(document.getElementById('agu-deck-filter-discipline'))&Node.DOCUMENT_POSITION_FOLLOWING)));

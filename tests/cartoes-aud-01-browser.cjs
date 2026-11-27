@@ -20,10 +20,10 @@ async function main(){
   const page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(origin,{waitUntil:'load'});
-  assert.deepEqual(await page.evaluate(()=>({cards:AGUReview.deck().flashcards,lot:AGUReview.deck().lotAud02_2015,decks:AGUReview.deckList().length})),{cards:51,lot:8,decks:11});
+  assert.deepEqual(await page.evaluate(()=>({cards:AGUReview.deck().flashcards,lot:AGUReview.deck().lotAud02_2015,decks:AGUReview.deckList().length})),{cards:53,lot:8,decks:12});
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/51 cartões · 11 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/53 cartões · 12 baralhos/);
   await page.locator('#agu-deck-filter-topic').fill('ADM-58');
   await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);
@@ -64,7 +64,7 @@ async function main(){
   assert.ok(backup.items.agu_quiz_revisao_inteligente_v1);
   await page.reload({waitUntil:'load'});
   assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('agu_quiz_revisao_inteligente_v1'))),before);
-  assert.equal(await page.evaluate(()=>AGUReview.deck().flashcards),51);
+  assert.equal(await page.evaluate(()=>AGUReview.deck().flashcards),53);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'sem overflow '+width);
   assert.deepEqual(errors,[]);results.push(test);await context.close();
  }
