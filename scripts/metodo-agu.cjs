@@ -9,7 +9,7 @@ const assert=(ok,message)=>{if(!ok)throw Error(message)};
 const id=x=>typeof x==='string'&&/^[a-z0-9][a-z0-9-]{1,100}$/.test(x);
 const date=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x))&&new Date(x+'T00:00:00.000Z').toISOString().slice(0,10)===x;
 function safePath(root,p){assert(typeof p==='string'&&!p.includes('\\')&&!path.isAbsolute(p),'Caminho relativo obrigatório');const f=path.resolve(root,p);assert(f.startsWith(path.resolve(root)+path.sep),'Caminho fora do projeto');return f}
-function official(url){try{const u=new URL(url);return u.protocol==='https:'&&!u.username&&!u.password&&(/\.(gov|leg|jus)\.br$/.test(u.hostname)||u.hostname==='cdn.cebraspe.org.br')}catch{return false}}
+function official(url){try{const u=new URL(url);const de=['www.bundesverfassungsgericht.de','www.gesetze-im-internet.de','www.bundestag.de'];return u.protocol==='https:'&&!u.username&&!u.password&&(/\.(gov|leg|jus)\.br$/.test(u.hostname)||u.hostname==='cdn.cebraspe.org.br'||(u.port===''&&de.includes(u.hostname)))}catch{return false}}
 function frontMatter(md){
  const m=md.match(/^---\n([\s\S]*?)\n---\n/);assert(m,'Front matter ausente');
  if(m[1].trim().startsWith('{'))return JSON.parse(m[1]);

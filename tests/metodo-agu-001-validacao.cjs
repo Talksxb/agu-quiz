@@ -38,4 +38,16 @@ test('novo capítulo entra por configuração; fixture nunca é publicada no cat
   updated=updated.replace('AMB-07','FIN-ECO-02');m.curricularIds=['FIN-ECO-02'];m.coverage[0].curricularId='FIN-ECO-02';m.reader.curricular_id='FIN-ECO-02';m.discipline={id:'FIN-ECO',name:'Direito Financeiro e Econômico'};m.reader.category=m.discipline.name;m.metadataVersion='1.1';fs.writeFileSync(path.join(tmp,m.canonical),updated);m.approval.inputSha256=P.inputHash(tmp,m,updated);fs.writeFileSync(path.join(tmp,meta),JSON.stringify(m));P.build({root:tmp,fixture:true,only:m.id});assert.ok(JSON.parse(fs.readFileSync(path.join(tmp,'livros/catalogo.json'))).disciplines.some(d=>d.id==='FIN-ECO'));assert.equal(P.build({root:tmp,fixture:true}).changed,0);
  }finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
+
+test('fontes alemãs oficiais exatas e rejeição de URLs adversariais',()=>{
+ for(const u of ['https://www.bundesverfassungsgericht.de/decisao','https://www.gesetze-im-internet.de/gg/','https://www.bundestag.de/grundgesetz','https://portal.stf.jus.br/','https://www.planalto.gov.br/','https://cdn.cebraspe.org.br/'])assert.equal(P.official(u),true,u);
+ for(const u of ['http://www.bundestag.de/','https://www.bundestag.de.evil.example/','https://evil.www.bundestag.de/','https://user@www.bundestag.de/','https://www.bundestag.de:444/','https://bundestag.de/','https://www.bundestag.de./','javascript:alert(1)','https://www.bundestag.de@evil.example/','https://example.de/','not-a-url'])assert.equal(P.official(u),false,u);
+});
+test('fixture multi-ID tem cobertura por ID, fonte estrangeira e mantém o gate de aprovação',()=>{
+ const m=get('tests/fixtures/metodo-agu/amb-fixture.json'),md=fs.readFileSync(path.join(ROOT,m.canonical),'utf8').replace('"AMB-07"','"AMB-07", "AMB-08"');
+ m.curricularIds=['AMB-07','AMB-08'];m.coverage.push({...m.coverage[0],curricularId:'AMB-08'});m.sources.push({...m.sources[0],id:'fonte-estrangeira-fixture',url:'https://www.bundestag.de/',scope:'Somente teste de política de URL'});
+ assert.equal(P.validateMetadata(m,md,{fixture:true}).length,m.sections.length);
+ const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'multi-id-fixture-'));try{fs.mkdirSync(path.dirname(path.join(tmp,m.canonical)),{recursive:true});fs.writeFileSync(path.join(tmp,m.canonical),md);delete m.approval;assert.throws(()=>P.compile(tmp,m,{fixture:true}),/aprovação/);}finally{fs.rmSync(tmp,{recursive:true,force:true})}
+});
+
 console.log('METODO_AGU_001_NODE_OK',JSON.stringify({tests:count,chapters:7,legacyCards:51}));

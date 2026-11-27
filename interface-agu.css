@@ -303,3 +303,6 @@ h3 { font-size: 1rem; line-height: 1.5; }
  #main .feedback,#main .aq-bank .aq-error{padding:12px}
  #main #agu-reader .agu-related .agu-ctx-box{padding:10px}
 }
+
+/* LIVROS-CON — camada explícita do diálogo nativo acima da navegação fixa. */
+#agu-backup-preview:modal{z-index:110}

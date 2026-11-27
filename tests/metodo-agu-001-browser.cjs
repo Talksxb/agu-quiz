@@ -14,12 +14,37 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   page.on('pageerror',e=>errors.push(e.message));await page.goto(base);await page.evaluate(([r,s,key,reader])=>{localStorage.clear();localStorage.setItem(key,r);localStorage.setItem(reader,JSON.stringify(s));localStorage.setItem('agu_dado_legado_fixture','preservar')},[seedReview,seedReader,REVIEW,READER]);
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();assert.equal(await page.locator('.hub-book').count(),1);await page.getByRole('link',{name:/Método AGU/}).click();
   try{await page.locator('#discipline-AMB').waitFor()}catch(e){await page.screenshot({path:path.join(OUT,'catalog-failure-'+width+'.png')});const state=await page.evaluate(()=>({url:location.href,title:document.title,status:document.getElementById('method-status')?.textContent,method:typeof window.AGUMethod,progress:typeof window.AGUMethodProgress,catalogHidden:document.getElementById('catalog')?.hidden,cards:document.getElementById('cards')?.textContent}));console.error('METODO_CATALOGO_DIAGNOSTICO',JSON.stringify({width,state,errors,network:network.slice(0,30),consoleErrors:consoleErrors.slice(0,20)}));throw e}
-  async function scan(label){const dim=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dim.scroll<=dim.width+1,label+' overflow '+JSON.stringify(dim));await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const x=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});assert.deepEqual(x.violations,[],label);scans.push({label,...x,dim})}
+  async function scan(label){const dim=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dim.scroll<=dim.width+1,label+' overflow '+JSON.stringify(dim));await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const x=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});assert.deepEqual(x.violations,[],label);await require('./livros-axe-recheck.cjs').resolveIncomplete(page,x,width+' '+label);scans.push({label,...x,dim})}
   await scan('catalogo');
   for(const bid of ['lgpd-adm64b','adm-53','adm-54','amb-03']){
    const book=JSON.parse(fs.readFileSync(path.join(ROOT,'livros',bid+'.json')));await page.locator('[data-book="'+bid+'"]').click();await page.locator('#method-tabs').waitFor();await page.waitForFunction(([id,n])=>document.querySelector('#book').dataset.chapterId===id&&document.querySelectorAll('[data-source-section]').length===n,[bid,book.pages.length]);
    const dom=await page.locator('[data-source-section]').allInnerTexts();for(let i=0;i<book.pages.length;i++)assert.ok(squeeze(dom[i]).startsWith(expected(book.pages[i].text,book.source_format)),bid+' fidelidade DOM seção '+i);
-   await scan(bid+' estudar');await page.getByRole('button',{name:'Aplicar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);assert.equal(await page.locator('.method-answer').innerText(),'');await scan(bid+' aplicar');
+   if(bid==='amb-03'){
+    const captions=await page.evaluate(async()=>{
+     const boxes=[...document.querySelectorAll('.method-table')],out=[];
+     for(const region of boxes){
+      const caption=region.querySelector('table > caption'),table=region.querySelector('table');
+      const prior=region.scrollLeft,geometry=()=>{const a=caption.getBoundingClientRect(),b=region.getBoundingClientRect();return {width:a.width,available:region.clientWidth,left:a.left,right:a.right,innerLeft:b.left+region.clientLeft,innerRight:b.left+region.clientLeft+region.clientWidth}};
+      try{region.scrollLeft=0;await new Promise(r=>requestAnimationFrame(r));const start=geometry();
+       region.scrollLeft=region.scrollWidth;await new Promise(r=>requestAnimationFrame(r));out.push({native:table.caption===caption,label:caption.textContent,start,end:geometry(),overflow:region.scrollWidth>region.clientWidth});
+      }finally{region.scrollLeft=prior}
+     }return out
+    });
+    assert.equal(captions.length,2);
+    for(const c of captions){assert.ok(c.native&&c.label.trim().length>0,'legenda nativa preservada');for(const g of [c.start,c.end])assert.ok(g.width<=g.available+1&&g.left>=g.innerLeft-1&&g.right<=g.innerRight+1,'legenda visível '+width+' '+JSON.stringify(c));if(width===320||width===390)assert.ok(c.overflow,'rolagem das colunas preservada')}
+    console.log('LIVROS_CAPTION_GEOMETRY',JSON.stringify({width,captions}));
+   }
+   await scan(bid+' estudar');
+   if(bid==='amb-03'&&(width===320||width===390)){
+    const explicitTargets=await page.evaluate(()=>[...document.querySelectorAll('.method-table table > caption')].map(e=>({id:'color-contrast',target:['#'+e.closest('[data-source-section]').id+' > .method-table[role="region"] > table > caption']})));
+    assert.equal(explicitTargets.length,2);
+    // Confirm the exact original axe selector is still used; require a rule pass even if the initial scan no longer reports it incomplete.
+    for(const r of explicitTargets){assert.equal(await page.locator(r.target[0]).count(),1,'alvo explícito da legenda');}
+    const evidence={violations:[],incomplete:[]};
+    await require('./livros-axe-recheck.cjs').resolveIncomplete(page,evidence,width+' amb-03 legendas explícitas',{explicitTargets});
+    scans[scans.length-1].captionRuleEvidence=evidence;
+   }
+   await page.getByRole('button',{name:'Aplicar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);assert.equal(await page.locator('.method-answer').innerText(),'');await scan(bid+' aplicar');
    await page.getByRole('button',{name:'Recuperar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);await page.getByRole('button',{name:'Conferir respostas',exact:true}).click();assert.ok((await page.locator('.method-answer').innerText()).length>100);await scan(bid+' recuperar');
    await page.getByRole('button',{name:'Revisar',exact:true}).click();assert.ok(await page.locator('[data-card-id="aud03-flc-013"]').isVisible());await scan(bid+' revisar');assert.equal(await page.evaluate(k=>localStorage.getItem(k),REVIEW),seedReview,'Abrir/revelar atividades não altera agenda');
    if(bid==='amb-03'){
@@ -56,6 +81,30 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   assert.equal(new URL(page.url()).searchParams.get('livro'),'amb-08');await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();
   assert.deepEqual(errors,[]);await page.screenshot({path:path.join(OUT,'metodo-'+width+'.png')});results.push({width,chapters:4,scans,legacyCards:51,ratings:1,physicalAndroid:false});await context.close();
  }
+
+ // Multi-ID sintético, injetado somente na resposta do método no teste. Nada no catálogo real é alterado.
+ for(const width of [320,1280]){
+  const context=await browser.newContext({viewport:{width,height:850}}),page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/livros/metodo/adm-53.json',async route=>{const res=await route.fetch();assert.ok(res.ok());const body=await res.json();body.curricularIds=['ADM-53','ADM-54','CON-01','CON-02','CON-03','CON-04'];await route.fulfill({response:res,json:body})});
+  await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);
+  await page.waitForFunction(()=>document.querySelector('#book-category').textContent.includes('CON-04'));
+  assert.match(await page.locator('#book-category').innerText(),/ADM-53, ADM-54, CON-01, CON-02, CON-03, CON-04/);
+  await page.evaluate(k=>{const d=JSON.parse(localStorage.getItem(k)||'{}');d['fixture-externa']={page:1,done:[0],campo:'preservar'};localStorage.setItem(k,JSON.stringify(d))},READER);
+  await page.locator('#page').selectOption('1');
+  await page.waitForFunction(k=>JSON.parse(localStorage.getItem(k)||'{}')['adm-53']?.page===1,READER);
+  await page.reload();await page.waitForFunction(()=>document.querySelector('#book-category').textContent.includes('CON-04'));
+  assert.equal(await page.locator('#page').inputValue(),'1');
+  assert.deepEqual(await page.evaluate(k=>JSON.parse(localStorage.getItem(k))['fixture-externa'],READER),{page:1,done:[0],campo:'preservar'});
+  await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+  const scan=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});
+  assert.deepEqual(scan.violations,[]);await require('./livros-axe-recheck.cjs').resolveIncomplete(page,scan,width+' multi-ID fixture');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  await page.getByRole('button',{name:'Voltar aos livros',exact:true}).click();await page.locator('[data-book="adm-54"]').click();
+  await page.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='adm-54');
+  assert.match(await page.locator('#book-category').innerText(),/ADM-54$/);assert.ok(!(await page.locator('#book-category').innerText()).includes('CON-04'));
+  assert.deepEqual(errors,[]);results.push({multiIdFixture:true,width,scan,persistence:true,switchToSingle:true});await context.close();
+ }
+
  // JSON inválido e quota sintética preservam os bytes anteriores.
  for(const kind of ['invalido','quota']){const context=await browser.newContext(),page=await context.newPage();await page.goto(base);const original=kind==='invalido'?'{invalido':JSON.stringify(seedReader);await page.evaluate(([k,v])=>localStorage.setItem(k,v),[READER,original]);if(kind==='quota')await page.addInitScript(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota fixture','QuotaExceededError');return set.call(this,key,value)}},READER);await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);await page.locator('#method-tabs').waitFor();await page.getByRole('button',{name:'Aplicar',exact:true}).click();await page.locator('textarea[id^="draft-"]').fill('Rascunho sintético');await page.getByRole('button',{name:'Guardar rascunho',exact:true}).click();assert.equal(await page.evaluate(k=>localStorage.getItem(k),READER),original);results.push({storage:kind,preserved:true});await context.close()}
  fs.writeFileSync(path.join(OUT,'resultado.json'),JSON.stringify(results,null,2)+'\n');console.log('METODO_AGU_001_CHROMIUM_OK',JSON.stringify({widths:[320,390,768,1280],chapters:4,scans:results.flatMap(r=>r.scans||[]).length,storageAdversarial:2,androidPhysical:false}));
