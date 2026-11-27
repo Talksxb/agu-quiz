@@ -86,9 +86,12 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
  for(const width of [320,1280]){
   const context=await browser.newContext({viewport:{width,height:850}}),page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
-  await page.route('**/livros/metodo/adm-53.json',async route=>{const res=await route.fetch();assert.ok(res.ok());const body=await res.json();body.curricularIds=['ADM-53','ADM-54','CON-01','CON-02','CON-03','CON-04'];await route.fulfill({response:res,json:body})});
+  await page.route('**/livros/metodo/adm-53.json',async route=>{const res=await route.fetch();assert.ok(res.ok());const body=await res.json();body.curricularIds=['ADM-53','ADM-54','CON-01','CON-02','CON-03','CON-04'];for(const a of body.activities)a.curricularIds=['CON-04'];await route.fulfill({response:res,json:body})});
+  await page.route('**/livros/catalogo.json',async route=>{const res=await route.fetch();const body=await res.json();body.collections=[...body.collections,'livros/colecoes/fixture-constitucional.json'];await route.fulfill({response:res,json:body})});
+  await page.route('**/livros/colecoes/fixture-constitucional.json',route=>route.fulfill({json:{schema:'agu-collection-v1',id:'fixture-constitucional',title:'Coleção constitucional sintética',chapters:[{title:'Volume fictício — não publicar',status:{production:'produzido',publication:'nao_publicado'}}]}}));
   await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);
   await page.waitForFunction(()=>document.querySelector('#book-category').textContent.includes('CON-04'));
+  await page.waitForFunction(()=>document.querySelector('#collection-list').textContent.includes('Coleção constitucional sintética'));assert.match(await page.locator('#collection-list').textContent(),/Direito Ambiental/);assert.match(await page.locator('#collection-list').textContent(),/Volume fictício — não publicar/);
   assert.match(await page.locator('#book-category').innerText(),/ADM-53, ADM-54, CON-01, CON-02, CON-03, CON-04/);
   await page.evaluate(k=>{const d=JSON.parse(localStorage.getItem(k)||'{}');d['fixture-externa']={page:1,done:[0],campo:'preservar'};localStorage.setItem(k,JSON.stringify(d))},READER);
   await page.locator('#page').selectOption('1');
