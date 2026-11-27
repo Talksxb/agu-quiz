@@ -1,0 +1,56 @@
+{
+  "index.html": {
+    "before": "39cd28d0b8015acd6601aaed25bb395f3949ab0fb7e9d79b757998629ad5895b",
+    "after": "64b9b9e135192045742cd88e6e101d652103780f7e8651eca3609593c6525dfa",
+    "changes": [
+      {
+        "before": "",
+        "after": "<script src=\"dados/questoes-autorais-backlog-adm001.js\"></script>\n"
+      },
+      {
+        "before": "function evidencePanel(q){let e=LEGAL_EVIDENCE[q.id];if(!e)return `<div class=\"note\"><b>Explicação pedagógica, ainda não auditada:</b> não usar como posição oficial certificada. Fundamento normativo e jurisprudencial específico pendente.</div>`;return `<div class=\"note\"><b>Fundamento normativo confirmado pontualmente:</b> ${esc(e.ref)} · consulta ${esc(e.checked)}<p>${esc(e.basis)}</p><a href=\"${esc(e.url)}\" target=\"_blank\" rel=\"noopener noreferrer\">Conferir texto da norma</a><p class=\"small muted\">${esc(e.limit)}</p></div>`}\n",
+        "after": "function evidencePanel(q){let e=LEGAL_EVIDENCE[q.id];if(!e)return `<div class=\"note\"><b>Explicação pedagógica, ainda não auditada:</b> não usar como posição oficial certificada. Fundamento normativo e jurisprudencial específico pendente.</div>`;return `<div class=\"note\"><b>${e.kind==='jurisprudencia'?'Fundamento jurisprudencial':'Fundamento normativo'} confirmado pontualmente:</b> ${esc(e.ref)} · consulta ${esc(e.checked)}<p>${esc(e.basis)}</p><a href=\"${esc(e.url)}\" target=\"_blank\" rel=\"noopener noreferrer\">${e.kind==='jurisprudencia'?'Conferir tese oficial':'Conferir texto da norma'}</a><p class=\"small muted\">${esc(e.limit)}</p></div>`}\n// BACKLOG-ADM-001: mesmo banco, avaliador, histórico e revisão das questões autorais.\nconst backlogAuthored=window.AGU_AUTHORED_BACKLOG||[];\nfor(const q of backlogAuthored){if(!Q.some(x=>x.id===q.id)){Q.push(q);LEGAL_EVIDENCE[q.id]=q.evidence}}\nwindow.AGUAuthoredQuestions={count:()=>Q.length,forCode:code=>Q.filter(q=>q.curricularIds?.includes(code)).map(q=>({id:q.id,topic:q.topic,title:q.title})),open:(id,keyboard=false)=>{const q=Q.find(q=>q.id===id&&q.curricularIds?.length);if(!q)return false;startQuiz(q.topic,q.id);if(keyboard)document.querySelector('#qtopic')?.focus();return true}};\n"
+      },
+      {
+        "before": "function startQuiz(t){topicChoice=t;current=questionFor(t);selected=null;feedback=null;followup=false;answerText='';view='quiz';if(current&&!demo){const p=data.topic[t]||{score:0,evidence:0};p.state=p.state==='Domínio demonstrado'?'Domínio demonstrado':p.state==='Não iniciado'?'Em investigação':p.state;data.topic[t]=p;persist()}render()}\n",
+        "after": "function startQuiz(t,questionId=null){topicChoice=t;current=Q.find(q=>q.id===questionId&&q.topic===t)||questionFor(t);selected=null;feedback=null;followup=false;answerText='';view='quiz';if(current&&!demo){const p=data.topic[t]||{score:0,evidence:0,state:'Não iniciado'};p.state=p.state==='Domínio demonstrado'?'Domínio demonstrado':p.state==='Não iniciado'?'Em investigação':p.state;data.topic[t]=p;persist()}render()}\n"
+      },
+      {
+        "before": "function submitAnswer(){if(!current||feedback)return;let q=current;if(q.opts){if(selected===null)return;let correct=selected===q.right;data.answers.push({id:crypto.randomUUID(),question:q.id,topic:q.topic,curricular_id:questionMappings[q.id]||null,dim:q.dim,date:now(),selected,correct,origin:'inédita',sourceStatus:AUTHOR_NORM_AUDIT[q.id]?'base_normativa_pontualmente_conferida_sem_homologacao':'pendente',legalEvidence:LEGAL_EVIDENCE[q.id]?.ref||null});const earlier=data.answers.slice(0,-1).some(a=>a.question===q.id&&a.correct===true);const audited=!!AUTHOR_NORM_AUDIT[q.id];updateTopic(q.topic,correct&&audited?(earlier?0:0.8):correct?0:-1,q.dim,false);feedback={correct,title:correct?'Resposta correta — fundamente':'Revisão necessária',text:q.why,askWhy:correct,graded:!correct};if(correct){const old=data.reviews.find(r=>r.topic===q.topic);schedule(q.topic,old?Math.min(4,old.stage+1):1)}else schedule(q.topic,1)}else{if(answerText.trim().length<20)return;data.answers.push({id:crypto.randomUUID(),question:q.id,topic:q.topic,curricular_id:questionMappings[q.id]||null,dim:q.dim,date:now(),text:answerText,correct:null,origin:'inédita',sourceStatus:q.source.status});feedback={title:'Rascunho armazenado — não avaliado',text:'O texto fica preservado apenas para futura correção jurídica. Não será considerado acerto, nem evidência de domínio.',graded:false}}persist();render()}\n",
+        "after": "function submitAnswer(){if(!current||feedback)return;let q=current;if(q.opts){if(selected===null)return;let correct=selected===q.right;data.answers.push({id:crypto.randomUUID(),question:q.id,topic:q.topic,curricular_id:questionMappings[q.id]||(q.curricularIds?.length===1?q.curricularIds[0]:null),dim:q.dim,date:now(),selected,correct,origin:'inédita',sourceStatus:AUTHOR_NORM_AUDIT[q.id]?'base_normativa_pontualmente_conferida_sem_homologacao':'pendente',legalEvidence:LEGAL_EVIDENCE[q.id]?.ref||null});const earlier=data.answers.slice(0,-1).some(a=>a.question===q.id&&a.correct===true);const audited=!!AUTHOR_NORM_AUDIT[q.id];updateTopic(q.topic,correct&&audited?(earlier?0:0.8):correct?0:-1,q.dim,false);feedback={correct,title:correct?'Resposta correta — fundamente':'Revisão necessária',text:q.why,askWhy:correct,graded:!correct};if(correct){const old=data.reviews.find(r=>r.topic===q.topic);schedule(q.topic,old?Math.min(4,old.stage+1):1)}else schedule(q.topic,1)}else{if(answerText.trim().length<20)return;data.answers.push({id:crypto.randomUUID(),question:q.id,topic:q.topic,curricular_id:questionMappings[q.id]||(q.curricularIds?.length===1?q.curricularIds[0]:null),dim:q.dim,date:now(),text:answerText,correct:null,origin:'inédita',sourceStatus:q.source.status});feedback={title:'Rascunho armazenado — não avaliado',text:'O texto fica preservado apenas para futura correção jurídica. Não será considerado acerto, nem evidência de domínio.',graded:false}}persist();render()}\n"
+      }
+    ]
+  },
+  "questoes-agu-bank.js": {
+    "before": "2bff3304a6dd1e8fab363f1d607c691df1c8dc5a3842cff026830a42c8310944",
+    "after": "5016e64fdfd682d8fab0c65e3202090c76d981420b7dd9a1a940aadebee9fcfa",
+    "changes": [
+      {
+        "before": " '<section class=\"aq-card\"><h2>Questões oficiais · direito vigente</h2><p>Resolva o lote verificado diretamente, sem importar PDF. Histórico e pontuação separados das provas antigas.</p><div class=\"aq-nav\"><a href=\"questoes-vigentes.html\">Abrir treino de direito vigente</a><a href=\"questoes-vigentes.html?situacao=erros\">Rever erros do treino vigente</a></div></section><p class=\"aq-small\">400 referências oficiais · 381 não anuladas · 19 anuladas. 24 questões autorais em módulo separado.</p><div class=\"aq-stats\"><div><b>'+ (pdf?markers.length:0)+'</b><span>Itens locais nesta prova</span></div><div><b>'+done.length+'</b><span>Resolvidas</span></div><div><b>'+hits+'</b><span>Acertos</span></div><div><b>'+(done.length-hits)+'</b><span>Erros</span></div></div>'+\n",
+        "after": " '<section class=\"aq-card\"><h2>Questões oficiais · direito vigente</h2><p>Resolva o lote verificado diretamente, sem importar PDF. Histórico e pontuação separados das provas antigas.</p><div class=\"aq-nav\"><a href=\"questoes-vigentes.html\">Abrir treino de direito vigente</a><a href=\"questoes-vigentes.html?situacao=erros\">Rever erros do treino vigente</a></div></section><p class=\"aq-small\">400 referências oficiais · 381 não anuladas · 19 anuladas. '+(root.AGUAuthoredQuestions?.count?.()??40)+' questões autorais em módulo separado.</p><div class=\"aq-stats\"><div><b>'+ (pdf?markers.length:0)+'</b><span>Itens locais nesta prova</span></div><div><b>'+done.length+'</b><span>Resolvidas</span></div><div><b>'+hits+'</b><span>Acertos</span></div><div><b>'+(done.length-hits)+'</b><span>Erros</span></div></div>'+\n"
+      }
+    ]
+  },
+  "recursos-curriculares.js": {
+    "before": "fbfb4e194e91aeadf529839de83bfb114206a1d622ac70ea0109b5e7ec8f85b8",
+    "after": "a376aaf140b4632b95445dfcfde906cf5a717f93afdbbc87b62352f415a34782",
+    "changes": [
+      {
+        "before": " const topics=new Map(),get=(id,title='')=>{if(!valid(id))return null;if(!topics.has(id))topics.set(id,{id,title,cards:[],books:[],laws:[],official:[],historical:[]});const t=topics.get(id);if(title&&!t.title)t.title=title;return t};\n",
+        "after": " const topics=new Map(),get=(id,title='')=>{if(!valid(id))return null;if(!topics.has(id))topics.set(id,{id,title,cards:[],books:[],laws:[],official:[],historical:[],authored:[]});const t=topics.get(id);if(title&&!t.title)t.title=title;return t};\n"
+      },
+      {
+        "before": "",
+        "after": " for(const q of env.AGU_AUTHORED_BACKLOG||[])for(const code of q.curricularIds||[])get(code)?.authored.push({id:q.id,title:q.title});\n"
+      },
+      {
+        "before": " const list=last.topics.filter(t=>discipline==='todas'||prefix(t.id)===discipline);if(!list.some(t=>t.id===selected))selected=(list.find(x=>x.cards.length||x.books.length||x.laws.length||x.official.length)||list[0])?.id||'';const t=list.find(t=>t.id===selected);\n",
+        "after": " const list=last.topics.filter(t=>discipline==='todas'||prefix(t.id)===discipline);if(!list.some(t=>t.id===selected))selected=(list.find(x=>x.cards.length||x.books.length||x.laws.length||x.official.length||x.authored.length)||list[0])?.id||'';const t=list.find(t=>t.id===selected);\n"
+      },
+      {
+        "before": "",
+        "after": " '<h4>Questões autorais · '+t.authored.length+'</h4>'+items(t.authored,q=>'<button type=\"button\" class=\"secondary\" onclick=\"AGUAuthoredQuestions.open(\\''+esc(q.id)+'\\',event.detail===0)\">'+esc(q.title)+'</button>')+\n"
+      }
+    ]
+  }
+}

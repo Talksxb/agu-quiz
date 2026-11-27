@@ -446,3 +446,29 @@ if(doc()?.createElement&&!doc().getElementById?.('agu-ux005-style')){
 `;doc().head?.appendChild(style)
 }
 })(window);
+
+/* UX-LEITOR-ARTIGOS-001: acesso ao índice existente, sem nova seleção ou histórico. */
+(function(root){
+'use strict';
+const legal=root.AGULegal;if(!legal)return;
+const page=legal.page;
+const button='<button type="button" class="agu-light agu-article-list" aria-controls="agu-article-index" onclick="AGULegal.articleList(event.detail===0)">Lista de artigos</button>';
+const change='<button class="agu-light agu-change-law" type="button" onclick="AGULegal.showLawPicker()">Trocar norma</button>';
+legal.page=function(){
+ let html=page();if(!html.includes('id="agu-reader"'))return html;
+ return html.replace('class="agu-pane agu-index"','id="agu-article-index" class="agu-pane agu-index"')
+  .replace(change,'<div class="agu-article-actions">'+change+button+'</div>')
+  .replace('<div><button class="agu-light agu-step-prev"','<div class="agu-article-actions"><button class="agu-light agu-step-prev"')
+  .replace('>Próximo artigo →</button></div></section>','>Próximo artigo →</button>'+button+'</div></section>')
+  +'<style>#agu-reader .agu-article-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}#agu-reader .agu-article-actions button{min-height:44px;max-width:100%;white-space:normal}#agu-reader .agu-article-list:focus-visible{outline:3px solid #633c69;outline-offset:3px}</style>';
+};
+legal.articleList=function(keyboard=false){
+ if(!root.document?.getElementById('agu-reader'))return false;
+ legal.mobile('index',false);
+ const move=()=>{const reader=root.document.getElementById('agu-reader');
+  const target=reader?.querySelector('.agu-index-entry.selected:not([hidden])')||reader?.querySelector('#agu-law-filter');
+  if(!target)return;if(keyboard)target.focus({preventScroll:true});target.scrollIntoView({block:'center',inline:'nearest'});
+ };
+ if(root.queueMicrotask)root.queueMicrotask(move);else move();return true;
+};
+})(window);
