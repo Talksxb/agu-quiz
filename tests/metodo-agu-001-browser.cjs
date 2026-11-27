@@ -19,6 +19,21 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   for(const bid of ['lgpd-adm64b','adm-53','adm-54','amb-03']){
    const book=JSON.parse(fs.readFileSync(path.join(ROOT,'livros',bid+'.json')));await page.locator('[data-book="'+bid+'"]').click();await page.locator('#method-tabs').waitFor();await page.waitForFunction(([id,n])=>document.querySelector('#book').dataset.chapterId===id&&document.querySelectorAll('[data-source-section]').length===n,[bid,book.pages.length]);
    const dom=await page.locator('[data-source-section]').allInnerTexts();for(let i=0;i<book.pages.length;i++)assert.ok(squeeze(dom[i]).startsWith(expected(book.pages[i].text,book.source_format)),bid+' fidelidade DOM seção '+i);
+   if(bid==='amb-03'){
+    const captions=await page.evaluate(async()=>{
+     const boxes=[...document.querySelectorAll('.method-table')],out=[];
+     for(const region of boxes){
+      const caption=region.querySelector('table > caption'),table=region.querySelector('table');
+      const prior=region.scrollLeft,geometry=()=>{const a=caption.getBoundingClientRect(),b=region.getBoundingClientRect();return {width:a.width,available:region.clientWidth,left:a.left,right:a.right,innerLeft:b.left+region.clientLeft,innerRight:b.left+region.clientLeft+region.clientWidth}};
+      try{region.scrollLeft=0;await new Promise(r=>requestAnimationFrame(r));const start=geometry();
+       region.scrollLeft=region.scrollWidth;await new Promise(r=>requestAnimationFrame(r));out.push({native:table.caption===caption,label:caption.textContent,start,end:geometry(),overflow:region.scrollWidth>region.clientWidth});
+      }finally{region.scrollLeft=prior}
+     }return out
+    });
+    assert.equal(captions.length,2);
+    for(const c of captions){assert.ok(c.native&&c.label.trim().length>0,'legenda nativa preservada');for(const g of [c.start,c.end])assert.ok(g.width<=g.available+1&&g.left>=g.innerLeft-1&&g.right<=g.innerRight+1,'legenda visível '+width+' '+JSON.stringify(c));if(width===320||width===390)assert.ok(c.overflow,'rolagem das colunas preservada')}
+    console.log('LIVROS_CAPTION_GEOMETRY',JSON.stringify({width,captions}));
+   }
    await scan(bid+' estudar');await page.getByRole('button',{name:'Aplicar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);assert.equal(await page.locator('.method-answer').innerText(),'');await scan(bid+' aplicar');
    await page.getByRole('button',{name:'Recuperar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);await page.getByRole('button',{name:'Conferir respostas',exact:true}).click();assert.ok((await page.locator('.method-answer').innerText()).length>100);await scan(bid+' recuperar');
    await page.getByRole('button',{name:'Revisar',exact:true}).click();assert.ok(await page.locator('[data-card-id="aud03-flc-013"]').isVisible());await scan(bid+' revisar');assert.equal(await page.evaluate(k=>localStorage.getItem(k),REVIEW),seedReview,'Abrir/revelar atividades não altera agenda');
