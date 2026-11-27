@@ -109,7 +109,7 @@ async function main(){
   const future={schema:'agu-review-v1',attempts:[],cards:Object.fromEntries(cards.map(id=>[id,{stage:3,seen:1,due:'2099-12-31',errors:0,ease:'lembrei'}])),created:'2026-11-01T00:00:00Z'};
   await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:future});
   await p.reload();await p.evaluate(()=>setView('review'));assert.ok(await p.locator('#agu-review-now').isDisabled());
-  const prior=await stored(p);assert.equal(await p.evaluate(()=>AGUReview.reviewNow(true)),false);assert.deepEqual(await stored(p),prior);
+  const prior=await stored(p);assert.equal(await p.locator('#agu-deck-suggested').count(),0);assert.equal(await p.evaluate(()=>AGUReview.deckSuggested(true)),false);assert.equal(await p.evaluate(()=>AGUReview.reviewNow(true)),false);assert.deepEqual(await stored(p),prior);
   // Uma revisão vencida com erros e um histórico sem agenda seguem elegíveis pelo motor original.
   const first=await p.evaluate(()=>AGUReview.searchCards()[0]);
   const overdue=JSON.parse(JSON.stringify(future));overdue.cards[first.id]={stage:1,seen:2,due:'2000-01-01',errors:3,ease:'errei'};
@@ -136,6 +136,46 @@ async function main(){
   const importedBefore=await stored(p);await p.locator('#agu-review-now').press('Enter');
   assert.equal(await p.locator('#agu-review-active .question-title').innerText(),first.front);assert.deepEqual(await stored(p),importedBefore);
   assert.equal(await p.evaluate(id=>AGUReview.reviewInfo(id).due,first.id),null,'tentativa importada não recria vencimento');
+  // AUD-UX-006: reprodução no código da base exata e jornada com histórico sintético.
+  const old006=await browser.newContext(config),p006=await old006.newPage();
+  await p006.route(url=>url.pathname.endsWith('/revisao-inteligente.js'),r=>r.fulfill({status:200,contentType:'application/javascript',body:require('./aud-ux-006-legado.cjs')(current)}));
+  await open(p006,base);assert.equal(await p006.locator('#agu-deck-suggested,#agu-deck-difficulties').count(),0);
+  await p006.locator('#agu-deck-options > summary').press('Enter');assert.equal(await p006.locator('#agu-deck-filter-status option[value=dificuldades]').count(),0);await old006.close();
+  const groups=await p.evaluate(()=>AGUReview.deckList().map(d=>({code:d.code,ids:d.cards.map(c=>c.id)})));
+  const con=groups.find(d=>d.code==='CON-02'),seg=groups.find(d=>d.code==='SEG-01'),imp=groups.find(d=>d.code==='ADM-06');
+  const rec=seg.ids[0],hard=con.ids[0],corrected=con.ids[1],importOnly=imp.ids[0];
+  const fixture=JSON.parse(JSON.stringify(future));delete fixture.cards[importOnly];
+  fixture.cards[rec]={stage:1,seen:2,due:'2000-01-01',errors:99,ease:'lembrei'};
+  fixture.cards[hard]={stage:1,seen:1,due:'2099-12-31',errors:0,ease:'dificil'};
+  const attempt006=(id,code,grade,day,n)=>({id:'rv-aud006-'+n,itemId:id,kind:'flashcard',code,at:'2026-11-'+day+'T10:00:00Z',rating:grade,selected:null,correct:null,sourceStatus:'B_pendente_revisao_independente',due:'2026-11-30',stage:0,origin:'flashcard_autoral'});
+  fixture.attempts=[attempt006(hard,con.code,'dificil','24',1),attempt006(corrected,con.code,'lembrei','24',2),attempt006(importOnly,imp.code,'errei','23',3),attempt006(corrected,con.code,'errei','10',4)];
+  await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:fixture});
+  await p.reload();await p.evaluate(()=>setView('review'));const raw006=await p.evaluate(k=>localStorage.getItem(k),KEY);
+  assert.match(await p.locator('#agu-deck-suggested').locator('..').innerText(),/SEG-01/);
+  const bundle006=await p.evaluate(()=>AGUBackup20.capture());assert.equal(bundle006.items[KEY],raw006);
+  if(width<=430)await p.locator('#agu-deck-suggested').tap();else await p.locator('#agu-deck-suggested').press('Enter');
+  const suggestedSession=await p.evaluate(()=>AGUReview.deckSession());assert.equal(suggestedSession.code,'SEG-01');assert.deepEqual(suggestedSession.order,[rec]);
+  if(width>430)assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-deck-face');
+  const after006=await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);assert.deepEqual(after006.attempts,fixture.attempts);assert.deepEqual(after006.cards,fixture.cards);
+  scans.suggested=await accessibility(p,'sugerido',width);
+  await p.getByRole('button',{name:'Pausar e voltar',exact:true}).press('Enter');await p.reload();await p.evaluate(()=>setView('review'));
+  assert.equal(await p.locator('#agu-deck-suggested').count(),0);assert.deepEqual(await p.evaluate(()=>AGUReview.deckSession()),suggestedSession);
+  const restored006=await browser.newContext(config),t006=await restored006.newPage();t006.on('pageerror',e=>errors.push(e.message));await open(t006,base);
+  await t006.evaluate(b=>AGUBackup20.importMissing(b),bundle006);await t006.reload();await t006.evaluate(()=>setView('review'));
+  assert.equal(await t006.evaluate(k=>localStorage.getItem(k),KEY),raw006);
+  const before006=await stored(t006);await t006.locator('#agu-deck-difficulties').press('Enter');
+  assert.equal(await t006.locator('#agu-deck-filter-status').inputValue(),'dificuldades');assert.equal(await t006.evaluate(()=>document.activeElement.id),'agu-deck-filter-status');
+  assert.equal(await t006.locator('.agu-deck-grid article').count(),2);assert.match(await t006.locator('.agu-deck-filter-result').innerText(),/2 cartões selecionáveis/);
+  assert.deepEqual(await stored(t006),before006);assert.equal(await t006.evaluate(id=>AGUReview.reviewInfo(id).due,importOnly),null);
+  scans.difficulties=await accessibility(t006,'dificuldades',width);
+  await t006.locator('#agu-deck-filter-topic').fill('CON-02');await t006.locator('#agu-deck-filter-topic').press('Tab');
+  await t006.locator('.agu-deck-grid article button').press('Enter');assert.deepEqual((await t006.evaluate(()=>AGUReview.deckSession())).order,[hard]);
+  await t006.locator('#agu-deck-face').press('Enter');await t006.getByRole('button',{name:'Lembrei',exact:true}).press('Enter');
+  assert.equal(await t006.evaluate(()=>AGUReview.attemptsInfo().length),fixture.attempts.length+1);
+  await t006.getByRole('button',{name:'Voltar à biblioteca',exact:true}).press('Enter');await t006.locator('#agu-deck-difficulties').press('Enter');
+  assert.equal(await t006.locator('.agu-deck-grid article').count(),1);assert.match(await t006.locator('.agu-deck-grid article').innerText(),/ADM-06/);
+  await t006.reload();await t006.evaluate(()=>setView('review'));await t006.locator('#agu-deck-difficulties').press('Enter');assert.equal(await t006.locator('.agu-deck-grid article').count(),1);
+  await restored006.close();console.log('AUD_UX_006_FC04_RV01_OK',width);
   assert.deepEqual(errors,[]);results.push({width,baselineReviewY:oldY,quickActionY:y,sameQueue:true,noWriteOnOpen:true,ratings:3,errorIntervalPreserved:true,subjectSelection:true,sessionReload:true,backupRoundTrip:true,preservedExistingPlan:true,futureOnlyBlocked:true,touch:width<=430,keyboard:true,scans});await ctx.close();
  }
  console.log('AUD_UX_001_BROWSER_OK',JSON.stringify({browser:browser.version(),viewports:results.map(x=>x.width),seconds:(Date.now()-started)/1000}));

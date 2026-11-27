@@ -1,0 +1,11 @@
+# AUD-UX-006 — FC-04 / RV-01
+
+27/11/2026 BRT. Base f7213a541dc0cbed51c856b5c603d8c3d50da003, após AUD-UX-005 e BACKLOG-SEG-001 publicados. 53 cartões/12 baralhos. Não duplicar #115. Escopo exclusivamente FC-04 e RV-01.
+
+Reprodução: biblioteca ordenada alfabeticamente por disciplina/código (deckList), filtro de estado sem dificuldade pessoal, e fila original sem indicação de assunto. Teste novo carrega o motor exato da base revertendo o delta e verifica ausência dos controles. Não se altera a ordenação geral nem a prioridade original.
+
+FC-04: apresenta assunto do primeiro candidato de candidates('flashcard',1), com título e botão de início pelo deckStart existente. Seleção usa o estado original do candidato (pendentes para vencido/hoje; inéditos ou sem data nos outros casos), não inclui futuros por recomendação. Sessão interrompida tem precedência; nenhuma recomendação se fila vazia. Iniciar sessão grava apenas a sessão existente, não uma avaliação. Revisar agora mantém a fila antiga.
+
+RV-01: botão Minhas dificuldades e opção Última avaliação: Errei ou Difícil no filtro de estado. Consulta as tentativas datadas de flashcards já registradas, inclusive importadas, usando data da tentativa (não posição de importação; empates seguem ordem registrada). Sem tentativa datada, não inferir dificuldade a partir de nível cognitivo ou contador. Pode incluir futuro para estudo livre explícito; não reclassifica prazo, não cria agenda. O filtro combina disciplina e assunto, é transitório. Avaliação posterior positiva sai do recorte; registro antigo permanece. Nenhuma chave, migração, novo ranking, conteúdo jurídico ou motor paralelo.
+
+Verificação proposta: delta explícito reversível para SHA256 da base SEG-001, antes da cadeia histórica; não alterar fixtures. Jornada cumulativa nas cinco larguras: base sem controles, fila vazia/futuros, recomendação SEG-01 em fixture sintética, início sem tentativa, recarga da sessão, backup central/restauração em perfil independente, histórico importado sem agenda, erro antigo importado fora de ordem, filtro/teclado/foco, avaliação posterior e recarga, axe estrito. Todos os testes anteriores mantidos. CI do HEAD exato, merge protegido e Pages/HTTP pendentes até prova terminal. Sem Android físico/TalkBack. Não executar AUD-UX-007.
