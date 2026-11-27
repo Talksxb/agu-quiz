@@ -302,7 +302,7 @@ function deckResume(keyboard=false){
  pendingDeck=null;
  currentMode='deck';active=INDEX.get(s.order[s.index]);revealed=s.revealed||!!s.ratings[active.id];pick='';global.render?.();
  global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
- focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;
+ focusAfter(s.code===SHORT_QUEUE&&revealed&&!s.ratings[active.id]?'#agu-deck-rating-errei':'#agu-deck-face, #agu-deck-next',keyboard);return true;
 }
 function deckPause(keyboard=false){
  if(currentMode!=='deck')return false;

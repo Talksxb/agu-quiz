@@ -182,7 +182,7 @@ async function main(){
   await open(p007,base);assert.equal(await p007.locator('#agu-deck-short').count(),0);
   const chosen007=groups.slice(0,6).map(g=>g.ids[0]);assert.equal(chosen007.length,6);
   const seed007=JSON.parse(JSON.stringify(future));
-  chosen007.forEach((id,i)=>{seed007.cards[id]={stage:1,seen:1,due:'2000-01-01',errors:100-i*10,ease:'errei'}});
+  chosen007.forEach((id,i)=>{seed007.cards[id]={stage:1,seen:1,due:'2000-01-01',errors:1000-i*100,ease:'errei'}});
   await p007.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:seed007});
   await p007.reload();await p007.evaluate(()=>setView('review'));
   await p007.locator('#agu-review-now').press('Enter');
@@ -204,7 +204,7 @@ async function main(){
   const state007=await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);assert.deepEqual(state007.attempts,[]);assert.deepEqual(state007.cards,seed007.cards);
   if(width>430)assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-deck-face');
   scans.shortFront=await accessibility(p,'curta-frente',width);
-  await p.locator('#agu-deck-face').press('Space');scans.shortBack=await accessibility(p,'curta-verso',width);
+  await p.locator('#agu-deck-face').press('Space');assert.equal(await p.evaluate(()=>AGUReview.attemptsInfo().length),0);scans.shortBack=await accessibility(p,'curta-verso',width);
   await p.getByRole('button',{name:'Errei',exact:true}).press('Enter');
   await p.locator('#agu-deck-face').press('Enter');
   const paused007=await p.evaluate(()=>AGUReview.deckSession());assert.equal(paused007.index,1);assert.equal(paused007.revealed,true);
@@ -214,7 +214,7 @@ async function main(){
   assert.match(await p.locator('.agu-deck-resume').innerText(),/Sessão curta de revisão/);
   const bundle007=await p.evaluate(()=>AGUBackup20.capture());
   await p.locator('#agu-deck-resume').press('Enter');assert.deepEqual(await p.evaluate(()=>AGUReview.deckSession()),paused007);
-  assert.equal(await p.locator('.agu-deck-back').count(),1);
+  assert.equal(await p.locator('.agu-deck-back').count(),1);assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-deck-rating-errei');
   const restore007=await browser.newContext(config),rp007=await restore007.newPage();rp007.on('pageerror',e=>errors.push(e.message));await open(rp007,base);
   await rp007.evaluate(b=>AGUBackup20.importMissing(b),bundle007);await rp007.reload();await rp007.evaluate(()=>setView('review'));
   await rp007.locator('#agu-deck-resume').press('Enter');assert.deepEqual(await rp007.evaluate(()=>AGUReview.deckSession()),paused007);

@@ -61,6 +61,10 @@ const changes=[
   {
     "before": "mergeBackupObject,deckStart,deckDecide",
     "after": "mergeBackupObject,deckStart,deckShortStart,deckDecide"
+  },
+  {
+    "before": " focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;\n}\nfunction deckPause",
+    "after": " focusAfter(s.code===SHORT_QUEUE&&revealed&&!s.ratings[active.id]?'#agu-deck-rating-errei':'#agu-deck-face, #agu-deck-next',keyboard);return true;\n}\nfunction deckPause"
   }
 ];
 module.exports=source=>{
