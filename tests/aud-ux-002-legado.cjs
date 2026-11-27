@@ -3,6 +3,7 @@ const assert=require('node:assert/strict'),crypto=require('node:crypto');
 const delta=require('./fixtures/aud-ux-002-review-delta.json');
 const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
 module.exports=source=>{
+ source=require('./backlog-seg-001-legado.cjs')(source,'revisao-inteligente.js');
  // AUD-UX-005: reverte somente a descrição do contador, antes dos hashes históricos.
  const prior="<div class=\"muted\">Revisões vencidas</div><div class=\"metric\">'+sum.due+'</div><div class=\"small muted\">Novos flashcards: ",current="<div class=\"muted\">Revisões com prazo até hoje</div><div class=\"metric\">'+sum.due+'</div><div class=\"small muted\">Cartões e referências oficiais com data; não é o tamanho da fila.</div><div class=\"small muted\">Novos flashcards: ";
  assert.equal(source.split(current).length,2,'AUD-UX-005: somente o delta de rótulo deve ser único');

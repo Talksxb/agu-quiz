@@ -2,6 +2,10 @@
 'use strict';
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(__dirname,'artifacts-metodo-agu-003');
+const css=fs.readFileSync(path.join(ROOT,'interface-agu.css'),'utf8'),delta="\n/* LIVROS-CON — camada explícita do diálogo nativo acima da navegação fixa. */\n#agu-backup-preview:modal{z-index:110}\n";
+assert.ok(css.endsWith(delta),'delta de camada do modal único e exato');
+const cssPrior=css.slice(0,-delta.length);
+assert.equal(require('node:crypto').createHash('sha1').update('blob '+Buffer.byteLength(cssPrior)+'\0').update(cssPrior).digest('hex'),'bd9d3ac3981715d5f4fc7a7d76d17cbc9bb36881','CSS anterior restituído byte a byte');
 const KEY='agu_livros_reader_v1',REVIEW='agu_quiz_revisao_inteligente_v1',MAP='agu_quiz_mapeamento_questoes_v1',at='2026-11-20T12:00:00.000Z';
 const review=JSON.stringify({schema:'agu-review-v1',cards:{'ri-adm-01':{seen:3,stage:2,due:'2099-05-01',errors:1,ease:'lembrei'}},attempts:[],created:at});
 const oldRecord=()=>({page:7,done:[1],sectionId:'secao-historica',methodEdition:'0.1',updated:at,preferences:{size:22,height:1.9},activities:{'adm-53-caso':{draft:'Rascunho da edição antiga',edition:'0.1',performedAt:at}},readingEditions:{'0.1':{page:1,done:[0],nota:'snapshot anterior'}},campoFuturo:{texto:'conservar'}});
@@ -60,7 +64,26 @@ async function main(){
    await merge.keyboard.press('Escape');await merge.waitForFunction(()=>!document.getElementById('agu-backup-preview'));await merge.evaluate(([k,v])=>localStorage.setItem(k,v),[KEY,quotaRaw]);
    await merge.evaluate(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota artificial','QuotaExceededError');return set.call(this,key,value)}},KEY);
    const quotaBundle={...bundle,items:{[MAP]:JSON.stringify({'questao-fixture':'ADM-53'}),[KEY]:JSON.stringify({'capitulo-extra':{page:0,done:[]}})}};
-   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);await scan(merge,'quota com dados preservados');
+   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);const modalEvidence=await merge.evaluate(()=>{
+    const d=document.getElementById('agu-backup-preview'),button=[...d.querySelectorAll('button')].find(b=>b.textContent==='Confirmar restauração'),nav=document.querySelector('.side'),r=button.getBoundingClientRect();
+    const p=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
+    return {modal:d.matches(':modal'),dialogZ:getComputedStyle(d).zIndex,navZ:getComputedStyle(nav).zIndex,navPosition:getComputedStyle(nav).position,
+     text:button.textContent,enabled:!button.disabled,hit:button.contains(p),focus:document.activeElement?.getAttribute('role'),
+     colors:{fg:getComputedStyle(button).color,bg:getComputedStyle(button).backgroundColor}};
+   });
+   assert.ok(modalEvidence.modal&&modalEvidence.enabled&&modalEvidence.hit,'modal nativo e botão acessível sem ocultar controles');
+   assert.equal(modalEvidence.focus,'alert','foco preservado na mensagem de erro');
+   assert.equal(modalEvidence.dialogZ,'110','camada explícita do diálogo');
+   if(modalEvidence.navPosition==='fixed')assert.ok(Number(modalEvidence.dialogZ)>Number(modalEvidence.navZ),'camada acima da navegação fixa');
+   console.log('LIVROS_BACKUP_MODAL_LAYER',JSON.stringify({width,...modalEvidence}));
+   await scan(merge,'quota com dados preservados');
+   if(width===390){
+    const selector='#agu-backup-preview > .btnrow > .secondary[type="button"]:nth-child(2)';
+    assert.equal(await merge.locator(selector).count(),1);
+    const evidence={violations:[],incomplete:[]};
+    await require('./livros-axe-recheck.cjs').resolveIncomplete(merge,evidence,'390 quota passe explícito do botão',{explicitTargets:[{id:'color-contrast',target:[selector]}]});
+    scans[scans.length-1].buttonRuleEvidence=evidence;
+   }
    await merge.screenshot({path:path.join(OUT,'backup-'+width+'.png')});assert.deepEqual(errors,[]);results.push({width,scans,legacyReviewPreserved:true,roundtrip:true,explicitMerge:true,editionHistoryPreserved:true,combinedLimitsRejected:true,quotaSynthetic:true,physicalAndroid:false});
    for(const c of contexts)await c.close();
   }

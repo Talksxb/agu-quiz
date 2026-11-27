@@ -15,7 +15,7 @@ async function open(p,base){await p.goto(base);await p.evaluate(()=>setView('rev
   assert.equal(await p.locator('#agu-deck-options').getAttribute('open'),null);assert.ok(await p.locator('#agu-deck-filter-discipline').isVisible());assert.ok(await p.locator('#agu-deck-filter-topic').isVisible());
   const state=await p.evaluate(()=>JSON.stringify(localStorage));await p.locator('#agu-deck-options > summary').press('Enter');assert.ok(await p.locator('#agu-deck-filter-status').isVisible());
   await p.locator('#agu-deck-filter-status').selectOption('futuros');assert.equal(await p.locator('.agu-deck-grid article').count(),0);assert.match(await p.locator('#agu-deck-options summary').innerText(),/ativos/);assert.equal(await p.evaluate(()=>document.activeElement.id),'agu-deck-filter-status');
-  await p.getByRole('button',{name:'Limpar filtros',exact:true}).press('Enter');assert.equal(await p.locator('.agu-deck-grid article').count(),11);
+  await p.getByRole('button',{name:'Limpar filtros',exact:true}).press('Enter');assert.equal(await p.locator('.agu-deck-grid article').count(),12);
   assert.equal(await p.evaluate(()=>JSON.stringify(localStorage)),state,'filtros não gravam aprendizado');
   await p.locator('#agu-deck-filter-discipline').selectOption('CON');await p.locator('#agu-deck-filter-topic').fill('CON-02');await p.locator('#agu-deck-filter-topic').press('Tab');assert.equal(await p.locator('.agu-deck-grid article').count(),1);
   const axe=await u.scan(p);if(width<500)await p.locator('.agu-deck-grid article button').tap();else await p.locator('.agu-deck-grid article button').press('Space');

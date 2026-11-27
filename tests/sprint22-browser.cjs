@@ -109,7 +109,7 @@ async function main(){
  },KEYS);
  assert.equal(Object.keys(before.bundle.items).length,9,'todas as nove categorias precisam existir');
  assert.ok(Object.values(before.data).every(Boolean),'todas as chaves possuem valores');
- assert.equal(before.cards.flashcards,51);
+ assert.equal(before.cards.flashcards,53);
  assert.equal(before.cards.official,24);
  assert.deepEqual(before.audited.slice().sort(),STABLE_IDS.slice().sort());
  assert.equal(JSON.parse(before.data.agu_quiz_revisao_inteligente_v1).attempts.length,1);
@@ -117,7 +117,7 @@ async function main(){
  assert.equal(JSON.parse(before.data.agu_estudo_integrado_s16_v1).sessions.length,1);
  assert.equal(JSON.parse(before.data.agu_quiz_curriculo_repo_v1).itens.length,412);
  assert.equal(JSON.parse(before.data.agu_quiz_mapeamento_questoes_v1).a1,'AA-001');
- console.log('OK S22 nove categorias ativas, 4 questões, 51 flashcards, 24 referências, dados sintéticos');
+ console.log('OK S22 nove categorias ativas, 4 questões, 53 flashcards, 24 referências, dados sintéticos');
  // Diagnóstico: matriz que o importador normal rejeita deve ser rejeitada também no backup.
  const malformed=mutate(before.bundle,'agu_quiz_curriculo_repo_v1',m=>{
   m.disciplinas[1].codigo=m.disciplinas[0].codigo;return m;

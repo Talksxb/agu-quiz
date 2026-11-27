@@ -35,8 +35,9 @@ function panel(matrix){
 function focus(id){root.document?.getElementById(id)?.focus?.()}
 function select(id){if(!last?.topics.some(t=>t.id===id))return false;selected=id;root.render?.();focus('agu-curricular-topic');return true}
 function filter(value){discipline=value;selected='';root.render?.();focus('agu-curricular-discipline')}
-function cards(keyboard=false){
- const t=last?.topics.find(t=>t.id===selected);if(!t?.cards.length||!root.AGUReview?.exactDeck(t.id))return false;
+function cards(keyboard=false,code=selected){
+ // O comentário de uma questão pode abrir o mesmo fluxo por ID exato, sem depender do filtro visível.
+ const t=(code===selected?last:collect(root))?.topics.find(t=>t.id===code);if(!t?.cards.length||!root.AGUReview?.exactDeck(t.id))return false;
  root.AGUReview.deckPause(false);root.AGUReview.deckClearFilters(false);root.setView('review');return root.AGUReview.deckStart(t.id,keyboard);
 }
 function historical(year,n,keyboard=false){

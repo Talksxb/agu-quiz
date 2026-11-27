@@ -3,7 +3,7 @@
 const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const BASE=path.resolve(__dirname,'..'),KEY='agu_quiz_revisao_inteligente_v1';
-const read=f=>fs.readFileSync(path.join(BASE,f),'utf8');
+const read=f=>{const s=fs.readFileSync(path.join(BASE,f),'utf8');return f==='catalogo-disciplinas.js'?require('./backlog-seg-001-legado.cjs')(s,f):s};
 const sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
 const names=['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js','dados/flashcards-aud02-2015-atualizados-lote01.js','dados/flashcards-aud02-2015-atualizados-lote02.js','dados/flashcards-aud02-2015-atualizados-lote03.js','revisao-inteligente.js'];
 const copy=x=>JSON.parse(JSON.stringify(x));
