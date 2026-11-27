@@ -61,7 +61,17 @@
     "discipline": "CON",
     "topic": "União homoafetiva: questão anulada",
     "legacyCode": "CON-20",
-    "curricularStatus": "referencial_nao_homologado"
+    "secondaryCurricularIds": ["CON-20"],
+    "curricularStatus": "classificacao_pontual_conferida",
+    "editorialStatus": "anulada",
+    "excludeFromCurrentScoring": true,
+    "reviewedAt": "2026-11-27",
+    "classificationEvidence": {
+      "exam": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/804_AGU_ADVOGADO_001_01.PDF",
+      "key": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF",
+      "locator": "Questão 7; gabarito definitivo X; ADPF 132 e ADI 4277",
+      "scope": "Apenas classificação curricular e anulação; razão oficial da anulação não recuperada; sem reprodução integral ou liberação para pontuação."
+    }
   },
   {
     "n": 8,

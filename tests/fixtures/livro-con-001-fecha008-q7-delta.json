@@ -1,0 +1,18 @@
+{
+  "schema": "agu-exact-delta-v1",
+  "base": "cda979ba331af5dc32eac47b7d4a7fdf44d0fba5",
+  "files": {
+    "dados/questoes-agu-2023.js": {
+      "beforeBlob": "d6f475fe43cf38dc7d08ac22339725b9f6261fd0",
+      "before": "    \"n\": 7,\n    \"key\": \"X\",\n    \"code\": \"CON-22\",\n    \"discipline\": \"CON\",\n    \"topic\": \"União homoafetiva: questão anulada\",\n    \"legacyCode\": \"CON-20\",\n    \"curricularStatus\": \"referencial_nao_homologado\"",
+      "after": "    \"n\": 7,\n    \"key\": \"X\",\n    \"code\": \"CON-22\",\n    \"discipline\": \"CON\",\n    \"topic\": \"União homoafetiva: questão anulada\",\n    \"legacyCode\": \"CON-20\",\n    \"secondaryCurricularIds\": [\"CON-20\"],\n    \"curricularStatus\": \"classificacao_pontual_conferida\",\n    \"editorialStatus\": \"anulada\",\n    \"excludeFromCurrentScoring\": true,\n    \"reviewedAt\": \"2026-11-27\",\n    \"classificationEvidence\": {\n      \"exam\": \"https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/804_AGU_ADVOGADO_001_01.PDF\",\n      \"key\": \"https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/GAB_DEFINITIVO_804_AGU_ADVOGADO_001_01.PDF\",\n      \"locator\": \"Questão 7; gabarito definitivo X; ADPF 132 e ADI 4277\",\n      \"scope\": \"Apenas classificação curricular e anulação; razão oficial da anulação não recuperada; sem reprodução integral ou liberação para pontuação.\"\n    }",
+      "afterBlob": "cf778f42cec4b4d1851d6ef372f8d42d14cc7716"
+    },
+    "revisao-inteligente.js": {
+      "beforeBlob": "c50cd0966fca6a4f97cb1fd11749c5ff21d4ad32",
+      "before": "exam(2023,7,'X','CON-20','Item anulado','mc'),",
+      "after": "{...exam(2023,7,'X','CON-22','Item anulado','mc'),legacyCode:'CON-20',secondaryCurricularIds:['CON-20'],excludeFromCurrentScoring:true},",
+      "afterBlob": "e0e5558264590b7ac3a8dfe36b9353b26dbb34e9"
+    }
+  }
+}
