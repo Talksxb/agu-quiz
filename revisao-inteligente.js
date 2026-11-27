@@ -146,7 +146,7 @@ let notebookReturn=null;
 let deckFilters={discipline:'todos',topic:'',difficulty:'todas',status:'todos'};
 let deckOptionsOpen=false; // Preferência visual transitória, sem armazenamento.
 let pendingDeck=null; // Escolha transitória: nenhuma tentativa ou preferência é gravada ao filtrar.
-const REVIEW_STATES=Object.freeze(['todos','pendentes','vencidos','hoje','ineditos','futuros','sem_data']);
+const REVIEW_STATES=Object.freeze(['todos','pendentes','vencidos','hoje','ineditos','futuros','sem_data','dificuldades']);
 const DECK_TITLES=Object.freeze({
  'ADM-06':'Competência e delegação administrativa',
  'ADM-13':'Supervisão ministerial e autonomia',
@@ -194,7 +194,17 @@ function reviewState(x){
  if(!due)return 'sem_data';
  return due<today()?'vencidos':due===today()?'hoje':'futuros';
 }
+// AUD-UX-006: consulta o histórico existente; não modifica estágio ou agenda.
+function personalDifficulty(x){
+ let latest=null,time=-Infinity;
+ for(const a of state.attempts){
+  if(a?.kind!=='flashcard'||a.itemId!==x.id||!['errei','dificil','lembrei','facil'].includes(a.rating)||!dateIso(a.at))continue;
+  const t=Date.parse(a.at);if(t>=time){latest=a.rating;time=t}
+ }
+ return latest==='errei'||latest==='dificil';
+}
 function matchesStatus(x,filter=deckFilters.status){
+ if(filter==='dificuldades')return personalDifficulty(x);
  const status=reviewState(x);
  return filter==='todos'||(filter==='pendentes'&&(status==='vencidos'||status==='hoje'))||status===filter;
 }
@@ -297,6 +307,25 @@ function deckMove(step,keyboard=false){
  active=INDEX.get(next.order[nextIndex]);revealed=next.revealed;global.render?.();
  global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
  focusAfter('#agu-deck-face, #agu-deck-next',keyboard);return true;
+}
+// A sugestão deriva do primeiro candidato da fila original, sem novo ranking.
+function suggestedDeck(){
+ const next=candidates('flashcard',1)[0];if(!next)return null;
+ const deck=deckList().find(d=>d.code===next.code);if(!deck)return null;
+ const status=reviewState(next);
+ return {code:deck.code,title:deck.title,status:status==='vencidos'||status==='hoje'?'pendentes':status};
+}
+function deckSuggested(keyboard=false){
+ const next=suggestedDeck();if(!next)return false;
+ deckFilters={discipline:'todos',topic:next.code,difficulty:'todas',status:next.status};
+ return deckStart(next.code,keyboard);
+}
+function deckDifficulties(keyboard=false){
+ deckFilters={discipline:'todos',topic:'',difficulty:'todas',status:'dificuldades'};
+ deckOptionsOpen=true;pendingDeck=null;
+ global.render?.();focusAfter('#agu-deck-filter-status',keyboard);
+ global.document?.querySelector?.('#agu-deck-filter-status')?.scrollIntoView?.({block:'nearest'});
+ return true;
 }
 function deckMore(open){deckOptionsOpen=open===true}
 function deckFilter(key,value){
@@ -593,20 +622,21 @@ function libraryHTML(){
   (!deckFilters.topic||[x.code,x.title].join(' ').toLocaleLowerCase('pt-BR').includes(deckFilters.topic.toLocaleLowerCase('pt-BR')))&&
   selectedCards(x).length>0);
  const selectedCount=visible.reduce((n,deck)=>n+selectedCards(deck).length,0);
+ const suggestion=!activeSession?suggestedDeck():null;
  const intro='<section class="agu-deck-library" id="agu-deck-library" aria-label="Biblioteca de baralhos">'+
   '<div class="agu-deck-intro"><div><h2>'+(currentMode==='deck'?'Sessão de estudo':'Escolha um baralho')+'</h2><p class="muted">Escolha o assunto e comece. Suas avaliações ficam neste navegador.</p></div><span class="agu-deck-count">'+flashcards().length+' cartões · '+decks.length+' baralhos</span></div>';
  if(currentMode==='deck'&&session)return intro+sessionHTML()+'</section>';
  return intro+
   (activeSession?'<div class="card agu-deck-tile agu-deck-resume" style="--deck-accent:#17656b;--deck-soft:#e5f4f2"><b>Sessão interrompida · '+esc(session.code)+'</b><p>Cartão '+(session.index+1)+' de '+session.order.length+' · '+Object.keys(session.ratings).length+' avaliados nesta sessão</p><div class="btnrow"><button id="agu-deck-resume" type="button" class="primary" onclick="AGUReview.deckResume(event.detail===0)">Retomar sessão</button></div></div>':'')+
-  (!activeSession?'<div class="card agu-deck-quick-start"><div class="btnrow"><button id="agu-review-now" type="button" class="primary" '+(candidates('flashcard',1).length?'':'disabled ')+'onclick="AGUReview.reviewNow(event.detail===0)">Revisar agora</button></div><p class="small muted">'+decks.reduce((n,d)=>n+d.overdue,0)+' vencidos · '+decks.reduce((n,d)=>n+d.todayDue,0)+' vencem hoje · '+decks.reduce((n,d)=>n+d.new,0)+' inéditos. Fila geral de revisão; avaliar registra seu progresso.</p>'+(!candidates('flashcard',1).length?'<p class="small muted">Nenhum cartão disponível na fila agora. Escolha um baralho abaixo para estudo livre.</p>':'')+'</div>':'')+
+  (!activeSession?'<div class="card agu-deck-quick-start"><div class="btnrow"><button id="agu-review-now" type="button" class="primary" '+(candidates('flashcard',1).length?'':'disabled ')+'onclick="AGUReview.reviewNow(event.detail===0)">Revisar agora</button><button id="agu-deck-difficulties" type="button" class="secondary" onclick="AGUReview.deckDifficulties(event.detail===0)">Minhas dificuldades</button></div><p class="small muted">'+decks.reduce((n,d)=>n+d.overdue,0)+' vencidos · '+decks.reduce((n,d)=>n+d.todayDue,0)+' vencem hoje · '+decks.reduce((n,d)=>n+d.new,0)+' inéditos. Fila geral de revisão; avaliar registra seu progresso.</p>'+(suggestion?'<p class="small muted">Assunto sugerido pela fila original: <b>'+esc(suggestion.code)+' · '+esc(suggestion.title)+'</b>. <button id="agu-deck-suggested" type="button" class="secondary" onclick="AGUReview.deckSuggested(event.detail===0)">Estudar assunto sugerido</button></p>':'')+(!candidates('flashcard',1).length?'<p class="small muted">Nenhum cartão disponível na fila agora. Escolha um baralho abaixo para estudo livre.</p>':'')+'</div>':'')+
   (activeSession&&pendingDeck?'<section class="agu-deck-choice" aria-labelledby="agu-deck-choice"><h3 id="agu-deck-choice" tabindex="-1">Escolha como continuar</h3><p>Existe uma sessão em andamento no assunto '+esc(session.code)+' ('+Object.keys(session.ratings).length+' de '+session.order.length+' cartões avaliados). Você selecionou '+pendingDeck.order.length+' cartão(ões) de '+esc(pendingDeck.code)+'.</p><p>Iniciar uma nova seleção substitui apenas a sessão interrompida. Todas as avaliações anteriores continuam no histórico e na agenda de revisão.</p><div class="btnrow"><button type="button" class="secondary" onclick="AGUReview.deckDecide(\'continuar\',event.detail===0)">Retomar sessão anterior</button><button type="button" class="primary" onclick="AGUReview.deckDecide(\'novo\',event.detail===0)">Iniciar nova seleção ('+pendingDeck.order.length+')</button><button type="button" class="secondary" onclick="AGUReview.deckDecide(\'cancelar\',event.detail===0)">Cancelar</button></div></section>':'')+
   '<div class="agu-deck-filters" role="group" aria-label="Filtrar baralhos">'+
    '<label for="agu-deck-filter-discipline">Disciplina<select id="agu-deck-filter-discipline" onchange="AGUReview.deckFilter(\'discipline\',this.value)"><option value="todos">Todas as disciplinas</option>'+disciplines.map(([code,name])=>'<option value="'+esc(code)+'" '+(deckFilters.discipline===code?'selected':'')+'>'+esc(name)+'</option>').join('')+'</select></label>'+
    '<label for="agu-deck-filter-topic">Assunto ou código<input id="agu-deck-filter-topic" type="search" value="'+esc(deckFilters.topic)+'" placeholder="Ex.: ADM-06, delegação" onchange="AGUReview.deckFilter(\'topic\',this.value)"></label>'+
    '<details id="agu-deck-options" style="grid-column:1/-1" '+(deckOptionsOpen||deckFilters.difficulty!=='todas'||deckFilters.status!=='todos'?'open ':'')+'ontoggle="if(this.isConnected)AGUReview.deckMore(this.open)"><summary>Mais filtros · nível e revisão'+(deckFilters.difficulty!=='todas'||deckFilters.status!=='todos'?' · ativos':'')+'</summary>'+
    '<label for="agu-deck-filter-difficulty">Nível cognitivo do cartão<select id="agu-deck-filter-difficulty" onchange="AGUReview.deckFilter(\'difficulty\',this.value)"><option value="todas">Todas</option>'+levels.map(level=>'<option value="original:'+level+'" '+(deckFilters.difficulty==='original:'+level?'selected':'')+'>Nível cognitivo original '+level+'</option>').join('')+'<option value="sem_nivel" '+(deckFilters.difficulty==='sem_nivel'?'selected':'')+'>Nível não informado</option></select></label>'+
-   '<label for="agu-deck-filter-status">Estado dos cartões<select id="agu-deck-filter-status" onchange="AGUReview.deckFilter(\'status\',this.value)">'+[['todos','Todos os cartões'],['pendentes','Pendentes (vencidos e hoje)'],['vencidos','Somente vencidos (antes de hoje)'],['hoje','Vencem hoje'],['ineditos','Inéditos'],['futuros','Revisão futura'],['sem_data','Avaliados sem data']].map(([key,label])=>'<option value="'+key+'" '+(deckFilters.status===key?'selected':'')+'>'+label+'</option>').join('')+'</select></label></details>'+
-  '</div><div class="agu-deck-filter-result" role="status" aria-live="polite"><span>'+visible.length+' '+(visible.length===1?'baralho':'baralhos')+' · '+selectedCount+' '+(selectedCount===1?'cartão selecionável':'cartões selecionáveis')+'</span><button type="button" class="secondary" onclick="AGUReview.deckClearFilters(event.detail===0)">Limpar filtros</button></div><details class="agu-card-detail"><summary>Como funcionam revisão e progresso</summary><p class="agu-deck-help">Vencidos: prazo anterior a hoje. Vencem hoje: prazo igual à data local. Inéditos: nenhuma avaliação, inclusive importada. “Avaliados sem data” inclui tentativas importadas sem agenda local; isto não equivale a revisão vencida. Progresso conta avaliações, nunca aberturas ou domínio. Níveis 2–4 preservam a escala cognitiva original; não há equivalência validada com os três níveis pedagógicos nem ranking de incidência.</p></details>'+
+   '<label for="agu-deck-filter-status">Estado dos cartões<select id="agu-deck-filter-status" onchange="AGUReview.deckFilter(\'status\',this.value)">'+[['todos','Todos os cartões'],['pendentes','Pendentes (vencidos e hoje)'],['vencidos','Somente vencidos (antes de hoje)'],['hoje','Vencem hoje'],['ineditos','Inéditos'],['futuros','Revisão futura'],['sem_data','Avaliados sem data'],['dificuldades','Última avaliação: Errei ou Difícil']].map(([key,label])=>'<option value="'+key+'" '+(deckFilters.status===key?'selected':'')+'>'+label+'</option>').join('')+'</select></label></details>'+
+  '</div><div class="agu-deck-filter-result" role="status" aria-live="polite"><span>'+visible.length+' '+(visible.length===1?'baralho':'baralhos')+' · '+selectedCount+' '+(selectedCount===1?'cartão selecionável':'cartões selecionáveis')+'</span><button type="button" class="secondary" onclick="AGUReview.deckClearFilters(event.detail===0)">Limpar filtros</button></div><details class="agu-card-detail"><summary>Como funcionam revisão e progresso</summary><p class="agu-deck-help">Vencidos: prazo anterior a hoje. Vencem hoje: prazo igual à data local. Inéditos: nenhuma avaliação, inclusive importada. “Avaliados sem data” inclui tentativas importadas sem agenda local; isto não equivale a revisão vencida. Progresso conta avaliações, nunca aberturas ou domínio. “Minhas dificuldades” considera a última tentativa datada no histórico (Errei ou Difícil, inclusive importada); pode incluir revisão futura para estudo livre. Não é nível cognitivo nem altera a agenda. Níveis 2–4 preservam a escala cognitiva original; não há equivalência validada com os três níveis pedagógicos nem ranking de incidência.</p></details>'+
   '<div class="agu-deck-grid">'+(visible.map(x=>{
    const vars=global.AGUDisciplines?.cssVars?.(x.code)||'';
    const levelText=Object.entries(x.difficulties).sort().map(([key,count])=>count+' '+(key==='sem_nivel'?'sem nível':key.replace('original:','no nível original '))).join(' · ');
@@ -711,5 +741,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckMore,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckMore,deckSuggested,deckDifficulties,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);
