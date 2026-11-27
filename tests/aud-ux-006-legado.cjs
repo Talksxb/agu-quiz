@@ -40,6 +40,7 @@ const changes=[
   }
 ];
 module.exports=source=>{
+ source=require('./aud-ux-007-legado.cjs')(source);
  for(const c of [...changes].reverse()){
   assert.equal(source.split(c.after).length,2,'AUD-UX-006: somente o delta explícito, trecho único');
   source=source.replace(c.after,c.before);
