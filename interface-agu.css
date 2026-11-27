@@ -303,3 +303,44 @@ h3 { font-size: 1rem; line-height: 1.5; }
  #main .feedback,#main .aq-bank .aq-error{padding:12px}
  #main #agu-reader .agu-related .agu-ctx-box{padding:10px}
 }
+
+/* UX-AGU-MOBILE-002 — MOB-01/02/03; apresentação somente, sem reordenar DOM. */
+#agu-reader[data-mobile] .agu-mobile,
+#agu-reader[data-mobile][data-immersive=true] .agu-mobile{flex-wrap:wrap}
+#agu-reader[data-mobile] .agu-mobile button,
+#agu-reader[data-mobile][data-immersive=true] .agu-mobile button{
+ flex:1 0 auto;min-width:44px;max-width:100%;min-height:48px;
+ white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none;
+ font-size:1rem;line-height:1.35
+}
+/* Sombras de rolagem: camadas locais cobrem a sombra no limite atingido.
+   A barra nativa é preservada; nenhuma sobreposição sobre os controles. */
+.main .secondary-nav{
+ --mobile-tab-shadow:rgba(99,60,105,.32);
+ background-image:linear-gradient(to right,var(--ui-canvas) 30%,transparent),
+  linear-gradient(to left,var(--ui-canvas) 30%,transparent),
+  radial-gradient(farthest-side at 0 50%,var(--mobile-tab-shadow),transparent),
+  radial-gradient(farthest-side at 100% 50%,var(--mobile-tab-shadow),transparent);
+ background-repeat:no-repeat;
+ background-position:left center,right center,left center,right center;
+ background-size:24px 100%,24px 100%,12px 100%,12px 100%;
+ background-attachment:local,local,scroll,scroll;
+ scrollbar-width:thin;scrollbar-color:var(--ui-accent) var(--ui-accent-soft);
+ padding-bottom:12px;scroll-padding-inline:5px
+}
+.main .secondary-nav::-webkit-scrollbar{height:8px}
+.main .secondary-nav::-webkit-scrollbar-track{background:var(--ui-accent-soft);border-radius:8px}
+.main .secondary-nav::-webkit-scrollbar-thumb{background:var(--ui-accent);border-radius:8px}
+@media(max-width:1100px){
+ /* Mesma sequência de leitura/foco, mesmas informações, menor espaço antes da pergunta. */
+ .main .agu-deck-session:has(> .agu-deck-surface) .agu-deck-session-head{gap:5px}
+ .main .agu-deck-session:has(> .agu-deck-surface) .agu-deck-session-head h2{margin:2px 0}
+ .main .agu-deck-session:has(> .agu-deck-surface) .agu-deck-session-head>button{min-height:44px;padding:8px 12px}
+ .main .agu-deck-session:has(> .agu-deck-surface)>p.agu-deck-stage{margin:6px 0 2px}
+ .main .agu-deck-session:has(> .agu-deck-surface)>.agu-deck-progress{display:block;margin:3px 0 5px}
+ .main .agu-deck-session:has(> .agu-deck-surface)>.agu-deck-study-state{margin:4px 0 6px;gap:4px}
+ .main .agu-deck-session:has(> .agu-deck-surface)>.agu-deck-study-state>*{padding:3px 6px}
+ .main .agu-deck-session:has(> .agu-deck-surface)>.agu-deck-meta{gap:2px 8px;line-height:1.4}
+ .main .agu-deck-session:has(> .agu-deck-surface)>.agu-deck-surface{margin:9px 0}
+ .main .agu-deck-session:has(> .agu-deck-surface) .agu-deck-front .question-title{margin:10px 0 14px}
+}
