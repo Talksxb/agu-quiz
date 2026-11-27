@@ -300,7 +300,7 @@ function deckResume(keyboard=false){
  const s=savedSession();if(!s||s.status!=='em_andamento')return false;
  if(s.order.some(id=>!editorialEligible(INDEX.get(id)))){global.alert?.('Um cartão desta sessão aguarda revalidação editorial. A sessão, as respostas e a agenda foram preservadas. Escolha uma seleção de cartões aprovados para continuar.');return false}
  pendingDeck=null;
- currentMode='deck';active=INDEX.get(s.order[s.index]);revealed=s.revealed||!!s.ratings[active.id];pick='';global.render?.();
+ currentMode='deck';active=INDEX.get(s.order[s.index]);revealed=s.revealed;pick='';global.render?.();
  global.document?.querySelector?.('.agu-deck-session')?.scrollIntoView?.({block:'start'});
  focusAfter(s.code===SHORT_QUEUE&&revealed&&!s.ratings[active.id]?'#agu-deck-rating-errei':'#agu-deck-face, #agu-deck-next',keyboard);return true;
 }
@@ -519,13 +519,20 @@ function rating(grade,keyboard=false){
  window.render();
  focusAfter('button[onclick^="AGUReview.reveal("]',keyboard);
 }
+// AUD-UX-008: alternar somente a face atual, sem avaliar ou alterar agenda.
+function deckHide(keyboard=false){
+ const s=savedSession();
+ if(currentMode!=='deck'||!active||!s||s.status!=='em_andamento'||s.order[s.index]!==active.id||!s.revealed)return false;
+ if(!saveDeckSession({...s,revealed:false}))return false;
+ revealed=false;global.render?.();focusAfter('#agu-deck-face',keyboard);return true;
+}
 function reveal(keyboard=false){
  if(!active)return;if(active.kind==='official'&&(!pick||!INLINE_ADAPTED[active.id]))return;
  if(currentMode==='deck'){
   const s=savedSession();if(!s||s.order[s.index]!==active.id)return;
   if(!saveDeckSession({...s,revealed:true}))return;
  }
- revealed=true;window.render();focusAfter(currentMode==='deck'?'#agu-deck-rating-errei':'button[onclick^="AGUReview.rate(\'errei\'"]',keyboard);
+ revealed=true;window.render();focusAfter(currentMode==='deck'?(savedSession()?.ratings[active.id]?'#agu-deck-hide':'#agu-deck-rating-errei'):'button[onclick^="AGUReview.rate(\'errei\'"]',keyboard);
 }
 function chooseAnswer(v,keyboard=false){if(!active||active.kind!=='official'||revealed||!INLINE_ADAPTED[active.id]?.auditVerified)return;if(!(active.type==='ce'?/^[CE]$/:/^[A-E]$/).test(v))return;pick=v;window.render();focusAfter('button.option.selected',keyboard)}
 function go(mode,keyboard=false){choose(mode);window.render();focusAfter('button[onclick^="AGUReview.go(\''+mode+'\'"]',keyboard)}
@@ -666,7 +673,7 @@ function sessionHTML(){
   for(const id of Object.values(s.ratings)){const attempt=state.attempts.find(a=>a.id===id);if(attempt&&Object.hasOwn(counts,attempt.rating))counts[attempt.rating]++}
   return '<section class="agu-deck-session" style="'+vars+'" aria-label="'+(short?'Resumo da sessão curta':'Resumo do baralho')+'"><h2 tabindex="-1" id="agu-deck-done">'+(short?'Sessão curta concluída':'Baralho concluído')+'</h2><p>'+esc(deck.title)+' · '+ratedCount+' de '+s.order.length+' cartões avaliados nesta sessão.</p><p>Distribuição das avaliações desta sessão: Errei '+counts.errei+' · Difícil '+counts.dificil+' · Lembrei '+counts.lembrei+' · Fácil '+counts.facil+'. Isto descreve respostas registradas, não domínio certificado.</p><p>As próximas revisões seguem os intervalos anteriores (D+1, D+7, D+21 e D+45). Suas respostas permanecem no histórico original.</p><div class="btnrow"><button class="primary" type="button" '+(short&&!candidates('flashcard',1).length?'disabled ':'')+'onclick="AGUReview.deckRepeat(event.detail===0)">'+(short?'Iniciar próxima sessão disponível':'Reestudar a mesma seleção')+'</button><button class="secondary" type="button" onclick="AGUReview.deckPause(event.detail===0)">Voltar à biblioteca</button></div></section>';
  }
- const x=INDEX.get(s.order[s.index]),rated=s.ratings[x.id],shown=s.revealed||!!rated;
+ const x=INDEX.get(s.order[s.index]),rated=s.ratings[x.id],shown=s.revealed;
  const priorEvaluations=Math.max(0,historicalCount(x.id)-(rated?1:0));
  const importedOnly=!(stat(x.id).seen>0)&&recordedHistory().has(x.id);
  const stateLabel=REVIEW_LABELS[reviewState(x)];
@@ -674,7 +681,7 @@ function sessionHTML(){
  '<p class="agu-deck-stage" aria-live="polite">Cartão '+(s.index+1)+' de '+s.order.length+' · '+ratedCount+' avaliados</p><label class="small" for="agu-deck-session-progress">Avaliação nesta sessão</label><progress class="agu-deck-progress" id="agu-deck-session-progress" max="'+s.order.length+'" value="'+ratedCount+'">'+ratedCount+' de '+s.order.length+'</progress>'+
  '<div class="agu-deck-study-state"><span>'+esc(stateLabel)+(stat(x.id).due?' · '+esc(stat(x.id).due):'')+'</span><span>'+(priorEvaluations?priorEvaluations+' avaliação(ões) anteriores no histórico':'Inédito antes desta sessão')+'</span>'+(importedOnly?'<span>Histórico importado · sem agendamento local</span>':'')+(rated?'<strong>Avaliado nesta sessão</strong>':'<span>Ainda não avaliado nesta sessão</span>')+'</div>'+
  '<div class="agu-deck-meta"><span>'+esc(difficulty(x))+'</span><span>Cartão autoral de fundamento jurídico'+(x.origin?.includes('estilo_cebraspe')?' · estilo Cebraspe':'')+'</span><span>'+esc(x.validation||'validação pendente')+'</span></div>'+
- (shown?'<div class="agu-deck-surface agu-deck-back" role="group" aria-label="Verso do cartão"><span class="agu-deck-stage">Verso · resposta</span><h3 class="question-title">'+esc(x.front)+'</h3><p>'+esc(x.back)+'</p>'+flashDetails(x)+'</div>':
+ (shown?'<div class="agu-deck-surface agu-deck-back" role="group" aria-label="Verso do cartão"><span class="agu-deck-stage">Verso · resposta</span><h3 class="question-title">'+esc(x.front)+'</h3><p>'+esc(x.back)+'</p>'+flashDetails(x)+'<div class="btnrow"><button id="agu-deck-hide" type="button" class="secondary" style="min-height:44px" onclick="AGUReview.deckHide(event.detail===0)">Ocultar resposta</button></div></div>':
   '<button type="button" id="agu-deck-face" class="agu-deck-surface agu-deck-front" onclick="AGUReview.reveal(event.detail===0)"><span class="agu-deck-stage">Frente · pense antes de revelar</span><h3 class="question-title">'+esc(x.front)+'</h3><span class="agu-deck-flip-tip">Toque ou pressione Enter / Espaço para revelar a resposta →</span></button>')+
  (rated?'<div class="agu-deck-rated" role="status">Você já avaliou este cartão nesta sessão. A avaliação não será registrada novamente.</div>':shown?'<div><p>Como foi recuperar a resposta?</p><div class="btnrow">'+[['errei','Errei'],['dificil','Difícil'],['lembrei','Lembrei'],['facil','Fácil']].map(([value,label])=>'<button id="agu-deck-rating-'+value+'" type="button" class="'+(value==='errei'?'danger':'secondary')+'" onclick="AGUReview.rate(\''+value+'\',event.detail===0)">'+label+'</button>').join('')+'</div></div>':'')+
  '<div class="btnrow"><button class="secondary" type="button" '+(s.index===0?'disabled':'')+' onclick="AGUReview.deckMove(-1,event.detail===0)">← Anterior</button><button id="agu-deck-next" class="secondary" type="button" '+(s.index===s.order.length-1?'disabled':'')+' onclick="AGUReview.deckMove(1,event.detail===0)">Próximo →</button></div>'+
@@ -753,5 +760,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckShortStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckMore,deckSuggested,deckDifficulties,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckShortStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckHide,deckMove,deckFilter,deckMore,deckSuggested,deckDifficulties,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);

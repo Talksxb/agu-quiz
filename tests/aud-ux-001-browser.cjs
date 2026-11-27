@@ -241,6 +241,71 @@ async function main(){
   await rp007.locator('#agu-deck-face').press('Enter');await rp007.getByRole('button',{name:'Lembrei',exact:true}).press('Enter');
   assert.ok(await rp007.getByRole('button',{name:'Iniciar próxima sessão disponível',exact:true}).isDisabled());
   await restore007.close();console.log('AUD_UX_007_FC06_RV02_OK',width);
+  // AUD-UX-008: reprodução na base publicada e alternância sem avaliação.
+  const old008=await browser.newContext(config),p008=await old008.newPage();
+  await p008.route(url=>url.pathname.endsWith('/revisao-inteligente.js'),r=>r.fulfill({status:200,contentType:'application/javascript',body:require('./aud-ux-008-legado.cjs')(current)}));
+  await open(p008,base);await p008.evaluate(()=>AGUReview.deckStart('CON-02'));
+  await p008.locator('#agu-deck-face').press('Enter');
+  assert.equal(await p008.locator('.agu-deck-back').count(),1);
+  assert.equal(await p008.locator('#agu-deck-hide').count(),0);
+  assert.equal(await p008.evaluate(()=>typeof AGUReview.deckHide),'undefined');
+  assert.equal(await p008.locator('#agu-deck-face').count(),0);await old008.close();
+  for(const mode of ['baralho','curta']){
+   const cx008=await browser.newContext(config),q008=await cx008.newPage();q008.on('pageerror',e=>errors.push(e.message));await open(q008,base);
+   if(mode==='curta'){
+    await q008.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:seed007});await q008.reload();await q008.evaluate(()=>setView('review'));
+    await q008.locator('#agu-deck-short').press('Enter');
+   }else{
+    await q008.locator('#agu-deck-filter-topic').fill('CON-02');await q008.locator('#agu-deck-filter-topic').press('Tab');
+    await q008.locator('.agu-deck-grid article button').press('Enter');
+   }
+   const start008=await q008.evaluate(()=>AGUReview.deckSession());assert.ok(start008.order.length>=2);
+   assert.equal(await q008.evaluate(()=>AGUReview.deckHide(true)),false);
+   const front008=await stored(q008);
+   await q008.locator('#agu-deck-face').press('Space');
+   assert.equal(await q008.locator('#agu-deck-hide').count(),1);
+   assert.equal(await q008.evaluate(()=>document.activeElement.id),'agu-deck-rating-errei');
+   assert.ok(await q008.locator('#agu-deck-hide').evaluate(n=>n.getBoundingClientRect().height>=44));
+   scans['ocultar-'+mode+'-verso']=await accessibility(q008,'ocultar-'+mode+'-verso',width);
+   if(width<=430)await q008.locator('#agu-deck-hide').tap();else await q008.locator('#agu-deck-hide').press('Enter');
+   assert.equal(await q008.locator('.agu-deck-back').count(),0);
+   assert.equal(await q008.locator('#agu-deck-rating-errei').count(),0);
+   assert.deepEqual(await stored(q008),front008,'alternar sem alterar registro além da face');
+   if(width>430)assert.equal(await q008.evaluate(()=>document.activeElement.id),'agu-deck-face');
+   scans['ocultar-'+mode+'-frente']=await accessibility(q008,'ocultar-'+mode+'-frente',width);
+   await q008.locator('#agu-deck-face').press('Enter');await q008.locator('#agu-deck-hide').press('Space');
+   assert.equal(await q008.evaluate(()=>document.activeElement.id),'agu-deck-face');
+   assert.deepEqual(await stored(q008),front008);
+   await q008.locator('#agu-deck-face').press('Enter');await q008.getByRole('button',{name:'Lembrei',exact:true}).press('Enter');
+   await q008.getByRole('button',{name:'← Anterior',exact:true}).press('Enter');
+   assert.equal(await q008.locator('.agu-deck-back').count(),1);
+   const rated008=await q008.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);
+   assert.equal(rated008.attempts.length,1);assert.equal(rated008.librarySession.index,0);
+   await q008.locator('#agu-deck-hide').press('Enter');
+   const hidden008={...rated008,librarySession:{...rated008.librarySession,revealed:false}};
+   assert.deepEqual(await q008.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY),hidden008);
+   assert.equal(await q008.locator('.agu-deck-rated').count(),1);assert.equal(await q008.locator('#agu-deck-rating-errei').count(),0);
+   scans['ocultar-'+mode+'-avaliado']=await accessibility(q008,'ocultar-'+mode+'-avaliado',width);
+   const bundle008=await q008.evaluate(()=>AGUBackup20.capture());
+   await q008.getByRole('button',{name:'Pausar e voltar',exact:true}).press('Enter');await q008.reload();await q008.evaluate(()=>setView('review'));
+   await q008.locator('#agu-deck-resume').press('Enter');
+   assert.equal(await q008.locator('#agu-deck-face').count(),1);assert.equal(await q008.evaluate(()=>document.activeElement.id),'agu-deck-face');
+   assert.deepEqual(await q008.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY),hidden008);
+   const restore008=await browser.newContext(config),z008=await restore008.newPage();z008.on('pageerror',e=>errors.push(e.message));await open(z008,base);
+   await z008.evaluate(b=>AGUBackup20.importMissing(b),bundle008);await z008.reload();await z008.evaluate(()=>setView('review'));
+   await z008.locator('#agu-deck-resume').press('Enter');
+   assert.deepEqual(await z008.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY),hidden008);
+   await z008.locator('#agu-deck-face').press('Enter');assert.equal(await z008.evaluate(()=>document.activeElement.id),'agu-deck-hide');
+   assert.equal(await z008.locator('#agu-deck-rating-errei').count(),0);assert.equal(await z008.evaluate(()=>AGUReview.rate('errei',true)),false);
+   assert.deepEqual(await z008.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY),rated008);
+   scans['ocultar-'+mode+'-reexibido']=await accessibility(z008,'ocultar-'+mode+'-reexibido',width);
+   assert.ok(await z008.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+   await z008.locator('#agu-deck-hide').press('Enter');await z008.locator('#agu-deck-next').press('Enter');
+   assert.equal((await z008.evaluate(()=>AGUReview.deckSession())).index,1);
+   assert.equal(await z008.evaluate(()=>AGUReview.attemptsInfo().length),1);
+   await restore008.close();await cx008.close();
+  }
+  console.log('AUD_UX_008_FC07_OK',width);
   assert.deepEqual(errors,[]);results.push({width,baselineReviewY:oldY,quickActionY:y,sameQueue:true,noWriteOnOpen:true,ratings:3,errorIntervalPreserved:true,subjectSelection:true,sessionReload:true,backupRoundTrip:true,preservedExistingPlan:true,futureOnlyBlocked:true,touch:width<=430,keyboard:true,scans});await ctx.close();
  }
  console.log('AUD_UX_001_BROWSER_OK',JSON.stringify({browser:browser.version(),viewports:results.map(x=>x.width),seconds:(Date.now()-started)/1000}));
