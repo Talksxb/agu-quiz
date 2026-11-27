@@ -313,20 +313,19 @@ h3 { font-size: 1rem; line-height: 1.5; }
  white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none;
  font-size:1rem;line-height:1.35
 }
-/* Sombras de rolagem: camadas locais cobrem a sombra no limite atingido.
-   A barra nativa é preservada; nenhuma sobreposição sobre os controles. */
+/* MOB-03: superfície sólida para contraste verificável; pista visual em fluxo,
+   sem sobreposição. A faixa continua rolável e o foco original é preservado. */
 .main .secondary-nav{
- --mobile-tab-shadow:rgba(99,60,105,.32);
- background-image:linear-gradient(to right,var(--ui-canvas) 30%,transparent),
-  linear-gradient(to left,var(--ui-canvas) 30%,transparent),
-  radial-gradient(farthest-side at 0 50%,var(--mobile-tab-shadow),transparent),
-  radial-gradient(farthest-side at 100% 50%,var(--mobile-tab-shadow),transparent);
- background-repeat:no-repeat;
- background-position:left center,right center,left center,right center;
- background-size:24px 100%,24px 100%,12px 100%,12px 100%;
- background-attachment:local,local,scroll,scroll;
+ background-color:var(--ui-canvas);background-image:none;
  scrollbar-width:thin;scrollbar-color:var(--ui-accent) var(--ui-accent-soft);
  padding-bottom:12px;scroll-padding-inline:5px
+}
+@media(max-width:530px){
+ .main .secondary-nav::before{
+  content:"Deslize ↔" / "Deslize para ver outras abas";
+  flex:0 0 auto;align-self:center;white-space:nowrap;
+  font-size:.75rem;font-weight:650;color:var(--ui-muted);padding-inline:3px
+ }
 }
 .main .secondary-nav::-webkit-scrollbar{height:8px}
 .main .secondary-nav::-webkit-scrollbar-track{background:var(--ui-accent-soft);border-radius:8px}

@@ -36,12 +36,15 @@ async function main(){
    // MOB-03: overflow interno, affordance, acesso e foco sem alterar navegação.
    await p.goto(base);await act(button('Estudar'));
    const nav=p.locator('.secondary-nav');await nav.waitFor();
-   const navState=()=>nav.evaluate(e=>({scroll:e.scrollWidth,client:e.clientWidth,left:e.scrollLeft,attachment:getComputedStyle(e).backgroundAttachment,scrollbar:getComputedStyle(e).scrollbarColor}));
+   const navState=()=>nav.evaluate(e=>({scroll:e.scrollWidth,client:e.clientWidth,left:e.scrollLeft,backgroundImage:getComputedStyle(e).backgroundImage,backgroundColor:getComputedStyle(e).backgroundColor,hint:getComputedStyle(e,'::before').content,scrollbar:getComputedStyle(e).scrollbarColor}));
    const navInitial=await navState();await shot('abas','#main .secondary-nav');
    const plan=nav.getByRole('button',{name:'Plano semanal',exact:true});
    if(baseline){assert.ok(navInitial.scroll>navInitial.client+1,'base: abas excedem faixa em 390px');before.set('nav',navInitial)}
    else{
-    assert.match(navInitial.attachment,/local,\s*local,\s*scroll,\s*scroll/);
+    assert.equal(navInitial.backgroundImage,'none','superfície de contraste verificável sem gradiente');
+    assert.notEqual(navInitial.backgroundColor,'rgba(0, 0, 0, 0)','fundo sólido');
+    if(width<=530)assert.match(navInitial.hint,/Deslize.*↔/,'pista explícita de continuidade');
+    else assert.equal(navInitial.hint,'none','sem pista desnecessária em tela ampla');
     assert.notEqual(navInitial.scrollbar,'auto');
     await nav.getByRole('button',{name:'Visão de estudo',exact:true}).focus();
     for(let i=0;i<3;i++)await p.keyboard.press('Tab');
