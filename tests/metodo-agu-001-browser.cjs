@@ -34,7 +34,17 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
     for(const c of captions){assert.ok(c.native&&c.label.trim().length>0,'legenda nativa preservada');for(const g of [c.start,c.end])assert.ok(g.width<=g.available+1&&g.left>=g.innerLeft-1&&g.right<=g.innerRight+1,'legenda visível '+width+' '+JSON.stringify(c));if(width===320||width===390)assert.ok(c.overflow,'rolagem das colunas preservada')}
     console.log('LIVROS_CAPTION_GEOMETRY',JSON.stringify({width,captions}));
    }
-   await scan(bid+' estudar');await page.getByRole('button',{name:'Aplicar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);assert.equal(await page.locator('.method-answer').innerText(),'');await scan(bid+' aplicar');
+   await scan(bid+' estudar');
+   if(bid==='amb-03'&&(width===320||width===390)){
+    const explicitTargets=await page.evaluate(()=>[...document.querySelectorAll('.method-table table > caption')].map(e=>({id:'color-contrast',target:['#'+e.closest('[data-source-section]').id+' > .method-table[role="region"] > table > caption']})));
+    assert.equal(explicitTargets.length,2);
+    // Confirm the exact original axe selector is still used; require a rule pass even if the initial scan no longer reports it incomplete.
+    for(const r of explicitTargets){assert.equal(await page.locator(r.target[0]).count(),1,'alvo explícito da legenda');}
+    const evidence={violations:[],incomplete:[]};
+    await require('./livros-axe-recheck.cjs').resolveIncomplete(page,evidence,width+' amb-03 legendas explícitas',{explicitTargets});
+    scans[scans.length-1].captionRuleEvidence=evidence;
+   }
+   await page.getByRole('button',{name:'Aplicar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);assert.equal(await page.locator('.method-answer').innerText(),'');await scan(bid+' aplicar');
    await page.getByRole('button',{name:'Recuperar',exact:true}).click();assert.equal(await page.locator('.method-answer:visible').count(),0);await page.getByRole('button',{name:'Conferir respostas',exact:true}).click();assert.ok((await page.locator('.method-answer').innerText()).length>100);await scan(bid+' recuperar');
    await page.getByRole('button',{name:'Revisar',exact:true}).click();assert.ok(await page.locator('[data-card-id="aud03-flc-013"]').isVisible());await scan(bid+' revisar');assert.equal(await page.evaluate(k=>localStorage.getItem(k),REVIEW),seedReview,'Abrir/revelar atividades não altera agenda');
    if(bid==='amb-03'){

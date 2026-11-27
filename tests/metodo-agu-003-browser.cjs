@@ -21,7 +21,10 @@ async function main(){
    async function scan(p,label){
     const dim=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dim.scroll<=dim.width+1,label+' overflow');
     await p.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const report=await p.evaluate(async()=>{const x=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:x.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:x.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});
-    assert.deepEqual(report.violations,[],label);await require('./livros-axe-recheck.cjs').resolveIncomplete(p,report,width+' '+label);scans.push({label,dim,...report});
+    assert.deepEqual(report.violations,[],label);
+    try{await require('./livros-axe-recheck.cjs').resolveIncomplete(p,report,width+' '+label);}
+    catch(e){const stem='axe-failure-'+width+'-'+label.replace(/[^a-z0-9]+/gi,'-');fs.writeFileSync(path.join(OUT,stem+'.json'),JSON.stringify({width,label,dim,...report},null,2)+'\n');await p.screenshot({path:path.join(OUT,stem+'.png')});throw e}
+    scans.push({label,dim,...report});
    }
    const source=await pageAt('livros-agu.html');
    const sourceBooks={'adm-53':{page:2,done:[0],updated:at,methodEdition:'1.0',sectionId:'adm-53-s03',campoFuturo:{texto:'não perder'}},'capitulo-futuro':{page:5,done:[0],methodEdition:'9.0',extra:'fora do catálogo'}};
