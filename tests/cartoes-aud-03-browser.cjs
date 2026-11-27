@@ -1,5 +1,6 @@
 /* CARTOES-AUD-03 — Chromium sintético, não equivale a Android/TalkBack. */
 'use strict';
+const corr01=require('./ux-agu-aud-001-axe-recheck.cjs');
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-cartoes-aud-03');
 const server=http.createServer((req,res)=>{
@@ -34,6 +35,7 @@ async function main(){
   if(width===390||width===1280){
    await page.addScriptTag({content:axe.source});
    report.axe=await page.evaluate(async()=>{const r=await axe.run(document.querySelector('#main'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(x=>({id:x.id,targets:x.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(x=>({id:x.id,targets:x.nodes.map(n=>n.target)})),passed:r.passes.length}});
+   report.axe.recheck=await corr01.recheck(page,'#main',report.axe,'cartoes-aud-03',width);
    fs.writeFileSync(path.join(OUT,'axe-'+width+'.json'),JSON.stringify({synthetic:true,report:report.axe},null,2));
    await page.locator('.agu-deck-session').screenshot({path:path.join(OUT,'sessao-'+width+'.png')});
    assert.equal(report.axe.violations.length,0,'violations: '+JSON.stringify(report.axe.violations));
@@ -50,6 +52,7 @@ async function main(){
   assert.deepEqual(errors,[]);results.push(report);await context.close();
  }
  fs.writeFileSync(path.join(OUT,'resultado.json'),JSON.stringify({synthetic:true,origin,results},null,2));
+ corr01.assertResolved();
  console.log('CARTOES_AUD_03_BROWSER_OK',JSON.stringify({origin,chromium:browser.version(),results}));
 }
 main().catch(e=>{console.error(e.stack);process.exitCode=1}).finally(async()=>{await browser?.close();server.close()});
