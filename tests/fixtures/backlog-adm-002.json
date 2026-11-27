@@ -1,0 +1,16 @@
+{
+  "index.html": {
+    "before": "64b9b9e135192045742cd88e6e101d652103780f7e8651eca3609593c6525dfa",
+    "after": "7ba428ef9fdb612a442edcbece03d8a90c6f1e9c33a1f8ee95477346e8f7316e",
+    "changes": [
+      {
+        "before": "<script src=\"dados/questoes-autorais-backlog-adm001.js\"></script>",
+        "after": "<script src=\"dados/questoes-autorais-backlog-adm001.js\"></script>\n<script src=\"dados/questoes-autorais-backlog-adm002.js\"></script>"
+      },
+      {
+        "before": "function evidencePanel(q){let e=LEGAL_EVIDENCE[q.id];if(!e)return `<div class=\"note\"><b>Explicação pedagógica, ainda não auditada:</b> não usar como posição oficial certificada. Fundamento normativo e jurisprudencial específico pendente.</div>`;return `<div class=\"note\"><b>${e.kind==='jurisprudencia'?'Fundamento jurisprudencial':'Fundamento normativo'} confirmado pontualmente:</b> ${esc(e.ref)} · consulta ${esc(e.checked)}<p>${esc(e.basis)}</p><a href=\"${esc(e.url)}\" target=\"_blank\" rel=\"noopener noreferrer\">${e.kind==='jurisprudencia'?'Conferir tese oficial':'Conferir texto da norma'}</a><p class=\"small muted\">${esc(e.limit)}</p></div>`}",
+        "after": "function evidencePanel(q){let e=LEGAL_EVIDENCE[q.id];if(!e)return `<div class=\"note\"><b>Explicação pedagógica, ainda não auditada:</b> não usar como posição oficial certificada. Fundamento normativo e jurisprudencial específico pendente.</div>`;return `<div class=\"note\"><b>${e.kind==='jurisprudencia'?'Fundamento jurisprudencial':'Fundamento normativo'} confirmado pontualmente:</b> ${esc(e.ref)} · consulta ${esc(e.checked)}<p>${esc(e.basis)}</p><a href=\"${esc(e.url)}\" target=\"_blank\" rel=\"noopener noreferrer\">${e.kind==='jurisprudencia'?'Conferir tese oficial':'Conferir texto da norma'}</a><p class=\"small muted\">${esc(e.limit)}</p>${q.chapterId&&q.sectionId?'<p><a href=\"livros-agu.html?livro='+encodeURIComponent(q.chapterId)+'&amp;secao='+encodeURIComponent(q.sectionId)+'\">Revisar fundamento no capítulo</a></p>':''}</div>`}"
+      }
+    ]
+  }
+}
