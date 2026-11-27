@@ -45,8 +45,8 @@ test('fontes alemãs oficiais exatas e rejeição de URLs adversariais',()=>{
 });
 test('fixture multi-ID tem cobertura por ID, fonte estrangeira e mantém o gate de aprovação',()=>{
  const m=get('tests/fixtures/metodo-agu/amb-fixture.json'),md=fs.readFileSync(path.join(ROOT,m.canonical),'utf8').replace('"AMB-07"','"AMB-07", "AMB-08"');
- m.curricularIds=['AMB-07','AMB-08'];m.coverage.push({...m.coverage[0],curricularId:'AMB-08'});m.sources.push({...m.sources[0],id:'fonte-estrangeira-fixture',url:'https://www.bundestag.de/',scope:'Somente teste de política de URL'});
- assert.equal(P.validateMetadata(m,md,{fixture:true}).length,m.sections.length);
+ m.curricularIds=['AMB-07','AMB-08'];m.activities[0].curricularIds=['AMB-08'];m.propositions[0].curricularIds=['AMB-08'];m.coverage.push({...m.coverage[0],curricularId:'AMB-08'});m.sources.push({...m.sources[0],id:'fonte-estrangeira-fixture',url:'https://www.bundestag.de/',scope:'Somente teste de política de URL'});
+ const ss=P.validateMetadata(m,md,{fixture:true});assert.equal(ss.length,m.sections.length);assert.deepEqual(P.candidate(m,ss,m.propositions[0]).curricularIds,['AMB-08']);const missing=copy(m);delete missing.propositions[0].curricularIds;assert.throws(()=>P.validateMetadata(missing,md,{fixture:true}),/Proposição.*IDs/);const invalid=copy(m);invalid.propositions[0].curricularIds=['AMB-07'];assert.throws(()=>P.validateMetadata(invalid,md,{fixture:true}),/fora dos IDs/);const dup=copy(m);dup.activities[0].curricularIds=['AMB-08','AMB-08'];assert.throws(()=>P.validateMetadata(dup,md,{fixture:true}),/Atividade.*IDs/);const outside=copy(m);outside.activities[0].curricularIds=['CON-01'];assert.throws(()=>P.validateMetadata(outside,md,{fixture:true}),/Atividade.*IDs/);
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'multi-id-fixture-'));try{fs.mkdirSync(path.dirname(path.join(tmp,m.canonical)),{recursive:true});fs.writeFileSync(path.join(tmp,m.canonical),md);delete m.approval;assert.throws(()=>P.compile(tmp,m,{fixture:true}),/aprovação/);}finally{fs.rmSync(tmp,{recursive:true,force:true})}
 });
 
