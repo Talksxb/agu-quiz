@@ -1,5 +1,6 @@
 /* Biblioteca 02: 5 larguras, teclado/toque, foco, zoom e axe com perfis sintéticos. */
 'use strict';
+const corr01=require('./ux-agu-aud-001-axe-recheck.cjs');
 const {chromium}=require('playwright'),axe=require('axe-core'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'tests','artifacts-biblioteca-02');
@@ -56,12 +57,14 @@ async function run(){
      const r=await axe.run(document.querySelector('#agu-reader'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});
      return {violations:r.violations.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),passed:r.passes.map(x=>x.id)};
     });
+    evidence.axe.recheck=await corr01.recheck(p,'#agu-reader',evidence.axe,'biblioteca-cpc',width);
     await p.screenshot({path:path.join(OUT,'biblioteca-'+width+'.png'),fullPage:true});
    }
    assert.deepEqual(errors,[],'sem erros JS '+width);outcomes.push(evidence);await ctx.close();
   }
  }finally{await browser.close();server.close()}
  fs.writeFileSync(path.join(OUT,'relatorio.json'),JSON.stringify(outcomes,null,2));
+ corr01.assertResolved();
  console.log('BIBLIOTECA_02_BROWSER_OK',JSON.stringify(outcomes.map(o=>({width:o.width,overflow:o.overflow,axe:o.axe&&{violations:o.axe.violations.length,incomplete:o.axe.incomplete.length,passed:o.axe.passed.length}}))));
 }
 run().catch(e=>{console.error('BIBLIOTECA_02_BROWSER_FAIL',e.stack||e);process.exitCode=1;server.close()});
