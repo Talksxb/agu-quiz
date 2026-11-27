@@ -64,18 +64,34 @@ async function main(){
    await merge.keyboard.press('Escape');await merge.waitForFunction(()=>!document.getElementById('agu-backup-preview'));await merge.evaluate(([k,v])=>localStorage.setItem(k,v),[KEY,quotaRaw]);
    await merge.evaluate(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota artificial','QuotaExceededError');return set.call(this,key,value)}},KEY);
    const quotaBundle={...bundle,items:{[MAP]:JSON.stringify({'questao-fixture':'ADM-53'}),[KEY]:JSON.stringify({'capitulo-extra':{page:0,done:[]}})}};
-   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);const modalEvidence=await merge.evaluate(()=>{
-    const d=document.getElementById('agu-backup-preview'),button=[...d.querySelectorAll('button')].find(b=>b.textContent==='Confirmar restauração'),nav=document.querySelector('.side'),r=button.getBoundingClientRect();
-    const p=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
+   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);const modalEvidence=await merge.evaluate(async()=>{
+    const d=document.getElementById('agu-backup-preview'),button=[...d.querySelectorAll('button')].find(b=>b.textContent==='Confirmar restauração'),nav=document.querySelector('.side'),active=document.activeElement;
+    const wait=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    const geometry=()=>{const r=button.getBoundingClientRect(),dr=d.getBoundingClientRect(),x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,p=document.elementFromPoint(x,y);
+     const inner={left:dr.left+d.clientLeft,top:dr.top+d.clientTop,right:dr.left+d.clientLeft+d.clientWidth,bottom:dr.top+d.clientTop+d.clientHeight};
+     const visibleCenter=x>=Math.max(0,inner.left)&&x<Math.min(innerWidth,inner.right)&&y>=Math.max(0,inner.top)&&y<Math.min(innerHeight,inner.bottom);
+     return {rect:r.toJSON(),dialogRect:dr.toJSON(),inner,viewport:{width:innerWidth,height:innerHeight},visibleCenter,hit:button.contains(p),hitElement:p?.tagName,hitId:p?.id,hitClass:typeof p?.className==='string'?p.className:'',scrollTop:d.scrollTop,scrollLeft:d.scrollLeft,focus:document.activeElement?.getAttribute('role')};};
+    const before=geometry(),saved=[d.scrollLeft,d.scrollTop];
+    let after;
+    try{button.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});await wait();after=geometry();}
+    finally{d.scrollLeft=saved[0];d.scrollTop=saved[1];await wait();}
     return {modal:d.matches(':modal'),dialogZ:getComputedStyle(d).zIndex,navZ:getComputedStyle(nav).zIndex,navPosition:getComputedStyle(nav).position,
-     text:button.textContent,enabled:!button.disabled,hit:button.contains(p),focus:document.activeElement?.getAttribute('role'),
+     text:button.textContent,enabled:!button.disabled,before,after,restored:geometry(),focusPreserved:document.activeElement===active,focus:document.activeElement?.getAttribute('role'),
      colors:{fg:getComputedStyle(button).color,bg:getComputedStyle(button).backgroundColor}};
    });
-   assert.ok(modalEvidence.modal&&modalEvidence.enabled&&modalEvidence.hit,'modal nativo e botão acessível sem ocultar controles');
-   assert.equal(modalEvidence.focus,'alert','foco preservado na mensagem de erro');
-   assert.equal(modalEvidence.dialogZ,'110','camada explícita do diálogo');
-   if(modalEvidence.navPosition==='fixed')assert.ok(Number(modalEvidence.dialogZ)>Number(modalEvidence.navZ),'camada acima da navegação fixa');
    console.log('LIVROS_BACKUP_MODAL_LAYER',JSON.stringify({width,...modalEvidence}));
+   try{
+    assert.equal(modalEvidence.modal,true,'modal nativo');
+    assert.equal(modalEvidence.enabled,true,'botão habilitado');
+    assert.equal(modalEvidence.focus,'alert','foco preservado na mensagem de erro');
+    assert.equal(modalEvidence.focusPreserved,true,'rolagem não altera foco');
+    if(modalEvidence.before.visibleCenter)assert.equal(modalEvidence.before.hit,true,'botão originalmente visível não pode estar sobreposto');
+    assert.ok(modalEvidence.after.visibleCenter&&modalEvidence.after.hit,'botão alcançável na região visível por rolagem natural');
+    assert.equal(modalEvidence.restored.scrollTop,modalEvidence.before.scrollTop,'posição original de rolagem vertical restituída');
+    assert.equal(modalEvidence.restored.scrollLeft,modalEvidence.before.scrollLeft,'posição original de rolagem horizontal restituída');
+    assert.equal(modalEvidence.dialogZ,'110','camada explícita do diálogo');
+    if(modalEvidence.navPosition==='fixed')assert.ok(Number(modalEvidence.dialogZ)>Number(modalEvidence.navZ),'camada acima da navegação fixa');
+   }catch(e){fs.writeFileSync(path.join(OUT,'modal-layer-failure-'+width+'.json'),JSON.stringify(modalEvidence,null,2)+'\n');await merge.screenshot({path:path.join(OUT,'modal-layer-failure-'+width+'.png')});throw e}
    await scan(merge,'quota com dados preservados');
    if(width===390){
     const selector='#agu-backup-preview > .btnrow > .secondary[type="button"]:nth-child(2)';
