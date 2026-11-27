@@ -1,0 +1,66 @@
+{
+  "index.html": {
+    "before": "7ba428ef9fdb612a442edcbece03d8a90c6f1e9c33a1f8ee95477346e8f7316e",
+    "changes": [
+      {
+        "before": "<script src=\"dados/flashcards-aud02-2015-atualizados-lote03.js?v=20261116-cards-aud03\"></script>",
+        "after": "<script src=\"dados/flashcards-aud02-2015-atualizados-lote03.js?v=20261116-cards-aud03\"></script>\n<script src=\"dados/flashcards-seg001.js\"></script>"
+      },
+      {
+        "before": "<script src=\"dados/questoes-autorais-backlog-adm002.js\"></script>",
+        "after": "<script src=\"dados/questoes-autorais-backlog-adm002.js\"></script>\n<script src=\"dados/questoes-autorais-backlog-seg001.js\"></script>"
+      },
+      {
+        "before": "Revisar fundamento no capítulo</a></p>':''}</div>`}",
+        "after": "Revisar fundamento no capítulo</a></p>':''}${q.reviewCode&&window.AGUReview?.exactDeck(q.reviewCode)?'<p><button type=\"button\" class=\"secondary\" onclick=\"AGUCurriculum.cards(event.detail===0,\\''+esc(q.reviewCode)+'\\')\">Revisar cartões de '+esc(q.reviewCode)+'</button></p>':''}</div>`}"
+      }
+    ],
+    "after": "6d7da38f8306e4a8015868e4a072390617bb245dcb00a37f33514393785ce1e5"
+  },
+  "revisao-inteligente.js": {
+    "before": "0b5f11871f1644bf7e3aeed13edfc9e7b692575eab6d62350f7b0654b0ac9701",
+    "changes": [
+      {
+        "before": "// Conserva ID e state de revisão: apenas corrige classificação curricular de cartões legados.",
+        "after": "// BACKLOG-SEG-001: duas sínteses autorais verificadas pontualmente; mesmo motor, agenda e histórico.\nconst SEG001_CARDS=Array.isArray(global.AGU_SEG001_CARDS)?global.AGU_SEG001_CARDS.filter(x=>x&&x.kind==='flashcard'&&/^seg001-flc-00[12]$/.test(x.id)&&x.code==='SEG-01'&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.source==='string'&&/^https:\\/\\//.test(x.link)&&x.notOfficial===true&&x.sourceKind==='norma_oficial'&&x.validation==='dispositivo_publico_conferido_pontualmente_sem_certificacao_integral'&&x.reviewedAt==='2026-11-26'):[];\n// Conserva ID e state de revisão: apenas corrige classificação curricular de cartões legados."
+      },
+      {
+        "before": "...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];",
+        "after": "...AUD02_2015_CARDS_03,...SEG001_CARDS,...OFFICIAL,...S18_ITEMS];"
+      },
+      {
+        "before": " ['CON-24','aud02-2015-flc-008',null]",
+        "after": " ['CON-24','aud02-2015-flc-008',null],\n ['SEG-01','seg001-flc-001 seg001-flc-002',null]"
+      },
+      {
+        "before": " 'CON-24':'Mandado de injunção'",
+        "after": " 'CON-24':'Mandado de injunção',\n 'SEG-01':'Seguridade social e EC 103/2019'"
+      },
+      {
+        "before": "+AUD02_2015_CARDS_03.length,lotAud03:",
+        "after": "+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:"
+      }
+    ],
+    "after": "98af35b88e323958511208fbf4c6778d2524104ccd0015b4020c5222bfb8b31d"
+  },
+  "catalogo-disciplinas.js": {
+    "before": "261b2b425ed8d6f41400e59d4e0545cbeb5b2292f6f4da250a39f4c2fa915ae3",
+    "changes": [
+      {
+        "before": " ['PREV','Direito Previdenciário','#396e46','#e8f4e9','#b7e1c1','#233e2b'],",
+        "after": " ['PREV','Direito Previdenciário','#396e46','#e8f4e9','#b7e1c1','#233e2b'],\n // SEG é o prefixo dos IDs originais; PREV permanece como agrupamento legado.\n ['SEG','Direito da Seguridade Social','#396e46','#e8f4e9','#b7e1c1','#233e2b'],"
+      }
+    ],
+    "after": "5bf2f1b141b7c02632b9775dae713a6427a109174fddfaadbfe6c027b1f6ea44"
+  },
+  "recursos-curriculares.js": {
+    "before": "a376aaf140b4632b95445dfcfde906cf5a717f93afdbbc87b62352f415a34782",
+    "changes": [
+      {
+        "before": "function cards(keyboard=false){\n const t=last?.topics.find(t=>t.id===selected);if(!t?.cards.length||!root.AGUReview?.exactDeck(t.id))return false;",
+        "after": "function cards(keyboard=false,code=selected){\n // O comentário de uma questão pode abrir o mesmo fluxo por ID exato, sem depender do filtro visível.\n const t=(code===selected?last:collect(root))?.topics.find(t=>t.id===code);if(!t?.cards.length||!root.AGUReview?.exactDeck(t.id))return false;"
+      }
+    ],
+    "after": "fa99ab6b6022bb7b664bf1bc0eddf0cbcd4c00c74900b49db25b4b9b9a02bc49"
+  }
+}

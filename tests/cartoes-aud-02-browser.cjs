@@ -15,11 +15,11 @@ async function main(){
  for(const width of [320,360,390,430,1280]){
   const context=await browser.newContext({viewport:{width,height:850},reducedMotion:'reduce'}),page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));await page.goto(origin,{waitUntil:'load'});
-  assert.deepEqual(await page.evaluate(()=>[AGUReview.deck().flashcards,AGUReview.deckList().length,AGUReview.deck().lotAud02_2015_02]),[51,11,4]);
+  assert.deepEqual(await page.evaluate(()=>[AGUReview.deck().flashcards,AGUReview.deckList().length,AGUReview.deck().lotAud02_2015_02]),[53,12,4]);
   assert.equal(await page.evaluate(()=>AGUReview.exactDeck('ADM/Atos administrativos')),null);
   await page.getByRole('button',{name:'Biblioteca Inteligente',exact:true}).click();
   await page.getByRole('button',{name:'Flashcards e revisões',exact:true}).click();
-  assert.match(await page.locator('#agu-deck-library').innerText(),/51 cartões · 11 baralhos/);
+  assert.match(await page.locator('#agu-deck-library').innerText(),/53 cartões · 12 baralhos/);
   await page.locator('#agu-deck-filter-topic').fill('ADM-27');
   await page.locator('#agu-deck-filter-topic').press('Tab');
   assert.equal(await page.locator('.agu-deck-grid article').count(),1);

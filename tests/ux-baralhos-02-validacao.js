@@ -2,7 +2,7 @@
 'use strict';
 const afterCodigos=require('./hash-chain-codigos.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
-const ROOT=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');
+const ROOT=path.resolve(__dirname,'..'),read=f=>{const s=fs.readFileSync(path.join(ROOT,f),'utf8');return f==='catalogo-disciplinas.js'?require('./backlog-seg-001-legado.cjs')(s,f):s};
 const sha=f=>crypto.createHash('sha256').update(read(f)).digest('hex');
 const copy=x=>JSON.parse(JSON.stringify(x));
 const KEY='agu_quiz_revisao_inteligente_v1';
@@ -19,7 +19,7 @@ function boot(records={},single=false){
  root.window=root;vm.createContext(root);
  for(const file of ['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js','dados/questoes-auditadas-s18.js','dados/questoes-auditadas-s19.js','dados/legislacao-s13.js','revisao-inteligente.js','planejamento-semanal.js','estudo-integrado.js','leitor-consolidacao.js','leitor-juridico.js','backup-local-s20.js']){
   let source=read(file);
-  if(single&&file==='revisao-inteligente.js')source=source.replace('const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];',"const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS].filter(x=>x.kind!=='flashcard'||x.id==='ri-adm-01');");
+  if(single&&file==='revisao-inteligente.js')source=source.replace('const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...SEG001_CARDS,...OFFICIAL,...S18_ITEMS];',"const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...SEG001_CARDS,...OFFICIAL,...S18_ITEMS].filter(x=>x.kind!=='flashcard'||x.id==='ri-adm-01');");
   vm.runInContext(source,root,{filename:file});
  }
  return {root,saved,alerts};

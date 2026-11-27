@@ -102,6 +102,8 @@ const AUD02_2015_CARDS=Array.isArray(global.AGU_AUD02_2015_CARDS)?global.AGU_AUD
 const AUD02_2015_CARDS_02=Array.isArray(global.AGU_AUD02_2015_CARDS_LOTE02)?global.AGU_AUD02_2015_CARDS_LOTE02.filter(x=>x&&x.kind==='flashcard'&&/^aud02-2015-flc-02-\d{3}$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.link==='string'&&/^https:\/\//.test(x.link)&&x.notOfficial===true&&x.historicalExam?.exam==='187AGU_001_07'&&['C','E'].includes(x.historicalExam.key)):[];
 // CARTOES-AUD-03: candidatos históricos individualmente verificados em fontes públicas.
 const AUD02_2015_CARDS_03=Array.isArray(global.AGU_AUD02_2015_CARDS_LOTE03)?global.AGU_AUD02_2015_CARDS_LOTE03.filter(x=>x&&x.kind==='flashcard'&&/^aud02-2015-flc-03-\d{3}$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.link==='string'&&/^https:\/\//.test(x.link)&&x.notOfficial===true&&x.historicalExam?.exam==='187AGU_001_07'&&['C','E'].includes(x.historicalExam.key)):[];
+// BACKLOG-SEG-001: duas sínteses autorais verificadas pontualmente; mesmo motor, agenda e histórico.
+const SEG001_CARDS=Array.isArray(global.AGU_SEG001_CARDS)?global.AGU_SEG001_CARDS.filter(x=>x&&x.kind==='flashcard'&&/^seg001-flc-00[12]$/.test(x.id)&&x.code==='SEG-01'&&typeof x.front==='string'&&typeof x.back==='string'&&typeof x.source==='string'&&/^https:\/\//.test(x.link)&&x.notOfficial===true&&x.sourceKind==='norma_oficial'&&x.validation==='dispositivo_publico_conferido_pontualmente_sem_certificacao_integral'&&x.reviewedAt==='2026-11-26'):[];
 // Conserva ID e state de revisão: apenas corrige classificação curricular de cartões legados.
 const CURRICULAR_CORRECTIONS={'ri-pc-01':'PC-03','ri-pc-02':'PC-03','ri-pc-03':'PC-03'};
 for(const c of CARDS)if(CURRICULAR_CORRECTIONS[c.id]){c.code=CURRICULAR_CORRECTIONS[c.id];c.curricularMigration='PC-01 → PC-03 (sem mudar ID, respostas ou histórico)'}
@@ -109,7 +111,7 @@ const S18_ITEMS=Array.isArray(global.AGU_OFFICIAL_S18?.questions)?global.AGU_OFF
 // MÉTODO-AGU-001: adaptador opcional de dados editoriais; intervalos e gravação permanecem no motor original.
 const EDITORIAL_CARDS=(Array.isArray(global.AGU_EDITORIAL_CARDS)?global.AGU_EDITORIAL_CARDS:[]).filter(x=>x&&x.kind==='flashcard'&&/^metodo-[a-z0-9-]+$/.test(x.id)&&typeof x.front==='string'&&typeof x.back==='string'&&/^https:\/\//.test(x.link)&&['aprovado','suspenso'].includes(x.editorialStatus)&&x.approval?.reviewer);
 const editorialEligible=x=>!x.editorialStatus||x.editorialStatus==='aprovado';
-const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...OFFICIAL,...S18_ITEMS];
+const ALL=[...EDITORIAL_CARDS,...CARDS,...AUD03_CARDS,...AUD02_2015_CARDS,...AUD02_2015_CARDS_02,...AUD02_2015_CARDS_03,...SEG001_CARDS,...OFFICIAL,...S18_ITEMS];
 const IDS=ALL.map(x=>x.id);
 if(new Set(IDS).size!==IDS.length)throw Error('IDs duplicados no acervo AGU');
 const INDEX=new Map(ALL.map(x=>[x.id,x]));
@@ -127,7 +129,8 @@ const NOTEBOOK_CARD_HISTORY=Object.freeze(Object.fromEntries([
  ['ADM-27','aud02-2015-flc-02-009 aud02-2015-flc-03-007 aud02-2015-flc-03-008',null],
  ['ADM-17','aud02-2015-flc-03-005',null],
  ['ADM-58','aud02-2015-flc-006',null],
- ['CON-24','aud02-2015-flc-008',null]
+ ['CON-24','aud02-2015-flc-008',null],
+ ['SEG-01','seg001-flc-001 seg001-flc-002',null]
 ].flatMap(([code,ids,topic])=>ids.split(' ').map(id=>[id,Object.freeze({id,code,topic,label:'Flashcard '+id+' · '+code})]))));
 function notebookHistoricCard(id){const x=INDEX.get(id);if(x?.editorialStatus)return {id:x.id,code:x.code,topic:null,label:'Flashcard editorial '+x.id};return typeof id==='string'&&Object.hasOwn(NOTEBOOK_CARD_HISTORY,id)?NOTEBOOK_CARD_HISTORY[id]:null}
 function notebookEligibleCard(id){
@@ -155,7 +158,8 @@ const DECK_TITLES=Object.freeze({
  'ADM-17':'Forma dos atos administrativos',
  'ADM-27':'Poder regulamentar e seus limites',
  'ADM-58':'Improbidade administrativa e acordos',
- 'CON-24':'Mandado de injunção'
+ 'CON-24':'Mandado de injunção',
+ 'SEG-01':'Seguridade social e EC 103/2019'
 });
 const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // S33: os três botões comprovadamente substituídos por render() no Chrome.
@@ -707,5 +711,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckMore,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckMove,deckFilter,deckMore,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);

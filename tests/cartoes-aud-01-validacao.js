@@ -4,7 +4,7 @@ const legacyIndexDigest=require('./livro-sites-001-legado.cjs');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..');
-const read=file=>fs.readFileSync(path.join(root,file),'utf8');
+const read=file=>{const s=fs.readFileSync(path.join(root,file),'utf8');return file==='catalogo-disciplinas.js'?require('./backlog-seg-001-legado.cjs')(s,file):s};
 const digest=file=>crypto.createHash('sha256').update(read(file)).digest('hex');
 const KEY='agu_quiz_revisao_inteligente_v1';
 const scripts=['catalogo-disciplinas.js','dados/flashcards-aud03-lote01.js',
