@@ -147,8 +147,8 @@ async function main(){
   const fixture=JSON.parse(JSON.stringify(future));delete fixture.cards[importOnly];
   fixture.cards[rec]={stage:1,seen:2,due:'2000-01-01',errors:99,ease:'lembrei'};
   fixture.cards[hard]={stage:1,seen:1,due:'2099-12-31',errors:0,ease:'dificil'};
-  const attempt=(id,code,grade,day,n)=>({id:'rv-aud006-'+n,itemId:id,kind:'flashcard',code,at:'2026-11-'+day+'T10:00:00Z',rating:grade,selected:null,correct:null,sourceStatus:'B_pendente_revisao_independente',due:'2026-11-30',stage:0,origin:'flashcard_autoral'});
-  fixture.attempts=[attempt(hard,con.code,'dificil','24',1),attempt(corrected,con.code,'lembrei','24',2),attempt(importOnly,imp.code,'errei','23',3),attempt(corrected,con.code,'errei','10',4)];
+  const attempt006=(id,code,grade,day,n)=>({id:'rv-aud006-'+n,itemId:id,kind:'flashcard',code,at:'2026-11-'+day+'T10:00:00Z',rating:grade,selected:null,correct:null,sourceStatus:'B_pendente_revisao_independente',due:'2026-11-30',stage:0,origin:'flashcard_autoral'});
+  fixture.attempts=[attempt006(hard,con.code,'dificil','24',1),attempt006(corrected,con.code,'lembrei','24',2),attempt006(importOnly,imp.code,'errei','23',3),attempt006(corrected,con.code,'errei','10',4)];
   await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:fixture});
   await p.reload();await p.evaluate(()=>setView('review'));const raw006=await p.evaluate(k=>localStorage.getItem(k),KEY);
   assert.match(await p.locator('#agu-deck-suggested').locator('..').innerText(),/SEG-01/);
