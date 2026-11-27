@@ -69,6 +69,11 @@ async function main(){
     await zoom(async()=>{const x=await word();assert.equal(x.lines,1,'Relacionados inteiro a 200% '+width);await flow('leitor-200');await scan('leitor-200','#agu-reader')});
     await act(related,true);assert.equal(await related.getAttribute('aria-pressed'),'true');
     const legal=p.locator('#agu-reader .agu-mobile button').filter({hasText:'Texto legal'});await act(legal);assert.equal(await legal.getAttribute('aria-pressed'),'true');
+    if(touch){
+     const index=p.locator('#agu-reader .agu-mobile button').filter({hasText:'Índice'});await act(index,true);assert.equal(await index.getAttribute('aria-pressed'),'true');
+     assert.equal(await p.locator('#agu-reader .agu-mobile').evaluate(e=>getComputedStyle(e).position),'relative','índice longo não tem barra sticky sobre os artigos');
+     await flow('indice');await act(legal,true);assert.equal(await legal.getAttribute('aria-pressed'),'true');
+    }
    }
    // MOB-02: manter DOM e conteúdo; medir a pergunta desde o topo da sessão, sem scroll artificial.
    await p.goto(base);await act(button('Biblioteca Inteligente'));await act(button('Flashcards e revisões'));
