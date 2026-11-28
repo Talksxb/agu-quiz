@@ -95,9 +95,43 @@
           "status": "publicado"
         }
       ]
+    },
+    {
+      "id": "CON",
+      "name": "Direito Constitucional",
+      "chapters": [
+        {
+          "id": "con-v1",
+          "title": "Teoria da Constituição e Direitos Fundamentais",
+          "edition": "0.9.6",
+          "curricularIds": [
+            "CON-01",
+            "CON-02",
+            "CON-03",
+            "CON-04",
+            "CON-05",
+            "CON-06",
+            "CON-07",
+            "CON-08",
+            "CON-09",
+            "CON-18",
+            "CON-19",
+            "CON-20",
+            "CON-21",
+            "CON-22",
+            "CON-23",
+            "CON-24",
+            "CON-25"
+          ],
+          "reader": "livros/con-v1.json",
+          "method": "livros/metodo/con-v1.json",
+          "status": "publicado"
+        }
+      ]
     }
   ],
   "collections": [
-    "livros/colecoes/ambiental.json"
+    "livros/colecoes/ambiental.json",
+    "livros/colecoes/constitucional.json"
   ]
 }

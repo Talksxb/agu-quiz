@@ -560,6 +560,366 @@
       },
       "duplicateOf": null,
       "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-01",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s03",
+      "curricularIds": [
+        "CON-06"
+      ],
+      "front": "Qual percentual de desvinculação das receitas municipais abrangidas pelo ADCT 76-B vale até 31/12/2026?",
+      "back": "50%, observadas as exceções do dispositivo.",
+      "sources": [
+        {
+          "id": "ec136",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc136.htm",
+          "locator": "art. 2º, ADCT 76-B, I e II, §§1º e 2º",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Percentuais e datas do dispositivo conferidos",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.1",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-01",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s03": "7a2b313f2a8ddab3824c9e8ad55dcc1af2c57977d729884f40b3a0e3db7ee192"
+        },
+        "sources": {
+          "ec136": "7afed97bfcbee6540c1916dc74e8a55be7a313f032d1e00a7142c87f622b6620"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-02",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s03",
+      "curricularIds": [
+        "CON-06"
+      ],
+      "front": "Qual percentual de desvinculação das receitas municipais abrangidas pelo ADCT 76-B vale entre 2027 e 2032?",
+      "back": "30%, de 01/01/2027 a 31/12/2032, observadas as exceções.",
+      "sources": [
+        {
+          "id": "ec136",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc136.htm",
+          "locator": "art. 2º, ADCT 76-B, I e II, §§1º e 2º",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Percentuais e datas do dispositivo conferidos",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.1",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-02",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s03": "7a2b313f2a8ddab3824c9e8ad55dcc1af2c57977d729884f40b3a0e3db7ee192"
+        },
+        "sources": {
+          "ec136": "7afed97bfcbee6540c1916dc74e8a55be7a313f032d1e00a7142c87f622b6620"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-03",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s07",
+      "curricularIds": [
+        "CON-22"
+      ],
+      "front": "Qual a distribuição ordinária da reserva de vagas no Decreto 12.536/2025 e qual a exceção do § 5º?",
+      "back": "25% para pessoas pretas e pardas, 3% para indígenas e 2% para quilombolas. O § 5º permite percentuais diferenciados aos órgãos e entidades federais com políticas voltadas a indígenas e quilombolas, com mínimo de 20% para pessoas pretas e pardas e máximo de 30% de reserva total, ressalvada legislação específica.",
+      "sources": [
+        {
+          "id": "dec12536",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12536.htm",
+          "locator": "art. 3º, §§ 1º–6º; art. 25",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Percentuais, reversão, exceções §§5º–6º e transição conferidos; art. 29 Lei 14.724 não reaberto",
+          "revision": "2"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.1",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-03",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s07": "08527b038ec8a599a9fa4651a14fc427e735fce3e34aee2aa3fb7998987047be"
+        },
+        "sources": {
+          "dec12536": "cc04c11b17b4fadcd47ca57ad547f7271f92950b9ebc79f800ab02d51b12c1aa"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-04",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s07",
+      "curricularIds": [
+        "CON-22"
+      ],
+      "front": "O Decreto 12.536/2025 se aplica aos editais publicados até sua publicação?",
+      "back": "Não, conforme art. 25.",
+      "sources": [
+        {
+          "id": "dec12536",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12536.htm",
+          "locator": "art. 3º, §§ 1º–6º; art. 25",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Percentuais, reversão, exceções §§5º–6º e transição conferidos; art. 29 Lei 14.724 não reaberto",
+          "revision": "2"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-04",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s07": "08527b038ec8a599a9fa4651a14fc427e735fce3e34aee2aa3fb7998987047be"
+        },
+        "sources": {
+          "dec12536": "cc04c11b17b4fadcd47ca57ad547f7271f92950b9ebc79f800ab02d51b12c1aa"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-05",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s08",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "front": "Qual a vacância da Lei 15.333/2026?",
+      "back": "90 dias da publicação oficial, conforme art. 2º.",
+      "sources": [
+        {
+          "id": "lei15333",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15333.htm",
+          "locator": "arts. 1º e 2º; publicação 08/01/2026",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Vacância de 90 dias conferida",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-05",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s08": "6c677a62a255990915aff059b56ecb406393046d51ebfa58e0422dcb6692d46c"
+        },
+        "sources": {
+          "lei15333": "38b73dd76e2257f06ddff1e1d5d414c2f9bd26056e598bdd71e11a37886040f0"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-06",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s08",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "front": "Qual a vacância da Lei 15.432/2026?",
+      "back": "Um ano da publicação oficial, conforme art. 44.",
+      "sources": [
+        {
+          "id": "lei15432",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15432.htm",
+          "locator": "art. 44; publicação 14/06/2026",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Vacância de um ano conferida",
+          "revision": "1"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-06",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s08": "6c677a62a255990915aff059b56ecb406393046d51ebfa58e0422dcb6692d46c"
+        },
+        "sources": {
+          "lei15432": "676046e55ea4550dd8db55e97e30a2d115651d53903ac2386dfcdef3439355df"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-07",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s09",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "Quando deve ser dispensada a fixação de prazo de regulamentação no MI?",
+      "back": "Quando comprovado que o impetrado deixou de atender ao prazo estabelecido em mandado de injunção anterior (art. 8º, parágrafo único, Lei 13.300/2016).",
+      "sources": [
+        {
+          "id": "lei13300",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13300.htm",
+          "locator": "arts. 8º–13",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Art. 8º parágrafo único: dispensa obrigatória se comprovado descumprimento anterior; arts. 9 e 11 revalidados",
+          "revision": "2"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.1",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-07",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s09": "45c7931c47a276bacb7f4ef76fd04550670bac6d508ca82a1a7fff35cbe90098"
+        },
+        "sources": {
+          "lei13300": "c13f3b19a56822ac3130e56c8c4d4b6bc7bfc9e616dd98d4e48405f38e88670e"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-08",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s09",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "A norma superveniente é retroativa para beneficiados de MI transitado?",
+      "back": "Regra ex nunc, salvo se a norma editada lhes for mais favorável (art. 11).",
+      "sources": [
+        {
+          "id": "lei13300",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13300.htm",
+          "locator": "arts. 8º–13",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Art. 8º parágrafo único: dispensa obrigatória se comprovado descumprimento anterior; arts. 9 e 11 revalidados",
+          "revision": "2"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-08",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s09": "45c7931c47a276bacb7f4ef76fd04550670bac6d508ca82a1a7fff35cbe90098"
+        },
+        "sources": {
+          "lei13300": "c13f3b19a56822ac3130e56c8c4d4b6bc7bfc9e616dd98d4e48405f38e88670e"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
+    },
+    {
+      "schema": "agu-card-candidate-v1",
+      "id": "metodo-con-v1-fecha003-cand-09",
+      "chapterId": "con-v1",
+      "sectionId": "con-v1-s09",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "Qual efeito da norma editada antes da decisão do MI?",
+      "back": "Prejudica a impetração; extingue-se sem resolução do mérito (art. 11, parágrafo único).",
+      "sources": [
+        {
+          "id": "lei13300",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13300.htm",
+          "locator": "arts. 8º–13",
+          "consultedAt": "2026-11-27",
+          "status": "confirmado_pontualmente",
+          "scope": "Art. 8º parágrafo único: dispensa obrigatória se comprovado descumprimento anterior; arts. 9 e 11 revalidados",
+          "revision": "2"
+        }
+      ],
+      "chapterEdition": "0.9.6",
+      "cardVersion": "1.0",
+      "status": "candidato",
+      "nature": "autoral",
+      "cognitiveType": "recuperacao_normativa",
+      "category": "direito_positivo",
+      "semanticKey": "con-v1-fecha003-cand-09",
+      "relation": "complemento_normativo_da_atividade",
+      "dependencies": {
+        "sections": {
+          "con-v1-s09": "45c7931c47a276bacb7f4ef76fd04550670bac6d508ca82a1a7fff35cbe90098"
+        },
+        "sources": {
+          "lei13300": "c13f3b19a56822ac3130e56c8c4d4b6bc7bfc9e616dd98d4e48405f38e88670e"
+        }
+      },
+      "duplicateOf": null,
+      "deduplication": "sem_duplicata_exata_detectada"
     }
   ]
 }

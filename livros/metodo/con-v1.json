@@ -1,0 +1,2641 @@
+{
+  "schema": "agu-chapter-v1",
+  "id": "con-v1",
+  "editorialId": "LIVRO-CON-001",
+  "title": "Teoria da Constituição e Direitos Fundamentais",
+  "discipline": {
+    "id": "CON",
+    "name": "Direito Constitucional"
+  },
+  "edition": "0.9.6",
+  "metadataVersion": "1.3",
+  "canonical": "livros/fontes/con-v1.md",
+  "readerPath": "livros/con-v1.json",
+  "reader": {
+    "id": "con-v1",
+    "category": "Direito Constitucional",
+    "curricular_id": "CON-01",
+    "title": "Teoria da Constituição e Direitos Fundamentais",
+    "edition": "0.9.6",
+    "source": "Edição 0.9.5 preservada; revisão jurídico-editorial delimitada de 27/11/2026 (SV 14, Tema 987, ADI 4296, Lei 12.016/2009 e LC 219/2025).",
+    "source_format": "markdown",
+    "verification": "Revisão editorial assistida e delimitada; fundamentos das atividades confirmados pontualmente; sem certificação integral nem domínio aferido",
+    "transcription_note": "13 seções preservam os nove capítulos; edição delimitada a 17 IDs; CON-26 a CON-30 não abrangidos."
+  },
+  "curricularIds": [
+    "CON-01",
+    "CON-02",
+    "CON-03",
+    "CON-04",
+    "CON-05",
+    "CON-06",
+    "CON-07",
+    "CON-08",
+    "CON-09",
+    "CON-18",
+    "CON-19",
+    "CON-20",
+    "CON-21",
+    "CON-22",
+    "CON-23",
+    "CON-24",
+    "CON-25"
+  ],
+  "dates": {
+    "edition": "2026-11-27",
+    "auditCutoff": "2026-11-04",
+    "legalConsultation": "27/11/2026; revalidação pontual acumulada e cotejo dos trechos prioritários dos capítulos 5, 6.5, 8 e 9.",
+    "migration": "2026-11-27"
+  },
+  "verification": {
+    "status": "parcial",
+    "gaps": [
+      "Escopo de 17 IDs; CON-26 a CON-30 fora desta unidade. Cadeia integral de retificações, legislação e jurisprudência não exaurida.",
+      "RE 201819 e outras remissões indiretas: sem certificação de inteiro teor. Tema 533 e ADI 7881: conclusão posterior não demonstrada; não usar como parecer de elegibilidade ou responsabilidade concreta.",
+      "Conferência documental pontual das atividades; domínio não aferido; questões oficiais não reproduzidas.",
+      "Publicação condicionada à jornada integral e CI do volume, privacidade e verificação HTTP."
+    ]
+  },
+  "sections": [
+    {
+      "id": "con-v1-s00",
+      "marker": "s00",
+      "title": "Teoria da Constituição e Direitos Fundamentais",
+      "page": 0,
+      "sha256": "5c4d9e38517e30609597d9a78f7d5e44dfa0c5d46b070741a7a783be680fbfe9",
+      "headings": [
+        {
+          "id": "con-v1-s00-h1",
+          "level": 1,
+          "title": "Teoria da Constituição e Direitos Fundamentais"
+        },
+        {
+          "id": "con-v1-s00-h2",
+          "level": 2,
+          "title": "Sumário"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s01",
+      "marker": "s01",
+      "title": "Nota editorial e matriz do programa",
+      "page": 1,
+      "sha256": "6c688a3f8ab157f87cd802f3a737567db0186ac52294a5f84d78a5ec5354926d",
+      "headings": [
+        {
+          "id": "con-v1-s01-h1",
+          "level": 2,
+          "title": "Nota editorial e matriz do programa"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s02",
+      "marker": "s02",
+      "title": "Capítulo 1 — Formação histórica do Direito Constitucional",
+      "page": 2,
+      "sha256": "b4f3869ca470aec82c85ce7e1b64552185f6c23a00c0577bf91ed7a2c32dc012",
+      "headings": [
+        {
+          "id": "con-v1-s02-h1",
+          "level": 2,
+          "title": "Capítulo 1 — Formação histórica do Direito Constitucional"
+        },
+        {
+          "id": "con-v1-s02-h2",
+          "level": 3,
+          "title": "1.1 O problema: governar por razões de Estado"
+        },
+        {
+          "id": "con-v1-s02-h3",
+          "level": 3,
+          "title": "1.2 Constitucionalismo: gênese, transformações e espécies"
+        },
+        {
+          "id": "con-v1-s02-h4",
+          "level": 3,
+          "title": "1.3 A trajetória brasileira: sete Constituições e a questão de 1969"
+        },
+        {
+          "id": "con-v1-s02-h5",
+          "level": 3,
+          "title": "1.4 Constituição: conceito, sentidos e classificações"
+        },
+        {
+          "id": "con-v1-s02-h6",
+          "level": 3,
+          "title": "1.5 Constitucionalismo transnacional e transconstitucionalismo"
+        },
+        {
+          "id": "con-v1-s02-h7",
+          "level": 3,
+          "title": "1.6 Neoconstitucionalismo e pós-positivismo: explicação e crítica"
+        },
+        {
+          "id": "con-v1-s02-h8",
+          "level": 3,
+          "title": "1.7 Retorno à práxis: parecer sobre licença para publicação"
+        },
+        {
+          "id": "con-v1-s02-h9",
+          "level": 3,
+          "title": "1.8 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s03",
+      "marker": "s03",
+      "title": "Capítulo 2 — Teoria das normas constitucionais",
+      "page": 3,
+      "sha256": "7a2b313f2a8ddab3824c9e8ad55dcc1af2c57977d729884f40b3a0e3db7ee192",
+      "headings": [
+        {
+          "id": "con-v1-s03-h1",
+          "level": 2,
+          "title": "Capítulo 2 — Teoria das normas constitucionais"
+        },
+        {
+          "id": "con-v1-s03-h2",
+          "level": 3,
+          "title": "2.1 O problema: a lei ausente e o direito já escrito"
+        },
+        {
+          "id": "con-v1-s03-h3",
+          "level": 3,
+          "title": "2.2 Supremacia, vigência, validade e eficácia"
+        },
+        {
+          "id": "con-v1-s03-h4",
+          "level": 3,
+          "title": "2.3 Classificação da eficácia: plena, contida e limitada"
+        },
+        {
+          "id": "con-v1-s03-h5",
+          "level": 3,
+          "title": "2.4 Aplicabilidade imediata e dimensões subjetiva e objetiva"
+        },
+        {
+          "id": "con-v1-s03-h6",
+          "level": 3,
+          "title": "2.5 Eficácia vertical e horizontal: o que se compara entre Brasil e Alemanha"
+        },
+        {
+          "id": "con-v1-s03-h7",
+          "level": 3,
+          "title": "2.6 Preâmbulo, princípios fundamentais e normas programáticas"
+        },
+        {
+          "id": "con-v1-s03-h8",
+          "level": 3,
+          "title": "2.7 ADCT: transição com força constitucional"
+        },
+        {
+          "id": "con-v1-s03-h9",
+          "level": 3,
+          "title": "2.8 Caso AGU resolvido: entidade privada e exclusão sem defesa"
+        },
+        {
+          "id": "con-v1-s03-h10",
+          "level": 3,
+          "title": "2.9 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s04",
+      "marker": "s04",
+      "title": "Capítulo 3 — Interpretação constitucional",
+      "page": 4,
+      "sha256": "0a31c914e423b35f6fd840cd1bcdd85c9315dfd0fc70c399408672dad98ba1c3",
+      "headings": [
+        {
+          "id": "con-v1-s04-h1",
+          "level": 2,
+          "title": "Capítulo 3 — Interpretação constitucional"
+        },
+        {
+          "id": "con-v1-s04-h2",
+          "level": 3,
+          "title": "3.1 O problema: dois direitos, um ato administrativo"
+        },
+        {
+          "id": "con-v1-s04-h3",
+          "level": 3,
+          "title": "3.2 Hermenêutica e métodos"
+        },
+        {
+          "id": "con-v1-s04-h4",
+          "level": 3,
+          "title": "3.3 Princípios de interpretação constitucional"
+        },
+        {
+          "id": "con-v1-s04-h5",
+          "level": 3,
+          "title": "3.4 Regras, princípios e modelos de aplicação"
+        },
+        {
+          "id": "con-v1-s04-h6",
+          "level": 3,
+          "title": "3.5 Proporcionalidade, razoabilidade e ponderação"
+        },
+        {
+          "id": "con-v1-s04-h7",
+          "level": 3,
+          "title": "3.6 Fundamentação e limites"
+        },
+        {
+          "id": "con-v1-s04-h8",
+          "level": 3,
+          "title": "3.7 Caso AGU resolvido: filmagem no órgão federal"
+        },
+        {
+          "id": "con-v1-s04-h9",
+          "level": 3,
+          "title": "3.8 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s05",
+      "marker": "s05",
+      "title": "Capítulo 4 — Poder constituinte",
+      "page": 5,
+      "sha256": "f801ab198f5772077d829f4dc8d44af630a061b63cbcde6844ca8557730c195e",
+      "headings": [
+        {
+          "id": "con-v1-s05-h1",
+          "level": 2,
+          "title": "Capítulo 4 — Poder constituinte"
+        },
+        {
+          "id": "con-v1-s05-h2",
+          "level": 3,
+          "title": "4.1 O problema: uma reforma que elimina o controle do poder"
+        },
+        {
+          "id": "con-v1-s05-h3",
+          "level": 3,
+          "title": "4.2 Poder constituinte originário"
+        },
+        {
+          "id": "con-v1-s05-h4",
+          "level": 3,
+          "title": "4.3 Poder derivado reformador, revisor e decorrente"
+        },
+        {
+          "id": "con-v1-s05-h5",
+          "level": 3,
+          "title": "4.4 Mutação constitucional e limites interpretativos"
+        },
+        {
+          "id": "con-v1-s05-h6",
+          "level": 3,
+          "title": "4.5 Direito intertemporal: recepção, não recepção e repristinação"
+        },
+        {
+          "id": "con-v1-s05-h7",
+          "level": 3,
+          "title": "4.6 Caso AGU resolvido: PEC e imunidade ao controle judicial"
+        },
+        {
+          "id": "con-v1-s05-h8",
+          "level": 3,
+          "title": "4.7 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s06",
+      "marker": "s06",
+      "title": "Capítulo 5 — Teoria geral dos direitos fundamentais",
+      "page": 6,
+      "sha256": "bee424220284a0a5fbabf8745d3e8457cef32cbc89c6e2ac8518f8d47c7e1967",
+      "headings": [
+        {
+          "id": "con-v1-s06-h1",
+          "level": 2,
+          "title": "Capítulo 5 — Teoria geral dos direitos fundamentais"
+        },
+        {
+          "id": "con-v1-s06-h2",
+          "level": 3,
+          "title": "5.1 O problema: uma pessoa diante do poder sancionador"
+        },
+        {
+          "id": "con-v1-s06-h3",
+          "level": 3,
+          "title": "5.2 Declarações de direitos: história e teorias jurídica e política"
+        },
+        {
+          "id": "con-v1-s06-h4",
+          "level": 3,
+          "title": "5.3 Dimensões, características e funções"
+        },
+        {
+          "id": "con-v1-s06-h5",
+          "level": 3,
+          "title": "5.4 Titularidade e destinatários"
+        },
+        {
+          "id": "con-v1-s06-h6",
+          "level": 3,
+          "title": "5.5 Direitos e garantias individuais e coletivos"
+        },
+        {
+          "id": "con-v1-s06-h7",
+          "level": 3,
+          "title": "5.6 Restrições e núcleo essencial"
+        },
+        {
+          "id": "con-v1-s06-h8",
+          "level": 3,
+          "title": "5.7 Legalidade, reserva legal e segurança jurídica"
+        },
+        {
+          "id": "con-v1-s06-h9",
+          "level": 3,
+          "title": "5.8 Devido processo, contraditório e ampla defesa"
+        },
+        {
+          "id": "con-v1-s06-h10",
+          "level": 3,
+          "title": "5.9 Caso AGU resolvido: cancelamento de benefício"
+        },
+        {
+          "id": "con-v1-s06-h11",
+          "level": 3,
+          "title": "5.10 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s07",
+      "marker": "s07",
+      "title": "Capítulo 6 — Igualdade, diversidade e liberdades",
+      "page": 7,
+      "sha256": "08527b038ec8a599a9fa4651a14fc427e735fce3e34aee2aa3fb7998987047be",
+      "headings": [
+        {
+          "id": "con-v1-s07-h1",
+          "level": 2,
+          "title": "Capítulo 6 — Igualdade, diversidade e liberdades"
+        },
+        {
+          "id": "con-v1-s07-h2",
+          "level": 3,
+          "title": "6.1 O problema: edital aparentemente neutro"
+        },
+        {
+          "id": "con-v1-s07-h3",
+          "level": 3,
+          "title": "6.2 Igualdade formal, material e antidiscriminação"
+        },
+        {
+          "id": "con-v1-s07-h4",
+          "level": 3,
+          "title": "6.3 Ações afirmativas e regime federal"
+        },
+        {
+          "id": "con-v1-s07-h5",
+          "level": 3,
+          "title": "6.4 Igualdade de gênero, étnica, racial e diversidade"
+        },
+        {
+          "id": "con-v1-s07-h6",
+          "level": 3,
+          "title": "6.5 Liberdade de expressão e informação"
+        },
+        {
+          "id": "con-v1-s07-h7",
+          "level": 3,
+          "title": "6.6 Consciência, crença e laicidade"
+        },
+        {
+          "id": "con-v1-s07-h8",
+          "level": 3,
+          "title": "6.7 Reunião, associação e profissão"
+        },
+        {
+          "id": "con-v1-s07-h9",
+          "level": 3,
+          "title": "6.8 Privacidade, intimidade, domicílio e proteção de dados"
+        },
+        {
+          "id": "con-v1-s07-h10",
+          "level": 3,
+          "title": "6.9 Jurisdição constitucional brasileira e comparada"
+        },
+        {
+          "id": "con-v1-s07-h11",
+          "level": 3,
+          "title": "6.10 Caso AGU resolvido: concurso e dados de candidatos"
+        },
+        {
+          "id": "con-v1-s07-h12",
+          "level": 3,
+          "title": "6.11 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s08",
+      "marker": "s08",
+      "title": "Capítulo 7 — Propriedade e função social",
+      "page": 8,
+      "sha256": "6c677a62a255990915aff059b56ecb406393046d51ebfa58e0422dcb6692d46c",
+      "headings": [
+        {
+          "id": "con-v1-s08-h1",
+          "level": 2,
+          "title": "Capítulo 7 — Propriedade e função social"
+        },
+        {
+          "id": "con-v1-s08-h2",
+          "level": 3,
+          "title": "7.1 O problema: terra produtiva com descumprimento ambiental"
+        },
+        {
+          "id": "con-v1-s08-h3",
+          "level": 3,
+          "title": "7.2 Regime constitucional da propriedade"
+        },
+        {
+          "id": "con-v1-s08-h4",
+          "level": 3,
+          "title": "7.3 Função social urbana"
+        },
+        {
+          "id": "con-v1-s08-h5",
+          "level": 3,
+          "title": "7.4 Função social rural e reforma agrária"
+        },
+        {
+          "id": "con-v1-s08-h6",
+          "level": 3,
+          "title": "7.5 Intervenções sobre a propriedade e indenização"
+        },
+        {
+          "id": "con-v1-s08-h7",
+          "level": 3,
+          "title": "7.6 Caso AGU resolvido: produtividade versus função social"
+        },
+        {
+          "id": "con-v1-s08-h8",
+          "level": 3,
+          "title": "7.7 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s09",
+      "marker": "s09",
+      "title": "Capítulo 8 — Garantias e remédios constitucionais",
+      "page": 9,
+      "sha256": "45c7931c47a276bacb7f4ef76fd04550670bac6d508ca82a1a7fff35cbe90098",
+      "headings": [
+        {
+          "id": "con-v1-s09-h1",
+          "level": 2,
+          "title": "Capítulo 8 — Garantias e remédios constitucionais"
+        },
+        {
+          "id": "con-v1-s09-h2",
+          "level": 3,
+          "title": "8.1 O problema: quatro pedidos contra o Estado"
+        },
+        {
+          "id": "con-v1-s09-h3",
+          "level": 3,
+          "title": "8.2 Habeas corpus"
+        },
+        {
+          "id": "con-v1-s09-h4",
+          "level": 3,
+          "title": "8.3 Mandado de segurança individual e coletivo"
+        },
+        {
+          "id": "con-v1-s09-h5",
+          "level": 3,
+          "title": "8.4 Mandado de injunção"
+        },
+        {
+          "id": "con-v1-s09-h6",
+          "level": 3,
+          "title": "8.5 Habeas data"
+        },
+        {
+          "id": "con-v1-s09-h7",
+          "level": 3,
+          "title": "8.6 Ação popular: conexão complementar"
+        },
+        {
+          "id": "con-v1-s09-h8",
+          "level": 3,
+          "title": "8.7 Caso AGU resolvido: dados fiscais e licença administrativa"
+        },
+        {
+          "id": "con-v1-s09-h9",
+          "level": 3,
+          "title": "8.8 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s10",
+      "marker": "s10",
+      "title": "Capítulo 9 — Democracia e direitos políticos",
+      "page": 10,
+      "sha256": "7d98c1ba67212de65018c4884dd38a9cc1b68ec64ae3e4228dc8b79895f89d7e",
+      "headings": [
+        {
+          "id": "con-v1-s10-h1",
+          "level": 2,
+          "title": "Capítulo 9 — Democracia e direitos políticos"
+        },
+        {
+          "id": "con-v1-s10-h2",
+          "level": 3,
+          "title": "9.1 O problema: o governo continua durante as eleições?"
+        },
+        {
+          "id": "con-v1-s10-h3",
+          "level": 3,
+          "title": "9.2 Nacionalidade, cidadania e participação"
+        },
+        {
+          "id": "con-v1-s10-h4",
+          "level": 3,
+          "title": "9.3 Capacidade eleitoral, elegibilidade e inelegibilidade"
+        },
+        {
+          "id": "con-v1-s10-h5",
+          "level": 4,
+          "title": "Anterioridade eleitoral e jurisprudência"
+        },
+        {
+          "id": "con-v1-s10-h6",
+          "level": 3,
+          "title": "9.4 Perda e suspensão dos direitos políticos"
+        },
+        {
+          "id": "con-v1-s10-h7",
+          "level": 3,
+          "title": "9.5 Processo eleitoral e garantias"
+        },
+        {
+          "id": "con-v1-s10-h8",
+          "level": 3,
+          "title": "9.6 Partidos políticos"
+        },
+        {
+          "id": "con-v1-s10-h9",
+          "level": 3,
+          "title": "9.7 Condutas vedadas: a Administração não é a campanha"
+        },
+        {
+          "id": "con-v1-s10-h10",
+          "level": 4,
+          "title": "Distribuição gratuita, inaugurações e consequências"
+        },
+        {
+          "id": "con-v1-s10-h11",
+          "level": 3,
+          "title": "9.8 Caso AGU resolvido: parecer eleitoral sobre programa social e publicidade"
+        },
+        {
+          "id": "con-v1-s10-h12",
+          "level": 3,
+          "title": "9.9 Questões autorais comentadas"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s11",
+      "marker": "s11",
+      "title": "Respostas da recuperação ativa",
+      "page": 11,
+      "sha256": "96d34c784e2dc4e3f1f9a971afc312530a3f7260296b087086e2a22c6d7fc6de",
+      "headings": [
+        {
+          "id": "con-v1-s11-h1",
+          "level": 2,
+          "title": "Respostas da recuperação ativa"
+        },
+        {
+          "id": "con-v1-s11-h2",
+          "level": 3,
+          "title": "Capítulo 1"
+        },
+        {
+          "id": "con-v1-s11-h3",
+          "level": 3,
+          "title": "Capítulo 2"
+        },
+        {
+          "id": "con-v1-s11-h4",
+          "level": 3,
+          "title": "Capítulo 3"
+        },
+        {
+          "id": "con-v1-s11-h5",
+          "level": 3,
+          "title": "Capítulo 4"
+        },
+        {
+          "id": "con-v1-s11-h6",
+          "level": 3,
+          "title": "Capítulo 5"
+        },
+        {
+          "id": "con-v1-s11-h7",
+          "level": 3,
+          "title": "Capítulo 6"
+        },
+        {
+          "id": "con-v1-s11-h8",
+          "level": 3,
+          "title": "Capítulo 7"
+        },
+        {
+          "id": "con-v1-s11-h9",
+          "level": 3,
+          "title": "Capítulo 8"
+        },
+        {
+          "id": "con-v1-s11-h10",
+          "level": 3,
+          "title": "Capítulo 9"
+        }
+      ]
+    },
+    {
+      "id": "con-v1-s12",
+      "marker": "s12",
+      "title": "Referências, mapa de atualização e handoff",
+      "page": 12,
+      "sha256": "9c2abfa28e74c1f9ae137812b35c533e01c73bbbae2e59b6cb77e35f137974e6",
+      "headings": [
+        {
+          "id": "con-v1-s12-h1",
+          "level": 2,
+          "title": "Referências, mapa de atualização e handoff"
+        },
+        {
+          "id": "con-v1-s12-h2",
+          "level": 3,
+          "title": "1. Registro das fontes e critério de utilização"
+        },
+        {
+          "id": "con-v1-s12-h3",
+          "level": 3,
+          "title": "2. Matriz de cobertura editorial e mapa de atualização"
+        },
+        {
+          "id": "con-v1-s12-h4",
+          "level": 4,
+          "title": "Rotina de atualização antes de nova edição"
+        },
+        {
+          "id": "con-v1-s12-h5",
+          "level": 3,
+          "title": "3. Checkpoint de produção e auditoria"
+        },
+        {
+          "id": "con-v1-s12-h6",
+          "level": 2,
+          "title": "Nota de edição — 27/11/2026"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "curricularId": "CON-01",
+      "subitem": "História Constitucional do Brasil.",
+      "sections": [
+        "con-v1-s02"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-02",
+      "subitem": "Constituição: conceito e classificação.",
+      "sections": [
+        "con-v1-s02"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-03",
+      "subitem": "Constitucionalismo: conceito e espécies. Constitucionalismo Transnacional e Transconstitucionalismo. Neoconstitucionalismo e pós-positivismo: críticas ao conceito e problemas de má recepção.",
+      "sections": [
+        "con-v1-s02"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-04",
+      "subitem": "Normas constitucionais: classificação. Eficácia direta e eficácia indireta dos direitos fundamentais: crítica à doutrina prevalente no Brasil e sua comparação com o modelo alemão.",
+      "sections": [
+        "con-v1-s03"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-05",
+      "subitem": "Preâmbulo, normas constitucionais programáticas e princípios constitucionais.",
+      "sections": [
+        "con-v1-s03"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-06",
+      "subitem": "Disposições constitucionais transitórias.",
+      "sections": [
+        "con-v1-s03"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-07",
+      "subitem": "Hermenêutica constitucional.",
+      "sections": [
+        "con-v1-s04"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-08",
+      "subitem": "Princípios e regras jurídicas. Ponderação. Modelos e críticas.",
+      "sections": [
+        "con-v1-s04"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-09",
+      "subitem": "Poder constituinte.",
+      "sections": [
+        "con-v1-s05"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-18",
+      "subitem": "Declaração de direitos: histórico; teoria jurídica e teoria política.",
+      "sections": [
+        "con-v1-s06"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-19",
+      "subitem": "Direitos Políticos. Processo Eleitoral. Condições de elegibilidade e inelegibilidade. Condutas vedadas aos agentes públicos em campanhas eleitorais. Partidos Políticos",
+      "sections": [
+        "con-v1-s10"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-20",
+      "subitem": "Direitos e garantias individuais e coletivos. Processo eleitoral.",
+      "sections": [
+        "con-v1-s06",
+        "con-v1-s10"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-21",
+      "subitem": "Princípio da legalidade.",
+      "sections": [
+        "con-v1-s06"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-22",
+      "subitem": "Princípio da isonomia. Igualdade de gênero, étnica e racial. Diversidade.",
+      "sections": [
+        "con-v1-s07"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-23",
+      "subitem": "Regime constitucional da propriedade. Função social da propriedade.",
+      "sections": [
+        "con-v1-s08"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-24",
+      "subitem": "Habeas corpus, mandado de segurança, mandado de injunção e habeas data.",
+      "sections": [
+        "con-v1-s09"
+      ],
+      "status": "parcial"
+    },
+    {
+      "curricularId": "CON-25",
+      "subitem": "Liberdades constitucionais. Princípio da laicidade. Jurisdição constitucional no Direito Brasileiro e no direito comparado.",
+      "sections": [
+        "con-v1-s07"
+      ],
+      "status": "parcial"
+    }
+  ],
+  "sources": [
+    {
+      "id": "edital",
+      "url": "https://cdn.cebraspe.org.br/concursos/AGU_22_ADVOGADO/arquivos/ED_1_2022_AGU_ADVOGADO_ABERTURA.PDF",
+      "locator": "item 17.2.1, pp.37–38",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Edital 1, pp. 37–38, e edital 2, p. 1, confrontados visualmente em 27/11/2026 para escopo dos 17 IDs; cadeia integral não exaurida.",
+      "revision": "1"
+    },
+    {
+      "id": "cf",
+      "url": "https://www4.planalto.gov.br/legislacao/legis-federal/constituicao",
+      "locator": "CF arts. 5, 14, 19, 37, 60, 182–186",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Texto indexado; cotejo por dispositivo e emendas pendente",
+      "revision": "1"
+    },
+    {
+      "id": "luth",
+      "url": "https://www.bundesverfassungsgericht.de/SharedDocs/Entscheidungen/DE/1958/01/rs19580115_1bvr040051.html",
+      "locator": "1 BvR 400/51, 15/01/1958, enunciados 1–3, trecho 40",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Indexação oficial consultada; abertura integral expirou",
+      "revision": "1"
+    },
+    {
+      "id": "re201819",
+      "url": "https://portal.stf.jus.br/jurisprudencia/pesquisarInteiroTeor.asp?numeroInteiroTeor=201819",
+      "locator": "RE 201819, índice do inteiro teor",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Índice aberto; acórdão não recuperado",
+      "revision": "1"
+    },
+    {
+      "id": "ec136",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc136.htm",
+      "locator": "art. 2º, ADCT 76-B, I e II, §§1º e 2º",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Percentuais e datas do dispositivo conferidos",
+      "revision": "1"
+    },
+    {
+      "id": "adi7881",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7391301",
+      "locator": "sessão virtual 11–18/09/2026",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Cadastro aberto; indexação registra destaque e voto individual; resultado final não demonstrado",
+      "revision": "1"
+    },
+    {
+      "id": "lei15142",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15142.htm",
+      "locator": "art. 1º",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Âmbito da reserva legal, texto oficial indexado",
+      "revision": "1"
+    },
+    {
+      "id": "dec12536",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12536.htm",
+      "locator": "art. 3º, §§ 1º–6º; art. 25",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Percentuais, reversão, exceções §§5º–6º e transição conferidos; art. 29 Lei 14.724 não reaberto",
+      "revision": "2"
+    },
+    {
+      "id": "lei15333",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15333.htm",
+      "locator": "arts. 1º e 2º; publicação 08/01/2026",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Vacância de 90 dias conferida",
+      "revision": "1"
+    },
+    {
+      "id": "lei15432",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15432.htm",
+      "locator": "art. 44; publicação 14/06/2026",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Vacância de um ano conferida",
+      "revision": "1"
+    },
+    {
+      "id": "lei13300",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13300.htm",
+      "locator": "arts. 8º–13",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Art. 8º parágrafo único: dispensa obrigatória se comprovado descumprimento anterior; arts. 9 e 11 revalidados",
+      "revision": "2"
+    },
+    {
+      "id": "adi4296",
+      "url": "https://www.stf.jus.br/arquivo/informativo/documento/informativo1021.htm",
+      "locator": "ADI 4296, Informativo 1021",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Resultado colegiado e Informativo 1021: art. 7º §2º e art. 22 §2º inconstitucionais; art. 7º III faculdade concreta; art. 1º §2º mantido; inteiro teor não auditado.",
+      "revision": "1"
+    },
+    {
+      "id": "tema533",
+      "url": "https://portal.stf.jus.br/jurisprudenciarepercussao/verandamentoprocesso.asp?classeprocesso=re&incidente=5217273&numeroprocesso=1057258&numerotema=533",
+      "locator": "andamentos 24–28/09 e 05/10/2026",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Suspensão para proclamação, decisão monocrática específica e conclusão ao relator; proclamação final não localizada",
+      "revision": "2"
+    },
+    {
+      "id": "tema987",
+      "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/verAndamentoProcesso.asp?classeProcesso=RE&incidente=5160549&numeroTema=987",
+      "locator": "andamento de 17/06/2026",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Ficha exibe trânsito em julgado 17/06/2026; julgamento dos ED e tese localizados; certidão e inteiro teor não revalidados",
+      "revision": "2"
+    },
+    {
+      "id": "adi2076",
+      "url": "https://redir.stf.jus.br/paginadorpub/paginador.jsp?docID=375324&docTP=AC",
+      "locator": "ADI 2076, ementa e resultado; preâmbulo",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Acórdão STF docID 375324 consultado em texto (ementa, resultado e voto); captura visual recusada. Sem certificação integral.",
+      "revision": "1"
+    },
+    {
+      "id": "lei14836",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14836.htm",
+      "locator": "arts. 3º–4º; CPP art. 647-A",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Concessão de ofício individual ou coletiva; competência jurisdicional e não conhecimento de ação/recurso",
+      "revision": "1"
+    },
+    {
+      "id": "edital2",
+      "url": "https://cdn.cebraspe.org.br/concursos/agu_22_advogado/arquivos/ED_2_2022_AGU_ADVOGADO_RET_PRT_FORENSE_OBJ_AVALIAO.PDF",
+      "locator": "p. 1, item 17.2.1, Direito Constitucional",
+      "consultedAt": "2026-11-27",
+      "scope": "Retificação visualmente conferida; itens 22 e 25 pertinentes ao recorte.",
+      "status": "confirmado_pontualmente",
+      "revision": "1"
+    },
+    {
+      "id": "lei15230",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15230.htm",
+      "locator": "art. 1º, art. 11, § 2º, I–III da Lei 9.504/1997; art. 2º",
+      "consultedAt": "2026-11-27",
+      "scope": "Marco de aferição da idade; inciso III limitado às demais Casas Legislativas, sem redução ou prorrogação. Aplicabilidade temporal não certificada para todo pleito.",
+      "status": "confirmado_pontualmente",
+      "revision": "1"
+    },
+    {
+      "id": "tema280",
+      "url": "https://portal.stf.jus.br/processos/listarProcessos.asp?classe=RE&numeroProcesso=603616",
+      "locator": "Tema 280, tese do Plenário",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Ingresso domiciliar sem mandado: razões fundadas, flagrante interior, justificativa posterior e consequência; sem inventário de aplicações posteriores.",
+      "revision": "1"
+    },
+    {
+      "id": "sv5-14",
+      "url": "https://portal.stf.jus.br/jurisprudencia/sumariosumulas.asp?base=26&sumula=1184",
+      "locator": "SV 5 e SV 14, enunciados",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Texto dos enunciados confrontado; distinção do âmbito da investigação policial e da defesa técnica no PAD.",
+      "revision": "1"
+    },
+    {
+      "id": "lei12016",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l12016.htm",
+      "locator": "arts. 1º, 5º, 7º, 12–15, 21–25",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Texto legal confrontado, inclusive art. 14 §1º; leitura conjunta com ADI4296.",
+      "revision": "1"
+    },
+    {
+      "id": "lc219",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp219.htm",
+      "locator": "art. 1º, alíneas b, c, e, k e l; art. 5º",
+      "consultedAt": "2026-11-27",
+      "status": "confirmado_pontualmente",
+      "scope": "Texto promulgado e distinções de prazo; não se certifica incidência de todo pleito ou julgamento da ADI7881.",
+      "revision": "1"
+    },
+    {
+      "id": "tema987-ed",
+      "url": "https://portal.stf.jus.br/jurisprudenciaRepercussao/verAndamentoProcesso.asp?classeProcesso=RE&incidente=5160549&numeroProcesso=1037396&numeroTema=987",
+      "locator": "andamentos 17–19/06/2026, itens 1–4 da tese final; notícia STF de 17/06/2026",
+      "consultedAt": "2026-11-27",
+      "status": "parcial",
+      "scope": "Itens iniciais e trânsito confirmados na ficha oficial; marco temporal e prazo confirmados pela notícia institucional; RTF e PDF direto não reabertos nesta rodada.",
+      "revision": "1"
+    }
+  ],
+  "resources": [],
+  "activities": [
+    {
+      "id": "livro-con-001-c01-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s02",
+      "title": "Capítulo 1, questão 1",
+      "nature": "autoral",
+      "prompt": "A EC 1/1969 é formalmente emenda, mas pode ser classificada materialmente como nova Constituição.",
+      "answer": "**Certo.** A profundidade da alteração e o contexto de produção justificam a distinção; a contagem institucional de sete textos não a exclui.",
+      "curricularIds": [
+        "CON-01"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c01-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s02",
+      "title": "Capítulo 1, questão 2",
+      "nature": "autoral",
+      "prompt": "Para o transconstitucionalismo, conflitos entre ordens jurídicas exigem necessariamente a instituição de um tribunal mundial hierarquicamente superior.",
+      "answer": "**Errado.** Aprendizado recíproco e diálogo não pressupõem centro único de validade.",
+      "curricularIds": [
+        "CON-03"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c01-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s02",
+      "title": "Capítulo 1, questão 3",
+      "nature": "autoral",
+      "prompt": "A força normativa de princípios autoriza deixar de aplicar regra válida quando o intérprete considera o resultado mais justo.",
+      "answer": "**Errado.** É preciso interpretar a regra e enfrentar competência, exceções, validade e precedentes; a preferência subjetiva não é fundamento suficiente.",
+      "curricularIds": [
+        "CON-03"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c01-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s02",
+      "title": "1A",
+      "nature": "autoral",
+      "prompt": "Por que a CF/1824 é semirrígida?",
+      "answer": "O art. 178 da Constituição de 1824 distinguia matéria constitucional, sujeita ao procedimento especial de alteração, das demais normas do documento, alteráveis pela legislação ordinária. A coexistência de procedimentos caracteriza semirrigidez.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c01-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s02",
+      "title": "1B",
+      "nature": "autoral",
+      "prompt": "Qual a distinção formal/material de 1969?",
+      "answer": "A EC 1/1969 foi formalmente apresentada como emenda à Constituição de 1967, mas promoveu transformação extensa da ordem constitucional em ambiente autoritário, razão pela qual parte relevante da doutrina a classifica materialmente como nova Constituição. A nomenclatura formal não resolve o problema histórico da legitimidade.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c01-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s02",
+      "title": "1C",
+      "nature": "autoral",
+      "prompt": "Como Hesse se distingue de Lassalle?",
+      "answer": "Lassalle enfatiza fatores reais de poder e sua relação com o texto; Hesse não ignora a realidade, mas afirma capacidade normativa da Constituição de conformá-la, condicionada à vontade de Constituição e às condições históricas. Nenhuma das perspectivas torna desnecessário investigar a efetividade.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c01-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s02",
+      "title": "1D",
+      "nature": "autoral",
+      "prompt": "O que diferencia transconstitucionalismo de hierarquia global?",
+      "answer": "O transconstitucionalismo estuda problemas constitucionais comuns a ordens distintas e seus entrelaçamentos e aprendizados recíprocos; não pressupõe um centro hierárquico universal. A aplicação interna de tratados continua sujeita ao regime constitucional de incorporação e hierarquia.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c01-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s02",
+      "title": "1E",
+      "nature": "autoral",
+      "prompt": "Por que a ponderação não autoriza voluntarismo?",
+      "answer": "Ponderação exige identificação de normas, finalidade legítima, fatos, alternativas e justificação racional; não substitui texto, competência ou procedimento. Críticas à recepção brasileira denunciam uso retórico de princípios para encobrir preferências decisórias.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c01-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s02",
+      "title": "Capítulo 1, caso novo",
+      "nature": "autoral",
+      "prompt": "avaliar proposta de decreto que restringe manifestações políticas sob pretexto de estabilidade.",
+      "answer": "Decreto geral que restringe manifestações políticas encontra limites nos arts. 5º, IV, IX e XVI, 37 e na reserva legal. Estabilidade abstrata não constitui autorização constitucional para censura ou suspensão de direitos. Eventual medida excepcional exige fundamento constitucional/legal específico, pressupostos, procedimento e controle.",
+      "curricularIds": [
+        "CON-01",
+        "CON-02",
+        "CON-03"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s03",
+      "title": "Capítulo 2, questão 1",
+      "nature": "autoral",
+      "prompt": "Norma de eficácia limitada não pode servir de parâmetro para invalidar lei incompatível.",
+      "answer": "**Errado.** A eficácia negativa e a vinculação do legislador existem mesmo quando efeitos positivos requerem integração.",
+      "curricularIds": [
+        "CON-04"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c02-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s03",
+      "title": "Capítulo 2, questão 2",
+      "nature": "autoral",
+      "prompt": "Lüth reconheceu a influência dos direitos fundamentais na interpretação do direito civil alemão.",
+      "answer": "**Certo.** É exemplo de eficácia indireta, não de inexistência de proteção nas relações privadas.",
+      "curricularIds": [
+        "CON-04"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c02-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s03",
+      "title": "Capítulo 2, questão 3",
+      "nature": "autoral",
+      "prompt": "Por estar no ADCT, uma emenda pode dispensar os limites materiais do art. 60.",
+      "answer": "**Errado.** A posição transitória não altera as condições de validade da reforma.",
+      "curricularIds": [
+        "CON-06"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c02-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s03",
+      "title": "2A",
+      "nature": "autoral",
+      "prompt": "Diferencie validade e efetividade.",
+      "answer": "Validade refere-se à conformidade da norma com parâmetros superiores de produção; efetividade, à sua realização social. Uma norma válida pode ser pouco observada. Vigência, eficácia jurídica e aplicabilidade são planos que também não se confundem.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s03",
+      "title": "2B",
+      "nature": "autoral",
+      "prompt": "Qual o efeito da lei nas normas contida e limitada?",
+      "answer": "Norma contida possui aplicabilidade imediata e alcance passível de restrição constitucionalmente autorizada. Norma limitada depende de integração para plenitude de efeitos, mas desde logo vincula poderes e impede atos incompatíveis com seu conteúdo.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s03",
+      "title": "2C",
+      "nature": "autoral",
+      "prompt": "Qual a ratio de Lüth?",
+      "answer": "Lüth reconheceu direitos fundamentais como ordem objetiva de valores que irradia efeitos sobre o direito privado por meio de sua interpretação, especialmente cláusulas gerais. Não equiparou toda pessoa privada ao Estado nem instituiu aplicação direta uniforme.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s03",
+      "title": "2D",
+      "nature": "autoral",
+      "prompt": "Por que o RE 201.819 não transforma toda associação em autoridade estatal?",
+      "answer": "O RE 201.819 examinou exclusão de associado em contexto institucional específico, com relevante posição social da entidade e repercussão de sua decisão. A eficácia horizontal exige considerar autonomia privada, assimetria, natureza da entidade e direito afetado.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s03",
+      "title": "2E",
+      "nature": "autoral",
+      "prompt": "Qual a diferença entre preâmbulo e ADCT?",
+      "answer": "O preâmbulo possui função contextual e interpretativa, sem força normativa autônoma nos termos da ADI 2.076; o ADCT é conjunto de normas constitucionais com hierarquia constitucional, ainda que algumas tenham eficácia exaurida.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c02-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s03",
+      "title": "Capítulo 2, caso novo",
+      "nature": "autoral",
+      "prompt": "cláusula contratual de universidade privada impede manifestação de estudantes; identificar mediações normativas.",
+      "answer": "Examinar contrato, função educacional, autonomia institucional, igualdade, legislação educacional e consumerista e liberdade de expressão. Uma cláusula geral proibitiva não é legítima apenas por ter sido aceita; distinguir manifestação protegida de conduta efetivamente lesiva a direitos de terceiros.",
+      "curricularIds": [
+        "CON-04",
+        "CON-05",
+        "CON-06"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s04",
+      "title": "Capítulo 3, questão 1",
+      "nature": "autoral",
+      "prompt": "Na proporcionalidade, necessidade exige escolher meio menos restritivo entre alternativas que preservem adequação comparável.",
+      "answer": "**Certo.** Não basta apontar alternativa menos gravosa se ela for incapaz de atingir o fim.",
+      "curricularIds": [
+        "CON-08"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c03-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s04",
+      "title": "Capítulo 3, questão 2",
+      "nature": "autoral",
+      "prompt": "A interpretação conforme pode substituir sentido inequívoco de lei por outro que o texto não comporta.",
+      "answer": "**Errado.** A técnica preserva sentidos admissíveis; não confere competência legislativa ilimitada.",
+      "curricularIds": [
+        "CON-07"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c03-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s04",
+      "title": "Capítulo 3, questão 3",
+      "nature": "autoral",
+      "prompt": "Na teoria de Alexy, o princípio vencido no caso concreto deixa de integrar o ordenamento.",
+      "answer": "**Errado.** A precedência é condicionada, não revogação geral.",
+      "curricularIds": [
+        "CON-08"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c03-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s04",
+      "title": "3A",
+      "nature": "autoral",
+      "prompt": "Diferencie tópico-problemático e hermenêutico-concretizador.",
+      "answer": "O método tópico-problemático parte do problema e mobiliza argumentos pertinentes; o hermenêutico-concretizador parte da pré-compreensão e do texto constitucional, articulando norma e realidade em processo interpretativo controlado. Não são técnicas de decisão arbitrária.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s04",
+      "title": "3B",
+      "nature": "autoral",
+      "prompt": "O que é justeza funcional?",
+      "answer": "A justeza ou conformidade funcional exige que o intérprete respeite a distribuição constitucional de funções e competências, evitando deslocar atribuições de outro poder sem fundamento constitucional.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s04",
+      "title": "3C",
+      "nature": "autoral",
+      "prompt": "Qual a diferença entre regras e princípios em Alexy?",
+      "answer": "Na teoria de Alexy, regras exigem cumprimento definitivo quando válidas e incidentes, enquanto princípios são mandamentos de otimização realizáveis em graus segundo possibilidades fáticas e jurídicas. A distinção tem críticas e não corresponde à hierarquia formal.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s04",
+      "title": "3D",
+      "nature": "autoral",
+      "prompt": "Quais as etapas da proporcionalidade?",
+      "answer": "Adequação: aptidão para promover finalidade legítima. Necessidade: inexistência de alternativa igualmente eficaz e menos restritiva. Proporcionalidade em sentido estrito: comparação justificada entre gravidade da restrição e importância da realização do fim. Não dispensam competência e legalidade.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s04",
+      "title": "3E",
+      "nature": "autoral",
+      "prompt": "Por que a fórmula do peso não produz resposta automática?",
+      "answer": "A atribuição de pesos e a confiabilidade das premissas dependem de juízos justificáveis. A fórmula explicita relações argumentativas; não produz objetivamente os dados que recebe nem elimina divergências interpretativas.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c03-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s04",
+      "title": "Capítulo 3, caso novo",
+      "nature": "autoral",
+      "prompt": "suspensão geral de acesso a rede pública por risco de fraude.",
+      "answer": "Uma suspensão geral de acesso pode ser inadequada ou desnecessária se autenticação reforçada, bloqueio individual e auditoria forem alternativas eficazes. A solução depende da prova do risco, da competência, dos direitos afetados e da duração da medida.",
+      "curricularIds": [
+        "CON-07",
+        "CON-08"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s05",
+      "title": "Capítulo 4, questão 1",
+      "nature": "autoral",
+      "prompt": "O Presidente da República participa da promulgação das emendas constitucionais mediante sanção.",
+      "answer": "**Errado.** Pode iniciar proposta; promulgação é das Mesas das Casas.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c04-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s05",
+      "title": "Capítulo 4, questão 2",
+      "nature": "autoral",
+      "prompt": "O STF admite declaração de inconstitucionalidade de norma constitucional originária em face de cláusula pétrea.",
+      "answer": "**Errado.** ADI 815; limites do art. 60 vinculam a reforma.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c04-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s05",
+      "title": "Capítulo 4, questão 3",
+      "nature": "autoral",
+      "prompt": "Lei anterior materialmente compatível pode ser recepcionada, ainda que o novo texto exija espécie legislativa diferente para futura alteração.",
+      "answer": "**Certo.** A validade originária e a compatibilidade material são decisivas.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c04-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s05",
+      "title": "4A",
+      "nature": "autoral",
+      "prompt": "Qual o alcance da ADI 815?",
+      "answer": "A ADI 815 afastou controle de constitucionalidade de norma originária da CF em face de outra norma originária, rejeitando hierarquia jurídica interna para esse fim. Emendas são atos do poder derivado e podem ser controladas.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s05",
+      "title": "4B",
+      "nature": "autoral",
+      "prompt": "Qual o procedimento de PEC?",
+      "answer": "Iniciativa do art. 60, deliberação em dois turnos em cada Casa, aprovação por três quintos dos respectivos membros em cada turno e promulgação pelas Mesas da Câmara e do Senado. Não há sanção presidencial. Observar limites circunstanciais, materiais e regra de reapresentação na mesma sessão legislativa.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s05",
+      "title": "4C",
+      "nature": "autoral",
+      "prompt": "Por que cláusula pétrea não congela toda norma?",
+      "answer": "A vedação é à deliberação de proposta tendente a abolir os núcleos protegidos pelo art. 60, §4º; não impede toda disciplina nova, reforço de proteção ou alteração periférica que preserve o núcleo constitucional.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s05",
+      "title": "4D",
+      "nature": "autoral",
+      "prompt": "Diferencie mutação e reforma.",
+      "answer": "Mutação altera sentido constitucional sem modificação formal do texto; reforma modifica o texto por procedimento constitucional. A mutação não legitima interpretação incompatível com limites semânticos e estrutura constitucional.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s05",
+      "title": "4E",
+      "nature": "autoral",
+      "prompt": "Diferencie recepção, repristinação e desconstitucionalização.",
+      "answer": "Recepção é continuidade de norma anterior materialmente compatível; repristinação é restauração da vigência de norma anteriormente revogada, não automática como regra; desconstitucionalização é eventual aproveitamento de antigas normas constitucionais como infraconstitucionais, não presumido no Brasil.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c04-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s05",
+      "title": "Capítulo 4, caso novo",
+      "nature": "autoral",
+      "prompt": "PEC que torna indefinidamente prorrogável o mandato presidencial.",
+      "answer": "PEC de prorrogação indefinida do mandato presidencial compromete periodicidade do voto, democracia e alternância institucional, encontrando barreira no art. 60, §4º, II, e no regime constitucional do mandato. Regularidade procedimental não sana vício material.",
+      "curricularIds": [
+        "CON-09"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s06",
+      "title": "Capítulo 5, questão 1",
+      "nature": "autoral",
+      "prompt": "A imprescritibilidade de direitos fundamentais implica imprescritibilidade de todas as pretensões indenizatórias decorrentes de sua violação.",
+      "answer": "**Errado.** A pretensão concreta pode sujeitar-se à prescrição conforme regime próprio.",
+      "curricularIds": [
+        "CON-20"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c05-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s06",
+      "title": "Capítulo 5, questão 2",
+      "nature": "autoral",
+      "prompt": "Tratado de direitos humanos incorporado sem o rito do art. 5º, §3º, é supralegal segundo o STF no RE 466.343.",
+      "answer": "**Certo.** A tese distingue tratados qualificados e tratados de direitos humanos incorporados por rito comum.",
+      "curricularIds": [
+        "CON-18"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c05-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s06",
+      "title": "Capítulo 5, questão 3",
+      "nature": "autoral",
+      "prompt": "A fundação de benefício em legislação ordinária permite sua extinção individual por suspeita, sem observância de devido processo.",
+      "answer": "**Errado.** Legalidade material não dispensa garantias procedimentais.",
+      "curricularIds": [
+        "CON-21"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c05-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s06",
+      "title": "5A",
+      "nature": "autoral",
+      "prompt": "Direitos humanos e fundamentais são formalmente idênticos?",
+      "answer": "Direitos humanos costumam designar proteção no plano internacional e pretensões universais; fundamentais, direitos reconhecidos na ordem constitucional. Há forte convergência substantiva, mas distintas fontes, posições hierárquicas e mecanismos de garantia.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s06",
+      "title": "5B",
+      "nature": "autoral",
+      "prompt": "Quais funções dos direitos fundamentais?",
+      "answer": "Funções defensiva, prestacional, protetiva, procedimental e participativa, além da dimensão objetiva de orientação de toda a ordem jurídica. Um mesmo direito pode exercer várias funções.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s06",
+      "title": "5C",
+      "nature": "autoral",
+      "prompt": "Como distinguir reserva legal simples e qualificada?",
+      "answer": "Na reserva simples, a Constituição remete à lei a disciplina sem especificar exaustivamente finalidades e meios; na qualificada, condiciona a restrição a finalidades, circunstâncias ou requisitos determinados. Nenhuma autoriza restrições arbitrárias.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s06",
+      "title": "5D",
+      "nature": "autoral",
+      "prompt": "Qual a ratio do Tema 280?",
+      "answer": "O Tema 280 exige fundadas razões, justificáveis posteriormente, de flagrante delito no interior do domicílio para ingresso forçado sem mandado, inclusive à noite, sob consequências de responsabilização e nulidade dos atos praticados. A mera intuição policial não basta.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s06",
+      "title": "5E",
+      "nature": "autoral",
+      "prompt": "Como compatibilizar cautelar administrativa urgente e contraditório?",
+      "answer": "Medida cautelar urgente pode admitir contraditório diferido quando houver base jurídica e risco concreto, motivação, delimitação temporal e possibilidade real de revisão e defesa posterior. Não transforma sanção definitiva em ato dispensado de contraditório.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c05-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s06",
+      "title": "Capítulo 5, caso novo",
+      "nature": "autoral",
+      "prompt": "bloqueio de cadastro de fornecedor por algoritmo sem comunicação dos motivos.",
+      "answer": "Exigir identificação de base legal, fatos ou critérios determinantes, acesso aos motivos, revisão humana ou mecanismo efetivo de impugnação conforme regime aplicável e contraditório. Bloqueio provisório cautelar depende de pressupostos concretos; sanção definitiva não pode ser produzida por resultado algorítmico inexplicado.",
+      "curricularIds": [
+        "CON-18",
+        "CON-20",
+        "CON-21"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s07",
+      "title": "Capítulo 6, questão 1",
+      "nature": "autoral",
+      "prompt": "A ADC 41 reconheceu a validade das cotas raciais da Lei 12.990/2014, e a Lei 15.142/2025 preserva o regime dos editais publicados antes de sua vigência.",
+      "answer": "**Certo.** É preciso distinguir o precedente sobre a lei anterior e a regra de transição expressa do novo diploma.",
+      "curricularIds": [
+        "CON-22"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c06-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s07",
+      "title": "Capítulo 6, questão 2",
+      "nature": "autoral",
+      "prompt": "A laicidade proíbe toda colaboração de interesse público entre Estado e instituições religiosas.",
+      "answer": "**Errado.** O art. 19, I, admite colaboração legalmente disciplinada, sem aliança ou dependência religiosa.",
+      "curricularIds": [
+        "CON-25"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c06-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s07",
+      "title": "Capítulo 6, questão 3",
+      "nature": "autoral",
+      "prompt": "A rejeição do direito geral ao esquecimento afasta qualquer tutela contra divulgação ilícita de dados.",
+      "answer": "**Errado.** Tema 786 preserva exame de abusos e demais regimes de proteção.",
+      "curricularIds": [
+        "CON-25"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c06-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s07",
+      "title": "6A",
+      "nature": "autoral",
+      "prompt": "Distinga discriminação direta e indireta.",
+      "answer": "Discriminação direta utiliza explicitamente critério proibido ou desvantagem fundada na característica protegida; indireta decorre de prática aparentemente neutra que produz desvantagem desproporcional e não se justifica adequadamente.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s07",
+      "title": "6B",
+      "nature": "autoral",
+      "prompt": "Como a Lei 15.142/2025 alterou o contexto dos concursos?",
+      "answer": "A Lei 15.142/2025 substituiu o regime federal anterior de reserva racial em concursos, ampliou a reserva total para 30% e incorporou pessoas indígenas e quilombolas ao regime, além de pessoas pretas e pardas. Aplicar disciplina regulamentar, âmbito institucional e marco temporal do edital, não retroagir automaticamente.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s07",
+      "title": "6C",
+      "nature": "autoral",
+      "prompt": "Qual a ressalva essencial do Tema 786?",
+      "answer": "O Tema 786 rejeitou direito geral ao esquecimento entendido como poder de impedir divulgação de fatos verídicos e licitamente obtidos pelo mero decurso do tempo; excessos e abusos devem ser examinados caso a caso, à luz dos direitos da personalidade e demais normas.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s07",
+      "title": "6D",
+      "nature": "autoral",
+      "prompt": "Qual o alcance da ADI 4.439?",
+      "answer": "A ADI 4.439 admitiu ensino religioso confessional de matrícula facultativa nas escolas públicas de ensino fundamental. Não impôs religião oficial, frequência obrigatória ou discriminação por crença; a laicidade permanece parâmetro constitucional.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s07",
+      "title": "6E",
+      "nature": "autoral",
+      "prompt": "Por que ADI 6.387 não proíbe toda política de compartilhamento?",
+      "answer": "A cautelar na ADI 6.387 examinou compartilhamento de dados no contexto específico da MP 954/2020, com insuficiência de finalidade delimitada e garantias. Não exclui toda política de compartilhamento fundamentada em lei, finalidade legítima, necessidade, transparência e segurança.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c06-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s07",
+      "title": "Capítulo 6, caso novo",
+      "nature": "autoral",
+      "prompt": "sistema biométrico obrigatório para acesso a serviço público, sem alternativa para pessoas impossibilitadas.",
+      "answer": "Verificar finalidade e base legal da biometria, necessidade frente a alternativas, proteção reforçada de dado sensível, segurança, acessibilidade e atendimento de pessoas impossibilitadas. O desenho que exclui sem alternativa pode violar igualdade e acesso ao serviço, ainda que tenha objetivo antifraude legítimo.",
+      "curricularIds": [
+        "CON-22",
+        "CON-25"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s08",
+      "title": "Capítulo 7, questão 1",
+      "nature": "autoral",
+      "prompt": "Requisição por iminente perigo público exige indenização prévia em dinheiro.",
+      "answer": "**Errado.** Indenização é posterior e condicionada a dano.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c07-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s08",
+      "title": "Capítulo 7, questão 2",
+      "nature": "autoral",
+      "prompt": "O IPTU progressivo no tempo integra sequência constitucional de medidas de adequado aproveitamento urbano.",
+      "answer": "**Certo.** Não se confunde com progressividade fiscal e exige os requisitos do art. 182, §4º.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c07-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s08",
+      "title": "Capítulo 7, questão 3",
+      "nature": "autoral",
+      "prompt": "A produtividade econômica, isoladamente, basta para impedir a desapropriação de qualquer imóvel rural para reforma agrária.",
+      "answer": "**Errado.** A leitura conjunta da função social foi reafirmada na ADI 3.865; permanecem as demais imunidades e requisitos constitucionais e legais.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c07-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s08",
+      "title": "7A",
+      "nature": "autoral",
+      "prompt": "Quais critérios simultâneos do art. 186?",
+      "answer": "Aproveitamento racional e adequado; utilização adequada de recursos naturais disponíveis e preservação ambiental; observância das disposições que regulam relações de trabalho; exploração que favoreça bem-estar de proprietários e trabalhadores. Os requisitos são simultâneos, conforme critérios legais.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s08",
+      "title": "7B",
+      "nature": "autoral",
+      "prompt": "Qual a sequência sancionatória urbana?",
+      "answer": "Área incluída no plano diretor e lei municipal específica, exigência de parcelamento, edificação ou utilização compulsórios, IPTU progressivo no tempo e desapropriação-sanção com títulos da dívida pública, nas condições da CF e Estatuto da Cidade.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s08",
+      "title": "7C",
+      "nature": "autoral",
+      "prompt": "Diferencie requisição e desapropriação.",
+      "answer": "Requisição autoriza uso de propriedade particular diante de iminente perigo público, com indenização ulterior se houver dano; desapropriação transfere compulsoriamente o bem, em regra com prévia e justa indenização em dinheiro, ressalvadas modalidades constitucionais específicas.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s08",
+      "title": "7D",
+      "nature": "autoral",
+      "prompt": "Qual a ratio da ADI 3.865?",
+      "answer": "A ADI 3.865 reconheceu a compatibilidade constitucional da disciplina que exige função social para imunidade do imóvel produtivo à desapropriação agrária; produtividade econômica isolada não assegura imunidade diante do descumprimento dos requisitos constitucionais. Necessário procedimento legal e prova.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s08",
+      "title": "7E",
+      "nature": "autoral",
+      "prompt": "Quando o art. 243 prevê expropriação sem indenização?",
+      "answer": "O art. 243 determina expropriação sem indenização de propriedades onde sejam localizadas culturas ilegais de plantas psicotrópicas ou exploração de trabalho escravo, na forma da lei e observadas as garantias aplicáveis. Não é consequência automática de toda infração ambiental, trabalhista ou penal.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c07-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s08",
+      "title": "Capítulo 7, caso novo",
+      "nature": "autoral",
+      "prompt": "ocupação estatal temporária de imóvel privado durante inundação, seguida de manutenção indefinida do uso.",
+      "answer": "Durante a inundação, a requisição pode ser legítima se houver perigo público iminente, motivação e uso proporcional; eventual dano gera indenização. Cessado o perigo, manutenção indefinida exige novo fundamento jurídico e pode caracterizar intervenção indevida, sujeita a restituição, indenização ou regularização por instrumento adequado.",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, questão 1",
+      "nature": "autoral",
+      "prompt": "A controvérsia sobre interpretação da lei, por si só, exclui direito líquido e certo para fins de MS.",
+      "answer": "**Errado.** O requisito central é demonstração pré-constituída dos fatos, não unanimidade jurídica.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c08-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, questão 2",
+      "nature": "autoral",
+      "prompt": "O MI pressupõe omissão normativa que inviabilize exercício de posição constitucional; a Lei 13.300 admite eficácia ultra partes ou erga omnes em situações específicas.",
+      "answer": "**Certo.** A eficácia ampliada não é regra automática.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c08-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, questão 3",
+      "nature": "autoral",
+      "prompt": "O habeas data pode obter dados próprios de pagamento de tributos em banco fazendário, nos termos do Tema 582.",
+      "answer": "**Certo.** Não substitui cobrança nem acesso geral a dados de terceiros.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c08-q04",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, questão 4",
+      "nature": "autoral",
+      "prompt": "Toda liminar de MS coletivo exige audiência prévia obrigatória da pessoa jurídica por força do art. 22, §2º, da Lei 12.016.",
+      "answer": "**Errado.** Dispositivo atingido pela ADI 4.296; o contraditório e a tutela cautelar seguem as demais regras aplicáveis.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c08-q05",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, questão 5",
+      "nature": "autoral",
+      "prompt": "Pessoa jurídica pode impetrar habeas corpus em favor de pessoa natural cuja locomoção está ilegalmente ameaçada, embora não possa ser paciente por direito próprio.",
+      "answer": "**Certo.** A legitimação para impetrar é ampla e não se confunde com titularidade da liberdade física tutelada. Fundamento: CF, art. 5º, LXVIII, e CPP, art. 654, caput; [CF](https://planalto.gov.br/ccivil_03/constituicao/constituicao.htm). Questão autoral complementar; revisão do CPP e da jurisprudência específica ainda pendente.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c08-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s09",
+      "title": "8A",
+      "nature": "autoral",
+      "prompt": "Quem pode impetrar e ser paciente em HC?",
+      "answer": "Qualquer pessoa pode impetrar HC em favor próprio ou de terceiro, inclusive pessoa jurídica em favor de pessoa natural; o paciente deve ser sujeito cuja liberdade de locomoção possa sofrer ameaça ou restrição. Dispensa capacidade postulatória profissional, nos termos do regime próprio.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s09",
+      "title": "8B",
+      "nature": "autoral",
+      "prompt": "O que é direito líquido e certo?",
+      "answer": "Direito demonstrável por prova pré-constituída dos fatos necessários ao julgamento, sem dilação probatória incompatível com o rito do MS. Complexidade jurídica não impede, por si, o mandado.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s09",
+      "title": "8C",
+      "nature": "autoral",
+      "prompt": "Qual a diferença entre MI e ADO?",
+      "answer": "MI tutela exercício de posição constitucional inviabilizado por omissão normativa; ADO é processo objetivo de controle abstrato da omissão, com legitimação do art. 103 e regime próprio.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s09",
+      "title": "8D",
+      "nature": "autoral",
+      "prompt": "Quais hipóteses de HD e qual a exigência administrativa?",
+      "answer": "HD: acesso, retificação ou anotação de dado próprio nas hipóteses legais, em registro governamental ou banco de caráter público. Exige demonstração de resistência administrativa por recusa ou omissão nos prazos legais, não exaurimento de todos os recursos.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s09",
+      "title": "8E",
+      "nature": "autoral",
+      "prompt": "O que mudou com ADI 4.296?",
+      "answer": "A ADI 4.296 afastou as restrições legais examinadas do art. 7º, §2º, e a obrigatoriedade de oitiva prévia da representação judicial para liminar de MS coletivo do art. 22, §2º. A tutela não é automática: pressupostos cautelares e demais regras continuam aplicáveis.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c08-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s09",
+      "title": "Capítulo 8, caso novo",
+      "nature": "autoral",
+      "prompt": "sindicato pede regulamentação de direito constitucional e, alternativamente, pagamento de valores vencidos; delimitar cada pretensão.",
+      "answer": "Se a omissão inviabiliza direito constitucional dos representados e a entidade é legitimada, MI coletivo pode estabelecer condições de exercício. O pedido de valores pretéritos exige identificar título, exigibilidade, prescrição e via condenatória adequada; o MI não é substituto automático de ação de cobrança.",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-q01",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, questão 1",
+      "nature": "autoral",
+      "prompt": "A suspensão dos direitos políticos decorrente de condenação criminal exige trânsito em julgado; determinadas inelegibilidades legais podem resultar de condenação colegiada sem trânsito.",
+      "answer": "**Certo.** São institutos diferentes; a inelegibilidade exige enquadramento legal específico.",
+      "curricularIds": [
+        "CON-19"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c09-q02",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, questão 2",
+      "nature": "autoral",
+      "prompt": "A anualidade eleitoral impede a entrada em vigor de toda lei que altere o processo eleitoral durante o ano anterior à eleição.",
+      "answer": "**Errado.** A CF distingue vigência imediata e aplicação à eleição ocorrida até um ano da vigência.",
+      "curricularIds": [
+        "CON-19"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c09-q03",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, questão 3",
+      "nature": "autoral",
+      "prompt": "Um programa social autorizado em lei e executado orçamentariamente no exercício anterior pode continuar no ano eleitoral, desde que observadas as demais vedações.",
+      "answer": "**Certo.** A exceção do §10 não libera uso promocional eleitoral do programa.",
+      "curricularIds": [
+        "CON-19"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "C"
+    },
+    {
+      "id": "livro-con-001-c09-q04",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, questão 4",
+      "nature": "autoral",
+      "prompt": "A retirada de nomes e imagens pessoais torna automaticamente admissível publicidade institucional durante o trimestre eleitoral.",
+      "answer": "**Errado.** Mesmo comunicação impessoal pode configurar a conduta do art. 73, VI, b, ressalvadas as hipóteses legais e o âmbito de incidência.",
+      "curricularIds": [
+        "CON-19"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c09-q05",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, questão 5",
+      "nature": "autoral",
+      "prompt": "Após a EC 131/2023, o brasileiro que voluntariamente adquire nacionalidade estrangeira perde necessariamente a brasileira.",
+      "answer": "**Errado.** A mera aquisição deixou de constituir causa constitucional de perda.",
+      "curricularIds": [
+        "CON-19"
+      ],
+      "candidateKind": "ce",
+      "reviewStatus": "pendente_revisao_independente",
+      "key": "E"
+    },
+    {
+      "id": "livro-con-001-c09-ra-a",
+      "type": "recuperar",
+      "sectionId": "con-v1-s10",
+      "title": "9A",
+      "nature": "autoral",
+      "prompt": "Diferencie capacidade eleitoral ativa, passiva e inelegibilidade.",
+      "answer": "Capacidade ativa: votar. Passiva: concorrer, mediante condições constitucionais e legais. Inelegibilidade: impedimento à candidatura, sem necessária suspensão dos demais direitos políticos.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-ra-b",
+      "type": "recuperar",
+      "sectionId": "con-v1-s10",
+      "title": "9B",
+      "nature": "autoral",
+      "prompt": "Como a EC 131 alterou o regime de nacionalidade?",
+      "answer": "A mera aquisição de outra nacionalidade deixou de ocasionar perda da brasileira. O regime atual prevê cancelamento judicial da naturalização nas hipóteses constitucionais e pedido expresso de perda, ressalvada apatridia, com possibilidade de readquisição da nacionalidade originária nos termos legais.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-ra-c",
+      "type": "recuperar",
+      "sectionId": "con-v1-s10",
+      "title": "9C",
+      "nature": "autoral",
+      "prompt": "Compatibilize os julgamentos da Ficha Limpa com art. 16.",
+      "answer": "RE 633.703: a mudança da Ficha Limpa não se aplicou às eleições de 2010 por força da anterioridade. ADCs 29/30 e ADI 4.578: constitucionalidade do regime e possibilidade de considerar fatos anteriores, nas condições legais. A aplicação a eleição e a consideração de fatos pretéritos são questões diferentes.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-ra-d",
+      "type": "recuperar",
+      "sectionId": "con-v1-s10",
+      "title": "9D",
+      "nature": "autoral",
+      "prompt": "Distinga art. 73, IV, VI, b, e §10.",
+      "answer": "Art. 73, IV: uso promocional eleitoral de distribuição social gratuita. VI, b: publicidade institucional no trimestre, com exceções e âmbito legal. §10: própria distribuição gratuita ao longo do ano, ressalvadas hipóteses legais. Ausência de promoção pessoal não resolve a incidência do VI, b, ou do §10.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-ra-e",
+      "type": "recuperar",
+      "sectionId": "con-v1-s10",
+      "title": "9E",
+      "nature": "autoral",
+      "prompt": "Por que a assinatura prévia de convênio não basta para liberar transferência voluntária no período vedado?",
+      "answer": "A exceção exige obrigação formal preexistente para execução de obra ou serviço em andamento com cronograma prefixado, ou destinação a emergência/calamidade. A assinatura anterior não prova execução material.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "recuperacao",
+      "reviewStatus": "pendente_revisao_independente"
+    },
+    {
+      "id": "livro-con-001-c09-caso-novo",
+      "type": "aplicar",
+      "sectionId": "con-v1-s10",
+      "title": "Capítulo 9, caso novo",
+      "nature": "autoral",
+      "prompt": "município publica vídeo de campanha de vacinação em período eleitoral, sem referência a candidato; identifique o que deve ser comprovado e qual esfera administrativa está em disputa.",
+      "answer": "Examinar se é informação operacional indispensável ou publicidade institucional; conteúdo, veículo, finalidade, necessidade, momento, esfera cujos cargos estão em disputa e eventual reconhecimento judicial da urgência. Ausência de candidato não basta, mas o âmbito do art. 73, §3º, e a preservação de serviços essenciais impedem proibições automáticas.",
+      "curricularIds": [
+        "CON-19",
+        "CON-20"
+      ],
+      "candidateKind": "caso_aplicacao",
+      "reviewStatus": "pendente_revisao_independente"
+    }
+  ],
+  "propositions": [
+    {
+      "id": "metodo-con-v1-fecha003-cand-01",
+      "sectionId": "con-v1-s03",
+      "activityId": "livro-con-001-c02-ra-e",
+      "curricularIds": [
+        "CON-06"
+      ],
+      "front": "Qual percentual de desvinculação das receitas municipais abrangidas pelo ADCT 76-B vale até 31/12/2026?",
+      "back": "50%, observadas as exceções do dispositivo.",
+      "sourceRefs": [
+        "ec136"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-01",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.1",
+      "previousCandidateId": "con-v1-fecha003-cand-01"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-02",
+      "sectionId": "con-v1-s03",
+      "activityId": "livro-con-001-c02-ra-e",
+      "curricularIds": [
+        "CON-06"
+      ],
+      "front": "Qual percentual de desvinculação das receitas municipais abrangidas pelo ADCT 76-B vale entre 2027 e 2032?",
+      "back": "30%, de 01/01/2027 a 31/12/2032, observadas as exceções.",
+      "sourceRefs": [
+        "ec136"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-02",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.1",
+      "previousCandidateId": "con-v1-fecha003-cand-02"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-03",
+      "sectionId": "con-v1-s07",
+      "activityId": "livro-con-001-c06-ra-b",
+      "curricularIds": [
+        "CON-22"
+      ],
+      "front": "Qual a distribuição ordinária da reserva de vagas no Decreto 12.536/2025 e qual a exceção do § 5º?",
+      "back": "25% para pessoas pretas e pardas, 3% para indígenas e 2% para quilombolas. O § 5º permite percentuais diferenciados aos órgãos e entidades federais com políticas voltadas a indígenas e quilombolas, com mínimo de 20% para pessoas pretas e pardas e máximo de 30% de reserva total, ressalvada legislação específica.",
+      "sourceRefs": [
+        "dec12536"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-03",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.1",
+      "previousCandidateId": "con-v1-fecha003-cand-03"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-04",
+      "sectionId": "con-v1-s07",
+      "activityId": "livro-con-001-c06-ra-b",
+      "curricularIds": [
+        "CON-22"
+      ],
+      "front": "O Decreto 12.536/2025 se aplica aos editais publicados até sua publicação?",
+      "back": "Não, conforme art. 25.",
+      "sourceRefs": [
+        "dec12536"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-04",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.0",
+      "previousCandidateId": "con-v1-fecha003-cand-04"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-05",
+      "sectionId": "con-v1-s08",
+      "activityId": "livro-con-001-c07-ra-b",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "front": "Qual a vacância da Lei 15.333/2026?",
+      "back": "90 dias da publicação oficial, conforme art. 2º.",
+      "sourceRefs": [
+        "lei15333"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-05",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.0",
+      "previousCandidateId": "con-v1-fecha003-cand-05"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-06",
+      "sectionId": "con-v1-s08",
+      "activityId": "livro-con-001-c07-ra-b",
+      "curricularIds": [
+        "CON-23"
+      ],
+      "front": "Qual a vacância da Lei 15.432/2026?",
+      "back": "Um ano da publicação oficial, conforme art. 44.",
+      "sourceRefs": [
+        "lei15432"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-06",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.0",
+      "previousCandidateId": "con-v1-fecha003-cand-06"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-07",
+      "sectionId": "con-v1-s09",
+      "activityId": "livro-con-001-c08-ra-c",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "Quando deve ser dispensada a fixação de prazo de regulamentação no MI?",
+      "back": "Quando comprovado que o impetrado deixou de atender ao prazo estabelecido em mandado de injunção anterior (art. 8º, parágrafo único, Lei 13.300/2016).",
+      "sourceRefs": [
+        "lei13300"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-07",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.1",
+      "previousCandidateId": "con-v1-fecha003-cand-07"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-08",
+      "sectionId": "con-v1-s09",
+      "activityId": "livro-con-001-c08-ra-c",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "A norma superveniente é retroativa para beneficiados de MI transitado?",
+      "back": "Regra ex nunc, salvo se a norma editada lhes for mais favorável (art. 11).",
+      "sourceRefs": [
+        "lei13300"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-08",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.0",
+      "previousCandidateId": "con-v1-fecha003-cand-08"
+    },
+    {
+      "id": "metodo-con-v1-fecha003-cand-09",
+      "sectionId": "con-v1-s09",
+      "activityId": "livro-con-001-c08-ra-c",
+      "curricularIds": [
+        "CON-24"
+      ],
+      "front": "Qual efeito da norma editada antes da decisão do MI?",
+      "back": "Prejudica a impetração; extingue-se sem resolução do mérito (art. 11, parágrafo único).",
+      "sourceRefs": [
+        "lei13300"
+      ],
+      "category": "direito_positivo",
+      "cognitiveType": "recuperacao_normativa",
+      "semanticKey": "con-v1-fecha003-cand-09",
+      "relation": "complemento_normativo_da_atividade",
+      "version": "1.0",
+      "previousCandidateId": "con-v1-fecha003-cand-09"
+    }
+  ],
+  "visualDifferences": [
+    "Âncoras e tabelas suportadas pelo renderizador da PR127; ensaio privado FECHA009 (edição 0.9.4) e fixtures aprovados; jornada da edição 0.9.6 pendente."
+  ],
+  "approval": {
+    "status": "aprovado",
+    "inputSha256": "7b8ab5f6bf8c264020cda59364d7684baaa330a7def9586ab8c97da796027b3e",
+    "record": "FECHA010, 27/11/2026: aceite editorial assistido por IA, delimitado a 17 IDs, com base no cotejo específico de Tema 280, SV 5/14, Tema 987/533, Lei 12.016/2009, ADI 4296 e LC 219/ADI 7881 e nas evidências anteriores das 85 atividades. Correções incorporadas e lacunas explicitadas. Não é homologação humana externa, certificação integral ou declaração de atualidade exaustiva; publicação condicionada aos testes e gates."
+  },
+  "inputSha256": "7b8ab5f6bf8c264020cda59364d7684baaa330a7def9586ab8c97da796027b3e",
+  "sourceSha256": "51e4f3113d0e7cfc4af2e72e8ef3a473759d47f072dd3d86e584f8b62cf68cac",
+  "reviewCards": [
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-01",
+      "sectionId": "con-v1-s03",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.1",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "dfd785f576376b90968db0d054572208f7ba903c9a51707ad786cbfd4a7751ca"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-02",
+      "sectionId": "con-v1-s03",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.1",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "224d3efaef292dcafb2b76e84ea870dcd08046d1b594d9c7245589f36a142ef5"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-03",
+      "sectionId": "con-v1-s07",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.1",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "db23c6898ea7227bf648b815553330ca266666758877b68a70adaf24b2684fe0"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-04",
+      "sectionId": "con-v1-s07",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.0",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "132960e6409fa13b60f65b621d3ad5f0c23c7d66d782211dc8a0418b627cdb65"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-05",
+      "sectionId": "con-v1-s08",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.0",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "198b0fc5ceb8eee67043d17399a7eb95d1d68da3cb35a029b7ab9bbfb2fced07"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-06",
+      "sectionId": "con-v1-s08",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.0",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "95d97c115c1c3f45de220ebe776dff6c7273670ac468dd1b433ccd9032167bcc"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-07",
+      "sectionId": "con-v1-s09",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.1",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "144a95d8a2c01a74276d0f984d735f382a2b8e49f7502f30555b9068599b6a66"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-08",
+      "sectionId": "con-v1-s09",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.0",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "9c8e5ff73369e05a0814e1835296cc30289410eb7d6bc92b9af6062bbe0cbf9a"
+      }
+    },
+    {
+      "cardId": "metodo-con-v1-fecha003-cand-09",
+      "sectionId": "con-v1-s09",
+      "relation": "proposicao_editorial_revisada",
+      "label": "Cartão da edição 1.0",
+      "status": "aprovado",
+      "approval": {
+        "reviewer": "revisão jurídico-editorial assistida por IA (FECHA010)",
+        "at": "2026-11-27",
+        "scope": "Proposição autoral específica, parecer FECHA005 preservado e dependências da edição 0.9.6 confrontadas; sem certificação integral.",
+        "evidenceSha256": "b199798bee204494212d20245792d28ea24761986759e6e2f5aab9a48d9d30b1"
+      }
+    }
+  ]
+}
