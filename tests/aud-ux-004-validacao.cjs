@@ -2,8 +2,8 @@
 const assert=require('assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path'),api=require('../recursos-curriculares.js'),ROOT=path.resolve(__dirname,'..');
 const env={};env.window=env;vm.createContext(env);for(const f of ['dados/metodo-agu-referencias.js','dados/legislacao-s13.js','dados/questoes-agu-2023.js','dados/questoes-agu-2015.js','dados/questoes-agu-pf-2023.js','dados/questoes-vigentes-gov003.js'])vm.runInContext(fs.readFileSync(path.join(ROOT,f),'utf8'),env);env.AGUVigenteContract=require('../questoes-vigentes.js');
 const result=api.collect(env);assert.equal(result.localMatrix,false);assert.equal(result.matrixCount,0);assert.equal(new Set(result.topics.map(x=>x.id)).size,result.topics.length);
-assert.deepEqual(result.topics.filter(x=>x.books.length).map(x=>x.id),['ADM-53','ADM-54','ADM-64b','AMB-03','AMB-06','AMB-08','AMB-11']);assert.equal(result.topics.reduce((n,t)=>n+t.official.length,0),7);assert.equal(result.topics.reduce((n,t)=>n+t.historical.length,0),397);
-const cfg=JSON.parse(fs.readFileSync(path.join(ROOT,'livros/editorial/catalogo.json')));assert.equal(cfg.chapters.length,7);assert.deepEqual(cfg.chapters.slice(0,5),['livros/editorial/lgpd-adm64b.json','livros/editorial/adm-53.json','livros/editorial/adm-54.json','livros/editorial/amb-03.json','livros/editorial/amb-11.json']);assert.equal(cfg.chapters[5],'livros/editorial/amb-06.json');assert.equal(cfg.chapters[6],'livros/editorial/amb-08.json');assert.equal(result.topics.find(t=>t.id==='AMB-06').books[0].id,'amb-06');for(const f of cfg.chapters)assert.equal(JSON.parse(fs.readFileSync(path.join(ROOT,f))).approval.status,'aprovado');
+assert.deepEqual(result.topics.filter(x=>x.books.length).map(x=>x.id),['ADM-53','ADM-54','ADM-64b','AMB-03','AMB-06','AMB-08','AMB-11','CON-01','CON-02','CON-03','CON-04','CON-05','CON-06','CON-07','CON-08','CON-09','CON-18','CON-19','CON-20','CON-21','CON-22','CON-23','CON-24','CON-25']);assert.equal(result.topics.reduce((n,t)=>n+t.official.length,0),7);assert.equal(result.topics.reduce((n,t)=>n+t.historical.length,0),397);
+const cfg=JSON.parse(fs.readFileSync(path.join(ROOT,'livros/editorial/catalogo.json')));assert.equal(cfg.chapters.length,8);assert.equal(cfg.chapters[7],'livros/editorial/con-v1.json');assert.deepEqual(cfg.chapters.slice(0,5),['livros/editorial/lgpd-adm64b.json','livros/editorial/adm-53.json','livros/editorial/adm-54.json','livros/editorial/amb-03.json','livros/editorial/amb-11.json']);assert.equal(cfg.chapters[5],'livros/editorial/amb-06.json');assert.equal(cfg.chapters[6],'livros/editorial/amb-08.json');assert.equal(result.topics.find(t=>t.id==='AMB-06').books[0].id,'amb-06');for(const f of cfg.chapters)assert.equal(JSON.parse(fs.readFileSync(path.join(ROOT,f))).approval.status,'aprovado');
 const e={AGUReview:{searchCards:()=>[{code:'ADM-06',id:'one',front:'um'},{code:'ADM-60',id:'two',front:'outro'},{code:'<script>',id:'bad'}]}};const exact=api.collect(e);assert.deepEqual(exact.topics.map(x=>[x.id,x.cards.length]),[['ADM-06',1],['ADM-60',1]]);
 const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8'),src=html.slice(html.indexOf('function validateMatrix(m){'),html.indexOf('// Sprint 22:')),z={};vm.createContext(z);vm.runInContext(src,z);
 const disciplines=Array.from({length:14},(_,i)=>({codigo:i===0?'ADM':'T'+String.fromCharCode(65+i),nome:'Fixture sintética '+i,quantidade_posicoes:i<6?30:29}));
@@ -19,7 +19,7 @@ for(const file of Object.keys(require('./fixtures/aud-ux-004-delta.json'))){
   const crypto=require('node:crypto'),sha=x=>crypto.createHash('sha256').update(x).digest('hex');
   const prefix='/* Gerado dos índices publicados; não contém dados do estudante. */\nwindow.AGU_METHOD_BOOK_REFERENCES = ';
   assert.ok(s.startsWith(prefix),'Prefixo da referência mantido');
-  const expanded=JSON.parse(s.slice(prefix.length).replace(/;\s*$/,''));
+  const restoredCon=require('./fecha010-con-referencias-legado.cjs')(s);assert.throws(()=>require('./fecha010-con-referencias-legado.cjs')(s+'\n'));const expanded=JSON.parse(restoredCon.slice(prefix.length).replace(/;\s*$/,''));
   assert.equal(Object.keys(expanded.chapters).length,7);assert.deepEqual(expanded.chapters['amb-08'].curricularIds,['AMB-08']);
   delete expanded.chapters['amb-08'];
   const prior=prefix+JSON.stringify(expanded,null,2)+';\n';
@@ -35,4 +35,4 @@ for(const file of Object.keys(require('./fixtures/aud-ux-004-delta.json'))){
   assert.throws(()=>require('./aud-ux-004-legado.cjs')(s+'\n',file));
  }
 }
-console.log('AUD_UX_004_NODE_OK: IDs exatos, sete livros aprovados, sete vigentes, 397 vínculos referenciais, sufixos e validação sem matriz privada no pacote');
+console.log('AUD_UX_004_NODE_OK: IDs exatos, oito livros aprovados, sete vigentes, 397 vínculos referenciais, sufixos e validação sem matriz privada no pacote');
