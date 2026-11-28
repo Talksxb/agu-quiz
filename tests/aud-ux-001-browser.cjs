@@ -355,9 +355,17 @@ async function main(){
   assert.deepEqual(await stored(q009),interrupted009);
   scans.contextBlocked=await accessibility(q009,'contexto-pausado',width);
   assert.ok(await q009.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
-  // Se o portão editorial falhar, não usar a mera igualdade do ID curricular.
+  // A revogação invalida o histórico vigente inteiro pelo contrato original.
   await q009.evaluate(()=>{AGUCurrentQuestions.items.find(q=>q.n===7).status='pendente';render()});
+  assert.equal(await q009.evaluate(k=>AGUVigenteContract.validHistory(JSON.parse(localStorage.getItem(k)),AGUCurrentQuestions.items),vigKey),false);
+  assert.equal(await panel009.count(),0,'histórico inválido não alimenta o painel; Q7 histórico também inelegível');
+  assert.deepEqual(await stored(q009),interrupted009,'portão não modifica histórico ou sessão');
+  // Fixture sintética independente com histórico válido de Q22, sem tentativa da questão revogada.
+  const valid009={schema:1,attempts:vig009.attempts.filter(a=>a.question===qid009(22))};
+  await q009.evaluate(({key,value})=>{localStorage.setItem(key,JSON.stringify(value));render()},{key:vigKey,value:valid009});
+  assert.equal(await q009.evaluate(k=>AGUVigenteContract.validHistory(JSON.parse(localStorage.getItem(k)),AGUCurrentQuestions.items),vigKey),true);
   assert.equal(await panel009.locator('article').count(),1);assert.doesNotMatch(await panel009.innerText(),/Q7 ·/);
+  assert.match(await panel009.innerText(),/Q22 · ADM-58/);
   await cx009.close();console.log('AUD_UX_009_FC08_QT06_OK',width);
   assert.deepEqual(errors,[]);results.push({width,baselineReviewY:oldY,quickActionY:y,sameQueue:true,noWriteOnOpen:true,ratings:3,errorIntervalPreserved:true,subjectSelection:true,sessionReload:true,backupRoundTrip:true,preservedExistingPlan:true,futureOnlyBlocked:true,touch:width<=430,keyboard:true,scans});await ctx.close();
  }
