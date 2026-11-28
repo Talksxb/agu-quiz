@@ -600,11 +600,65 @@ function importBackup(input){
   }catch(e){alert('Importação rejeitada: '+e.message)}
  };reader.onerror=()=>alert('Falha na leitura do backup.');reader.readAsText(file);
 }
+// AUD-UX-009: vínculos pontuais por identidade documental, não por semelhança de assunto.
+const CONTEXT_PAIRS=Object.freeze([['aud02-2015-flc-03-007',7,'ADM-27','C'],['aud02-2015-flc-006',22,'ADM-58','E']]);
+function contextPair(x){
+ const p=CONTEXT_PAIRS.find(row=>row[0]===x?.id);
+ if(!p||!editorialEligible(x)||x.kind!=='flashcard'||x.notOfficial!==true||x.validation!=='dispositivo_publico_conferido_pontualmente_sem_certificacao_integral')return null;
+ const [,n,code,key]=p,h=x.historicalExam,source=global.AGUCurrentQuestions?.source;
+ const id='AGU-2015-187AGU-001-07-Q'+String(n).padStart(3,'0');
+ const q=global.AGUCurrentQuestions?.items?.find(v=>v.id===id);
+ const hist=global.AGUQuestionCatalog2015?.find(v=>v.n===n);
+ if(x.code!==code||h?.year!==2015||h.exam!=='187AGU_001_07'||h.number!==n||h.key!==key||hist?.code!==code||hist.key!==key||!global.AGUVigenteContract?.eligible(q)||q.n!==n||q.code!==code||q.historicalKey!==key||q.currentKey!==key||source?.variant!==h.exam||source.examUrl!==h.examUrl||source.keyUrl!==h.keyUrl)return null;
+ return {id,n,code,card:x.id,key};
+}
+function contextErrors(){
+ const contract=global.AGUVigenteContract,items=global.AGUCurrentQuestions?.items||[];
+ let current=new Map(),historical=new Map();
+ try{
+  const value=JSON.parse(localStorage.getItem(contract.KEY)||'null');
+  // Leitura derivada: registros de itens conhecidos que perderam elegibilidade não
+  // participam da seleção. Não modificar nem importar o histórico original.
+  if(value?.schema===1&&Array.isArray(value.attempts)&&value.attempts.length<=5000&&value.attempts.every(a=>a&&typeof a.id==='string'&&a.id.length<=100)&&new Set(value.attempts.map(a=>a.id)).size===value.attempts.length){
+   const ineligible=new Set(items.filter(q=>!contract.eligible(q)).map(q=>q.id));
+   const eligibleHistory={schema:1,attempts:value.attempts.filter(a=>!ineligible.has(a.question))};
+   if(contract.validHistory(eligibleHistory,items))current=contract.latest(eligibleHistory);
+  }
+ }catch(_){}
+ // Mesmo contrato de identidade/origem do banco histórico, com conferência da alternativa.
+ if(!global.AGUHomeContext?.()?.demo){
+  const rows=global.AGUPlannerContext?.()?.answers;
+  if(Array.isArray(rows))for(const a of rows){
+   if(a?.origin!=='oficial_cebraspe_2015'||!['C','E'].includes(a.selected)||typeof a.correct!=='boolean'||!Number.isFinite(Date.parse(a.date)))continue;
+   const p=CONTEXT_PAIRS.map(row=>contextPair(INDEX.get(row[0]))).find(v=>v?.id===a.question);
+   if(!p||a.correct!==(a.selected===p.key))continue;
+   const prev=historical.get(p.id);if(!prev||Date.parse(a.date)>=Date.parse(prev.date))historical.set(p.id,a);
+  }
+ }
+ return CONTEXT_PAIRS.map(row=>contextPair(INDEX.get(row[0]))).filter(Boolean).map(p=>({...p,historical:historical.get(p.id)?.correct===false,current:current.get(p.id)?.correct===false})).filter(p=>p.historical||p.current);
+}
+function contextErrorsHTML(){
+ const rows=contextErrors();if(!rows.length)return '';
+ const blocked=savedSession()?.status==='em_andamento';
+ return '<section class="card" id="agu-context-errors" aria-labelledby="agu-context-errors-title"><h2 id="agu-context-errors-title">Retomar fundamentos de erros</h2><p>Última resposta incorreta em cada origem. Estes cartões autorais retomam fundamento documentado, não reproduzem nem corrigem automaticamente a questão. Os históricos e a agenda permanecem separados.</p>'+
+ rows.map(p=>'<article class="agu-notice"><h3>AGU 2015 · Q'+p.n+' · '+esc(p.code)+'</h3><p>'+[p.historical?'Erro no histórico da prova':'',p.current?'Erro no treino vigente':''].filter(Boolean).join(' · ')+'</p><p>'+esc(INDEX.get(p.card).front)+'</p><button type="button" class="secondary" style="min-height:44px" '+(blocked?'disabled ':'')+'onclick="AGUReview.contextStudy(\''+esc(p.card)+'\',event.detail===0)">Estudar fundamento no flashcard</button></article>').join('')+
+ (blocked?'<p>Retome ou conclua a sessão interrompida antes de estudar este cartão.</p>':'')+'<p class="small muted">A correspondência é pontual; o ID curricular da prova continua referencial. Outros erros podem não ter cartão vinculado. Nenhuma conclusão sobre domínio é inferida.</p></section>';
+}
+function contextStudy(id,keyboard=false){
+ if(savedSession()?.status==='em_andamento'||!contextErrors().some(p=>p.card===id))return false;
+ select(id,false);global.document?.querySelector?.('#agu-review-active')?.scrollIntoView?.({block:'start'});
+ focusAfter('#agu-review-active button[onclick^="AGUReview.reveal("]',keyboard);return true;
+}
+function contextQuestionHTML(x){
+ const p=contextPair(x);
+ return p?'<details class="agu-card-detail"><summary>Questão vigente relacionada</summary><p>AGU 2015 · Q'+p.n+' · '+esc(p.code)+'. Vínculo documental pontual com este fundamento; classificação curricular referencial. A questão e o flashcard têm avaliações independentes.</p><a href="questoes-vigentes.html?questao='+encodeURIComponent(p.id)+'" target="_blank" rel="noopener noreferrer">Abrir questão vigente em nova aba</a></details>':'';
+}
 function flashDetails(x){
  return [
    x.caseNote?'<details class="agu-card-detail"><summary>Aplicação AGU</summary><p>'+esc(x.caseNote)+'</p></details>':'',
    x.trap?'<details class="agu-card-detail"><summary>Armadilha de prova</summary><p>'+esc(x.trap)+'</p></details>':'',
    x.historicalExam?'<details class="agu-card-detail"><summary>Referência histórica · prova AGU 2015</summary><p>Questão '+esc(x.historicalExam.number)+' · caderno '+esc(x.historicalExam.exam)+' · gabarito definitivo histórico: '+esc(x.historicalExam.key)+'. Este flashcard é autoral e aborda fundamento normativo atual. O gabarito de 2015 não certifica a interpretação jurídica atual.</p><a href="'+esc(x.historicalExam.examUrl)+'" target="_blank" rel="noopener noreferrer">Caderno original (PDF)</a> · <a href="'+esc(x.historicalExam.keyUrl)+'" target="_blank" rel="noopener noreferrer">Gabarito definitivo (PDF)</a></details>':'',
+   contextQuestionHTML(x),
    x.audit?'<details class="agu-card-detail"><summary>Rastreabilidade da evidência</summary><p>'+esc(x.audit.round)+' / '+esc(x.audit.lot)+' · '+esc(x.audit.item_id)+' · '+esc(x.audit.localizer)+' · status: '+esc(x.audit.evidenceStatus)+' (verificação pontual)</p></details>':'',
    '<details class="agu-card-detail"><summary>Fonte e estado jurídico</summary><p>'+esc(x.source)+(x.checked?' · '+esc(x.checked):'')+(x.reviewedAt?' · '+esc(x.reviewedAt):'')+'</p>'+(x.link?'<a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Consultar fonte oficial</a>':'<p>Fonte de aula/Caderno; conferência independente pendente.</p>')+'<p>Cartão de recuperação ativa. A verificação pontual não equivale a certificação integral do tema.</p></details>'
  ].filter(Boolean).join('');
@@ -706,6 +760,7 @@ function page(){
  const header='<div class="top"><div><div class="eyebrow">AGU / RECUPERAÇÃO ATIVA</div><h1>Flashcards e revisões</h1><div class="muted">Biblioteca de assuntos · respostas comentadas · revisão espaçada</div></div></div>';
  if(currentMode==='deck'&&savedSession())return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML();
  return header+(notebookReturn?.source==='flashcard'?notebookReturnPanel():'')+libraryHTML()+
+ contextErrorsHTML()+
  '<div class="agu-deck-legacy"><h2>Revisão inteligente · fila sugerida</h2><p class="small muted">Os caminhos anteriores de revisão e questões oficiais continuam disponíveis.</p></div>'+
  '<div class="grid"><div class="card"><div class="muted">Revisões com prazo até hoje</div><div class="metric">'+sum.due+'</div><div class="small muted">Cartões e referências oficiais com data; não é o tamanho da fila.</div><div class="small muted">Novos flashcards: '+sum.newCards+'</div></div><div class="card"><div class="muted">Erros recorrentes</div><div class="metric">'+sum.repeated+'</div><div class="small muted">2+ erros no mesmo cartão</div></div><div class="card"><div class="muted">Questões oficiais respondidas</div><div class="metric">'+sum.attempts+'</div><div class="small muted">Acertos: '+sum.correct+' (amostra '+sum.attempts+')</div></div></div>'+
  '<div class="card"><h2>Revisão sugerida</h2><p>Sem nova notificação: até cinco flashcards e três questões oficiais; prioriza vencidos, erros e itens ainda não vistos.</p><p class="small muted">Próxima revisão futura: '+esc(sum.next)+'</p>'+
@@ -760,5 +815,5 @@ function focusedHTML(){
 function attemptsInfo(){return state.attempts.map(a=>({id:a.id,itemId:a.itemId,kind:a.kind,code:a.code,at:a.at,due:a.due,rating:a.rating,correct:a.correct}))}
 function reviewInfo(id){const x=INDEX.get(id);if(!x)return null;const t=stat(id);return {itemId:id,code:x.code,kind:x.kind,seen:t.seen||0,due:t.due||null,rating:t.ease||null}}
 
-global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckShortStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckHide,deckMove,deckFilter,deckMore,deckSuggested,deckDifficulties,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
+global.AGUReview={page,go,reviewNow,select,reveal,answer:chooseAnswer,rate:rating,exportData,importBackup,summary,disciplineMetrics,availableForTopic,focusCard,focusOfficial,focusedHTML,reviewInfo,attemptsInfo,searchCards,notebookDue,notebookStatus,notebookOrigin,notebookReturnPanel,returnFromNotebook,notebookHistoricCard,notebookEligibleCard,notebookSaveCard,notebookOpenCard,validateBackupObject,mergeBackupObject,deckStart,deckShortStart,deckDecide,deckRepeat,deckClearFilters,deckResume,deckPause,deckHide,contextStudy,deckMove,deckFilter,deckMore,deckSuggested,deckDifficulties,deckNotebook,deckList,exactDeck,deckSession:()=>savedSession(),deck:()=>({flashcards:EDITORIAL_CARDS.filter(editorialEligible).length+CARDS.length+AUD03_CARDS.length+AUD02_2015_CARDS.length+AUD02_2015_CARDS_02.length+AUD02_2015_CARDS_03.length+SEG001_CARDS.length,lotAud03:AUD03_CARDS.length,lotAud02_2015:AUD02_2015_CARDS.length,lotAud02_2015_02:AUD02_2015_CARDS_02.length,lotAud02_2015_03:AUD02_2015_CARDS_03.length,official:OFFICIAL.length+S18_ITEMS.length,annulled:ALL.filter(x=>x.kind==='official'&&x.status==='anulada').length})};
 })(window);

@@ -6,7 +6,7 @@ const assert=require('node:assert/strict');const {indexPages,id}=require('../que
  const d=rows.find(r=>r.n===7);
  assert.equal(id(7),'AGU-2023-P1-Q007');assert.equal(d.key,'X');assert.equal(d.code,'CON-22');assert.deepEqual(d.secondaryCurricularIds,['CON-20']);assert.equal(d.legacyCode,'CON-20');assert.equal(d.editorialStatus,'anulada');assert.equal(d.excludeFromCurrentScoring,true);
  const prior=restore(read('dados/questoes-agu-2023.js'),'dados/questoes-agu-2023.js'),old={module:{exports:{}}};vm.runInNewContext(prior,old);assert.equal(JSON.stringify(old.module.exports.filter(x=>x.n!==7)),JSON.stringify(rows.filter(x=>x.n!==7)));
- const motor=read('revisao-inteligente.js');restore(motor,'revisao-inteligente.js');
+ const motor=read('revisao-inteligente.js');restore(require('./aud-ux-009-legado.cjs')(motor),'revisao-inteligente.js');
  const store=new Map(),o={Date,Math,console,localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},render(){},document:{querySelector(){return null}}};o.window=o;vm.createContext(o);vm.runInContext(read('catalogo-disciplinas.js'),o);vm.runInContext(motor,o);
  const before=JSON.stringify(o.AGUReview.summary());assert.equal(o.AGUReview.reviewInfo('of-2023-adv-007').code,'CON-22');assert.equal(o.AGUReview.focusOfficial('of-2023-adv-007'),false);o.AGUReview.select('of-2023-adv-007');o.AGUReview.answer('A');o.AGUReview.rate('facil');assert.equal(JSON.stringify(o.AGUReview.summary()),before);assert.equal(store.size,0);
  console.log('FECHA008_Q7_METADATA_OK: 99 rows preserved; historical IDs/X; no evaluation or storage write');
