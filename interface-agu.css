@@ -304,6 +304,9 @@ h3 { font-size: 1rem; line-height: 1.5; }
  #main #agu-reader .agu-related .agu-ctx-box{padding:10px}
 }
 
+/* LIVROS-CON — camada explícita do diálogo nativo acima da navegação fixa. */
+#agu-backup-preview:modal{z-index:110}
+
 /* UX-AGU-MOBILE-002 — MOB-01/02/03; apresentação somente, sem reordenar DOM. */
 #agu-reader[data-mobile] .agu-mobile,
 #agu-reader[data-mobile][data-immersive=true] .agu-mobile{flex-wrap:wrap}
@@ -313,10 +316,11 @@ h3 { font-size: 1rem; line-height: 1.5; }
  white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:none;
  font-size:1rem;line-height:1.35
 }
-/* MOB-01: o índice longo não pode ficar sob a barra sticky quando ela
-   ocupa mais de uma linha. Manter as três ações no fluxo normal nesse painel. */
+/* MOB-01: listas e relacionados longos não podem ficar sob a barra sticky
+   quando ela ocupa mais de uma linha. Manter as ações no fluxo desses painéis. */
 @media(max-width:1100px){
- #agu-reader[data-mobile=index] .agu-mobile{position:relative;top:auto}
+ #agu-reader[data-mobile=index] .agu-mobile,
+ #agu-reader[data-mobile=related] .agu-mobile{position:relative;top:auto}
 }
 /* MOB-03: superfície sólida para contraste verificável; pista visual em fluxo,
    sem sobreposição. A faixa continua rolável e o foco original é preservado. */

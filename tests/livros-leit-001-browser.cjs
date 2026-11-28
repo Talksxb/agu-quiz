@@ -89,9 +89,10 @@ async function main(){
    await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
    const violations=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.length}))});
    assert.deepEqual(violations,[],'axe: '+JSON.stringify(violations));
+   const axeEvidence=await require('./livros-axe-recheck.cjs').fullScan(page,width+' LGPD');
    assert.deepEqual(errors,[]);
    await page.screenshot({path:path.join(ART,'livros-'+width+'.png'),fullPage:false});
-   evidence.push({width,loaded:'LGPD',pages:24,returned:'page 2',last:'page 24',axe:0,dims});
+   evidence.push({width,loaded:'LGPD',pages:24,returned:'page 2',last:'page 24',axe:0,axeEvidence,dims});
    await ctx.close();
   }
   const ctx=await browser.newContext({viewport:{width:390,height:844},hasTouch:true});
@@ -138,10 +139,11 @@ async function main(){
   await env.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
   const envViolations=await env.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return r.violations.map(v=>({id:v.id,impact:v.impact}))});
   assert.deepEqual(envViolations,[],'Ambiental axe WCAG '+JSON.stringify(envViolations));
+  const axeAmb03=await require('./livros-axe-recheck.cjs').fullScan(env,'390 AMB-03');
   const dimsEnv=await env.evaluate(()=>({vw:innerWidth,scroll:document.documentElement.scrollWidth}));
   assert.ok(dimsEnv.scroll<=dimsEnv.vw+1,'Ambiental sem overflow horizontal');
   assert.deepEqual(envErrors,[]);
-  evidence.push({width:390,loaded:'AMB-03',sections:17,original:'HTML com SVGs',retained:'página 2',axe:0,dims:dimsEnv});
+  evidence.push({width:390,loaded:'AMB-03',sections:17,original:'HTML com SVGs',retained:'página 2',axe:0,axeEvidence:axeAmb03,dims:dimsEnv});
   await env.screenshot({path:path.join(ART,'livro-amb-390.png'),fullPage:false});
   // PUB-LIVROS AMB-06: leitura completa, teclado, retomada e acessibilidade sem domínio automático.
   await env.goto(new URL('livros-agu.html?livro=amb-06',url).href);
@@ -160,9 +162,10 @@ async function main(){
   await env.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
   const violationAmb06=await env.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return r.violations.map(v=>({id:v.id,impact:v.impact}))});
   assert.deepEqual(violationAmb06,[],'AMB-06 axe '+JSON.stringify(violationAmb06));
+  const axeAmb06=await require('./livros-axe-recheck.cjs').fullScan(env,'390 AMB-06');
   assert.ok(await env.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'AMB-06 sem overflow móvel');
   assert.deepEqual(envErrors,[]);
-  evidence.push({width:390,loaded:'AMB-06',sections:16,readerKeyboard:true,axe:0});
+  evidence.push({width:390,loaded:'AMB-06',sections:16,readerKeyboard:true,axe:0,axeEvidence:axeAmb06});
   await envCtx.close();
   fs.writeFileSync(path.join(ART,'resultado.json'),JSON.stringify(evidence,null,2)+'\n');
   console.log('LIVROS_LEIT_001_CHROMIUM_OK',JSON.stringify(evidence));

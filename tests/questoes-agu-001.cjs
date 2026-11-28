@@ -1,1 +1,13 @@
 const assert=require('node:assert/strict');const {indexPages,id}=require('../questoes-agu-bank.js');const rows=require('../dados/questoes-agu-2023.js');assert.equal(rows.length,100);assert.deepEqual(rows.map(r=>r.n),Array.from({length:100},(_,i)=>i+1));assert.deepEqual(rows.filter(r=>r.key==='X').map(r=>r.n),[7,25,30,41,50,54,81]);assert.equal(rows[44].key,'B');assert.equal(id(100),'AGU-2023-P1-Q100');assert(rows.every(r=>/^[A-EX]$/.test(r.key)&&!('stem' in r)));const pages=Array.from({length:20},(_,i)=>({page:i+1,width:600,items:Array.from({length:5},(_,j)=>({str:'Questão '+(i*5+j+1),transform:[1,0,0,1,30,700-j*100]}))}));assert.equal(indexPages(pages).length,100);assert.throws(()=>indexPages(pages.slice(1)));pages[0].items[0].str='Questão 2';assert.throws(()=>indexPages(pages));console.log('QUESTOES-AGU-001: 100 chaves, 7 anulações, sequência e negativas sintéticas OK');
+// FECHA008 — metadata only; no question text or student state changed.
+{
+ const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),restore=require('./fecha008-q7-legado.cjs'),ROOT=path.resolve(__dirname,'..');
+ const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
+ const d=rows.find(r=>r.n===7);
+ assert.equal(id(7),'AGU-2023-P1-Q007');assert.equal(d.key,'X');assert.equal(d.code,'CON-22');assert.deepEqual(d.secondaryCurricularIds,['CON-20']);assert.equal(d.legacyCode,'CON-20');assert.equal(d.editorialStatus,'anulada');assert.equal(d.excludeFromCurrentScoring,true);
+ const prior=restore(read('dados/questoes-agu-2023.js'),'dados/questoes-agu-2023.js'),old={module:{exports:{}}};vm.runInNewContext(prior,old);assert.equal(JSON.stringify(old.module.exports.filter(x=>x.n!==7)),JSON.stringify(rows.filter(x=>x.n!==7)));
+ const motor=read('revisao-inteligente.js');restore(motor,'revisao-inteligente.js');
+ const store=new Map(),o={Date,Math,console,localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},render(){},document:{querySelector(){return null}}};o.window=o;vm.createContext(o);vm.runInContext(read('catalogo-disciplinas.js'),o);vm.runInContext(motor,o);
+ const before=JSON.stringify(o.AGUReview.summary());assert.equal(o.AGUReview.reviewInfo('of-2023-adv-007').code,'CON-22');assert.equal(o.AGUReview.focusOfficial('of-2023-adv-007'),false);o.AGUReview.select('of-2023-adv-007');o.AGUReview.answer('A');o.AGUReview.rate('facil');assert.equal(JSON.stringify(o.AGUReview.summary()),before);assert.equal(store.size,0);
+ console.log('FECHA008_Q7_METADATA_OK: 99 rows preserved; historical IDs/X; no evaluation or storage write');
+}

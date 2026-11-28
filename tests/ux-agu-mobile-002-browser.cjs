@@ -8,7 +8,10 @@ const current=fs.readFileSync(path.join(ROOT,'interface-agu.css'),'utf8'),marker
 assert.equal(current.split(marker).length,2,'delta único');
 const original=current.split(marker)[0].replace(/\n$/,'');
 const blob=s=>crypto.createHash('sha1').update('blob '+Buffer.byteLength(s)+'\0').update(s).digest('hex');
-assert.equal(blob(original),'bd9d3ac3981715d5f4fc7a7d76d17cbc9bb36881','base exata; não atualizar histórico');
+assert.equal(blob(original),'029de5d4ba701bd1a98a413cdf75f7097d712fe5','base atual exata');
+const livrosDelta="\n/* LIVROS-CON — camada explícita do diálogo nativo acima da navegação fixa. */\n#agu-backup-preview:modal{z-index:110}\n";
+assert.ok(original.endsWith(livrosDelta),'delta LIVROS-CON preservado integralmente');
+assert.equal(blob(original.slice(0,-livrosDelta.length)),'bd9d3ac3981715d5f4fc7a7d76d17cbc9bb36881','base histórica restituída exatamente; não atualizar histórico');
 const server=http.createServer((req,res)=>{
  const rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/+/,''),file=path.resolve(ROOT,rel||'index.html');
  if(!file.startsWith(ROOT+path.sep)){res.writeHead(403);return res.end('forbidden')}
@@ -68,6 +71,10 @@ async function main(){
     await scan('leitor','#agu-reader');
     await zoom(async()=>{const x=await word();assert.equal(x.lines,1,'Relacionados inteiro a 200% '+width);await flow('leitor-200');await scan('leitor-200','#agu-reader')});
     await act(related,true);assert.equal(await related.getAttribute('aria-pressed'),'true');
+    if(touch){
+     assert.equal(await p.locator('#agu-reader .agu-mobile').evaluate(e=>getComputedStyle(e).position),'relative','relacionados não tem barra sticky sobre conteúdo contextual');
+     await flow('relacionados');
+    }
     const legal=p.locator('#agu-reader .agu-mobile button').filter({hasText:'Texto legal'});await act(legal);assert.equal(await legal.getAttribute('aria-pressed'),'true');
     if(touch){
      const index=p.locator('#agu-reader .agu-mobile button').filter({hasText:'Índice'});await act(index,true);assert.equal(await index.getAttribute('aria-pressed'),'true');

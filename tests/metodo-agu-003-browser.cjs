@@ -2,6 +2,10 @@
 'use strict';
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const ROOT=path.resolve(__dirname,'..'),OUT=path.join(__dirname,'artifacts-metodo-agu-003');
+const css=fs.readFileSync(path.join(ROOT,'interface-agu.css'),'utf8'),delta="\n/* LIVROS-CON — camada explícita do diálogo nativo acima da navegação fixa. */\n#agu-backup-preview:modal{z-index:110}\n";
+assert.ok(css.endsWith(delta),'delta de camada do modal único e exato');
+const cssPrior=css.slice(0,-delta.length);
+assert.equal(require('node:crypto').createHash('sha1').update('blob '+Buffer.byteLength(cssPrior)+'\0').update(cssPrior).digest('hex'),'bd9d3ac3981715d5f4fc7a7d76d17cbc9bb36881','CSS anterior restituído byte a byte');
 const KEY='agu_livros_reader_v1',REVIEW='agu_quiz_revisao_inteligente_v1',MAP='agu_quiz_mapeamento_questoes_v1',at='2026-11-20T12:00:00.000Z';
 const review=JSON.stringify({schema:'agu-review-v1',cards:{'ri-adm-01':{seen:3,stage:2,due:'2099-05-01',errors:1,ease:'lembrei'}},attempts:[],created:at});
 const oldRecord=()=>({page:7,done:[1],sectionId:'secao-historica',methodEdition:'0.1',updated:at,preferences:{size:22,height:1.9},activities:{'adm-53-caso':{draft:'Rascunho da edição antiga',edition:'0.1',performedAt:at}},readingEditions:{'0.1':{page:1,done:[0],nota:'snapshot anterior'}},campoFuturo:{texto:'conservar'}});
@@ -21,7 +25,10 @@ async function main(){
    async function scan(p,label){
     const dim=await p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dim.scroll<=dim.width+1,label+' overflow');
     await p.addScriptTag({path:require.resolve('axe-core/axe.min.js')});const report=await p.evaluate(async()=>{const x=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:x.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:x.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});
-    assert.deepEqual(report.violations,[],label);scans.push({label,dim,...report});
+    assert.deepEqual(report.violations,[],label);
+    try{await require('./livros-axe-recheck.cjs').resolveIncomplete(p,report,width+' '+label);}
+    catch(e){const stem='axe-failure-'+width+'-'+label.replace(/[^a-z0-9]+/gi,'-');fs.writeFileSync(path.join(OUT,stem+'.json'),JSON.stringify({width,label,dim,...report},null,2)+'\n');await p.screenshot({path:path.join(OUT,stem+'.png')});throw e}
+    scans.push({label,dim,...report});
    }
    const source=await pageAt('livros-agu.html');
    const sourceBooks={'adm-53':{page:2,done:[0],updated:at,methodEdition:'1.0',sectionId:'adm-53-s03',campoFuturo:{texto:'não perder'}},'capitulo-futuro':{page:5,done:[0],methodEdition:'9.0',extra:'fora do catálogo'}};
@@ -57,7 +64,42 @@ async function main(){
    await merge.keyboard.press('Escape');await merge.waitForFunction(()=>!document.getElementById('agu-backup-preview'));await merge.evaluate(([k,v])=>localStorage.setItem(k,v),[KEY,quotaRaw]);
    await merge.evaluate(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota artificial','QuotaExceededError');return set.call(this,key,value)}},KEY);
    const quotaBundle={...bundle,items:{[MAP]:JSON.stringify({'questao-fixture':'ADM-53'}),[KEY]:JSON.stringify({'capitulo-extra':{page:0,done:[]}})}};
-   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);await scan(merge,'quota com dados preservados');
+   await merge.locator('#agu-s20-backup-file').setInputFiles(payload(quotaBundle));await merge.locator('#agu-backup-merge-books').check();await merge.getByRole('button',{name:'Confirmar restauração',exact:true}).click();await merge.getByRole('alert').filter({hasText:'revertida'}).waitFor();assert.equal(await merge.evaluate(k=>localStorage.getItem(k),KEY),quotaRaw);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),MAP),null);assert.equal(await merge.evaluate(k=>localStorage.getItem(k),REVIEW),review);const modalEvidence=await merge.evaluate(async()=>{
+    const d=document.getElementById('agu-backup-preview'),button=[...d.querySelectorAll('button')].find(b=>b.textContent==='Confirmar restauração'),nav=document.querySelector('.side'),active=document.activeElement;
+    const wait=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    const geometry=()=>{const r=button.getBoundingClientRect(),dr=d.getBoundingClientRect(),x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,p=document.elementFromPoint(x,y);
+     const inner={left:dr.left+d.clientLeft,top:dr.top+d.clientTop,right:dr.left+d.clientLeft+d.clientWidth,bottom:dr.top+d.clientTop+d.clientHeight};
+     const visibleCenter=x>=Math.max(0,inner.left)&&x<Math.min(innerWidth,inner.right)&&y>=Math.max(0,inner.top)&&y<Math.min(innerHeight,inner.bottom);
+     return {rect:r.toJSON(),dialogRect:dr.toJSON(),inner,viewport:{width:innerWidth,height:innerHeight},visibleCenter,hit:button.contains(p),hitElement:p?.tagName,hitId:p?.id,hitClass:typeof p?.className==='string'?p.className:'',scrollTop:d.scrollTop,scrollLeft:d.scrollLeft,focus:document.activeElement?.getAttribute('role')};};
+    const before=geometry(),saved=[d.scrollLeft,d.scrollTop];
+    let after;
+    try{button.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});await wait();after=geometry();}
+    finally{d.scrollLeft=saved[0];d.scrollTop=saved[1];await wait();}
+    return {modal:d.matches(':modal'),dialogZ:getComputedStyle(d).zIndex,navZ:getComputedStyle(nav).zIndex,navPosition:getComputedStyle(nav).position,
+     text:button.textContent,enabled:!button.disabled,before,after,restored:geometry(),focusPreserved:document.activeElement===active,focus:document.activeElement?.getAttribute('role'),
+     colors:{fg:getComputedStyle(button).color,bg:getComputedStyle(button).backgroundColor}};
+   });
+   console.log('LIVROS_BACKUP_MODAL_LAYER',JSON.stringify({width,...modalEvidence}));
+   try{
+    assert.equal(modalEvidence.modal,true,'modal nativo');
+    assert.equal(modalEvidence.enabled,true,'botão habilitado');
+    assert.equal(modalEvidence.focus,'alert','foco preservado na mensagem de erro');
+    assert.equal(modalEvidence.focusPreserved,true,'rolagem não altera foco');
+    if(modalEvidence.before.visibleCenter)assert.equal(modalEvidence.before.hit,true,'botão originalmente visível não pode estar sobreposto');
+    assert.ok(modalEvidence.after.visibleCenter&&modalEvidence.after.hit,'botão alcançável na região visível por rolagem natural');
+    assert.equal(modalEvidence.restored.scrollTop,modalEvidence.before.scrollTop,'posição original de rolagem vertical restituída');
+    assert.equal(modalEvidence.restored.scrollLeft,modalEvidence.before.scrollLeft,'posição original de rolagem horizontal restituída');
+    assert.equal(modalEvidence.dialogZ,'110','camada explícita do diálogo');
+    if(modalEvidence.navPosition==='fixed')assert.ok(Number(modalEvidence.dialogZ)>Number(modalEvidence.navZ),'camada acima da navegação fixa');
+   }catch(e){fs.writeFileSync(path.join(OUT,'modal-layer-failure-'+width+'.json'),JSON.stringify(modalEvidence,null,2)+'\n');await merge.screenshot({path:path.join(OUT,'modal-layer-failure-'+width+'.png')});throw e}
+   await scan(merge,'quota com dados preservados');
+   if(width===390){
+    const selector='#agu-backup-preview > .btnrow > .secondary[type="button"]:nth-child(2)';
+    assert.equal(await merge.locator(selector).count(),1);
+    const evidence={violations:[],incomplete:[]};
+    await require('./livros-axe-recheck.cjs').resolveIncomplete(merge,evidence,'390 quota passe explícito do botão',{explicitTargets:[{id:'color-contrast',target:[selector]}]});
+    scans[scans.length-1].buttonRuleEvidence=evidence;
+   }
    await merge.screenshot({path:path.join(OUT,'backup-'+width+'.png')});assert.deepEqual(errors,[]);results.push({width,scans,legacyReviewPreserved:true,roundtrip:true,explicitMerge:true,editionHistoryPreserved:true,combinedLimitsRejected:true,quotaSynthetic:true,physicalAndroid:false});
    for(const c of contexts)await c.close();
   }

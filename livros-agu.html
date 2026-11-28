@@ -76,7 +76,7 @@ textarea{width:100%;min-height:110px;border:1px solid #bed1d5;border-radius:9px;
 <button type="button" class="book" data-book="amb-06"><strong>SISNAMA, PNMA, Política Energética e Saneamento</strong><span>LIVRO-AMB-004-AMB06 · AMB-06 · edição pública 1.1 · 16 seções</span><span>Direito Ambiental · fontes verificadas pontualmente; sem certificação integral nem domínio aferido</span></button>
 <button type="button" class="book" data-book="amb-11"><strong>Crimes contra o meio ambiente</strong><span>LIVRO-AMB-008 · AMB-11 · edição pública 1.1 · 23 seções</span><span>Direito Ambiental · leitura autoral; fontes pontuais, sem certificação curricular</span></button>
 </div>
-<details class="method-secondary"><summary>Coleção de Direito Ambiental</summary><p>Sequência de leitura sugerida. Obras planejadas ou produzidas aguardam revisão e publicação; você pode escolher livremente entre as publicadas.</p><ol id="collection-list"></ol></details>
+<details class="method-secondary"><summary>Coleções de leitura</summary><p>Sequência de leitura sugerida. Obras planejadas ou produzidas aguardam revisão e publicação; você pode escolher livremente entre as publicadas.</p><ol id="collection-list"></ol></details>
 <details class="method-secondary"><summary>Recursos de leitura já disponíveis</summary><p><a href="laboratorio-leitura.html">Laboratório de Leitura Jurídica</a>: treino opcional de fluência e compreensão.</p><p><a href="https://leitura-agu-caderno-2026.aleixo-taw.chatgpt.site/" rel="noopener noreferrer" target="_blank">Apostila · Leitura AGU no GPT Sites</a>: edição externa, sem sincronização automática. A edição de referência deste percurso é a identificada no capítulo do Quiz.</p></details>
 </section>
 <section id="book" class="card" hidden aria-labelledby="book-title">
@@ -157,6 +157,7 @@ const KEY="agu_livros_reader_v1";
 const $=id=>document.getElementById(id);
 let openSequence=0;
 let book=null,index=0,ms=0,started=0,running=false,tick=null,guidedTimer=null,blocks=[],block=0,lastWpm=null;
+function displayCurricularIds(primary,ids){return Array.isArray(ids)&&ids.length&&ids.includes(primary)&&ids.every(id=>typeof id==='string'&&/^[A-Z]+(?:-[A-Z]+)?-\d+[a-z]?$/.test(id))?[...new Set(ids)].join(', '):primary}
 function countWords(s){return (s.match(/\S+/g)||[]).length}
 function safeLoad(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:null}catch{return null}}
 function save(){const db=safeLoad();if(!db||!window.AGUMethodProgress.validate(db)){notify('Registro local inválido; dados anteriores preservados.');return}try{const prior=window.AGUMethodProgress.prepare(db[book.id]||{},window.AGUMethod?.edition());db[book.id]={...prior,page:index,done:completed,sectionId:window.AGUMethod?.sectionId(index),methodEdition:window.AGUMethod?.edition(),updated:new Date().toISOString()};if(!window.AGUMethodProgress.validate(db))throw Error('Registro incompatível');localStorage.setItem(KEY,JSON.stringify(db))}catch{$('toast').textContent='Não foi possível guardar o progresso; dados anteriores preservados.'}}
@@ -227,7 +228,7 @@ async function openBook(id){
  const data=await response.json();if(!data||data.id!==id||!Array.isArray(data.pages)||!data.pages.length||data.pages.some(p=>!p.text))throw Error('Arquivo editorial inválido');
  if(sequence!==openSequence)return;if(await window.AGUMethod?.loadBook(data)===false||sequence!==openSequence)return;book=data;const previous=safeLoad()?.[id]||{},state=window.AGUMethodProgress.validate({[id]:previous})?window.AGUMethodProgress.active(previous,window.AGUMethod?.edition()):{};completed=Array.isArray(state.done)?[...new Set(state.done.filter(n=>Number.isInteger(n)&&n>=0&&n<data.pages.length))]:[];
  const requestedIndex=window.AGUMethod?.indexForSectionId(requestedSection)??-1,stableIndex=window.AGUMethod?.indexForSectionId(state.sectionId)??-1;index=requestedIndex>=0?requestedIndex:stableIndex>=0?stableIndex:Number.isInteger(state.page)?Math.max(0,Math.min(state.page,data.pages.length-1)):0;lastWpm=null;
- $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+data.curricular_id;
+ $('book-title').textContent=data.title;$('book-category').textContent=data.category+' · '+displayCurricularIds(data.curricular_id,window.AGUMethod?.curricularIds?.());
  $('book-status').textContent=data.edition+' · '+data.pages.length+(data.source_format==='markdown'?' seções':' páginas')+' · '+data.verification;
  const originalOk=typeof data.original_html==='string'&&/^livros\/[a-z0-9-]+\.html$/.test(data.original_html);
  $('book-original').hidden=!originalOk;

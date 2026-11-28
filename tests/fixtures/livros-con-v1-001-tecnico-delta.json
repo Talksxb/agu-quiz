@@ -1,0 +1,11 @@
+{
+  "file": "scripts/metodo-agu.cjs",
+  "before": "1cdabc77cb2db48d4a3386c0da37a69b7140b57fadced2cfd495ec1a76b76ba9",
+  "after": "c52492ba59f3805d4187fbb4232ce8f252dc0bbcbc985dc79cf43f5626dabb83",
+  "changes": [
+    {
+      "before": "function official(url){try{const u=new URL(url);return u.protocol==='https:'&&!u.username&&!u.password&&(/\\.(gov|leg|jus)\\.br$/.test(u.hostname)||u.hostname==='cdn.cebraspe.org.br')}catch{return false}}",
+      "after": "function official(url){try{const u=new URL(url);const de=['www.bundesverfassungsgericht.de','www.gesetze-im-internet.de','www.bundestag.de'];return u.protocol==='https:'&&!u.username&&!u.password&&(/\\.(gov|leg|jus)\\.br$/.test(u.hostname)||u.hostname==='cdn.cebraspe.org.br'||(u.port===''&&de.includes(u.hostname)))}catch{return false}}"
+    }
+  ]
+}
