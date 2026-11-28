@@ -615,7 +615,16 @@ function contextPair(x){
 function contextErrors(){
  const contract=global.AGUVigenteContract,items=global.AGUCurrentQuestions?.items||[];
  let current=new Map(),historical=new Map();
- try{const value=JSON.parse(localStorage.getItem(contract.KEY)||'null');if(contract.validHistory(value,items))current=contract.latest(value)}catch(_){}
+ try{
+  const value=JSON.parse(localStorage.getItem(contract.KEY)||'null');
+  // Leitura derivada: registros de itens conhecidos que perderam elegibilidade não
+  // participam da seleção. Não modificar nem importar o histórico original.
+  if(value?.schema===1&&Array.isArray(value.attempts)&&value.attempts.length<=5000&&value.attempts.every(a=>a&&typeof a.id==='string'&&a.id.length<=100)&&new Set(value.attempts.map(a=>a.id)).size===value.attempts.length){
+   const ineligible=new Set(items.filter(q=>!contract.eligible(q)).map(q=>q.id));
+   const eligibleHistory={schema:1,attempts:value.attempts.filter(a=>!ineligible.has(a.question))};
+   if(contract.validHistory(eligibleHistory,items))current=contract.latest(eligibleHistory);
+  }
+ }catch(_){}
  // Mesmo contrato de identidade/origem do banco histórico, com conferência da alternativa.
  if(!global.AGUHomeContext?.()?.demo){
   const rows=global.AGUPlannerContext?.()?.answers;
