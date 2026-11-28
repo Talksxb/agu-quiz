@@ -29,6 +29,7 @@ const changes=[
 ];
 module.exports=source=>{
  source=require('./aud-ux-009-legado.cjs')(source);
+ source=require('./fecha008-q7-legado.cjs')(source,'revisao-inteligente.js');
  for(const c of [...changes].reverse()){
   assert.equal(source.split(c.after).length,2,'AUD-UX-008: somente o delta explícito, trecho único');
   source=source.replace(c.after,()=>c.before);

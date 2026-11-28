@@ -23,6 +23,6 @@ module.exports=source=>{
   assert.equal(source.split(c.after).length,2,'AUD-UX-009: somente o delta explícito, trecho único');
   source=source.replace(c.after,()=>c.before);
  }
- assert.equal(crypto.createHash('sha256').update(source).digest('hex'),'6af79494c8d915b09b4aff916b11a26fde98c0601fe2bc96d841f1d454051342','AUD-UX-009: somente o delta explícito; restituição byte a byte');
+ assert.equal(crypto.createHash('sha256').update(require('./fecha008-q7-legado.cjs')(source,'revisao-inteligente.js')).digest('hex'),'6af79494c8d915b09b4aff916b11a26fde98c0601fe2bc96d841f1d454051342','AUD-UX-009: somente o delta explícito; restituição byte a byte');
  return source;
 };
