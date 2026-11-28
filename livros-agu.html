@@ -198,7 +198,56 @@ function renderPdfText(root,text){
  const sections=text.replace(/\r/g,'').split(/\n\s*\n+/).filter(Boolean);
  for(const chunk of sections){const p=document.createElement('p');p.className='raw-block';p.textContent=chunk.trim().replace(/[ \t]+/g,' ');root.appendChild(p)}
 }
-function renderText(root,text){book.source_format==='markdown'?renderMarkdown(root,text):renderPdfText(root,text)}
+// FECHA-009: perfil Markdown com âncoras explícitas. Nenhum HTML arbitrário é interpretado.
+function anchoredMarkdown(root,markdown){
+ root.replaceChildren();const lines=markdown.replace(/\r/g,'').split('\n');let paragraph=[],items=null;
+ const anchorPattern=/^<a id="([a-z][a-z0-9-]{0,63})"><\/a>$/;
+ const canonical=root.hasAttribute('data-source-section');
+ function rich(parent,s){
+  const tokens=/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\((?:https?:\/\/[^)]+|#[a-z][a-z0-9-]{0,63})\))/g;let at=0,m;
+  while((m=tokens.exec(s))){appendText(parent,s.slice(at,m.index));const a=m[0].match(/^\[([^\]]+)\]\(#([a-z][a-z0-9-]{0,63})\)$/);
+   if(a){const link=document.createElement('a');link.textContent=a[1];link.href='#agu-md-'+a[2];link.dataset.mdLink=a[2];parent.appendChild(link)}else inline(parent,m[0]);at=m.index+m[0].length}
+  appendText(parent,s.slice(at));
+ }
+ function flush(){if(paragraph.length){const p=document.createElement('p');rich(p,paragraph.join(' ').trim());root.appendChild(p);paragraph=[]}items=null}
+ function cells(s){return s.startsWith('|')&&s.endsWith('|')&&!s.includes('\\|')?s.slice(1,-1).split('|').map(x=>x.trim()):null}
+ for(let i=0;i<lines.length;i++){
+  const s=lines[i].trim();if(!s){flush();continue}
+  const anchor=s.match(anchorPattern);
+  if(anchor){flush();const marker=document.createElement('span');marker.dataset.mdAnchor=anchor[1];const id='agu-md-'+anchor[1];if(canonical&&!document.getElementById(id)&&!root.querySelector('#'+id)){marker.id=id;marker.tabIndex=-1}root.appendChild(marker);continue}
+  const h=s.match(/^(#{1,6})\s+(.+)/);
+  if(h){flush();const hn=document.createElement(h[1].length===1?'h2':'h'+Math.min(6,h[1].length+1));rich(hn,h[2]);root.appendChild(hn);continue}
+  const header=cells(s),separator=cells((lines[i+1]||'').trim());
+  if(header&&header.length>1&&separator?.length===header.length&&separator.every(x=>/^:?-{3,}:?$/.test(x))){
+   flush();const region=document.createElement('div'),table=document.createElement('table'),thead=document.createElement('thead'),tbody=document.createElement('tbody');region.className='scroll-table';region.tabIndex=0;region.setAttribute('role','region');region.setAttribute('aria-label','Tabela: '+header.join(' · '));
+   function row(values,parent,head){const tr=document.createElement('tr');for(const value of values){const cell=document.createElement(head?'th':'td');if(head)cell.scope='col';rich(cell,value);tr.appendChild(cell)}parent.appendChild(tr)}
+   row(header,thead,true);i++;
+   while(i+1<lines.length){const values=cells(lines[i+1].trim());if(!values||values.length!==header.length)break;row(values,tbody,false);i++}
+   table.append(thead,tbody);region.appendChild(table);root.appendChild(region);continue;
+  }
+  if(s.startsWith('|')&&s.endsWith('|')){flush();const pre=document.createElement('p');pre.className='raw-block';pre.textContent=s;root.appendChild(pre);continue}
+  const bullet=s.match(/^\s*(?:[-*•]|\d+\.)\s+(.+)/);
+  if(bullet){if(!items){flush();items=document.createElement('ul');root.appendChild(items)}const li=document.createElement('li');rich(li,bullet[1]);items.appendChild(li);continue}
+  paragraph.push(s);
+ }flush();
+}
+function renderText(root,text){
+ if(book.source_format!=='markdown')return renderPdfText(root,text);
+ // Detect the explicit anchored format across the entire book; legacy Markdown stays byte-for-byte in its renderer.
+ const enhanced=book.pages.some(p=>/^<a id="[a-z][a-z0-9-]{0,63}"><\/a>$/m.test(p.text));
+ return enhanced?anchoredMarkdown(root,text):renderMarkdown(root,text);
+}
+// Links in the guided duplicate target the canonical continuous section, not hidden duplicate IDs.
+document.addEventListener('click',e=>{
+ const link=e.target.closest?.('a[data-md-link]');if(!link||!link.closest('#read-full,#guided-full')||!book)return;
+ const id='agu-md-'+link.dataset.mdLink,target=document.getElementById(id);
+ e.preventDefault();if(!target||!target.closest('#read-full [data-source-section]'))return;
+ const i=Number(target.closest('[data-source-section]').dataset.sourceSection);
+ if(!Number.isInteger(i)||i<0||i>=book.pages.length)return;
+ if($('mode').value!=='integral'){$('mode').value='integral';$('mode').dispatchEvent(new Event('change'))}
+ move(i);const dest=document.getElementById(id);if(!dest)return;const next=dest.nextElementSibling,focus=next?.matches('h2,h3,h4,h5,h6')?next:dest;
+ focus.tabIndex=-1;focus.scrollIntoView({block:'start'});focus.focus({preventScroll:true});
+});
 function segment(text){
  const pieces=text.split(/\n\s*\n+/).map(x=>x.replace(/\s+/g,' ').trim()).filter(x=>x.length>12);
  let out=[];for(const p of pieces){let sentences=p.split(/(?<=[!?])\s+|(?<=\.)\s+(?=[A-ZÀ-Ý])/u);let current='';
