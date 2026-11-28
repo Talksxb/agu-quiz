@@ -108,6 +108,39 @@ async function main(){fs.mkdirSync(OUT,{recursive:true});if(server)await new Pro
   assert.deepEqual(errors,[]);results.push({multiIdFixture:true,width,scan,persistence:true,switchToSingle:true});await context.close();
  }
 
+
+ // FECHA-009 — synthetic anchored Markdown, never the private manuscript.
+ for(const width of [320,390,768,1280]){
+  const context=await browser.newContext({viewport:{width,height:850},reducedMotion:'reduce'}),page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/livros/adm-54.json',async route=>{const res=await route.fetch(),body=await res.json();assert.equal(body.source_format,'markdown');
+   body.pages[0].text='## Sumário sintético\n\n- [Ir ao destino](#destino-fixture)\n- [Destino ausente](#ausente-fixture)\n\n| Critério | Descrição |\n|---|:---:|\n| Alfa | **Beta** |\n| Gama | [Fonte](https://example.org/) |\n\n<img src=x onerror=alert(1)>\n[Inseguro](javascript:alert(1))';
+   body.pages[1].text='<a id="destino-fixture"></a>\n## Destino sintético\n\n<a id="destino-fixture"></a>\n\n| Outra | Coluna |\n|---|---|\n| Delta | Epsilon |';
+   await route.fulfill({response:res,json:body})});
+  await page.goto(new URL('livros-agu.html?livro=adm-54',base).href);
+  await page.waitForFunction(()=>document.querySelector('#book').dataset.chapterId==='adm-54'&&document.querySelector('#agu-md-destino-fixture'));
+  const root=page.locator('#read-full'),first=root.locator('[data-source-section="0"]');
+  assert.equal(await page.locator('#agu-md-destino-fixture').count(),1);assert.equal(await first.locator('table').count(),1);
+  assert.deepEqual(await first.locator('th').allInnerTexts(),['Critério','Descrição']);assert.deepEqual(await first.locator('td').allInnerTexts(),['Alfa','Beta','Gama','Fonte']);
+  assert.equal(await first.locator('th[scope="col"]').count(),2);assert.equal(await first.locator('div.scroll-table[role="region"][tabindex="0"]').count(),1);
+  assert.equal(await first.locator('img').count(),0);assert.equal(await first.locator('a[href^="javascript:"]').count(),0);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  await first.getByRole('link',{name:'Destino ausente'}).click();assert.equal(await page.locator('#page').inputValue(),'0');
+  await first.getByRole('link',{name:'Ir ao destino'}).focus();await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#page').inputValue(),'1');assert.equal(await page.evaluate(()=>document.activeElement.textContent),'Destino sintético');
+  assert.equal(await page.locator('#agu-md-destino-fixture').count(),1);assert.equal(await page.locator('#guided-full [id^="agu-md-"]').count(),0);
+  await page.locator('#page').selectOption('0');await page.locator('#mode').selectOption('guided');
+  await page.getByText('Consultar todo o trecho durante a leitura',{exact:true}).click();
+  await page.locator('#guided-full').getByRole('link',{name:'Ir ao destino'}).click();
+  assert.equal(await page.locator('#mode').inputValue(),'integral');assert.equal(await page.locator('#page').inputValue(),'1');
+  assert.equal(await page.locator('#agu-md-destino-fixture').count(),1);
+  await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+  const scan=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});return {violations:r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))}});
+  assert.deepEqual(scan.violations,[]);await require('./livros-axe-recheck.cjs').resolveIncomplete(page,scan,width+' anchored markdown fixture');
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);
+  results.push({anchoredMarkdownFixture:true,width,scan,keyboard:true,guided:true,uniqueAnchor:true,tableSemantic:true,unsafeMarkupLiteral:true});await context.close();
+ }
+
  // JSON inválido e quota sintética preservam os bytes anteriores.
  for(const kind of ['invalido','quota']){const context=await browser.newContext(),page=await context.newPage();await page.goto(base);const original=kind==='invalido'?'{invalido':JSON.stringify(seedReader);await page.evaluate(([k,v])=>localStorage.setItem(k,v),[READER,original]);if(kind==='quota')await page.addInitScript(k=>{const set=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(key===k)throw new DOMException('Quota fixture','QuotaExceededError');return set.call(this,key,value)}},READER);await page.goto(new URL('livros-agu.html?livro=adm-53',base).href);await page.locator('#method-tabs').waitFor();await page.getByRole('button',{name:'Aplicar',exact:true}).click();await page.locator('textarea[id^="draft-"]').fill('Rascunho sintético');await page.getByRole('button',{name:'Guardar rascunho',exact:true}).click();assert.equal(await page.evaluate(k=>localStorage.getItem(k),READER),original);results.push({storage:kind,preserved:true});await context.close()}
  fs.writeFileSync(path.join(OUT,'resultado.json'),JSON.stringify(results,null,2)+'\n');console.log('METODO_AGU_001_CHROMIUM_OK',JSON.stringify({widths:[320,390,768,1280],chapters:4,scans:results.flatMap(r=>r.scans||[]).length,storageAdversarial:2,androidPhysical:false}));
