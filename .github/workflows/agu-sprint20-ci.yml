@@ -268,6 +268,8 @@ jobs:
         run: node tests/leg01-browser.cjs
       - name: UX-AGU-006 — jornadas integradas, comparação CSS, teclado, toque, zoom e axe
         run: node tests/ux-agu-006-browser.cjs
+      - name: UX-AGU-MOBILE-002 — MOB-01/02/03, sete larguras e axe estrito
+        run: node tests/ux-agu-mobile-002-browser.cjs
       - name: Guardar capturas de viewport sintéticas
         if: always()
         uses: actions/upload-artifact@v4
@@ -283,6 +285,7 @@ jobs:
             tests/artifacts-aud-ux-002/
             tests/artifacts-aud-ux-001/
             tests/artifacts-ux-agu-006/
+            tests/artifacts-ux-agu-mobile-002/
             tests/artifacts-simulados-agu/
             tests/artifacts-interface-agu-001/
             tests/artifacts-interface-agu-002/
