@@ -1,0 +1,78 @@
+{
+  "id": "con-v1",
+  "edition": "0.9.6",
+  "sourceSha256": "51e4f3113d0e7cfc4af2e72e8ef3a473759d47f072dd3d86e584f8b62cf68cac",
+  "inputSha256": "7b8ab5f6bf8c264020cda59364d7684baaa330a7def9586ab8c97da796027b3e",
+  "sections": [
+    {
+      "id": "con-v1-s00",
+      "sha256": "5c4d9e38517e30609597d9a78f7d5e44dfa0c5d46b070741a7a783be680fbfe9",
+      "characters": 1788
+    },
+    {
+      "id": "con-v1-s01",
+      "sha256": "6c688a3f8ab157f87cd802f3a737567db0186ac52294a5f84d78a5ec5354926d",
+      "characters": 3686
+    },
+    {
+      "id": "con-v1-s02",
+      "sha256": "b4f3869ca470aec82c85ce7e1b64552185f6c23a00c0577bf91ed7a2c32dc012",
+      "characters": 21701
+    },
+    {
+      "id": "con-v1-s03",
+      "sha256": "7a2b313f2a8ddab3824c9e8ad55dcc1af2c57977d729884f40b3a0e3db7ee192",
+      "characters": 20012
+    },
+    {
+      "id": "con-v1-s04",
+      "sha256": "0a31c914e423b35f6fd840cd1bcdd85c9315dfd0fc70c399408672dad98ba1c3",
+      "characters": 13877
+    },
+    {
+      "id": "con-v1-s05",
+      "sha256": "f801ab198f5772077d829f4dc8d44af630a061b63cbcde6844ca8557730c195e",
+      "characters": 10685
+    },
+    {
+      "id": "con-v1-s06",
+      "sha256": "bee424220284a0a5fbabf8745d3e8457cef32cbc89c6e2ac8518f8d47c7e1967",
+      "characters": 19062
+    },
+    {
+      "id": "con-v1-s07",
+      "sha256": "08527b038ec8a599a9fa4651a14fc427e735fce3e34aee2aa3fb7998987047be",
+      "characters": 25061
+    },
+    {
+      "id": "con-v1-s08",
+      "sha256": "6c677a62a255990915aff059b56ecb406393046d51ebfa58e0422dcb6692d46c",
+      "characters": 12950
+    },
+    {
+      "id": "con-v1-s09",
+      "sha256": "45c7931c47a276bacb7f4ef76fd04550670bac6d508ca82a1a7fff35cbe90098",
+      "characters": 21136
+    },
+    {
+      "id": "con-v1-s10",
+      "sha256": "7d98c1ba67212de65018c4884dd38a9cc1b68ec64ae3e4228dc8b79895f89d7e",
+      "characters": 34492
+    },
+    {
+      "id": "con-v1-s11",
+      "sha256": "96d34c784e2dc4e3f1f9a971afc312530a3f7260296b087086e2a22c6d7fc6de",
+      "characters": 15573
+    },
+    {
+      "id": "con-v1-s12",
+      "sha256": "9c2abfa28e74c1f9ae137812b35c533e01c73bbbae2e59b6cb77e35f137974e6",
+      "characters": 8852
+    }
+  ],
+  "textualLosses": [],
+  "visualDifferences": [
+    "Âncoras e tabelas suportadas pelo renderizador da PR127; ensaio privado FECHA009 (edição 0.9.4) e fixtures aprovados; jornada da edição 0.9.6 pendente."
+  ],
+  "resources": []
+}

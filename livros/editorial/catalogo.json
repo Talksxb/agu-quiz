@@ -7,9 +7,11 @@
     "livros/editorial/amb-03.json",
     "livros/editorial/amb-11.json",
     "livros/editorial/amb-06.json",
-    "livros/editorial/amb-08.json"
+    "livros/editorial/amb-08.json",
+    "livros/editorial/con-v1.json"
   ],
   "collections": [
-    "livros/colecoes/ambiental.json"
+    "livros/colecoes/ambiental.json",
+    "livros/colecoes/constitucional.json"
   ]
 }
